@@ -103,3 +103,295 @@ body {
   color: #7a8798;
   cursor: not-allowed;
 }
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  min-height: 36px;
+  width: 100%;
+  border: 1px solid #9eb6d4;
+  border-radius: 8px;
+  background: #eef5ff;
+  color: #1d4f8c;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 20px;
+  background: #fff;
+  border-bottom: 1px solid #dbe3ee;
+}
+
+.brand {
+  font-weight: 800;
+  color: #122033;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav a {
+  color: #35598a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+.session {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.page.wide {
+  max-width: 1120px;
+}
+
+.page.narrow {
+  max-width: 480px;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.btn {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid #c5d0de;
+  border-radius: 8px;
+  background: #fff;
+  color: #122033;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: #1d4f8c;
+  border-color: #1d4f8c;
+  color: #fff;
+}
+
+.btn.ghost {
+  background: transparent;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.form,
+.card.form,
+.workflow .card {
+  display: grid;
+  gap: 12px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid #c5d0de;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.data-table th,
+.data-table td {
+  border-bottom: 1px solid #e3eaf3;
+  padding: 8px;
+  text-align: left;
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.muted,
+.hint {
+  color: #5b6b80;
+  font-size: 13px;
+}
+
+.banner {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #eef2f6;
+}
+
+.banner.error {
+  background: #fdecea;
+  color: #8c1d18;
+}
+
+.banner.warn {
+  background: #fff6e5;
+  color: #7a4d00;
+}
+
+.banner.success {
+  background: #e7f7ef;
+  color: #1c6b45;
+}
+
+.status-pill,
+.role-pill,
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #eef2f6;
+}
+
+.status-pill.verified {
+  background: #e7f7ef;
+  color: #1c6b45;
+}
+
+.status-pill.needs_review,
+.status-pill.unreviewed {
+  background: #fff6e5;
+  color: #7a4d00;
+}
+
+.status-pill.rejected {
+  background: #fdecea;
+  color: #8c1d18;
+}
+
+.section-nav,
+.actions,
+.form-actions,
+.inline-options,
+.check-row,
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.chip {
+  border: 1px solid #c5d0de;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.chip.active {
+  background: #1d4f8c;
+  color: #fff;
+  border-color: #1d4f8c;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.expr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.preview-box {
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.issue-list {
+  color: #8c1d18;
+}
+
+.overall {
+  font-size: 16px;
+}
+
+.stem {
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.steps {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+}
+
+.version-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.scale-help {
+  font-weight: 400;
+  color: #5b6b80;
+}
+
+fieldset {
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .filters,
+  .grid-2,
+  .split,
+  .expr-grid {
+    grid-template-columns: 1fr;
+  }
+}

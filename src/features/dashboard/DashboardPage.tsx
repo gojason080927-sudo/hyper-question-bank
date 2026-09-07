@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { isSupabaseConfigured } from '../../lib/supabase/client'
 import { FEATURE_AREAS } from '../../utils/features'
 
@@ -7,25 +8,34 @@ export function DashboardPage() {
   return (
     <main className="page">
       <header className="hero">
-        <p className="kicker">MASTER v1 · STEP 1</p>
+        <p className="kicker">MASTER v1 · STEP 4</p>
         <h1>HYPER QUESTION BANK</h1>
-        <p className="tagline">수학 문제 데이터베이스 · 유사문제 분석 시스템</p>
+        <p className="tagline">수동 등록 · 검수 · 버전 보존</p>
         <p className={`status ${supabaseReady ? 'ready' : 'pending'}`}>
           Supabase: {supabaseReady ? '환경변수 연결됨' : '미연결 (앱은 정상 표시)'}
         </p>
       </header>
 
       <section className="grid" aria-label="기능 영역">
-        {FEATURE_AREAS.map((area) => (
-          <article key={area.id} className="card">
-            <p className="code">{area.code}</p>
-            <h2>{area.title}</h2>
-            <p>{area.summary}</p>
-            <button type="button" disabled>
-              준비 중
-            </button>
-          </article>
-        ))}
+        {FEATURE_AREAS.map((area) => {
+          const href = area.id === 'questions' || area.id === 'review' || area.id === 'classification' ? '/questions' : null
+          return (
+            <article key={area.id} className="card">
+              <p className="code">{area.code}</p>
+              <h2>{area.title}</h2>
+              <p>{area.summary}</p>
+              {href ? (
+                <Link className="card-link" to={href}>
+                  열기
+                </Link>
+              ) : (
+                <button type="button" disabled>
+                  준비 중
+                </button>
+              )}
+            </article>
+          )
+        })}
       </section>
     </main>
   )

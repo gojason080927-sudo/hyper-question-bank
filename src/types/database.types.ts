@@ -1,10 +1,8 @@
 ﻿/**
- * GENERATED FROM LIVE SUPABASE SCHEMA — Question Bank CORE v1
+ * GENERATED FROM LIVE SUPABASE SCHEMA — Question Bank CORE + workflow v1
  * Project ref: owpxsmdcxjmsgadkdsci (hyper-question-bank)
  *
- * This is the physical database contract.
- * Do not treat src/types/question-schema-draft.ts as the DB contract.
- *
+ * Physical database contract. Not the design draft.
  * Regenerate: npx supabase gen types typescript --linked --schema public
  */
 export type Json =
@@ -1462,6 +1460,30 @@ export type Database = {
         }
         Relationships: []
       }
+      user_profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          role: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       verified_problem_relations: {
         Row: {
           algorithm_version: string | null
@@ -1591,11 +1613,70 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      hqb_assert_verify_gate: {
+        Args: { p_version_id: string }
+        Returns: undefined
+      }
+      hqb_audit: {
+        Args: {
+          p_action: string
+          p_after?: Json
+          p_before?: Json
+          p_entity_id: string
+          p_entity_type: string
+        }
+        Returns: undefined
+      }
+      hqb_bootstrap_admin: { Args: never; Returns: Json }
+      hqb_can_review: { Args: never; Returns: boolean }
+      hqb_can_write_draft: { Args: never; Returns: boolean }
+      hqb_clone_problem_version: {
+        Args: {
+          p_change_reason?: string
+          p_content_overrides?: Json
+          p_problem_id: string
+        }
+        Returns: Json
+      }
+      hqb_create_problem_draft: { Args: { payload: Json }; Returns: Json }
+      hqb_current_role: { Args: never; Returns: string }
+      hqb_ensure_source: {
+        Args: { p_source: Json }
+        Returns: {
+          source_document_id: string
+          source_page_id: string
+        }[]
+      }
       hqb_fetch_problem_bundle: {
         Args: { p_public_code: string }
         Returns: Json
       }
       hqb_format_public_code: { Args: { n: number }; Returns: string }
+      hqb_has_admin: { Args: never; Returns: boolean }
+      hqb_is_staff: { Args: never; Returns: boolean }
+      hqb_my_profile: { Args: never; Returns: Json }
+      hqb_reject_problem_version: {
+        Args: { p_note: string; p_version_id: string }
+        Returns: Json
+      }
+      hqb_replace_version_graph: {
+        Args: { p_payload: Json; p_version_id: string }
+        Returns: undefined
+      }
+      hqb_require_reviewer: { Args: never; Returns: string }
+      hqb_require_staff_writer: { Args: never; Returns: string }
+      hqb_submit_for_review: {
+        Args: { p_note?: string; p_version_id: string }
+        Returns: Json
+      }
+      hqb_update_draft_version: {
+        Args: { p_version_id: string; payload: Json }
+        Returns: Json
+      }
+      hqb_verify_problem_version: {
+        Args: { p_note?: string; p_version_id: string }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never
