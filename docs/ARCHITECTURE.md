@@ -73,7 +73,7 @@ PDF / HWP / HWPX / scan
 - 유사도 특징값 / embedding
 - 검수 상태
 
-STEP 1에서는 위 항목을 테이블로 만들지 않는다. STEP 2에서 MASTER schema를 설계한다.
+STEP 1에서는 위 항목을 테이블로 만들지 않는다. STEP 2 설계는 [QUESTION_DB_MASTER_SCHEMA_v1.md](./QUESTION_DB_MASTER_SCHEMA_v1.md)에 있다.
 
 ## 5. 분류 체계의 향후 방향
 
