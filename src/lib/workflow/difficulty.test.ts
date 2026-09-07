@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { defaultHumanDifficulty, isDifficultyLevel, overallDifficulty } from './difficulty'
+import { defaultHumanDifficulty, extractDifficultyDims, isDifficultyLevel, overallDifficulty } from './difficulty'
 
 describe('overallDifficulty', () => {
   it('returns 1.00 for all ones', () => {
@@ -28,5 +28,21 @@ describe('isDifficultyLevel', () => {
   it('rejects 0 and 6', () => {
     expect(isDifficultyLevel(0)).toBe(false)
     expect(isDifficultyLevel(6)).toBe(false)
+  })
+})
+
+describe('extractDifficultyDims', () => {
+  it('reads only the six dimensions from a DB row', () => {
+    expect(
+      extractDifficultyDims({
+        ...defaultHumanDifficulty(),
+        difficulty_source: 'HUMAN',
+        overall_difficulty: 1.17,
+      }),
+    ).toEqual(defaultHumanDifficulty())
+  })
+
+  it('returns null when a dimension is out of range', () => {
+    expect(extractDifficultyDims({ ...defaultHumanDifficulty(), trap_level: 0 })).toBeNull()
   })
 })

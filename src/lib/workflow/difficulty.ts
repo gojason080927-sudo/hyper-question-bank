@@ -63,6 +63,30 @@ export function isDifficultyLevel(value: number): boolean {
   return Number.isInteger(value) && value >= 1 && value <= 5
 }
 
+const DIM_KEYS: Array<keyof DifficultyDims> = [
+  'concept_difficulty',
+  'calculation_complexity',
+  'reasoning_depth',
+  'condition_complexity',
+  'representation_complexity',
+  'trap_level',
+]
+
+export function extractDifficultyDims(row: unknown): DifficultyDims | null {
+  if (!row || typeof row !== 'object') return null
+  const record = row as Record<string, unknown>
+  const dims = {
+    concept_difficulty: Number(record.concept_difficulty),
+    calculation_complexity: Number(record.calculation_complexity),
+    reasoning_depth: Number(record.reasoning_depth),
+    condition_complexity: Number(record.condition_complexity),
+    representation_complexity: Number(record.representation_complexity),
+    trap_level: Number(record.trap_level),
+  }
+  if (DIM_KEYS.some((key) => !isDifficultyLevel(dims[key]))) return null
+  return dims
+}
+
 export function defaultHumanDifficulty(): DifficultyDims {
   return {
     concept_difficulty: 1,

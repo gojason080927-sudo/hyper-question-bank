@@ -32,6 +32,20 @@ describe('verifyGateIssues', () => {
     expect(issues).toContain('핵심 개념을 하나 이상 선택해 주세요.')
     expect(issues).toContain('정답을 입력해 주세요.')
   })
+
+  it('ignores overall_difficulty and other extra fields on a HUMAN row', () => {
+    expect(
+      verifyGateIssues(
+        validInput({
+          difficulty: {
+            ...defaultHumanDifficulty(),
+            difficulty_source: 'HUMAN',
+            overall_difficulty: 1.17,
+          } as unknown as VerifyInput['difficulty'],
+        }),
+      ),
+    ).toEqual([])
+  })
 })
 
 describe('parseHqBError', () => {

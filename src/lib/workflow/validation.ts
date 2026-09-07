@@ -1,4 +1,4 @@
-import { isDifficultyLevel, type DifficultyDims } from './difficulty'
+import { extractDifficultyDims, type DifficultyDims } from './difficulty'
 
 export type VerifyInput = {
   problemText: string
@@ -46,13 +46,9 @@ export function verifyGateIssues(input: VerifyInput): string[] {
   if (input.hyperTypeCount < 1) issues.push(VERIFY_MESSAGES.HQB_MISSING_TYPE)
   if (input.strategyCount < 1) issues.push(VERIFY_MESSAGES.HQB_MISSING_STRATEGY)
   if (input.targetCount < 1) issues.push(VERIFY_MESSAGES.HQB_MISSING_TARGET)
-  if (!input.hasHumanDifficulty || !input.difficulty) {
-    issues.push(VERIFY_MESSAGES.HQB_MISSING_DIFFICULTY)
-  } else {
-    const values = Object.values(input.difficulty)
-    if (values.some((value) => !isDifficultyLevel(value))) {
-      issues.push(VERIFY_MESSAGES.HQB_INVALID_DIFFICULTY)
-    }
+  const dims = extractDifficultyDims(input.difficulty)
+  if (!input.hasHumanDifficulty || !dims) {
+    issues.push(input.hasHumanDifficulty ? VERIFY_MESSAGES.HQB_INVALID_DIFFICULTY : VERIFY_MESSAGES.HQB_MISSING_DIFFICULTY)
   }
   if (!input.hasAnswer) issues.push(VERIFY_MESSAGES.HQB_MISSING_ANSWER)
   if (!input.hasExpression) issues.push(VERIFY_MESSAGES.HQB_MISSING_EXPRESSION)

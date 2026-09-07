@@ -4,7 +4,7 @@ import { getSupabase } from '../../lib/supabase/client'
 import { useAuth } from '../../lib/auth/AuthProvider'
 import { canReview, REVIEW_LABELS } from '../../lib/workflow/labels'
 import { parseHqBError, verifyGateIssues, isUsableLicense } from '../../lib/workflow/validation'
-import { defaultHumanDifficulty } from '../../lib/workflow/difficulty'
+import { defaultHumanDifficulty, extractDifficultyDims } from '../../lib/workflow/difficulty'
 import { KatexText } from '../../lib/math/KatexText'
 
 export function QuestionReviewPage() {
@@ -46,16 +46,9 @@ export function QuestionReviewPage() {
   const issues = useMemo(() => {
     if (!bundle) return []
     const concepts = (bundle.concepts as Array<{ is_primary?: boolean }>) ?? []
-    const difficulty = ((bundle.difficulty as Array<{ difficulty_source: string }>) ?? []).find((row) => row.difficulty_source === 'HUMAN') as
-      | {
-          concept_difficulty: number
-          calculation_complexity: number
-          reasoning_depth: number
-          condition_complexity: number
-          representation_complexity: number
-          trap_level: number
-        }
-      | undefined
+    const difficulty = extractDifficultyDims(
+      ((bundle.difficulty as Array<{ difficulty_source: string }>) ?? []).find((row) => row.difficulty_source === 'HUMAN'),
+    )
     const version = bundle.current_version as { problem_text?: string } | undefined
     return verifyGateIssues({
       problemText: version?.problem_text ?? '',
