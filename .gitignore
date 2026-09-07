@@ -42,6 +42,19 @@ scripts/tmp-db-push.mjs
 # OCR / generated temp
 fixtures/recognition/last-run.json
 .ocr-temp/
+workers/ocr/.venv/
+workers/ocr/data/
+workers/ocr/models/
+workers/ocr/cache/
+workers/ocr/runs/
+workers/ocr/python/
+workers/ocr/site-packages/
+workers/ocr/tesseract/
+workers/ocr/tools/
+workers/ocr/node_modules/
+workers/ocr/__pycache__/
+workers/ocr/**/__pycache__/
+scripts/tmp-*.mjs
 .generated-temp/
 tmp/
 temp/

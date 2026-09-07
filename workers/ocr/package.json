@@ -1,0 +1,9 @@
+{
+  "name": "hqb-ocr-worker",
+  "private": true,
+  "type": "module",
+  "description": "Isolated STEP 7 OCR bake-off. Not shipped on Vercel.",
+  "dependencies": {
+    "tesseract.js": "^6.0.1"
+  }
+}

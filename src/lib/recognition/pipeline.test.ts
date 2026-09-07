@@ -24,5 +24,6 @@ describe('region recognition pipeline', () => {
     expect(result.payload.stem_text).toBe('')
     expect(result.payload.answer_candidate).toBeNull()
     expect(result.verdict).toBe('RED')
+    expect(result.processing_mode).toBe('SCAN_NO_ENGINE')
   })
 })

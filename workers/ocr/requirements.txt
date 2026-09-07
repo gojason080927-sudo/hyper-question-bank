@@ -1,0 +1,15 @@
+# Isolated STEP 7 worker extras. Install with embeddable Python + --target site-packages.
+# Do not install system-wide.
+pypdfium2==5.13.0
+pillow==12.3.0
+# The following installed on this machine but did not run (AVX / DLL init):
+# paddlepaddle==3.3.1
+# paddleocr==3.7.0
+# rapidocr-onnxruntime
+# Windows OCR used the WinRT packages:
+# winrt-Windows.Media.Ocr==3.2.1
+# winrt-Windows.Globalization==3.2.1
+# winrt-Windows.Graphics.Imaging==3.2.1
+# winrt-Windows.Storage==3.2.1
+# winrt-Windows.Storage.Streams==3.2.1
+# winrt-Windows.Foundation==3.2.1

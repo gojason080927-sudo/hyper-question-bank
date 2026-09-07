@@ -1,0 +1,57 @@
+{
+  "document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "title": "쎈수학 공통수학1",
+  "sample_count": 26,
+  "pages": [8, 12, 20, 36, 60, 96, 132, 156],
+  "ran": [
+    {
+      "engine": "windows-media-ocr-ko",
+      "version": "winrt-3.2.1",
+      "GREEN": 8,
+      "YELLOW": 8,
+      "RED": 10,
+      "math_critical_errors": 23,
+      "sec_per_crop": 0.253,
+      "korean": 0.917,
+      "digits": 0.91,
+      "operators": 0.759,
+      "superscripts": 0.0,
+      "subscripts": 0.0,
+      "fractions": 0.0,
+      "radicals": 0.0,
+      "inequalities": 0.5,
+      "parens_abs": 0.378,
+      "choices": 0.0,
+      "problem_number": 0.955,
+      "figure_table": 0.714
+    },
+    {
+      "engine": "tesseractjs-kor-eng",
+      "version": "6.0.1",
+      "GREEN": 5,
+      "YELLOW": 11,
+      "RED": 10,
+      "math_critical_errors": 18,
+      "sec_per_crop": 2.761,
+      "korean": 0.881,
+      "digits": 0.921,
+      "operators": 0.845,
+      "superscripts": 0.0,
+      "subscripts": 0.0,
+      "fractions": 0.0,
+      "radicals": 0.0,
+      "inequalities": 0.5,
+      "parens_abs": 0.27,
+      "choices": 0.0,
+      "problem_number": 1.0,
+      "figure_table": 0.714
+    }
+  ],
+  "not_ran": [
+    "paddleocr-3.7.0 installed, DLL init failed, no AVX",
+    "native tesseract-5.5.3 installer requires admin; not installed",
+    "rapidocr-onnxruntime installed, onnxruntime DLL init failed, no AVX",
+    "pix2text not installed after two AVX/DLL failures on the same machine",
+    "MixTeX not installed (AGPL-3.0 + non-commercial derivative restriction)"
+  ]
+}

@@ -8,6 +8,8 @@ import type {
 } from './types'
 import {
   RECOGNITION_ENGINE_EMBEDDED,
+  RECOGNITION_ENGINE_SCAN_OCR,
+  RECOGNITION_ENGINE_SCAN_OCR_VERSION,
   RECOGNITION_ENGINE_SCAN_UNAVAILABLE,
   RECOGNITION_ENGINE_VERSION,
   REGION_TEXT_MIN_CHARS,
@@ -16,6 +18,7 @@ import {
 const CIRCLED = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩']
 
 const PROBLEM_NUMBER = /^(?:문제\s+)(\d{1,2})\s+|(\d{1,2})\s*[.)]\s+|\[(\d{1,2})\]\s+/
+const SCAN_PROBLEM_NUMBER = /(?:^|\n)\s*(\d{4})\b/
 const ANSWER_LINE = /^(?:정답|답)\s*[:：]\s*(.+)$/
 const FIGURE = /그림|도형|그래프|다음 그림|figure|diagram/i
 const TABLE = /다음 표|표\s*\d|table/i
@@ -250,5 +253,87 @@ export function scanUnavailable(rawText = '', pageHint?: string): RecognitionOut
     status: 'FAILED',
     verdict: 'RED',
     payload,
+  }
+}
+
+export function extractScanProblemNumber(raw: string): string | null {
+  const match = raw.match(SCAN_PROBLEM_NUMBER)
+  return match?.[1] ?? null
+}
+
+export function recognizeFromOcrText(
+  rawText: string,
+  options: {
+    engine?: string
+    engineVersion?: string
+    hasFigure?: boolean
+    hasTable?: boolean
+  } = {},
+): RecognitionOutput {
+  const normalized = rawText.trim()
+  if (meaningfulCharCount(normalized) < REGION_TEXT_MIN_CHARS) {
+    const empty = scanUnavailable(normalized, 'SCAN_PDF')
+    return {
+      ...empty,
+      engine: options.engine ?? RECOGNITION_ENGINE_SCAN_OCR,
+      engine_version: options.engineVersion ?? RECOGNITION_ENGINE_SCAN_OCR_VERSION,
+      processing_mode: 'SCAN_OCR',
+      payload: {
+        ...empty.payload,
+        warnings: [
+          'SCAN_OCR produced no usable text',
+          'Uncertain tokens were not restored from context',
+          'Use the original PDF region as source of truth',
+        ],
+      },
+    }
+  }
+
+  const structured = recognizeFromText(normalized, { pageHint: 'SCAN_PDF' })
+  const scanNumber = extractScanProblemNumber(normalized)
+  const hasFigure = options.hasFigure ?? structured.payload.has_figure
+  const hasTable = options.hasTable ?? structured.payload.has_table
+  const warnings = [
+    ...structured.payload.warnings,
+    'SCAN_OCR: raw engine output. Uncertain tokens were not restored from context.',
+    'Do not treat collapsed x2 as x²',
+  ]
+  const component: ComponentStatus[] = [...structured.payload.component_status]
+  if (!component.includes('LOW_CONFIDENCE')) component.push('LOW_CONFIDENCE')
+  if (!component.includes('MATH_REVIEW_REQUIRED')) component.push('MATH_REVIEW_REQUIRED')
+  if (hasFigure && !component.includes('FIGURE_DETECTED')) {
+    component.push('FIGURE_DETECTED')
+    warnings.push('figure present; keep the original region image')
+  }
+  if (hasTable && !component.includes('TABLE_DETECTED')) {
+    component.push('TABLE_DETECTED')
+    warnings.push('table present; cell structure was not rebuilt')
+  }
+
+  const lostExponent = structured.payload.math_expressions.some((row) =>
+    row.notes.some((note) => note.includes('lost exponent')),
+  )
+  const collapsedAsciiPower = /[A-Za-z]\d/.test(normalized) && !/[²³^]/.test(normalized)
+  if (collapsedAsciiPower) {
+    warnings.push('possible lost exponent in OCR raw text; x2 is not restored to x²')
+  }
+  const stem = structured.payload.stem_text
+  const verdict = !stem || lostExponent || collapsedAsciiPower ? 'RED' : 'YELLOW'
+
+  return {
+    engine: options.engine ?? RECOGNITION_ENGINE_SCAN_OCR,
+    engine_version: options.engineVersion ?? RECOGNITION_ENGINE_SCAN_OCR_VERSION,
+    processing_mode: 'SCAN_OCR',
+    status: 'REVIEW_REQUIRED',
+    verdict,
+    payload: {
+      ...structured.payload,
+      problem_number: structured.payload.problem_number ?? scanNumber,
+      has_figure: hasFigure,
+      has_table: hasTable,
+      confidence: null,
+      component_status: component,
+      warnings,
+    },
   }
 }

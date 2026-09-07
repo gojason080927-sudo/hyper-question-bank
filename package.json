@@ -14,6 +14,7 @@
     "test:db:review-v1": "node scripts/review-target-v1-acceptance.mjs",
     "test:db:pdf-v1": "node scripts/pdf-ingestion-v1-acceptance.mjs",
     "test:db:recognition-v1": "node scripts/recognition-v1-acceptance.mjs",
+    "test:db:ocr-v1": "node scripts/scan-ocr-v1-acceptance.mjs",
     "test:recognition-bench": "node scripts/recognition-benchmark.mjs"
   },
   "dependencies": {
@@ -22,7 +23,8 @@
     "pdfjs-dist": "^4.10.38",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.3"
+    "react-router-dom": "^7.18.3",
+    "tesseract.js": "^6.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",

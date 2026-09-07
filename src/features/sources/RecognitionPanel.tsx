@@ -4,6 +4,7 @@ import { getSupabase } from '../../lib/supabase/client'
 import { textItemsInBBox } from '../../lib/pdf/extractText'
 import { openPdfDocument } from '../../lib/pdf/loadPdf'
 import { recognizeRegionText } from '../../lib/recognition/pipeline'
+import { recognizeScanCrop } from '../../lib/recognition/scanOcr'
 import { renderRegionDataUrl } from '../../lib/recognition/renderRegion'
 import { proposeAutoRegions } from '../../lib/recognition/segment'
 import { toPositionedItems } from '../../lib/recognition/items'
@@ -18,8 +19,13 @@ type SavedResult = {
   verdict: string
   status: string
   engine: string
+  engine_version?: string
+  processing_mode?: string
   created_at: string
   applied_to_version_id: string | null
+  payload?: RecognitionOutput['payload']
+  warnings?: string[]
+  component_status?: string[]
 }
 
 type Props = {
@@ -49,7 +55,23 @@ export function RecognitionPanel({ document, page, region, pdfData, submitLock, 
     if (!client) return
     void (async () => {
       const { data } = await client.rpc('hqb_list_recognition_results', { p_region_id: region.id })
-      setHistory((data as SavedResult[]) ?? [])
+      const rows = (data as SavedResult[]) ?? []
+      setHistory(rows)
+      const latest = rows[0]
+      if (latest?.payload) {
+        setResultId(latest.id)
+        setOutput({
+          engine: latest.engine,
+          engine_version: latest.engine_version || '0.7.0',
+          processing_mode: (latest.processing_mode as RecognitionOutput['processing_mode']) || 'SCAN_OCR',
+          status: latest.status as RecognitionOutput['status'],
+          verdict: latest.verdict as RecognitionOutput['verdict'],
+          payload: { ...latest.payload, confidence: null },
+        })
+      } else {
+        setResultId(null)
+        setOutput(null)
+      }
       const { data: links } = await client
         .from('problem_sources')
         .select('problem_id')
@@ -70,6 +92,41 @@ export function RecognitionPanel({ document, page, region, pdfData, submitLock, 
       }
     })()
   }, [region.id])
+
+  useEffect(() => {
+    if (!pdfData) return
+    void renderRegionDataUrl(pdfData, page.page_number, region.bbox, RECOGNITION_RENDER_SCALE).then((crop) => {
+      setPreview(crop.dataUrl)
+    })
+  }, [pdfData, page.page_number, region.bbox])
+
+  async function persistRecognition(recognized: RecognitionOutput, cropDataUrl: string) {
+    const client = getSupabase()
+    if (!client) return
+    setPreview(cropDataUrl)
+    setOutput(recognized)
+    const saved = await client.rpc('hqb_save_recognition_result', {
+      payload: {
+        source_document_id: document.id,
+        source_page_id: page.id,
+        source_page_region_id: region.id,
+        engine: recognized.engine,
+        engine_version: recognized.engine_version,
+        processing_mode: recognized.processing_mode,
+        status: recognized.status,
+        verdict: recognized.verdict,
+        payload: { ...recognized.payload, confidence: null },
+        warnings: recognized.payload.warnings,
+        component_status: recognized.payload.component_status,
+      },
+    })
+    if (saved.error) throw saved.error
+    const created = saved.data as { result_id?: string }
+    setResultId(created.result_id ?? null)
+    setInfo(`인식 결과를 보관했습니다. ${recognized.verdict} · 자동 VERIFIED/덮어쓰기 없음.`)
+    const { data } = await client.rpc('hqb_list_recognition_results', { p_region_id: region.id })
+    setHistory((data as SavedResult[]) ?? [])
+  }
 
   async function runRecognize() {
     const client = getSupabase()
@@ -92,30 +149,29 @@ export function RecognitionPanel({ document, page, region, pdfData, submitLock, 
         items: content.items as Array<{ str?: string; transform?: number[] }>,
       })
       const crop = await renderRegionDataUrl(pdfData, page.page_number, region.bbox, RECOGNITION_RENDER_SCALE)
-      setPreview(crop.dataUrl)
-      setOutput(recognized)
-      const saved = await client.rpc('hqb_save_recognition_result', {
-        payload: {
-          source_document_id: document.id,
-          source_page_id: page.id,
-          source_page_region_id: region.id,
-          engine: recognized.engine,
-          engine_version: recognized.engine_version,
-          processing_mode: recognized.processing_mode,
-          status: recognized.status,
-          verdict: recognized.verdict,
-          payload: { ...recognized.payload, confidence: null },
-          warnings: recognized.payload.warnings,
-          component_status: recognized.payload.component_status,
-        },
-      })
+      await persistRecognition(recognized, crop.dataUrl)
       await pdf.destroy()
-      if (saved.error) throw saved.error
-      const created = saved.data as { result_id?: string }
-      setResultId(created.result_id ?? null)
-      setInfo(`인식 결과를 보관했습니다. ${recognized.verdict} · 자동 VERIFIED/덮어쓰기 없음.`)
-      const { data } = await client.rpc('hqb_list_recognition_results', { p_region_id: region.id })
-      setHistory((data as SavedResult[]) ?? [])
+    } catch (caught) {
+      setError(parseHqBError(caught instanceof Error ? caught.message : String(caught)))
+    } finally {
+      releaseSubmit(submitLock)
+      setBusy(false)
+    }
+  }
+
+  async function runScanOcr() {
+    if (!pdfData) return
+    if (!beginSubmit(submitLock)) return
+    setBusy(true)
+    setError(null)
+    try {
+      const crop = await renderRegionDataUrl(pdfData, page.page_number, region.bbox, RECOGNITION_RENDER_SCALE)
+      const recognized = await recognizeScanCrop({
+        image: crop.dataUrl,
+        hasFigure: /그림|도형|그래프/.test(region.extracted_text_preview || ''),
+        hasTable: /표/.test(region.extracted_text_preview || ''),
+      })
+      await persistRecognition(recognized, crop.dataUrl)
     } catch (caught) {
       setError(parseHqBError(caught instanceof Error ? caught.message : String(caught)))
     } finally {
@@ -228,11 +284,14 @@ export function RecognitionPanel({ document, page, region, pdfData, submitLock, 
         <button type="button" className="btn" disabled={busy || !pdfData} onClick={() => void runRecognize()}>
           {busy ? '인식 중…' : '문제 인식'}
         </button>
+        <button type="button" className="btn" disabled={busy || !pdfData} onClick={() => void runScanOcr()}>
+          {busy ? 'OCR 중…' : 'OCR 테스트'}
+        </button>
         <button type="button" className="btn ghost" disabled={!pdfData} onClick={() => void proposeCandidates()}>
           자동 영역 후보
         </button>
       </div>
-      <p className="hint">인식은 DRAFT 보조값입니다. VERIFIED를 바꾸지 않고, 이미 있는 초안을 자동 덮어쓰지 않습니다.</p>
+      <p className="hint">인식은 DRAFT 보조값입니다. VERIFIED를 바꾸지 않고, 이미 있는 초안을 자동 덮어쓰지 않습니다. OCR 테스트는 선택한 영역 한 곳만 실행합니다. 전체 PDF를 돌리지 않습니다.</p>
       {error ? <p className="banner error">{error}</p> : null}
       {info ? <p className="banner success">{info}</p> : null}
       {candidates.length ? (
@@ -264,6 +323,8 @@ export function RecognitionPanel({ document, page, region, pdfData, submitLock, 
             <p className="muted">confidence 숫자 없음 · {output.payload.component_status.join(', ')}</p>
             <p><strong>문제번호</strong> {output.payload.problem_number || '미분리'}</p>
             <p><strong>stem</strong> {output.payload.stem_text || '—'}</p>
+            <p><strong>math</strong> {output.payload.math_expressions.length ? '' : '—'}</p>
+            <p><strong>choices</strong> {output.payload.choices.length ? '' : '—'}</p>
             <p><strong>raw</strong> {output.payload.raw_text || '—'}</p>
             {output.payload.math_expressions.length ? (
               <ul>
