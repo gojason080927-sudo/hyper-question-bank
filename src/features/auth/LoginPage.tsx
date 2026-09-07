@@ -1,10 +1,12 @@
 import { useState, type FormEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../lib/auth/AuthProvider'
 import { getSupabase, isSupabaseConfigured } from '../../lib/supabase/client'
 import { parseHqBError } from '../../lib/workflow/validation'
 
 export function LoginPage() {
   const navigate = useNavigate()
+  const { loading, session, profile, profileError, refresh } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [mode, setMode] = useState<'login' | 'signup'>('login')
@@ -18,6 +20,18 @@ export function LoginPage() {
         <p className="banner error">VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY가 없습니다.</p>
       </main>
     )
+  }
+
+  if (loading) {
+    return (
+      <main className="page">
+        <p className="muted">로그인 상태를 확인하는 중입니다.</p>
+      </main>
+    )
+  }
+
+  if (session && profile) {
+    return <Navigate to="/questions" replace />
   }
 
   async function onSubmit(event: FormEvent) {
@@ -44,6 +58,7 @@ export function LoginPage() {
         return
       }
     }
+    await refresh()
     setBusy(false)
     navigate('/questions')
   }
@@ -53,6 +68,7 @@ export function LoginPage() {
       <p className="kicker">강사 업무용</p>
       <h1>HYPER QUESTION BANK</h1>
       <p className="tagline">수동 등록 · 검수 워크플로</p>
+      {session && profileError ? <p className="banner error">{profileError}</p> : null}
       <form className="card form" onSubmit={onSubmit}>
         <label>
           이메일

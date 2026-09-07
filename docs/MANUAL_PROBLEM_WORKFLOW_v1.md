@@ -122,6 +122,7 @@ STEP 3의 넓은 `USING (true)` SELECT policy는 staff policy로 교체했다. R
 
 ## 10. 알려진 한계
 
+- 로그인 후 `hqb_my_profile`이 끝날 때까지 loading을 유지한다. 세션만 있고 프로필이 없으면 로그인으로 조용히 튕기지 않고 안내한다.
 - 공개 회원가입이 열려 있으면 최초 사용자가 ADMIN이 될 수 있다. 학원 내부 도구 전제.
 - Email confirm이 켜져 있으면 UI 가입 후 세션이 바로 안 생길 수 있다. 테스트 사용자는 admin API로 confirm했다.
 - HQB-000001은 STEP 3 lifecycle 때문에 current가 초안 v2일 수 있다. 데이터는 삭제하지 않았다.

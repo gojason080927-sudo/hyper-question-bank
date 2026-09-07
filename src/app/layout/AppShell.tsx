@@ -21,8 +21,25 @@ export function AppShell() {
     )
   }
 
-  if (!session || !profile) {
+  if (!session) {
     return <Navigate to="/login" replace />
+  }
+
+  if (!profile) {
+    return (
+      <main className="page">
+        <p className="banner error">이 계정으로 문제은행을 사용할 수 없습니다. 관리자에게 역할을 요청하세요.</p>
+        <button
+          type="button"
+          className="btn ghost"
+          onClick={() => {
+            void signOut().then(() => navigate('/login'))
+          }}
+        >
+          로그아웃
+        </button>
+      </main>
+    )
   }
 
   return (
