@@ -454,6 +454,19 @@ textarea {
   width: 64px;
 }
 
+.recognition-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.region-preview {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dbe3ee;
+}
+
 fieldset {
   border: 1px solid #dbe3ee;
   border-radius: 8px;
@@ -464,7 +477,8 @@ fieldset {
   .grid-2,
   .split,
   .expr-grid,
-  .source-workspace {
+  .source-workspace,
+  .recognition-split {
     grid-template-columns: 1fr;
   }
 }

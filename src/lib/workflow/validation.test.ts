@@ -51,5 +51,11 @@ describe('verifyGateIssues', () => {
 describe('parseHqBError', () => {
   it('extracts the Korean message after the error code', () => {
     expect(parseHqBError('HQB_MISSING_ANSWER: 정답을 입력해 주세요.')).toBe('정답을 입력해 주세요.')
+    expect(parseHqBError('HQB_FAKE_CONFIDENCE: 엔진이 주지 않은 신뢰도 숫자는 저장하지 않습니다.')).toBe(
+      '엔진이 주지 않은 신뢰도 숫자는 저장하지 않습니다.',
+    )
+    expect(parseHqBError('HQB_VERIFIED_LOCKED: VERIFIED 버전은 덮어쓸 수 없습니다. 새 버전을 만드세요.')).toBe(
+      'VERIFIED 버전은 덮어쓸 수 없습니다. 새 버전을 만드세요.',
+    )
   })
 })

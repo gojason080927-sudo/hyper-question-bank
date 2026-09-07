@@ -8,9 +8,9 @@ export function DashboardPage() {
   return (
     <main className="page">
       <header className="hero">
-        <p className="kicker">MASTER v1 · STEP 5</p>
+        <p className="kicker">MASTER v1 · STEP 6</p>
         <h1>HYPER QUESTION BANK</h1>
-        <p className="tagline">원본 PDF · 문제 영역 · 수동 등록 · 검수</p>
+        <p className="tagline">원본 PDF · 영역 인식 · 초안 · 검수</p>
         <p className={`status ${supabaseReady ? 'ready' : 'pending'}`}>
           Supabase: {supabaseReady ? '환경변수 연결됨' : '미연결 (앱은 정상 표시)'}
         </p>
@@ -21,7 +21,7 @@ export function DashboardPage() {
           const href =
             area.id === 'questions' || area.id === 'review' || area.id === 'classification'
               ? '/questions'
-              : area.id === 'sources'
+              : area.id === 'sources' || area.id === 'extraction'
                 ? '/sources'
                 : null
           return (

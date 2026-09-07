@@ -77,16 +77,53 @@ export function buildSyntheticPdf(kind = 'text', unique = '') {
   return Buffer.from(body, 'binary')
 }
 
+export function buildRecognitionBenchmarkPdf(unique = '') {
+  const page1 = pageStream([
+    'HYPER STEP 6 SYNTHETIC TEXT PDF',
+    '1. 2x + 3 = 11. Find x.',
+    '2. x + y = 10 and x - y = 2.',
+    '3. Compute 1/2 + 1/3.',
+    '4. Solve x^2 - 5x + 6 = 0.',
+    '5. Solve 2x + 1 <= 7.',
+    'Korean Hangul is not in Helvetica; see string fixtures.',
+  ])
+  const objects = [
+    object(1, '<< /Type /Catalog /Pages 2 0 R >>'),
+    object(2, '<< /Type /Pages /Kids [3 0 R] /Count 1 >>'),
+    object(
+      3,
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>',
+    ),
+    object(4, `<< /Length ${page1.length} >>\nstream\n${page1}\nendstream`),
+    object(5, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'),
+  ]
+  let body = `%PDF-1.4\n% HQB-STEP6 latin ${unique}\n`
+  const offsets = [0]
+  for (const chunk of objects) {
+    offsets.push(body.length)
+    body += chunk
+  }
+  const xrefStart = body.length
+  body += `xref\n0 6\n0000000000 65535 f \n`
+  for (let i = 1; i <= 5; i += 1) {
+    body += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`
+  }
+  body += `trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF\n`
+  return Buffer.from(body, 'binary')
+}
+
 export function writeSyntheticPdfs() {
   fs.mkdirSync(outDir, { recursive: true })
   const files = {
     text: path.join(outDir, 'hyper-step5-text.pdf'),
     scan: path.join(outDir, 'hyper-step5-scan.pdf'),
     mixed: path.join(outDir, 'hyper-step5-mixed.pdf'),
+    recognition: path.join(outDir, 'hyper-step6-recognition.pdf'),
   }
   fs.writeFileSync(files.text, buildSyntheticPdf('text'))
   fs.writeFileSync(files.scan, buildSyntheticPdf('scan'))
   fs.writeFileSync(files.mixed, buildSyntheticPdf('mixed'))
+  fs.writeFileSync(files.recognition, buildRecognitionBenchmarkPdf())
   return files
 }
 

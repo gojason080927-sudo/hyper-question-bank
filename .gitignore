@@ -37,8 +37,10 @@ supabase/.branches/
 .supabase-db-password.tmp
 .supabase-*.tmp.json
 scripts/.tmp-core-v1-report.json
+scripts/tmp-db-push.mjs
 
 # OCR / generated temp
+fixtures/recognition/last-run.json
 .ocr-temp/
 .generated-temp/
 tmp/

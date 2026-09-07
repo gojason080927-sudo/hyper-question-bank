@@ -49,6 +49,9 @@ export const VERIFY_MESSAGES: Record<string, string> = {
   HQB_INVALID_HASH: 'SHA-256 값이 올바르지 않습니다.',
   HQB_INVALID_SOURCE: '선택한 출처가 없습니다.',
   HQB_INVALID_PAGE: '페이지 번호가 올바르지 않습니다.',
+  HQB_INVALID_RECOGNITION: '인식 결과가 없습니다.',
+  HQB_RECOGNITION_APPLIED: '이 인식 결과는 이미 다른 초안에 적용되었습니다.',
+  HQB_FAKE_CONFIDENCE: '엔진이 주지 않은 신뢰도 숫자는 저장하지 않습니다.',
 }
 
 export function verifyGateIssues(input: VerifyInput): string[] {

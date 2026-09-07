@@ -1231,6 +1231,91 @@ export type Database = {
           },
         ]
       }
+      recognition_results: {
+        Row: {
+          applied_at: string | null
+          applied_to_version_id: string | null
+          component_status: Json
+          created_at: string
+          created_by: string | null
+          engine: string
+          engine_version: string
+          id: string
+          payload: Json
+          problem_id: string | null
+          problem_version_id: string | null
+          processing_mode: string
+          source_document_id: string
+          source_page_id: string
+          source_page_region_id: string
+          status: string
+          verdict: string
+          warnings: Json
+        }
+        Insert: {
+          applied_at?: string | null
+          applied_to_version_id?: string | null
+          component_status?: Json
+          created_at?: string
+          created_by?: string | null
+          engine: string
+          engine_version: string
+          id?: string
+          payload: Json
+          problem_id?: string | null
+          problem_version_id?: string | null
+          processing_mode: string
+          source_document_id: string
+          source_page_id: string
+          source_page_region_id: string
+          status: string
+          verdict: string
+          warnings?: Json
+        }
+        Update: {
+          applied_at?: string | null
+          applied_to_version_id?: string | null
+          component_status?: Json
+          created_at?: string
+          created_by?: string | null
+          engine?: string
+          engine_version?: string
+          id?: string
+          payload?: Json
+          problem_id?: string | null
+          problem_version_id?: string | null
+          processing_mode?: string
+          source_document_id?: string
+          source_page_id?: string
+          source_page_region_id?: string
+          status?: string
+          verdict?: string
+          warnings?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recognition_results_source_document_id_fkey"
+            columns: ["source_document_id"]
+            isOneToOne: false
+            referencedRelation: "source_documents"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "recognition_results_source_page_id_fkey"
+            columns: ["source_page_id"]
+            isOneToOne: false
+            referencedRelation: "source_pages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "recognition_results_source_page_region_id_fkey"
+            columns: ["source_page_region_id"]
+            isOneToOne: false
+            referencedRelation: "source_page_regions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       source_documents: {
         Row: {
           archived_at: string | null
@@ -1706,6 +1791,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      hqb_apply_recognition_to_draft: {
+        Args: { p_result_id: string; p_version_id: string }
+        Returns: Json
+      }
       hqb_assert_verify_gate: {
         Args: { p_version_id: string }
         Returns: undefined
@@ -1764,6 +1853,7 @@ export type Database = {
       hqb_format_public_code: { Args: { n: number }; Returns: string }
       hqb_has_admin: { Args: never; Returns: boolean }
       hqb_is_staff: { Args: never; Returns: boolean }
+      hqb_list_recognition_results: { Args: { p_region_id: string }; Returns: Json }
       hqb_my_profile: { Args: never; Returns: Json }
       hqb_reject_problem_version: {
         Args: { p_note: string; p_version_id: string }
@@ -1774,6 +1864,7 @@ export type Database = {
         Returns: undefined
       }
       hqb_require_reviewer: { Args: never; Returns: string }
+      hqb_save_recognition_result: { Args: { payload: Json }; Returns: Json }
       hqb_require_staff_writer: { Args: never; Returns: string }
       hqb_submit_for_review: {
         Args: { p_note?: string; p_version_id: string }

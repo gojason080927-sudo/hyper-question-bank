@@ -1,0 +1,236 @@
+{
+  "kind": "synthetic",
+  "note": "Helvetica cannot embed Hangul. Korean items are string fixtures, not PDF glyphs. Real PDFs are recorded separately when provided.",
+  "render_scale": 2.5,
+  "render_dpi": 180,
+  "items": [
+    {
+      "id": "A1",
+      "category": "A_korean_integer",
+      "source": "synthetic_string",
+      "source_text": "1. 다음 계산에서 2 + 3 = 5 가 옳은지 확인하여라.",
+      "problem_number": "1",
+      "stem_includes": ["다음", "2", "3", "5"],
+      "math": ["2", "3", "5"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "B1",
+      "category": "B_linear",
+      "source": "synthetic_string",
+      "source_text": "2. Solve 2x + 3 = 11 and find the value of x.",
+      "problem_number": "2",
+      "stem_includes": ["2x", "3", "11"],
+      "math": ["="],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "C1",
+      "category": "C_system",
+      "source": "synthetic_string",
+      "source_text": "3. Solve the system x + y = 10 and x - y = 2.",
+      "problem_number": "3",
+      "stem_includes": ["x + y = 10", "x - y = 2"],
+      "math": ["="],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "D1",
+      "category": "D_fraction",
+      "source": "synthetic_string",
+      "source_text": "4. Compute 1/2 + 1/3 and write the result.",
+      "problem_number": "4",
+      "stem_includes": ["1/2", "1/3"],
+      "math": ["1/2"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "E1",
+      "category": "E_exponent_typo",
+      "source": "synthetic_string",
+      "source_text": "5. Expand (x + 1)² and simplify the expression.",
+      "problem_number": "5",
+      "stem_includes": ["(x + 1)²"],
+      "math": ["²"],
+      "math_must_not_collapse": [{ "from": "(x + 1)²", "not": "(x + 1)2" }],
+      "expected_verdict": "GREEN"
+    },
+    {
+      "id": "E2",
+      "category": "E_exponent_lost",
+      "source": "synthetic_string",
+      "source_text": "5. Expand (x + 1)2 and simplify the expression.",
+      "problem_number": "5",
+      "stem_includes": ["(x + 1)2"],
+      "math_must_not_collapse": [{ "from": "(x + 1)²", "not": "(x + 1)2" }],
+      "expected_verdict": "RED"
+    },
+    {
+      "id": "F1",
+      "category": "F_radical",
+      "source": "synthetic_string",
+      "source_text": "6. Simplify √3 + √12 and keep the radical.",
+      "problem_number": "6",
+      "stem_includes": ["√3", "√12"],
+      "math": ["√"],
+      "expected_verdict": "GREEN"
+    },
+    {
+      "id": "F2",
+      "category": "F_radical_ascii",
+      "source": "synthetic_string",
+      "source_text": "6. Simplify sqrt(3) + sqrt(12) and keep the radical.",
+      "problem_number": "6",
+      "stem_includes": ["sqrt(3)"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "G1",
+      "category": "G_quadratic",
+      "source": "synthetic_string",
+      "source_text": "7. Solve x² - 5x + 6 = 0 for real x.",
+      "problem_number": "7",
+      "stem_includes": ["x²", "5x", "6"],
+      "math": ["x²"],
+      "math_must_not_collapse": [{ "from": "x²", "not": "x2" }],
+      "expected_verdict": "GREEN"
+    },
+    {
+      "id": "G2",
+      "category": "G_quadratic_collapsed",
+      "source": "synthetic_string",
+      "source_text": "7. Solve x2 - 5x + 6 = 0 for real x.",
+      "problem_number": "7",
+      "stem_includes": ["5x", "6"],
+      "math_must_not_collapse": [{ "from": "x²", "not": "x2" }],
+      "expected_verdict": "RED"
+    },
+    {
+      "id": "H1",
+      "category": "H_inequality",
+      "source": "synthetic_string",
+      "source_text": "8. Solve the inequality 2x + 1 ≤ 7.",
+      "problem_number": "8",
+      "stem_includes": ["≤", "7"],
+      "math": ["≤"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "H3",
+      "category": "H_inequality_compact",
+      "source": "synthetic_string",
+      "source_text": "8. Solve 2x≤7 for real x.",
+      "problem_number": "8",
+      "stem_includes": ["2x≤7"],
+      "math": ["≤"],
+      "expected_verdict": "GREEN"
+    },
+    {
+      "id": "H2",
+      "category": "H_inequality_ascii",
+      "source": "synthetic_string",
+      "source_text": "8. Solve the inequality 2x + 1 <= 7.",
+      "problem_number": "8",
+      "stem_includes": ["<=", "7"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "I1",
+      "category": "I_multiple_choice",
+      "source": "synthetic_string",
+      "source_text": "9. 2x + 3 = 11일 때 x의 값은?\n① 2\n② 4\n③ 6\n④ 8\n⑤ 10",
+      "problem_number": "9",
+      "stem_includes": ["2x", "11"],
+      "choices": ["2", "4", "6", "8", "10"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "I2",
+      "category": "I_missing_choice",
+      "source": "synthetic_string",
+      "source_text": "9. 2x + 3 = 11일 때 x의 값은?\n① 2\n③ 6\n⑤ 10",
+      "problem_number": "9",
+      "choices": ["2", "6", "10"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "J1",
+      "category": "J_table",
+      "source": "synthetic_string",
+      "source_text": "10. 다음 표를 보고 x의 값을 구하여라.\nx    1    2    3\ny    2    4    6",
+      "problem_number": "10",
+      "has_table": true,
+      "stem_includes": ["표"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "K1",
+      "category": "K_figure",
+      "source": "synthetic_string",
+      "source_text": "11. 다음 그림에서 삼각형 ABC의 넓이를 구하여라.",
+      "problem_number": "11",
+      "has_figure": true,
+      "stem_includes": ["그림", "삼각형"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "L1",
+      "category": "L_multi_page_first",
+      "source": "synthetic_string",
+      "source_text": "1. 2x + 3 = 11. Find x from the first item on this page.",
+      "problem_number": "1",
+      "stem_includes": ["2x", "11"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "L2",
+      "category": "L_multi_page_second",
+      "source": "synthetic_string",
+      "source_text": "2. x + y = 10 and x - y = 2. Find x and y.",
+      "problem_number": "2",
+      "stem_includes": ["x + y = 10"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "M1",
+      "category": "M_scan_empty",
+      "source": "synthetic_string",
+      "source_text": "",
+      "expected_verdict": "RED"
+    },
+    {
+      "id": "M2",
+      "category": "M_scan_noise",
+      "source": "synthetic_string",
+      "source_text": "..",
+      "expected_verdict": "RED"
+    },
+    {
+      "id": "N1",
+      "category": "N_circled_not_number",
+      "source": "synthetic_string",
+      "source_text": "① 2x + 3 = 11 Find x from this choice-like line.",
+      "problem_number": null,
+      "stem_includes": ["2x", "11"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "O1",
+      "category": "O_explicit_answer",
+      "source": "synthetic_string",
+      "source_text": "12. 2x + 3 = 11. Find x.\n정답: 4",
+      "problem_number": "12",
+      "stem_includes": ["2x", "11"],
+      "expected_verdict": "YELLOW"
+    },
+    {
+      "id": "P1",
+      "category": "P_paren_choices",
+      "source": "synthetic_string",
+      "source_text": "13. Find x when 2x = 8.\n(1) 2\n(2) 4\n(3) 6\n(4) 8\n(5) 10",
+      "problem_number": "13",
+      "choices": ["2", "4", "6", "8", "10"],
+      "expected_verdict": "YELLOW"
+    }
+  ]
+}

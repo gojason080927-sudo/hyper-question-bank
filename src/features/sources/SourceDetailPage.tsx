@@ -6,6 +6,7 @@ import type { NormalizedBBox } from '../../lib/pdf/bbox'
 import { parseHqBError } from '../../lib/workflow/validation'
 import { beginSubmit, releaseSubmit } from '../../lib/workflow/submitLock'
 import { PdfPageViewer } from './PdfPageViewer'
+import { RecognitionPanel } from './RecognitionPanel'
 import type { SourceBundle, SourceRegion } from './types'
 
 export function SourceDetailPage() {
@@ -289,7 +290,7 @@ export function SourceDetailPage() {
             </ul>
           )}
 
-          {selected ? (
+          {selected && page ? (
             <div className="form">
               <p><strong>상태</strong> {selected.status}</p>
               {selected.extracted_text_preview ? (
@@ -300,9 +301,19 @@ export function SourceDetailPage() {
               ) : (
                 <p className="hint">이 영역에서 추출된 텍스트가 없습니다. PDF 원본이 기준입니다.</p>
               )}
+              <RecognitionPanel
+                document={doc}
+                page={page}
+                region={selected}
+                pdfData={pdfData}
+                submitLock={submitLock.current}
+                onRegionCreated={(id) => {
+                  void reload().then(() => setSelectedRegionId(id))
+                }}
+              />
               <div className="actions">
                 <button type="button" className="btn" disabled={saving} onClick={() => void createDraft(selected)}>
-                  문제 초안 만들기
+                  빈 초안 만들기
                 </button>
                 {selected.status !== 'LINKED' ? (
                   <button type="button" className="btn ghost" onClick={() => void deleteRegion(selected)}>

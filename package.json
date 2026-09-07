@@ -12,7 +12,9 @@
     "test:db:core-v1": "node scripts/core-v1-acceptance.mjs",
     "test:db:workflow-v1": "node scripts/workflow-v1-acceptance.mjs",
     "test:db:review-v1": "node scripts/review-target-v1-acceptance.mjs",
-    "test:db:pdf-v1": "node scripts/pdf-ingestion-v1-acceptance.mjs"
+    "test:db:pdf-v1": "node scripts/pdf-ingestion-v1-acceptance.mjs",
+    "test:db:recognition-v1": "node scripts/recognition-v1-acceptance.mjs",
+    "test:recognition-bench": "node scripts/recognition-benchmark.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
