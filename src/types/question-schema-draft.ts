@@ -3,7 +3,8 @@
  *
  * HYPER QUESTION BANK MASTER SCHEMA v1
  * STATUS: DESIGN FREEZE — v1
- * DATABASE IMPLEMENTATION: NOT YET CREATED
+ * DATABASE IMPLEMENTATION: CORE v1 exists in supabase/migrations
+ * Physical types: src/types/database.types.ts
  *
  * This file is for design validation only.
  * It is not a production database schema, not a migration, and not an API contract.

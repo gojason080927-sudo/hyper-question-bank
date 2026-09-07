@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:db:core-v1": "node scripts/core-v1-acceptance.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

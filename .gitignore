@@ -30,10 +30,13 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-# Supabase temp
+# Supabase temp / local secrets
 .supabase/
 supabase/.temp/
 supabase/.branches/
+.supabase-db-password.tmp
+.supabase-*.tmp.json
+scripts/.tmp-core-v1-report.json
 
 # OCR / generated temp
 .ocr-temp/

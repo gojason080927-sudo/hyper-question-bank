@@ -1,9 +1,9 @@
 # HYPER QUESTION BANK — Question DB MASTER SCHEMA v1
 
 STATUS: DESIGN FREEZE — v1  
-DATABASE IMPLEMENTATION: NOT YET CREATED
+DATABASE IMPLEMENTATION: CORE v1 created — see [QUESTION_DB_IMPLEMENTATION_v1.md](./QUESTION_DB_IMPLEMENTATION_v1.md)
 
-DESIGN DRAFT — NOT DATABASE CONTRACT. 실제 table / migration / pgvector / embedding 생성 없음.
+DESIGN DRAFT remains the conceptual source of truth. Physical tables live in `supabase/migrations/`.
 
 쌍둥이 문제: 문장·숫자·고유명사가 달라도 **핵심 개념, 해결 전략, 조건 구조, 수식 구조, 사고 단계, 요구하는 결과**가 유사한 문제.  
 단순 text embedding만으로 T1/T2를 결정하지 않는다.
