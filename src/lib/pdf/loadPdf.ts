@@ -14,8 +14,10 @@ export function ensurePdfWorker(): void {
 
 export async function openPdfDocument(data: ArrayBuffer | Uint8Array): Promise<PDFDocumentProxy> {
   ensurePdfWorker()
+  // pdf.js transfers the input buffer. Copy so the viewer and recognition can reopen the same bytes.
+  const copy = data instanceof Uint8Array ? data.slice() : new Uint8Array(data.slice(0))
   try {
-    return await getDocument({ data, isEvalSupported: false, disableAutoFetch: true }).promise
+    return await getDocument({ data: copy, isEvalSupported: false, disableAutoFetch: true }).promise
   } catch {
     throw new Error('HQB_PDF_RENDER: PDF를 열 수 없습니다. 파일이 손상되었을 수 있습니다.')
   }
