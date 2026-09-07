@@ -128,7 +128,16 @@ UNKNOWN / RESTRICTED documents stay internal. They are not treated as worksheet-
 
 ## Production E2E result
 
-Recorded after Production UI verification. See the STEP 5 completion report for document id, region, and `HQB-` public_code.
+Production UI (`https://hyper-question-bank.vercel.app/`), ADMIN session:
+
+1. `/sources/new` — synthetic `hyper-step5-prod-e2e.pdf` uploaded (OWNED, TEACHER_CREATED)
+2. Document `35257d38-ffe5-4ace-946b-179746e7f5b8` — `TEXT_PDF`, 2 pages, `EMBEDDED_TEXT`, `ocr_status=NOT_NEEDED`
+3. PAGE 1 displayed; region drawn and saved (`x≈0.079 y≈0.120 w≈0.801 h≈0.200`, unit `normalized`, origin `top-left`)
+4. “문제 초안 만들기” → Gold Standard edit → detail `HQB-000024`
+5. Lineage: document + page 1 + `PDF_REGION` + bbox. “원본 페이지 보기” returns to the same page
+6. Review redirect: `/questions/32cce8ed-0c4d-428e-b115-9a1f9358c9fa/versions/39a59d60-2550-4d63-a843-796ea572c1f0/review`
+
+VERIFY was not applied: this is a STEP 5 synthetic draft without the full Gold Standard gate.
 
 ## Storage usage / cost
 
