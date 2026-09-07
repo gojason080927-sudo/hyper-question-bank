@@ -75,6 +75,7 @@ export function ProblemForm({
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault()
+    if (submitting) return
     await onSubmit()
   }
 

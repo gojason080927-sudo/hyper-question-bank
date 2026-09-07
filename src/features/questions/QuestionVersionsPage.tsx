@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { KatexText } from '../../lib/math/KatexText'
+import { reviewPath } from '../../lib/workflow/reviewTarget'
 
 type VersionRow = {
   id: string
@@ -82,6 +83,11 @@ export function QuestionVersionsPage() {
                 v{row.version_no} · {REVIEW_LABELS[row.review_status] ?? row.review_status}
                 {row.id === currentId ? ' · 현재' : ''}
               </button>
+              {problemId ? (
+                <p>
+                  <Link to={reviewPath(problemId, row.id)}>이 버전 검수</Link>
+                </p>
+              ) : null}
             </li>
           ))}
         </ul>

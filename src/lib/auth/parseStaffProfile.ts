@@ -8,6 +8,17 @@ export type StaffProfile = {
 
 const ROLES: StaffRole[] = ['ADMIN', 'TEACHER', 'REVIEWER']
 
+export function profileGateMessage(data: unknown): string {
+  const row = typeof data === 'string' ? safeJson(data) : data
+  if (row && typeof row === 'object' && !Array.isArray(row)) {
+    const role = (row as Record<string, unknown>).role
+    if (role === 'PENDING') {
+      return '이 계정은 아직 권한이 없습니다. 관리자가 TEACHER/REVIEWER/ADMIN 역할을 부여해야 합니다.'
+    }
+  }
+  return '이 계정에 강사 프로필이 없습니다. 관리자에게 역할을 요청하세요.'
+}
+
 export function parseStaffProfile(data: unknown): StaffProfile | null {
   const row = typeof data === 'string' ? safeJson(data) : data
   if (!row || typeof row !== 'object' || Array.isArray(row)) return null

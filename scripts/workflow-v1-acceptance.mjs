@@ -147,6 +147,12 @@ const teacherVerify = await teacher.client.rpc('hqb_verify_problem_version', {
 assert(teacherVerify.error, 'teacher must not verify')
 console.log('PASS  teacher-verify-denied')
 
+const boot = await teacher.client.rpc('hqb_bootstrap_admin')
+assert(boot.error, 'authenticated bootstrap must fail')
+const anonBoot = await anon.rpc('hqb_bootstrap_admin')
+assert(anonBoot.error, 'anon bootstrap must fail')
+console.log('PASS  bootstrap-admin-denied')
+
 const verified = await must(
   await reviewer.client.rpc('hqb_verify_problem_version', {
     p_version_id: created.version_id,
@@ -196,6 +202,39 @@ const clonedDiff = await must(
 assert(clonedConcepts.length >= 1, 'classification not cloned')
 assert(clonedAnswers.length >= 1, 'answer not cloned')
 assert(clonedDiff.every((row) => row.difficulty_source === 'HUMAN'), 'MODEL/CALIBRATED should not clone')
+
+const currentBundle = await must(
+  await reviewer.client.rpc('hqb_fetch_problem_bundle', { p_public_code: created.public_code }),
+  'current bundle after clone',
+)
+assert(
+  String(currentBundle.current_version?.problem_text ?? '').includes('구하여라'),
+  'current bundle must still show v1 wording',
+)
+const v2Bundle = await must(
+  await reviewer.client.rpc('hqb_fetch_problem_version_bundle', {
+    p_problem_id: created.problem_id,
+    p_version_id: cloned.version_id,
+  }),
+  'exact v2 bundle',
+)
+assert(v2Bundle.version?.id === cloned.version_id, 'bundle followed current instead of requested version')
+assert(String(v2Bundle.version?.problem_text ?? '').includes('구하세요'), 'v2 wording missing')
+assert(!String(v2Bundle.version?.problem_text ?? '').includes('구하여라'), 'v2 bundle leaked v1 wording')
+assert((v2Bundle.concepts ?? []).length >= 1, 'v2 classification missing')
+assert((v2Bundle.answers ?? []).length >= 1, 'v2 answer missing')
+assert(
+  (v2Bundle.difficulty ?? []).some((row) => row.difficulty_source === 'HUMAN'),
+  'v2 HUMAN difficulty missing',
+)
+assert(v2Bundle.problem?.current_version_id === created.version_id, 'current pointer moved in v2 bundle')
+const mismatch = await reviewer.client.rpc('hqb_fetch_problem_version_bundle', {
+  p_problem_id: created.problem_id,
+  p_version_id: '00000000-0000-0000-0000-000000000000',
+})
+assert(mismatch.error, 'mismatched version must fail')
+console.log('PASS  exact-version-bundle-v2')
+
 const oldStill = await must(
   await admin.from('problem_versions').select('id').eq('id', created.version_id).single(),
   'old version',

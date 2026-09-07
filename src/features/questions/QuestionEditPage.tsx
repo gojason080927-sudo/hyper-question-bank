@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { useCatalogs } from '../../lib/workflow/useCatalogs'
 import { emptyForm, buildPayload, type ProblemFormState } from '../../lib/workflow/formState'
 import { parseHqBError } from '../../lib/workflow/validation'
+import { beginSubmit, releaseSubmit } from '../../lib/workflow/submitLock'
 import { ProblemForm } from './ProblemForm'
 import { loadFormFromVersion } from './loadForm'
 
@@ -17,6 +18,7 @@ export function QuestionEditPage() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const submitLock = useRef({ current: false })
 
   useEffect(() => {
     const client = getSupabase()
@@ -89,14 +91,16 @@ export function QuestionEditPage() {
         onSubmit={async () => {
           const client = getSupabase()
           if (!client || !versionId) return
+          if (!beginSubmit(submitLock.current)) return
           setSubmitting(true)
           setError(null)
           const { error: saveError } = await client.rpc('hqb_update_draft_version', {
             p_version_id: versionId,
             payload: buildPayload(state),
           })
-          setSubmitting(false)
           if (saveError) {
+            releaseSubmit(submitLock.current)
+            setSubmitting(false)
             setError(parseHqBError(saveError.message))
             console.error(saveError)
             return

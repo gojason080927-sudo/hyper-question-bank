@@ -33,6 +33,8 @@ export const VERIFY_MESSAGES: Record<string, string> = {
   HQB_FORBIDDEN: '이 문제는 검수 권한이 있는 계정만 확정할 수 있습니다.',
   HQB_VERIFIED_LOCKED: 'VERIFIED 버전은 덮어쓸 수 없습니다. 새 버전을 만드세요.',
   HQB_UNAUTHENTICATED: '로그인이 필요합니다.',
+  HQB_BOOTSTRAP_DISABLED: '관리자 부트스트랩은 폐쇄되었습니다. Dashboard에서 역할을 지정하세요.',
+  HQB_VERSION_MISMATCH: '요청한 버전이 이 문제에 속하지 않습니다.',
 }
 
 export function verifyGateIssues(input: VerifyInput): string[] {

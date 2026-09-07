@@ -2,14 +2,12 @@ import { useState, type FormEvent } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/AuthProvider'
 import { getSupabase, isSupabaseConfigured } from '../../lib/supabase/client'
-import { parseHqBError } from '../../lib/workflow/validation'
 
 export function LoginPage() {
   const navigate = useNavigate()
   const { loading, session, profile, profileError, refresh } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [mode, setMode] = useState<'login' | 'signup'>('login')
   const [message, setMessage] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
 
@@ -40,23 +38,11 @@ export function LoginPage() {
     if (!client) return
     setBusy(true)
     setMessage(null)
-    const action =
-      mode === 'login'
-        ? client.auth.signInWithPassword({ email, password })
-        : client.auth.signUp({ email, password })
-    const { error } = await action
+    const { error } = await client.auth.signInWithPassword({ email, password })
     if (error) {
       setMessage(error.message.includes('Invalid') ? '이메일 또는 비밀번호가 올바르지 않습니다.' : '로그인에 실패했습니다.')
       setBusy(false)
       return
-    }
-    if (mode === 'signup') {
-      const { error: bootError } = await client.rpc('hqb_bootstrap_admin')
-      if (bootError && !/HQB_ADMIN_EXISTS/.test(bootError.message)) {
-        setMessage(parseHqBError(bootError.message))
-        setBusy(false)
-        return
-      }
     }
     await refresh()
     setBusy(false)
@@ -84,7 +70,7 @@ export function LoginPage() {
           비밀번호
           <input
             type="password"
-            autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+            autoComplete="current-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
@@ -93,16 +79,10 @@ export function LoginPage() {
         </label>
         {message ? <p className="banner error">{message}</p> : null}
         <button className="btn primary" type="submit" disabled={busy}>
-          {busy ? '처리 중…' : mode === 'login' ? '로그인' : '계정 만들기'}
-        </button>
-        <button
-          className="btn ghost"
-          type="button"
-          onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
-        >
-          {mode === 'login' ? '처음이면 계정 만들기' : '이미 계정이 있으면 로그인'}
+          {busy ? '처리 중…' : '로그인'}
         </button>
       </form>
+      <p className="hint">공개 가입은 닫혀 있습니다. 계정은 관리자가 발급합니다.</p>
     </main>
   )
 }

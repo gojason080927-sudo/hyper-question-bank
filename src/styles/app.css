@@ -299,6 +299,10 @@ textarea {
   color: #8c1d18;
 }
 
+.review-target {
+  font-size: 1.15rem;
+}
+
 .section-nav,
 .actions,
 .form-actions,

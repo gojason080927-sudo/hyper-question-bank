@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { getSupabase } from '../supabase/client'
-import { parseStaffProfile, type StaffProfile } from './parseStaffProfile'
+import { parseStaffProfile, profileGateMessage, type StaffProfile } from './parseStaffProfile'
 
 export type { StaffProfile }
 
@@ -40,7 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const parsed = parseStaffProfile(data)
     if (!parsed) {
       setProfile(null)
-      setProfileError('이 계정에 강사 프로필이 없습니다. 관리자에게 역할을 요청하세요.')
+      setProfileError(profileGateMessage(data))
       return
     }
     setProfile(parsed)

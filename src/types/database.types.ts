@@ -1651,6 +1651,10 @@ export type Database = {
         Args: { p_public_code: string }
         Returns: Json
       }
+      hqb_fetch_problem_version_bundle: {
+        Args: { p_problem_id: string; p_version_id: string }
+        Returns: Json
+      }
       hqb_format_public_code: { Args: { n: number }; Returns: string }
       hqb_has_admin: { Args: never; Returns: boolean }
       hqb_is_staff: { Args: never; Returns: boolean }

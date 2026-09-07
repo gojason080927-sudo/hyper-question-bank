@@ -8,6 +8,7 @@ import { QuestionNewPage } from '../features/questions/QuestionNewPage'
 import { QuestionDetailPage } from '../features/questions/QuestionDetailPage'
 import { QuestionEditPage } from '../features/questions/QuestionEditPage'
 import { QuestionReviewPage } from '../features/questions/QuestionReviewPage'
+import { QuestionReviewRedirect } from '../features/questions/QuestionReviewRedirect'
 import { QuestionVersionsPage } from '../features/questions/QuestionVersionsPage'
 
 const router = createBrowserRouter([
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       { path: 'questions/new', element: <QuestionNewPage /> },
       { path: 'questions/:problemId', element: <QuestionDetailPage /> },
       { path: 'questions/:problemId/edit', element: <QuestionEditPage /> },
-      { path: 'questions/:problemId/review', element: <QuestionReviewPage /> },
+      { path: 'questions/:problemId/review', element: <QuestionReviewRedirect /> },
+      { path: 'questions/:problemId/versions/:versionId/review', element: <QuestionReviewPage /> },
       { path: 'questions/:problemId/versions', element: <QuestionVersionsPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
