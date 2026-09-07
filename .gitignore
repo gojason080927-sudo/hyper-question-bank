@@ -47,6 +47,7 @@ workers/ocr/data/
 workers/ocr/models/
 workers/ocr/cache/
 workers/ocr/runs/
+workers/ocr/benchmark-runs/
 workers/ocr/python/
 workers/ocr/site-packages/
 workers/ocr/tesseract/

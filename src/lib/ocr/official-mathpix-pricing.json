@@ -1,0 +1,25 @@
+{
+  "pricing_date": "2026-09-08",
+  "currency": "USD",
+  "krw_per_usd_assumption": 1390,
+  "krw_exchange_marked": "variable",
+  "setup_fee_usd": 19.99,
+  "setup_fee_refundable": false,
+  "test_credit_usd": 29,
+  "free_trial_without_setup": false,
+  "image_usd_0_to_1m": 0.002,
+  "image_usd_above_1m": 0.0015,
+  "image_volume_tier_reset": "calendar_month",
+  "dense_image_row_threshold": 12,
+  "dense_image_uses_page_rate": true,
+  "page_usd_0_to_1m": 0.005,
+  "page_usd_above_1m": 0.0035,
+  "files_api_page_usd_0_to_30m": 0.0015,
+  "files_api_page_usd_above_30m": 0.001,
+  "billing_cycle": "1st of month for prior month usage",
+  "sources": [
+    "https://mathpix.com/pricing/api",
+    "https://mathpix.com/docs/convert/billing",
+    "https://mathpix.com/docs/convert/creating-an-api-key"
+  ]
+}

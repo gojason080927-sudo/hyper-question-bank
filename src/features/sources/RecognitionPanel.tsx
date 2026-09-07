@@ -13,6 +13,7 @@ import type { AutoRegionCandidate, RecognitionOutput } from '../../lib/recogniti
 import { parseHqBError } from '../../lib/workflow/validation'
 import { beginSubmit, releaseSubmit } from '../../lib/workflow/submitLock'
 import type { SourceDocument, SourcePage, SourceRegion } from './types'
+import { LOCAL_OCR_PROVIDER_LABEL, MATHPIX_BROWSER_STATUS } from '../../lib/ocr/browserStatus'
 
 type SavedResult = {
   id: string
@@ -292,6 +293,9 @@ export function RecognitionPanel({ document, page, region, pdfData, submitLock, 
         </button>
       </div>
       <p className="hint">인식은 DRAFT 보조값입니다. VERIFIED를 바꾸지 않고, 이미 있는 초안을 자동 덮어쓰지 않습니다. OCR 테스트는 선택한 영역 한 곳만 실행합니다. 전체 PDF를 돌리지 않습니다.</p>
+      <p className="muted">
+        Provider: {LOCAL_OCR_PROVIDER_LABEL} (local) · Mathpix: {MATHPIX_BROWSER_STATUS.label}
+      </p>
       {error ? <p className="banner error">{error}</p> : null}
       {info ? <p className="banner success">{info}</p> : null}
       {candidates.length ? (

@@ -15,7 +15,8 @@
     "test:db:pdf-v1": "node scripts/pdf-ingestion-v1-acceptance.mjs",
     "test:db:recognition-v1": "node scripts/recognition-v1-acceptance.mjs",
     "test:db:ocr-v1": "node scripts/scan-ocr-v1-acceptance.mjs",
-    "test:recognition-bench": "node scripts/recognition-benchmark.mjs"
+    "test:recognition-bench": "node scripts/recognition-benchmark.mjs",
+    "mathpix:ab": "node scripts/mathpix-ab-benchmark.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
