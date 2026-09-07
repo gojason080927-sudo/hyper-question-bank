@@ -386,6 +386,74 @@ textarea {
   color: #5b6b80;
 }
 
+.source-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.8fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.pdf-viewer {
+  overflow: auto;
+  background: #e8eef6;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.pdf-stage {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.pdf-stage.drawing {
+  cursor: crosshair;
+}
+
+.pdf-canvas {
+  display: block;
+  max-width: none;
+  background: #fff;
+}
+
+.pdf-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.region-box {
+  position: absolute;
+  border: 2px solid #1d4f8c;
+  background: rgba(29, 79, 140, 0.12);
+  color: #1d4f8c;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 4px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.region-box.selected {
+  border-color: #b45309;
+  background: rgba(180, 83, 9, 0.16);
+  color: #7a4d00;
+}
+
+.region-box.draft {
+  border-style: dashed;
+  pointer-events: none;
+}
+
+.page-jump {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-jump input {
+  width: 64px;
+}
+
 fieldset {
   border: 1px solid #dbe3ee;
   border-radius: 8px;
@@ -395,7 +463,8 @@ fieldset {
   .filters,
   .grid-2,
   .split,
-  .expr-grid {
+  .expr-grid,
+  .source-workspace {
     grid-template-columns: 1fr;
   }
 }

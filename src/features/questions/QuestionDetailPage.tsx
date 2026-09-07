@@ -21,7 +21,14 @@ type Bundle = {
     instruction: string | null
     review_status: string
   }
-  sources: Array<{ document_title: string; page_number: number | null; source_type_label: string | null }>
+  sources: Array<{
+    document_title: string
+    page_number: number | null
+    source_type_label: string | null
+    source_document_id: string
+    source_page_id: string | null
+    bounding_box: { x: number; y: number; width: number; height: number; unit?: string; origin?: string } | null
+  }>
   curriculum: Array<{ name: string; framework_name: string; node_id: string }>
   concepts: Array<{ name: string; is_primary: boolean }>
   hyper_types: Array<{ name: string }>
@@ -111,7 +118,28 @@ export function QuestionDetailPage() {
           <span className="muted">현재 버전 v{bundle.current_version.version_no}</span>
         </p>
         <p className="hint">내용이 확정되어도 UNKNOWN/RESTRICTED 자료는 문제지 사용 가능이 아닙니다.</p>
-        <p><strong>출처</strong> {bundle.sources[0]?.document_title ?? '없음'}</p>
+        <p>
+          <strong>출처</strong> {bundle.sources[0]?.document_title ?? '없음'}
+          {bundle.sources[0]?.page_number ? ` · 페이지 ${bundle.sources[0].page_number}` : ''}
+          {bundle.sources[0]?.source_type_label ? ` · ${bundle.sources[0].source_type_label}` : ''}
+        </p>
+        {bundle.sources[0]?.source_document_id ? (
+          <p>
+            <Link
+              className="btn ghost"
+              to={`/sources/${bundle.sources[0].source_document_id}?page=${bundle.sources[0].page_number ?? 1}`}
+            >
+              원본 페이지 보기
+            </Link>
+          </p>
+        ) : null}
+        {bundle.sources[0]?.bounding_box ? (
+          <p className="muted">
+            bbox {bundle.sources[0].bounding_box.unit || 'normalized'} / {bundle.sources[0].bounding_box.origin || 'top-left'}
+            {' '}x={bundle.sources[0].bounding_box.x} y={bundle.sources[0].bounding_box.y}
+            {' '}w={bundle.sources[0].bounding_box.width} h={bundle.sources[0].bounding_box.height}
+          </p>
+        ) : null}
         <p><strong>지시문</strong> {bundle.current_version.instruction || '—'}</p>
         <p className="stem">{bundle.current_version.problem_text}</p>
         {expr ? (

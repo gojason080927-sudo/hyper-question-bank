@@ -801,6 +801,7 @@ export type Database = {
           problem_id: string
           source_document_id: string
           source_page_id: string | null
+          source_page_region_id: string | null
           source_type_label: string | null
         }
         Insert: {
@@ -812,6 +813,7 @@ export type Database = {
           problem_id: string
           source_document_id: string
           source_page_id?: string | null
+          source_page_region_id?: string | null
           source_type_label?: string | null
         }
         Update: {
@@ -823,6 +825,7 @@ export type Database = {
           problem_id?: string
           source_document_id?: string
           source_page_id?: string | null
+          source_page_region_id?: string | null
           source_type_label?: string | null
         }
         Relationships: [
@@ -1234,18 +1237,28 @@ export type Database = {
           author: string | null
           copyright_note: string | null
           created_at: string
+          document_status: string
           document_type: string
           edition: string | null
+          extraction_status: string
           file_hash: string | null
+          file_size: number | null
           id: string
           license_status: string
+          mime_type: string | null
+          ocr_status: string
           original_filename: string | null
           page_count: number | null
+          pdf_type: string
           publication_year: number | null
           publisher: string | null
           source_type: string | null
+          storage_bucket: string | null
+          storage_path: string | null
           title: string
           updated_at: string
+          uploaded_at: string | null
+          uploaded_by: string | null
           usage_scope: string | null
         }
         Insert: {
@@ -1253,18 +1266,28 @@ export type Database = {
           author?: string | null
           copyright_note?: string | null
           created_at?: string
+          document_status?: string
           document_type: string
           edition?: string | null
+          extraction_status?: string
           file_hash?: string | null
+          file_size?: number | null
           id?: string
           license_status?: string
+          mime_type?: string | null
+          ocr_status?: string
           original_filename?: string | null
           page_count?: number | null
+          pdf_type?: string
           publication_year?: number | null
           publisher?: string | null
           source_type?: string | null
+          storage_bucket?: string | null
+          storage_path?: string | null
           title: string
           updated_at?: string
+          uploaded_at?: string | null
+          uploaded_by?: string | null
           usage_scope?: string | null
         }
         Update: {
@@ -1272,19 +1295,71 @@ export type Database = {
           author?: string | null
           copyright_note?: string | null
           created_at?: string
+          document_status?: string
           document_type?: string
           edition?: string | null
+          extraction_status?: string
           file_hash?: string | null
+          file_size?: number | null
           id?: string
           license_status?: string
+          mime_type?: string | null
+          ocr_status?: string
           original_filename?: string | null
           page_count?: number | null
+          pdf_type?: string
           publication_year?: number | null
           publisher?: string | null
           source_type?: string | null
+          storage_bucket?: string | null
+          storage_path?: string | null
           title?: string
           updated_at?: string
+          uploaded_at?: string | null
+          uploaded_by?: string | null
           usage_scope?: string | null
+        }
+        Relationships: []
+      }
+      source_page_regions: {
+        Row: {
+          archived_at: string | null
+          bbox: Json
+          created_at: string
+          created_by: string | null
+          extracted_text_preview: string | null
+          id: string
+          original_problem_number: string | null
+          source_document_id: string
+          source_page_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          archived_at?: string | null
+          bbox: Json
+          created_at?: string
+          created_by?: string | null
+          extracted_text_preview?: string | null
+          id?: string
+          original_problem_number?: string | null
+          source_document_id: string
+          source_page_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          archived_at?: string | null
+          bbox?: Json
+          created_at?: string
+          created_by?: string | null
+          extracted_text_preview?: string | null
+          id?: string
+          original_problem_number?: string | null
+          source_document_id?: string
+          source_page_id?: string
+          status?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -1292,34 +1367,52 @@ export type Database = {
         Row: {
           archived_at: string | null
           created_at: string
+          extracted_text: string | null
           extraction_status: string
           id: string
+          ocr_status: string
+          page_height: number | null
           page_image_path: string | null
           page_number: number
+          page_width: number | null
+          pdf_type_hint: string | null
           review_status: string
           source_document_id: string
+          text_char_count: number | null
           updated_at: string
         }
         Insert: {
           archived_at?: string | null
           created_at?: string
+          extracted_text?: string | null
           extraction_status?: string
           id?: string
+          ocr_status?: string
+          page_height?: number | null
           page_image_path?: string | null
           page_number: number
+          page_width?: number | null
+          pdf_type_hint?: string | null
           review_status?: string
           source_document_id: string
+          text_char_count?: number | null
           updated_at?: string
         }
         Update: {
           archived_at?: string | null
           created_at?: string
+          extracted_text?: string | null
           extraction_status?: string
           id?: string
+          ocr_status?: string
+          page_height?: number | null
           page_image_path?: string | null
           page_number?: number
+          page_width?: number | null
+          pdf_type_hint?: string | null
           review_status?: string
           source_document_id?: string
+          text_char_count?: number | null
           updated_at?: string
         }
         Relationships: [
@@ -1638,7 +1731,13 @@ export type Database = {
         }
         Returns: Json
       }
+      hqb_begin_source_document: { Args: { payload: Json }; Returns: Json }
       hqb_create_problem_draft: { Args: { payload: Json }; Returns: Json }
+      hqb_create_problem_draft_from_region: {
+        Args: { p_region_id: string; payload?: Json }
+        Returns: Json
+      }
+      hqb_create_source_page_region: { Args: { payload: Json }; Returns: Json }
       hqb_current_role: { Args: never; Returns: string }
       hqb_ensure_source: {
         Args: { p_source: Json }
@@ -1655,6 +1754,13 @@ export type Database = {
         Args: { p_problem_id: string; p_version_id: string }
         Returns: Json
       }
+      hqb_fetch_source_document: { Args: { p_document_id: string }; Returns: Json }
+      hqb_find_source_by_sha256: { Args: { p_sha256: string }; Returns: Json }
+      hqb_finalize_source_document: {
+        Args: { p_document_id: string; payload: Json }
+        Returns: Json
+      }
+      hqb_delete_source_page_region: { Args: { p_region_id: string }; Returns: Json }
       hqb_format_public_code: { Args: { n: number }; Returns: string }
       hqb_has_admin: { Args: never; Returns: boolean }
       hqb_is_staff: { Args: never; Returns: boolean }
@@ -1677,6 +1783,11 @@ export type Database = {
         Args: { p_version_id: string; payload: Json }
         Returns: Json
       }
+      hqb_update_source_page_region: {
+        Args: { p_region_id: string; payload: Json }
+        Returns: Json
+      }
+      hqb_validate_bbox: { Args: { p_bbox: Json }; Returns: Json }
       hqb_verify_problem_version: {
         Args: { p_note?: string; p_version_id: string }
         Returns: Json

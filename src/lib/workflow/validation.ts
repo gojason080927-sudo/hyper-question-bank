@@ -35,6 +35,20 @@ export const VERIFY_MESSAGES: Record<string, string> = {
   HQB_UNAUTHENTICATED: '로그인이 필요합니다.',
   HQB_BOOTSTRAP_DISABLED: '관리자 부트스트랩은 폐쇄되었습니다. Dashboard에서 역할을 지정하세요.',
   HQB_VERSION_MISMATCH: '요청한 버전이 이 문제에 속하지 않습니다.',
+  HQB_NOT_PDF: 'PDF 파일만 업로드할 수 있습니다.',
+  HQB_FILE_TOO_LARGE: 'PDF는 50MB 이하여야 합니다.',
+  HQB_DUPLICATE_PDF: '같은 PDF가 이미 등록되어 있습니다.',
+  HQB_UPLOAD_FAILED: 'PDF 업로드에 실패했습니다.',
+  HQB_UPLOAD_MISSING: 'PDF 원본 업로드를 확인하지 못했습니다.',
+  HQB_PAGE_COUNT: '페이지 수를 확인하지 못했습니다.',
+  HQB_PDF_RENDER: 'PDF를 열 수 없습니다. 파일이 손상되었을 수 있습니다.',
+  HQB_INVALID_BBOX: '영역 좌표가 올바르지 않습니다.',
+  HQB_INVALID_REGION: '문제 영역이 없습니다.',
+  HQB_REGION_LOCKED: '확정된 문제에 연결된 영역은 삭제하거나 수정할 수 없습니다.',
+  HQB_REGION_MISMATCH: '자료/페이지/영역 관계가 올바르지 않습니다.',
+  HQB_INVALID_HASH: 'SHA-256 값이 올바르지 않습니다.',
+  HQB_INVALID_SOURCE: '선택한 출처가 없습니다.',
+  HQB_INVALID_PAGE: '페이지 번호가 올바르지 않습니다.',
 }
 
 export function verifyGateIssues(input: VerifyInput): string[] {

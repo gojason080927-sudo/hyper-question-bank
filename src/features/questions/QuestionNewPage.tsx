@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { useCatalogs } from '../../lib/workflow/useCatalogs'
 import { emptyForm, buildPayload } from '../../lib/workflow/formState'
@@ -26,6 +26,9 @@ export function QuestionNewPage() {
     <main className="page wide">
       <p className="kicker">신규 등록</p>
       <h1>문제 등록</h1>
+      <p className="hint">
+        PDF 원본에서 영역을 지정하려면 <Link to="/sources/new">PDF 자료 등록</Link>을 사용하세요.
+      </p>
       <ProblemForm
         catalogs={catalogs}
         state={state}

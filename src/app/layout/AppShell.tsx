@@ -51,6 +51,7 @@ export function AppShell() {
         <nav className="nav" aria-label="주요 메뉴">
           <NavLink to="/questions">문제 목록</NavLink>
           <NavLink to="/questions/new">신규 등록</NavLink>
+          <NavLink to="/sources">PDF 자료</NavLink>
         </nav>
         <div className="session">
           <span className="role-pill">{profile.role}</span>

@@ -28,7 +28,7 @@ export async function loadFormFromVersion(
     choices,
   ] = await Promise.all([
     client.from('problem_versions').select('*').eq('id', versionId).single(),
-    client.from('problem_sources').select('*, source_documents(*)').eq('problem_id', problemId),
+    client.from('problem_sources').select('*, source_documents(*), source_pages(page_number)').eq('problem_id', problemId),
     client.from('problem_curriculum').select('curriculum_node_id').eq('problem_version_id', versionId),
     client.from('problem_concepts').select('concept_id,is_primary').eq('problem_version_id', versionId),
     client.from('problem_type_assignments').select('hyper_problem_type_id').eq('problem_version_id', versionId),
@@ -52,6 +52,7 @@ export async function loadFormFromVersion(
   const doc = src?.source_documents as
     | { id: string; title: string; license_status: string; document_type: string; publisher: string | null; publication_year: number | null }
     | null
+  const page = src?.source_pages as { page_number?: number } | null
   if (doc) {
     form.sourceMode = 'existing'
     form.sourceDocumentId = doc.id
@@ -61,6 +62,7 @@ export async function loadFormFromVersion(
     form.publisher = doc.publisher ?? ''
     form.publicationYear = doc.publication_year ? String(doc.publication_year) : ''
   }
+  if (page?.page_number) form.pageNumber = String(page.page_number)
   form.originalProblemNumber = src?.original_problem_number ?? ''
   form.sourceTypeLabel = src?.source_type_label ?? ''
   form.instruction = version.data?.instruction ?? ''

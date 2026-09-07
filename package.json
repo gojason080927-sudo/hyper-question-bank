@@ -11,11 +11,13 @@
     "test": "vitest run",
     "test:db:core-v1": "node scripts/core-v1-acceptance.mjs",
     "test:db:workflow-v1": "node scripts/workflow-v1-acceptance.mjs",
-    "test:db:review-v1": "node scripts/review-target-v1-acceptance.mjs"
+    "test:db:review-v1": "node scripts/review-target-v1-acceptance.mjs",
+    "test:db:pdf-v1": "node scripts/pdf-ingestion-v1-acceptance.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
     "katex": "^0.18.7",
+    "pdfjs-dist": "^4.10.38",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3"
