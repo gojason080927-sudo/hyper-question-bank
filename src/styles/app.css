@@ -1,0 +1,105 @@
+:root {
+  font-family: "Pretendard", "Segoe UI", sans-serif;
+  color: #122033;
+  background: #f4f6f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero h1 {
+  margin: 8px 0 0;
+  font-size: 2rem;
+}
+
+.kicker,
+.tagline,
+.status,
+.card p,
+.card .code {
+  margin: 0;
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #35598a;
+}
+
+.tagline {
+  margin-top: 8px;
+  color: #4b5b70;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.status.pending {
+  background: #eef2f6;
+  color: #4b5b70;
+}
+
+.status.ready {
+  background: #e7f7ef;
+  color: #1c6b45;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.card .code {
+  font-size: 12px;
+  font-weight: 700;
+  color: #35598a;
+}
+
+.card h2 {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.card p {
+  min-height: 40px;
+  color: #5b6b80;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.card button {
+  margin-top: 12px;
+  min-height: 36px;
+  width: 100%;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #7a8798;
+  cursor: not-allowed;
+}
