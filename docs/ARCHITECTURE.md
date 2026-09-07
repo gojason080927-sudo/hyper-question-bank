@@ -73,7 +73,7 @@ PDF / HWP / HWPX / scan
 - 유사도 특징값 / embedding
 - 검수 상태
 
-STEP 1에서는 위 항목을 테이블로 만들지 않는다. STEP 2 설계는 [QUESTION_DB_MASTER_SCHEMA_v1.md](./QUESTION_DB_MASTER_SCHEMA_v1.md)에 있다.
+STEP 1에서는 위 항목을 테이블로 만들지 않는다. STEP 2.5 FINAL: [QUESTION_DB_MASTER_SCHEMA_v1.md](./QUESTION_DB_MASTER_SCHEMA_v1.md) (`STATUS: DESIGN FREEZE — v1`). 검증: [QUESTION_DB_DESIGN_VALIDATION_v1.md](./QUESTION_DB_DESIGN_VALIDATION_v1.md).
 
 ## 5. 분류 체계의 향후 방향
 

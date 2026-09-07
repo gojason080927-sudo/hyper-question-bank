@@ -87,7 +87,7 @@ docs/ARCHITECTURE.md
 
 ## 다음 STEP
 
-STEP 2 설계 초안: [docs/QUESTION_DB_MASTER_SCHEMA_v1.md](./docs/QUESTION_DB_MASTER_SCHEMA_v1.md)
+STEP 2.5 DESIGN FREEZE: [docs/QUESTION_DB_MASTER_SCHEMA_v1.md](./docs/QUESTION_DB_MASTER_SCHEMA_v1.md)
 
 STEP 3  
-검토 후 실제 Supabase DB MASTER SCHEMA 적용 (아직 실행하지 않음)
+검토 확정 후 실제 Supabase DB MASTER SCHEMA 적용 (아직 실행하지 않음)

@@ -1,7 +1,10 @@
 /**
  * DESIGN DRAFT — NOT DATABASE CONTRACT
  *
- * HYPER QUESTION BANK STEP 2 schema sketch.
+ * HYPER QUESTION BANK MASTER SCHEMA v1
+ * STATUS: DESIGN FREEZE — v1
+ * DATABASE IMPLEMENTATION: NOT YET CREATED
+ *
  * This file is for design validation only.
  * It is not a production database schema, not a migration, and not an API contract.
  */
@@ -67,11 +70,17 @@ export const AnswerType = {
 export type AnswerType = (typeof AnswerType)[keyof typeof AnswerType]
 
 export const DifficultySource = {
-  HUMAN_ASSIGNED: 'HUMAN_ASSIGNED',
-  MODEL_ESTIMATED: 'MODEL_ESTIMATED',
+  HUMAN: 'HUMAN',
+  MODEL: 'MODEL',
   CALIBRATED: 'CALIBRATED',
 } as const
 export type DifficultySource = (typeof DifficultySource)[keyof typeof DifficultySource]
+
+export type ProblemVersionOrigin =
+  | 'OCR'
+  | 'AUTO_CLEAN'
+  | 'TEACHER_EDIT'
+  | 'IMPORT'
 
 export const VersionOrigin = {
   OCR: 'OCR',
@@ -102,19 +111,92 @@ export const RepresentationKind = {
 export type RepresentationKind = (typeof RepresentationKind)[keyof typeof RepresentationKind]
 
 export const DuplicateClass = {
-  EXACT: 'EXACT',
-  NEAR: 'NEAR',
-  SAME_UNDERLYING: 'SAME_UNDERLYING',
-  INDEPENDENTLY_SIMILAR: 'INDEPENDENTLY_SIMILAR',
+  EXACT_DUPLICATE: 'EXACT_DUPLICATE',
+  NEAR_DUPLICATE: 'NEAR_DUPLICATE',
+  SAME_UNDERLYING_PROBLEM: 'SAME_UNDERLYING_PROBLEM',
+  SIMILAR_ONLY: 'SIMILAR_ONLY',
 } as const
 export type DuplicateClass = (typeof DuplicateClass)[keyof typeof DuplicateClass]
 
+export const TwinRelationLevel = {
+  T1: 'T1',
+  T2: 'T2',
+  T3: 'T3',
+  RELATED: 'RELATED',
+  NOT_RELATED: 'NOT_RELATED',
+} as const
+export type TwinRelationLevel = (typeof TwinRelationLevel)[keyof typeof TwinRelationLevel]
+
+export const UsageRestrictionReason = {
+  UNVERIFIED: 'UNVERIFIED',
+  LICENSE_RESTRICTED: 'LICENSE_RESTRICTED',
+  ANSWER_MISSING: 'ANSWER_MISSING',
+  CONTENT_INCOMPLETE: 'CONTENT_INCOMPLETE',
+  ARCHIVED: 'ARCHIVED',
+} as const
+export type UsageRestrictionReason = (typeof UsageRestrictionReason)[keyof typeof UsageRestrictionReason]
+
+/** Canonical JSONB bounding box. Location metadata, not a search taxonomy. */
 export type BoundingBox = {
   x: number
   y: number
-  w: number
-  h: number
-  unit: 'px' | 'pct' | 'pt'
+  width: number
+  height: number
+  unit: 'normalized' | 'pixel' | 'point'
+  pageWidth: number | null
+  pageHeight: number | null
+  rotation?: number
+  crop?: { x: number; y: number; width: number; height: number }
+}
+
+/** Independent 1–5 scale. Each dimension has a distinct definition. */
+export type DifficultyLevel = 1 | 2 | 3 | 4 | 5
+
+export type DifficultyProfile = {
+  conceptDifficulty: DifficultyLevel
+  calculationComplexity: DifficultyLevel
+  reasoningDepth: DifficultyLevel
+  conditionComplexity: DifficultyLevel
+  representationComplexity: DifficultyLevel
+  trapLevel: DifficultyLevel
+}
+
+export type SimilarityComponentScores = {
+  curriculum: number
+  concept: number
+  problemType: number
+  strategy: number
+  expressionStructure: number
+  condition: number
+  target: number
+  reasoning: number
+  difficulty: number
+  representation: number
+  semantic: number
+}
+
+export type VerifiedProblemRelation = {
+  problemAId: Uuid
+  problemBId: Uuid
+  relationLevel: TwinRelationLevel
+  verifiedBy: Uuid | null
+  verifiedAt: string
+  componentScores: SimilarityComponentScores
+  algorithmVersion: string
+}
+
+export type WorksheetDraft = {
+  id: Uuid
+  title: string
+  purpose: string | null
+  createdAt: string
+}
+
+export type WorksheetItemDraft = {
+  worksheetId: Uuid
+  problemId: Uuid
+  problemVersionId: Uuid
+  orderNo: number
 }
 
 export type SourceDocument = {
@@ -188,8 +270,9 @@ export type ProblemSource = {
   sourceDocumentId: Uuid
   sourcePageId: Uuid | null
   originalProblemNumber: string | null
-  region: BoundingBox | null
-  isPrimary: boolean
+  boundingBox: BoundingBox | null
+  sourceTypeLabel: string | null
+  isPrimarySource: boolean
 }
 
 export type ProblemChoice = {
@@ -270,13 +353,8 @@ export type SolutionStrategy = {
 export type DifficultyAssessment = {
   versionId: Uuid
   source: DifficultySource
-  conceptDifficulty: 1 | 2 | 3 | 4 | 5
-  calculationComplexity: 1 | 2 | 3 | 4 | 5
-  reasoningDepth: 1 | 2 | 3 | 4 | 5
-  conditionComplexity: 1 | 2 | 3 | 4 | 5
-  representationComplexity: 1 | 2 | 3 | 4 | 5
-  trapLevel: 1 | 2 | 3 | 4 | 5
-  overallDifficulty: 1 | 2 | 3 | 4 | 5
+} & DifficultyProfile & {
+  overallDifficulty: number
 }
 
 export type ProblemEmbedding = {
@@ -288,19 +366,8 @@ export type ProblemEmbedding = {
   createdAt: string
 }
 
-export type SimilarityComponents = {
-  curriculum: number
-  concept: number
-  problemType: number
-  solutionStrategy: number
-  expressionStructure: number
-  condition: number
-  target: number
-  reasoning: number
-  difficulty: number
-  representation: number
-  semantic: number
-}
+/** @deprecated use SimilarityComponentScores */
+export type SimilarityComponents = SimilarityComponentScores
 
 export type StructuredProblemDraft = {
   problem: Problem
@@ -331,8 +398,9 @@ function baseSource(problemId: Uuid, number: string): ProblemSource {
     sourceDocumentId: teacherDocId,
     sourcePageId: pageId,
     originalProblemNumber: number,
-    region: null,
-    isPrimary: true,
+    boundingBox: null,
+    sourceTypeLabel: null,
+    isPrimarySource: true,
   }
 }
 
@@ -427,7 +495,7 @@ export const SAMPLE_LINEAR_EQUATION: StructuredProblemDraft = {
   representations: ['TEXT_ONLY', 'EQUATION'],
   difficulty: {
     versionId: '11111111-1111-4111-8111-111111111112',
-    source: 'HUMAN_ASSIGNED',
+    source: 'HUMAN',
     conceptDifficulty: 1,
     calculationComplexity: 1,
     reasoningDepth: 1,
@@ -547,7 +615,7 @@ export const SAMPLE_FACTORABLE_QUADRATIC: StructuredProblemDraft = {
   representations: ['TEXT_ONLY', 'EQUATION'],
   difficulty: {
     versionId: '22222222-2222-4222-8222-222222222222',
-    source: 'HUMAN_ASSIGNED',
+    source: 'HUMAN',
     conceptDifficulty: 2,
     calculationComplexity: 2,
     reasoningDepth: 2,
@@ -709,7 +777,7 @@ export const SAMPLE_CONSTRAINED_APPLICATION: StructuredProblemDraft = {
   representations: ['TEXT_ONLY'],
   difficulty: {
     versionId: '33333333-3333-4333-8333-333333333332',
-    source: 'HUMAN_ASSIGNED',
+    source: 'HUMAN',
     conceptDifficulty: 3,
     calculationComplexity: 2,
     reasoningDepth: 3,
@@ -810,7 +878,7 @@ export const SAMPLE_QUADRATIC_NON_TWIN: StructuredProblemDraft = {
   representations: ['EQUATION'],
   difficulty: {
     versionId: '44444444-4444-4444-8444-444444444442',
-    source: 'HUMAN_ASSIGNED',
+    source: 'HUMAN',
     conceptDifficulty: 3,
     calculationComplexity: 2,
     reasoningDepth: 2,
@@ -841,11 +909,11 @@ export const TWIN_PAIR_ANALYSIS = {
 } as const
 
 /** Weights are examples only — not a contract. */
-export const EXAMPLE_TWIN_WEIGHTS_NOT_FINAL: SimilarityComponents = {
+export const EXAMPLE_TWIN_WEIGHTS_NOT_FINAL: SimilarityComponentScores = {
   curriculum: 0,
   concept: 0.2,
   problemType: 0.15,
-  solutionStrategy: 0.25,
+  strategy: 0.25,
   expressionStructure: 0.15,
   condition: 0.08,
   target: 0.07,
@@ -853,4 +921,117 @@ export const EXAMPLE_TWIN_WEIGHTS_NOT_FINAL: SimilarityComponents = {
   difficulty: 0.05,
   representation: 0,
   semantic: 0.05,
+}
+
+export const SIMILARITY_SCORE_SCALE = 'unit_0_1' as const
+
+export const TWIN_ALGORITHM_VERSION = 'HQB-TWIN-v1'
+
+export type ClassificationConfidence = {
+  concept: number
+  problemType: number
+  strategy: number
+  difficulty: number
+}
+
+export type TaxonomyCandidate = {
+  id: Uuid
+  vocabulary: 'concept' | 'problem_type' | 'condition' | 'target' | 'reasoning' | 'strategy'
+  proposedCode: string
+  proposedLabel: string
+  status: 'AUTO_DISCOVERED' | 'APPROVED' | 'REJECTED'
+}
+
+export type ConceptCurriculumPlacement = {
+  conceptId: Uuid
+  curriculumNodeId: Uuid
+  frameworkId: Uuid
+}
+
+export type TwinMatrixCell = {
+  against: string
+  level: TwinRelationLevel
+  scores: SimilarityComponentScores
+  note: string
+}
+
+export const TWIN_MATRIX_ANCHOR = {
+  id: 'A',
+  text: '다음 이차방정식의 해를 구하시오. x^2 - 5x + 6 = 0',
+  strategy: 'quadratic-factor-zero-product',
+  skeleton: 'x^2+px+q=0',
+  target: 'EQUATION_ROOT',
+} as const
+
+export const TWIN_MATRIX: TwinMatrixCell[] = [
+  {
+    against: 'B y^2-7y+12=0 해 구하기',
+    level: 'T1',
+    scores: {
+      curriculum: 1, concept: 1, problemType: 1, strategy: 0.98, expressionStructure: 0.96,
+      condition: 1, target: 1, reasoning: 0.95, difficulty: 0.95, representation: 1, semantic: 0.55,
+    },
+    note: '계수·변수만 다름. 전략/skeleton/target 동일.',
+  },
+  {
+    against: 'C (x-2)(x-3)=0 에서 해를 구하시오',
+    level: 'T2',
+    scores: {
+      curriculum: 1, concept: 0.95, problemType: 0.9, strategy: 0.82, expressionStructure: 0.78,
+      condition: 1, target: 1, reasoning: 0.8, difficulty: 0.85, representation: 1, semantic: 0.6,
+    },
+    note: '핵심 전략(영인수)은 같으나 인수분해 판단 단계가 이미 끝난 표현.',
+  },
+  {
+    against: 'D x^2-5x+6=0 두 근의 합과 곱',
+    level: 'T3',
+    scores: {
+      curriculum: 1, concept: 0.7, problemType: 0.65, strategy: 0.35, expressionStructure: 0.9,
+      condition: 1, target: 0.2, reasoning: 0.4, difficulty: 0.8, representation: 1, semantic: 0.85,
+    },
+    note: '같은 식·유형군이나 목표가 근의 합/곱(Vieta). 전략이 다름.',
+  },
+  {
+    against: 'E y=-x^2+4x+5 최댓값',
+    level: 'RELATED',
+    scores: {
+      curriculum: 0.6, concept: 0.35, problemType: 0.25, strategy: 0.15, expressionStructure: 0.4,
+      condition: 0.5, target: 0.1, reasoning: 0.3, difficulty: 0.55, representation: 0.7, semantic: 0.4,
+    },
+    note: '이차 개념군만 공유. 함수 최댓값 전략.',
+  },
+  {
+    against: 'F 3x+7=22',
+    level: 'NOT_RELATED',
+    scores: {
+      curriculum: 0.3, concept: 0.05, problemType: 0.05, strategy: 0.05, expressionStructure: 0.1,
+      condition: 0.4, target: 0.5, reasoning: 0.2, difficulty: 0.2, representation: 0.8, semantic: 0.15,
+    },
+    note: '일차방정식. 구조/전략 불일치.',
+  },
+]
+
+export const FALSE_POSITIVE_PAIR = {
+  left: '다음 이차방정식 x^2 - 5x + 6 = 0 의 해를 구하시오.',
+  right: '다음 이차방정식 x^2 - 5x + 6 = 0 의 두 근의 합을 구하시오.',
+  likelySemantic: 0.92,
+  blockedByHardGate: ['target', 'strategy'] as const,
+  mustNotBe: ['T1', 'T2'] as const,
+}
+
+export const FALSE_NEGATIVE_PAIR = {
+  left: 'x^2 - 5x + 6 = 0 의 해를 구하시오.',
+  right: '어떤 수의 제곱에서 그 수의 5배를 빼고 6을 더했더니 0이 되었다. 그 수를 모두 구하시오.',
+  likelySemantic: 0.35,
+  sameStructure: true,
+  expectedLevel: 'T1' as TwinRelationLevel,
+}
+
+export const HARD_GATES = {
+  T1: ['primary_concept', 'problem_type', 'strategy', 'target'] as const,
+  T2: ['primary_concept', 'strategy'] as const,
+}
+
+export function canonicalRelationPair(a: Uuid, b: Uuid): [Uuid, Uuid] {
+  return a < b ? [a, b] : [b, a]
 }
