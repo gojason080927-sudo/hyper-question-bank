@@ -1,0 +1,6 @@
+{
+  "original_render": "kept",
+  "text_mask": "optional downweight, not permanent erase",
+  "visual_candidate_mask": "separate",
+  "math_may_overlap_diagrams": true
+}

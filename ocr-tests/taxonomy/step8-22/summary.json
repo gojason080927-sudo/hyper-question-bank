@@ -1,0 +1,21 @@
+{
+  "step": "8.22",
+  "verdict": "PARTIAL",
+  "readiness": "FIGURE_PIPELINE_NOT_READY",
+  "auto": 7,
+  "false_figure_safe": 0,
+  "recall": 0.56,
+  "precision": 0.583,
+  "paid_api_calls": {
+    "mistral": 0,
+    "mathpix": 0,
+    "needs_external_vision": false
+  },
+  "drafts": {
+    "ssen_before": 728,
+    "ssen_after": 728,
+    "second": 10,
+    "total": 756
+  },
+  "critical": 0
+}

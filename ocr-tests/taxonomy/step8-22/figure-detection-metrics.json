@@ -1,0 +1,15 @@
+{
+  "true_positives": 14,
+  "missed": 11,
+  "false_positives": 10,
+  "precision": 0.583,
+  "recall": 0.56,
+  "bbox": {
+    "FULLY_CONTAINED": 4,
+    "MINOR_EDGE_ERROR": 3,
+    "MAJOR_CUT": 6,
+    "WRONG_REGION": 1
+  },
+  "required_figure_missed": 11,
+  "required_figure_materially_cut": 6
+}

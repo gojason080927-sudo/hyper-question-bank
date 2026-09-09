@@ -1,0 +1,620 @@
+{
+  "n": 41,
+  "cases": [
+    {
+      "id": "12|0040",
+      "book": "SSEN",
+      "page": 12,
+      "display_number": "0040",
+      "kind": "choice_block",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.12,
+        "width": 0.46,
+        "height": 0.16,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "12|0041",
+      "book": "SSEN",
+      "page": 12,
+      "display_number": "0041",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.3,
+        "width": 0.46,
+        "height": 0.14,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "12|header-B",
+      "book": "SSEN",
+      "page": 12,
+      "display_number": "header",
+      "kind": "page_decoration",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.01,
+        "width": 0.2,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "20|0100",
+      "book": "SSEN",
+      "page": 20,
+      "display_number": "0100",
+      "kind": "boxed_formula",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.08,
+        "width": 0.44,
+        "height": 0.22,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "20|0101",
+      "book": "SSEN",
+      "page": 20,
+      "display_number": "0101",
+      "kind": "boxed_formula",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.32,
+        "width": 0.44,
+        "height": 0.22,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "20|header-C",
+      "book": "SSEN",
+      "page": 20,
+      "display_number": "header",
+      "kind": "page_decoration",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.01,
+        "width": 0.22,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "108|0734",
+      "book": "SSEN",
+      "page": 108,
+      "display_number": "0734",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.006,
+        "y": 0.08,
+        "width": 0.48,
+        "height": 0.28,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "108|0738",
+      "book": "SSEN",
+      "page": 108,
+      "display_number": "0738",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.44,
+        "width": 0.44,
+        "height": 0.22,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "108|0739",
+      "book": "SSEN",
+      "page": 108,
+      "display_number": "0739",
+      "kind": "choice_block",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.68,
+        "width": 0.44,
+        "height": 0.22,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "111|0755",
+      "book": "SSEN",
+      "page": 111,
+      "display_number": "0755",
+      "kind": "choice_block",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.42,
+        "width": 0.46,
+        "height": 0.16,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "111|0759",
+      "book": "SSEN",
+      "page": 111,
+      "display_number": "0759",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.42,
+        "width": 0.44,
+        "height": 0.18,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "111|유형",
+      "book": "SSEN",
+      "page": 111,
+      "display_number": "header",
+      "kind": "header",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.01,
+        "width": 0.4,
+        "height": 0.05,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "114|0772",
+      "book": "SSEN",
+      "page": 114,
+      "display_number": "0772",
+      "kind": "choice_block",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.08,
+        "width": 0.46,
+        "height": 0.28,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "114|0776",
+      "book": "SSEN",
+      "page": 114,
+      "display_number": "0776",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.76,
+        "width": 0.44,
+        "height": 0.16,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "122|0829",
+      "book": "SSEN",
+      "page": 122,
+      "display_number": "0829",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.08,
+        "width": 0.46,
+        "height": 0.2,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "122|badge",
+      "book": "SSEN",
+      "page": 122,
+      "display_number": "badge",
+      "kind": "problem_number_badge",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.08,
+        "width": 0.12,
+        "height": 0.04,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "134|0929",
+      "book": "SSEN",
+      "page": 134,
+      "display_number": "0929",
+      "kind": "boxed_formula",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.42,
+        "width": 0.44,
+        "height": 0.22,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "134|header-B",
+      "book": "SSEN",
+      "page": 134,
+      "display_number": "header",
+      "kind": "page_decoration",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.01,
+        "width": 0.2,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "183|1262",
+      "book": "SSEN",
+      "page": 183,
+      "display_number": "1262",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.08,
+        "width": 0.46,
+        "height": 0.16,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "183|1265",
+      "book": "SSEN",
+      "page": 183,
+      "display_number": "1265",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.62,
+        "width": 0.46,
+        "height": 0.16,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "189|1303",
+      "book": "SSEN",
+      "page": 189,
+      "display_number": "1303",
+      "kind": "boxed_formula",
+      "problem_bbox": {
+        "x": 0.52,
+        "y": 0.08,
+        "width": 0.44,
+        "height": 0.22,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "189|header-C",
+      "book": "SSEN",
+      "page": 189,
+      "display_number": "header",
+      "kind": "page_decoration",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.01,
+        "width": 0.22,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "33|44",
+      "book": "SECOND",
+      "page": 33,
+      "display_number": "44",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.12,
+        "y": 0.12,
+        "width": 0.55,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "33|45",
+      "book": "SECOND",
+      "page": 33,
+      "display_number": "45",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.12,
+        "y": 0.22,
+        "width": 0.55,
+        "height": 0.08,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "33|47",
+      "book": "SECOND",
+      "page": 33,
+      "display_number": "47",
+      "kind": "choice_block",
+      "problem_bbox": {
+        "x": 0.12,
+        "y": 0.42,
+        "width": 0.55,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "33|49",
+      "book": "SECOND",
+      "page": 33,
+      "display_number": "49",
+      "kind": "boxed_formula",
+      "problem_bbox": {
+        "x": 0.12,
+        "y": 0.72,
+        "width": 0.55,
+        "height": 0.12,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "33|header",
+      "book": "SECOND",
+      "page": 33,
+      "display_number": "header",
+      "kind": "header",
+      "problem_bbox": {
+        "x": 0.12,
+        "y": 0.02,
+        "width": 0.4,
+        "height": 0.06,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "75|142",
+      "book": "SECOND",
+      "page": 75,
+      "display_number": "142",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.06,
+        "width": 0.6,
+        "height": 0.08,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "75|144",
+      "book": "SECOND",
+      "page": 75,
+      "display_number": "144",
+      "kind": "boxed_formula",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.36,
+        "width": 0.6,
+        "height": 0.14,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "75|144-qr",
+      "book": "SECOND",
+      "page": 75,
+      "display_number": "qr",
+      "kind": "qr_badge",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.36,
+        "width": 0.08,
+        "height": 0.08,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "75|145",
+      "book": "SECOND",
+      "page": 75,
+      "display_number": "145",
+      "kind": "choice_block",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.52,
+        "width": 0.6,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "75|sidebar",
+      "book": "SECOND",
+      "page": 75,
+      "display_number": "sidebar",
+      "kind": "solution_box",
+      "problem_bbox": {
+        "x": 0.72,
+        "y": 0.08,
+        "width": 0.24,
+        "height": 0.2,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "134|275",
+      "book": "SECOND",
+      "page": 134,
+      "display_number": "275",
+      "kind": "graph_mention_no_visual",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.72,
+        "width": 0.7,
+        "height": 0.08,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "134|276",
+      "book": "SECOND",
+      "page": 134,
+      "display_number": "276",
+      "kind": "graph_mention_no_visual",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.82,
+        "width": 0.7,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "134|keypoint",
+      "book": "SECOND",
+      "page": 134,
+      "display_number": "key",
+      "kind": "solution_box",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.55,
+        "width": 0.7,
+        "height": 0.14,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "198|417",
+      "book": "SECOND",
+      "page": 198,
+      "display_number": "417",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.12,
+        "width": 0.6,
+        "height": 0.08,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "198|header",
+      "book": "SECOND",
+      "page": 198,
+      "display_number": "header",
+      "kind": "header",
+      "problem_bbox": {
+        "x": 0.12,
+        "y": 0.02,
+        "width": 0.4,
+        "height": 0.06,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "239|keypoint",
+      "book": "SECOND",
+      "page": 239,
+      "display_number": "key",
+      "kind": "solution_box",
+      "problem_bbox": {
+        "x": 0.12,
+        "y": 0.4,
+        "width": 0.7,
+        "height": 0.12,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "286|624",
+      "book": "SECOND",
+      "page": 286,
+      "display_number": "624",
+      "kind": "large_equation",
+      "problem_bbox": {
+        "x": 0.1,
+        "y": 0.28,
+        "width": 0.6,
+        "height": 0.1,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "286|629-qr",
+      "book": "SECOND",
+      "page": 286,
+      "display_number": "qr",
+      "kind": "qr_badge",
+      "problem_bbox": {
+        "x": 0.02,
+        "y": 0.86,
+        "width": 0.08,
+        "height": 0.08,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    },
+    {
+      "id": "286|watermark",
+      "book": "SECOND",
+      "page": 286,
+      "display_number": "wm",
+      "kind": "page_decoration",
+      "problem_bbox": {
+        "x": 0.2,
+        "y": 0.3,
+        "width": 0.5,
+        "height": 0.4,
+        "unit": "normalized",
+        "origin": "top-left"
+      }
+    }
+  ]
+}

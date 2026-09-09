@@ -1,0 +1,9 @@
+{
+  "existing": [
+    "Pillow",
+    "pypdfium2 (local site-packages)"
+  ],
+  "added_npm": [],
+  "added_python": [],
+  "cloud_vision": false
+}

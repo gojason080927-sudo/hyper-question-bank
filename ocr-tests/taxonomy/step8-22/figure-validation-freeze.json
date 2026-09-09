@@ -1,0 +1,238 @@
+{
+  "frozen_before_tuning": true,
+  "method": "original page render visual inspection; mathematics not retyped",
+  "figure_cases": 25,
+  "ssen": 15,
+  "second": 10,
+  "negatives": 41,
+  "target_figure_min": 60,
+  "target_negative_min": 40,
+  "used_all_confident_figures": true,
+  "cases": [
+    {
+      "id": "12|0045",
+      "book": "SSEN",
+      "page": 12,
+      "figure_type": "TABLE",
+      "required": true,
+      "owner": "12|0045",
+      "layout": "figure_below_stem"
+    },
+    {
+      "id": "20|0097",
+      "book": "SSEN",
+      "page": 20,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "20|0097",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "108|0735",
+      "book": "SSEN",
+      "page": 108,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "108|0735",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "108|0736",
+      "book": "SSEN",
+      "page": 108,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "108|0736",
+      "layout": "figure_below_stem"
+    },
+    {
+      "id": "108|0737",
+      "book": "SSEN",
+      "page": 108,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "108|0737",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "111|0754",
+      "book": "SSEN",
+      "page": 111,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "111|0754",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "114|0773",
+      "book": "SSEN",
+      "page": 114,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "114|0773",
+      "layout": "figure_below_stem"
+    },
+    {
+      "id": "114|0774",
+      "book": "SSEN",
+      "page": 114,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "114|0774",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "114|0775",
+      "book": "SSEN",
+      "page": 114,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "114|0775",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "122|0833",
+      "book": "SSEN",
+      "page": 122,
+      "figure_type": "NUMBER_LINE",
+      "required": true,
+      "owner": "122|0833",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "134|0924",
+      "book": "SSEN",
+      "page": 134,
+      "figure_type": "COORDINATE_PLANE",
+      "required": true,
+      "owner": "134|0924",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "134|0925",
+      "book": "SSEN",
+      "page": 134,
+      "figure_type": "COORDINATE_PLANE",
+      "required": true,
+      "owner": "134|0925",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "134|0926",
+      "book": "SSEN",
+      "page": 134,
+      "figure_type": "COORDINATE_PLANE",
+      "required": true,
+      "owner": "134|0926",
+      "layout": "figure_near_page_boundary"
+    },
+    {
+      "id": "183|1266",
+      "book": "SSEN",
+      "page": 183,
+      "figure_type": "TABLE",
+      "required": true,
+      "owner": "183|1266",
+      "layout": "figure_below_stem"
+    },
+    {
+      "id": "189|1300",
+      "book": "SSEN",
+      "page": 189,
+      "figure_type": "GRID",
+      "required": true,
+      "owner": "189|1300",
+      "layout": "figure_below_stem"
+    },
+    {
+      "id": "26|11",
+      "book": "SECOND",
+      "page": 26,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "26|11",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "26|32",
+      "book": "SECOND",
+      "page": 26,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "26|32",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "26|33",
+      "book": "SECOND",
+      "page": 26,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "26|33",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "33|48",
+      "book": "SECOND",
+      "page": 33,
+      "figure_type": "GRID",
+      "required": true,
+      "owner": "33|48",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "75|143",
+      "book": "SECOND",
+      "page": 75,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "required": true,
+      "owner": "75|143",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "198|419",
+      "book": "SECOND",
+      "page": 198,
+      "figure_type": "NUMBER_LINE",
+      "required": true,
+      "owner": "198|419",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "239|05",
+      "book": "SECOND",
+      "page": 239,
+      "figure_type": "FLOW_DIAGRAM",
+      "required": true,
+      "owner": "239|05",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "239|519",
+      "book": "SECOND",
+      "page": 239,
+      "figure_type": "FLOW_DIAGRAM",
+      "required": true,
+      "owner": "239|519",
+      "layout": "figure_beside_stem"
+    },
+    {
+      "id": "239|520",
+      "book": "SECOND",
+      "page": 239,
+      "figure_type": "FLOW_DIAGRAM",
+      "required": true,
+      "owner": "239|520",
+      "layout": "figure_near_page_boundary"
+    },
+    {
+      "id": "286|623",
+      "book": "SECOND",
+      "page": 286,
+      "figure_type": "TREE_DIAGRAM",
+      "required": true,
+      "owner": "286|623",
+      "layout": "figure_beside_stem"
+    }
+  ]
+}

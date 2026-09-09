@@ -1,0 +1,22 @@
+{
+  "problem_figure_assets": [
+    "figure_id",
+    "source_document_id",
+    "page_number",
+    "bbox",
+    "figure_type",
+    "original_crop_path",
+    "source_hash",
+    "detection_confidence",
+    "review_status"
+  ],
+  "problem_figure_links": [
+    "problem_id",
+    "figure_id",
+    "ownership_type",
+    "ownership_confidence",
+    "display_order",
+    "required"
+  ],
+  "note": "proposal only; no production migration in 8.22"
+}

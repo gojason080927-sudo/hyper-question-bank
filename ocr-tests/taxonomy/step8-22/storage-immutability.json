@@ -1,0 +1,10 @@
+{
+  "original_pdfs_unchanged": true,
+  "second_pdf_sha256_expected": "3b4e789ea8165f0473975d70de8d40658a391b65d21607997b77b468f124a5e9",
+  "second_pdf_sha256": "3b4e789ea8165f0473975d70de8d40658a391b65d21607997b77b468f124a5e9",
+  "second_pdf_match": true,
+  "ssen_bytes": 11365061,
+  "second_bytes": 44554172,
+  "production_figure_upload": false,
+  "local_crops_only": true
+}

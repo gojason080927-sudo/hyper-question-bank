@@ -1,0 +1,8 @@
+{
+  "original_render_source_of_truth": true,
+  "flattened_to_ocr_text": false,
+  "figure_first_class_asset": true,
+  "crops": 14,
+  "local_only": true,
+  "production_upload": false
+}

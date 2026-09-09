@@ -1,0 +1,8 @@
+{
+  "types": [
+    "GEOMETRY_DIAGRAM",
+    "GRAPHICAL_FIGURE"
+  ],
+  "unknown_allowed": true,
+  "graph_vs_plane_may_be_GRAPHICAL_FIGURE": true
+}

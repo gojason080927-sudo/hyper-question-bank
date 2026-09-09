@@ -1,0 +1,8 @@
+{
+  "implement": false,
+  "figure_as": "movable/resizable visual asset linked to problem",
+  "preserve_aspect_ratio": true,
+  "retain_original_resolution": true,
+  "allow_spacing_adjustment": true,
+  "never_silently_detach": true
+}

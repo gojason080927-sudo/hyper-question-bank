@@ -23,5 +23,10 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/lib/ingestion/visualFigureV1.ts",
+    "src/lib/ingestion/figureGtFreeze.ts",
+    "src/lib/ingestion/step822Run.ts"
+  ]
 }

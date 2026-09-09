@@ -1,0 +1,5 @@
+{
+  "definition": "AUTO_FIGURE_SAFE with wrong figure, missing required, material cut, neighbor figure, wrong owner, bad shared, or non-figure required",
+  "FALSE_FIGURE_SAFE": 0,
+  "rows": []
+}

@@ -1,0 +1,6 @@
+{
+  "corpus_shared_gt": 0,
+  "detected_shared": 0,
+  "unresolved_shared_review": 0,
+  "model": "figure_asset + problem_figure_links; do not duplicate pixels"
+}

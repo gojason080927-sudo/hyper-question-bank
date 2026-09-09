@@ -1,0 +1,8 @@
+{
+  "files": [
+    "scripts/visual-figure-detect.py",
+    "src/lib/ingestion/visualFigureV1.ts"
+  ],
+  "hits": [],
+  "pass": true
+}

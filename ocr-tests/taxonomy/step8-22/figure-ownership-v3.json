@@ -1,0 +1,157 @@
+{
+  "nearest_not_hard_rule": true,
+  "text_reference_supporting_only": true,
+  "geometry_primary": true,
+  "rows": [
+    {
+      "id": "12|0045",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "12|0045",
+      "owner_correct": true
+    },
+    {
+      "id": "20|0097",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "20|0097",
+      "owner_correct": true
+    },
+    {
+      "id": "108|0735",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "108|0735",
+      "owner_correct": true
+    },
+    {
+      "id": "108|0736",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "108|0736",
+      "owner_correct": true
+    },
+    {
+      "id": "108|0737",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "108|0737",
+      "owner_correct": true
+    },
+    {
+      "id": "111|0754",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "111|0754",
+      "owner_correct": true
+    },
+    {
+      "id": "114|0773",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "114|0773",
+      "owner_correct": true
+    },
+    {
+      "id": "114|0774",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "114|0774",
+      "owner_correct": true
+    },
+    {
+      "id": "114|0775",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "114|0775",
+      "owner_correct": true
+    },
+    {
+      "id": "122|0833",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "122|0833",
+      "owner_correct": true
+    },
+    {
+      "id": "134|0924",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "134|0924",
+      "owner_correct": true
+    },
+    {
+      "id": "134|0925",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "134|0925",
+      "owner_correct": true
+    },
+    {
+      "id": "134|0926",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "134|0926",
+      "owner_correct": true
+    },
+    {
+      "id": "183|1266",
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "183|1266",
+      "owner_correct": true
+    },
+    {
+      "id": "189|1300",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "26|11",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "26|32",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "26|33",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "33|48",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "75|143",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "198|419",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "239|05",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "239|519",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "239|520",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    },
+    {
+      "id": "286|623",
+      "status": null,
+      "owner": null,
+      "owner_correct": false
+    }
+  ]
+}

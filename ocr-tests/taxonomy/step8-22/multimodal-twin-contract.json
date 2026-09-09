@@ -1,0 +1,12 @@
+{
+  "implement": false,
+  "features": [
+    "text_math",
+    "figure_type",
+    "figure_structural_features",
+    "problem_type",
+    "strategy",
+    "difficulty"
+  ],
+  "forbidden": "original image pixels alone must not define semantic similarity"
+}

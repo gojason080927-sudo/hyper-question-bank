@@ -1,0 +1,14 @@
+{
+  "evidence": [
+    "connected_components",
+    "line_segments",
+    "grid",
+    "axes",
+    "whitespace",
+    "text_overlap",
+    "aspect"
+  ],
+  "source_of_truth": "original page render",
+  "no_ocr_reconstruction": true,
+  "no_redraw": true
+}
