@@ -1,0 +1,14 @@
+---
+description: HYPER Question Bank Cloud Agent operating contract and production safety
+alwaysApply: true
+---
+
+Read and follow `AGENTS.md` before changing this repository.
+
+This is HYPER Question Bank only (Supabase ref `owp…`). Never Student Care.
+
+WITHOUT explicit human approval, NEVER: drop/truncate production data; `supabase db reset` / `db push` to production; blindly re-apply historical migrations; overwrite source PDFs; expose or commit secrets; commit copyrighted workbook PDFs or bulk page/crop PNGs; bulk-write production records; bulk-call paid OCR; weaken RLS; force-push / rewrite shared Git history.
+
+Default gates: `npm ci`, `npm test`, `npm run lint`, `npx tsc -b`, `npx vite build`.
+
+Figure pipeline is FIGURE_PIPELINE_NOT_READY until evidence says otherwise. Keep FALSE_FIGURE_SAFE = 0.

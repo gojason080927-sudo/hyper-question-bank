@@ -1,1 +1,13 @@
 *.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.json text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.sql text eol=lf
+*.py text eol=lf
+*.mdc text eol=lf
