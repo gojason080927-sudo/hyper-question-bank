@@ -1826,6 +1826,7 @@ export type Database = {
         Args: { p_region_id: string; payload?: Json }
         Returns: Json
       }
+      hqb_canonicalize_problem_number: { Args: { p_raw: string }; Returns: string }
       hqb_create_source_page_region: { Args: { payload: Json }; Returns: Json }
       hqb_current_role: { Args: never; Returns: string }
       hqb_ensure_source: {
@@ -1870,6 +1871,7 @@ export type Database = {
         Args: { p_note?: string; p_version_id: string }
         Returns: Json
       }
+      hqb_upsert_problem_draft_from_identity: { Args: { payload: Json }; Returns: Json }
       hqb_update_draft_version: {
         Args: { p_version_id: string; payload: Json }
         Returns: Json

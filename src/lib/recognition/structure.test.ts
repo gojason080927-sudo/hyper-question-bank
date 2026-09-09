@@ -1,5 +1,37 @@
 import { describe, expect, it } from 'vitest'
-import { extractChoices, extractProblemNumber, recognizeFromText, scanUnavailable } from './structure'
+import {
+  extractChoices,
+  extractProblemNumber,
+  extractWorkbookProblemAnchor,
+  recognizeFromText,
+  scanUnavailable,
+} from './structure'
+
+describe('workbook problem anchors', () => {
+  it('keeps 4-digit heads and rejects choices, 유형 titles, and 보기 labels', () => {
+    expect(extractWorkbookProblemAnchor('0159 | 대표 문제')).toMatchObject({
+      number: '0159',
+      kind: 'four_digit',
+    })
+    expect(extractWorkbookProblemAnchor('# 0274')).toMatchObject({ number: '0274', kind: 'four_digit' })
+    expect(extractWorkbookProblemAnchor('0161 • ② • ③ 서술형')).toMatchObject({
+      number: '0161',
+      kind: 'four_digit',
+    })
+    expect(extractWorkbookProblemAnchor('05-3 이차함수의 최대, 최소')).toMatchObject({
+      number: '05-3',
+      kind: 'section',
+    })
+    expect(extractWorkbookProblemAnchor('① 10').number).toBeNull()
+    expect(extractWorkbookProblemAnchor('ㄱ. a > b').number).toBeNull()
+    expect(extractWorkbookProblemAnchor('보기').number).toBeNull()
+    expect(extractWorkbookProblemAnchor('유형 02 수치 대입법').number).toBeNull()
+    expect(extractWorkbookProblemAnchor('(가) 2 ≤ x ≤ 10').number).toBeNull()
+    expect(
+      extractWorkbookProblemAnchor('함수 $f(x)=\\begin{cases} x+4 & (x<0) \\\\ x^2-6x+4 & (x \\ge 0) \\end{cases}$').number,
+    ).toBeNull()
+  })
+})
 
 describe('problem number vs choices', () => {
   it('splits 1. and 문제 1 and ignores ① as a problem number', () => {

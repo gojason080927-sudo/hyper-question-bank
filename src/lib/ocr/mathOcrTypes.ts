@@ -2,12 +2,17 @@ import type { RecognitionOutput } from '../recognition/types'
 
 export const MATHPIX_PROVIDER = 'mathpix-v3-text'
 export const MATHPIX_ENDPOINT = 'https://api.mathpix.com/v3/text'
+export const MISTRAL_PROVIDER = 'mistral-ocr'
+export const MISTRAL_ENDPOINT = 'https://api.mistral.ai/v1/ocr'
+export const MISTRAL_MODEL = 'mistral-ocr-latest'
 export const WINDOWS_OCR_BASELINE_ENGINE = 'windows-media-ocr-ko'
 
 export const PAID_CALL_DENIED = 'HQB_PAID_CALL_DENIED'
 export const MATHPIX_NOT_CONFIGURED = 'HQB_MATHPIX_NOT_CONFIGURED'
+export const MISTRAL_NOT_CONFIGURED = 'HQB_MISTRAL_NOT_CONFIGURED'
+export const CACHE_ONLY_NETWORK_BLOCKED = 'HQB_CACHE_ONLY_NETWORK_BLOCKED'
 
-export type MathOcrProviderName = 'windows-media-ocr-ko' | 'mathpix-v3-text' | 'tesseractjs-kor-eng'
+export type MathOcrProviderName = 'windows-media-ocr-ko' | 'mathpix-v3-text' | 'tesseractjs-kor-eng' | 'mistral-ocr'
 
 export type MathOcrRecognizeInput = {
   sampleId: string
@@ -40,6 +45,7 @@ export type MathOcrRecognizeResult = {
 export type PaidCallGate = {
   allowPaidApi: boolean
   confirmCost: boolean
+  cacheOnly?: boolean
 }
 
 export type MathOcrProvider = {

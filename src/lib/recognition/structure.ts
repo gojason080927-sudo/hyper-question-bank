@@ -261,6 +261,63 @@ export function extractScanProblemNumber(raw: string): string | null {
   return match?.[1] ?? null
 }
 
+export type WorkbookAnchorKind = 'four_digit' | 'section' | 'dotted'
+
+export type WorkbookAnchorHit = {
+  number: string | null
+  kind: WorkbookAnchorKind | null
+  confidence: number
+  reason: string
+}
+
+const WORKBOOK_MARKDOWN = /^#{1,6}\s*/
+const WORKBOOK_CHOICE =
+  /^[①-⑩]|^[ㄱㄴㄷ]\s|^보기\b|^\(가\)|^\(나\)|^\(\d{1,2}\)\s|^\d{1,2}\)\s/
+const WORKBOOK_SECTION_TITLE = /^(?:유형|개념|SSEN\s*NOTE|정답|풀이)\b/i
+const WORKBOOK_FOUR_DIGIT = /^(\d{4})\b/
+const WORKBOOK_SECTION = /^(\d{2}-\d)\b/
+
+export function extractWorkbookProblemAnchor(raw: string): WorkbookAnchorHit {
+  const text = raw
+    .replace(/!\[[^\]]*]\([^)]*\)/g, ' ')
+    .replace(WORKBOOK_MARKDOWN, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  if (!text) return { number: null, kind: null, confidence: 0, reason: 'empty' }
+  if (WORKBOOK_CHOICE.test(text)) {
+    return { number: null, kind: null, confidence: 0, reason: 'choice_or_보기_label' }
+  }
+  if (WORKBOOK_SECTION_TITLE.test(text)) {
+    return { number: null, kind: null, confidence: 0, reason: 'section_title_not_problem' }
+  }
+  const four = text.match(WORKBOOK_FOUR_DIGIT)
+  if (four?.[1]) {
+    return { number: four[1], kind: 'four_digit', confidence: 0.9, reason: 'leading_four_digit' }
+  }
+  const section = text.match(WORKBOOK_SECTION)
+  if (section?.[1]) {
+    return {
+      number: section[1],
+      kind: 'section',
+      confidence: 0.55,
+      reason: 'theory_section_id',
+    }
+  }
+  const dottedHead = /^(?:문제\s+)?\d{1,2}\s*[.)]|^\[\d{1,2}\]/.test(text)
+  if (dottedHead) {
+    const dotted = extractProblemNumber(text)
+    if (dotted.number) {
+      return {
+        number: dotted.number,
+        kind: 'dotted',
+        confidence: 0.7,
+        reason: dotted.warning ?? 'dotted_or_bracket_number',
+      }
+    }
+  }
+  return { number: null, kind: null, confidence: 0, reason: 'no_problem_number' }
+}
+
 export function recognizeFromOcrText(
   rawText: string,
   options: {

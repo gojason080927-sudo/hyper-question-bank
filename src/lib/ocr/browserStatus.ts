@@ -7,3 +7,10 @@ export const MATHPIX_BROWSER_STATUS = {
 } as const
 
 export const LOCAL_OCR_PROVIDER_LABEL = 'windows-media-ocr-ko'
+
+export const MISTRAL_BROWSER_STATUS = {
+  provider: 'mistral-ocr',
+  configured: false,
+  label: 'NOT CONFIGURED',
+  reason: 'Mistral credentials are worker-only and are never exposed to the browser',
+} as const

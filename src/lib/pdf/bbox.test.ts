@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest'
-import { bboxToPercentStyle, isValidBBox, normalizeRect, validateBBox } from './bbox'
+import {
+  bboxCoverage,
+  bboxIoU,
+  bboxToPercentStyle,
+  expandBBox,
+  isValidBBox,
+  normalizeRect,
+  pixelCornersToNormalized,
+  pixelRectFromNormalized,
+  validateBBox,
+} from './bbox'
 
 describe('bbox normalization', () => {
   it('stores ratios, not screen pixels', () => {
@@ -60,5 +70,26 @@ describe('bbox validation', () => {
     expect(isValidBBox({ ...ok, unit: 'px' })).toBe(false)
     expect(isValidBBox({ ...ok, origin: 'bottom-left' })).toBe(false)
     expect(isValidBBox(null)).toBe(false)
+  })
+})
+
+describe('bbox geometry helpers', () => {
+  it('converts pixel corners and computes IoU', () => {
+    const box = pixelCornersToNormalized({ left: 100, top: 200, right: 300, bottom: 400 }, { width: 1000, height: 1000 })
+    expect(box).toMatchObject({ x: 0.1, y: 0.2, width: 0.2, height: 0.2, unit: 'normalized', origin: 'top-left' })
+    const other = validateBBox({ x: 0.15, y: 0.25, width: 0.2, height: 0.2, unit: 'normalized', origin: 'top-left' })
+    expect(bboxIoU(box, other)).toBeGreaterThan(0.1)
+    expect(bboxIoU(box, other)).toBeLessThan(0.5)
+    expect(bboxCoverage(box, expandBBox(box, 0.05))).toBeGreaterThan(0.99)
+  })
+
+  it('converts a normalized bbox back to page pixels for original PNG crop', () => {
+    const box = validateBBox({ x: 0.1, y: 0.2, width: 0.25, height: 0.1, unit: 'normalized', origin: 'top-left' })
+    expect(pixelRectFromNormalized(box, { width: 1000, height: 2000 })).toEqual({
+      x: 100,
+      y: 400,
+      width: 250,
+      height: 200,
+    })
   })
 })
