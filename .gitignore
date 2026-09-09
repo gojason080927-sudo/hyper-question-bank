@@ -39,6 +39,41 @@ supabase/.branches/
 scripts/.tmp-core-v1-report.json
 scripts/tmp-db-push.mjs
 
+# Copyrighted workbooks — never commit. Synthetic STEP 5 fixtures are the only exception.
+*.pdf
+!fixtures/pdf/hyper-step5-*.pdf
+
+# Local OCR dumps that Windows machines may still have uncommitted
+ocr-tests/original/
+ocr-tests/book-pipeline/
+ocr-tests/mistral/
+ocr-tests/mathpix/
+ocr-tests/segmentation/
+ocr-tests/problem-pipeline/
+ocr-tests/crop-gate/
+ocr-tests/taxonomy/step8-11/
+ocr-tests/taxonomy/step8-12/
+ocr-tests/taxonomy/step8-13/
+ocr-tests/taxonomy/step8-13a/
+ocr-tests/taxonomy/step8-13b/
+ocr-tests/taxonomy/step8-13c/
+ocr-tests/taxonomy/step8-13d/
+ocr-tests/taxonomy/step8-14/
+ocr-tests/taxonomy/step8-15/
+ocr-tests/taxonomy/step8-16/
+ocr-tests/taxonomy/step8-17/
+ocr-tests/taxonomy/step8-18/
+ocr-tests/taxonomy/step8-19/
+ocr-tests/taxonomy/step8-20/
+ocr-tests/taxonomy/step8-21/
+ocr-tests/**/*.pdf
+segmentReview/
+
+# Absolute-path helper JSON / machine-local cache
+**/*absolute-path*.json
+**/*windows-path*.json
+scripts/.local/
+
 # OCR / generated temp
 fixtures/recognition/last-run.json
 .ocr-temp/

@@ -17,7 +17,9 @@
     "test:db:ocr-v1": "node scripts/scan-ocr-v1-acceptance.mjs",
     "test:recognition-bench": "node scripts/recognition-benchmark.mjs",
     "mathpix:ab": "node scripts/mathpix-ab-benchmark.mjs",
-    "pipeline:8.22": "node scripts/step-8.22.mjs --run --cache-only"
+    "pipeline:8.22": "node scripts/step-8.22.mjs --run --cache-only",
+    "cloud:audit": "node scripts/cloud-dependency-audit.mjs",
+    "assets:fetch": "node scripts/fetch-source-asset.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

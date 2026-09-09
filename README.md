@@ -19,6 +19,8 @@ PDF / HWP / HWPX / 스캔 시험지를 문제 단위로 구조화하고, 분류�
 - Vercel
 - Git / GitHub
 
+Cloud Agents: follow [AGENTS.md](./AGENTS.md). Runtime secrets and Storage: [docs/CLOUD_RUNTIME.md](./docs/CLOUD_RUNTIME.md).
+
 ## 실행 방법
 
 ```bash

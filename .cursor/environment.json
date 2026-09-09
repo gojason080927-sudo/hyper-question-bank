@@ -1,0 +1,17 @@
+{
+  "name": "HYPER Question Bank",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "vite",
+      "command": "npm run dev -- --host 0.0.0.0 --port 5173",
+      "description": "Vite frontend on port 5173. The app renders without Supabase secrets. Do not apply production migrations, call paid OCR, or download copyrighted workbooks."
+    }
+  ],
+  "ports": [
+    {
+      "name": "Vite",
+      "port": 5173
+    }
+  ]
+}
