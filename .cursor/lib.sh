@@ -151,7 +151,9 @@ ensure_dev_user() {
 
   # GoTrue cannot scan NULL token columns on admin-created users; normalize them,
   # and promote the auto-created (PENDING) profile to ADMIN so the app is usable.
-  docker exec "$DB_CONTAINER" psql -U postgres -d postgres -v ON_ERROR_STOP=1 <<SQL >/dev/null
+  # `-i` is required so the heredoc is forwarded to psql's stdin; without it
+  # docker exec runs psql with empty input and the SQL silently no-ops.
+  docker exec -i "$DB_CONTAINER" psql -U postgres -d postgres -v ON_ERROR_STOP=1 <<SQL >/dev/null
 UPDATE auth.users SET
   confirmation_token        = coalesce(confirmation_token, ''),
   email_change              = coalesce(email_change, ''),
