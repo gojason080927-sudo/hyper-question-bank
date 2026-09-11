@@ -69,7 +69,7 @@ describe('STEP 8.22 SSEN visual detector recovery', () => {
     expect(FIGURE_VALIDATION_FREEZE).toHaveLength(25)
   })
 
-  it('raises SSEN recall and bbox completeness without inventing SECOND pages', () => {
+  it('raises SSEN recall and bbox completeness on committed SSEN pages', () => {
     const py = resolvePython()
     if (!py) return
     const ssenGt = FIGURE_VALIDATION_FREEZE.filter((row) => row.book === 'SSEN' && existsSync(ssenPage(row.page)))
@@ -99,7 +99,11 @@ describe('STEP 8.22 SSEN visual detector recovery', () => {
     expect(wrong).toBe(0)
     expect(major).toBeLessThanOrEqual(4)
     expect(fp).toBeLessThanOrEqual(12)
-    const secondPage = path.join(ROOT, 'ocr-tests/taxonomy/step8-18/pages/page-026.png')
-    expect(existsSync(secondPage)).toBe(false)
+  })
+
+  it('restores SECOND figure pages with the frozen 1-based page mapping', () => {
+    for (const page of [26, 33, 75, 198, 239, 286]) {
+      expect(existsSync(path.join(ROOT, 'ocr-tests/taxonomy/step8-18/pages', `page-${String(page).padStart(3, '0')}.png`))).toBe(true)
+    }
   })
 })
