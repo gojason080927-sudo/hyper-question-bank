@@ -151,8 +151,15 @@ def merge_boxes(boxes: list[tuple[float, float, float, float, int]], gap: float)
                 b = items[j]
                 ax0, ay0, ax1, ay1 = a[0], a[1], a[2], a[3]
                 bx0, by0, bx1, by1 = b[0], b[1], b[2], b[3]
+                a_cx = (ax0 + ax1) / 2
+                b_cx = (bx0 + bx1) / 2
+                split_cols = (a_cx < 0.48 and b_cx > 0.52) or (b_cx < 0.48 and a_cx > 0.52)
+                y_overlap = min(ay1, by1) - max(ay0, by0)
+                h_min = min(ay1 - ay0, by1 - by0)
+                paired = y_overlap > 0.5 * max(1e-6, h_min) and abs((ay1 - ay0) - (by1 - by0)) < 0.07
+                allowed = 0.09 if paired else gap
                 separated_cols = (ax1 < bx0 - 0.035 or bx1 < ax0 - 0.035) and (min(ay1, by1) - max(ay0, by0) > 0.02)
-                if not separated_cols and _gap((ax0, ay0, ax1, ay1), (bx0, by0, bx1, by1)) <= gap:
+                if not split_cols and not separated_cols and _gap((ax0, ay0, ax1, ay1), (bx0, by0, bx1, by1)) <= allowed:
                     a[0] = min(a[0], b[0])
                     a[1] = min(a[1], b[1])
                     a[2] = max(a[2], b[2])
@@ -236,6 +243,8 @@ def is_decoration(bbox: dict, fill: float, text_ov: float, h_hits: int, v_hits: 
         return "footer"
     if w < 0.018 and h > 0.45:
         return "column_divider"
+    if x >= 0.88 and w < 0.12:
+        return "sidebar"
     if 0.035 <= w <= 0.11 and 0.035 <= h <= 0.11 and abs(w / max(h, 1e-6) - 1) < 0.28 and fill > 0.28 and (cy < 0.14 or cx > 0.86 or cx < 0.12):
         return "qr_or_badge"
     if w < 0.12 and h < 0.045 and (cx < 0.22 or cy < 0.1):
@@ -245,6 +254,48 @@ def is_decoration(bbox: dict, fill: float, text_ov: float, h_hits: int, v_hits: 
     if w * h > 0.36:
         return "page_watermark"
     return None
+
+
+def split_column_span(box: tuple[float, float, float, float, int]) -> list[tuple[float, float, float, float, int]]:
+    x0, y0, x1, y1, area = box
+    if x0 < 0.46 and x1 > 0.54 and (x1 - x0) >= 0.55:
+        mid = 0.5
+        left_area = max(1, int(area * (mid - x0) / max(1e-6, x1 - x0)))
+        right_area = max(1, area - left_area)
+        return [(x0, y0, mid, y1, left_area), (mid, y0, x1, y1, right_area)]
+    return [box]
+
+
+def tighten_box(mask: list[list[bool]], box: tuple[float, float, float, float, int]) -> tuple[float, float, float, float, int]:
+    h = len(mask)
+    w = len(mask[0]) if h else 0
+    x0, y0, x1, y1, _ = box
+    px0, py0 = max(0, int(x0 * w)), max(0, int(y0 * h))
+    px1, py1 = min(w, max(px0 + 1, int(x1 * w))), min(h, max(py0 + 1, int(y1 * h)))
+    minx, miny, maxx, maxy = px1, py1, px0, py0
+    ink = 0
+    for y in range(py0, py1):
+        row = mask[y]
+        for x in range(px0, px1):
+            if row[x]:
+                ink += 1
+                if x < minx:
+                    minx = x
+                if x > maxx:
+                    maxx = x
+                if y < miny:
+                    miny = y
+                if y > maxy:
+                    maxy = y
+    if ink < 8 or maxx < minx:
+        return box
+    pad_x = max(1, int(0.006 * w))
+    pad_y = max(1, int(0.006 * h))
+    minx = max(0, minx - pad_x)
+    miny = max(0, miny - pad_y)
+    maxx = min(w - 1, maxx + pad_x)
+    maxy = min(h - 1, maxy + pad_y)
+    return (minx / w, miny / h, (maxx + 1) / w, (maxy + 1) / h, ink)
 
 
 def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
@@ -260,15 +311,26 @@ def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
     boxes = []
     for minx, miny, maxx, maxy, area in comps:
         boxes.append((minx / dw, miny / dh, (maxx + 1) / dw, (maxy + 1) / dh, area))
-    merged = merge_boxes(boxes, float(cfg["merge_gap"]))
+    split: list[tuple[float, float, float, float, int]] = []
+    for box in boxes:
+        split.extend(split_column_span(box))
+    merged = merge_boxes(split, float(cfg["merge_gap"]))
+    header_y = float(cfg.get("header_y", 0.072))
+    refined = []
+    for box in merged:
+        tight = tighten_box(visual, box)
+        x0, y0, x1, y1, area = tight
+        if y0 < header_y and (y1 - header_y) >= 0.08:
+            tight = tighten_box(visual, (x0, header_y, x1, y1, area))
+        refined.append(tight)
     candidates = []
     skipped = []
-    for x0, y0, x1, y1, area in merged:
+    for x0, y0, x1, y1, area in refined:
         bbox = {
             "x": round(x0, 4),
             "y": round(y0, 4),
-            "width": round(x1 - x0, 4),
-            "height": round(y1 - y0, 4),
+            "width": round(max(0.001, x1 - x0), 4),
+            "height": round(max(0.001, y1 - y0), 4),
             "unit": "normalized",
             "origin": "top-left",
         }

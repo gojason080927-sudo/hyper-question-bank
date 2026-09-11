@@ -148,6 +148,20 @@ async function dbSnapshot(admin: SupabaseClient) {
   }
 }
 
+function resolvePython(): string[] {
+  const candidates = [['py', '-3'], ['python3'], ['python']]
+  for (const cmd of candidates) {
+    const probe = spawnSync(cmd[0], [...cmd.slice(1), '-c', 'from PIL import Image'], { encoding: 'utf8' })
+    if (probe.status === 0) return cmd
+  }
+  throw new Error('Python with Pillow is required for STEP 8.22 visual detection')
+}
+
+function runPython(root: string, args: string[]) {
+  const py = resolvePython()
+  return spawnSync(py[0], [...py.slice(1), ...args], { cwd: root, encoding: 'utf8' })
+}
+
 function engineHasVisualBookHack(src: string): string[] {
   const hits: string[] = []
   if (/개념원리 공통수학1\(22개정\)/.test(src)) hits.push('filename')
@@ -162,7 +176,7 @@ function runVisualDetector(root: string, pagesJson: string, outJson: string, con
   const script = path.join(root, DETECTOR_SCRIPT)
   const args = [script, '--pages-json', pagesJson, '--out', outJson]
   if (configJson) args.push('--config-json', configJson)
-  const result = spawnSync('py', ['-3', ...args], { cwd: root, encoding: 'utf8' })
+  const result = runPython(root, args)
   return { ok: result.status === 0 && existsSync(outJson), stderr: `${result.stderr ?? ''}${result.stdout ?? ''}` }
 }
 
@@ -199,10 +213,7 @@ function ensureSsenPages(root: string, dest: string) {
     out: path.join(dest, '_render-ssen.json'),
   }
   writeJson(dest, '_render-spec.json', spec)
-  const result = spawnSync('py', ['-3', path.join(root, DETECTOR_SCRIPT), '--render-ssen', path.join(dest, '_render-spec.json')], {
-    cwd: root,
-    encoding: 'utf8',
-  })
+  const result = runPython(root, [path.join(root, DETECTOR_SCRIPT), '--render-ssen', path.join(dest, '_render-spec.json')])
   if (result.status !== 0) throw new Error(`SSEN render failed: ${result.stderr}`)
   return { rendered: missing, missing: missing.filter((page) => !existsSync(pagePng(root, 'SSEN', page))) }
 }
@@ -546,7 +557,7 @@ export async function runStep822(root: string, argv: string[]) {
     })
     .filter(Boolean)
   writeJson(dest, '_crop-spec.json', { items: cropItems, out: path.join(dest, '_crops.json') })
-  spawnSync('py', ['-3', path.join(root, DETECTOR_SCRIPT), '--crop-json', path.join(dest, '_crop-spec.json')], { cwd: root, encoding: 'utf8' })
+  runPython(root, [path.join(root, DETECTOR_SCRIPT), '--crop-json', path.join(dest, '_crop-spec.json')])
   writeJson(dest, 'problem-figure-composite.json', {
     original_render_source_of_truth: originalPageIsSourceOfTruth({ crop_from_original_render: true, generated: false, redrawn: false }),
     flattened_to_ocr_text: false,
