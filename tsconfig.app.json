@@ -57,6 +57,8 @@
     "src/lib/ingestion/step820Run.ts",
     "src/lib/ingestion/step821Pilot.ts",
     "src/lib/ingestion/step821Run.ts",
-    "src/lib/ingestion/step822Run.ts"
+    "src/lib/ingestion/step822Run.ts",
+    "src/lib/ingestion/step823Run.ts",
+    "src/lib/ingestion/figurePersistence.ts"
   ]
 }
