@@ -15,13 +15,13 @@
   "hacks": [],
   "persist": {
     "attempted": true,
-    "applied": false,
-    "created_assets": 0,
-    "created_links": 0,
+    "applied": true,
+    "created_assets": 3,
+    "created_links": 3,
     "replay_created_assets": 0,
     "replay_created_links": 0,
-    "reason": "Could not find the table 'public.problem_figure_assets' in the schema cache",
-    "via": null
+    "reason": null,
+    "via": "rpc"
   },
   "ingest": {
     "verified_found": 1,
