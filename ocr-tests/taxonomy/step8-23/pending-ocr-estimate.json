@@ -1,0 +1,37 @@
+{
+  "problems": [
+    "108|0735",
+    "108|0736",
+    "114|0775",
+    "122|0833",
+    "134|0924",
+    "134|0925",
+    "134|0926",
+    "189|1300"
+  ],
+  "problem_count": 8,
+  "unique_pages": [
+    108,
+    114,
+    122,
+    134,
+    189
+  ],
+  "unique_page_count": 5,
+  "paid_ocr_authorized": false,
+  "mathpix": {
+    "service": "Mathpix",
+    "typical_calls": 5,
+    "unit": "page image",
+    "typical_usd": 0.025,
+    "crop_calls_if_problem_crops": 8,
+    "crop_typical_usd": 0.016
+  },
+  "mistral": {
+    "service": "Mistral OCR",
+    "typical_calls": 5,
+    "unit": "page",
+    "typical_usd": 0.02
+  },
+  "note": "No committed stem exists. Do not call paid OCR until the user approves."
+}

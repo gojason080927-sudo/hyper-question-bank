@@ -1,0 +1,52 @@
+{
+  "verified_found": 1,
+  "created": 0,
+  "unresolved": [
+    {
+      "id": "108|0735",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    },
+    {
+      "id": "108|0736",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    },
+    {
+      "id": "114|0775",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    },
+    {
+      "id": "122|0833",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    },
+    {
+      "id": "134|0924",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    },
+    {
+      "id": "134|0925",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    },
+    {
+      "id": "134|0926",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    },
+    {
+      "id": "189|1300",
+      "reason": "No human-read stem/content in committed OCR GT, segmentation, or book-pipeline artifacts. Paid OCR not authorized."
+    }
+  ],
+  "do_not_recreate": [
+    "12|0045",
+    "114|0773"
+  ],
+  "staff_error": null,
+  "rows": [
+    {
+      "id": "20|0097",
+      "status": "EXISTING",
+      "created": false,
+      "problem_id": "23eb21e1-bb9f-4bb8-80dd-1c23d8af433b",
+      "reason": null
+    }
+  ]
+}
