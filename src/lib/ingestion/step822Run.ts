@@ -15,7 +15,7 @@ import {
   FROZEN_TYPE_THRESHOLD,
   STEP817_DOCUMENT,
 } from './step817Run'
-import { EXPECTED_PDF_SHA256, loadSecondBookInputs } from './step821Pilot'
+import { EXPECTED_PDF_SHA256, findPdfByHash } from './step821Pilot'
 import { refineSegmentationV20 } from './segmentRefineV20'
 import { FIGURE_NEGATIVE_FREEZE, FIGURE_VALIDATION_FREEZE, freezeCounts } from './figureGtFreeze'
 import {
@@ -148,6 +148,20 @@ async function dbSnapshot(admin: SupabaseClient) {
   }
 }
 
+function resolvePython(): string[] {
+  const candidates = [['py', '-3'], ['python3'], ['python']]
+  for (const cmd of candidates) {
+    const probe = spawnSync(cmd[0], [...cmd.slice(1), '-c', 'from PIL import Image'], { encoding: 'utf8' })
+    if (probe.status === 0) return cmd
+  }
+  throw new Error('Python with Pillow is required for STEP 8.22 visual detection')
+}
+
+function runPython(root: string, args: string[]) {
+  const py = resolvePython()
+  return spawnSync(py[0], [...py.slice(1), ...args], { cwd: root, encoding: 'utf8' })
+}
+
 function engineHasVisualBookHack(src: string): string[] {
   const hits: string[] = []
   if (/개념원리 공통수학1\(22개정\)/.test(src)) hits.push('filename')
@@ -162,7 +176,7 @@ function runVisualDetector(root: string, pagesJson: string, outJson: string, con
   const script = path.join(root, DETECTOR_SCRIPT)
   const args = [script, '--pages-json', pagesJson, '--out', outJson]
   if (configJson) args.push('--config-json', configJson)
-  const result = spawnSync('py', ['-3', ...args], { cwd: root, encoding: 'utf8' })
+  const result = runPython(root, args)
   return { ok: result.status === 0 && existsSync(outJson), stderr: `${result.stderr ?? ''}${result.stdout ?? ''}` }
 }
 
@@ -188,30 +202,127 @@ function pagePng(root: string, book: 'SSEN' | 'SECOND', page: number): string {
   return path.join(root, 'ocr-tests/taxonomy/step8-18/pages', `page-${String(page).padStart(3, '0')}.png`)
 }
 
-function ensureSsenPages(root: string, dest: string) {
-  const pages = [...new Set(FIGURE_VALIDATION_FREEZE.filter((row) => row.book === 'SSEN').map((row) => row.page))]
-  const missing = pages.filter((page) => !existsSync(pagePng(root, 'SSEN', page)))
-  if (!missing.length) return { rendered: [], missing: [] as number[] }
-  const spec = {
-    pages: missing,
-    dest: path.join(root, STEP822_DIR, 'pages', 'ssen'),
-    scale: 2.2,
-    out: path.join(dest, '_render-ssen.json'),
+function localPdf(root: string, fallbackName: string, expectedHash?: string): string {
+  const dir = path.join(root, 'workers/ocr/data')
+  if (expectedHash) {
+    const found = findPdfByHash(dir, expectedHash)
+    if (found) return found
   }
-  writeJson(dest, '_render-spec.json', spec)
-  const result = spawnSync('py', ['-3', path.join(root, DETECTOR_SCRIPT), '--render-ssen', path.join(dest, '_render-spec.json')], {
-    cwd: root,
-    encoding: 'utf8',
-  })
-  if (result.status !== 0) throw new Error(`SSEN render failed: ${result.stderr}`)
-  return { rendered: missing, missing: missing.filter((page) => !existsSync(pagePng(root, 'SSEN', page))) }
+  return path.join(dir, fallbackName)
+}
+
+function ensureRenderedPages(
+  root: string,
+  dest: string,
+  book: 'SSEN' | 'SECOND',
+): { rendered: number[]; missing: number[] } {
+  const needed = [
+    ...new Set(
+      [...FIGURE_VALIDATION_FREEZE, ...FIGURE_NEGATIVE_FREEZE]
+        .filter((row) => row.book === book)
+        .map((row) => row.page),
+    ),
+  ]
+  const missing = needed.filter((page) => !existsSync(pagePng(root, book, page)))
+  if (!missing.length) return { rendered: [], missing: [] }
+  const pdf =
+    book === 'SSEN'
+      ? localPdf(root, 'ssen-common-math1.pdf')
+      : localPdf(root, 'second-common-math1.pdf', EXPECTED_PDF_SHA256)
+  const outName = book === 'SSEN' ? '_render-ssen.json' : '_render-second.json'
+  const specName = book === 'SSEN' ? '_render-spec.json' : '_render-second-spec.json'
+  const spec = {
+    pdf,
+    pages: missing,
+    dest: book === 'SSEN' ? path.join(root, STEP822_DIR, 'pages', 'ssen') : path.join(root, 'ocr-tests/taxonomy/step8-18/pages'),
+    scale: 2.2,
+    out: path.join(dest, outName),
+  }
+  writeJson(dest, specName, spec)
+  const result = runPython(root, [path.join(root, DETECTOR_SCRIPT), '--render-pages', path.join(dest, specName)])
+  if (result.status !== 0) throw new Error(`${book} render failed: ${result.stderr}`)
+  return { rendered: missing, missing: missing.filter((page) => !existsSync(pagePng(root, book, page))) }
+}
+
+function ensureSsenPages(root: string, dest: string) {
+  return ensureRenderedPages(root, dest, 'SSEN')
+}
+
+function ensureSecondPages(root: string, dest: string) {
+  return ensureRenderedPages(root, dest, 'SECOND')
 }
 
 function layoutBoxes(root: string): Map<number, Array<{ content: string; bbox: NormalizedBBox }>> {
-  const sampleRaw = JSON.parse(readFileSync(path.join(root, 'ocr-tests/taxonomy/step8-18/_sample-layout-raw.json'), 'utf8')) as {
+  const layoutPath = path.join(root, 'ocr-tests/taxonomy/step8-18/_sample-layout-raw.json')
+  if (!existsSync(layoutPath)) return new Map()
+  const sampleRaw = JSON.parse(readFileSync(layoutPath, 'utf8')) as {
     pages: Array<{ page: number; blocks: Array<{ content: string; bbox: NormalizedBBox }> }>
   }
   return new Map(sampleRaw.pages.map((row) => [row.page, row.blocks]))
+}
+
+function loadSecondLayoutPages(root: string): Array<{ page: number; blocks: Array<{ content: string; bbox: NormalizedBBox }> }> {
+  const layoutPath = path.join(root, 'ocr-tests/taxonomy/step8-18/_sample-layout-raw.json')
+  if (!existsSync(layoutPath)) return []
+  const sampleRaw = JSON.parse(readFileSync(layoutPath, 'utf8')) as {
+    pages: Array<{ page: number; blocks: Array<{ content: string; bbox: NormalizedBBox }> }>
+  }
+  return sampleRaw.pages
+}
+
+function loadGt86(root: string): Array<{ page: number; problem_number: string; figure: string }> {
+  const gtPath = path.join(root, 'ocr-tests/taxonomy/step8-18/visual-ground-truth.json')
+  if (existsSync(gtPath)) {
+    const gtFile = JSON.parse(readFileSync(gtPath, 'utf8')) as {
+      n: number
+      rows: Array<{ page: number; problem_number: string; figure: string }>
+    }
+    if (gtFile.n === 86) return gtFile.rows
+  }
+  return [
+    ...FIGURE_VALIDATION_FREEZE.filter((row) => row.book === 'SECOND').map((row) => ({
+      page: row.page,
+      problem_number: row.display_number,
+      figure: 'REVIEW',
+    })),
+    ...FIGURE_NEGATIVE_FREEZE.filter((row) => row.book === 'SECOND' && /^\d/.test(row.display_number)).map((row) => ({
+      page: row.page,
+      problem_number: row.display_number,
+      figure: 'NONE',
+    })),
+  ]
+}
+
+function loadSecondAfter(root: string): { AUTO_SAFE: number } {
+  const afterPath = path.join(root, 'ocr-tests/taxonomy/step8-20/second-book-after.json')
+  if (existsSync(afterPath)) return JSON.parse(readFileSync(afterPath, 'utf8')) as { AUTO_SAFE: number }
+  const prior = path.join(root, STEP822_DIR, 'text-problem-regression.json')
+  if (existsSync(prior)) {
+    const parsed = JSON.parse(readFileSync(prior, 'utf8')) as { second_gt86?: { previous_AUTO_SAFE?: number } }
+    if (parsed.second_gt86?.previous_AUTO_SAFE != null) return { AUTO_SAFE: parsed.second_gt86.previous_AUTO_SAFE }
+  }
+  return { AUTO_SAFE: 60 }
+}
+
+function loadSsenFreezeSamples(root: string): Array<{ sample_id: string; has_figure: boolean; page_number: number; bbox: NormalizedBBox }> {
+  const samplePath = path.join(root, 'ocr-tests/taxonomy/step8-16/benchmark-sample.json')
+  if (existsSync(samplePath)) {
+    return (JSON.parse(readFileSync(samplePath, 'utf8')) as { samples: Array<{ sample_id: string; has_figure: boolean; page_number: number; bbox: NormalizedBBox }> }).samples
+  }
+  return [
+    ...FIGURE_VALIDATION_FREEZE.filter((row) => row.book === 'SSEN').map((row) => ({
+      sample_id: row.id,
+      has_figure: true,
+      page_number: row.page,
+      bbox: row.problem_bbox,
+    })),
+    ...FIGURE_NEGATIVE_FREEZE.filter((row) => row.book === 'SSEN').map((row) => ({
+      sample_id: row.id,
+      has_figure: false,
+      page_number: row.page,
+      bbox: row.problem_bbox,
+    })),
+  ]
 }
 
 function problemsOnPage(page: number, book: 'SSEN' | 'SECOND', extra: ProblemRef[]): ProblemRef[] {
@@ -349,6 +460,7 @@ export async function runStep822(root: string, argv: string[]) {
   const dest = path.join(root, STEP822_DIR)
   mkdirSync(path.join(dest, 'crops'), { recursive: true })
   mkdirSync(path.join(dest, 'pages', 'ssen'), { recursive: true })
+  mkdirSync(path.join(root, 'ocr-tests/taxonomy/step8-18/pages'), { recursive: true })
   const gate = parsePaidGate(argv)
   if (!gate.cacheOnly) throw new Error('STEP 8.22 requires --cache-only')
   const paid = { mistral: 0, mathpix: 0, needs_external_vision: false }
@@ -381,14 +493,15 @@ export async function runStep822(root: string, argv: string[]) {
     hash: createHash('sha256').update(JSON.stringify(FIGURE_VALIDATION_FREEZE.map((row) => row.id))).digest('hex'),
   })
 
-  const ssenPdf = path.join(root, 'workers/ocr/data/ssen-common-math1.pdf')
-  const secondPdf = path.join(root, 'workers/ocr/data/[고등 1-1] 개념원리 공통수학1(22개정).pdf')
+  const ssenPdf = localPdf(root, 'ssen-common-math1.pdf')
+  const secondPdf = localPdf(root, 'second-common-math1.pdf', EXPECTED_PDF_SHA256)
   const ssenPdfHash = existsSync(ssenPdf) ? shaFile(ssenPdf) : null
   const secondPdfHash = existsSync(secondPdf) ? shaFile(secondPdf) : null
   const ssenPdfBytes = existsSync(ssenPdf) ? statSync(ssenPdf).size : 0
   const secondPdfBytes = existsSync(secondPdf) ? statSync(secondPdf).size : 0
 
   ensureSsenPages(root, dest)
+  ensureSecondPages(root, dest)
 
   const layout = layoutBoxes(root)
   const pages = [...FIGURE_VALIDATION_FREEZE, ...FIGURE_NEGATIVE_FREEZE.map((row) => ({ book: row.book, page: row.page }))].reduce(
@@ -416,7 +529,7 @@ export async function runStep822(root: string, argv: string[]) {
   const firstRun = runVisualDetector(root, path.join(dest, '_pages.json'), firstOut)
   if (!firstRun.ok) throw new Error(`detector first pass failed: ${firstRun.stderr}`)
 
-  const { pages: layoutPages } = loadSecondBookInputs(root)
+  const layoutPages = loadSecondLayoutPages(root)
   const segmented = new Map<string, ProblemRef[]>()
   for (const page of layoutPages) {
     const refined = refineSegmentationV20(page.blocks, { page: page.page })
@@ -546,7 +659,7 @@ export async function runStep822(root: string, argv: string[]) {
     })
     .filter(Boolean)
   writeJson(dest, '_crop-spec.json', { items: cropItems, out: path.join(dest, '_crops.json') })
-  spawnSync('py', ['-3', path.join(root, DETECTOR_SCRIPT), '--crop-json', path.join(dest, '_crop-spec.json')], { cwd: root, encoding: 'utf8' })
+  runPython(root, [path.join(root, DETECTOR_SCRIPT), '--crop-json', path.join(dest, '_crop-spec.json')])
   writeJson(dest, 'problem-figure-composite.json', {
     original_render_source_of_truth: originalPageIsSourceOfTruth({ crop_from_original_render: true, generated: false, redrawn: false }),
     flattened_to_ocr_text: false,
@@ -556,13 +669,9 @@ export async function runStep822(root: string, argv: string[]) {
     production_upload: false,
   })
 
-  const gt86 = JSON.parse(readFileSync(path.join(root, 'ocr-tests/taxonomy/step8-18/visual-ground-truth.json'), 'utf8')) as {
-    rows: Array<{ page: number; problem_number: string; figure: string }>
-  }
-  const secondAfter = JSON.parse(readFileSync(path.join(root, 'ocr-tests/taxonomy/step8-20/second-book-after.json'), 'utf8')) as { AUTO_SAFE: number }
-  const ssenFreeze = JSON.parse(readFileSync(path.join(root, 'ocr-tests/taxonomy/step8-16/benchmark-sample.json'), 'utf8')) as {
-    samples: Array<{ sample_id: string; has_figure: boolean; page_number: number; bbox: NormalizedBBox }>
-  }
+  const gt86 = { rows: loadGt86(root) }
+  const secondAfter = loadSecondAfter(root)
+  const ssenFreeze = { samples: loadSsenFreezeSamples(root) }
   let secondAuto = 0
   let secondStill = 0
   let secondFalseFigure = 0

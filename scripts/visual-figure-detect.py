@@ -38,17 +38,28 @@ def _load_json(path: Path):
 
 
 def downsample(image: Image.Image, max_w: int) -> tuple[Image.Image, float]:
-    w, h = image.size
+    rgb = image.convert("RGB")
+    w, h = rgb.size
     if w <= max_w:
-        return image.convert("L"), 1.0
+        return rgb, 1.0
     scale = max_w / w
-    return image.convert("L").resize((max_w, max(1, int(h * scale))), Image.Resampling.BILINEAR), scale
+    return rgb.resize((max_w, max(1, int(h * scale))), Image.Resampling.BILINEAR), scale
 
 
 def ink_mask(gray: Image.Image, ink: int) -> list[list[bool]]:
-    pixels = gray.load()
-    w, h = gray.size
-    return [[pixels[x, y] < ink for x in range(w)] for y in range(h)]
+    rgb = gray.convert("RGB")
+    pixels = rgb.load()
+    w, h = rgb.size
+    out: list[list[bool]] = []
+    for y in range(h):
+        row: list[bool] = []
+        for x in range(w):
+            r, g, b = pixels[x, y]
+            mean = (r + g + b) / 3
+            chroma = max(r, g, b) - min(r, g, b)
+            row.append(mean < ink or (chroma >= 18 and mean < 248))
+        out.append(row)
+    return out
 
 
 def dilate(mask: list[list[bool]], radius: int) -> list[list[bool]]:
@@ -151,8 +162,15 @@ def merge_boxes(boxes: list[tuple[float, float, float, float, int]], gap: float)
                 b = items[j]
                 ax0, ay0, ax1, ay1 = a[0], a[1], a[2], a[3]
                 bx0, by0, bx1, by1 = b[0], b[1], b[2], b[3]
+                a_cx = (ax0 + ax1) / 2
+                b_cx = (bx0 + bx1) / 2
+                split_cols = (a_cx < 0.48 and b_cx > 0.52) or (b_cx < 0.48 and a_cx > 0.52)
+                y_overlap = min(ay1, by1) - max(ay0, by0)
+                h_min = min(ay1 - ay0, by1 - by0)
+                paired = y_overlap > 0.5 * max(1e-6, h_min) and abs((ay1 - ay0) - (by1 - by0)) < 0.07
+                allowed = 0.09 if paired else gap
                 separated_cols = (ax1 < bx0 - 0.035 or bx1 < ax0 - 0.035) and (min(ay1, by1) - max(ay0, by0) > 0.02)
-                if not separated_cols and _gap((ax0, ay0, ax1, ay1), (bx0, by0, bx1, by1)) <= gap:
+                if not split_cols and not separated_cols and _gap((ax0, ay0, ax1, ay1), (bx0, by0, bx1, by1)) <= allowed:
                     a[0] = min(a[0], b[0])
                     a[1] = min(a[1], b[1])
                     a[2] = max(a[2], b[2])
@@ -223,6 +241,9 @@ def classify(h_hits: int, v_hits: int, fill: float, width: float, height: float,
     if fill > 0.42 and text_ov > 0.55:
         evidence += ["dense_text"]
         return "SKIP_TEXT", evidence, 0.2
+    if text_ov > 0.40 and h_hits < 2 and v_hits < 2 and fill < 0.22:
+        evidence += ["text_overlap_no_structure"]
+        return "SKIP_TEXT", evidence, 0.2
     evidence += ["dense_nontext_cluster"]
     return "UNKNOWN_VISUAL", evidence, 0.58
 
@@ -236,15 +257,97 @@ def is_decoration(bbox: dict, fill: float, text_ov: float, h_hits: int, v_hits: 
         return "footer"
     if w < 0.018 and h > 0.45:
         return "column_divider"
+    if x >= 0.88 and w < 0.12:
+        return "sidebar"
     if 0.035 <= w <= 0.11 and 0.035 <= h <= 0.11 and abs(w / max(h, 1e-6) - 1) < 0.28 and fill > 0.28 and (cy < 0.14 or cx > 0.86 or cx < 0.12):
         return "qr_or_badge"
     if w < 0.12 and h < 0.045 and (cx < 0.22 or cy < 0.1):
         return "badge"
     if text_ov > 0.62 and h_hits < 3 and v_hits < 3 and fill > 0.18:
         return "boxed_text"
+    if h > 0.48 and fill < 0.08:
+        return "page_watermark"
+    if w * h > 0.22 and fill < 0.05 and h > 0.35:
+        return "page_watermark"
     if w * h > 0.36:
         return "page_watermark"
     return None
+
+
+def split_column_span(box: tuple[float, float, float, float, int]) -> list[tuple[float, float, float, float, int]]:
+    x0, y0, x1, y1, area = box
+    if x0 < 0.46 and x1 > 0.54 and (x1 - x0) >= 0.55:
+        mid = 0.5
+        left_area = max(1, int(area * (mid - x0) / max(1e-6, x1 - x0)))
+        right_area = max(1, area - left_area)
+        return [(x0, y0, mid, y1, left_area), (mid, y0, x1, y1, right_area)]
+    return [box]
+
+
+def split_stem_figure(
+    mask: list[list[bool]],
+    box: tuple[float, float, float, float, int],
+    dw: int,
+    dh: int,
+) -> list[tuple[float, float, float, float, int]]:
+    """Split a wide stem+diagram blob at a low-ink vertical valley."""
+    x0, y0, x1, y1, area = box
+    if (x1 - x0) < 0.48 or x0 > 0.38 or x1 < 0.62:
+        return [box]
+    py0 = max(0, int(y0 * dh))
+    py1 = min(dh, max(py0 + 1, int(y1 * dh)))
+    best_x = None
+    best_frac = 1.0
+    for px in range(int(0.42 * dw), int(0.74 * dw)):
+        xn = px / dw
+        if xn <= x0 + 0.08 or xn >= x1 - 0.08:
+            continue
+        ink = 0
+        total = 0
+        for y in range(py0, py1):
+            total += 1
+            if mask[y][px]:
+                ink += 1
+        frac = ink / max(1, total)
+        if frac < best_frac:
+            best_frac = frac
+            best_x = xn
+    if best_x is None or best_frac > 0.12:
+        return [box]
+    left_area = max(1, int(area * (best_x - x0) / max(1e-6, x1 - x0)))
+    return [(x0, y0, best_x, y1, left_area), (best_x, y0, x1, y1, max(1, area - left_area))]
+
+
+def tighten_box(mask: list[list[bool]], box: tuple[float, float, float, float, int]) -> tuple[float, float, float, float, int]:
+    h = len(mask)
+    w = len(mask[0]) if h else 0
+    x0, y0, x1, y1, _ = box
+    px0, py0 = max(0, int(x0 * w)), max(0, int(y0 * h))
+    px1, py1 = min(w, max(px0 + 1, int(x1 * w))), min(h, max(py0 + 1, int(y1 * h)))
+    minx, miny, maxx, maxy = px1, py1, px0, py0
+    ink = 0
+    for y in range(py0, py1):
+        row = mask[y]
+        for x in range(px0, px1):
+            if row[x]:
+                ink += 1
+                if x < minx:
+                    minx = x
+                if x > maxx:
+                    maxx = x
+                if y < miny:
+                    miny = y
+                if y > maxy:
+                    maxy = y
+    if ink < 8 or maxx < minx:
+        return box
+    pad_x = max(1, int(0.006 * w))
+    pad_y = max(1, int(0.006 * h))
+    minx = max(0, minx - pad_x)
+    miny = max(0, miny - pad_y)
+    maxx = min(w - 1, maxx + pad_x)
+    maxy = min(h - 1, maxy + pad_y)
+    return (minx / w, miny / h, (maxx + 1) / w, (maxy + 1) / h, ink)
 
 
 def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
@@ -257,18 +360,33 @@ def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
     closed = dilate(visual, int(cfg["dilate"]))
     min_area = max(12, int(dw * dh * float(cfg["min_area_frac"]) * 0.15))
     comps = connected_components(closed, min_area)
+    raw_comps = connected_components(raw, min_area=3)
     boxes = []
     for minx, miny, maxx, maxy, area in comps:
         boxes.append((minx / dw, miny / dh, (maxx + 1) / dw, (maxy + 1) / dh, area))
-    merged = merge_boxes(boxes, float(cfg["merge_gap"]))
+    split: list[tuple[float, float, float, float, int]] = []
+    for box in boxes:
+        split.extend(split_column_span(box))
+    merged = merge_boxes(split, float(cfg["merge_gap"]))
+    structured: list[tuple[float, float, float, float, int]] = []
+    for box in merged:
+        structured.extend(split_stem_figure(closed, box, dw, dh))
+    header_y = float(cfg.get("header_y", 0.072))
+    refined = []
+    for box in structured:
+        tight = tighten_box(visual, box)
+        x0, y0, x1, y1, area = tight
+        if y0 < header_y and (y1 - header_y) >= 0.08:
+            tight = tighten_box(visual, (x0, header_y, x1, y1, area))
+        refined.append(tight)
     candidates = []
     skipped = []
-    for x0, y0, x1, y1, area in merged:
+    for x0, y0, x1, y1, area in refined:
         bbox = {
             "x": round(x0, 4),
             "y": round(y0, 4),
-            "width": round(x1 - x0, 4),
-            "height": round(y1 - y0, 4),
+            "width": round(max(0.001, x1 - x0), 4),
+            "height": round(max(0.001, y1 - y0), 4),
             "unit": "normalized",
             "origin": "top-left",
         }
@@ -292,8 +410,21 @@ def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
         if kind == "SKIP_TEXT":
             skipped.append({"reason": "formula_or_boxed_text", "bbox": bbox})
             continue
+        glyphs = 0
+        for minx, miny, maxx, maxy, area in raw_comps:
+            if area >= 80:
+                continue
+            cx = ((minx + maxx) / 2) / dw
+            cy = ((miny + maxy) / 2) / dh
+            if bbox["x"] <= cx <= bbox["x"] + bbox["width"] and bbox["y"] <= cy <= bbox["y"] + bbox["height"]:
+                glyphs += 1
+        true_grid = h_hits >= 3 and v_hits >= 3
+        text_like = glyphs >= 55 and w >= 0.30 and h >= 0.08 and (not true_grid or glyphs >= 90)
         isolation = 1.0 - min(1.0, text_ov)
         conf = round(min(0.92, conf + 0.08 * isolation - 0.12 * max(0.0, text_ov - 0.4)), 3)
+        if text_like:
+            conf = min(conf, 0.72)
+            evidence = list(evidence) + ["textlike_low_confidence"]
         candidates.append(
             {
                 "figure_id": f"p{path.stem}-x{int(bbox['x']*1000)}-y{int(bbox['y']*1000)}",
@@ -325,13 +456,12 @@ def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
     }
 
 
-def render_ssen_pages(pages: list[int], dest: Path, scale: float = 2.2) -> list[dict]:
+def render_pdf_pages(pdf_path: Path, pages: list[int], dest: Path, scale: float = 2.2) -> list[dict]:
     sys.path.insert(0, str(ROOT / "workers" / "ocr" / "site-packages"))
     import pypdfium2 as pdfium
 
-    pdf_path = ROOT / "workers" / "ocr" / "data" / "ssen-common-math1.pdf"
     if not pdf_path.exists():
-        raise SystemExit("SSEN PDF missing")
+        raise SystemExit("source PDF missing")
     dest.mkdir(parents=True, exist_ok=True)
     doc = pdfium.PdfDocument(str(pdf_path))
     written = []
@@ -345,6 +475,48 @@ def render_ssen_pages(pages: list[int], dest: Path, scale: float = 2.2) -> list[
         written.append({"page": page, "path": str(out), "reused": False})
     doc.close()
     return written
+
+
+def render_ssen_pages(pages: list[int], dest: Path, scale: float = 2.2) -> list[dict]:
+    return render_pdf_pages(ROOT / "workers" / "ocr" / "data" / "ssen-common-math1.pdf", pages, dest, scale)
+
+
+def extract_layout(pdf_path: Path, pages: list[int]) -> list[dict]:
+    sys.path.insert(0, str(ROOT / "workers" / "ocr" / "site-packages"))
+    import pypdfium2 as pdfium
+
+    doc = pdfium.PdfDocument(str(pdf_path))
+    out = []
+    for page_no in pages:
+        page = doc[page_no - 1]
+        pw, ph = page.get_size()
+        textpage = page.get_textpage()
+        blocks = []
+        for i in range(textpage.count_rects()):
+            left, bottom, right, top = textpage.get_rect(i)
+            content = (textpage.get_text_bounded(left=left, bottom=bottom, right=right, top=top) or "").strip()
+            if not content:
+                continue
+            width = (right - left) / pw
+            height = (top - bottom) / ph
+            if width <= 0 or height <= 0:
+                continue
+            blocks.append(
+                {
+                    "content": content,
+                    "bbox": {
+                        "x": round(float(left / pw), 4),
+                        "y": round(float(1.0 - (top / ph)), 4),
+                        "width": round(float(width), 4),
+                        "height": round(float(height), 4),
+                        "unit": "normalized",
+                        "origin": "top-left",
+                    },
+                }
+            )
+        out.append({"page": page_no, "blocks": blocks})
+    doc.close()
+    return out
 
 
 def crop_original(page_path: Path, bbox: dict, dest: Path, pad: float = 0.012) -> dict:
@@ -366,6 +538,8 @@ def main() -> None:
     parser.add_argument("--out")
     parser.add_argument("--config-json")
     parser.add_argument("--render-ssen")
+    parser.add_argument("--render-pages")
+    parser.add_argument("--extract-layout")
     parser.add_argument("--crop-json")
     args = parser.parse_args()
     cfg = dict(DEFAULTS)
@@ -375,6 +549,16 @@ def main() -> None:
         spec = _load_json(Path(args.render_ssen))
         written = render_ssen_pages(spec["pages"], Path(spec["dest"]), float(spec.get("scale", 2.2)))
         Path(spec["out"]).write_text(json.dumps({"written": written, "pdf_untouched": True}, ensure_ascii=False, indent=2), encoding="utf-8")
+        return
+    if args.render_pages:
+        spec = _load_json(Path(args.render_pages))
+        written = render_pdf_pages(Path(spec["pdf"]), spec["pages"], Path(spec["dest"]), float(spec.get("scale", 2.2)))
+        Path(spec["out"]).write_text(json.dumps({"written": written, "pdf_untouched": True}, ensure_ascii=False, indent=2), encoding="utf-8")
+        return
+    if args.extract_layout:
+        spec = _load_json(Path(args.extract_layout))
+        pages = extract_layout(Path(spec["pdf"]), spec["pages"])
+        Path(spec["out"]).write_text(json.dumps({"pages": pages}, ensure_ascii=False, indent=2), encoding="utf-8")
         return
     if args.crop_json:
         spec = _load_json(Path(args.crop_json))

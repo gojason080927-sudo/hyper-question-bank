@@ -89,15 +89,15 @@
     },
     {
       "id": "189|1300",
-      "status": null,
-      "owner": null,
-      "owner_correct": false
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "189|1300",
+      "owner_correct": true
     },
     {
       "id": "26|11",
-      "status": null,
-      "owner": null,
-      "owner_correct": false
+      "status": "SINGLE_OWNER_HIGH",
+      "owner": "26|11",
+      "owner_correct": true
     },
     {
       "id": "26|32",
@@ -143,9 +143,9 @@
     },
     {
       "id": "239|520",
-      "status": null,
-      "owner": null,
-      "owner_correct": false
+      "status": "SHARED_OWNER_REVIEW",
+      "owner": "239|520",
+      "owner_correct": true
     },
     {
       "id": "286|623",

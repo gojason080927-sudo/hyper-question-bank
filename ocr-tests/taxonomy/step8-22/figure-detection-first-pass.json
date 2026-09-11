@@ -14,9 +14,9 @@
     "neighbor_overlap": 0.08,
     "text_ref_bonus": 0.06
   },
-  "detected": 14,
-  "missed": 11,
-  "auto": 7,
+  "detected": 17,
+  "missed": 8,
+  "auto": 11,
   "false_figure_safe": 0,
   "rows": [
     {
@@ -32,7 +32,7 @@
       "auto": true,
       "false_safe": false,
       "review": null,
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -48,7 +48,7 @@
       "auto": false,
       "false_safe": false,
       "review": "FIGURE_CUT_RISK",
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -56,22 +56,22 @@
       "book": "SSEN",
       "detected": true,
       "figure_type": "GEOMETRY_DIAGRAM",
-      "quality": "MAJOR_CUT",
+      "quality": "MINOR_EDGE_ERROR",
       "ownership": "SINGLE_OWNER_HIGH",
       "owner": "108|0735",
       "owner_correct": true,
-      "crop": "FIGURE_CROP_UNSAFE",
-      "auto": false,
+      "crop": "FIGURE_CROP_SAFE",
+      "auto": true,
       "false_safe": false,
-      "review": "FIGURE_CUT_RISK",
-      "detection_confidence": 0.8,
+      "review": null,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
       "id": "108|0736",
       "book": "SSEN",
       "detected": true,
-      "figure_type": "GRAPHICAL_FIGURE",
+      "figure_type": "TABLE",
       "quality": "MINOR_EDGE_ERROR",
       "ownership": "SINGLE_OWNER_HIGH",
       "owner": "108|0736",
@@ -80,7 +80,7 @@
       "auto": true,
       "false_safe": false,
       "review": null,
-      "detection_confidence": 0.78,
+      "detection_confidence": 0.86,
       "faults": []
     },
     {
@@ -96,7 +96,7 @@
       "auto": true,
       "false_safe": false,
       "review": null,
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -112,7 +112,7 @@
       "auto": false,
       "false_safe": false,
       "review": "FIGURE_CUT_RISK",
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -128,7 +128,7 @@
       "auto": true,
       "false_safe": false,
       "review": null,
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -144,7 +144,7 @@
       "auto": false,
       "false_safe": false,
       "review": "FIGURE_CUT_RISK",
-      "detection_confidence": 0.78,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -160,7 +160,7 @@
       "auto": true,
       "false_safe": false,
       "review": null,
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -176,7 +176,7 @@
       "auto": true,
       "false_safe": false,
       "review": null,
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -192,7 +192,7 @@
       "auto": true,
       "false_safe": false,
       "review": null,
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -200,15 +200,15 @@
       "book": "SSEN",
       "detected": true,
       "figure_type": "GEOMETRY_DIAGRAM",
-      "quality": "MAJOR_CUT",
+      "quality": "MINOR_EDGE_ERROR",
       "ownership": "SINGLE_OWNER_HIGH",
       "owner": "134|0925",
       "owner_correct": true,
-      "crop": "FIGURE_CROP_UNSAFE",
-      "auto": false,
+      "crop": "FIGURE_CROP_SAFE",
+      "auto": true,
       "false_safe": false,
-      "review": "FIGURE_CUT_RISK",
-      "detection_confidence": 0.8,
+      "review": null,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -216,15 +216,15 @@
       "book": "SSEN",
       "detected": true,
       "figure_type": "GEOMETRY_DIAGRAM",
-      "quality": "WRONG_REGION",
+      "quality": "FULLY_CONTAINED",
       "ownership": "SINGLE_OWNER_HIGH",
       "owner": "134|0926",
       "owner_correct": true,
-      "crop": "FIGURE_CROP_UNSAFE",
-      "auto": false,
+      "crop": "FIGURE_CROP_SAFE",
+      "auto": true,
       "false_safe": false,
-      "review": "FIGURE_BBOX_UNCERTAIN",
-      "detection_confidence": 0.8,
+      "review": null,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -240,39 +240,39 @@
       "auto": false,
       "false_safe": false,
       "review": "FIGURE_CUT_RISK",
-      "detection_confidence": 0.8,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
       "id": "189|1300",
       "book": "SSEN",
-      "detected": false,
-      "figure_type": null,
-      "quality": null,
-      "ownership": null,
-      "owner": null,
-      "owner_correct": false,
-      "crop": null,
-      "auto": false,
+      "detected": true,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "quality": "FULLY_CONTAINED",
+      "ownership": "SINGLE_OWNER_HIGH",
+      "owner": "189|1300",
+      "owner_correct": true,
+      "crop": "FIGURE_CROP_SAFE",
+      "auto": true,
       "false_safe": false,
-      "review": "FIGURE_NOT_DETECTED",
-      "detection_confidence": 0,
+      "review": null,
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
       "id": "26|11",
       "book": "SECOND",
-      "detected": false,
-      "figure_type": null,
-      "quality": null,
-      "ownership": null,
-      "owner": null,
-      "owner_correct": false,
-      "crop": null,
+      "detected": true,
+      "figure_type": "TABLE",
+      "quality": "MAJOR_CUT",
+      "ownership": "SINGLE_OWNER_HIGH",
+      "owner": "26|11",
+      "owner_correct": true,
+      "crop": "FIGURE_CROP_UNSAFE",
       "auto": false,
       "false_safe": false,
-      "review": "FIGURE_NOT_DETECTED",
-      "detection_confidence": 0,
+      "review": "FIGURE_CUT_RISK",
+      "detection_confidence": 0.843,
       "faults": []
     },
     {
@@ -390,17 +390,17 @@
     {
       "id": "239|520",
       "book": "SECOND",
-      "detected": false,
-      "figure_type": null,
-      "quality": null,
-      "ownership": null,
-      "owner": null,
-      "owner_correct": false,
-      "crop": null,
+      "detected": true,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "quality": "MAJOR_CUT",
+      "ownership": "SHARED_OWNER_REVIEW",
+      "owner": "239|520",
+      "owner_correct": true,
+      "crop": "FIGURE_CROP_UNSAFE",
       "auto": false,
       "false_safe": false,
-      "review": "FIGURE_NOT_DETECTED",
-      "detection_confidence": 0,
+      "review": "FIGURE_CUT_RISK",
+      "detection_confidence": 0.72,
       "faults": []
     },
     {
@@ -420,5 +420,5 @@
       "faults": []
     }
   ],
-  "raw_candidates": 69
+  "raw_candidates": 106
 }

@@ -1,11 +1,11 @@
 {
   "step": "8.22",
-  "verdict": "PARTIAL",
-  "readiness": "FIGURE_PIPELINE_NOT_READY",
-  "auto": 7,
+  "verdict": "PASS",
+  "readiness": "FIGURE_PIPELINE_CONDITIONAL",
+  "auto": 11,
   "false_figure_safe": 0,
-  "recall": 0.56,
-  "precision": 0.583,
+  "recall": 0.68,
+  "precision": 0.548,
   "paid_api_calls": {
     "mistral": 0,
     "mathpix": 0,
