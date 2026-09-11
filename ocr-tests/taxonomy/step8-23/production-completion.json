@@ -1,0 +1,17 @@
+{
+  "verdict": "PARTIAL",
+  "schema_ok": false,
+  "migration_apply": {
+    "attempted": false,
+    "applied": false,
+    "reason": "missing SUPABASE_DB_PASSWORD and DATABASE_URL"
+  },
+  "auto": 11,
+  "assets_in_db": 0,
+  "links_in_db": 0,
+  "pending_after": 8,
+  "ingest_created": 0,
+  "verified_identities_present": 3,
+  "review_persisted": 0,
+  "unsafe_persisted": 0
+}

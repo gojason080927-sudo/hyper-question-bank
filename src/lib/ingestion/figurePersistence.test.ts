@@ -146,6 +146,7 @@ describe('STEP 8.23 figure persistence contract', () => {
       linksInDb: 2,
       pendingAfter: 9,
       ingestCreated: 0,
+      verifiedIdentitiesPresent: 0,
       reviewPersisted: 0,
       unsafePersisted: 0,
       duplicates: 0,

@@ -1,23 +1,32 @@
 {
   "step": "8.23",
-  "verdict": "PASS",
+  "verdict": "PARTIAL",
+  "production_completion": "PARTIAL",
   "auto": 11,
   "projected_assets": 11,
-  "projected_links": 2,
-  "preflight_pass": 2,
+  "projected_links": 3,
+  "preflight_pass": 3,
   "asset_ready": 11,
-  "pending_problems": 9,
+  "pending_problems": 8,
   "skipped_non_auto": 14,
   "orphans": 0,
   "idempotent": true,
   "dbOk": true,
   "hacks": [],
   "persist": {
-    "attempted": false,
+    "attempted": true,
     "applied": false,
     "created_assets": 0,
     "created_links": 0,
-    "reason": "cache-only"
+    "replay_created_assets": 0,
+    "replay_created_links": 0,
+    "reason": "Could not find the table 'public.problem_figure_assets' in the schema cache",
+    "via": null
+  },
+  "ingest": {
+    "verified_found": 1,
+    "created": 0,
+    "unresolved": 8
   },
   "paid_api_calls": {
     "mistral": 0,

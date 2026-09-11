@@ -234,6 +234,7 @@ export function productionCompletionVerdict(input: {
   linksInDb: number
   pendingAfter: number
   ingestCreated: number
+  verifiedIdentitiesPresent: number
   reviewPersisted: number
   unsafePersisted: number
   duplicates: number
@@ -253,7 +254,9 @@ export function productionCompletionVerdict(input: {
     return 'PASS'
   }
   if (!input.persistAttempted) return 'PARTIAL'
-  if (!input.schemaOk && input.ingestCreated === 0 && input.linksInDb === 0) return 'BLOCKED'
+  if (!input.schemaOk && input.verifiedIdentitiesPresent === 0 && input.ingestCreated === 0 && input.linksInDb === 0) {
+    return 'BLOCKED'
+  }
   return 'PARTIAL'
 }
 

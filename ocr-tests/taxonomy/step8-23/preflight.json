@@ -1,9 +1,8 @@
 {
   "auto": 11,
   "asset_ready": 11,
-  "link_ready": 2,
+  "link_ready": 3,
   "pending_problems": [
-    "20|0097",
     "108|0735",
     "108|0736",
     "114|0775",
@@ -183,11 +182,9 @@
     },
     {
       "id": "20|0097",
-      "pass": false,
+      "pass": true,
       "asset_ready": true,
-      "reasons": [
-        "PROBLEM_NOT_INGESTED"
-      ],
+      "reasons": [],
       "asset": {
         "figure_id": "fig_3baeb50892de990d15cbade7e28fb0ed",
         "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
@@ -207,7 +204,17 @@
         "review_status": "AUTO",
         "assigned_by": "STEP_8_23"
       },
-      "link": null
+      "link": {
+        "problem_identity": "20|0097",
+        "figure_id": "fig_3baeb50892de990d15cbade7e28fb0ed",
+        "ownership_type": "SINGLE",
+        "ownership_confidence": 0.88,
+        "display_order": 1,
+        "required": true,
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 20,
+        "original_problem_number": "0097"
+      }
     },
     {
       "id": "108|0735",

@@ -1,6 +1,6 @@
 {
   "before": {
-    "total_draft": 756,
+    "total_draft": 757,
     "type_auto": 38,
     "difficulty": 96,
     "item": 155,
@@ -8,7 +8,7 @@
     "problem_assets": 0
   },
   "after": {
-    "total_draft": 756,
+    "total_draft": 757,
     "type_auto": 38,
     "difficulty": 96,
     "item": 155,
@@ -20,5 +20,27 @@
   "production_problem_writes": 0,
   "production_figure_writes": 0,
   "production_upload": false,
+  "known_stems_unchanged": true,
+  "known_stems": {
+    "before": {
+      "12|0045": "b1572789158d7ae6347b5f16c929f0df38d896974ca1dcba7d390017b07564bd",
+      "114|0773": "1649c88b37b641e0bd878ca17d389dbed3c02920413e2e9b95f882aee52c5b2f"
+    },
+    "after": {
+      "12|0045": "b1572789158d7ae6347b5f16c929f0df38d896974ca1dcba7d390017b07564bd",
+      "114|0773": "1649c88b37b641e0bd878ca17d389dbed3c02920413e2e9b95f882aee52c5b2f"
+    }
+  },
+  "unrelated_ok": true,
+  "draft_delta_expected": 0,
+  "draft_delta_actual": 0,
+  "figure_assets": {
+    "count": 0,
+    "error": "Could not find the table 'public.problem_figure_assets' in the schema cache"
+  },
+  "figure_links": {
+    "count": 0,
+    "error": "Could not find the table 'public.problem_figure_links' in the schema cache"
+  },
   "ok": true
 }

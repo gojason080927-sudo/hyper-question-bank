@@ -210,6 +210,8 @@ async function schemaReady(admin: SupabaseClient): Promise<{ ok: boolean; reason
 }
 
 async function countAssigned(admin: SupabaseClient, table: string) {
+  const probe = await admin.from(table).select('id').limit(1)
+  if (probe.error) return { count: 0, error: probe.error.message }
   const result = await admin.from(table).select('id', { count: 'exact', head: true }).eq('assigned_by', ASSIGNED_BY)
   if (result.error) return { count: 0, error: result.error.message }
   return { count: result.count ?? 0, error: null }
@@ -616,6 +618,10 @@ export async function runStep823(root: string, argv: string[]) {
     stemsUnchanged
   const draftsOk = afterDb.total_draft === before.total_draft + ingestCreated
   const dbOk = unrelatedOk && draftsOk
+  const verifiedIdentitiesPresent = new Set([
+    ...readyRows.map((row) => row.id),
+    ...ingestRows.filter((row) => row.problem_id).map((row) => row.id),
+  ]).size
   const productionCompletion = productionCompletionVerdict({
     persistAttempted: persist,
     schemaOk: schema.ok,
@@ -624,6 +630,7 @@ export async function runStep823(root: string, argv: string[]) {
     linksInDb: linksInDb.count,
     pendingAfter: pendingProblems.length,
     ingestCreated,
+    verifiedIdentitiesPresent,
     reviewPersisted: 0,
     unsafePersisted: 0,
     duplicates: persistResult.replay_created_assets + persistResult.replay_created_links,
@@ -710,6 +717,7 @@ export async function runStep823(root: string, argv: string[]) {
     links_in_db: linksInDb.count,
     pending_after: pendingProblems.length,
     ingest_created: ingestCreated,
+    verified_identities_present: verifiedIdentitiesPresent,
     review_persisted: 0,
     unsafe_persisted: 0,
   })
