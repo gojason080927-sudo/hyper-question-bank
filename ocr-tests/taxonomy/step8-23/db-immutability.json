@@ -18,7 +18,7 @@
   "frozen_ssen_drafts": 728,
   "content_changed": 0,
   "production_problem_writes": 0,
-  "production_figure_writes": 0,
+  "production_figure_writes": 6,
   "production_upload": false,
   "known_stems_unchanged": true,
   "known_stems": {
@@ -35,12 +35,12 @@
   "draft_delta_expected": 0,
   "draft_delta_actual": 0,
   "figure_assets": {
-    "count": 0,
-    "error": "Could not find the table 'public.problem_figure_assets' in the schema cache"
+    "count": 3,
+    "error": null
   },
   "figure_links": {
-    "count": 0,
-    "error": "Could not find the table 'public.problem_figure_links' in the schema cache"
+    "count": 3,
+    "error": null
   },
   "ok": true
 }

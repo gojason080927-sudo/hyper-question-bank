@@ -17,12 +17,12 @@ orphans: 0
 idempotent: true
 dbOk: true
 hacks: []
-schema ok: false
-migration apply: false (missing SUPABASE_ACCESS_TOKEN)
+schema ok: true
+migration apply: false (already-present)
 persist attempted: true
-persist applied: false
-figure assets in DB: 0
-figure links in DB: 0
+persist applied: true
+figure assets in DB: 3
+figure links in DB: 3
 production problem writes: 0
 paid OCR: 0
 

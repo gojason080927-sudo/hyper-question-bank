@@ -1,16 +1,16 @@
 {
   "verdict": "PARTIAL",
-  "schema_ok": false,
+  "schema_ok": true,
   "migration_apply": {
     "attempted": false,
     "applied": false,
-    "reason": "missing SUPABASE_ACCESS_TOKEN",
+    "reason": "already-present",
     "via": null,
     "http_status": null
   },
   "auto": 11,
-  "assets_in_db": 0,
-  "links_in_db": 0,
+  "assets_in_db": 3,
+  "links_in_db": 3,
   "pending_after": 8,
   "ingest_created": 0,
   "verified_identities_present": 3,
