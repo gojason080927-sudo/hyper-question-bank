@@ -14,7 +14,7 @@ console.log('STEP 8.23 FIGURE PERSISTENCE')
 console.log('AUTO figures only. No paid OCR. No problem overwrite. No multimodal/print-edit.')
 
 if (!argv.includes('--run')) {
-  console.log('usage: --run --cache-only')
+  console.log('usage: --run --cache-only | --run --persist')
   process.exit(0)
 }
 

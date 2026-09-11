@@ -216,6 +216,47 @@ export function replayDoesNotDuplicate(first: string[], second: string[]): boole
   return first.length === second.length && first.every((id, i) => id === second[i])
 }
 
+export function figurePersistGate(
+  schemaOk: boolean,
+  schemaReason: string | null,
+  readyCount: number,
+): { canApply: boolean; reason: string | null } {
+  if (!schemaOk) return { canApply: false, reason: schemaReason ?? 'schema-missing' }
+  if (readyCount < 1) return { canApply: false, reason: 'no-link-ready-auto' }
+  return { canApply: true, reason: null }
+}
+
+export function productionCompletionVerdict(input: {
+  persistAttempted: boolean
+  schemaOk: boolean
+  auto: number
+  assetsInDb: number
+  linksInDb: number
+  pendingAfter: number
+  ingestCreated: number
+  reviewPersisted: number
+  unsafePersisted: number
+  duplicates: number
+  orphans: number
+}): 'PASS' | 'PARTIAL' | 'BLOCKED' {
+  if (
+    input.persistAttempted &&
+    input.schemaOk &&
+    input.assetsInDb === input.auto &&
+    input.linksInDb === input.auto &&
+    input.pendingAfter === 0 &&
+    input.reviewPersisted === 0 &&
+    input.unsafePersisted === 0 &&
+    input.duplicates === 0 &&
+    input.orphans === 0
+  ) {
+    return 'PASS'
+  }
+  if (!input.persistAttempted) return 'PARTIAL'
+  if (!input.schemaOk && input.ingestCreated === 0 && input.linksInDb === 0) return 'BLOCKED'
+  return 'PARTIAL'
+}
+
 export function migrationIsAdditive823(sql: string): { ok: boolean; reasons: string[] } {
   const stripped = sql.replace(/--[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '')
   const reasons: string[] = []

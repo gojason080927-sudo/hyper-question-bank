@@ -10,9 +10,11 @@ import {
   dedupeAssets,
   findOrphans,
   figureIdFromHash,
+  figurePersistGate,
   migrationIsAdditive823,
   persistBlockReasons,
   preflightFigure,
+  productionCompletionVerdict,
   projectAutoFigure,
   replayDoesNotDuplicate,
   type FigureAssetDraft,
@@ -135,6 +137,20 @@ describe('STEP 8.23 figure persistence contract', () => {
     expect(FIGURE_VALIDATION_FREEZE).toHaveLength(25)
     const sql = readFileSync(path.join(process.cwd(), STEP823_MIGRATION), 'utf8')
     expect(migrationIsAdditive823(sql)).toEqual({ ok: true, reasons: [] })
+    expect(figurePersistGate(true, null, 2).canApply).toBe(true)
+    expect(productionCompletionVerdict({
+      persistAttempted: false,
+      schemaOk: true,
+      auto: 11,
+      assetsInDb: 2,
+      linksInDb: 2,
+      pendingAfter: 9,
+      ingestCreated: 0,
+      reviewPersisted: 0,
+      unsafePersisted: 0,
+      duplicates: 0,
+      orphans: 0,
+    })).toBe('PARTIAL')
     const persistSrc = readFileSync(path.join(process.cwd(), 'src/lib/ingestion/figurePersistence.ts'), 'utf8')
     expect(/개념원리 공통수학1\(22개정\)/.test(persistSrc)).toBe(false)
     expect(/page_number\s*===\s*\d+/.test(persistSrc)).toBe(false)
