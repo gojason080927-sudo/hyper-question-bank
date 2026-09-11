@@ -42,12 +42,13 @@ import {
   type PreflightRow,
 } from './figurePersistence'
 import { UPSERT_RPC, canonicalizeProblemNumber } from '../recognition/draftUpsert'
-import { createPipelineStaffClient, migrationCredentialsPresent } from './step823Staff'
+import { applyFigurePersistenceMigration, createPipelineStaffClient } from './step823Staff'
 import {
   DO_NOT_RECREATE_IDS,
   loadVerifiedPendingProblems,
   pendingDraftPayload,
   unresolvedPendingReport,
+  pendingPaidOcrEstimate,
 } from './step823VerifiedPending'
 
 const QUESTION_BANK_REF = 'owpxsmdcxjmsgadkdsci'
@@ -430,12 +431,14 @@ export async function runStep823(root: string, argv: string[]) {
   }
 
   let built = buildPreflight()
-  const schema = await schemaReady(admin)
-  const migrationCreds = migrationCredentialsPresent()
-  const migrationApply = {
-    attempted: persist && migrationCreds.canApply,
-    applied: false,
-    reason: persist ? (schema.ok ? 'already-present' : migrationCreds.reason) : 'cache-only',
+  let schema = await schemaReady(admin)
+  const migrationApply = persist
+    ? schema.ok
+      ? { attempted: false, applied: false, reason: 'already-present', via: null, http_status: null }
+      : await applyFigurePersistenceMigration(root, sql)
+    : { attempted: false, applied: false, reason: 'cache-only', via: null, http_status: null }
+  if (persist && !schema.ok && migrationApply.applied) {
+    schema = await schemaReady(admin)
   }
 
   const knownStemBefore: Record<string, string | null> = {}
@@ -686,6 +689,7 @@ export async function runStep823(root: string, argv: string[]) {
     staff_error: staffError,
     rows: ingestRows,
   })
+  writeJson(dest, 'pending-ocr-estimate.json', pendingPaidOcrEstimate())
   writeJson(dest, 'migration-apply.json', migrationApply)
   writeJson(dest, 'generalization-audit.json', { hits: hacks, pass: hacks.length === 0 })
   writeJson(dest, 'migration-audit.json', migration)

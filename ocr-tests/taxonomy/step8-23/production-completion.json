@@ -4,7 +4,9 @@
   "migration_apply": {
     "attempted": false,
     "applied": false,
-    "reason": "missing SUPABASE_DB_PASSWORD and DATABASE_URL"
+    "reason": "missing SUPABASE_ACCESS_TOKEN",
+    "via": null,
+    "http_status": null
   },
   "auto": 11,
   "assets_in_db": 0,

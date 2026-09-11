@@ -6,6 +6,7 @@ import {
   VERIFIED_PENDING_ALLOWLIST,
   loadVerifiedPendingProblems,
   pendingDraftPayload,
+  pendingPaidOcrEstimate,
   unresolvedPendingReport,
 } from './step823VerifiedPending'
 import { figurePersistGate, productionCompletionVerdict } from './figurePersistence'
@@ -28,6 +29,12 @@ describe('STEP 8.23 verified pending ingest', () => {
     expect(DO_NOT_RECREATE_IDS).toEqual(['12|0045', '114|0773'])
     expect(UNRESOLVED_PENDING_IDS).toHaveLength(8)
     expect(unresolvedPendingReport().every((row) => row.reason.includes('Paid OCR not authorized'))).toBe(true)
+    const ocr = pendingPaidOcrEstimate()
+    expect(ocr.problem_count).toBe(8)
+    expect(ocr.unique_page_count).toBe(5)
+    expect(ocr.paid_ocr_authorized).toBe(false)
+    expect(ocr.mathpix.typical_usd).toBeGreaterThan(0)
+    expect(ocr.mistral.typical_usd).toBeGreaterThan(0)
   })
 
   it('persists the link-ready subset and does not require 11/11 to apply', () => {

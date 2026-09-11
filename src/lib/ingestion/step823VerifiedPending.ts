@@ -93,3 +93,29 @@ export function pendingDraftPayload(problem: VerifiedPendingProblem) {
 export function unresolvedPendingReport() {
   return UNRESOLVED_PENDING_IDS.map((id) => ({ id, reason: UNRESOLVED_REASON }))
 }
+
+export function pendingPaidOcrEstimate() {
+  const pages = [...new Set(UNRESOLVED_PENDING_IDS.map((id) => Number(id.split('|')[0])))]
+  return {
+    problems: [...UNRESOLVED_PENDING_IDS],
+    problem_count: UNRESOLVED_PENDING_IDS.length,
+    unique_pages: pages,
+    unique_page_count: pages.length,
+    paid_ocr_authorized: false,
+    mathpix: {
+      service: 'Mathpix',
+      typical_calls: pages.length,
+      unit: 'page image',
+      typical_usd: Number((pages.length * 0.005).toFixed(4)),
+      crop_calls_if_problem_crops: UNRESOLVED_PENDING_IDS.length,
+      crop_typical_usd: Number((UNRESOLVED_PENDING_IDS.length * 0.002).toFixed(4)),
+    },
+    mistral: {
+      service: 'Mistral OCR',
+      typical_calls: pages.length,
+      unit: 'page',
+      typical_usd: Number((pages.length * 0.004).toFixed(4)),
+    },
+    note: 'No committed stem exists. Do not call paid OCR until the user approves.',
+  }
+}

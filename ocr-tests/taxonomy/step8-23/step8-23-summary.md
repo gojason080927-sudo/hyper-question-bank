@@ -18,7 +18,7 @@ idempotent: true
 dbOk: true
 hacks: []
 schema ok: false
-migration apply: false (missing SUPABASE_DB_PASSWORD and DATABASE_URL)
+migration apply: false (missing SUPABASE_ACCESS_TOKEN)
 persist attempted: true
 persist applied: false
 figure assets in DB: 0
