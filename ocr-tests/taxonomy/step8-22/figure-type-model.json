@@ -1,6 +1,7 @@
 {
   "types": [
     "GEOMETRY_DIAGRAM",
+    "TABLE",
     "GRAPHICAL_FIGURE"
   ],
   "unknown_allowed": true,

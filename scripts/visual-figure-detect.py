@@ -360,17 +360,20 @@ def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
     closed = dilate(visual, int(cfg["dilate"]))
     min_area = max(12, int(dw * dh * float(cfg["min_area_frac"]) * 0.15))
     comps = connected_components(closed, min_area)
+    raw_comps = connected_components(raw, min_area=3)
     boxes = []
     for minx, miny, maxx, maxy, area in comps:
         boxes.append((minx / dw, miny / dh, (maxx + 1) / dw, (maxy + 1) / dh, area))
     split: list[tuple[float, float, float, float, int]] = []
     for box in boxes:
-        for part in split_column_span(box):
-            split.extend(split_stem_figure(closed, part, dw, dh))
+        split.extend(split_column_span(box))
     merged = merge_boxes(split, float(cfg["merge_gap"]))
+    structured: list[tuple[float, float, float, float, int]] = []
+    for box in merged:
+        structured.extend(split_stem_figure(closed, box, dw, dh))
     header_y = float(cfg.get("header_y", 0.072))
     refined = []
-    for box in merged:
+    for box in structured:
         tight = tighten_box(visual, box)
         x0, y0, x1, y1, area = tight
         if y0 < header_y and (y1 - header_y) >= 0.08:
@@ -407,8 +410,21 @@ def detect_page(path: Path, text_boxes: list[dict], cfg: dict) -> dict:
         if kind == "SKIP_TEXT":
             skipped.append({"reason": "formula_or_boxed_text", "bbox": bbox})
             continue
+        glyphs = 0
+        for minx, miny, maxx, maxy, area in raw_comps:
+            if area >= 80:
+                continue
+            cx = ((minx + maxx) / 2) / dw
+            cy = ((miny + maxy) / 2) / dh
+            if bbox["x"] <= cx <= bbox["x"] + bbox["width"] and bbox["y"] <= cy <= bbox["y"] + bbox["height"]:
+                glyphs += 1
+        true_grid = h_hits >= 3 and v_hits >= 3
+        text_like = glyphs >= 55 and w >= 0.30 and h >= 0.08 and (not true_grid or glyphs >= 90)
         isolation = 1.0 - min(1.0, text_ov)
         conf = round(min(0.92, conf + 0.08 * isolation - 0.12 * max(0.0, text_ov - 0.4)), 3)
+        if text_like:
+            conf = min(conf, 0.72)
+            evidence = list(evidence) + ["textlike_low_confidence"]
         candidates.append(
             {
                 "figure_id": f"p{path.stem}-x{int(bbox['x']*1000)}-y{int(bbox['y']*1000)}",

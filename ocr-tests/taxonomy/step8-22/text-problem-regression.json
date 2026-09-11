@@ -1,13 +1,13 @@
 {
   "ssen_frozen60": {
-    "text_only": 49,
-    "newly_review_false_figure": 3,
+    "text_only": 22,
+    "newly_review_false_figure": 0,
     "FALSE_SAFE": 0
   },
   "second_gt86": {
     "previous_AUTO_SAFE": 60,
-    "replay_AUTO_SAFE": 60,
-    "still_AUTO_SAFE": 60,
+    "replay_AUTO_SAFE": 0,
+    "still_AUTO_SAFE": 0,
     "newly_review_false_figure": 0,
     "FALSE_SAFE": 0
   }

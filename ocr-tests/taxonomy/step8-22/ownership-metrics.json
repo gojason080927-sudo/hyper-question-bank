@@ -1,7 +1,7 @@
 {
-  "high_confidence": 14,
-  "high_confidence_correct": 14,
+  "high_confidence": 16,
+  "high_confidence_correct": 16,
   "high_confidence_precision": 1,
-  "ambiguous": 0,
+  "ambiguous": 1,
   "wrong_owner": 0
 }
