@@ -1,0 +1,24 @@
+[
+  {
+    "problem_identity": "12|0045",
+    "figure_id": "fig_c69f05b91cbb634eec1eb9bdcb423436",
+    "ownership_type": "SINGLE",
+    "ownership_confidence": 0.88,
+    "display_order": 1,
+    "required": true,
+    "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "page_number": 12,
+    "original_problem_number": "0045"
+  },
+  {
+    "problem_identity": "114|0773",
+    "figure_id": "fig_5e04276553cc45673a7e354ff06dfaca",
+    "ownership_type": "SINGLE",
+    "ownership_confidence": 0.88,
+    "display_order": 1,
+    "required": true,
+    "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "page_number": 114,
+    "original_problem_number": "0773"
+  }
+]

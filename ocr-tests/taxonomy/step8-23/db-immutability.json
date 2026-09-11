@@ -1,0 +1,24 @@
+{
+  "before": {
+    "total_draft": 756,
+    "type_auto": 38,
+    "difficulty": 96,
+    "item": 155,
+    "stage": 155,
+    "problem_assets": 0
+  },
+  "after": {
+    "total_draft": 756,
+    "type_auto": 38,
+    "difficulty": 96,
+    "item": 155,
+    "stage": 155,
+    "problem_assets": 0
+  },
+  "frozen_ssen_drafts": 728,
+  "content_changed": 0,
+  "production_problem_writes": 0,
+  "production_figure_writes": 0,
+  "production_upload": false,
+  "ok": true
+}

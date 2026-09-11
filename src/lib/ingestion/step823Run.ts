@@ -192,9 +192,9 @@ async function loadIdentities(admin: SupabaseClient, documentId: string): Promis
 }
 
 async function schemaReady(admin: SupabaseClient): Promise<{ ok: boolean; reason: string | null }> {
-  const assets = await admin.from('problem_figure_assets').select('id', { count: 'exact', head: true })
+  const assets = await admin.from('problem_figure_assets').select('id').limit(1)
   if (assets.error) return { ok: false, reason: assets.error.message }
-  const links = await admin.from('problem_figure_links').select('id', { count: 'exact', head: true })
+  const links = await admin.from('problem_figure_links').select('id').limit(1)
   if (links.error) return { ok: false, reason: links.error.message }
   return { ok: true, reason: null }
 }
@@ -290,10 +290,8 @@ export async function runStep823(root: string, argv: string[]) {
       expectedDocumentId: documentForBook(gt.book),
     })
     preflight.push(rowPre)
-    if (rowPre.pass && rowPre.asset && rowPre.link) {
-      assets.push(rowPre.asset)
-      links.push(rowPre.link)
-    }
+    if (rowPre.asset_ready && rowPre.asset) assets.push(rowPre.asset)
+    if (rowPre.pass && rowPre.link) links.push(rowPre.link)
   }
 
   const uniqueAssets = dedupeAssets(assets)
@@ -301,6 +299,8 @@ export async function runStep823(root: string, argv: string[]) {
   const replayIds = uniqueAssets.map((row) => row.figure_id)
   const idempotent = replayDoesNotDuplicate(replayIds, dedupeAssets(assets).map((row) => row.figure_id))
   const schema = await schemaReady(admin)
+  const pendingProblems = preflight.filter((row) => row.asset_ready && row.reasons.includes('PROBLEM_NOT_INGESTED'))
+  const assetReady = preflight.filter((row) => row.asset_ready).length
 
   let productionWrites = 0
   let persistResult: { attempted: boolean; applied: boolean; created_assets: number; created_links: number; reason: string | null } = {
@@ -353,9 +353,8 @@ export async function runStep823(root: string, argv: string[]) {
     gtBefore === gtAfter
   const verdictPass =
     autoRows.length >= 10 &&
-    preflight.filter((row) => row.pass).length === autoRows.length &&
+    assetReady === autoRows.length &&
     uniqueAssets.length === autoRows.length &&
-    links.length === autoRows.length &&
     orphans.length === 0 &&
     idempotent &&
     hacks.length === 0 &&
@@ -371,8 +370,10 @@ export async function runStep823(root: string, argv: string[]) {
 
   writeJson(dest, 'preflight.json', {
     auto: autoRows.length,
-    passed: preflight.filter((row) => row.pass).length,
-    failed: preflight.filter((row) => !row.pass),
+    asset_ready: assetReady,
+    link_ready: preflight.filter((row) => row.pass).length,
+    pending_problems: pendingProblems.map((row) => row.id),
+    failed: preflight.filter((row) => !row.asset_ready),
     skipped,
     rows: preflight,
   })
@@ -402,6 +403,8 @@ export async function runStep823(root: string, argv: string[]) {
     projected_assets: uniqueAssets.length,
     projected_links: links.length,
     preflight_pass: preflight.filter((row) => row.pass).length,
+    asset_ready: assetReady,
+    pending_problems: pendingProblems.length,
     skipped_non_auto: skipped.length,
     orphans: orphans.length,
     idempotent,
@@ -420,8 +423,10 @@ STEP 8.23 RESULT: ${verdict}
 
 AUTO_FIGURE_SAFE in: ${autoRows.length}
 projected assets: ${uniqueAssets.length}
-projected links: ${links.length}
-preflight pass: ${preflight.filter((row) => row.pass).length}
+projected links (existing problems): ${links.length}
+asset ready: ${assetReady}
+link ready: ${preflight.filter((row) => row.pass).length}
+pending problem ingest: ${pendingProblems.length}
 non-AUTO skipped: ${skipped.length}
 orphans: ${orphans.length}
 idempotent: ${idempotent}

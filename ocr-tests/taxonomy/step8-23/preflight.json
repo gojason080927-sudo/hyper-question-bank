@@ -1,0 +1,473 @@
+{
+  "auto": 11,
+  "asset_ready": 11,
+  "link_ready": 2,
+  "pending_problems": [
+    "20|0097",
+    "108|0735",
+    "108|0736",
+    "114|0775",
+    "122|0833",
+    "134|0924",
+    "134|0925",
+    "134|0926",
+    "189|1300"
+  ],
+  "failed": [],
+  "skipped": [
+    {
+      "id": "108|0737",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE"
+      ]
+    },
+    {
+      "id": "111|0754",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE"
+      ]
+    },
+    {
+      "id": "114|0774",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE"
+      ]
+    },
+    {
+      "id": "183|1266",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE"
+      ]
+    },
+    {
+      "id": "26|11",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE"
+      ]
+    },
+    {
+      "id": "26|32",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    },
+    {
+      "id": "26|33",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    },
+    {
+      "id": "33|48",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    },
+    {
+      "id": "75|143",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    },
+    {
+      "id": "198|419",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    },
+    {
+      "id": "239|05",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    },
+    {
+      "id": "239|519",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    },
+    {
+      "id": "239|520",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE"
+      ]
+    },
+    {
+      "id": "286|623",
+      "reasons": [
+        "NOT_AUTO",
+        "REVIEW_BLOCKED",
+        "CROP_NOT_SAFE",
+        "NOT_DETECTED",
+        "OWNER_INCORRECT"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "id": "12|0045",
+      "pass": true,
+      "asset_ready": true,
+      "reasons": [],
+      "asset": {
+        "figure_id": "fig_c69f05b91cbb634eec1eb9bdcb423436",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 12,
+        "bbox": {
+          "x": 0.5429,
+          "y": 0.6796,
+          "width": 0.4071,
+          "height": 0.1518,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/12-0045.png",
+        "source_hash": "3abe427eee72fce5915dd2138287412a80dc9000e397968ad9ca371e0dfd20d9",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": {
+        "problem_identity": "12|0045",
+        "figure_id": "fig_c69f05b91cbb634eec1eb9bdcb423436",
+        "ownership_type": "SINGLE",
+        "ownership_confidence": 0.88,
+        "display_order": 1,
+        "required": true,
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 12,
+        "original_problem_number": "0045"
+      }
+    },
+    {
+      "id": "20|0097",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_3baeb50892de990d15cbade7e28fb0ed",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 20,
+        "bbox": {
+          "x": 0.0952,
+          "y": 0.0843,
+          "width": 0.4143,
+          "height": 0.2917,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/20-0097.png",
+        "source_hash": "33746e1b653d771c986943b5b304f9b618c6b57113712c0d24de004ecf158bcb",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "108|0735",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_1a1e27e36c1314bb84ce7ad15e0ac0ac",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 108,
+        "bbox": {
+          "x": 0.1048,
+          "y": 0.4074,
+          "width": 0.4048,
+          "height": 0.1515,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/108-0735.png",
+        "source_hash": "6e34e995d107171a2cad85fd83ee308bf7ce72276f0d8c0276df3718cf1f1262",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "108|0736",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_92bc882c51676b369a7259b156712aff",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 108,
+        "bbox": {
+          "x": 0.1024,
+          "y": 0.6751,
+          "width": 0.3714,
+          "height": 0.1667,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "TABLE",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/108-0736.png",
+        "source_hash": "07ca70ff57271180ff656e3d969504e065fc793a21189985d5032cbc8d91d858",
+        "detection_confidence": 0.86,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "114|0773",
+      "pass": true,
+      "asset_ready": true,
+      "reasons": [],
+      "asset": {
+        "figure_id": "fig_5e04276553cc45673a7e354ff06dfaca",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 114,
+        "bbox": {
+          "x": 0.1048,
+          "y": 0.4992,
+          "width": 0.4071,
+          "height": 0.2513,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/114-0773.png",
+        "source_hash": "facb700fd32ba17f7cd05839292e0ba076360e911e1d2361964971b4a3ad4d41",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": {
+        "problem_identity": "114|0773",
+        "figure_id": "fig_5e04276553cc45673a7e354ff06dfaca",
+        "ownership_type": "SINGLE",
+        "ownership_confidence": 0.88,
+        "display_order": 1,
+        "required": true,
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 114,
+        "original_problem_number": "0773"
+      }
+    },
+    {
+      "id": "114|0775",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_86314c48fb0f9eacff935a9330ad1fae",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 114,
+        "bbox": {
+          "x": 0.5476,
+          "y": 0.3794,
+          "width": 0.4095,
+          "height": 0.2007,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/114-0775.png",
+        "source_hash": "c73e959252d28e9463183652b7ff538b84f99967a357930e0029e4a3b560895e",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "122|0833",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_2dfe5b3dfc7018420702b65c798b29a5",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 122,
+        "bbox": {
+          "x": 0.55,
+          "y": 0.0927,
+          "width": 0.4071,
+          "height": 0.1366,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/122-0833.png",
+        "source_hash": "69ad0306d0c031407d15d07d2cd254546de7d52892f6a6e0888057b2ca782ff1",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "134|0924",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_b1781867b0d199398a3e8b4ab88760a3",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 134,
+        "bbox": {
+          "x": 0.1071,
+          "y": 0.0843,
+          "width": 0.4071,
+          "height": 0.312,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/134-0924.png",
+        "source_hash": "7b9eeacf02cf668703a0ec7353223dd32d6592da422ebabc82e1f60e01271013",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "134|0925",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_37c40275ade6cb9ebcc1c7d03c693d7f",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 134,
+        "bbox": {
+          "x": 0.1071,
+          "y": 0.4907,
+          "width": 0.4024,
+          "height": 0.1501,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/134-0925.png",
+        "source_hash": "e3095a00f1115ee89e0dfb12057f34239398ca35091f600a8a637e36a82f51df",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "134|0926",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_17a2b559e2166b0b759420c0aa835f51",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 134,
+        "bbox": {
+          "x": 0.1048,
+          "y": 0.7369,
+          "width": 0.4024,
+          "height": 0.1265,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/134-0926.png",
+        "source_hash": "474f5684983cbe0d53b91ccb82bf34a48c9d41658af93f8a12f002044f18acb0",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    },
+    {
+      "id": "189|1300",
+      "pass": false,
+      "asset_ready": true,
+      "reasons": [
+        "PROBLEM_NOT_INGESTED"
+      ],
+      "asset": {
+        "figure_id": "fig_7cba64df68f4bdf3e5b4c74ff01631c2",
+        "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+        "page_number": 189,
+        "bbox": {
+          "x": 0.0333,
+          "y": 0.0843,
+          "width": 0.5071,
+          "height": 0.2799,
+          "unit": "normalized",
+          "origin": "top-left"
+        },
+        "figure_type": "GEOMETRY_DIAGRAM",
+        "original_crop_path": "ocr-tests/taxonomy/step8-22/crops/189-1300.png",
+        "source_hash": "c414b1928c2294b892a609cd55b8e312b9aa98b38a3337897787af3c957c602d",
+        "detection_confidence": 0.72,
+        "review_status": "AUTO",
+        "assigned_by": "STEP_8_23"
+      },
+      "link": null
+    }
+  ]
+}

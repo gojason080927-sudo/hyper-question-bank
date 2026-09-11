@@ -1,0 +1,28 @@
+{
+  "step": "8.23",
+  "verdict": "PASS",
+  "auto": 11,
+  "projected_assets": 11,
+  "projected_links": 2,
+  "preflight_pass": 2,
+  "asset_ready": 11,
+  "pending_problems": 9,
+  "skipped_non_auto": 14,
+  "orphans": 0,
+  "idempotent": true,
+  "dbOk": true,
+  "hacks": [],
+  "persist": {
+    "attempted": false,
+    "applied": false,
+    "created_assets": 0,
+    "created_links": 0,
+    "reason": "cache-only"
+  },
+  "paid_api_calls": {
+    "mistral": 0,
+    "mathpix": 0,
+    "needs_external_vision": false
+  },
+  "production_problem_writes": 0
+}

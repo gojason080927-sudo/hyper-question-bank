@@ -81,7 +81,7 @@ describe('STEP 8.23 figure persistence contract', () => {
       displayNumber: '0045',
       sourceDocumentId: 'doc-1',
       bbox: box(0.2, 0.3, 0.4, 0.2),
-      cropBytes: Buffer.from('crop-bytes-ok-crop-bytes-ok'),
+      cropBytes: Buffer.alloc(64, 7),
     })
     const failed = preflightFigure({
       id: '12|0045',
@@ -90,8 +90,9 @@ describe('STEP 8.23 figure persistence contract', () => {
       expectedDocumentId: 'doc-1',
     })
     expect(failed.pass).toBe(false)
-    expect(failed.reasons).toContain('MISSING_PROBLEM_OR_SOURCE')
-    expect(failed.asset).toBeNull()
+    expect(failed.asset_ready).toBe(true)
+    expect(failed.reasons).toContain('PROBLEM_NOT_INGESTED')
+    expect(failed.asset?.figure_id).toBeTruthy()
   })
 
   it('keeps replay idempotent and reports orphans', () => {

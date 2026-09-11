@@ -1,0 +1,4 @@
+{
+  "ok": false,
+  "reason": "Could not find the table 'public.problem_figure_assets' in the schema cache"
+}

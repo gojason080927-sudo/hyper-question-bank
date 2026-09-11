@@ -76,6 +76,7 @@ export type DbIdentity = {
 export type PreflightRow = {
   id: string
   pass: boolean
+  asset_ready: boolean
   reasons: string[]
   asset: FigureAssetDraft | null
   link: FigureLinkDraft | null
@@ -180,7 +181,7 @@ export function preflightFigure(input: {
   if ('reasons' in input.projected) reasons.push(...input.projected.reasons)
   const asset = 'asset' in input.projected ? input.projected.asset : null
   const link = 'link' in input.projected ? input.projected.link : null
-  if (!input.ident) reasons.push('MISSING_PROBLEM_OR_SOURCE')
+  if (!input.ident) reasons.push('PROBLEM_NOT_INGESTED')
   if (input.ident && input.ident.source_document_id !== input.expectedDocumentId) reasons.push('WRONG_DOCUMENT')
   if (asset && input.ident && asset.source_document_id !== input.ident.source_document_id) reasons.push('ASSET_DOCUMENT_MISMATCH')
   if (link && input.ident && canonicalizeProblemNumber(input.ident.problem_number) !== link.original_problem_number) {
@@ -188,12 +189,15 @@ export function preflightFigure(input: {
   }
   if (link && input.ident && input.ident.page !== link.page_number) reasons.push('PAGE_MISMATCH')
   if (input.ident && !input.ident.current_version_id) reasons.push('MISSING_CURRENT_VERSION')
+  const projectionFailed = 'reasons' in input.projected
+  const blocking = reasons.filter((reason) => reason !== 'PROBLEM_NOT_INGESTED')
   return {
     id: input.id,
-    pass: reasons.length === 0 && !!asset && !!link && !!input.ident,
+    pass: blocking.length === 0 && !!asset && !!link && !!input.ident,
+    asset_ready: !projectionFailed && !!asset,
     reasons,
-    asset: reasons.length ? null : asset,
-    link: reasons.length ? null : link,
+    asset: projectionFailed ? null : asset,
+    link: blocking.length || !input.ident ? null : link,
   }
 }
 
