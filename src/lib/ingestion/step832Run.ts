@@ -9,10 +9,10 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import path from 'node:path'
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { FEATURE_FLAGS } from './adaptiveRouter'
-import { parsePaidGate } from '../ocr/paidGate'
-import { hasMistralCredentials } from '../ocr/mistralSecrets'
-import { createMistralProvider } from '../ocr/mistralProvider'
+import { parsePaidGate, assertPaidMistralAllowed } from '../ocr/paidGate'
+import { hasMistralCredentials, readMistralCredentials } from '../ocr/mistralSecrets'
 import { extractMistralMarkdown, mistralLayoutFromRaw, type MistralOcrLike } from '../ocr/normalizeMistral'
+import { MISTRAL_ENDPOINT, MISTRAL_MODEL } from '../ocr/mathOcrTypes'
 import { loadEnvLocal } from '../classification/step88Io'
 import { buildBookStructure, type BookStructure } from '../classification/bookStructure'
 import { classifyDraftV1, DEFAULT_V1_THRESHOLDS } from '../taxonomy/taxonomyClassifier'
@@ -50,6 +50,7 @@ import {
   humanReadableContent,
   inBatchDuplicates,
   isExcludedPageKind,
+  isFrontMatterPage,
   mapPersistWithExisting,
   paidCapAllows,
   persistEligible832,
@@ -273,8 +274,18 @@ function loadAnonKey() {
   }
 }
 
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+function mergePaidLedger(root: string, newCalls: number): { mistral: number; usd: number } {
+  const file = path.join(root, CACHE_DIR, 'paid-ledger.json')
+  let previous = 0
+  if (existsSync(file)) {
+    const parsed = JSON.parse(readFileSync(file, 'utf8')) as { mistral?: number }
+    previous = typeof parsed.mistral === 'number' ? parsed.mistral : 0
+  }
+  const mistral = previous + newCalls
+  const usd = estimateMistralUsd(mistral)
+  mkdirSync(path.dirname(file), { recursive: true })
+  writeFileSync(file, JSON.stringify({ mistral, usd }, null, 2), 'utf8')
+  return { mistral, usd }
 }
 
 async function downloadOriginalPdf(root: string): Promise<{ path: string; sha256: string; bytes: number } | null> {
@@ -386,6 +397,26 @@ function layoutForPage(
   return syntheticLayoutFromMarkdown(markdown, fallback.width, fallback.height)
 }
 
+function stripImageBase64(raw: MistralOcrLike): MistralOcrLike {
+  return {
+    ...raw,
+    pages: (raw.pages ?? []).map((page) => ({
+      ...page,
+      images: (page.images ?? []).map((image) => ({
+        id: image.id,
+        top_left_x: image.top_left_x,
+        top_left_y: image.top_left_y,
+        bottom_right_x: image.bottom_right_x,
+        bottom_right_y: image.bottom_right_y,
+      })),
+    })),
+  }
+}
+
+function bytesToBase64(bytes: Uint8Array): string {
+  return Buffer.from(bytes).toString('base64')
+}
+
 async function ocrPage(input: {
   root: string
   page: number
@@ -414,43 +445,52 @@ async function ocrPage(input: {
   if (!cap.ok) {
     return { raw: null, markdown: '', cached: false, called: false, http: null, error: cap.reasons.join(',') }
   }
-  const provider = createMistralProvider()
+  assertPaidMistralAllowed(input.gate)
+  const creds = readMistralCredentials()
+  if (!creds) return { raw: null, markdown: '', cached: false, called: false, http: null, error: 'MISTRAL_ABSENT' }
   let lastError: string | null = null
+  let lastHttp: number | null = null
+  const imageB64 = bytesToBase64(new Uint8Array(readFileSync(png)))
   for (let attempt = 0; attempt < 4; attempt += 1) {
     try {
-      const result = await provider.recognizeCrop(
-        { sampleId: `p${String(input.page).padStart(3, '0')}`, imageBytes: new Uint8Array(readFileSync(png)), mimeType: 'image/png' },
-        input.gate,
-      )
+      const started = Date.now()
+      const response = await fetch(MISTRAL_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${creds.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: MISTRAL_MODEL,
+          document: { type: 'image_url', image_url: `data:image/png;base64,${imageB64}` },
+          include_image_base64: false,
+        }),
+      })
+      lastHttp = response.status
       input.calls.mistral += 1
-      const raw = result.raw.raw_response as MistralOcrLike
+      const raw = stripImageBase64((await response.json()) as MistralOcrLike)
       mkdirSync(path.dirname(ocrCachePath(input.root, input.page)), { recursive: true })
       writeFileSync(ocrCachePath(input.root, input.page), JSON.stringify(raw), 'utf8')
-      const markdown = extractMistralMarkdown(raw) || result.raw.raw_text || ''
-      if (result.raw.http_status === 429 || (result.raw.http_status ?? 0) >= 500) {
-        lastError = result.raw.error ?? `HTTP ${result.raw.http_status}`
-        await sleep(1000 * 2 ** attempt)
+      const markdown = extractMistralMarkdown(raw)
+      const elapsed = Date.now() - started
+      console.log(`STEP 8.32 OCR page ${input.page} http=${response.status} ms=${elapsed} cached=0`)
+      if (response.status === 429 || response.status >= 500) {
+        lastError = raw.error ?? raw.detail ?? raw.message ?? `HTTP ${response.status}`
+        await sleep(1500 * 2 ** attempt)
         continue
       }
-      return {
-        raw,
-        markdown,
-        cached: false,
-        called: true,
-        http: result.raw.http_status,
-        error: result.raw.http_status && result.raw.http_status >= 400 ? result.raw.error : null,
+      if (!response.ok) {
+        lastError = raw.error ?? raw.detail ?? raw.message ?? `HTTP ${response.status}`
+        return { raw, markdown, cached: false, called: true, http: response.status, error: lastError }
       }
+      await sleep(120)
+      return { raw, markdown, cached: false, called: true, http: response.status, error: null }
     } catch (error) {
       lastError = error instanceof Error ? error.message : 'ocr_failed'
-      if (/429|HQB_PAID_CALL_DENIED|HQB_CACHE_ONLY/.test(lastError)) {
-        if (/429/.test(lastError)) await sleep(1000 * 2 ** attempt)
-        else break
-      } else {
-        await sleep(400 * (attempt + 1))
-      }
+      await sleep(800 * (attempt + 1))
     }
   }
-  return { raw: null, markdown: '', cached: false, called: true, http: null, error: lastError }
+  return { raw: null, markdown: '', cached: false, called: true, http: lastHttp, error: lastError }
 }
 
 async function lookupExistingDrafts(): Promise<Map<string, ExistingDraft832>> {
@@ -766,7 +806,9 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
   const rawCandidates: BookItem[] = []
   const blockedPages: BookItem[] = []
 
-  const processBook = !gate.cacheOnly || inventory.size > 0 || [...Array(toPage - fromPage + 1).keys()].some((i) => existsSync(ocrCachePath(root, fromPage + i)))
+  const processBook =
+    original.hash_match &&
+    (!gate.cacheOnly || argv.includes('--full-cache') || persistRequested || argv.includes('--allow-paid-api'))
 
   if (processBook && original.hash_match) {
     for (let page = fromPage; page <= toPage; page += 1) {
@@ -785,7 +827,9 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
         block_count: ocr.raw ? mistralLayoutFromRaw(ocr.raw).blocks.length : 0,
         image_count: ocr.raw ? (ocr.raw.pages?.[0]?.images ?? []).length : 0,
       })
-      const excluded = isExcludedPageKind(classified.page_kind) && classified.page_kind !== 'UNKNOWN' && classified.page_kind !== 'OCR_FAILED'
+      const excluded =
+        isFrontMatterPage(page, ocr.markdown) ||
+        (isExcludedPageKind(classified.page_kind) && classified.page_kind !== 'UNKNOWN' && classified.page_kind !== 'OCR_FAILED')
       pages.push({
         page,
         kind: classified.page_kind,
@@ -838,7 +882,7 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
       if (!problemPageKind(classified.page_kind) && classified.page_kind !== 'OCR_FAILED') continue
       const layout = layoutForPage(ocr.raw, ocr.markdown, { width: meta?.width ?? 1000, height: meta?.height ?? 1400 })
       const segmented = segmentPageFromLayout(layout)
-      const problemRegions = segmented.regions.filter((region) => region.layout_kind === 'PROBLEM' || region.kind === 'four_digit' || region.kind === 'dotted')
+      const problemRegions = segmented.regions.filter((region) => region.kind === 'four_digit')
       if (problemRegions.length === 0 && (classified.page_kind === 'PROBLEM' || classified.page_kind === 'MIXED')) {
         const dummy: NormalizedBBox = { x: 0.05, y: 0.05, width: 0.9, height: 0.9, unit: 'normalized', origin: 'top-left' }
         blockedPages.push({
@@ -1067,6 +1111,7 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
         ? 'PROCESSED'
         : 'CACHE_ONLY_PLANNED'
 
+  const ledger = mergePaidLedger(root, calls.mistral)
   const summary: Step832Summary = {
     step: STEP832,
     name: 'Full 192-page SSEN ingest to Production DRAFT',
@@ -1092,7 +1137,7 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
       mistral_cached: pages.filter((row) => row.ocr_cached).length,
     },
     paid_ocr_cap: { max_calls: STEP832_PAID_OCR_CAP.maxCalls, max_usd: STEP832_PAID_OCR_CAP.maxUsd },
-    estimated_usd: estimateMistralUsd(calls.mistral),
+    estimated_usd: ledger.usd,
     mistral_credentials: hasMistralCredentials() ? 'PRESENT' : 'ABSENT',
     frozen: FROZEN_PIPELINE_COUNTS,
     original_pdf: original,
@@ -1115,6 +1160,12 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
     })),
     results,
   }
+
+  const skipCacheOnlyOverwrite =
+    gate.cacheOnly &&
+    !persistRequested &&
+    existsSync(path.join(dest, 'persist-history.json'))
+  if (skipCacheOnlyOverwrite) return summary
 
   writeJson(dest, 'summary.json', summary)
   writeJson(dest, 'pages.json', { pages })
@@ -1143,20 +1194,48 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
   writeJson(dest, 'targets.json', { targets })
   writeJson(dest, 'tally.json', tally)
   writeJson(dest, 'ocr-cost.json', {
-    mistral_calls: calls.mistral,
+    mistral_calls: ledger.mistral,
     mistral_cached: pages.filter((row) => row.ocr_cached).length,
     mathpix_calls: 0,
-    estimated_usd: estimateMistralUsd(calls.mistral),
+    estimated_usd: ledger.usd,
     cap: STEP832_PAID_OCR_CAP,
     credentials: { mistral: hasMistralCredentials() ? 'PRESENT' : 'ABSENT', mathpix: 'ABSENT' },
   })
-  if (persist.ran || probe || !existsSync(path.join(dest, 'production-before.json'))) {
+  if ((!existsSync(path.join(dest, 'production-before.json')) && (persist.ran || probe)) || argv.includes('--reset-production-snapshot')) {
     writeJson(dest, 'production-before.json', before)
   }
   if (persist.ran || probe || !existsSync(path.join(dest, 'production-after.json'))) {
     writeJson(dest, 'production-after.json', after)
   }
   if (persist.ran) {
+    const historyPath = path.join(dest, 'persist-history.json')
+    const previous = existsSync(historyPath)
+      ? (JSON.parse(readFileSync(historyPath, 'utf8')) as { new_drafts?: number; runs?: unknown[] })
+      : { new_drafts: 0, runs: [] }
+    const history = {
+      production_drafts_start: 761,
+      new_drafts: (previous.new_drafts ?? 0) + persist.created.length,
+      production_drafts_end: after.drafts,
+      needs_review_end: after.needs_review,
+      figure_assets: after.figure_assets,
+      figure_links: after.figure_links,
+      type_auto: after.type_auto,
+      mistral_lifetime: ledger.mistral,
+      estimated_usd: ledger.usd,
+      last_created: persist.created.length,
+      idempotent: persist.created.length === 0 && (previous.new_drafts ?? 0) > 0,
+      runs: [
+        ...((previous.runs as unknown[]) ?? []),
+        {
+          created: persist.created.length,
+          existing: persist.existing.length,
+          failed: persist.failed.length,
+          drafts_before: before.drafts,
+          drafts_after: after.drafts,
+        },
+      ],
+    }
+    writeJson(dest, 'persist-history.json', history)
     writeJson(dest, 'persist-result.json', {
       ran: true,
       pipeline_run_id: persist.pipeline_run_id,
@@ -1167,6 +1246,7 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
       submitted_needs_review: persist.submitted_needs_review,
       production_before: before,
       production_after: after,
+      cumulative_new_drafts: history.new_drafts,
     })
   } else if (!existsSync(path.join(dest, 'persist-result.json'))) {
     writeJson(dest, 'persist-result.json', { ran: false, created: [], note: 'persist-result is written only on --persist' })
@@ -1189,7 +1269,7 @@ export async function runStep832(root: string, argv: string[]): Promise<Step832S
     `BLOCKED: ${tally.blocked}`,
     `skipped identity: ${tally.skipped_identity}`,
     `AUTO_APPROVED: 0`,
-    `mistral new/cached: ${summary.paid_api_calls.mistral}/${summary.paid_api_calls.mistral_cached}`,
+    `mistral new/cached/lifetime: ${summary.paid_api_calls.mistral}/${summary.paid_api_calls.mistral_cached}/${ledger.mistral}`,
     `estimated USD: ${summary.estimated_usd}`,
     `Production drafts before/after: ${before.drafts}/${after.drafts}`,
     `new DRAFT writes: ${summary.production_draft_writes}`,

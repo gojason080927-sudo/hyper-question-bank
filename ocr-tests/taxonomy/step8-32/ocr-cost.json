@@ -1,8 +1,8 @@
 {
-  "mistral_calls": 0,
-  "mistral_cached": 0,
+  "mistral_calls": 192,
+  "mistral_cached": 192,
   "mathpix_calls": 0,
-  "estimated_usd": 0,
+  "estimated_usd": 0.768,
   "cap": {
     "maxCalls": 250,
     "maxUsd": 1

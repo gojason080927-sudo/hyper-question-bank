@@ -1,11 +1,11 @@
 {
-  "queried": false,
-  "reason": "no_probe",
-  "drafts": null,
-  "type_auto": null,
-  "figure_assets": null,
-  "figure_links": null,
-  "pipeline_runs": null,
-  "pipeline_items": null,
-  "needs_review": null
+  "queried": true,
+  "reason": "read_only",
+  "drafts": 1281,
+  "type_auto": 38,
+  "figure_assets": 3,
+  "figure_links": 3,
+  "pipeline_runs": 2,
+  "pipeline_items": 1279,
+  "needs_review": 545
 }

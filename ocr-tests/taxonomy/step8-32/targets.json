@@ -38,7 +38,7 @@
       "kind": "DRAFTS",
       "verdict": "PASS",
       "reasons": [
-        "DRY_OR_CACHE"
+        "PERSIST_RAN"
       ]
     }
   ]

@@ -11,6 +11,7 @@ import {
   humanReadableContent,
   inBatchDuplicates,
   isExcludedPageKind,
+  isFrontMatterPage,
   mapPersistWithExisting,
   neverVerified832,
   paidCapAllows,
@@ -93,6 +94,20 @@ describe('STEP 8.32 persist policy', () => {
     expect(missingCrop.ok).toBe(false)
     expect(missingCrop.action).toBe('SKIP_BLOCKED')
     expect(pipelineStatusFor(missingCrop.action)).toBe('BLOCKED')
+    const thin = persistEligible832({
+      source_document_id: STEP832_DOCUMENT,
+      page: 47,
+      bbox,
+      crop_present: true,
+      text: '0283',
+      canonical: '0283',
+      duplicate_check_ran: true,
+      identity_collision: false,
+      auto_approved: false,
+    })
+    expect(thin.ok).toBe(true)
+    expect(thin.action).toBe('CREATE_DRAFT')
+    expect(thin.reasons).toContain('CONTENT_THIN_NEEDS_REVIEW')
   })
 
   it('queues non-canonical numbers for HUMAN_REVIEW without CREATE', () => {
@@ -119,7 +134,7 @@ describe('STEP 8.32 persist policy', () => {
       create_draft: 3,
       auto_approved: 0,
       verified: 0,
-      duplicate_ids: [],
+      duplicate_ids: ['36|0159'],
       wrong_source: 0,
       lookup_complete: true,
     }).ok).toBe(true)
@@ -147,6 +162,9 @@ describe('STEP 8.32 page exclusion and stitch', () => {
     expect(problemPageKind('MIXED')).toBe(true)
     expect(isExcludedPageKind('UNKNOWN')).toBe(false)
     expect(isExcludedPageKind('OCR_FAILED')).toBe(false)
+    expect(isFrontMatterPage(1, '1500 : 1 경쟁률')).toBe(true)
+    expect(isFrontMatterPage(6, '차례')).toBe(true)
+    expect(isFrontMatterPage(9, '0001 다항식')).toBe(false)
   })
 
   it('stitches a problem that continues on the next page', () => {

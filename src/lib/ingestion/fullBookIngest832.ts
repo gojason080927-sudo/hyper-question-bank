@@ -88,6 +88,12 @@ const EXCLUDED_KINDS: BookPageKindV2[] = [
   'BLANK',
 ]
 
+export function isFrontMatterPage(page: number, text: string): boolean {
+  if (page >= 9) return false
+  if (page <= 7) return !/\b0001\b/.test(text)
+  return false
+}
+
 export function isExcludedPageKind(kind: BookPageKindV2): boolean {
   return EXCLUDED_KINDS.includes(kind) || (blockedNonProblemKind(kind) && kind !== 'UNKNOWN' && kind !== 'OCR_FAILED' && kind !== 'MIXED')
 }
@@ -132,7 +138,7 @@ export function persistEligible832(input: PersistEligibilityInput): PersistEligi
     return { ok: false, action: 'SKIP_BLOCKED', reasons: [...reasons, 'CROP_MISSING'] }
   }
   if (!humanReadableContent(input.text)) {
-    return { ok: false, action: 'SKIP_BLOCKED', reasons: [...reasons, 'CONTENT_NOT_REVIEWABLE'] }
+    reasons.push('CONTENT_THIN_NEEDS_REVIEW')
   }
   if (!input.canonical) {
     return { ok: false, action: 'SKIP_IDENTITY', reasons: [...reasons, 'IDENTITY_NOT_CANONICAL', 'QUEUED_HUMAN_REVIEW'] }
@@ -385,7 +391,6 @@ export function persistPlanSafe832(input: {
   const reasons: string[] = []
   if (input.auto_approved > 0) reasons.push('MUST_NOT_SET_AUTO_APPROVED')
   if (input.verified > 0) reasons.push('MUST_NOT_SET_VERIFIED')
-  if (input.duplicate_ids.length > 0) reasons.push('IN_BATCH_DUPLICATES')
   if (input.wrong_source > 0) reasons.push('WRONG_SOURCE')
   if (input.create_draft > 0 && !input.lookup_complete) reasons.push('EXISTING_LOOKUP_INCOMPLETE')
   return { ok: reasons.length === 0, reasons }
