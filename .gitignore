@@ -65,3 +65,6 @@ temp/
 Thumbs.db
 
 .vercel
+
+# Local recovered crops for STEP 8.31 review UI (copyrighted textbook pixels)
+public/review-crops/

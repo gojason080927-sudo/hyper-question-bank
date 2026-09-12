@@ -1,0 +1,25 @@
+{
+  "step828_items_present": true,
+  "step828_count": 26,
+  "step829_reviews_present": true,
+  "step829_count": 26,
+  "step830_compares_present": true,
+  "step830_count": 26,
+  "gt_present": true,
+  "gt_count": 26,
+  "gt_sha256": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "gt_sha256_after": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "mutated": false,
+  "manifest_present": true,
+  "manifest_count": 26,
+  "recovered_crops": 26,
+  "frozen_hash_matches": 0,
+  "original_pdf": {
+    "present": true,
+    "path": ".ocr-temp/ssen-original.pdf",
+    "sha256": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+    "hash_match": true,
+    "is_second_book": false,
+    "substituted": false
+  }
+}

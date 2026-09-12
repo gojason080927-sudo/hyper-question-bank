@@ -20,7 +20,7 @@ import { createMathpixProvider } from './mathpixProvider'
 import { forbiddenBrowserMathpixKeys, hasMathpixCredentials, readMathpixCredentials } from './mathpixSecrets'
 import { normalizeMathpixToHyper, preserveRawRecord } from './normalizeMathpix'
 import { assertPaidMathpixAllowed, parsePaidGate } from './paidGate'
-import { STEP7_DOCUMENT_ID, STEP7_SAMPLE_COUNT, STEP7_WINDOWS_OCR_BASELINE } from './step7Baseline'
+import { STEP7_DOCUMENT_ID, STEP7_GROUND_TRUTH_VERSION, STEP7_GT_JSON_SHA256, STEP7_SAMPLE_COUNT, STEP7_WINDOWS_OCR_BASELINE } from './step7Baseline'
 
 const root = process.cwd()
 const env = process.env
@@ -87,7 +87,8 @@ describe('corpus hash validation', () => {
       samples: Array<{ id: string; page_number: number; bbox: { x: number; y: number; width: number; height: number } }>
     }
     const truthBytes = readFileSync(path.join(root, 'workers/ocr/ground-truth.json'))
-    expect(createHash('sha256').update(truthBytes).digest('hex')).toBe(manifest.ground_truth_version)
+    expect(createHash('sha256').update(truthBytes).digest('hex')).toBe(STEP7_GT_JSON_SHA256)
+    expect(manifest.ground_truth_version).toBe(STEP7_GROUND_TRUTH_VERSION)
     expect(manifest.sample_count).toBe(STEP7_SAMPLE_COUNT)
     expect(manifest.document_id).toBe(STEP7_DOCUMENT_ID)
     assertManifestMatchesSamples(manifest, samples)

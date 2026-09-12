@@ -13,6 +13,7 @@ import { QuestionVersionsPage } from '../features/questions/QuestionVersionsPage
 import { SourceListPage } from '../features/sources/SourceListPage'
 import { SourceNewPage } from '../features/sources/SourceNewPage'
 import { SourceDetailPage } from '../features/sources/SourceDetailPage'
+import { PipelineReviewPage } from '../features/review/PipelineReviewPage'
 
 const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       { path: 'sources', element: <SourceListPage /> },
       { path: 'sources/new', element: <SourceNewPage /> },
       { path: 'sources/:documentId', element: <SourceDetailPage /> },
+      { path: 'pipeline-review', element: <PipelineReviewPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

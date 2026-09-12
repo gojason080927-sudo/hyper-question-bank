@@ -1,0 +1,174 @@
+{
+  "ran": true,
+  "pipeline_run_id": "4765ed6d-b136-4578-803e-89ea1414b9c0",
+  "queued_review": 22,
+  "queued": [
+    "S01",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S25",
+    "S26"
+  ],
+  "created": [],
+  "existing": [
+    {
+      "candidate_id": "S04",
+      "problem_id": "6ca8ef5a-74eb-4349-971a-496f0e98ceed",
+      "version_id": "c4a9c5cf-b160-4f49-9ac7-052cbcec3d82",
+      "public_code": "HQB-000364"
+    },
+    {
+      "candidate_id": "S05",
+      "problem_id": "5625a924-afdf-493a-8747-5812739d813e",
+      "version_id": "27b40d6b-1c39-4f45-9049-b7365c018407",
+      "public_code": "HQB-000195"
+    },
+    {
+      "candidate_id": "S06",
+      "problem_id": "fdb196a5-2a26-466d-a0e3-e85c8e3d0577",
+      "version_id": "c97737b4-7d76-408e-b880-2d5dfe1d0eb6",
+      "public_code": "HQB-000194"
+    },
+    {
+      "candidate_id": "S07",
+      "problem_id": "23eb21e1-bb9f-4bb8-80dd-1c23d8af433b",
+      "version_id": "f8b6ae05-dde6-45f6-ad81-9904099fec18",
+      "public_code": "HQB-000814"
+    },
+    {
+      "candidate_id": "S08",
+      "problem_id": "f4798e77-4058-4700-8a35-ba5da8d6e8ac",
+      "version_id": "f0a8ca6c-502d-4c70-8b49-f06b2d859683",
+      "public_code": "HQB-000380"
+    },
+    {
+      "candidate_id": "S09",
+      "problem_id": "70e4291c-7815-455c-a016-37a8b59c930c",
+      "version_id": "3eae7aa1-051b-4c27-a8b1-cf2ea743ec14",
+      "public_code": "HQB-000231"
+    },
+    {
+      "candidate_id": "S10",
+      "problem_id": "64f5a32f-301f-4514-9308-e0ca46556f4a",
+      "version_id": "07ed0c93-ed74-4523-ad6a-42b27e3e70af",
+      "public_code": "HQB-000429"
+    },
+    {
+      "candidate_id": "S11",
+      "problem_id": "4279a7c1-fb9e-4821-8d4f-cbc744b66e10",
+      "version_id": "3e16c08f-cfa8-4601-8f1f-1a18cf4ce92f",
+      "public_code": "HQB-000431"
+    },
+    {
+      "candidate_id": "S12",
+      "problem_id": "fb12d7d7-0099-4527-8328-b20aa1a37afa",
+      "version_id": "dab231c4-a691-4857-9616-ddea50e9e0e0",
+      "public_code": "HQB-000430"
+    },
+    {
+      "candidate_id": "S13",
+      "problem_id": "a14ef5d5-2891-4cd0-96e9-715dc6fef1dd",
+      "version_id": "abe9771f-77e7-4c65-bb22-dac9bd55a3d4",
+      "public_code": "HQB-000815"
+    },
+    {
+      "candidate_id": "S14",
+      "problem_id": "067f8460-d14b-4117-b76a-bb1406abd596",
+      "version_id": "f1ce68eb-c982-4e2c-8bf2-6a21218e9fbb",
+      "public_code": "HQB-000487"
+    },
+    {
+      "candidate_id": "S15",
+      "problem_id": "e950ec3a-cc4c-4389-b734-1924c32d5ed4",
+      "version_id": "96f7a360-c53e-422d-aaa7-9b5de71112f5",
+      "public_code": "HQB-000489"
+    },
+    {
+      "candidate_id": "S17",
+      "problem_id": "4e246428-d2e9-4d90-b945-51a1c9d5e17b",
+      "version_id": "efb7abe2-35ff-4fbc-816d-98a582652ef4",
+      "public_code": "HQB-000588"
+    },
+    {
+      "candidate_id": "S18",
+      "problem_id": "d476751a-0527-4165-80d8-1fe39e84b682",
+      "version_id": "6825859e-eff5-4584-b378-86aecc3a3cfb",
+      "public_code": "HQB-000590"
+    },
+    {
+      "candidate_id": "S19",
+      "problem_id": "8cf4e92d-d0b2-487a-9512-fc59bb8308a0",
+      "version_id": "23004d5a-af9a-41b8-9707-b635bd5a7d4b",
+      "public_code": "HQB-000239"
+    },
+    {
+      "candidate_id": "S20",
+      "problem_id": "1f7d7e85-fcff-4d45-984c-a1b5cc1b31d4",
+      "version_id": "9bad29fc-84f7-49c6-8196-823c0b9cf300",
+      "public_code": "HQB-000589"
+    },
+    {
+      "candidate_id": "S21",
+      "problem_id": "70ea6986-db1f-4500-949b-7030659bf994",
+      "version_id": "cf7f71c1-f88a-40a9-90bc-3c3b36792c1f",
+      "public_code": "HQB-000816"
+    },
+    {
+      "candidate_id": "S25",
+      "problem_id": "51f23cea-3e1a-493e-9951-d05655143c7b",
+      "version_id": "e8b8ea14-d867-4865-a7df-65c9065be539",
+      "public_code": "HQB-000817"
+    },
+    {
+      "candidate_id": "S26",
+      "problem_id": "f8fe1400-0178-4c12-95ce-572c4474aa3a",
+      "version_id": "b4439519-112e-4509-abaa-b1e1541ad864",
+      "public_code": "HQB-000818"
+    }
+  ],
+  "production_before": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 761,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 1,
+    "pipeline_items": 26,
+    "needs_review": 25
+  },
+  "production_after": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 761,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 1,
+    "pipeline_items": 26,
+    "needs_review": 25
+  },
+  "production_problem_writes": 0,
+  "production_figure_writes": 0,
+  "production_verified_writes": 0,
+  "content_rewrites": 0,
+  "duplicates": 0,
+  "orphans": 0
+}
