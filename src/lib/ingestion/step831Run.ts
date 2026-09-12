@@ -362,7 +362,7 @@ function inventoryCaches(root: string) {
   const manifestPath = path.join(root, MANIFEST_PATH)
   let cached: Step828CachedItem[] = []
   let reviews: Step829ReviewInput[] = []
-  let step830Pass = new Map<string, boolean>()
+  const step830Pass = new Map<string, boolean>()
   let samples: ReturnType<typeof parseManifestFile>['samples'] = []
   if (existsSync(manifestPath)) {
     samples = parseManifestFile(JSON.parse(readFileSync(manifestPath, 'utf8'))).samples
@@ -733,9 +733,15 @@ export async function runStep831(root: string, argv: string[]): Promise<Step831S
   writeJson(dest, 'review-queue.json', queue)
   mkdirSync(path.join(root, 'public'), { recursive: true })
   writeFileSync(path.join(root, 'public/review-queue.json'), JSON.stringify(queue, null, 2), 'utf8')
-  writeJson(dest, 'production-before.json', before)
-  writeJson(dest, 'production-after.json', after)
-  writeJson(dest, 'production-readonly.json', persist.ran ? after : before)
+  const beforePath = path.join(dest, 'production-before.json')
+  const afterPath = path.join(dest, 'production-after.json')
+  if (persist.ran || argv.includes('--probe-production') || !existsSync(beforePath)) {
+    writeJson(dest, 'production-before.json', before)
+  }
+  if (persist.ran || argv.includes('--probe-production') || !existsSync(afterPath)) {
+    writeJson(dest, 'production-after.json', after)
+  }
+  writeJson(dest, 'production-readonly.json', persist.ran || argv.includes('--probe-production') ? after : before)
   const persistResultPath = path.join(dest, 'persist-result.json')
   if (persist.ran) {
     writeJson(dest, 'persist-result.json', {

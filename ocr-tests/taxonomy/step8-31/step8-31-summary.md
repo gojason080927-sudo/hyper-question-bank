@@ -1,6 +1,6 @@
 # STEP 8.31 CONFIDENCE GATE + DRAFT PERSIST + HUMAN_REVIEW QUEUE
 
-STEP 8.31 RESULT: CACHE_ONLY_GATED
+STEP 8.31 RESULT: PERSISTED
 NAME: Confidence gate + DRAFT persist + HUMAN_REVIEW queue
 TARGET REF: owpxsmdcxjmsgadkdsci (hyper-student-care NOT accessed)
 
@@ -18,7 +18,7 @@ crop recovered/missing: 26/0
 frozen STEP 7 hash match: 0
 compared: 26
 AUTO_APPROVED/HUMAN_REVIEW/BLOCKED: 0/22/4
-create_draft/record_existing/queue_only/skip_blocked/skip_identity: 0/0/19/4/3
+create_draft/record_existing/queue_only/skip_blocked/skip_identity: 0/19/0/4/3
 progress matches items: true
 persist plan ok: true
 duplicates: 0
@@ -30,11 +30,11 @@ content rewrites: 0
 Production problem writes: 0
 production figure writes: 0
 production verified writes: 0
-production pipeline writes: runs=0 items=0
-queued HUMAN_REVIEW: 0
-production drafts before/after: null/null
-production type AUTO: null/null
-production figures: null/null → null/null
+production pipeline writes: runs=1 items=26
+queued HUMAN_REVIEW: 22
+production drafts before/after: 761/761
+production type AUTO: 38/38
+production figures: 3/3 → 3/3
 
 PASS: 12
 REVIEW: 0
