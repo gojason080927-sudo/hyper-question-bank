@@ -1,0 +1,10 @@
+{
+  "inspected": 1256,
+  "scoped_needs_review": 542,
+  "auto_cleared": 481,
+  "human_review_remaining": 61,
+  "fingerprints_written": 3543,
+  "embeddings_written": 0,
+  "duplicates": 37,
+  "idempotent_second_extra_writes": 0
+}

@@ -1,0 +1,16 @@
+{
+  "step": "8.33",
+  "writes": 0,
+  "student_care_accessed": false,
+  "queried": true,
+  "reason": "read_only",
+  "drafts": 1281,
+  "type_auto": 38,
+  "figure_assets": 3,
+  "figure_links": 3,
+  "pipeline_runs": 3,
+  "pipeline_items": 1818,
+  "needs_review": 64,
+  "fingerprints": 3543,
+  "ssen_document": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703"
+}

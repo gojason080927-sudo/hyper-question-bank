@@ -1,0 +1,15 @@
+{
+  "scope": "SSEN NEEDS_REVIEW remaining after Production persist",
+  "count": 61,
+  "reasons": {
+    "BBOX_INTRUSION": 40,
+    "DUPLICATE_CANDIDATE": 32,
+    "ANSWER_KEY_LEAK": 10,
+    "EVIDENCE_INSUFFICIENT": 3,
+    "TYPE_UNCLEAR": 2,
+    "UNIT_UNCLEAR": 2,
+    "OCR_GARBAGE": 2,
+    "UNIT_CONFLICT": 1
+  },
+  "note": "Counts overlap on the same items. Other-source NEEDS_REVIEW (6) were not modified."
+}
