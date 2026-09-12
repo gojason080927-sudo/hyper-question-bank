@@ -1,0 +1,43 @@
+{
+  "pass": false,
+  "blockers": [
+    "CANDIDATES_CACHE_MISSING",
+    "LAYOUT_OCR_CACHE_MISSING",
+    "CACHE_MISS_WOULD_CALL_PAID_OCR",
+    "PRODUCTION_SCHEMA_ABSENT_OR_UNCONFIRMED"
+  ],
+  "textbook": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1",
+    "evidence": [
+      "docs/STEP8_25_BATCH_REGISTRATION_PIPELINE_v1.md §J: one already-stored textbook",
+      "src/lib/classification/step88Io.ts STEP88_DOCUMENT",
+      "src/lib/ingestion/step817Run.ts STEP817_DOCUMENT",
+      "src/lib/taxonomy/classificationPersistence.ts STEP812_DOCUMENT",
+      "workers/ocr/corpus-manifest.json document_id + title"
+    ]
+  },
+  "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "cache_key_profile": "ocr-latest+blocks+tables+images",
+  "input_pages": 0,
+  "cache_hits": 0,
+  "cache_misses": 1,
+  "segment_targets": 0,
+  "excluded": [
+    {
+      "id": "SECOND_DOCUMENT",
+      "reason": "WRONG_BOOK",
+      "count": 8
+    },
+    {
+      "id": "SSEN_FIGURE_PAGE_PNGS",
+      "reason": "NOT_LAYOUT_OCR_CACHE_DO_NOT_GUESS_SUBSET",
+      "count": 9
+    }
+  ],
+  "expected_pipeline_runs": 0,
+  "expected_pipeline_items": 0,
+  "problem_production_writes": 0,
+  "ocr_network_calls": 0,
+  "original_pdf_required": false
+}

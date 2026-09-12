@@ -1,0 +1,199 @@
+{
+  "targets": [
+    {
+      "id": "target.lock",
+      "kind": "TARGET",
+      "verdict": "PASS",
+      "reasons": [
+        "SSEN_DOCUMENT_LOCKED",
+        "9ff369b4-5b16-4cb8-bfc3-a6b180c18703"
+      ]
+    },
+    {
+      "id": "cache.layout",
+      "kind": "CACHE",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "LAYOUT_OCR_CACHE_MISSING"
+      ]
+    },
+    {
+      "id": "cache.candidates",
+      "kind": "CACHE",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "CANDIDATES_CACHE_MISSING"
+      ]
+    },
+    {
+      "id": "production.schema",
+      "kind": "SCHEMA",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PRODUCTION_SCHEMA_ABSENT_OR_UNCONFIRMED"
+      ]
+    },
+    {
+      "id": "execute.segment",
+      "kind": "EXECUTE",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "DRY_RUN_BLOCKED_NO_EXECUTE"
+      ]
+    },
+    {
+      "id": "paid_ocr",
+      "kind": "PAID_OCR",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "STEP_PAID_OCR_CAP_ZERO"
+      ]
+    },
+    {
+      "id": "original_pdf",
+      "kind": "ORIGINAL_PDF",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "ORIGINAL_PDF_ABSENT",
+        "NO_SUBSTITUTE",
+        "NOT_REQUIRED_FOR_CACHE_ONLY"
+      ]
+    },
+    {
+      "id": "mixed_source",
+      "kind": "MIXED_SOURCE",
+      "verdict": "PASS",
+      "reasons": [
+        "SECOND_BOOK_EXCLUDED"
+      ]
+    },
+    {
+      "id": "problem_writes",
+      "kind": "WRITES",
+      "verdict": "PASS",
+      "reasons": [
+        "PROBLEM_PRODUCTION_WRITES_ZERO"
+      ]
+    },
+    {
+      "id": "frozen_counts",
+      "kind": "FROZEN",
+      "verdict": "PASS",
+      "reasons": [
+        "DRAFTS_265",
+        "TYPE_AUTO_38",
+        "REMAINDER_227",
+        "FIGURES_3_3"
+      ]
+    },
+    {
+      "id": "108|0735",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "108|0736",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "114|0775",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "122|0833",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "134|0924",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "134|0925",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "134|0926",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "189|1300",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "id": "SECOND_DOCUMENT",
+      "reason": "WRONG_BOOK",
+      "count": 8
+    },
+    {
+      "id": "SSEN_FIGURE_PAGE_PNGS",
+      "reason": "NOT_LAYOUT_OCR_CACHE_DO_NOT_GUESS_SUBSET",
+      "count": 9
+    }
+  ],
+  "second_document": "190fb31b-03f5-43b9-b696-cce7a823a321"
+}

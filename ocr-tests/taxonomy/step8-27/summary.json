@@ -1,0 +1,314 @@
+{
+  "step": "8.27",
+  "name": "Cache-only batch segmentation on one already-stored textbook",
+  "status": "CACHE_ONLY_BLOCKED",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "next_step_started": false,
+  "textbook": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1"
+  },
+  "executed": false,
+  "execution_count": 0,
+  "production_problem_writes": 0,
+  "production_figure_writes": 0,
+  "production_pipeline_writes": {
+    "runs": 0,
+    "items": 0
+  },
+  "schema_probe": {
+    "queried": false,
+    "present": null,
+    "reason": "access_token_placeholder",
+    "tables": {
+      "pipeline_runs": null,
+      "pipeline_items": null
+    },
+    "rpcs": {
+      "hqb_start_pipeline_run": null,
+      "hqb_upsert_pipeline_item": null,
+      "hqb_pipeline_progress_from_items": null
+    },
+    "isolated_826_apply_allowed": false,
+    "isolated_826_apply_reason": "PENDING_MIGRATIONS_UNKNOWN"
+  },
+  "schema_write": {
+    "attempted": false,
+    "applied": false,
+    "reason": "PENDING_MIGRATIONS_UNKNOWN"
+  },
+  "paid_api_calls": {
+    "mathpix": 0,
+    "mistral": 0
+  },
+  "paid_ocr_cap": {
+    "max_calls": 0,
+    "max_usd": 0
+  },
+  "frozen": {
+    "step812ExpectedDrafts": 265,
+    "frozenTypeAuto": 38,
+    "impliedNonTypeAuto": 227,
+    "step823FigureAssets": 3,
+    "step823FigureLinks": 3,
+    "step824BlockedRemaining": 8
+  },
+  "original_pdf": {
+    "present": false,
+    "path": null,
+    "sha256": null,
+    "is_second_book": false,
+    "substituted": false
+  },
+  "dry_run": {
+    "pass": false,
+    "blockers": [
+      "CANDIDATES_CACHE_MISSING",
+      "LAYOUT_OCR_CACHE_MISSING",
+      "CACHE_MISS_WOULD_CALL_PAID_OCR",
+      "PRODUCTION_SCHEMA_ABSENT_OR_UNCONFIRMED"
+    ],
+    "textbook": {
+      "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+      "title": "쎈수학 공통수학1",
+      "evidence": [
+        "docs/STEP8_25_BATCH_REGISTRATION_PIPELINE_v1.md §J: one already-stored textbook",
+        "src/lib/classification/step88Io.ts STEP88_DOCUMENT",
+        "src/lib/ingestion/step817Run.ts STEP817_DOCUMENT",
+        "src/lib/taxonomy/classificationPersistence.ts STEP812_DOCUMENT",
+        "workers/ocr/corpus-manifest.json document_id + title"
+      ]
+    },
+    "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "cache_key_profile": "ocr-latest+blocks+tables+images",
+    "input_pages": 0,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "segment_targets": 0,
+    "excluded": [
+      {
+        "id": "SECOND_DOCUMENT",
+        "reason": "WRONG_BOOK",
+        "count": 8
+      },
+      {
+        "id": "SSEN_FIGURE_PAGE_PNGS",
+        "reason": "NOT_LAYOUT_OCR_CACHE_DO_NOT_GUESS_SUBSET",
+        "count": 9
+      }
+    ],
+    "expected_pipeline_runs": 0,
+    "expected_pipeline_items": 0,
+    "problem_production_writes": 0,
+    "ocr_network_calls": 0,
+    "original_pdf_required": false
+  },
+  "items": [],
+  "progress": {
+    "total": 0,
+    "auto_approved": 0,
+    "ai_fixed": 0,
+    "human_review": 0,
+    "blocked": 0,
+    "failed": 0,
+    "unresolved": 0,
+    "estimated_paid_calls": 0,
+    "estimated_usd": 0,
+    "actual_paid_calls": 0,
+    "actual_usd": 0
+  },
+  "progress_matches_items": true,
+  "duplicates": 0,
+  "orphans": 0,
+  "wrong_source": 0,
+  "targets": [
+    {
+      "id": "target.lock",
+      "kind": "TARGET",
+      "verdict": "PASS",
+      "reasons": [
+        "SSEN_DOCUMENT_LOCKED",
+        "9ff369b4-5b16-4cb8-bfc3-a6b180c18703"
+      ]
+    },
+    {
+      "id": "cache.layout",
+      "kind": "CACHE",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "LAYOUT_OCR_CACHE_MISSING"
+      ]
+    },
+    {
+      "id": "cache.candidates",
+      "kind": "CACHE",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "CANDIDATES_CACHE_MISSING"
+      ]
+    },
+    {
+      "id": "production.schema",
+      "kind": "SCHEMA",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PRODUCTION_SCHEMA_ABSENT_OR_UNCONFIRMED"
+      ]
+    },
+    {
+      "id": "execute.segment",
+      "kind": "EXECUTE",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "DRY_RUN_BLOCKED_NO_EXECUTE"
+      ]
+    },
+    {
+      "id": "paid_ocr",
+      "kind": "PAID_OCR",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "STEP_PAID_OCR_CAP_ZERO"
+      ]
+    },
+    {
+      "id": "original_pdf",
+      "kind": "ORIGINAL_PDF",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "ORIGINAL_PDF_ABSENT",
+        "NO_SUBSTITUTE",
+        "NOT_REQUIRED_FOR_CACHE_ONLY"
+      ]
+    },
+    {
+      "id": "mixed_source",
+      "kind": "MIXED_SOURCE",
+      "verdict": "PASS",
+      "reasons": [
+        "SECOND_BOOK_EXCLUDED"
+      ]
+    },
+    {
+      "id": "problem_writes",
+      "kind": "WRITES",
+      "verdict": "PASS",
+      "reasons": [
+        "PROBLEM_PRODUCTION_WRITES_ZERO"
+      ]
+    },
+    {
+      "id": "frozen_counts",
+      "kind": "FROZEN",
+      "verdict": "PASS",
+      "reasons": [
+        "DRAFTS_265",
+        "TYPE_AUTO_38",
+        "REMAINDER_227",
+        "FIGURES_3_3"
+      ]
+    },
+    {
+      "id": "108|0735",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "108|0736",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "114|0775",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "122|0833",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "134|0924",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "134|0925",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "134|0926",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    },
+    {
+      "id": "189|1300",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_27"
+      ]
+    }
+  ],
+  "results": {
+    "PASS": 4,
+    "REVIEW": 0,
+    "BLOCKED": 14
+  }
+}

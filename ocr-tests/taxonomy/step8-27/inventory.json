@@ -1,0 +1,36 @@
+{
+  "candidates_present": false,
+  "mistral_dir_present": false,
+  "original_pages_present": false,
+  "book_pipeline_pages_present": false,
+  "layout_hits": [],
+  "layout_misses": [],
+  "ssen_figure_page_pngs": [
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-012.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-020.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-108.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-111.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-114.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-122.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-134.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-183.png",
+    "ocr-tests/taxonomy/step8-22/pages/ssen/page-189.png"
+  ],
+  "second_sample_page_pngs": [
+    "ocr-tests/taxonomy/step8-18/pages/page-026.png",
+    "ocr-tests/taxonomy/step8-18/pages/page-033.png",
+    "ocr-tests/taxonomy/step8-18/pages/page-075.png",
+    "ocr-tests/taxonomy/step8-18/pages/page-134.png",
+    "ocr-tests/taxonomy/step8-18/pages/page-198.png",
+    "ocr-tests/taxonomy/step8-18/pages/page-239.png",
+    "ocr-tests/taxonomy/step8-18/pages/page-286.png"
+  ],
+  "second_layout_present": true,
+  "original_pdf": {
+    "present": false,
+    "path": null,
+    "sha256": null,
+    "is_second_book": false,
+    "substituted": false
+  }
+}
