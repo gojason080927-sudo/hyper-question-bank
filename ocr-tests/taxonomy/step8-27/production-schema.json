@@ -57,7 +57,15 @@
     "problems_lifecycle_draft": 757,
     "frozen_expected_drafts": 265,
     "note": "Live 757 is later ingest beyond the STEP 8.12 freeze of 265. Not restored.",
+    "type_auto": 38,
+    "problems": 779,
+    "versions": 794,
+    "choices": 1552,
+    "answers": 48,
+    "explanations": 16,
     "figure_assets": 3,
-    "figure_links": 3
+    "figure_links": 3,
+    "pipeline_runs": 0,
+    "pipeline_items": 0
   }
 }

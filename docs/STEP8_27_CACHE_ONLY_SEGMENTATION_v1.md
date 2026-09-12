@@ -1,6 +1,6 @@
 # STEP 8.27 — Cache-only Batch Segmentation v1
 
-STATUS: **implemented (cache-only dry-run; Production run not started)**  
+STATUS: **implemented (cache-only dry-run; SSEN original verified; layout OCR cache blocked on missing `MISTRAL_API_KEY`; Production pipeline run not started)**  
 Implements: `docs/STEP8_25_BATCH_REGISTRATION_PIPELINE_v1.md` §J row **8.27**.
 
 Repository: `gojason080927-sudo/hyper-question-bank`  
@@ -80,11 +80,39 @@ SSEN original exists in Production Storage `question-bank-sources/9ff369b4-…/o
 
 Required `ocr-tests/mistral`, `ocr-tests/book-pipeline`, and `stage-b-candidates.json` are absent from git history, LFS, GitHub Actions artifacts, and Production Storage. Recognition payloads are stem/choices, not page layout blocks. Do not start 8.28.
 
-## OCR policy
+## Layout OCR cache generation (still STEP 8.27)
 
-- Cap: **0 calls / $0**
-- New Mathpix = 0, new Mistral = 0, other paid OCR = 0
-- `--allow-paid-api` is rejected
+The cache-only segmentation runner (`npm run pipeline:8.27`) still forbids paid OCR and problem writes.
+
+Filling the missing SSEN layout cache is also STEP **8.27**, not 8.28. Runner: `npm run cache:8.27`.
+
+| Field | Value |
+|---|---|
+| Provider | Mistral only (`mistral-ocr` / `mistral-ocr-latest`) |
+| Profile | `ocr-latest+blocks+tables+images` |
+| Official list price (2026-09-12) | OCR 4.1 **$4 / 1000 processed pages** = **$0.004/page** |
+| Sources | https://mistral.ai/pricing/api/ , https://docs.mistral.ai/models/ocr-4-1 |
+| Pilot 5 pages | $0.02 |
+| Full 192 pages | $0.768 |
+| Hard cap | **$1**. Stop before any call that would exceed it. |
+| Mathpix | never in this STEP |
+Durable path (planned, additive, does not touch `original.pdf`):
+
+`question-bank-sources/ocr-cache/<source-id>/<pdf-sha256>/v1/`
+
+The current `question-bank-sources` bucket rejects `application/json` (`InvalidMimeType` 415). Do not loosen that bucket to store cache JSON on top of originals. When cache bytes exist, add a **new private** bucket or an allowed mime list only on the `ocr-cache/` prefix — never public URLs, never move/delete `original.pdf`.
+
+Pilot pages (1-based, not cover/TOC/answers): **8 BODY_FORMULA**, **28 MCQ**, **12 TABLE_BOX**, **20 FIGURE_GRAPH**, **108 MULTI_COLUMN_COMPLEX**.
+
+If `MISTRAL_API_KEY` is missing, do **not** invent cache, do **not** switch providers, do **not** ask the user to upload cache. One action: add worker-only `MISTRAL_API_KEY` (never `VITE_`).
+
+Resume: local/Storage manifest records successful pages so they are not billed again.
+
+## OCR policy (segmentation execute)
+
+- Cap for `pipeline:8.27`: **0 calls / $0**
+- After a valid cache exists, dry-run/execute must not make new OCR network calls
+- `--allow-paid-api` is rejected on the segmentation runner
 - Cache miss must not fall through to a network call
 
 ## Status mapping (frozen names, not relaxed)

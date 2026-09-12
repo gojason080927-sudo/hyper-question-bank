@@ -18,6 +18,7 @@
     "pipeline:8.25": "node scripts/step-8.25.mjs --run --cache-only",
     "pipeline:8.26": "node scripts/step-8.26.mjs --run --cache-only",
     "pipeline:8.27": "node scripts/step-8.27.mjs --run --cache-only",
+    "cache:8.27": "node scripts/step-8.27-ssen-ocr-cache.mjs --run --cache-only",
     "test:db:core-v1": "node scripts/core-v1-acceptance.mjs",
     "test:db:workflow-v1": "node scripts/workflow-v1-acceptance.mjs",
     "test:db:review-v1": "node scripts/review-target-v1-acceptance.mjs",

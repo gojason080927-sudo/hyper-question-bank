@@ -8,6 +8,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import path from 'node:path'
 import { FEATURE_FLAGS } from './adaptiveRouter'
 import { parsePaidGate } from '../ocr/paidGate'
+import { compareCacheFileName } from '../ocr/ocrCompare'
+import { MISTRAL_PROVIDER } from '../ocr/mathOcrTypes'
 import {
   FROZEN_PIPELINE_COUNTS,
   QUESTION_BANK_REF,
@@ -83,6 +85,17 @@ function listPngs(dir: string): string[] {
     .map((name) => path.join(dir, name))
 }
 
+function padPage(page: number): string {
+  return String(page).padStart(3, '0')
+}
+
+function pagePngCandidates(root: string, page: number): string[] {
+  return [
+    path.join(root, REQUIRED_CACHE_PATHS.originalPages, `page-${padPage(page)}.png`),
+    path.join(root, REQUIRED_CACHE_PATHS.bookPipelinePages, `page-${padPage(page)}.png`),
+  ]
+}
+
 function inventoryCache(root: string): CacheInventory {
   const inventory = emptyInventory()
   inventory.candidates_present = existsSync(path.join(root, REQUIRED_CACHE_PATHS.candidates))
@@ -96,6 +109,49 @@ function inventoryCache(root: string): CacheInventory {
     path.relative(root, file),
   )
   inventory.second_layout_present = existsSync(path.join(root, SECOND_SAMPLE_LAYOUT))
+
+  const pageSet = new Set<number>()
+  if (inventory.candidates_present) {
+    try {
+      const loaded = JSON.parse(readFileSync(path.join(root, REQUIRED_CACHE_PATHS.candidates), 'utf8')) as {
+        candidates?: Array<{ page?: number; layout_kind?: string }>
+      }
+      for (const row of loaded.candidates ?? []) {
+        if (typeof row.page === 'number' && row.layout_kind === 'PROBLEM') pageSet.add(row.page)
+      }
+    } catch {
+      inventory.candidates_present = false
+    }
+  }
+  for (const dir of [REQUIRED_CACHE_PATHS.originalPages, REQUIRED_CACHE_PATHS.bookPipelinePages]) {
+    for (const file of listPngs(path.join(root, dir))) {
+      const match = /page-(\d+)\.png$/i.exec(path.basename(file))
+      if (match) pageSet.add(Number(match[1]))
+    }
+  }
+
+  for (const page of [...pageSet].sort((a, b) => a - b)) {
+    const pngPath = pagePngCandidates(root, page).find((file) => existsSync(file)) ?? null
+    let layoutPath: string | null = null
+    if (pngPath) {
+      const sha = createHash('sha256').update(readFileSync(pngPath)).digest('hex')
+      const named = path.join(
+        root,
+        REQUIRED_CACHE_PATHS.mistralDir,
+        compareCacheFileName(MISTRAL_PROVIDER, sha, LAYOUT_CACHE_PROFILE),
+      )
+      if (existsSync(named)) layoutPath = named
+    }
+    const row = {
+      page,
+      png_path: pngPath ? path.relative(root, pngPath) : null,
+      layout_cache_path: layoutPath ? path.relative(root, layoutPath) : null,
+      hit: Boolean(pngPath && layoutPath),
+      book: 'SSEN' as const,
+    }
+    if (row.hit) inventory.layout_hits.push(row)
+    else inventory.layout_misses.push(row)
+  }
 
   const secondNamed = path.join(root, 'second-common-math1.pdf')
   if (existsSync(secondNamed)) {

@@ -1,0 +1,16 @@
+{
+  "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "expected_sha256": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+  "expected_pages": 192,
+  "path": "/tmp/hqb-ssen-ocr/original.pdf",
+  "sha256": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+  "page_count": 192,
+  "size_bytes": 11365061,
+  "pdf_header_ok": true,
+  "match": true,
+  "blockers": [],
+  "substituted": false,
+  "committed_to_git": false,
+  "downloaded_from": "Production Storage question-bank-sources/.../original.pdf",
+  "gitignored": true
+}

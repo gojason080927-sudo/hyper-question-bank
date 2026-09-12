@@ -1,3 +1,25 @@
+/**
+ * Official Mistral OCR 4.1 list price. Billed per processed page, not per document.
+ * Source fetched 2026-09-12: https://mistral.ai/pricing/api/ and https://docs.mistral.ai/models/ocr-4-1
+ * Do not use remembered unofficial numbers.
+ */
+export const MISTRAL_OFFICIAL_OCR_PRICING = {
+  pricing_date: '2026-09-12',
+  currency: 'USD',
+  model_alias: 'mistral-ocr-latest',
+  model_family: 'OCR 4.1',
+  usd_per_1000_pages: 4,
+  usd_per_page: 0.004,
+  billing_unit: 'processed_page' as const,
+  annotation_usd_per_1000_pages: 5,
+  sources: ['https://mistral.ai/pricing/api/', 'https://docs.mistral.ai/models/ocr-4-1'],
+} as const
+
+export function mistralOcrUsdForPages(pageCount: number): number {
+  if (!Number.isFinite(pageCount) || pageCount < 0) return 0
+  return Number((pageCount * MISTRAL_OFFICIAL_OCR_PRICING.usd_per_page).toFixed(4))
+}
+
 export const MATHPIX_OFFICIAL_PRICING = {
   pricing_date: '2026-09-08',
   currency: 'USD',
