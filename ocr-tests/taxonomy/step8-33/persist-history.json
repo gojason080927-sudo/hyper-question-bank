@@ -1,0 +1,50 @@
+{
+  "production_counts_before": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 1281,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 2,
+    "pipeline_items": 1279,
+    "needs_review": 545,
+    "fingerprints": 0,
+    "ssen_needs_review": 539
+  },
+  "production_counts_after": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 1281,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 3,
+    "pipeline_items": 1818,
+    "needs_review": 64,
+    "fingerprints": 3543,
+    "ssen_needs_review": 58
+  },
+  "persist": {
+    "ran": true,
+    "pipeline_run_id": "8edf26bf-a9d6-48f0-bd58-6489348e5e03",
+    "cleared": 481,
+    "skipped_already_clear": 0,
+    "failed": [],
+    "idempotent_second": {
+      "scoped": 61,
+      "cleared": 0,
+      "fingerprints_written": 0,
+      "fingerprints_existing": 3543,
+      "failed": 0,
+      "needs_review_unchanged": 64
+    }
+  },
+  "fingerprints_written": 3543,
+  "fingerprints_existing": 1443,
+  "classification_written": 0,
+  "scoped_needs_review": 542,
+  "auto_cleared": 481,
+  "human_review_remaining": 61,
+  "production_problem_writes": 481
+}

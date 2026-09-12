@@ -1,4 +1,7 @@
 {
+  "step": "8.33",
+  "writes": 0,
+  "student_care_accessed": false,
   "queried": true,
   "reason": "read_only",
   "drafts": 1281,
@@ -9,5 +12,5 @@
   "pipeline_items": 1818,
   "needs_review": 64,
   "fingerprints": 3543,
-  "ssen_needs_review": 58
+  "ssen_document": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703"
 }

@@ -727,5 +727,19 @@ export async function runStep833(root: string, argv: string[]): Promise<Step833S
     })),
   })
   writeFileSync(path.join(dest, 'step8-33-summary.md'), markdownSummary(summary), 'utf8')
+  if (persist.ran) {
+    writeJson(dest, 'persist-history.json', {
+      production_counts_before: summary.production_counts_before,
+      production_counts_after: summary.production_counts_after,
+      persist: summary.persist,
+      fingerprints_written: summary.fingerprints_written,
+      fingerprints_existing: summary.fingerprints_existing,
+      classification_written: summary.classification_written,
+      scoped_needs_review: summary.scoped_needs_review,
+      auto_cleared: summary.auto_cleared,
+      human_review_remaining: summary.human_review_remaining,
+      production_problem_writes: summary.production_problem_writes,
+    })
+  }
   return summary
 }
