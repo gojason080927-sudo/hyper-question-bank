@@ -1,0 +1,61 @@
+{
+  "step": "8.24",
+  "name": "Remaining Figure Recovery and Question Linking v1",
+  "verdict": "PARTIAL",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "candidates_total": 8,
+  "results": {
+    "PASS": 0,
+    "REVIEW": 0,
+    "BLOCKED": 8
+  },
+  "persist_attempted": true,
+  "persist_applied": true,
+  "persist_error": null,
+  "persisted": {
+    "new_assets": 0,
+    "reused_assets": 0,
+    "new_links": 0
+  },
+  "before": {
+    "assets": 3,
+    "links": 3
+  },
+  "after": {
+    "assets": 3,
+    "links": 3
+  },
+  "existing_step823_preserved": {
+    "assets": 3,
+    "links": 3,
+    "ok": true
+  },
+  "orphans": 0,
+  "duplicate_asset_hash": 0,
+  "duplicate_links": 0,
+  "content_changed": 0,
+  "idempotent": true,
+  "replay_created": {
+    "assets": 0,
+    "links": 0
+  },
+  "remaining_blocked": 8,
+  "ocr": {
+    "needed_candidates": 8,
+    "needed_unique_pages": 5,
+    "provider_configured": false,
+    "authorized": false,
+    "max_calls_allowed": 8,
+    "budget_usd": 1,
+    "estimated_calls": 5,
+    "estimated_max_usd": 0.025,
+    "calls": 0,
+    "cost_usd": 0,
+    "reason": "OCR provider not configured — paid OCR skipped"
+  },
+  "paid_api_calls": {
+    "mathpix": 0,
+    "mistral": 0
+  }
+}
