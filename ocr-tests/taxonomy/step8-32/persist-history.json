@@ -1,0 +1,24 @@
+{
+  "production_drafts_start": 761,
+  "new_drafts": 520,
+  "production_drafts_end": 1281,
+  "needs_review_start": 25,
+  "needs_review_end": 545,
+  "figure_assets": 3,
+  "figure_links": 3,
+  "type_auto": 38,
+  "mistral_lifetime": 192,
+  "estimated_usd": 0.768,
+  "pages_processed": 192,
+  "pages_excluded": 31,
+  "problems_found": 1256,
+  "blocked": 0,
+  "in_batch_duplicates_skipped": 3,
+  "record_existing_final": 1256,
+  "idempotent_last_created": 0,
+  "runs": [
+    { "created": 517, "existing": 733, "failed": 0, "drafts_before": 761, "drafts_after": 1278 },
+    { "created": 3, "existing": 1253, "failed": 0, "drafts_before": 1278, "drafts_after": 1281 },
+    { "created": 0, "existing": 1256, "failed": 0, "drafts_before": 1281, "drafts_after": 1281 }
+  ]
+}

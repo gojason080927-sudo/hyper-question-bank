@@ -239,7 +239,7 @@ A **later** STEP may ingest those problems and/or run paid OCR after an explicit
 | **8.29** | Dual-AI review pilot on cached artifacts | No Gold Standard verify | No unless a separate authorized freeze |
 | **8.30** | Original-image compare gate | No | No |
 | **8.31** | Confidence gate persist **DRAFT** + queue `HUMAN_REVIEW` | Drafts only, never VERIFIED | No by default |
-| **8.32** | Reviewer correction → feature store for later gates | Audit + training artifacts | No |
+| **8.32** | Full 192-page 쎈수학 공통수학1 ingest (user-redefined). Persist reviewable identities as DRAFT without requiring `AUTO_APPROVED`. Queue `NEEDS_REVIEW` / `HUMAN_REVIEW`. Never `VERIFIED`. See `docs/STEP8_32_FULL_SSEN_INGEST_v1.md`. | Drafts only, never VERIFIED | Cache-first Mistral via `paidGate`; no new paid signup |
 | *(unnumbered until frozen)* | Remaining 8 figures after ingest | Figure RPC only | Report-then-stop |
 | *(unnumbered until frozen)* | Multimodal twin / print-edit | No | No |
 
