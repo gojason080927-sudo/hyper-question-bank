@@ -1,0 +1,149 @@
+{
+  "targets": [
+    {
+      "id": "schema.pipeline_runs",
+      "kind": "SCHEMA",
+      "verdict": "PASS",
+      "reasons": []
+    },
+    {
+      "id": "schema.pipeline_items",
+      "kind": "SCHEMA",
+      "verdict": "PASS",
+      "reasons": []
+    },
+    {
+      "id": "progress_counters",
+      "kind": "COUNTERS",
+      "verdict": "PASS",
+      "reasons": []
+    },
+    {
+      "id": "textbook_run",
+      "kind": "TEXTBOOK",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "OUT_OF_SCOPE_STEP_8_26",
+        "NO_TEXTBOOK_RUN"
+      ]
+    },
+    {
+      "id": "paid_ocr",
+      "kind": "PAID_OCR",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "STEP_PAID_OCR_CAP_ZERO"
+      ]
+    },
+    {
+      "id": "original_pdf",
+      "kind": "ORIGINAL_PDF",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "OUT_OF_SCOPE_STEP_8_26",
+        "ORIGINAL_PDF_ABSENT",
+        "NO_SUBSTITUTE"
+      ]
+    },
+    {
+      "id": "108|0735",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    },
+    {
+      "id": "108|0736",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    },
+    {
+      "id": "114|0775",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    },
+    {
+      "id": "122|0833",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    },
+    {
+      "id": "134|0924",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    },
+    {
+      "id": "134|0925",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    },
+    {
+      "id": "134|0926",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    },
+    {
+      "id": "189|1300",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_26"
+      ]
+    }
+  ],
+  "paid_ocr": {
+    "authorized": false,
+    "reason": "STEP_PAID_OCR_CAP_ZERO"
+  }
+}
