@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "blockers": [],
+  "textbook": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1"
+  },
+  "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "cached_items": 26,
+  "gate_targets": 26,
+  "expected_auto_approved": 0,
+  "problem_production_writes": 0,
+  "ocr_network_calls": 0
+}

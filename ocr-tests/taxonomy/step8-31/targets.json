@@ -1,0 +1,224 @@
+{
+  "targets": [
+    {
+      "id": "target.lock",
+      "kind": "TARGET",
+      "verdict": "PASS",
+      "reasons": [
+        "SSEN_DOCUMENT_LOCKED",
+        "9ff369b4-5b16-4cb8-bfc3-a6b180c18703"
+      ]
+    },
+    {
+      "id": "cache.step828",
+      "kind": "CACHE",
+      "verdict": "PASS",
+      "reasons": [
+        "STEP828_CACHE_PRESENT"
+      ]
+    },
+    {
+      "id": "cache.step829",
+      "kind": "CACHE",
+      "verdict": "PASS",
+      "reasons": [
+        "STEP829_CACHE_PRESENT"
+      ]
+    },
+    {
+      "id": "cache.step830",
+      "kind": "CACHE",
+      "verdict": "PASS",
+      "reasons": [
+        "STEP830_CACHE_PRESENT"
+      ]
+    },
+    {
+      "id": "execute.gate",
+      "kind": "EXECUTE",
+      "verdict": "PASS",
+      "reasons": [
+        "CONFIDENCE_GATE_ONCE"
+      ]
+    },
+    {
+      "id": "full_textbook",
+      "kind": "TEXTBOOK",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "OUT_OF_SCOPE_STEP_8_31",
+        "TWENTY_SIX_CACHED_SAMPLES_ONLY"
+      ]
+    },
+    {
+      "id": "paid_ocr",
+      "kind": "PAID_OCR",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "STEP_PAID_OCR_CAP_ZERO",
+        "NO_SEPARATE_AUTHORIZED_FREEZE"
+      ]
+    },
+    {
+      "id": "original_pdf",
+      "kind": "ORIGINAL_PDF",
+      "verdict": "PASS",
+      "reasons": [
+        "FROZEN_SSEN_HASH_MATCH",
+        "CROP_REGEN_ALLOWED"
+      ]
+    },
+    {
+      "id": "recovered_crops",
+      "kind": "CROPS",
+      "verdict": "PASS",
+      "reasons": [
+        "RECOVERED_FROM_ORIGINAL_AND_BBOX"
+      ]
+    },
+    {
+      "id": "mixed_source",
+      "kind": "MIXED_SOURCE",
+      "verdict": "PASS",
+      "reasons": [
+        "SECOND_BOOK_EXCLUDED",
+        "190fb31b-03f5-43b9-b696-cce7a823a321",
+        "3b4e789ea8165f0473975d70de8d40658a391b65d21607997b77b468f124a5e9",
+        "PAGE_PNG_NOT_USED_AS_CROP"
+      ]
+    },
+    {
+      "id": "auto_gate",
+      "kind": "GATE",
+      "verdict": "PASS",
+      "reasons": [
+        "NO_AUTO_APPROVED_UNLESS_SECTION_D",
+        "AUTO_0"
+      ]
+    },
+    {
+      "id": "draft_policy",
+      "kind": "DRAFTS",
+      "verdict": "PASS",
+      "reasons": [
+        "HUMAN_REVIEW_DOES_NOT_CREATE_PROBLEM",
+        "CREATE_0"
+      ]
+    },
+    {
+      "id": "gold_verify_denied",
+      "kind": "GOLD",
+      "verdict": "PASS",
+      "reasons": [
+        "NO_GOLD_STANDARD_VERIFY"
+      ]
+    },
+    {
+      "id": "frozen_counts",
+      "kind": "FROZEN",
+      "verdict": "PASS",
+      "reasons": [
+        "DRAFTS_265",
+        "TYPE_AUTO_38",
+        "REMAINDER_227",
+        "FIGURES_3_3"
+      ]
+    },
+    {
+      "id": "108|0735",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    },
+    {
+      "id": "108|0736",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    },
+    {
+      "id": "114|0775",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    },
+    {
+      "id": "122|0833",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    },
+    {
+      "id": "134|0924",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    },
+    {
+      "id": "134|0925",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    },
+    {
+      "id": "134|0926",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    },
+    {
+      "id": "189|1300",
+      "kind": "CARRY_OVER",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR",
+        "CARRY_OVER_STEP_8_24",
+        "OUT_OF_SCOPE_STEP_8_31"
+      ]
+    }
+  ]
+}

@@ -467,6 +467,40 @@ textarea {
   border: 1px solid #dbe3ee;
 }
 
+.filters.pipeline-filters {
+  grid-template-columns: repeat(4, max-content);
+}
+
+.review-split {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.2fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.data-table tr.is-selected td {
+  background: #eef4ff;
+}
+
+.crop-frame {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  margin: 12px 0;
+}
+
+.reason-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.review-actions {
+  margin-top: 16px;
+}
+
 fieldset {
   border: 1px solid #dbe3ee;
   border-radius: 8px;

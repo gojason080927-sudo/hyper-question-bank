@@ -52,6 +52,7 @@ export function AppShell() {
           <NavLink to="/questions">문제 목록</NavLink>
           <NavLink to="/questions/new">신규 등록</NavLink>
           <NavLink to="/sources">PDF 자료</NavLink>
+          <NavLink to="/pipeline-review">검수 큐</NavLink>
         </nav>
         <div className="session">
           <span className="role-pill">{profile.role}</span>

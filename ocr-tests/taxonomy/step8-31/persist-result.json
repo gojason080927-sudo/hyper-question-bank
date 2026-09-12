@@ -1,0 +1,6 @@
+{
+  "ran": false,
+  "created": [],
+  "existing": [],
+  "note": "cache-only; persist-result is written only on --persist"
+}
