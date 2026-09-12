@@ -1,0 +1,16 @@
+{
+  "step828_items_present": true,
+  "step828_count": 26,
+  "gt_present": true,
+  "gt_count": 26,
+  "gt_sha256": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "gt_sha256_after": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "mutated": false,
+  "original_pdf": {
+    "present": false,
+    "path": null,
+    "sha256": null,
+    "is_second_book": false,
+    "substituted": false
+  }
+}
