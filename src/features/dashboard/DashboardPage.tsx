@@ -19,11 +19,13 @@ export function DashboardPage() {
       <section className="grid" aria-label="기능 영역">
         {FEATURE_AREAS.map((area) => {
           const href =
-            area.id === 'questions' || area.id === 'review' || area.id === 'classification'
+            area.id === 'questions' || area.id === 'classification'
               ? '/questions'
-              : area.id === 'sources' || area.id === 'extraction'
-                ? '/sources'
-                : null
+              : area.id === 'review'
+                ? '/pipeline-review'
+                : area.id === 'sources' || area.id === 'extraction'
+                  ? '/sources'
+                  : null
           return (
             <article key={area.id} className="card">
               <p className="code">{area.code}</p>

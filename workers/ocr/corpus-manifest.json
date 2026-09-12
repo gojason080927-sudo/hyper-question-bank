@@ -8,7 +8,7 @@
   "render_scale": 2.5,
   "render_dpi": 180,
   "sample_count": 26,
-  "note": "Hashes freeze the STEP 7 crops. Mathpix Phase B must use these exact files. Crops themselves stay gitignored.",
+  "note": "Hashes freeze the STEP 7 crops. Mathpix Phase B must use these exact files. Crops themselves stay gitignored. ground_truth_version is the STEP 7 crop-set label (STEP7_GROUND_TRUTH_VERSION), not the SHA256 of ground-truth.json (31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb).",
   "samples": [
     {"sample_id": "S01", "document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703", "page_number": 8, "bbox": {"x": 0.05, "y": 0.12, "width": 0.62, "height": 0.16, "unit": "normalized", "origin": "top-left"}, "crop_file": "data/crops/S01.png", "crop_sha256": "971aef212301a3eea8210211b8562f2478f8e34d805afeb0119f5f3b7ae5905f", "crop_bytes": 94985},
     {"sample_id": "S02", "document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703", "page_number": 8, "bbox": {"x": 0.05, "y": 0.68, "width": 0.62, "height": 0.24, "unit": "normalized", "origin": "top-left"}, "crop_file": "data/crops/S02.png", "crop_sha256": "ff0a9bcb6cf3015402798c8bdd8a459009cb3da8a736fc3d4041807445718778", "crop_bytes": 137269},

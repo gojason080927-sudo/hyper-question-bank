@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { nodePath, useCatalogs } from '../../lib/workflow/useCatalogs'
@@ -23,11 +23,12 @@ type Row = {
 
 export function QuestionListPage() {
   const { data: catalogs } = useCatalogs()
+  const [params] = useSearchParams()
   const [rows, setRows] = useState<Row[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [query, setQuery] = useState('')
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState(params.get('review') ?? '')
   const [conceptId, setConceptId] = useState('')
   const [typeId, setTypeId] = useState('')
   const [nodeId, setNodeId] = useState('')
