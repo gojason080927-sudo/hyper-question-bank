@@ -10,10 +10,13 @@ import {
 } from './batchPipeline825'
 import {
   SECOND_DOCUMENT,
+  SECOND_PDF_SHA256,
   STEP827,
   STEP827_DOCUMENT,
   STEP827_DOCUMENT_TITLE,
   STEP827_PAID_OCR_CAP,
+  STEP827_SSEN_FILE_HASH,
+  STEP827_SSEN_PAGE_COUNT,
   assertNoAutoApproved,
   denyPaidOcr827,
   emptyInventory,
@@ -27,7 +30,7 @@ import {
   progressMatchesItems,
   projectStep827Targets,
   tallyVerdicts,
-  tokenLooksReal,
+  accessTokenUsable,
   upsertItemsIdempotent,
   type SchemaProbe,
   type SegmentPipelineItem,
@@ -54,6 +57,8 @@ describe('STEP 8.27 scope freeze', () => {
     expect(STEP827_DOCUMENT_TITLE).toBe('쎈수학 공통수학1')
     expect(SECOND_DOCUMENT).toBe('190fb31b-03f5-43b9-b696-cce7a823a321')
     expect(STEP827_DOCUMENT).not.toBe(SECOND_DOCUMENT)
+    expect(STEP827_SSEN_FILE_HASH).not.toBe(SECOND_PDF_SHA256)
+    expect(STEP827_SSEN_PAGE_COUNT).toBe(192)
     const freeze = readFileSync(
       path.join(process.cwd(), 'docs/STEP8_25_BATCH_REGISTRATION_PIPELINE_v1.md'),
       'utf8',
@@ -130,6 +135,34 @@ describe('STEP 8.27 dry-run gates', () => {
     expect(dry.textbook.id).toBe(STEP827_DOCUMENT)
   })
 
+  it('still BLOCKED when schema is present but layout cache is missing', () => {
+    const dry = evaluateDryRun({
+      inventory: emptyInventory(),
+      schema: { ...missingSchema, present: true, queried: true, reason: 'migration_history_has_20260912120000' },
+      problemPersistRequested: false,
+      paidApiRequested: false,
+      mixedTextbook: false,
+    })
+    expect(dry.pass).toBe(false)
+    expect(dry.blockers).toEqual(
+      expect.arrayContaining(['LAYOUT_OCR_CACHE_MISSING', 'CACHE_MISS_WOULD_CALL_PAID_OCR']),
+    )
+    expect(dry.blockers).not.toContain('PRODUCTION_SCHEMA_ABSENT_OR_UNCONFIRMED')
+    const targets = projectStep827Targets({
+      dryRun: dry,
+      schemaPresent: true,
+      executed: false,
+      originalPdfPresent: false,
+      originalPdfIsSecondBook: false,
+    })
+    const tally = tallyVerdicts(targets)
+    expect(tally.PASS).toBe(5)
+    expect(tally.REVIEW).toBe(0)
+    expect(tally.BLOCKED).toBe(13)
+    expect(targets.find((row) => row.id === 'production.schema')?.verdict).toBe('PASS')
+    expect(targets.find((row) => row.id === 'execute.segment')?.verdict).toBe('BLOCKED')
+  })
+
   it('does not PASS if another textbook is mixed in even with cache', () => {
     const inventory = emptyInventory()
     inventory.candidates_present = true
@@ -197,7 +230,10 @@ describe('STEP 8.27 schema isolation and paid OCR', () => {
     expect(isolated826ApplyAllowed(['20260911123000', '20260912120000']).reason).toBe(
       'OTHER_PENDING_MIGRATIONS_MIXED',
     )
-    expect(tokenLooksReal('short-placeholder')).toBe(false)
+    expect(accessTokenUsable('short-placeholder')).toBe(false)
+    expect(accessTokenUsable('')).toBe(false)
+    expect(accessTokenUsable('sbp_' + 'x'.repeat(36))).toBe(true)
+    expect(accessTokenUsable('a'.repeat(90) + '.b.c')).toBe(true)
     expect(FEATURE_FLAGS.paidOcrRoutingEnabled).toBe(false)
     expect(STEP827_PAID_OCR_CAP).toEqual({ maxCalls: 0, maxUsd: 0 })
     expect(denyPaidOcr827()).toEqual({ authorized: false, reason: 'STEP_PAID_OCR_CAP_ZERO' })

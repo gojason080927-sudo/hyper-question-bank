@@ -1,0 +1,63 @@
+{
+  "project_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "auth": {
+    "cli": "supabase 2.117.0",
+    "command": "supabase projects list --output json",
+    "result": "ok",
+    "question_bank_ref_seen": true,
+    "jwt_shape_used_as_validity_test": false
+  },
+  "migration": {
+    "version": "20260912120000",
+    "name": "hqb_pipeline_job_v1.sql",
+    "before_remote": "",
+    "after_remote": "20260912120000",
+    "pending_before": ["20260912120000"],
+    "pending_after": [],
+    "dry_run_migrations": ["20260912120000_hqb_pipeline_job_v1.sql"],
+    "applied_this_step": true,
+    "apply_command": "supabase db push --project-ref owpxsmdcxjmsgadkdsci --linked=false --yes",
+    "isolated": true
+  },
+  "tables": {
+    "pipeline_runs": true,
+    "pipeline_items": true,
+    "rls": true
+  },
+  "rpcs": {
+    "hqb_start_pipeline_run": true,
+    "hqb_upsert_pipeline_item": true,
+    "hqb_pipeline_empty_progress": true,
+    "hqb_pipeline_progress_from_items": true,
+    "hqb_delete_test_pipeline_job": true
+  },
+  "pipeline_counts_after_schema": {
+    "runs": 0,
+    "items": 0
+  },
+  "ssen_source": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1",
+    "original_filename": "쎈 공통수학1.pdf",
+    "file_hash": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+    "page_count": 192,
+    "storage_bucket": "question-bank-sources",
+    "storage_path": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703/original.pdf",
+    "file_size": 11365061
+  },
+  "second_source_excluded": {
+    "id": "190fb31b-03f5-43b9-b696-cce7a823a321",
+    "title": "개념원리 공통수학1",
+    "file_hash": "3b4e789ea8165f0473975d70de8d40658a391b65d21607997b77b468f124a5e9",
+    "page_count": 312,
+    "used": false
+  },
+  "live_counts_read_only": {
+    "problems_lifecycle_draft": 757,
+    "frozen_expected_drafts": 265,
+    "note": "Live 757 is later ingest beyond the STEP 8.12 freeze of 265. Not restored.",
+    "figure_assets": 3,
+    "figure_links": 3
+  }
+}

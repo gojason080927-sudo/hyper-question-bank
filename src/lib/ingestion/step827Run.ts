@@ -35,7 +35,7 @@ import {
   progressMatchesItems,
   projectStep827Targets,
   tallyVerdicts,
-  tokenLooksReal,
+  accessTokenUsable,
   type CacheInventory,
   type SchemaProbe,
   type SegmentPipelineItem,
@@ -112,12 +112,12 @@ function inventoryCache(root: string): CacheInventory {
   return inventory
 }
 
-function placeholderSchemaProbe(): SchemaProbe {
+function skippedSchemaProbe(reason: string): SchemaProbe {
   const isolated = isolated826ApplyAllowed(null)
   return {
     queried: false,
     present: null,
-    reason: 'access_token_placeholder',
+    reason,
     tables: { pipeline_runs: null, pipeline_items: null },
     rpcs: {
       hqb_start_pipeline_run: null,
@@ -135,22 +135,27 @@ async function probeProductionSchema(): Promise<SchemaProbe> {
   if (url && !url.includes(QUESTION_BANK_REF)) throw new Error('Wrong Supabase project')
 
   const access = process.env.SUPABASE_ACCESS_TOKEN
-  const service = process.env.SUPABASE_SERVICE_ROLE_KEY
-  if (!tokenLooksReal(access) || !tokenLooksReal(service)) {
-    return placeholderSchemaProbe()
+  if (!accessTokenUsable(access)) {
+    return skippedSchemaProbe('SUPABASE_ACCESS_TOKEN_MISSING')
   }
 
-  const isolated = isolated826ApplyAllowed(null)
   const token = access!.trim()
   const mgmt = await fetch(`https://api.supabase.com/v1/projects/${QUESTION_BANK_REF}/database/migrations`, {
     headers: { Authorization: `Bearer ${token}` },
   })
   if (!mgmt.ok) {
+    const isolated = isolated826ApplyAllowed(null)
     return {
-      ...placeholderSchemaProbe(),
       queried: true,
+      present: null,
       reason: `management_http_${mgmt.status}`,
-      isolated_826_apply_allowed: false,
+      tables: { pipeline_runs: null, pipeline_items: null },
+      rpcs: {
+        hqb_start_pipeline_run: null,
+        hqb_upsert_pipeline_item: null,
+        hqb_pipeline_progress_from_items: null,
+      },
+      isolated_826_apply_allowed: isolated.allowed,
       isolated_826_apply_reason: isolated.reason,
     }
   }
@@ -163,11 +168,11 @@ async function probeProductionSchema(): Promise<SchemaProbe> {
     queried: true,
     present: applied,
     reason: applied ? 'migration_history_has_20260912120000' : 'migration_not_in_history',
-    tables: { pipeline_runs: applied ? true : null, pipeline_items: applied ? true : null },
+    tables: { pipeline_runs: applied, pipeline_items: applied },
     rpcs: {
-      hqb_start_pipeline_run: applied ? true : null,
-      hqb_upsert_pipeline_item: applied ? true : null,
-      hqb_pipeline_progress_from_items: applied ? true : null,
+      hqb_start_pipeline_run: applied,
+      hqb_upsert_pipeline_item: applied,
+      hqb_pipeline_progress_from_items: applied,
     },
     isolated_826_apply_allowed: isolatedNow.allowed,
     isolated_826_apply_reason: isolatedNow.reason,
@@ -187,7 +192,9 @@ export async function runStep827(root: string, argv: string[]): Promise<Step827S
   }
 
   const inventory = inventoryCache(root)
-  const schema = await probeProductionSchema()
+  const schema = argv.includes('--probe-production')
+    ? await probeProductionSchema()
+    : skippedSchemaProbe('cache-only_no_probe')
   const dryRun = evaluateDryRun({
     inventory,
     schema,
@@ -225,10 +232,13 @@ export async function runStep827(root: string, argv: string[]): Promise<Step827S
     schema_probe: schema,
     schema_write: {
       attempted: false,
-      applied: false,
-      reason: schema.isolated_826_apply_allowed
-        ? 'isolated_apply_allowed_but_not_used_without_confirmed_token'
-        : schema.isolated_826_apply_reason,
+      applied: schema.present === true,
+      reason:
+        schema.present === true
+          ? 'already_on_production_do_not_reapply'
+          : schema.isolated_826_apply_allowed
+            ? 'isolated_apply_allowed_not_run_from_cache_only_runner'
+            : schema.isolated_826_apply_reason,
     },
     paid_api_calls: { mathpix: 0, mistral: 0 },
     paid_ocr_cap: { max_calls: STEP827_PAID_OCR_CAP.maxCalls, max_usd: STEP827_PAID_OCR_CAP.maxUsd },

@@ -59,7 +59,26 @@ If the 8.26 schema is not confirmed on Production, **do not start** a Production
 - If pending list is unknown or mixed: **do not** `db push` everything. Stop Production apply and report.
 - No DROP / TRUNCATE / destructive SQL. No secret in docs or git.
 
-This Cloud Agent environment has placeholder `SUPABASE_ACCESS_TOKEN` / service-role (not JWT-like). Pending migrations cannot be listed safely → isolated apply is **not** allowed → Production run is **not** started.
+This Cloud Agent environment previously skipped Production because access tokens were not JWT-shaped. That check was wrong: Supabase CLI/Management tokens are `sbp_…`, not Auth user JWTs.
+
+## Production schema (applied this follow-up, still STEP 8.27)
+
+`supabase projects list` (CLI 2.117.0) authenticated and listed `hyper-question-bank` ref `owpxsmdcxjmsgadkdsci`. Pending remote migration was **only** `20260912120000`. Dry-run `supabase db push --project-ref owpxsmdcxjmsgadkdsci --linked=false --dry-run` named that one file. It was then applied once. Re-query: tables `pipeline_runs` / `pipeline_items` exist with RLS; RPCs exist; pending = 0; pipeline row counts = 0.
+
+## Original PDF hashes (do not mix)
+
+| Book | source id | `file_hash` | pages |
+|---|---|---|---|
+| 쎈수학 공통수학1 | `9ff369b4-…` | `ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292` | 192 |
+| 개념원리 공통수학1 (SECOND, excluded) | `190fb31b-…` | `3b4e789ea8165f0473975d70de8d40658a391b65d21607997b77b468f124a5e9` | 312 |
+
+The hash `3b4e789e…` is SECOND, not SSEN. Matching it does **not** authorize using that PDF as the 8.27 textbook.
+
+SSEN original exists in Production Storage `question-bank-sources/9ff369b4-…/original.pdf`. Layout OCR cache still does not. Cache-only segmentation does not download or substitute that PDF.
+
+## Cache hunt
+
+Required `ocr-tests/mistral`, `ocr-tests/book-pipeline`, and `stage-b-candidates.json` are absent from git history, LFS, GitHub Actions artifacts, and Production Storage. Recognition payloads are stem/choices, not page layout blocks. Do not start 8.28.
 
 ## OCR policy
 

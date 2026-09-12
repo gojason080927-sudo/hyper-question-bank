@@ -32,6 +32,10 @@ export const STAGE: PipelineStage = 'SEGMENT'
  */
 export const STEP827_DOCUMENT = '9ff369b4-5b16-4cb8-bfc3-a6b180c18703'
 export const STEP827_DOCUMENT_TITLE = '쎈수학 공통수학1'
+/** Production `source_documents.file_hash` for SSEN. Not the SECOND-book SHA. */
+export const STEP827_SSEN_FILE_HASH = 'ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292'
+export const STEP827_SSEN_PAGE_COUNT = 192
+export const STEP827_SSEN_ORIGINAL_FILENAME = '쎈 공통수학1.pdf'
 export const STEP827_DOCUMENT_EVIDENCE = [
   'docs/STEP8_25_BATCH_REGISTRATION_PIPELINE_v1.md §J: one already-stored textbook',
   'src/lib/classification/step88Io.ts STEP88_DOCUMENT',
@@ -323,9 +327,16 @@ export function findWrongSourceItems(items: SegmentPipelineItem[]): SegmentPipel
   return items.filter((row) => row.source_document_id !== STEP827_DOCUMENT)
 }
 
-export function tokenLooksReal(value: string | undefined): boolean {
+/**
+ * Do not judge tokens by JWT shape. Management/CLI access tokens are `sbp_…`.
+ * Auth user JWTs are a different credential and are not required here.
+ */
+export function accessTokenUsable(value: string | undefined): boolean {
   const token = value?.trim() ?? ''
-  return token.length > 80 && token.split('.').length >= 3
+  if (!token) return false
+  if (token.startsWith('sbp_') && token.length >= 20) return true
+  if (token.length > 80 && token.split('.').length >= 3) return true
+  return false
 }
 
 export function isolated826ApplyAllowed(pendingMigrationVersions: string[] | null): {
