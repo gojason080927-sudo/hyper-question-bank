@@ -13,6 +13,9 @@ const freezePath = path.join(root, 'docs/STEP8_25_BATCH_REGISTRATION_PIPELINE_v1
 const spec826Path = path.join(root, 'docs/STEP8_26_PIPELINE_JOB_SCHEMA_v1.md')
 const summaryPath = path.join(dir, 'summary.json')
 const sqlPath = path.join(root, 'supabase/migrations/20260912120000_hqb_pipeline_job_v1.sql')
+const huntPath = path.join(dir, 'cache-hunt.json')
+const prodPath = path.join(dir, 'production-schema.json')
+
 
 const failures = []
 const check = (cond, msg) => {
@@ -60,13 +63,43 @@ check((s.duplicates ?? 1) === 0, 'duplicate items must be 0')
 check((s.orphans ?? 1) === 0, 'orphan items must be 0')
 check((s.wrong_source ?? 1) === 0, 'wrong source items must be 0')
 
+check(s.schema_write?.attempted !== true || s.schema_probe?.present === true, 'must not attempt schema apply blindly')
+
 if (s.status === 'CACHE_ONLY_BLOCKED') {
   check(s.executed === false, 'blocked run must not execute')
   check(s.dry_run?.pass === false, 'blocked run dry-run must fail')
-  check(s.results?.PASS === 4, `PASS must be 4 (got ${s.results?.PASS})`)
-  check(s.results?.BLOCKED === 14, `BLOCKED must be 14 (got ${s.results?.BLOCKED})`)
   check((s.items ?? []).length === 0, 'blocked run must not invent pipeline items')
+  const pass = s.results?.PASS
+  const blocked = s.results?.BLOCKED
+  const schemaOk = s.schema_probe?.present === true
+  if (schemaOk) {
+    check(pass === 5, `schema-present PASS must be 5 (got ${pass})`)
+    check(blocked === 13, `schema-present BLOCKED must be 13 (got ${blocked})`)
+  } else {
+    check(pass === 4, `PASS must be 4 (got ${pass})`)
+    check(blocked === 14, `BLOCKED must be 14 (got ${blocked})`)
+  }
+  check((s.dry_run?.blockers ?? []).includes('LAYOUT_OCR_CACHE_MISSING') || (s.dry_run?.blockers ?? []).includes('CANDIDATES_CACHE_MISSING'), 'cache miss must still block execute')
 }
+
+check(existsSync(huntPath), 'missing cache-hunt.json')
+check(existsSync(prodPath), 'missing production-schema.json')
+const hunt = existsSync(huntPath) ? JSON.parse(readFileSync(huntPath, 'utf8')) : {}
+const prod = existsSync(prodPath) ? JSON.parse(readFileSync(prodPath, 'utf8')) : {}
+check(hunt.found?.layout_ocr_cache === false, 'must not invent layout cache')
+check(hunt.downloaded_from_internet === false, 'must not download cache from the internet')
+check((hunt.paid_ocr_calls?.mathpix ?? 1) === 0, 'hunt mathpix must be 0')
+check(prod.project_ref === 'owpxsmdcxjmsgadkdsci', 'production-schema must be question-bank')
+check(prod.student_care_accessed === false, 'production-schema must not touch student-care')
+check(prod.auth?.jwt_shape_used_as_validity_test === false, 'must not judge tokens by JWT shape')
+check(prod.ssen_source?.id === '9ff369b4-5b16-4cb8-bfc3-a6b180c18703', 'production-schema must lock SSEN')
+check(prod.second_source_excluded?.used === false, 'SECOND source must stay unused')
+check(prod.ssen_source?.file_hash !== prod.second_source_excluded?.file_hash, 'SSEN and SECOND hashes must differ')
+check((prod.pipeline_counts_after_schema?.runs ?? 1) === 0, 'pipeline runs must stay 0 until cache exists')
+check((prod.pipeline_counts_after_schema?.items ?? 1) === 0, 'pipeline items must stay 0 until cache exists')
+check(prod.tables?.pipeline_runs === true && prod.tables?.pipeline_items === true, '8.26 tables must exist after apply')
+check(prod.live_counts_read_only?.figure_assets === 3 && prod.live_counts_read_only?.figure_links === 3, 'figures must stay 3/3')
+
 
 if (failures.length) {
   console.error('verify:step827 FAIL')

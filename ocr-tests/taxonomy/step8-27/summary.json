@@ -20,7 +20,7 @@
   "schema_probe": {
     "queried": false,
     "present": null,
-    "reason": "access_token_placeholder",
+    "reason": "cache-only_no_probe",
     "tables": {
       "pipeline_runs": null,
       "pipeline_items": null

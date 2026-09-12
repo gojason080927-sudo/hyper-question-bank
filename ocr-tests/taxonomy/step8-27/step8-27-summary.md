@@ -26,7 +26,7 @@ production problem writes: 0
 production figure writes: 0
 schema probed: false
 schema present: null
-schema probe reason: access_token_placeholder
+schema probe reason: cache-only_no_probe
 schema apply attempted: false
 schema apply applied: false
 isolated 8.26 apply allowed: false

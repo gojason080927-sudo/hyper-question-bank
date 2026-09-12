@@ -1,0 +1,49 @@
+{
+  "target_source": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "required": {
+    "candidates": "ocr-tests/book-pipeline/step8-7/stage-b-candidates.json",
+    "mistral_dir": "ocr-tests/mistral",
+    "original_pages": "ocr-tests/original",
+    "book_pipeline_pages": "ocr-tests/book-pipeline/pages"
+  },
+  "searched": [
+    "working tree",
+    "git log --all for ocr-tests/mistral, ocr-tests/book-pipeline, ocr-tests/original, stage-b-candidates.json",
+    "git ls-files",
+    "all origin/* branches listing",
+    "git tags (none)",
+    "git lfs objects (0)",
+    "GitHub Actions artifacts (0)",
+    "GitHub releases (none)",
+    "docs/STEP8_27_CACHE_ONLY_SEGMENTATION_v1.md paths",
+    "Production storage.objects (question-bank-sources)",
+    "Production recognition_results payloads (stem/choices, no layout blocks)",
+    "workers/ocr (gt/samples only; data/cache gitignored and absent locally)"
+  ],
+  "found": {
+    "layout_ocr_cache": false,
+    "stage_b_candidates": false,
+    "ssen_original_pdf_in_git": false,
+    "ssen_original_pdf_in_production_storage": true,
+    "ssen_figure_page_pngs": 9,
+    "second_sample_pages": 7,
+    "second_sample_layout": true
+  },
+  "not_used": [
+    "SSEN figure PNG 9 pages as textbook input",
+    "SECOND source 190fb31b-03f5-43b9-b696-cce7a823a321",
+    "SECOND hash 3b4e789ea8165f0473975d70de8d40658a391b65d21607997b77b468f124a5e9",
+    "source_page_regions 732 as layout OCR cache"
+  ],
+  "downloaded_from_internet": false,
+  "paid_ocr_calls": { "mathpix": 0, "mistral": 0 },
+  "needed_from_user": {
+    "files": [
+      "ocr-tests/book-pipeline/step8-7/stage-b-candidates.json",
+      "ocr-tests/mistral/* layout JSON keyed by page PNG sha256 + profile ocr-latest+blocks+tables+images",
+      "matching ocr-tests/original/page-NNN.png or ocr-tests/book-pipeline/pages/page-NNN.png for SSEN pages"
+    ],
+    "format": "existing STEP 8.7/8.8 cache filenames; SSEN source 9ff369b4 only",
+    "upload": "place in the repo working tree at those paths (do not commit large binaries unless project policy already tracks them)"
+  }
+}
