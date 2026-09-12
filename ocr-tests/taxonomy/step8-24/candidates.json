@@ -1,0 +1,140 @@
+{
+  "candidates": [
+    {
+      "id": "108|0735",
+      "page": 108,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "source_hash": "6e34e995d107171a2cad85fd83ee308bf7ce72276f0d8c0276df3718cf1f1262",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/108-0735.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    },
+    {
+      "id": "108|0736",
+      "page": 108,
+      "figure_type": "TABLE",
+      "source_hash": "07ca70ff57271180ff656e3d969504e065fc793a21189985d5032cbc8d91d858",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/108-0736.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    },
+    {
+      "id": "114|0775",
+      "page": 114,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "source_hash": "c73e959252d28e9463183652b7ff538b84f99967a357930e0029e4a3b560895e",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/114-0775.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    },
+    {
+      "id": "122|0833",
+      "page": 122,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "source_hash": "69ad0306d0c031407d15d07d2cd254546de7d52892f6a6e0888057b2ca782ff1",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/122-0833.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    },
+    {
+      "id": "134|0924",
+      "page": 134,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "source_hash": "7b9eeacf02cf668703a0ec7353223dd32d6592da422ebabc82e1f60e01271013",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/134-0924.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    },
+    {
+      "id": "134|0925",
+      "page": 134,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "source_hash": "e3095a00f1115ee89e0dfb12057f34239398ca35091f600a8a637e36a82f51df",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/134-0925.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    },
+    {
+      "id": "134|0926",
+      "page": 134,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "source_hash": "474f5684983cbe0d53b91ccb82bf34a48c9d41658af93f8a12f002044f18acb0",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/134-0926.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    },
+    {
+      "id": "189|1300",
+      "page": 189,
+      "figure_type": "GEOMETRY_DIAGRAM",
+      "source_hash": "c414b1928c2294b892a609cd55b8e312b9aa98b38a3337897787af3c957c602d",
+      "crop": "ocr-tests/taxonomy/step8-22/crops/189-1300.png",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "PROBLEM_NOT_INGESTED",
+        "NO_COMMITTED_STEM",
+        "NEEDS_PAID_OCR"
+      ],
+      "problem_id": null,
+      "version_id": null,
+      "asset_id": null,
+      "link_id": null
+    }
+  ]
+}
