@@ -467,6 +467,46 @@ textarea {
   border: 1px solid #dbe3ee;
 }
 
+.review-split {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.2fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.data-table tr.is-selected td {
+  background: #eef5ff;
+}
+
+.review-detail .check-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.crop-frame {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.reason-list {
+  margin: 8px 0 16px;
+  padding-left: 18px;
+}
+
+.review-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 fieldset {
   border: 1px solid #dbe3ee;
   border-radius: 8px;
@@ -478,7 +518,8 @@ fieldset {
   .split,
   .expr-grid,
   .source-workspace,
-  .recognition-split {
+  .recognition-split,
+  .review-split {
     grid-template-columns: 1fr;
   }
 }

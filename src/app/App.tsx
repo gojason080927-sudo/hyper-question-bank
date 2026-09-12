@@ -10,6 +10,7 @@ import { QuestionEditPage } from '../features/questions/QuestionEditPage'
 import { QuestionReviewPage } from '../features/questions/QuestionReviewPage'
 import { QuestionReviewRedirect } from '../features/questions/QuestionReviewRedirect'
 import { QuestionVersionsPage } from '../features/questions/QuestionVersionsPage'
+import { PipelineReviewPage } from '../features/review/PipelineReviewPage'
 import { SourceListPage } from '../features/sources/SourceListPage'
 import { SourceNewPage } from '../features/sources/SourceNewPage'
 import { SourceDetailPage } from '../features/sources/SourceDetailPage'
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       { path: 'sources', element: <SourceListPage /> },
       { path: 'sources/new', element: <SourceNewPage /> },
       { path: 'sources/:documentId', element: <SourceDetailPage /> },
+      { path: 'pipeline-review', element: <PipelineReviewPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

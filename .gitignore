@@ -65,3 +65,6 @@ temp/
 Thumbs.db
 
 .vercel
+
+# Local instructor crop previews (copyrighted textbook regions; never commit)
+public/review-crops/

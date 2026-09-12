@@ -1,0 +1,1177 @@
+{
+  "step": "8.31",
+  "name": "End-to-end 26-sample original recover, crop, OCR, compare, review queue",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "textbook": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1"
+  },
+  "original_pdf": {
+    "sha256": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+    "bytes": 11365061,
+    "pages": 192,
+    "git": false
+  },
+  "paid_ocr_cap": {
+    "maxCalls": 30,
+    "maxUsd": 2
+  },
+  "paid_api_calls": {
+    "mistral": 0,
+    "mistral_cached": 26,
+    "mathpix": 0
+  },
+  "estimated_usd": 0,
+  "milestone_mistral_calls": 26,
+  "milestone_estimated_usd": 0.104,
+  "mistral_credentials": "PRESENT",
+  "tally": {
+    "crop_present": 26,
+    "crop_missing": 0,
+    "compared": 26,
+    "auto_approved": 0,
+    "human_review": 22,
+    "blocked": 4,
+    "create_draft": 0,
+    "record_existing": 19,
+    "skip_blocked": 4,
+    "skip_identity": 3
+  },
+  "progress": {
+    "total": 26,
+    "auto_approved": 0,
+    "ai_fixed": 0,
+    "human_review": 22,
+    "blocked": 4,
+    "failed": 0,
+    "unresolved": 26,
+    "estimated_paid_calls": 26,
+    "estimated_usd": 0.104,
+    "actual_paid_calls": 26,
+    "actual_usd": 0.104
+  },
+  "persist_plan_ok": true,
+  "persist_plan_reasons": [],
+  "persist": {
+    "ran": false,
+    "created": [],
+    "existing": [],
+    "pipeline_run_id": null,
+    "queued_review": 0
+  },
+  "production_before": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 761,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 1,
+    "pipeline_items": 26
+  },
+  "production_after": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 761,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 1,
+    "pipeline_items": 26
+  },
+  "production_problem_writes": 0,
+  "production_figure_writes": 0,
+  "production_verified_writes": 0,
+  "frozen": {
+    "step812ExpectedDrafts": 265,
+    "frozenTypeAuto": 38,
+    "impliedNonTypeAuto": 227,
+    "step823FigureAssets": 3,
+    "step823FigureLinks": 3,
+    "step824BlockedRemaining": 8
+  },
+  "gt_sha256": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "gt_mutated": false,
+  "duplicates": 0,
+  "orphans": 0,
+  "wrong_source": 0,
+  "content_rewrites": 0,
+  "items": [
+    {
+      "candidate_id": "S01",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "IDENTITY_NOT_CANONICAL",
+        "COMPARED_NO_PRODUCTION_UPSERT",
+        "NO_VERIFIED"
+      ],
+      "page_number": 8,
+      "problem_number": "01-1",
+      "canonical_number": null,
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "SKIP_IDENTITY",
+      "existing": null,
+      "crop_present": true,
+      "crop_sha256": "8fb52032bfdc71e9989681f8c4792d3fca966a3091cbe35729ac19f8cb41176c",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 207
+      },
+      "has_figure": false,
+      "dual_would_auto": false,
+      "content_fingerprint": "S01|8|01-1|01-1 다항식의 덧셈과 뺄셈\n(1) 다항식의 정리 방법\n① 내림차순: 다항식을 한 문자에 대하여 차수가 높은 항부터 낮은 항의 순서로 ㄴ\n② 오름차순: 다항식을 한 문자에 대하여 차수가 낮은 항부터 높은 항의 순서로 ㄴ\ntip 다항식은 일반적으로 내림차순으로 정리한다.\n(2) 다항식의 덧셈과 뺄셈||"
+    },
+    {
+      "candidate_id": "S02",
+      "status": "BLOCKED",
+      "reasons": [
+        "UPSTREAM_IDENTITY_UNSTABLE",
+        "NO_VERIFIED",
+        "DRAFT_CONTENT_NOT_REWRITTEN"
+      ],
+      "page_number": 8,
+      "problem_number": null,
+      "canonical_number": null,
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "FAIL",
+        "stem": "FAIL",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "SKIP_BLOCKED",
+      "existing": null,
+      "crop_present": true,
+      "crop_sha256": "07174a8301c1058bad3931280211453a24bcc2d19da6c85987eb749ae0e03895",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 522
+      },
+      "has_figure": false,
+      "dual_would_auto": false,
+      "content_fingerprint": "S02|8||① 교환법칙 AB=BA\n② 결합법칙 (AB)C=A(BC)\n③ 분배법칙 A(B+C)=AB+AC, (A+B)C=AC+BC\n(3) 곱셈 공식\n① (a+b)²=a²+2ab+b², (a-b)²=a²-2ab+b²\n② (a+b)(a-b)=a²-b²\n③ (x+a)(x+b)=x²+(a+b)x+ab\n④ (ax+b)(cx+d)=acx²+(ad+bc)x+bd\n⑤ (a+b+c)²=a²+b²+c²+2ab+2bc+2ca\n⑥ (a+b)³=a³+3a²b+3ab²+b³, (a-b)³=a³-3a²b+3ab²-b³\n⑦ (a+b)(a²-ab+b²)=a³+b³, (a-b)(a²+ab+b²)=a³-b³\n⑧ (x+a)(x+b)(x+c)=x³+(a+b+c)x²+(ab+bc+ca)x+abc\n⑨ (a²+ab+b²)(a²-ab+b²)=a⁴+a²b²+b⁴\n⑩ (a+b+c)(a²+b²+c²-ab-bc-ca)=a³+b³+c³-3abc||(a+b)²=a²+2ab+b²\n(a-b)²=a²-2ab+b²\na³+b³\na⁴+a²b²+b⁴"
+    },
+    {
+      "candidate_id": "S03",
+      "status": "BLOCKED",
+      "reasons": [
+        "UPSTREAM_IDENTITY_UNSTABLE",
+        "NO_VERIFIED",
+        "DRAFT_CONTENT_NOT_REWRITTEN"
+      ],
+      "page_number": 8,
+      "problem_number": null,
+      "canonical_number": null,
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "FAIL",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "SKIP_BLOCKED",
+      "existing": null,
+      "crop_present": true,
+      "crop_sha256": "6e6ba24460c9ff54b5c791284a26e1530ffd2f38a175e3140c191a66568441fe",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 122
+      },
+      "has_figure": false,
+      "dual_would_auto": false,
+      "content_fingerprint": "S03|8||SSEN NOTE\n다항식을 한 문자에 대하여 내림\n차순이나 오름차순으로 정리할 때,\n기준이 되는 문자를 제외한 나머\n지 문자는 상수로 생각한다.\n다항식에서 같은 문자에 대하여\n차수가 같은 항을 그 문자에 대한||"
+    },
+    {
+      "candidate_id": "S04",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 12,
+      "problem_number": "0040",
+      "canonical_number": "0040",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "FAIL"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "6ca8ef5a-74eb-4349-971a-496f0e98ceed",
+        "public_code": "HQB-000364",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "c4a9c5cf-b160-4f49-9ac7-052cbcec3d82"
+      },
+      "crop_present": true,
+      "crop_sha256": "85f074c891371bcecae7007e8ffd820432d9be0b7b55680560ba5966a61a7c55",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 222
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S04|12|0040|유형 01 다항식의 덧셈과 뺄셈\n0040 | 대표 문제\n두 다항식 A=2x²-4xy+6y², B=-x²+2xy+4y²\n에 대하여 2X-B=A-5B 를 만족시키는 다항식 X 는?\n① -3x²-6xy+5y²\n② -3x²+6xy-5y²\n③ 3x²-6xy-5y²\n④ 3x²-6xy+5y²\n⑤ 3x²+6xy+5y²|-3x²-6xy+5y²\n-3x²+6xy-5y²\n3x²-6xy-5y²\n3x²-6xy+5y²\n3x²+6xy+5y²|A=2x²-4xy+6y²\nB=-x²+2xy+4y²\n2X-B=A-5B"
+    },
+    {
+      "candidate_id": "S05",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 12,
+      "problem_number": "0042",
+      "canonical_number": "0042",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "5625a924-afdf-493a-8747-5812739d813e",
+        "public_code": "HQB-000195",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "27b40d6b-1c39-4f45-9049-b7365c018407"
+      },
+      "crop_present": true,
+      "crop_sha256": "f6a076ed1a0c5f2b51ab4277677da1513ba4dc7cae57f29f877c7c3c77ff4440",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 193
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S05|12|0042|0042\n두 다항식 A, B에 대하여 A * B = 3A - B라 할 때,\n(x²+2x-y+1)*(2x-y-5)를 계산하면?\n① x²-4x+2y-8\n② x²+2x-2y+8\n③ 3x²-2x+2y-8\n④ 3x²+4x-2y+8\n⑤ 3x²+4x+2y-8|x²-4x+2y-8\nx²+2x-2y+8\n3x²-2x+2y-8\n3x²+4x-2y+8\n3x²+4x+2y-8|A * B = 3A - B\n(x²+2x-y+1)*(2x-y-5)"
+    },
+    {
+      "candidate_id": "S06",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 12,
+      "problem_number": "0045",
+      "canonical_number": "0045",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "fdb196a5-2a26-466d-a0e3-e85c8e3d0577",
+        "public_code": "HQB-000194",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "c97737b4-7d76-408e-b880-2d5dfe1d0eb6"
+      },
+      "crop_present": true,
+      "crop_sha256": "d4170853b76596a60dfa64642f4b8ec3f7e23850eb3c0111b8d347b26809400c",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 201
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S06|12|0045|0045\n다음 표에서 가로, 세로, 대각선에 있는 세 다항식의 합이 모두 3x²-6x+9일 때, (나)의 다항식과 (다)의 다항식의 합을 구하시오.\n-3x+2 | (가) | (나)\n(다) | (라) | -3x²-6x-1\n-2x²-5x | (마) | (바)||3x²-6x+9\n-3x²-6x-1\n-2x²-5x"
+    },
+    {
+      "candidate_id": "S07",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED",
+        "IMAGE_COMPARE_PARTIAL"
+      ],
+      "page_number": 20,
+      "problem_number": "0097",
+      "canonical_number": "0097",
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "PASS",
+        "stem": "FAIL",
+        "choices": "PASS",
+        "math": "FAIL",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "23eb21e1-bb9f-4bb8-80dd-1c23d8af433b",
+        "public_code": "HQB-000814",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "f8b6ae05-dde6-45f6-ad81-9904099fec18"
+      },
+      "crop_present": true,
+      "crop_sha256": "fe529a29de2e7a774a43945524065e31299d8b7cd7b3d199acd99b6a62176b98",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 393
+      },
+      "has_figure": true,
+      "dual_would_auto": false,
+      "content_fingerprint": "S07|20|0097|0097 교육청 기출\n그림과 같이 점 O를 중심으로 하는 반원에 내접하는 직사각형 ABCD가 다음 조건을 만족시킨다.\n(가) OC+CD = x+y+3\n(나) DA+AB+BO = 3x+y+5\n직사각형 ABCD의 넓이를 x, y의 식으로 나타내면?\n① (x-1)(y+2)\n② (x+1)(y+2)\n③ 2(x-1)(y+2)\n④ 2(x+1)(y-2)\n⑤ 2(x+1)(y+2)|(x-1)(y+2)\n(x+1)(y+2)\n2(x-1)(y+2)\n2(x+1)(y-2)\n2(x+1)(y+2)|OC+CD=x+y+3\nDA+AB+BO=3x+y+5"
+    },
+    {
+      "candidate_id": "S08",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 20,
+      "problem_number": "0098",
+      "canonical_number": "0098",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "f4798e77-4058-4700-8a35-ba5da8d6e8ac",
+        "public_code": "HQB-000380",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "f0a8ca6c-502d-4c70-8b49-f06b2d859683"
+      },
+      "crop_present": true,
+      "crop_sha256": "15e2afaf727fa542196bfd2cad033e513f83d4559d2d492f13120d7495f8e151",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 226
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S08|20|0098|0098 서술형\n세 다항식 A=x²+1, B=x²-3x+4, C=2x²-x+\n에 대하여 (A+2B)(B+C)(C-A)의 전개식이\na₆x⁶+a₅x⁵+···+a₁x+a₀일 때, a₀+a₁+···+a₅+a₆\n값을 구하시오. (단, a₀, a₁, ···, a₆은 상수이다.)||A=x²+1\nB=x²-3x+4\n(A+2B)(B+C)(C-A)"
+    },
+    {
+      "candidate_id": "S09",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED",
+        "IMAGE_COMPARE_PARTIAL"
+      ],
+      "page_number": 20,
+      "problem_number": "0102",
+      "canonical_number": "0102",
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "FAIL",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "70e4291c-7815-455c-a016-37a8b59c930c",
+        "public_code": "HQB-000231",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "3eae7aa1-051b-4c27-a8b1-cf2ea743ec14"
+      },
+      "crop_present": true,
+      "crop_sha256": "0554ca5f2668b2cea3bda955636ab57f794f1800d73cf5bf4ce8ba6b7ff0da29",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 145
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S09|20|0102|0102\n0이 아닌 두 실수 x, y에 대하여\nx + 1/y = 4 + 2√3, y + 1/x = 4 - 2√3\n일 때, x³ + y³의 값을 구하시오.||x+1/y=4+2√3\ny+1/x=4-2√3\nx³+y³"
+    },
+    {
+      "candidate_id": "S10",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 36,
+      "problem_number": "0219",
+      "canonical_number": "0219",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "64f5a32f-301f-4514-9308-e0ca46556f4a",
+        "public_code": "HQB-000429",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "07ed0c93-ed74-4523-ad6a-42b27e3e70af"
+      },
+      "crop_present": true,
+      "crop_sha256": "40a90830679530487ee8bf77ef24a39f6cbed5a7a599d3225523dfa4c5f3f64a",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 254
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S10|36|0219|다항식의 인수분해\n0219 | 대표 문제\n다음 중 옳지 않은 것은?\n① a³+3a²+3a+1=(a+1)³\n② x³-6x²y+12xy²-8y³=(x-2y)³\n③ x³-27=(x+3)(x²-3x+9)\n④ x³-5x²+6x=x(x-2)(x-3)\n⑤ x⁴+x²y²+y⁴=(x²+xy+y²)(x²-xy+y²)|a³+3a²+3a+1=(a+1)³\nx³-6x²y+12xy²-8y³=(x-2y)³\nx³-27=(x+3)(x²-3x+9)\nx³-5x²+6x=x(x-2)(x-3)\nx⁴+x²y²+y⁴=(x²+xy+y²)(x²-xy+y²)|a³+3a²+3a+1=(a+1)³\nx³-27=(x+3)(x²-3x+9)"
+    },
+    {
+      "candidate_id": "S11",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED",
+        "IMAGE_COMPARE_PARTIAL"
+      ],
+      "page_number": 36,
+      "problem_number": "0220",
+      "canonical_number": "0220",
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "FAIL",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "4279a7c1-fb9e-4821-8d4f-cbc744b66e10",
+        "public_code": "HQB-000431",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "3e16c08f-cfa8-4601-8f1f-1a18cf4ce92f"
+      },
+      "crop_present": true,
+      "crop_sha256": "c109b4523f87fc1f42bdb854077f92ddc3d9b70ce6927872e0866a2da4c231a8",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 134
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S11|36|0220|0220\n다음 중 다항식 a⁶-a⁴+2a³-2a²의 인수인 것은?\n① a³+1\n② a³+2\n③ a³+a+1\n④ a³+a+2\n⑤ a³+a²+2|a³+1\na³+2\na³+a+1\na³+a+2\na³+a²+2|a⁶-a⁴+2a³-2a²"
+    },
+    {
+      "candidate_id": "S12",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 36,
+      "problem_number": "0222",
+      "canonical_number": "0222",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "fb12d7d7-0099-4527-8328-b20aa1a37afa",
+        "public_code": "HQB-000430",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "dab231c4-a691-4857-9616-ddea50e9e0e0"
+      },
+      "crop_present": true,
+      "crop_sha256": "69b222be84d90884a64d9cb19576c9afface778de102d5d275a63b1a121514de",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 145
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S12|36|0222|다항식의 인수분해\n0222 | 대표 문제\n다음 중 다항식 (x-4)(x-3)(x+1)(x+2)-24의 인수인 것은?\n① x+3\n② x+2\n③ x²\n④ x²-2x-11\n⑤ x²+2x-11|x+3\nx+2\nx²\nx²-2x-11\nx²+2x-11|(x-4)(x-3)(x+1)(x+2)-24"
+    },
+    {
+      "candidate_id": "S13",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 36,
+      "problem_number": "0224",
+      "canonical_number": "0224",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "a14ef5d5-2891-4cd0-96e9-715dc6fef1dd",
+        "public_code": "HQB-000815",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "abe9771f-77e7-4c65-bb22-dac9bd55a3d4"
+      },
+      "crop_present": true,
+      "crop_sha256": "2aaae19c7fc57e7e337d17d42e3c7c6ef79f1ca8a2cdc852d7da153000cc2b64",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 133
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S13|36|0224|0224\n다항식 (x²-4x)²+9x²-36x+18을 인수분해하면\n(x+a)(x+b)(x²+cx+d)일 때, 정수 a, b, c, d에\n대하여 abcd의 값을 구하시오.||(x²-4x)²+9x²-36x+18\n(x+a)(x+b)(x²+cx+d)"
+    },
+    {
+      "candidate_id": "S14",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED",
+        "IMAGE_COMPARE_PARTIAL"
+      ],
+      "page_number": 60,
+      "problem_number": "0401",
+      "canonical_number": "0401",
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "PASS",
+        "stem": "FAIL",
+        "choices": "PASS",
+        "math": "FAIL",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "067f8460-d14b-4117-b76a-bb1406abd596",
+        "public_code": "HQB-000487",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "f1ce68eb-c982-4e2c-8bf2-6a21218e9fbb"
+      },
+      "crop_present": true,
+      "crop_sha256": "b8cd602263ee58e9941e9f1f903c6f62cb6e6c18a769a5968c7129852f8a9532",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 147
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S14|60|0401|0401 서술형\n복소수 z에 대하여 z⁴ = (-1+i)/√2 일 때, (z̄)¹⁰⁰⁰의 값을\n하시오. (단, z̄는 z의 켤레복소수이다.)||z⁴=(-1+i)/√2\n(z̄)¹⁰⁰⁰"
+    },
+    {
+      "candidate_id": "S15",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 60,
+      "problem_number": "0402",
+      "canonical_number": "0402",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "e950ec3a-cc4c-4389-b734-1924c32d5ed4",
+        "public_code": "HQB-000489",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "96f7a360-c53e-422d-aaa7-9b5de71112f5"
+      },
+      "crop_present": true,
+      "crop_sha256": "8123ad67cc75fa20dc288dd5df7f49887428cea330300067118a9a18b586877b",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 220
+      },
+      "has_figure": false,
+      "dual_would_auto": false,
+      "content_fingerprint": "S15|60|0402|0402\n복소수 z=a+bi (a, b는 실수)에 대하여 P_z=ax+\n라 하자. 자연수 n과 복소수 z_n=i^{n+1}(1+i)^n에 대하\nP_w=(P_{z1}+P_{z2})-(P_{z3}+P_{z4})를 만족시키는 복소수\n는?\n① 3-i\n② 3+i\n③ 4-2i\n④ 4+2i\n⑤ 5-3i|3-i\n3+i\n4-2i\n4+2i\n5-3i|z=a+bi\nz_n=i^{n+1}(1+i)^n"
+    },
+    {
+      "candidate_id": "S16",
+      "status": "BLOCKED",
+      "reasons": [
+        "UPSTREAM_IDENTITY_UNSTABLE",
+        "NO_VERIFIED",
+        "DRAFT_CONTENT_NOT_REWRITTEN"
+      ],
+      "page_number": 60,
+      "problem_number": null,
+      "canonical_number": null,
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "FAIL",
+        "stem": "FAIL",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "SKIP_BLOCKED",
+      "existing": null,
+      "crop_present": true,
+      "crop_sha256": "63ce688c09a5e7342a7d1af7b1e713bde35b79cb4fca4f523c6c69a005b1381d",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 212
+      },
+      "has_figure": false,
+      "dual_would_auto": false,
+      "content_fingerprint": "S16|60||(가) √b/√a = -√(b/a)\n(나) |b+c|+|a+b-2|=0\n세 수 a, b, c의 대소 관계로 옳은 것은?\n① a<b<c\n② a<c<b\n③ b<a<c\n④ c<a<b\n⑤ c<b<a|a<b<c\na<c<b\nb<a<c\nc<a<b\nc<b<a|√b/√a=-√(b/a)\n|b+c|+|a+b-2|=0"
+    },
+    {
+      "candidate_id": "S17",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED",
+        "IMAGE_COMPARE_PARTIAL"
+      ],
+      "page_number": 96,
+      "problem_number": "0652",
+      "canonical_number": "0652",
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "PASS",
+        "stem": "FAIL",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "4e246428-d2e9-4d90-b945-51a1c9d5e17b",
+        "public_code": "HQB-000588",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "efb7abe2-35ff-4fbc-816d-98a582652ef4"
+      },
+      "crop_present": true,
+      "crop_sha256": "4caae7955d7be358752d5c6a405c72a07ba3d5232fc468b4fad27d943c078699",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 275
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S17|96|0652|사고의 기술\n0652 교육청 기출\n실수 a에 대하여 이차함수 f(x)=(x-a)²이 다음 조\n(가) 2≤x≤10에서 함수 f(x)의 최솟값은 0이다.\n(나) 2≤x≤6에서 함수 f(x)의 최댓값과\n6≤x≤10에서 함수 f(x)의 최솟값은 같다.\nf(-1)의 최댓값을 M, 최솟값을 m이라 할 때, M+\n의 값은?\n① 34\n② 35\n③ 36|34\n35\n36|f(x)=(x-a)²\n2≤x≤10"
+    },
+    {
+      "candidate_id": "S18",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED",
+        "IMAGE_COMPARE_PARTIAL"
+      ],
+      "page_number": 96,
+      "problem_number": "0653",
+      "canonical_number": "0653",
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "PASS",
+        "stem": "FAIL",
+        "choices": "PASS",
+        "math": "FAIL",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "d476751a-0527-4165-80d8-1fe39e84b682",
+        "public_code": "HQB-000590",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "6825859e-eff5-4584-b378-86aecc3a3cfb"
+      },
+      "crop_present": true,
+      "crop_sha256": "775564adb49ab4de3ef86d8e16067d38c3f5373b3ed1cabedee2131f5d6cb4fb",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 216
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S18|96|0653|0653\n함수 f(x)={ x+4 (x<0) ; x²-6x+4 (x≥0) }에 대하여\nh(x)={f(x)}²-2f(x)-1 (-3≤x≤2)이라 하\n함수 h(x)가 x=k에서 최댓값 M을 가질 때, M-k\n값을 구하시오.||x+4 (x<0)\nx²-6x+4 (x≥0)\nh(x)={f(x)}²-2f(x)-1"
+    },
+    {
+      "candidate_id": "S19",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 96,
+      "problem_number": "0654",
+      "canonical_number": "0654",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "8cf4e92d-d0b2-487a-9512-fc59bb8308a0",
+        "public_code": "HQB-000239",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "23004d5a-af9a-41b8-9707-b635bd5a7d4b"
+      },
+      "crop_present": true,
+      "crop_sha256": "46d560af7c4a15d571504b38be1ee8d5c85ac6e31c7879a99ed51bd1affe9827",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 245
+      },
+      "has_figure": true,
+      "dual_would_auto": false,
+      "content_fingerprint": "S19|96|0654|0654\n오른쪽 그림과 같이 이차함수\ny=x²-5x+4의 그래프가 y축과\n만나는 점을 A, x축과 만나는 두\n점을 각각 B, C라 하자. 점\nP(a, b)가 점 A에서 이차함수\ny=x²-5x+4의 그래프를 따라 점 B를 거쳐 점 C까지\n직일 때, 7a+b+2의 최댓값과 최솟값의 곱을 구하시오||y=x²-5x+4\nP(a, b)\n7a+b+2"
+    },
+    {
+      "candidate_id": "S20",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 96,
+      "problem_number": "0655",
+      "canonical_number": "0655",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "1f7d7e85-fcff-4d45-984c-a1b5cc1b31d4",
+        "public_code": "HQB-000589",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "9bad29fc-84f7-49c6-8196-823c0b9cf300"
+      },
+      "crop_present": true,
+      "crop_sha256": "4f7a73c3074c952287c859c7beb4bfce9adcdb7c14ef463bc53ebe2a81e18acb",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 137
+      },
+      "has_figure": false,
+      "dual_would_auto": true,
+      "content_fingerprint": "S20|96|0655|0655 서술형\n3x+4y=8을 만족시키는 양의 실수 x, y에 대하여\n(√(17+3x)+√(11+4y))²의 최댓값을 구하시오.||3x+4y=8\n(√(17+3x)+√(11+4y))²"
+    },
+    {
+      "candidate_id": "S21",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 96,
+      "problem_number": "0656",
+      "canonical_number": "0656",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "70ea6986-db1f-4500-949b-7030659bf994",
+        "public_code": "HQB-000816",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "cf7f71c1-f88a-40a9-90bc-3c3b36792c1f"
+      },
+      "crop_present": true,
+      "crop_sha256": "c0a6ff67857cc704921d37f10de82619b1a9d52e645800a32e950613db796960",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 243
+      },
+      "has_figure": true,
+      "dual_would_auto": false,
+      "content_fingerprint": "S21|96|0656|0656 교육청 기출\n그림과 같이 ∠A=90°이고 AB=6인 직각이등변삼각형 ABC가 있다. 변 AB 위의 한 점 P에서 변 BC에 내린 수선의 발을 Q라 하고, 점 P를 지나고 변 BC와 평행한 직선이 변 AC와 만나는 점을 R라 하자. 사각형 PQCR의 넓이의 최댓값을 구하시오.\n(단, 점 P는 꼭짓점 A와 꼭짓점 B가 아니다.)||∠A=90°\nAB=6"
+    },
+    {
+      "candidate_id": "S22",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "IDENTITY_NOT_CANONICAL",
+        "COMPARED_NO_PRODUCTION_UPSERT",
+        "NO_VERIFIED"
+      ],
+      "page_number": 132,
+      "problem_number": "08-4",
+      "canonical_number": null,
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "SKIP_IDENTITY",
+      "existing": null,
+      "crop_present": true,
+      "crop_sha256": "3ebcf1f35574e9b239c2457871320376970a7486b1a9bcc6b4cf3792d2c41eb8",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 597
+      },
+      "has_figure": false,
+      "dual_would_auto": false,
+      "content_fingerprint": "S22|132|08-4|08-4 이차부등식이 항상 성립할 조건\n① 모든 실수 x에 대하여 ax²+bx+c>0이 성립하려면 a>0, b²-4ac<0\n② 모든 실수 x에 대하여 ax²+bx+c≥0이 성립하려면 a>0, b²-4ac≤0\n③ 모든 실수 x에 대하여 ax²+bx+c<0이 성립하려면 a<0, b²-4ac<0\n④ 모든 실수 x에 대하여 ax²+bx+c≤0이 성립하려면 a<0, b²-4ac≤0||ax²+bx+c>0\nb²-4ac<0\nax²+bx+c≥0\nb²-4ac≤0"
+    },
+    {
+      "candidate_id": "S23",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "IDENTITY_NOT_CANONICAL",
+        "COMPARED_NO_PRODUCTION_UPSERT",
+        "NO_VERIFIED"
+      ],
+      "page_number": 132,
+      "problem_number": "08-5",
+      "canonical_number": null,
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "FAIL",
+        "figure": "FAIL",
+        "boundary": "PASS"
+      },
+      "persist_action": "SKIP_IDENTITY",
+      "existing": null,
+      "crop_present": true,
+      "crop_sha256": "e05273e0f6e818dab933c9acd9d11916c429bd26bfe87ebbdb272ca954331b9e",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 397
+      },
+      "has_figure": true,
+      "dual_would_auto": false,
+      "content_fingerprint": "S23|132|08-5|08-5 연립이차부등식\n(1) 연립이차부등식: 차수가 가장 높은 부등식이 이차부등식인 연립부등식\n(2) 연립이차부등식의 풀이\n각 부등식의 해를 구한 다음 공통부분을 찾아 주어진 연립이차부등식의 해를 구한다.\nex { x-2≤0  ㉠\n     x²-3x-4<0  ㉡ }\n㉠을 풀면 x≤2\n㉡을 풀면 (x+1)(x-4)<0  ∴ -1<x<4\n따라서 주어진 연립이차부등식의 해는 -1<x≤2||x-2≤0\nx²-3x-4<0\n-1<x≤2"
+    },
+    {
+      "candidate_id": "S24",
+      "status": "BLOCKED",
+      "reasons": [
+        "UPSTREAM_IDENTITY_UNSTABLE",
+        "NO_VERIFIED",
+        "DRAFT_CONTENT_NOT_REWRITTEN"
+      ],
+      "page_number": 132,
+      "problem_number": null,
+      "canonical_number": null,
+      "compared": true,
+      "image_compare_pass": false,
+      "checks": {
+        "identity": "FAIL",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "FAIL",
+        "figure": "FAIL",
+        "boundary": "PASS"
+      },
+      "persist_action": "SKIP_BLOCKED",
+      "existing": null,
+      "crop_present": true,
+      "crop_sha256": "364224aedda80044f0ed0f0817e1e10b316c3b44b6d76666e1ab5677e4333058",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 796
+      },
+      "has_figure": true,
+      "dual_would_auto": false,
+      "content_fingerprint": "S24|132||(1) 이차방정식의 실근의 부호\n이차방정식 ax²+bx+c=0의 두 실근을 α, β, 판별식을 D라 하면\n① 두 근이 모두 양수 D≥0, α+β>0, αβ>0\n② 두 근이 모두 음수 D≥0, α+β<0, αβ>0\n③ 두 근이 서로 다른 부호 αβ<0\n(2) 이차방정식의 근의 분리\n① 두 근이 모두 p보다 크다. D≥0, f(p)>0, -b/(2a)>p\n② 두 근이 모두 p보다 작다. D≥0, f(p)>0, -b/(2a)<p\n③ 두 근 사이에 p가 있다. f(p)<0\n④ 두 근이 p, q (p<q) 사이에 있다. D≥0, f(p)>0, f(q)>0, p<-b/(2a)<q||ax²+bx+c=0\nD≥0\nα+β>0\nαβ>0\n-b/(2a)"
+    },
+    {
+      "candidate_id": "S25",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 156,
+      "problem_number": "1091",
+      "canonical_number": "1091",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "51f23cea-3e1a-493e-9951-d05655143c7b",
+        "public_code": "HQB-000817",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "e8b8ea14-d867-4865-a7df-65c9065be539"
+      },
+      "crop_present": true,
+      "crop_sha256": "f02520b8b7600aeabf478edbe517f37c00147020c3721ff078d75b18cf93d757",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 173
+      },
+      "has_figure": false,
+      "dual_would_auto": false,
+      "content_fingerprint": "S25|156|1091|1091 대표 문제\n100원짜리 동전 1개, 50원짜리 동전 3개, 10원짜리\n전 2개의 일부 또는 전부를 사용하여 지불할 수 있는\n법의 수를 a, 지불할 수 있는 금액의 수를 b라 할 때,\na-b의 값은? (단, 0원을 지불하는 경우는 제외한다.)\n① 4  ② 5  ③ 6\n④ 7  ⑤ 8|4\n5\n6\n7\n8|a-b"
+    },
+    {
+      "candidate_id": "S26",
+      "status": "HUMAN_REVIEW",
+      "reasons": [
+        "EXISTING_PRODUCTION_DRAFT",
+        "QUEUED_HUMAN_REVIEW",
+        "CONSERVATIVE_NO_AUTO_APPROVED",
+        "NO_VERIFIED"
+      ],
+      "page_number": 156,
+      "problem_number": "1094",
+      "canonical_number": "1094",
+      "compared": true,
+      "image_compare_pass": true,
+      "checks": {
+        "identity": "PASS",
+        "stem": "PASS",
+        "choices": "PASS",
+        "math": "PASS",
+        "figure": "PASS",
+        "boundary": "PASS"
+      },
+      "persist_action": "RECORD_EXISTING",
+      "existing": {
+        "problem_id": "f8fe1400-0178-4c12-95ce-572c4474aa3a",
+        "public_code": "HQB-000818",
+        "review_status": "NEEDS_REVIEW",
+        "lifecycle_status": "DRAFT",
+        "current_version_id": "b4439519-112e-4509-abaa-b1e1541ad864"
+      },
+      "crop_present": true,
+      "crop_sha256": "a7064f6ed55cb289d08f375bcc753e1ec1973e8804e117ca7afa9d69cc4f7a66",
+      "crop_matches_frozen": false,
+      "ocr": {
+        "present": true,
+        "cached": true,
+        "http": 200,
+        "text_len": 146
+      },
+      "has_figure": true,
+      "dual_would_auto": false,
+      "content_fingerprint": "S26|156|1094|1094 대표 문제\n오른쪽 그림과 같이 4개의 도시 A,\nB, C, D를 연결하는 도로가 있다. A 도시에서 출발하여 C 도시로 가는 경우의 수를 구하시오.\n(단, 한 번 지나간 도시는 다시 지나지 않는다.)||"
+    }
+  ]
+}
