@@ -1,0 +1,10 @@
+{
+  "path": "workers/ocr/ground-truth.json",
+  "sha256": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "sha256_after": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "expected_sha256": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "count": 26,
+  "expected_count": 26,
+  "mutated": false,
+  "step828_items": 26
+}
