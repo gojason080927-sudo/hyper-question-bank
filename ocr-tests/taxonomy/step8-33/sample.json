@@ -1,0 +1,163 @@
+{
+  "ids": [
+    "19|0094",
+    "12|0040",
+    "12|0043",
+    "27|0145",
+    "114|0776",
+    "25|0124",
+    "9|0011",
+    "19|0095",
+    "12|0045",
+    "12|0041",
+    "33|0202",
+    "9|0012",
+    "19|0092",
+    "13|0046",
+    "12|0042",
+    "44|0276",
+    "9|0001",
+    "19|0096",
+    "13|0052",
+    "13|0051",
+    "47|0283",
+    "9|0002",
+    "20|0097",
+    "14|0058"
+  ],
+  "findings": [
+    {
+      "candidate_id": "19|0094",
+      "verdict": "HUMAN_REVIEW",
+      "residuals": [
+        "ANSWER_KEY_LEAK"
+      ]
+    },
+    {
+      "candidate_id": "12|0040",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "12|0043",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "27|0145",
+      "verdict": "HUMAN_REVIEW",
+      "residuals": [
+        "ANSWER_KEY_LEAK"
+      ]
+    },
+    {
+      "candidate_id": "114|0776",
+      "verdict": "HUMAN_REVIEW",
+      "residuals": [
+        "TYPE_UNCLEAR",
+        "UNIT_UNCLEAR"
+      ]
+    },
+    {
+      "candidate_id": "25|0124",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "9|0011",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "19|0095",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "12|0045",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "12|0041",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "33|0202",
+      "verdict": "HUMAN_REVIEW",
+      "residuals": [
+        "OCR_GARBAGE"
+      ]
+    },
+    {
+      "candidate_id": "9|0012",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "19|0092",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "13|0046",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "12|0042",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "44|0276",
+      "verdict": "HUMAN_REVIEW",
+      "residuals": [
+        "ANSWER_KEY_LEAK"
+      ]
+    },
+    {
+      "candidate_id": "9|0001",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "19|0096",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "13|0052",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "13|0051",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "47|0283",
+      "verdict": "HUMAN_REVIEW",
+      "residuals": [
+        "EVIDENCE_INSUFFICIENT"
+      ]
+    },
+    {
+      "candidate_id": "9|0002",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "20|0097",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    },
+    {
+      "candidate_id": "14|0058",
+      "verdict": "AUTO_CLEAR",
+      "residuals": []
+    }
+  ]
+}
