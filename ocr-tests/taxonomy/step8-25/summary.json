@@ -1,0 +1,52 @@
+{
+  "step": "8.25",
+  "name": "Integrated Textbook Batch Registration Pipeline Design Freeze v1",
+  "status": "DESIGN_FREEZE",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "runtime_ingest_implemented": false,
+  "production_writes": 0,
+  "paid_api_calls": {
+    "mathpix": 0,
+    "mistral": 0
+  },
+  "paid_ocr_cap": {
+    "max_calls": 0,
+    "max_usd": 0
+  },
+  "pipeline_item_statuses": [
+    "AUTO_APPROVED",
+    "AI_FIXED",
+    "HUMAN_REVIEW",
+    "BLOCKED",
+    "FAILED"
+  ],
+  "gold_standard_never": [
+    "VERIFIED",
+    "WORKSHEET_ELIGIBLE"
+  ],
+  "frozen": {
+    "step812_expected_drafts": 265,
+    "type_auto": 38,
+    "implied_non_type_auto": 227,
+    "step823_figure_assets": 3,
+    "step823_figure_links": 3
+  },
+  "step824_carry_over": {
+    "blocked": 8,
+    "pass": 0,
+    "review": 0,
+    "ids": [
+      "108|0735",
+      "108|0736",
+      "114|0775",
+      "122|0833",
+      "134|0924",
+      "134|0925",
+      "134|0926",
+      "189|1300"
+    ]
+  },
+  "next_implementation_step": "8.26",
+  "next_implementation_started": false
+}
