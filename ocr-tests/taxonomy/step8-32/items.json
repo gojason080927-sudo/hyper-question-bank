@@ -1,0 +1,6116 @@
+{
+  "items": [
+    {
+      "candidate_id": "1|OCR_FAILED",
+      "page": 1,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a57bcdbe30a45046423d4026dea730224d53311e28fe2e50a57577146be72b4b"
+    },
+    {
+      "candidate_id": "2|OCR_FAILED",
+      "page": 2,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a59cb1924ff478753021edeae315e3f0055a7030d0cb9a8b47e39f1a2ef9bc4f"
+    },
+    {
+      "candidate_id": "3|OCR_FAILED",
+      "page": 3,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "be56b99216a4a024e7171435e210079ef70d8e444bb3e36aa3b7d3cb3237444a"
+    },
+    {
+      "candidate_id": "4|OCR_FAILED",
+      "page": 4,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "bb577e497fb390cce79ab1b5e2044331d5c6b0374003534d3a53d8a39ae8ca4d"
+    },
+    {
+      "candidate_id": "5|OCR_FAILED",
+      "page": 5,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "774a9602fa64148ef74e9f9401eb9f72372f998bcc6b958c86412fc3cc338bc6"
+    },
+    {
+      "candidate_id": "6|OCR_FAILED",
+      "page": 6,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "adff0c686f4d49949bc451ac7bf1a98a382b250da9be3bdb82aefc50a96e85db"
+    },
+    {
+      "candidate_id": "7|OCR_FAILED",
+      "page": 7,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a3922eb696e8d1bf90e64ed63ad7d8d8fa85afa63ebc1a71d6c6367f616a0aee"
+    },
+    {
+      "candidate_id": "8|OCR_FAILED",
+      "page": 8,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "c53b79d8fc0dc9d011328aba684fcf7b8fd2ffa66a83ef355e5ac1d0fa75e52c"
+    },
+    {
+      "candidate_id": "9|OCR_FAILED",
+      "page": 9,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "f7f1cde3a9c24650f959f1641e2b5bc5ddf578875488e4247773f9ccade4c0c4"
+    },
+    {
+      "candidate_id": "10|OCR_FAILED",
+      "page": 10,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "dd438a237c3745f273ca171b372a9556342c0db8fd1f56fbb11a91451f41afbd"
+    },
+    {
+      "candidate_id": "11|OCR_FAILED",
+      "page": 11,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d15040342e1aefc0a24cddf7b72392af1def8b46dbd5f9f59a59ae1a6f8b530d"
+    },
+    {
+      "candidate_id": "12|OCR_FAILED",
+      "page": 12,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "214a4c65e5aec50975deebd7e80fc9d34d058469211d0fcff915d9f8e6460e27"
+    },
+    {
+      "candidate_id": "13|OCR_FAILED",
+      "page": 13,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "26ded90bfa1ca59fe3628375de38fd4d9c199df651f442275da881dae29c9501"
+    },
+    {
+      "candidate_id": "14|OCR_FAILED",
+      "page": 14,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "15c888764f74e47829b40924a5f96adb9ba9689ed3be0b2096ed6097a9d41141"
+    },
+    {
+      "candidate_id": "15|OCR_FAILED",
+      "page": 15,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "5a8d2f743016e6bbba91d5f126222e035624add63428c235b9c49e5f10159721"
+    },
+    {
+      "candidate_id": "16|OCR_FAILED",
+      "page": 16,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "036e7174865faf8f6aa59c3e2c1e7c56fb404e02e46bf4ed9c07f580eb38bb21"
+    },
+    {
+      "candidate_id": "17|OCR_FAILED",
+      "page": 17,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "83fa0844afcbaa5f9c706f805b0a74c050a8ae924d483ee56b2132d3e89304f0"
+    },
+    {
+      "candidate_id": "18|OCR_FAILED",
+      "page": 18,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "0238d5c8dc259339cfd1d69ef0fa5db7d2ffc037251911dbe33da2e6a249aec6"
+    },
+    {
+      "candidate_id": "19|OCR_FAILED",
+      "page": 19,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "1ca9d912b0c1a8211f2989c1b60b7209629c987757e707b375ddb39ddb85eed8"
+    },
+    {
+      "candidate_id": "20|OCR_FAILED",
+      "page": 20,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "5b1c60c06ba61e013f730e7cf586fa512ccdc598d39b2c22eb91e1b849b93c6a"
+    },
+    {
+      "candidate_id": "21|OCR_FAILED",
+      "page": 21,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b8fe73fa223e34c72a995d75a331de9895e94bc543460bebe2cb729ac2c69062"
+    },
+    {
+      "candidate_id": "22|OCR_FAILED",
+      "page": 22,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "56b2d085f2fe5ae006456624d5df5cf7296c61c129afa979b74698078c8f4f36"
+    },
+    {
+      "candidate_id": "23|OCR_FAILED",
+      "page": 23,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "ceede8a8204ea0727f42fdc4f911aeb36b7a610a59084f8111c37f1c96fbe5ad"
+    },
+    {
+      "candidate_id": "24|OCR_FAILED",
+      "page": 24,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b1c9c27a25ccc3f4b1017e8b794b7735bdca62d0f6ff03fcdb64384d4aa4faad"
+    },
+    {
+      "candidate_id": "25|OCR_FAILED",
+      "page": 25,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "8081720573ccf15abecf50146a513dbb5c043503aeeeb4895de33ad5a14b1b2a"
+    },
+    {
+      "candidate_id": "26|OCR_FAILED",
+      "page": 26,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "4f0f36ebb329c88d641442575ab75ada63546a1382d9768df3d5e11fa4f62fed"
+    },
+    {
+      "candidate_id": "27|OCR_FAILED",
+      "page": 27,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a1664c8ede174054ded21b0058f830f45e6231b51512f6eadecfd3e6d544a8d7"
+    },
+    {
+      "candidate_id": "28|OCR_FAILED",
+      "page": 28,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "6c693f3fc404ef0b1653599d4678b1f2cfbb407ce79095f95b4d3451a79bdc8e"
+    },
+    {
+      "candidate_id": "29|OCR_FAILED",
+      "page": 29,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b5bb61df006f73ad5e653272aba1a7db6c67fe67ab3f6ae76e83932b9de2ac01"
+    },
+    {
+      "candidate_id": "30|OCR_FAILED",
+      "page": 30,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "721564feb4fce92453b704226977a55de4aacd42c5435b39586b980752bfcbc5"
+    },
+    {
+      "candidate_id": "31|OCR_FAILED",
+      "page": 31,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d2fb00d55ff9ad18cd59eb00f7b5f40cb3bb1e4e2ba3d7b303350c81f9004dd3"
+    },
+    {
+      "candidate_id": "32|OCR_FAILED",
+      "page": 32,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7f1b0db3b6dbf770e8383ade442ee0d32de75f254992a6a088231b2f4a0a6082"
+    },
+    {
+      "candidate_id": "33|OCR_FAILED",
+      "page": 33,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "c1b0a88df4d263dc568d75cb4eb5c0134c62c8e8c5d1c0960ea5e9988edf1ad8"
+    },
+    {
+      "candidate_id": "34|OCR_FAILED",
+      "page": 34,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "6521d5dd65991b4ea71c2c530eb4217f6f123114b5d1856fe2679c962b79ccf1"
+    },
+    {
+      "candidate_id": "35|OCR_FAILED",
+      "page": 35,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b08d43638edf38f3a512f37ef46ae3251c84ce83e1790a2335ea6bf06e1d1a7f"
+    },
+    {
+      "candidate_id": "36|OCR_FAILED",
+      "page": 36,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "0371ec30fb0e3ee44b8a0a2f16028ed951be78bb611da1b01504d448eacab0b2"
+    },
+    {
+      "candidate_id": "37|OCR_FAILED",
+      "page": 37,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "66d527b92d5a9a593feb430c33867584f137c29466d6007c49398595ee26e195"
+    },
+    {
+      "candidate_id": "38|OCR_FAILED",
+      "page": 38,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "98fa655a7c04341e67e4648b4391d5c18649fd502634908d97e43d3132dce81e"
+    },
+    {
+      "candidate_id": "39|OCR_FAILED",
+      "page": 39,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "ef4cf7b31ef139661275baf2c6c8e91d015a68296c0a9c8d694a4d50c71bf503"
+    },
+    {
+      "candidate_id": "40|OCR_FAILED",
+      "page": 40,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d033595cd9a1110a4171829826f78e8a435135fedc6c9d9bb4400923744e0c56"
+    },
+    {
+      "candidate_id": "41|OCR_FAILED",
+      "page": 41,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "38c95898f63662dc45ddd8d4a36ef4f6bf2a82895f079a58fa28c05510e4733d"
+    },
+    {
+      "candidate_id": "42|OCR_FAILED",
+      "page": 42,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7ca9a9a03c9318f96b478fece5c0af2090f0f7eb66d9331a107c891804539c9c"
+    },
+    {
+      "candidate_id": "43|OCR_FAILED",
+      "page": 43,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "c8f882b1903ae280ae818a1394b99622c1807edeb017c8b20ff18fde337e1f62"
+    },
+    {
+      "candidate_id": "44|OCR_FAILED",
+      "page": 44,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "e71a63ae0a935063edf103644a5657b199e0f40d63f24a53c99487c71f2e1151"
+    },
+    {
+      "candidate_id": "45|OCR_FAILED",
+      "page": 45,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b8b8ef6d0a1e36e2bed9ba4e07527b8732593d5acb06e6f5161256b786f46c07"
+    },
+    {
+      "candidate_id": "46|OCR_FAILED",
+      "page": 46,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "f383b9ee79397a759c2ec334894ca46dbe2e4c499ba701f3a523c20d389eb8d1"
+    },
+    {
+      "candidate_id": "47|OCR_FAILED",
+      "page": 47,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "709de79507a3eb9af8c2cdb85e8b21662d18771ec07888591094246e852d88e1"
+    },
+    {
+      "candidate_id": "48|OCR_FAILED",
+      "page": 48,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "01dad736a017f23f771942809b66317b36e8b58990aa86b1971588c5d8862cb1"
+    },
+    {
+      "candidate_id": "49|OCR_FAILED",
+      "page": 49,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "9c761b95f5b6af9bdbb5c6008977495a213724e860721e0d0511b72ea89cb682"
+    },
+    {
+      "candidate_id": "50|OCR_FAILED",
+      "page": 50,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "58f7beb9e3fe9399ea1fd39a991dea1baad5477b66d899d73a23dae58c879307"
+    },
+    {
+      "candidate_id": "51|OCR_FAILED",
+      "page": 51,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "1b56d509ab7c20999e79111e46d7b14f6c13d36cf9fd3a7b2226124d67974888"
+    },
+    {
+      "candidate_id": "52|OCR_FAILED",
+      "page": 52,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "93bdfd199fd3b7fa3bc95cd45cca08ab31db8dfe8b529c97a76fb293fda53250"
+    },
+    {
+      "candidate_id": "53|OCR_FAILED",
+      "page": 53,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cc4334ce5b511eb3ad592be71d95fafe0ad36554a2991c9c02cf747e615959a4"
+    },
+    {
+      "candidate_id": "54|OCR_FAILED",
+      "page": 54,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d21a85e6797d7a7791d32b2c5520e1de78a027982beb75b71a0798b6db6a4d6f"
+    },
+    {
+      "candidate_id": "55|OCR_FAILED",
+      "page": 55,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "89ce99dfbc5e654667ad33fe037eb48b02defe2f2fe0b0d2b9ddd3e6564ec901"
+    },
+    {
+      "candidate_id": "56|OCR_FAILED",
+      "page": 56,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "da8406101bae2d849be491cbb81ca130530802f92c819d64a79596f91a698163"
+    },
+    {
+      "candidate_id": "57|OCR_FAILED",
+      "page": 57,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "e0aa342c0174bb226f5baf2d7877e51a1999751e5a3325bf8e9b1768806fa031"
+    },
+    {
+      "candidate_id": "58|OCR_FAILED",
+      "page": 58,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b055479d744340715faeebefcbce3d92743d3a092cb9e468aa9456f2f1bbe465"
+    },
+    {
+      "candidate_id": "59|OCR_FAILED",
+      "page": 59,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "33f2d362909ead588f15336d641abbdac0a1bd9364f2334dd09c125194906104"
+    },
+    {
+      "candidate_id": "60|OCR_FAILED",
+      "page": 60,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b7aeb3d78f2186273b7a907092a1f79d8ccb115c8e37352094b2ed0aa17902f6"
+    },
+    {
+      "candidate_id": "61|OCR_FAILED",
+      "page": 61,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a15f7ee3025ec99166447293600d9eaaf3bc773355150cdbfb9602be5fb92bf4"
+    },
+    {
+      "candidate_id": "62|OCR_FAILED",
+      "page": 62,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "090a3e12ee448eb5c1bf0cd66e688d058f66829b645155221c19dcd7c5d9c6b2"
+    },
+    {
+      "candidate_id": "63|OCR_FAILED",
+      "page": 63,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "db8d245d88f4c25aa91c65944d34a19843697fd2268e37a4808175bfc3bf3629"
+    },
+    {
+      "candidate_id": "64|OCR_FAILED",
+      "page": 64,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d84d4798260892bc61debb6e84d4583db8462fc51358b64bdce170a35d626fbe"
+    },
+    {
+      "candidate_id": "65|OCR_FAILED",
+      "page": 65,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7454f695be5d26d3a46ee198f9527087d413d0900a9b9d72a26b428a8a5bc9ad"
+    },
+    {
+      "candidate_id": "66|OCR_FAILED",
+      "page": 66,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7ed3d12de2f3d845a6109b07240eaf432ad77fd6f1ecbf4827dc31d542658e07"
+    },
+    {
+      "candidate_id": "67|OCR_FAILED",
+      "page": 67,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "f381ba727556113dff96b0bcc15c2af5cc6858af9d30a07c4887278fdb0945ac"
+    },
+    {
+      "candidate_id": "68|OCR_FAILED",
+      "page": 68,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "000440545acc74c41dfcb057c0cd15165fd0af6f4bb5b6b7a02bb1821466347d"
+    },
+    {
+      "candidate_id": "69|OCR_FAILED",
+      "page": 69,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d7ec170bd63f7edd3404fa5f7cf2f8377806e5d9353c40c4262b25390ad8c4c8"
+    },
+    {
+      "candidate_id": "70|OCR_FAILED",
+      "page": 70,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "9b6eb4cd382fa7f031dde97faf96f50d3b94308811807c17356fdd16de142a2a"
+    },
+    {
+      "candidate_id": "71|OCR_FAILED",
+      "page": 71,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "5f39725137f0a450f0dffe69ede288b52c947ca683084d98e55049b9a97e6792"
+    },
+    {
+      "candidate_id": "72|OCR_FAILED",
+      "page": 72,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "29119b501b53f00d05f0f00c4281c0646e2935dbf713f6a0497c28539b355cc1"
+    },
+    {
+      "candidate_id": "73|OCR_FAILED",
+      "page": 73,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "be2cb60773ea957cb246d2cc2a809f5ca868c9d8f3faa3d32c878ebcb69ee619"
+    },
+    {
+      "candidate_id": "74|OCR_FAILED",
+      "page": 74,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d456311394c219ae8eaa59db316e720622083c6cfd4c3baf17eaa01e3ce1982f"
+    },
+    {
+      "candidate_id": "75|OCR_FAILED",
+      "page": 75,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "87fb2eedac6ff13a65fbf7ed262c83e1c07ee4262873bce0e1b834ff19b2d676"
+    },
+    {
+      "candidate_id": "76|OCR_FAILED",
+      "page": 76,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "3836063d88763f839d137b2f15194331fb17ca9c8f4336e74911512977e93aa9"
+    },
+    {
+      "candidate_id": "77|OCR_FAILED",
+      "page": 77,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "94c75a5a4208105f5d4d1013a31112f674f19a426193a51ea2a977c9c779b4a6"
+    },
+    {
+      "candidate_id": "78|OCR_FAILED",
+      "page": 78,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "41e9f0ba3c49888c3f346ea37fa7c63525fc2c69344caa71955bbe5630921cf3"
+    },
+    {
+      "candidate_id": "79|OCR_FAILED",
+      "page": 79,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "5fef10800b2c99d94f9da3627ea7113a98fbbdbde1cf6baf4539bfe193bc4c67"
+    },
+    {
+      "candidate_id": "80|OCR_FAILED",
+      "page": 80,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cb7248bc5d6ad8657aa11217244be04de614654efd8ba4c1f8b785137b2c8cf6"
+    },
+    {
+      "candidate_id": "81|OCR_FAILED",
+      "page": 81,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "41a3fdc0febb7a52bbd9b3d944ad572e2c722892edc626bfc974c7069027e738"
+    },
+    {
+      "candidate_id": "82|OCR_FAILED",
+      "page": 82,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "50047ec91d29daf247c08cf306c63f9abb67618a3322ab75cf8519436ba7d5c0"
+    },
+    {
+      "candidate_id": "83|OCR_FAILED",
+      "page": 83,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a695aa0800c27067dbb30248b5929b2864f76d58215618792b87f76a9680a6d4"
+    },
+    {
+      "candidate_id": "84|OCR_FAILED",
+      "page": 84,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "e0fdc56bc72faf48fac851c91f8fb724602f0c955ec69c63ad84d11c24037adb"
+    },
+    {
+      "candidate_id": "85|OCR_FAILED",
+      "page": 85,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "4332d77c8deed2d6e2e8ef7426775f060caefc7f9b44ec46ab04b6a096e6a6f6"
+    },
+    {
+      "candidate_id": "86|OCR_FAILED",
+      "page": 86,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cb0a2f3fbbe4513c8a5c8b6de248165e34881c2a00310e189f55233f784e1ff1"
+    },
+    {
+      "candidate_id": "87|OCR_FAILED",
+      "page": 87,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "72571dfe36245cb81c5543b011408f0d66c05fda55b0124f6fd17f394947c015"
+    },
+    {
+      "candidate_id": "88|OCR_FAILED",
+      "page": 88,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "4fdfc6675fe25efd19685f42527df16eb2be41a4286ec8ffb1b1d41169ecaa88"
+    },
+    {
+      "candidate_id": "89|OCR_FAILED",
+      "page": 89,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "6597a351f5819a6ebd749e24d263bf5ef02f1eff10277e2ceb2e3c56ac428785"
+    },
+    {
+      "candidate_id": "90|OCR_FAILED",
+      "page": 90,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "e22a1ac75684c01d8d56874c09ea0ca264e526a44034d28901ff5d2d3241fab3"
+    },
+    {
+      "candidate_id": "91|OCR_FAILED",
+      "page": 91,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "648773b0ef032d9ba79dffbc9875a67730fc4aa830e9d903dbe295d8d3cdc708"
+    },
+    {
+      "candidate_id": "92|OCR_FAILED",
+      "page": 92,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "152fbf5ad1fd689a91fad0ab6a84205b218496712f4943fcee022631ff60a9fb"
+    },
+    {
+      "candidate_id": "93|OCR_FAILED",
+      "page": 93,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "85d452339cee8dc1eef26f7a6314fb909e458b5c736b8f9806c0b1cba8c886db"
+    },
+    {
+      "candidate_id": "94|OCR_FAILED",
+      "page": 94,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "bd1758f555e4a4bc8a0d67230aa30735f8da04b2f498b1c3658711461a9b1656"
+    },
+    {
+      "candidate_id": "95|OCR_FAILED",
+      "page": 95,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d3e30442d768116a46e0c5a619678eb62741313abf7af4650fca47d358e9b941"
+    },
+    {
+      "candidate_id": "96|OCR_FAILED",
+      "page": 96,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b017dacefe5ec7144cab1f3e2b9cc2261b94f20cbfae49e0a0221bb35be3496a"
+    },
+    {
+      "candidate_id": "97|OCR_FAILED",
+      "page": 97,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "c1d60147d0cef4beed7c81bd3913393676e7af280b72605d4136aa2009a5c2ea"
+    },
+    {
+      "candidate_id": "98|OCR_FAILED",
+      "page": 98,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "0018bb8f87050b12de6b3cc2523ca98949cf3e2ad9bee92dd5833117b8762bcd"
+    },
+    {
+      "candidate_id": "99|OCR_FAILED",
+      "page": 99,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "63370da8896e610023391f63dac5eb1008dbe9e12b03a56998eff0f2eda4c9ce"
+    },
+    {
+      "candidate_id": "100|OCR_FAILED",
+      "page": 100,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "c5cd233e8775f02abdad9883b5ff953b7afd2e61d31a9a59f6c1d2ee6bb1ff57"
+    },
+    {
+      "candidate_id": "101|OCR_FAILED",
+      "page": 101,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "840136289225c53d28a3bcb3d6e54f513f01181b39af326fa30c0290257ee4db"
+    },
+    {
+      "candidate_id": "102|OCR_FAILED",
+      "page": 102,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "2e3ecfb491adc897ba4899099a9dcf2350e1d369dc2e23f139a5b1a4387aa61e"
+    },
+    {
+      "candidate_id": "103|OCR_FAILED",
+      "page": 103,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "30230689e748ce2dee50699557dc4cecd346fce49941e2c0d17b1278d548595d"
+    },
+    {
+      "candidate_id": "104|OCR_FAILED",
+      "page": 104,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "8ea63eba05e60f8564bc71aac014b4ead1da1915c5430e6e07928f21fa7bf246"
+    },
+    {
+      "candidate_id": "105|OCR_FAILED",
+      "page": 105,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "317257a6f06a7605bf8831b3f0aa569767e12f02db83b72bc0a80f6f363ae762"
+    },
+    {
+      "candidate_id": "106|OCR_FAILED",
+      "page": 106,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "f490b09451920abe8a5cd3c8e23b6920d6e8e1771ae3e7afe8ff5f8869bb833d"
+    },
+    {
+      "candidate_id": "107|OCR_FAILED",
+      "page": 107,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a4e4fe6560f992ecb6f4d7213f6189e2bafd57ca739eeab7de9801655694e2ea"
+    },
+    {
+      "candidate_id": "108|OCR_FAILED",
+      "page": 108,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "05052191f62a10b64044be0de0bae10ff29db28b8690ca91009af2f346b89cd4"
+    },
+    {
+      "candidate_id": "109|OCR_FAILED",
+      "page": 109,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "4f8ea1d6d17b3a4715f27ae52bde49f99ad51e4f22ae99f85388a7b71310a6f8"
+    },
+    {
+      "candidate_id": "110|OCR_FAILED",
+      "page": 110,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "bd6fe8a0d95536667d46ed2cb06ec07e37b6fbdd4aeef6fdc49a389c905ed31b"
+    },
+    {
+      "candidate_id": "111|OCR_FAILED",
+      "page": 111,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "4356d172135d73c0d97d69ceef9b3e3eb6f5aa8a8352f9fae0ac0c48582c06f8"
+    },
+    {
+      "candidate_id": "112|OCR_FAILED",
+      "page": 112,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7bae707c7d1ae52b3a86e313dcbaf87965d17bca45d1206370b6387a8a029a59"
+    },
+    {
+      "candidate_id": "113|OCR_FAILED",
+      "page": 113,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "57f48d902fb8f748872ff7b1e194ca2d3fdf6ad5c0d485268f424755086a976c"
+    },
+    {
+      "candidate_id": "114|OCR_FAILED",
+      "page": 114,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "0e69d673bc6a3395e951aadc37cbababc8e775c573ed02c9d4697da5426b4a99"
+    },
+    {
+      "candidate_id": "115|OCR_FAILED",
+      "page": 115,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "9d2e0c7ba116a4ccc8ec96756dbccf5db5ffc02b1e5ef90369feaeffec630d89"
+    },
+    {
+      "candidate_id": "116|OCR_FAILED",
+      "page": 116,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "705d4ea2669648f72a0520c6f38bb7e316af7a7c8d8f5007a67c94b8f129aa92"
+    },
+    {
+      "candidate_id": "117|OCR_FAILED",
+      "page": 117,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b0cf4d22ffe63048aeeb7b771d1342b6fb0bc5e3cc3532f5387fa20a20536a7a"
+    },
+    {
+      "candidate_id": "118|OCR_FAILED",
+      "page": 118,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "391efad99a4c7d0d5ac09057323c884f9c8a81a8a7dc3bb4234fd4af2b0731b9"
+    },
+    {
+      "candidate_id": "119|OCR_FAILED",
+      "page": 119,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "01321fd4020529892bbbc047c5c44b76596e0d59924c9820319ac9020ed4b731"
+    },
+    {
+      "candidate_id": "120|OCR_FAILED",
+      "page": 120,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "60eb500c25a3cd0abc7a8cc50fad06cc4237f03e916b8174f81922ad7eaf7893"
+    },
+    {
+      "candidate_id": "121|OCR_FAILED",
+      "page": 121,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "de1b9c267ee6dff22bdddcd7b1a12f4cb43f9bb68ad151c987dea7a752d281fe"
+    },
+    {
+      "candidate_id": "122|OCR_FAILED",
+      "page": 122,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "6f063f2c0266439cfc95e6333f2c0832861772d597bf55154e297730dfacf903"
+    },
+    {
+      "candidate_id": "123|OCR_FAILED",
+      "page": 123,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "2de86bb74e849139c6a24b5ef40e6a9bcc4fe2feffd48d4de2972caa21c65f79"
+    },
+    {
+      "candidate_id": "124|OCR_FAILED",
+      "page": 124,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "4963a53254a5c39c3f1d312a78150d923603752e793df54d991723c09b9dd6f8"
+    },
+    {
+      "candidate_id": "125|OCR_FAILED",
+      "page": 125,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "0514b5d07dd0f6caab02e455c6995e34000f1fe82bca5cfc78e05b647caebd9e"
+    },
+    {
+      "candidate_id": "126|OCR_FAILED",
+      "page": 126,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "86764721d1ff23637b6e031849e7a5fd985a8d6ebee2c7ff789b7a459838a19a"
+    },
+    {
+      "candidate_id": "127|OCR_FAILED",
+      "page": 127,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "49705f1c8cdf47cb9547c60988468e3fb9029729391414f040f1518593a7cd68"
+    },
+    {
+      "candidate_id": "128|OCR_FAILED",
+      "page": 128,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "755e7fb019b3db579b4dbf8fff1393d0c28dd78aaaf608ffde7f9e5a15cbc418"
+    },
+    {
+      "candidate_id": "129|OCR_FAILED",
+      "page": 129,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "29f114b7f3d5362a14529b0547cabae195fbd5c8ac0a22d182de8feda0c21b56"
+    },
+    {
+      "candidate_id": "130|OCR_FAILED",
+      "page": 130,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a65e91f84ac9e4042d8a0671a9d45ef600da7e97dde8b384ec940dd1225aeaab"
+    },
+    {
+      "candidate_id": "131|OCR_FAILED",
+      "page": 131,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cdeeb08fb735b82447a64454694c0222e4650225e239481cd05b9c1d6f9e927c"
+    },
+    {
+      "candidate_id": "132|OCR_FAILED",
+      "page": 132,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "ba42662583fdacb8af92d8d177e97be0f7c93572abe61af95738e0e18533fcb6"
+    },
+    {
+      "candidate_id": "133|OCR_FAILED",
+      "page": 133,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "783e1854e601cf142c7cce512e8739ec04dbcfbad4dd01d12ab683d6663ddcbc"
+    },
+    {
+      "candidate_id": "134|OCR_FAILED",
+      "page": 134,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7549165c7a96157cfd4b454d467d43a386279bd5c4311032e5a6f98ef78450f1"
+    },
+    {
+      "candidate_id": "135|OCR_FAILED",
+      "page": 135,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "666ab3871caad7fefd69d101d9ee018fdb82b3ecf9ddbf936333826b3c9163da"
+    },
+    {
+      "candidate_id": "136|OCR_FAILED",
+      "page": 136,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7b53fa01ee9342c5e4cce224dc1cde3370e5d0590b750b54615f654e8380176a"
+    },
+    {
+      "candidate_id": "137|OCR_FAILED",
+      "page": 137,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d1a74783da630e8137a6ddeb55d4f6767d507f11732aa72df23862f0b0edcb85"
+    },
+    {
+      "candidate_id": "138|OCR_FAILED",
+      "page": 138,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "0705c95a0eee1a86576717fd49a33ef4450883c6613c19597d3cd8ff32cfa6e8"
+    },
+    {
+      "candidate_id": "139|OCR_FAILED",
+      "page": 139,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "ce5f9fb666802548ee061f80e3f2d6259aee9d7da836ed977f022812ea14f426"
+    },
+    {
+      "candidate_id": "140|OCR_FAILED",
+      "page": 140,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "eaff805555ae9a9fd0469097a03abab0fcc81e8b42633188d2d399dcbce259d5"
+    },
+    {
+      "candidate_id": "141|OCR_FAILED",
+      "page": 141,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cc8d35b00a0689f03dadcbc6f647db8abe3ff02e71ad75851e0f3a11402d9d25"
+    },
+    {
+      "candidate_id": "142|OCR_FAILED",
+      "page": 142,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a6e0cf1e38ec9bb9c5d3dd4f84bd4b2267d073b9ccf63d76e60709f81f8e8505"
+    },
+    {
+      "candidate_id": "143|OCR_FAILED",
+      "page": 143,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "2359ab90102e11d38a775f338c31cf548739dd687e9b2efdd939ad5cd00ae99d"
+    },
+    {
+      "candidate_id": "144|OCR_FAILED",
+      "page": 144,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "b2970c23e31cdde4aa2809a9722968a7e949dbb6dc02e186156491581110a945"
+    },
+    {
+      "candidate_id": "145|OCR_FAILED",
+      "page": 145,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "421183436a21814cdc6c92cb2fd94ebb8f930ab798827d6b960ebf77b0d90898"
+    },
+    {
+      "candidate_id": "146|OCR_FAILED",
+      "page": 146,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7e1e124a04761e85f7e7506bfba82e9f68ed462378d3b3f17847c705c82e5a51"
+    },
+    {
+      "candidate_id": "147|OCR_FAILED",
+      "page": 147,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "6e5618154da2d6ab840550c4d8d63d8ebfc555c79628b179c3c4db4f561c9776"
+    },
+    {
+      "candidate_id": "148|OCR_FAILED",
+      "page": 148,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "2f360592ef8e2958a6b6c689f771496a4d26c913fe9160be97614f2d25c45fd9"
+    },
+    {
+      "candidate_id": "149|OCR_FAILED",
+      "page": 149,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d3416c2c6f4b392714035fc9f9ff7286f49a50423f20624e7358129b67231c68"
+    },
+    {
+      "candidate_id": "150|OCR_FAILED",
+      "page": 150,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "8b47294b3061dafd92112c9e6c0988dfd9e9da1a5b11bcb42d9d10fadbe031b1"
+    },
+    {
+      "candidate_id": "151|OCR_FAILED",
+      "page": 151,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "83d4592183da415af1640f514becd90b8205e71c21c7bd8cd57f3b9af465c87f"
+    },
+    {
+      "candidate_id": "152|OCR_FAILED",
+      "page": 152,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a5bbfb4888fb090d11ee030a3fe2006cc1fc670ddd0945cb0a045d35b0d4f107"
+    },
+    {
+      "candidate_id": "153|OCR_FAILED",
+      "page": 153,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "6b766999630852e4897f2eaf6e5d649c3dbce9991a0d094ba026c65b8180252c"
+    },
+    {
+      "candidate_id": "154|OCR_FAILED",
+      "page": 154,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "880886e54530dd9c94a3add3e73fb6e0f8731b89b670d89cdc82ed9f1a30ee71"
+    },
+    {
+      "candidate_id": "155|OCR_FAILED",
+      "page": 155,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7f1f4cbcc390e96f3fda4e2ff78f42c378950318774de63c520daa0c7e6cf476"
+    },
+    {
+      "candidate_id": "156|OCR_FAILED",
+      "page": 156,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "eb345f3331f4a87e09fbc5c6112d6e9eefd9c8149367bfe7cdd52b85beccee58"
+    },
+    {
+      "candidate_id": "157|OCR_FAILED",
+      "page": 157,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "c805a3b0a2420dcb550e2968df50793b35c1d39d676737612fc83c62af38e083"
+    },
+    {
+      "candidate_id": "158|OCR_FAILED",
+      "page": 158,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "88f80effa2f27f7f335c93be8cf9c906836f8caa674284928fd63c50ad21645e"
+    },
+    {
+      "candidate_id": "159|OCR_FAILED",
+      "page": 159,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "ed4ee188cb53be3889798347c92267b153564db11ff655d6cef96ccf62fa8262"
+    },
+    {
+      "candidate_id": "160|OCR_FAILED",
+      "page": 160,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "483f0016847d12149ece90deba5511fbcac42b9ff62dd3564db7b09811468b63"
+    },
+    {
+      "candidate_id": "161|OCR_FAILED",
+      "page": 161,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "4c60dade36d00e02592ee264762b3d2126436d8a67efa2b39a2031b0c7b831d6"
+    },
+    {
+      "candidate_id": "162|OCR_FAILED",
+      "page": 162,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "779b69844fe39882d83cdf8c07dbe9009474568abe8fd1a524e7307a13c1544e"
+    },
+    {
+      "candidate_id": "163|OCR_FAILED",
+      "page": 163,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "2db116982e613e880f6b83e4c1d1c1c4c2354217ede0760aca3180b3d840ac4f"
+    },
+    {
+      "candidate_id": "164|OCR_FAILED",
+      "page": 164,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "27e7b7c195846566cc8d15406b7b8fe8c5000b280993f7dd51c589f0b21a7659"
+    },
+    {
+      "candidate_id": "165|OCR_FAILED",
+      "page": 165,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "f1a357d0e5e079a53c5356a562f2f39963dcdc958f61ebc55026ce3523657100"
+    },
+    {
+      "candidate_id": "166|OCR_FAILED",
+      "page": 166,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "51305d06aa3d28670cb3286e2e2ace03ab1c0db5edcb98565fe70ebf4596a3b5"
+    },
+    {
+      "candidate_id": "167|OCR_FAILED",
+      "page": 167,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "47cc9be8bf18eef028467431210a6fabc0b9b469c432c919a8c9c08c589bff52"
+    },
+    {
+      "candidate_id": "168|OCR_FAILED",
+      "page": 168,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cbc3d704c667fc32d7efc7321bade73abbfbd391c1fd1302d861bb344c751c27"
+    },
+    {
+      "candidate_id": "169|OCR_FAILED",
+      "page": 169,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "ca1187c6f5e09815ed58148a6d543ac8d4d833935da89cd33845323787d08ed7"
+    },
+    {
+      "candidate_id": "170|OCR_FAILED",
+      "page": 170,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "a1220e65f8ab9960b100738811872c3a13ecf43c43a76ed92796711d8b806c5d"
+    },
+    {
+      "candidate_id": "171|OCR_FAILED",
+      "page": 171,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "fb1a9660b733b146ed095f7e398b7e98e2ff86aa495aa7fd75f0772273aec443"
+    },
+    {
+      "candidate_id": "172|OCR_FAILED",
+      "page": 172,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "0a5f0e1dba09c431c3f6d9e9a39d3c44669d97ecead1738c1e97810520002762"
+    },
+    {
+      "candidate_id": "173|OCR_FAILED",
+      "page": 173,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "67c11aa1e86974b9fd1e97aac3ba333f523cca211c102d8f5234c352f29b0902"
+    },
+    {
+      "candidate_id": "174|OCR_FAILED",
+      "page": 174,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "66d17c7459e4eaf250e013c764b244e98b19d0ef047c10f44f351f6d402e0031"
+    },
+    {
+      "candidate_id": "175|OCR_FAILED",
+      "page": 175,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "011a3e1cb14118fc2de37c1e6b1b272b50c541f97df5c49206cddd288fb2aca5"
+    },
+    {
+      "candidate_id": "176|OCR_FAILED",
+      "page": 176,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "527898b8ae8c4534ff8c7ea98def1a18e40a8d6c6adb5de926e2dbb0bdfca031"
+    },
+    {
+      "candidate_id": "177|OCR_FAILED",
+      "page": 177,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "48318de9a9419b5ec64672d4ea96ee1bca44b14e3485dd98d9be87ae317c0365"
+    },
+    {
+      "candidate_id": "178|OCR_FAILED",
+      "page": 178,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "fafd674d51e6ca1dcfc9fdf24e70ead3d1af71b14f8664472c82ffe3bf097d44"
+    },
+    {
+      "candidate_id": "179|OCR_FAILED",
+      "page": 179,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "489d9719c7e95f34dfc40e39df1ad3e9130718e1c0237c221c624108926531a7"
+    },
+    {
+      "candidate_id": "180|OCR_FAILED",
+      "page": 180,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "db78a148aa785113c72aa7bada72a4b5ec2e45bdab1823f96ee2d58dac583e41"
+    },
+    {
+      "candidate_id": "181|OCR_FAILED",
+      "page": 181,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cd59f2adc23a970a01546add750e9bb6222c162c272469f234eb80f9e38349e8"
+    },
+    {
+      "candidate_id": "182|OCR_FAILED",
+      "page": 182,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "7616fb33af479bc9344fa2db02b7eb13b76b1b3add35c8345db8d84c6d318f06"
+    },
+    {
+      "candidate_id": "183|OCR_FAILED",
+      "page": 183,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "d7dea3f0bc81a18a8fbcce26a882350a164ba0da51716a1c7c2257851786fb98"
+    },
+    {
+      "candidate_id": "184|OCR_FAILED",
+      "page": 184,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cc8d498a5ebbd50f3dc494e6d2db00e75df57b528113c90d3b8693a1b5f1921c"
+    },
+    {
+      "candidate_id": "185|OCR_FAILED",
+      "page": 185,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "6da1a1d35b310ef25087324068c42ae806b94bb75a5f3f7744b25a917fc23151"
+    },
+    {
+      "candidate_id": "186|OCR_FAILED",
+      "page": 186,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "cc94ae433cdc8431e6512d6f20d3164c8cca9c48ab480b342fd75f80eab9ce77"
+    },
+    {
+      "candidate_id": "187|OCR_FAILED",
+      "page": 187,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "66ebbf7f57a40bd71dad0bce665de718bdedfe4104085d9b0b31ccae2da9c9db"
+    },
+    {
+      "candidate_id": "188|OCR_FAILED",
+      "page": 188,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "de533d6d12e87e81535e2fbd3cfcc87fcc9accf6936e6cb6ebf97755eedb8476"
+    },
+    {
+      "candidate_id": "189|OCR_FAILED",
+      "page": 189,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "336e67b695bc89148da4013adbc40bd16b07be04112e5fa8e95cdbe26da5bc79"
+    },
+    {
+      "candidate_id": "190|OCR_FAILED",
+      "page": 190,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "c31342fc858d02f2ff233bc39e9996f09dc52e29a6f24fc795001e933de7f7db"
+    },
+    {
+      "candidate_id": "191|OCR_FAILED",
+      "page": 191,
+      "page_kind": "UNKNOWN",
+      "problem_number": "OCR_FAILED",
+      "canonical": null,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "crop_present": false,
+      "crop_sha256": null,
+      "choice_count": 0,
+      "has_figure": false,
+      "has_table": false,
+      "stitched_from_page": null,
+      "classification": {
+        "unit_id": "미정",
+        "type_id": "TYPE_UNCLEAR",
+        "difficulty_level": null,
+        "overall": "REVIEW",
+        "review_reasons": [
+          "OCR_FAILED"
+        ]
+      },
+      "stem_preview": "",
+      "existing": null,
+      "content_fingerprint": "8bf1af6ec04e1a75224ef19b722b0db64223431f5af92298e8707e2d3a15a284"
+    }
+  ]
+}

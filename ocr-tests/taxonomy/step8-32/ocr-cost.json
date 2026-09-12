@@ -1,0 +1,14 @@
+{
+  "mistral_calls": 0,
+  "mistral_cached": 0,
+  "mathpix_calls": 0,
+  "estimated_usd": 0,
+  "cap": {
+    "maxCalls": 250,
+    "maxUsd": 1
+  },
+  "credentials": {
+    "mistral": "PRESENT",
+    "mathpix": "ABSENT"
+  }
+}

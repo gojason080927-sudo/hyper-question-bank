@@ -1,0 +1,45 @@
+{
+  "targets": [
+    {
+      "id": "locked-ssen-192",
+      "kind": "TARGET",
+      "verdict": "PASS",
+      "reasons": [
+        "SSEN_ORIGINAL"
+      ]
+    },
+    {
+      "id": "no-verified",
+      "kind": "WRITES",
+      "verdict": "PASS",
+      "reasons": [
+        "NO_VERIFIED"
+      ]
+    },
+    {
+      "id": "no-auto-approved-required",
+      "kind": "GATE",
+      "verdict": "PASS",
+      "reasons": [
+        "AUTO_APPROVED_NOT_REQUIRED",
+        "NO_AUTO_APPROVED_IN_8_32"
+      ]
+    },
+    {
+      "id": "second-book-excluded",
+      "kind": "TEXTBOOK",
+      "verdict": "PASS",
+      "reasons": [
+        "SECOND_BOOK_EXCLUDED"
+      ]
+    },
+    {
+      "id": "persist-optional-until-flag",
+      "kind": "DRAFTS",
+      "verdict": "PASS",
+      "reasons": [
+        "DRY_OR_CACHE"
+      ]
+    }
+  ]
+}

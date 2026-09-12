@@ -1,0 +1,2399 @@
+{
+  "step": "8.32",
+  "name": "Full 192-page SSEN ingest to Production DRAFT",
+  "status": "PROCESSED",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "next_step_started": false,
+  "textbook": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1"
+  },
+  "executed": true,
+  "pages_processed": 192,
+  "pages_excluded": 1,
+  "problems_found": 0,
+  "production_problem_writes": 0,
+  "production_figure_writes": 0,
+  "production_verified_writes": 0,
+  "production_pipeline_writes": {
+    "runs": 0,
+    "items": 0
+  },
+  "production_draft_writes": 0,
+  "production_counts_before": {
+    "queried": false,
+    "reason": "no_probe",
+    "drafts": null,
+    "type_auto": null,
+    "figure_assets": null,
+    "figure_links": null,
+    "pipeline_runs": null,
+    "pipeline_items": null,
+    "needs_review": null
+  },
+  "production_counts_after": {
+    "queried": false,
+    "reason": "no_probe",
+    "drafts": null,
+    "type_auto": null,
+    "figure_assets": null,
+    "figure_links": null,
+    "pipeline_runs": null,
+    "pipeline_items": null,
+    "needs_review": null
+  },
+  "paid_api_calls": {
+    "mathpix": 0,
+    "mistral": 0,
+    "mistral_cached": 0
+  },
+  "paid_ocr_cap": {
+    "max_calls": 250,
+    "max_usd": 1
+  },
+  "estimated_usd": 0,
+  "mistral_credentials": "PRESENT",
+  "frozen": {
+    "step812ExpectedDrafts": 265,
+    "frozenTypeAuto": 38,
+    "impliedNonTypeAuto": 227,
+    "step823FigureAssets": 3,
+    "step823FigureLinks": 3,
+    "step824BlockedRemaining": 8
+  },
+  "original_pdf": {
+    "present": true,
+    "path": ".ocr-temp/ssen-original.pdf",
+    "sha256": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+    "hash_match": true
+  },
+  "tally": {
+    "pages_processed": 192,
+    "pages_excluded": 1,
+    "problems_found": 0,
+    "create_draft": 0,
+    "record_existing": 0,
+    "needs_review": 0,
+    "blocked": 191,
+    "skipped_duplicate": 0,
+    "skipped_identity": 0,
+    "auto_approved": 0
+  },
+  "persist_plan_ok": true,
+  "persist_plan_reasons": [],
+  "persist": {
+    "ran": false,
+    "created": [],
+    "existing": [],
+    "queued": [],
+    "failed": [],
+    "pipeline_run_id": null,
+    "queued_review": 0,
+    "submitted_needs_review": 0
+  },
+  "duplicates": 0,
+  "orphans": 0,
+  "wrong_source": 0,
+  "gt_mutated": false,
+  "content_rewrites": 0,
+  "items": [
+    {
+      "candidate_id": "1|OCR_FAILED",
+      "page": 1,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "2|OCR_FAILED",
+      "page": 2,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "3|OCR_FAILED",
+      "page": 3,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "4|OCR_FAILED",
+      "page": 4,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "5|OCR_FAILED",
+      "page": 5,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "6|OCR_FAILED",
+      "page": 6,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "7|OCR_FAILED",
+      "page": 7,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "8|OCR_FAILED",
+      "page": 8,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "9|OCR_FAILED",
+      "page": 9,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "10|OCR_FAILED",
+      "page": 10,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "11|OCR_FAILED",
+      "page": 11,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "12|OCR_FAILED",
+      "page": 12,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "13|OCR_FAILED",
+      "page": 13,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "14|OCR_FAILED",
+      "page": 14,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "15|OCR_FAILED",
+      "page": 15,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "16|OCR_FAILED",
+      "page": 16,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "17|OCR_FAILED",
+      "page": 17,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "18|OCR_FAILED",
+      "page": 18,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "19|OCR_FAILED",
+      "page": 19,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "20|OCR_FAILED",
+      "page": 20,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "21|OCR_FAILED",
+      "page": 21,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "22|OCR_FAILED",
+      "page": 22,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "23|OCR_FAILED",
+      "page": 23,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "24|OCR_FAILED",
+      "page": 24,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "25|OCR_FAILED",
+      "page": 25,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "26|OCR_FAILED",
+      "page": 26,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "27|OCR_FAILED",
+      "page": 27,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "28|OCR_FAILED",
+      "page": 28,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "29|OCR_FAILED",
+      "page": 29,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "30|OCR_FAILED",
+      "page": 30,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "31|OCR_FAILED",
+      "page": 31,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "32|OCR_FAILED",
+      "page": 32,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "33|OCR_FAILED",
+      "page": 33,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "34|OCR_FAILED",
+      "page": 34,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "35|OCR_FAILED",
+      "page": 35,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "36|OCR_FAILED",
+      "page": 36,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "37|OCR_FAILED",
+      "page": 37,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "38|OCR_FAILED",
+      "page": 38,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "39|OCR_FAILED",
+      "page": 39,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "40|OCR_FAILED",
+      "page": 40,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "41|OCR_FAILED",
+      "page": 41,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "42|OCR_FAILED",
+      "page": 42,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "43|OCR_FAILED",
+      "page": 43,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "44|OCR_FAILED",
+      "page": 44,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "45|OCR_FAILED",
+      "page": 45,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "46|OCR_FAILED",
+      "page": 46,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "47|OCR_FAILED",
+      "page": 47,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "48|OCR_FAILED",
+      "page": 48,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "49|OCR_FAILED",
+      "page": 49,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "50|OCR_FAILED",
+      "page": 50,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "51|OCR_FAILED",
+      "page": 51,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "52|OCR_FAILED",
+      "page": 52,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "53|OCR_FAILED",
+      "page": 53,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "54|OCR_FAILED",
+      "page": 54,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "55|OCR_FAILED",
+      "page": 55,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "56|OCR_FAILED",
+      "page": 56,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "57|OCR_FAILED",
+      "page": 57,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "58|OCR_FAILED",
+      "page": 58,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "59|OCR_FAILED",
+      "page": 59,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "60|OCR_FAILED",
+      "page": 60,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "61|OCR_FAILED",
+      "page": 61,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "62|OCR_FAILED",
+      "page": 62,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "63|OCR_FAILED",
+      "page": 63,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "64|OCR_FAILED",
+      "page": 64,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "65|OCR_FAILED",
+      "page": 65,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "66|OCR_FAILED",
+      "page": 66,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "67|OCR_FAILED",
+      "page": 67,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "68|OCR_FAILED",
+      "page": 68,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "69|OCR_FAILED",
+      "page": 69,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "70|OCR_FAILED",
+      "page": 70,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "71|OCR_FAILED",
+      "page": 71,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "72|OCR_FAILED",
+      "page": 72,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "73|OCR_FAILED",
+      "page": 73,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "74|OCR_FAILED",
+      "page": 74,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "75|OCR_FAILED",
+      "page": 75,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "76|OCR_FAILED",
+      "page": 76,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "77|OCR_FAILED",
+      "page": 77,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "78|OCR_FAILED",
+      "page": 78,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "79|OCR_FAILED",
+      "page": 79,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "80|OCR_FAILED",
+      "page": 80,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "81|OCR_FAILED",
+      "page": 81,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "82|OCR_FAILED",
+      "page": 82,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "83|OCR_FAILED",
+      "page": 83,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "84|OCR_FAILED",
+      "page": 84,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "85|OCR_FAILED",
+      "page": 85,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "86|OCR_FAILED",
+      "page": 86,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "87|OCR_FAILED",
+      "page": 87,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "88|OCR_FAILED",
+      "page": 88,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "89|OCR_FAILED",
+      "page": 89,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "90|OCR_FAILED",
+      "page": 90,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "91|OCR_FAILED",
+      "page": 91,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "92|OCR_FAILED",
+      "page": 92,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "93|OCR_FAILED",
+      "page": 93,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "94|OCR_FAILED",
+      "page": 94,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "95|OCR_FAILED",
+      "page": 95,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "96|OCR_FAILED",
+      "page": 96,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "97|OCR_FAILED",
+      "page": 97,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "98|OCR_FAILED",
+      "page": 98,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "99|OCR_FAILED",
+      "page": 99,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "100|OCR_FAILED",
+      "page": 100,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "101|OCR_FAILED",
+      "page": 101,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "102|OCR_FAILED",
+      "page": 102,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "103|OCR_FAILED",
+      "page": 103,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "104|OCR_FAILED",
+      "page": 104,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "105|OCR_FAILED",
+      "page": 105,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "106|OCR_FAILED",
+      "page": 106,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "107|OCR_FAILED",
+      "page": 107,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "108|OCR_FAILED",
+      "page": 108,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "109|OCR_FAILED",
+      "page": 109,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "110|OCR_FAILED",
+      "page": 110,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "111|OCR_FAILED",
+      "page": 111,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "112|OCR_FAILED",
+      "page": 112,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "113|OCR_FAILED",
+      "page": 113,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "114|OCR_FAILED",
+      "page": 114,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "115|OCR_FAILED",
+      "page": 115,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "116|OCR_FAILED",
+      "page": 116,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "117|OCR_FAILED",
+      "page": 117,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "118|OCR_FAILED",
+      "page": 118,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "119|OCR_FAILED",
+      "page": 119,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "120|OCR_FAILED",
+      "page": 120,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "121|OCR_FAILED",
+      "page": 121,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "122|OCR_FAILED",
+      "page": 122,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "123|OCR_FAILED",
+      "page": 123,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "124|OCR_FAILED",
+      "page": 124,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "125|OCR_FAILED",
+      "page": 125,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "126|OCR_FAILED",
+      "page": 126,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "127|OCR_FAILED",
+      "page": 127,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "128|OCR_FAILED",
+      "page": 128,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "129|OCR_FAILED",
+      "page": 129,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "130|OCR_FAILED",
+      "page": 130,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "131|OCR_FAILED",
+      "page": 131,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "132|OCR_FAILED",
+      "page": 132,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "133|OCR_FAILED",
+      "page": 133,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "134|OCR_FAILED",
+      "page": 134,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "135|OCR_FAILED",
+      "page": 135,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "136|OCR_FAILED",
+      "page": 136,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "137|OCR_FAILED",
+      "page": 137,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "138|OCR_FAILED",
+      "page": 138,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "139|OCR_FAILED",
+      "page": 139,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "140|OCR_FAILED",
+      "page": 140,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "141|OCR_FAILED",
+      "page": 141,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "142|OCR_FAILED",
+      "page": 142,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "143|OCR_FAILED",
+      "page": 143,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "144|OCR_FAILED",
+      "page": 144,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "145|OCR_FAILED",
+      "page": 145,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "146|OCR_FAILED",
+      "page": 146,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "147|OCR_FAILED",
+      "page": 147,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "148|OCR_FAILED",
+      "page": 148,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "149|OCR_FAILED",
+      "page": 149,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "150|OCR_FAILED",
+      "page": 150,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "151|OCR_FAILED",
+      "page": 151,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "152|OCR_FAILED",
+      "page": 152,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "153|OCR_FAILED",
+      "page": 153,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "154|OCR_FAILED",
+      "page": 154,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "155|OCR_FAILED",
+      "page": 155,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "156|OCR_FAILED",
+      "page": 156,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "157|OCR_FAILED",
+      "page": 157,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "158|OCR_FAILED",
+      "page": 158,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "159|OCR_FAILED",
+      "page": 159,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "160|OCR_FAILED",
+      "page": 160,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "161|OCR_FAILED",
+      "page": 161,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "162|OCR_FAILED",
+      "page": 162,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "163|OCR_FAILED",
+      "page": 163,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "164|OCR_FAILED",
+      "page": 164,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "165|OCR_FAILED",
+      "page": 165,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "166|OCR_FAILED",
+      "page": 166,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "167|OCR_FAILED",
+      "page": 167,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "168|OCR_FAILED",
+      "page": 168,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "169|OCR_FAILED",
+      "page": 169,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "170|OCR_FAILED",
+      "page": 170,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "171|OCR_FAILED",
+      "page": 171,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "172|OCR_FAILED",
+      "page": 172,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "173|OCR_FAILED",
+      "page": 173,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "174|OCR_FAILED",
+      "page": 174,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "175|OCR_FAILED",
+      "page": 175,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "176|OCR_FAILED",
+      "page": 176,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "177|OCR_FAILED",
+      "page": 177,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "178|OCR_FAILED",
+      "page": 178,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "179|OCR_FAILED",
+      "page": 179,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "180|OCR_FAILED",
+      "page": 180,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "181|OCR_FAILED",
+      "page": 181,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "182|OCR_FAILED",
+      "page": 182,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "183|OCR_FAILED",
+      "page": 183,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "184|OCR_FAILED",
+      "page": 184,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "185|OCR_FAILED",
+      "page": 185,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "186|OCR_FAILED",
+      "page": 186,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "187|OCR_FAILED",
+      "page": 187,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "188|OCR_FAILED",
+      "page": 188,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "189|OCR_FAILED",
+      "page": 189,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "190|OCR_FAILED",
+      "page": 190,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    },
+    {
+      "candidate_id": "191|OCR_FAILED",
+      "page": 191,
+      "persist_action": "SKIP_BLOCKED",
+      "status": "BLOCKED",
+      "reasons": [
+        "NO_VERIFIED",
+        "OCR_FAILED",
+        "ocr_skipped_no_paid_gate"
+      ],
+      "canonical": null
+    }
+  ],
+  "results": {
+    "PASS": 5,
+    "REVIEW": 0,
+    "BLOCKED": 0
+  }
+}
