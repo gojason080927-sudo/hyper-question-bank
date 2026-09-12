@@ -1,0 +1,16 @@
+{
+  "present": true,
+  "path": "workers/ocr/ground-truth.json",
+  "count": 26,
+  "document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "sha256": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "sha256_after": "31e46adbab080f12b8d795fce024d352993b86057b9c1853d0cd152862b0c1bb",
+  "mutated": false,
+  "original_pdf": {
+    "present": false,
+    "path": null,
+    "sha256": null,
+    "is_second_book": false,
+    "substituted": false
+  }
+}

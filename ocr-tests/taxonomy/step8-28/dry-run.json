@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "blockers": [],
+  "textbook": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1",
+    "evidence": [
+      "docs/STEP8_25_BATCH_REGISTRATION_PIPELINE_v1.md §J row 8.28: existing OCR/GT only",
+      "docs/STEP8_27_CACHE_ONLY_SEGMENTATION_v1.md: 8.28 after 8.27 on main + later freeze",
+      "workers/ocr/corpus-manifest.json document_id + ground_truth_file",
+      "workers/ocr/ground-truth.json document_id"
+    ]
+  },
+  "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "gt_path": "workers/ocr/ground-truth.json",
+  "gt_count": 26,
+  "structure_targets": 26,
+  "excluded": [
+    {
+      "id": "SECOND_DOCUMENT",
+      "reason": "WRONG_BOOK",
+      "count": 0
+    },
+    {
+      "id": "FULL_TEXTBOOK",
+      "reason": "OUT_OF_SCOPE_STEP_8_28",
+      "count": 0
+    },
+    {
+      "id": "STEP824_CARRY_OVER",
+      "reason": "NOT_IN_STEP7_GT",
+      "count": 8
+    }
+  ],
+  "expected_pipeline_runs": 0,
+  "expected_pipeline_items": 0,
+  "problem_production_writes": 0,
+  "draft_persist": false,
+  "ocr_network_calls": 0,
+  "original_pdf_required": false
+}
