@@ -1,0 +1,14 @@
+{
+  "step": "8.30",
+  "writes": 0,
+  "student_care_accessed": false,
+  "frozen_step824_blocked": 8,
+  "queried": true,
+  "reason": "read_only",
+  "drafts": 757,
+  "type_auto": 38,
+  "figure_assets": 3,
+  "figure_links": 3,
+  "pipeline_runs": 0,
+  "pipeline_items": 0
+}
