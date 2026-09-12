@@ -38,12 +38,8 @@
   "downloaded_from_internet": false,
   "paid_ocr_calls": { "mathpix": 0, "mistral": 0 },
   "needed_from_user": {
-    "files": [
-      "ocr-tests/book-pipeline/step8-7/stage-b-candidates.json",
-      "ocr-tests/mistral/* layout JSON keyed by page PNG sha256 + profile ocr-latest+blocks+tables+images",
-      "matching ocr-tests/original/page-NNN.png or ocr-tests/book-pipeline/pages/page-NNN.png for SSEN pages"
-    ],
-    "format": "existing STEP 8.7/8.8 cache filenames; SSEN source 9ff369b4 only",
-    "upload": "place in the repo working tree at those paths (do not commit large binaries unless project policy already tracks them)"
+    "files": [],
+    "upload": "do_not_upload_cache",
+    "one_action": "Add worker-only secret MISTRAL_API_KEY to this Cloud Agent environment. Never use a VITE_ prefix."
   }
 }

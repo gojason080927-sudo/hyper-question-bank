@@ -89,6 +89,16 @@ const prod = existsSync(prodPath) ? JSON.parse(readFileSync(prodPath, 'utf8')) :
 check(hunt.found?.layout_ocr_cache === false, 'must not invent layout cache')
 check(hunt.downloaded_from_internet === false, 'must not download cache from the internet')
 check((hunt.paid_ocr_calls?.mathpix ?? 1) === 0, 'hunt mathpix must be 0')
+check((hunt.needed_from_user?.files ?? ['x']).length === 0, 'must not ask the user to upload a missing cache')
+const genPath = path.join(dir, 'ocr-cache-generation.json')
+check(existsSync(genPath), 'missing ocr-cache-generation.json')
+if (existsSync(genPath)) {
+  const gen = JSON.parse(readFileSync(genPath, 'utf8'))
+  check(gen.step === '8.27', 'ocr cache generation must stay STEP 8.27')
+  check(gen.next_step_started === false, 'ocr cache generation must not start 8.28')
+  check((gen.paid_api_calls?.mathpix ?? 1) === 0, 'ocr cache generation must not call Mathpix')
+  check(gen.original?.substituted === false, 'ocr cache generation must not substitute the original PDF')
+}
 check(prod.project_ref === 'owpxsmdcxjmsgadkdsci', 'production-schema must be question-bank')
 check(prod.student_care_accessed === false, 'production-schema must not touch student-care')
 check(prod.auth?.jwt_shape_used_as_validity_test === false, 'must not judge tokens by JWT shape')

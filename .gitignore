@@ -39,6 +39,11 @@ supabase/.branches/
 scripts/.tmp-core-v1-report.json
 scripts/tmp-db-push.mjs
 
+# Local SSEN page renders / layout OCR blobs (durable copy is Production Storage)
+ocr-tests/original/page-*.png
+ocr-tests/book-pipeline/pages/page-*.png
+ocr-tests/mistral/*.json
+
 # OCR / generated temp
 fixtures/recognition/last-run.json
 .ocr-temp/

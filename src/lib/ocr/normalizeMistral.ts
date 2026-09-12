@@ -46,9 +46,80 @@ export function extractMistralLatex(markdown: string): string[] {
   return found
 }
 
+export type MistralPixelBlock = {
+  type?: string
+  content?: string
+  id?: string
+  image_id?: string
+  table_id?: string
+  top_left_x: number
+  top_left_y: number
+  bottom_right_x: number
+  bottom_right_y: number
+  confidence?: number
+}
+
+function asFinite(value: unknown): number | null {
+  if (typeof value === 'number' && Number.isFinite(value)) return value
+  if (typeof value === 'string' && value.trim() !== '') {
+    const n = Number(value)
+    if (Number.isFinite(n)) return n
+  }
+  return null
+}
+
+/**
+ * Official OCR 4.1 blocks use top_left_x/y + bottom_right_x/y.
+ * Some SDK samples expose x/y/width/height. Convert to the pixel-corner
+ * shape required by layoutSegment.hasPixelBox.
+ */
+export function coerceMistralBlock(raw: unknown): MistralPixelBlock | null {
+  if (!raw || typeof raw !== 'object') return null
+  const row = raw as Record<string, unknown>
+  const type = typeof row.type === 'string' ? row.type : undefined
+  const content = typeof row.content === 'string' ? row.content : typeof row.text === 'string' ? row.text : ''
+  const id = typeof row.id === 'string' ? row.id : undefined
+  const image_id = typeof row.image_id === 'string' ? row.image_id : undefined
+  const table_id = typeof row.table_id === 'string' ? row.table_id : undefined
+  const confidence =
+    typeof row.confidence === 'number'
+      ? row.confidence
+      : asFinite((row.confidence_scores as { average_content_confidence_score?: unknown } | undefined)?.average_content_confidence_score) ??
+        undefined
+
+  let left = asFinite(row.top_left_x)
+  let top = asFinite(row.top_left_y)
+  let right = asFinite(row.bottom_right_x)
+  let bottom = asFinite(row.bottom_right_y)
+  if (left == null || top == null || right == null || bottom == null) {
+    const x = asFinite(row.x)
+    const y = asFinite(row.y)
+    const width = asFinite(row.width)
+    const height = asFinite(row.height)
+    if (x == null || y == null || width == null || height == null) return null
+    left = x
+    top = y
+    right = x + width
+    bottom = y + height
+  }
+  if (right < left || bottom < top) return null
+  return {
+    type,
+    content,
+    id,
+    image_id,
+    table_id,
+    top_left_x: left,
+    top_left_y: top,
+    bottom_right_x: right,
+    bottom_right_y: bottom,
+    confidence,
+  }
+}
+
 export function mistralLayoutFromRaw(raw: MistralOcrLike): {
   page_count: number
-  blocks: unknown[]
+  blocks: MistralPixelBlock[]
   images: Array<{ id?: string; bbox: number[] | null }>
   has_table_html: boolean
   dimensions: MistralPageLike['dimensions'] | null
@@ -66,9 +137,12 @@ export function mistralLayoutFromRaw(raw: MistralOcrLike): {
   const markdown = extractMistralMarkdown(raw)
   return {
     page_count: pages.length,
-    blocks: pages.flatMap((page) => (Array.isArray(page.blocks) ? page.blocks : [])),
+    blocks: pages.flatMap((page) => (Array.isArray(page.blocks) ? page.blocks : [])).flatMap((block) => {
+      const coerced = coerceMistralBlock(block)
+      return coerced ? [coerced] : []
+    }),
     images,
-    has_table_html: /<table[\s>]|\n\|.+\|/i.test(markdown),
+    has_table_html: /<table[\s>]|\n\|.+\|/i.test(markdown) || pages.some((page) => Array.isArray(page.tables) && page.tables.length > 0),
     dimensions: pages[0]?.dimensions ?? null,
   }
 }

@@ -1,0 +1,39 @@
+{
+  "captured_at": "2026-09-12T02:16:00Z",
+  "project_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "query": "single json_build_object snapshot via supabase db query --project-ref owpxsmdcxjmsgadkdsci --linked=false",
+  "migration_20260912120000": true,
+  "remote_migrations": 15,
+  "pending": 0,
+  "pipeline_runs": 0,
+  "pipeline_items": 0,
+  "rpcs": [
+    "hqb_delete_test_pipeline_job",
+    "hqb_pipeline_empty_progress",
+    "hqb_pipeline_progress_from_items",
+    "hqb_start_pipeline_run",
+    "hqb_upsert_pipeline_item"
+  ],
+  "draft_lifecycle": 757,
+  "frozen_expected_drafts": 265,
+  "draft_delta_note": "Live 757 vs freeze 265 is later ingest / different aggregation, not restored in this STEP.",
+  "type_auto": 38,
+  "problems": 779,
+  "versions": 794,
+  "choices": 1552,
+  "answers": 48,
+  "explanations": 16,
+  "figure_assets": 3,
+  "figure_links": 3,
+  "ssen": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1",
+    "file_hash": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+    "page_count": 192,
+    "original_filename": "쎈 공통수학1.pdf",
+    "ocr_status": "PENDING",
+    "source_pages": 192,
+    "extracted_text_pages": 0
+  }
+}
