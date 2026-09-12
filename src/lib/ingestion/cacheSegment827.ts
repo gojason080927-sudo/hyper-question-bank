@@ -320,7 +320,7 @@ export function findOrphanItems(items: SegmentPipelineItem[], runSourceId: strin
 }
 
 export function findWrongSourceItems(items: SegmentPipelineItem[]): SegmentPipelineItem[] {
-  return items.filter((row) => row.source_document_id !== STEP827_DOCUMENT || row.source_document_id === SECOND_DOCUMENT)
+  return items.filter((row) => row.source_document_id !== STEP827_DOCUMENT)
 }
 
 export function tokenLooksReal(value: string | undefined): boolean {
