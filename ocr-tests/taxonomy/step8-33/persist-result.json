@@ -1,0 +1,15 @@
+{
+  "ran": true,
+  "pipeline_run_id": "8edf26bf-a9d6-48f0-bd58-6489348e5e03",
+  "cleared": 481,
+  "skipped_already_clear": 0,
+  "failed": [],
+  "idempotent_second": {
+    "scoped": 61,
+    "cleared": 0,
+    "fingerprints_written": 0,
+    "fingerprints_existing": 3543,
+    "failed": 0,
+    "needs_review_unchanged": 64
+  }
+}
