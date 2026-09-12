@@ -1,10 +1,10 @@
 {
-  "queried": false,
-  "reason": "no_probe",
-  "drafts": null,
-  "type_auto": null,
-  "figure_assets": null,
-  "figure_links": null,
-  "pipeline_runs": null,
-  "pipeline_items": null
+  "queried": true,
+  "reason": "read_only",
+  "drafts": 761,
+  "type_auto": 38,
+  "figure_assets": 3,
+  "figure_links": 3,
+  "pipeline_runs": 1,
+  "pipeline_items": 26
 }

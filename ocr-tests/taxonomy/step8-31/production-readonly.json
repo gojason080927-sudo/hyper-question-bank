@@ -1,7 +1,11 @@
 {
+  "step": "8.31",
+  "student_care_accessed": false,
+  "frozen_step824_blocked": 8,
   "queried": true,
   "reason": "read_only",
   "drafts": 761,
+  "needs_review": 25,
   "type_auto": 38,
   "figure_assets": 3,
   "figure_links": 3,

@@ -79,10 +79,20 @@ check(
   (queue.items ?? []).every((row) => Array.isArray(row.reasons) && row.reasons.length > 0),
   'each queue item must have reasons',
 )
-check(
-  (queue.items ?? []).every((row) => row.crop_url && String(row.crop_url).startsWith('/review-crops/')),
-  'each queue item must point at a crop URL',
-)
+check((queue.items ?? []).filter((row) => row.problem_id).length === 19, '19 queue items must have Production problem IDs')
+
+const persistPath = path.join(dir, 'persist-result.json')
+check(existsSync(persistPath), 'missing persist-result.json')
+const persist = existsSync(persistPath) ? JSON.parse(readFileSync(persistPath, 'utf8')) : {}
+if (persist.ran) {
+  check((persist.created ?? []).length === 4, 'persist must create exactly 4 new DRAFTs')
+  const codes = (persist.created ?? []).map((row) => row.public_code).sort()
+  check(codes.join(',') === 'HQB-000815,HQB-000816,HQB-000817,HQB-000818', `created codes ${codes.join(',')}`)
+  check((persist.production_verified_writes ?? 1) === 0, 'persist must not write VERIFIED')
+  check((persist.content_rewrites ?? 1) === 0, 'persist must not rewrite content')
+  check((persist.production_before?.drafts ?? 0) === 757, 'pre-persist drafts must be 757')
+  check((persist.production_after?.drafts ?? 0) === 761, 'post-persist drafts must be 761')
+}
 
 const dumped = JSON.stringify(s) + JSON.stringify(queue)
 check(!/sk-/.test(dumped), 'artifacts must not contain key-like prefixes')

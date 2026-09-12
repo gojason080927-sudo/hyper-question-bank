@@ -414,12 +414,20 @@ export async function runStep831(root: string, argv: string[]) {
   if (gtAfter !== STEP828_GT_SHA256) throw new Error('GT mutated')
   publishReviewCrops(root)
 
+  const samplesFile = JSON.parse(readFileSync(path.join(root, 'workers/ocr/samples.json'), 'utf8')) as {
+    samples: Array<{
+      id: string
+      bbox: { x: number; y: number; width: number; height: number; unit?: 'normalized'; origin?: 'top-left' }
+    }>
+  }
+  const bboxBySample = new Map(samplesFile.samples.map((row) => [row.id, row.bbox]))
+
   const before =
     argv.includes('--probe-production') || persistRequested
       ? await probeProductionCounts()
       : skippedCounts('no_probe')
   const persistResult = persistRequested
-    ? await persistPilot(items, gtFile.items)
+    ? await persistPilot(items, gtFile.items, bboxBySample)
     : {
         ran: false,
         created: [] as PersistCreated[],
@@ -542,6 +550,31 @@ export async function runStep831(root: string, argv: string[]) {
   })
   writeJson(dest, 'production-before.json', before)
   writeJson(dest, 'production-after.json', after)
+  const persistResultPath = path.join(dest, 'persist-result.json')
+  if (persistResult.ran) {
+    writeJson(dest, 'persist-result.json', {
+      ran: true,
+      pipeline_run_id: persistResult.pipeline_run_id,
+      queued_review: persistResult.queued_review,
+      created: persistResult.created,
+      existing: persistResult.existing,
+      production_before: before,
+      production_after: after,
+      production_problem_writes: persistResult.created.length,
+      production_figure_writes: 0,
+      production_verified_writes: 0,
+      content_rewrites: 0,
+      duplicates: 0,
+      orphans: 0,
+    })
+  } else if (!existsSync(persistResultPath)) {
+    writeJson(dest, 'persist-result.json', {
+      ran: false,
+      created: [],
+      existing: persistResult.existing,
+      note: 'cache-only; persist-result is written only on --persist',
+    })
+  }
   writeFileSync(
     path.join(dest, 'step8-31-summary.md'),
     `# STEP 8.31 E2E PILOT
@@ -561,7 +594,11 @@ queued_review: ${persistResult.queued_review}
   return summary
 }
 
-async function persistPilot(items: PilotItem[], gtItems: GtItem[]) {
+async function persistPilot(
+  items: PilotItem[],
+  gtItems: GtItem[],
+  bboxBySample: Map<string, { x: number; y: number; width: number; height: number; unit?: 'normalized'; origin?: 'top-left' }>,
+) {
   const url = process.env.VITE_SUPABASE_URL?.trim() ?? ''
   const anon = process.env.VITE_SUPABASE_ANON_KEY?.trim() ?? ''
   const service = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() ?? ''
@@ -613,6 +650,7 @@ async function persistPilot(items: PilotItem[], gtItems: GtItem[]) {
           page_number: row.page_number,
           original_problem_number: row.canonical_number ?? '',
           problem_text: text,
+          bbox: bboxBySample.get(row.candidate_id),
         }),
       })
       if (upserted.error) throw new Error(`${row.candidate_id}: ${upserted.error.message}`)

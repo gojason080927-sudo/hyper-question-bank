@@ -1,0 +1,79 @@
+{
+  "ran": true,
+  "pipeline_run_id": "4765ed6d-b136-4578-803e-89ea1414b9c0",
+  "queued_review": 19,
+  "created": [
+    {
+      "candidate_id": "S13",
+      "problem_id": "a14ef5d5-2891-4cd0-96e9-715dc6fef1dd",
+      "version_id": "abe9771f-77e7-4c65-bb22-dac9bd55a3d4",
+      "public_code": "HQB-000815",
+      "status": "CREATED"
+    },
+    {
+      "candidate_id": "S21",
+      "problem_id": "70ea6986-db1f-4500-949b-7030659bf994",
+      "version_id": "cf7f71c1-f88a-40a9-90bc-3c3b36792c1f",
+      "public_code": "HQB-000816",
+      "status": "CREATED"
+    },
+    {
+      "candidate_id": "S25",
+      "problem_id": "51f23cea-3e1a-493e-9951-d05655143c7b",
+      "version_id": "e8b8ea14-d867-4865-a7df-65c9065be539",
+      "public_code": "HQB-000817",
+      "status": "CREATED"
+    },
+    {
+      "candidate_id": "S26",
+      "problem_id": "f8fe1400-0178-4c12-95ce-572c4474aa3a",
+      "version_id": "b4439519-112e-4509-abaa-b1e1541ad864",
+      "public_code": "HQB-000818",
+      "status": "CREATED"
+    }
+  ],
+  "existing": [
+    {"candidate_id": "S04", "problem_id": null, "version_id": null, "public_code": "HQB-000364"},
+    {"candidate_id": "S05", "public_code": "HQB-000195"},
+    {"candidate_id": "S06", "public_code": "HQB-000194"},
+    {"candidate_id": "S07", "public_code": "HQB-000814"},
+    {"candidate_id": "S08", "public_code": "HQB-000380"},
+    {"candidate_id": "S09", "public_code": "HQB-000231"},
+    {"candidate_id": "S10", "public_code": "HQB-000429"},
+    {"candidate_id": "S11", "public_code": "HQB-000431"},
+    {"candidate_id": "S12", "public_code": "HQB-000430"},
+    {"candidate_id": "S14", "public_code": "HQB-000487"},
+    {"candidate_id": "S15", "public_code": "HQB-000489"},
+    {"candidate_id": "S17", "public_code": "HQB-000588"},
+    {"candidate_id": "S18", "public_code": "HQB-000590"},
+    {"candidate_id": "S19", "public_code": "HQB-000239"},
+    {"candidate_id": "S20", "public_code": "HQB-000589"}
+  ],
+  "production_before": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 757,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 1,
+    "pipeline_items": 12
+  },
+  "production_after": {
+    "queried": true,
+    "reason": "read_only",
+    "drafts": 761,
+    "type_auto": 38,
+    "figure_assets": 3,
+    "figure_links": 3,
+    "pipeline_runs": 1,
+    "pipeline_items": 26
+  },
+  "production_problem_writes": 4,
+  "production_figure_writes": 0,
+  "production_verified_writes": 0,
+  "content_rewrites": 0,
+  "duplicates": 0,
+  "orphans": 0,
+  "note": "S13/S21/S25/S26 created this milestone. 15 prior identities recorded, not rewritten. pipeline_items 12 on before snapshot is the failed first persist attempt (S01–S12 items) before bbox fix; completed run filled 26."
+}
