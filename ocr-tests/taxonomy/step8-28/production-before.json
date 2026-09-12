@@ -1,0 +1,22 @@
+{
+  "project_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "read_only": true,
+  "phase": "before",
+  "drafts": 757,
+  "type_auto": 38,
+  "figure_assets": 3,
+  "figure_links": 3,
+  "pipeline_runs": 0,
+  "pipeline_items": 0,
+  "recognition_results_ssen": 731,
+  "note": "Live DRAFT 757 is later ingest beyond the STEP 8.12 freeze of 265. Not restored. type AUTO 38 and figures 3/3 match the freeze. recognition_results_ssen inventoried read-only and not executed as the 8.28 corpus.",
+  "frozen": {
+    "step812ExpectedDrafts": 265,
+    "frozenTypeAuto": 38,
+    "impliedNonTypeAuto": 227,
+    "step823FigureAssets": 3,
+    "step823FigureLinks": 3,
+    "step824BlockedRemaining": 8
+  }
+}
