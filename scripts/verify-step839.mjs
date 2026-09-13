@@ -58,6 +58,8 @@ check(tests.includes('POSSIBLE_FIGURE_MISSING') || tests.includes('figure'), 'te
 
 check(review.includes('qa839') && review.includes('FullQaReviewPanel'), 'review queue must expose 8.39 tab')
 check(panel.includes('qa839-compare'), 'panel must compare original/current/candidate')
+const css = readFileSync(path.join(root, 'src/styles/app.css'), 'utf8')
+check(/\.review-split[\s\S]*@media \(max-width: 900px\)[\s\S]*review-split\.qa839-split/.test(css), 'mobile CSS must stack qa839 split after review-split')
 check(panel.includes('overflow_360'), 'panel must show overflow')
 check(panel.includes('PAID_OCR_CANDIDATE'), 'panel must filter paid OCR')
 
