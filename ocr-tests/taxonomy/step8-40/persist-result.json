@@ -1,6 +1,6 @@
 {
   "step": "8.40",
-  "status": "DRY_RUN",
+  "status": "PERSISTED",
   "student_care_accessed": false,
   "paid_ocr_calls": 0,
   "paid_ocr_usd": 0,
@@ -426,16 +426,16 @@
     "unique_pages": 61,
     "unique_ids": 128,
     "p1": 9,
-    "pass_false_positive": 61,
-    "auto_safe": 0,
+    "pass_false_positive": 58,
+    "auto_safe": 3,
     "review_required": 67,
     "blocked": 0,
     "paid_ocr_candidate": 0,
     "human_remaining": 67,
     "human_reduction_pct": 47.7,
-    "new_versions": 0,
-    "current_version_switches": 0,
-    "queue_cleared": 61,
+    "new_versions": 3,
+    "current_version_switches": 3,
+    "queue_cleared": 58,
     "teacher_edit_protected": 0,
     "verified_protected": 0,
     "problems_deleted": 0,
@@ -507,7 +507,35 @@
       "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다"
     }
   ],
-  "examples_auto_safe": [],
+  "examples_auto_safe": [
+    {
+      "number": "0507",
+      "page": 75,
+      "rules": [
+        "trailing_packaging:#"
+      ],
+      "from": "정답 및 풀이 62쪽\n# 0507 ③ \n오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}$를 지름으로 하는 원 위의 한 점 P에서 $\\overline{\\mathrm{AB}}$에 내린 수선의 발을 H라 하자.\n$\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{PH}} = 3$, $\\overline{\\mathrm{AH}} = \\alpha$, $\\overline{\\mathrm{BH}",
+      "to": "정답 및 풀이 62쪽\n# 0507 ③ \n오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}$를 지름으로 하는 원 위의 한 점 P에서 $\\overline{\\mathrm{AB}}$에 내린 수선의 발을 H라 하자.\n$\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{PH}} = 3$, $\\overline{\\mathrm{AH}} = \\alpha$, $\\overline{\\mathrm{BH}"
+    },
+    {
+      "number": "1157",
+      "page": 165,
+      "rules": [
+        "trailing_packaging:#"
+      ],
+      "from": "정답 및 풀이 160쪽\n# 1157 🟠 \n오른쪽 그림과 같은 팔각형에서 대각선의 개수를 구하시오.\n![img-0.jpeg](img-0.jpeg)\n#",
+      "to": "정답 및 풀이 160쪽\n# 1157 🟠 \n오른쪽 그림과 같은 팔각형에서 대각선의 개수를 구하시오.\n![img-0.jpeg](img-0.jpeg)"
+    },
+    {
+      "number": "1190",
+      "page": 171,
+      "rules": [
+        "heading_hashes"
+      ],
+      "from": "한사국의\n기출\n1190 >> 교육청 기출\n 159쪽 유형 12 + 163쪽 유형 18\n그림과 같이 좌석 번호가 적힌 10개의 의자가 배열되어 있다.\n![img-0.jpeg](img-0.jpeg)\n두 학생 A, B를 포함한 5명의 학생이 다음 규칙에 따라 10개의 의자 중에서 서로 다른 5개의 의자에 앉는 경우의 수는?\n(가) A의 좌석 번호는 24 이상이고, B의 좌석 번호는 14 이하이다.\n(나) 5명의 학생 중에서 어느 두",
+      "to": "한사국의\n기출\n1190 >> 교육청 기출\n 159쪽 유형 12 + 163쪽 유형 18\n그림과 같이 좌석 번호가 적힌 10개의 의자가 배열되어 있다.\n![img-0.jpeg](img-0.jpeg)\n두 학생 A, B를 포함한 5명의 학생이 다음 규칙에 따라 10개의 의자 중에서 서로 다른 5개의 의자에 앉는 경우의 수는?\n(가) A의 좌석 번호는 24 이상이고, B의 좌석 번호는 14 이하이다.\n(나) 5명의 학생 중에서 어느 두"
+    }
+  ],
   "examples_pass_fp": [
     {
       "number": "0581",
@@ -581,5 +609,84 @@
       "reason": "정상 공통 발문 [0036~0037]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
       "stem": "[0036~0037] 다음 두 다항식 $A$, $B$에 대하여 $A$를 $B$로 나누었을 때의 몫을 $Q$, 나머지를 $R$라 할 때, $A=BQ+R$ 꼴로 나타내시오.\n$A=2x^3+x^2-7x+7$, $B=2x-1$"
     }
-  ]
+  ],
+  "persist": {
+    "attempted": 3,
+    "written": 3,
+    "skipped": 0,
+    "errors": 0,
+    "rows": [
+      {
+        "problem_id": "6f765e13-ca9c-4276-a436-f128b30483cc",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "5b652302-11c7-46ea-b12b-076da0fba363",
+          "version_no": 4
+        }
+      },
+      {
+        "problem_id": "41d6686f-a8a0-4b7c-8039-8f27bc677cd1",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "67b3b617-8bc5-4b80-a83e-46fdffe280e6",
+          "version_no": 4
+        }
+      },
+      {
+        "problem_id": "6fdbe8c7-e5cc-466b-a88b-bbabc2a6d005",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "bb491792-690d-4d2d-a908-71544963c4ad",
+          "version_no": 4
+        }
+      }
+    ]
+  },
+  "worksheet_id": null,
+  "after": {
+    "listed": 1242,
+    "ssen_linked": 1253,
+    "ssen_needs_review": 9,
+    "needs_review_ids": [
+      "3edacc37-8d19-41a8-8387-356e45c61f50",
+      "9e097ac3-f5a4-4255-b49d-4da43f7fb4aa",
+      "baba4283-f091-4ef3-b403-5c6013788fea",
+      "0413c266-4fa4-462a-bf3b-0f6546725cd7",
+      "892087ed-5507-4660-bf20-f922a4210638",
+      "f07b6041-d62f-4058-bd0d-b3dbeef2b7c1",
+      "609087fc-4985-44b2-8853-b307176bb29c",
+      "6fdbe8c7-e5cc-466b-a88b-bbabc2a6d005",
+      "eec6f8a5-9c00-4035-9509-fd00fa006626"
+    ],
+    "public_code_dups": 0,
+    "embeddings": 1244,
+    "fingerprints": 3543,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    },
+    "auto_clean_839": 23
+  },
+  "rerun_applies": 0,
+  "integrity_after": {
+    "listed_unchanged": true,
+    "public_code_dups": 0,
+    "embeddings_unchanged": true,
+    "fingerprints_unchanged": true,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    },
+    "auto_clean_839": 23,
+    "needs_review": 9
+  }
 }

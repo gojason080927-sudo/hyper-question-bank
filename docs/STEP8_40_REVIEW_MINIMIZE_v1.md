@@ -87,7 +87,26 @@ Reuse `hqb_apply_auto_clean_text`. AUTO_SAFE only. Skip if `current_version_id` 
 
 Official prices (same as 8.39): Mathpix $0.002/image or $0.005/PDF page; Mistral OCR 4 $0.004/page. **This STEP: 0 calls, $0.**
 
-## 9. Non-goals
+## 9. Census (inspector 8.40.1, Production persist 2026-09-13)
+
+| Metric | Value |
+|---|---|
+| Start REVIEW_REQUIRED / unique pages | 128 / 61 |
+| PASS_FALSE_POSITIVE | 47 |
+| AUTO_SAFE unique problems | 25 (28 AUTO_CLEAN writes: 25 + 3 leftover `#`/`###` on the same ids) |
+| REVIEW_REQUIRED remaining | 56 |
+| BLOCKED / PAID_OCR | 0 / 0 |
+| Human remaining | 56 (−56.3%) |
+| P1 9 | 6 PASS_FALSE_POSITIVE (page 47 short atoms) · 3 REVIEW_REQUIRED (0331/0333/0381 stubs) |
+| Persist / rerun | 28 writes on 25 ids / **0** |
+| Listed / embeddings / fingerprints after | 1242 / 1244 / 3543 |
+| STEP 8.39 AUTO_CLEAN 23 | preserved |
+| Paid OCR calls | 0 |
+| Test worksheet | `2c9cd16a-8781-4081-a5d7-2aa1282be411` (`TEST STEP 8.40`) |
+
+Dashboard: `/pipeline-review?source=qa840`. Artifacts: `ocr-tests/taxonomy/step8-40/` and `public/step8-40-review-minimize.json`.
+
+## 10. Non-goals
 
 - No problem DELETE
 - No raw OCR mutation

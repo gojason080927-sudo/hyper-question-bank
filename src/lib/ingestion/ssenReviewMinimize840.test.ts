@@ -179,6 +179,29 @@ describe('AUTO_SAFE packaging and proven leaks', () => {
     expect(rec.proposed_stem).toBe('실수 $a$의 값의 범위는?')
   })
 
+  it('strips leftover trailing hashes after a next-number packaging trailer in one pass', () => {
+    const stem = '다음 그림에서 $ab$의 값은?\n① 2\n② 3\n#\n0275\n 39쪽 유형 24'
+    const cand = candidate840({
+      problem_id: 'h',
+      current_number: '0274',
+      stem,
+      source_page: 44,
+      root_cause: 'NEXT_NUMBER_LEAK',
+      signals: ['NEXT_NUMBER_LEAK'],
+    })
+    const rec = decideOne840(cand, [
+      row840({ id: 'h', problem_number: 274, source_page: 44, stem }),
+      row840({ id: 'm', problem_number: 275, source_page: 44, stem: '39쪽 유형 24 삼각형' }),
+    ])
+    expect(rec.verdict).toBe('AUTO_SAFE')
+    expect(rec.proposed_stem).not.toMatch(/#\s*$/)
+    const again = minimizeReview840(
+      [{ ...cand, stem: rec.proposed_stem! }],
+      [row840({ id: 'h', problem_number: 274, source_page: 44, stem: rec.proposed_stem! }), row840({ id: 'm', problem_number: 275, source_page: 44, stem: '39쪽 유형 24 삼각형' })],
+    )
+    expect(again.applies).toHaveLength(0)
+  })
+
   it('AUTO_SAFE trims a next-number packaging trailer when the next listed row exists', () => {
     const stem = '다음 그림에서 $ab$의 값은?\n① 2\n② 3\n0275\n 39쪽 유형 24'
     const cand = candidate840({

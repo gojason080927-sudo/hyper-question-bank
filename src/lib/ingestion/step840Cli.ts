@@ -298,6 +298,40 @@ async function snapshot(admin: SupabaseClient) {
   }
 }
 
+function freezeFirstPass(outDir: string, plan: ReturnType<typeof minimizeReview840>) {
+  const file = path.join(outDir, 'first-pass.json')
+  if (!existsSync(file)) {
+    writeFileSync(file, JSON.stringify({
+      inspector_version: plan.inspector_version,
+      rules_version: plan.rules_version,
+      start_review: plan.start_review,
+      unique_pages: plan.unique_pages,
+      groups: plan.groups,
+      decisions: plan.decisions,
+      applies: plan.applies,
+      p1: plan.p1,
+      summary: plan.summary,
+    }), 'utf8')
+  }
+  return JSON.parse(readFileSync(file, 'utf8')) as ReturnType<typeof minimizeReview840>
+}
+
+function overlayAppliedStems(
+  frozen: ReturnType<typeof minimizeReview840>,
+  extraApplies: typeof frozen.applies,
+): ReturnType<typeof minimizeReview840> {
+  const map = new Map([...frozen.applies, ...extraApplies].map((row) => [row.problem_id, row.to_stem]))
+  return {
+    ...frozen,
+    applies: extraApplies,
+    decisions: frozen.decisions.map((row) => {
+      const stem = map.get(row.problem_id)
+      if (!stem) return row
+      return { ...row, stem, proposed_stem: row.verdict === 'AUTO_SAFE' ? stem : row.proposed_stem }
+    }),
+  }
+}
+
 function publicPayload(plan: ReturnType<typeof minimizeReview840>, extras: Record<string, unknown>) {
   return {
     step: '8.40',
@@ -415,6 +449,8 @@ export async function runStep840(root = process.cwd()) {
   if (pdfSha && pdfSha !== STEP832_PDF_SHA256) throw new Error(`SSEN original PDF hash mismatch: ${pdfSha}`)
 
   const plan = minimizeReview840(candidates, live, { pageOcrByPage })
+  const frozen = freezeFirstPass(outDir, plan)
+  const display = overlayAppliedStems(frozen, plan.applies)
   const safety = dryRunSafety840(plan, before.listed ?? 0)
   const paid = paidOcrPlan840(plan)
 
@@ -481,7 +517,7 @@ export async function runStep840(root = process.cwd()) {
   writeFileSync(path.join(outDir, 'dry-run.json'), JSON.stringify(dry, null, 2), 'utf8')
   writeFileSync(path.join(outDir, 'audit.json'), JSON.stringify({ step: '8.40', ...plan, applies: plan.applies }, null, 2), 'utf8')
   writeFileSync(path.join(outDir, 'audit.md'), formatAuditMarkdown840(plan), 'utf8')
-  writeFileSync(path.join(root, 'public/step8-40-review-minimize.json'), JSON.stringify(publicPayload(plan, extras), null, 2), 'utf8')
+  writeFileSync(path.join(root, 'public/step8-40-review-minimize.json'), JSON.stringify(publicPayload(display, extras), null, 2), 'utf8')
 
   if (!persist) {
     writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify({ ...dry, status: 'DRY_RUN' }, null, 2), 'utf8')
@@ -571,7 +607,7 @@ export async function runStep840(root = process.cwd()) {
   }
   writeFileSync(path.join(outDir, 'persist-result.json'), JSON.stringify(outcome, null, 2), 'utf8')
   writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(outcome, null, 2), 'utf8')
-  writeFileSync(path.join(root, 'public/step8-40-review-minimize.json'), JSON.stringify(publicPayload(rerun, { ...extras, persisted: true, persist: outcome.persist, worksheet_id: worksheetId }), null, 2), 'utf8')
+  writeFileSync(path.join(root, 'public/step8-40-review-minimize.json'), JSON.stringify(publicPayload(overlayAppliedStems(frozen, [...frozen.applies, ...plan.applies]), { ...extras, persisted: true, persist: outcome.persist, worksheet_id: worksheetId, rerun_applies: rerun.applies.length }), null, 2), 'utf8')
   console.log(
     `STEP 8.40 PERSIST written=${outcome.persist.written} skipped=${outcome.persist.skipped} rerun=${rerun.applies.length} listed=${after.listed} worksheet=${worksheetId ?? 'none'}`,
   )

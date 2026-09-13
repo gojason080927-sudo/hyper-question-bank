@@ -347,6 +347,10 @@ export function stripSafePackaging840(text: string): { text: string; rules: stri
     if (stripTrailingSection()) continue
     break
   }
+  next = next.replace(/\n?#+\s*$/g, () => {
+    rules.push('trailing_hashes')
+    return ''
+  })
   next = normalizeStem840(next)
   if (next === normalizeStem840(text) && rules.length === 0) return { text: normalizeStem840(text), rules: [] }
   return { text: next, rules }
@@ -409,18 +413,21 @@ export function proposeTrimGluedItems840(
     const startNorm = normalizeStem840(stripLeadingProblemNumber(startRow.stem, startRow.problem_number))
     const leakedNorm = normalizeStem840(stripLeadingProblemNumber(leaked, later[0].start))
     if (stemsAlign840(leakedNorm, startNorm) || (startNorm.includes(later[0].raw) && leakedNorm.startsWith(later[0].raw))) {
-      return { stem: normalizeStem840(keep), rules: ['range_leak_already_on_next'] }
+      const cleaned = stripSafePackaging840(keep)
+      return { stem: cleaned.text, rules: ['range_leak_already_on_next', ...cleaned.rules] }
     }
     return null
   }
   if (!next) return null
   if (isPackagingTrailer840(leak.leaked)) {
-    return { stem: normalizeStem840(leak.keep), rules: ['next_number_packaging_trailer'] }
+    const cleaned = stripSafePackaging840(leak.keep)
+    return { stem: cleaned.text, rules: ['next_number_packaging_trailer', ...cleaned.rules] }
   }
   const nextNorm = normalizeStem840(stripLeadingProblemNumber(next.stem, next.problem_number))
   const leakedNorm = normalizeStem840(stripLeadingProblemNumber(leak.leaked, next.problem_number))
   if (stemsAlign840(leakedNorm, nextNorm)) {
-    return { stem: normalizeStem840(leak.keep), rules: ['next_number_leak_equals_next'] }
+    const cleaned = stripSafePackaging840(leak.keep)
+    return { stem: cleaned.text, rules: ['next_number_leak_equals_next', ...cleaned.rules] }
   }
   return null
 }
@@ -654,9 +661,10 @@ export function decideOne840(
       )
     }
     if (leak && isPackagingTrailer840(leak.leaked) && leak.keep.length >= 8) {
+      const cleaned = stripSafePackaging840(leak.keep)
       return finish('AUTO_SAFE', '다음 번호처럼 보이지만 쪽·유형·대표문제 포장이다. 현재 본문만 남긴다', {
-        rules: ['next_number_packaging_trailer'],
-        proposed_stem: normalizeStem840(leak.keep),
+        rules: ['next_number_packaging_trailer', ...cleaned.rules],
+        proposed_stem: cleaned.text,
         evidence: [`next:${next.original_problem_number}`],
       })
     }
