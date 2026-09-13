@@ -90,6 +90,14 @@ Uncertain items stay in the live 검수 UI **range tab** without flipping `revie
 - Cards, PC table, preview, review, worksheet A4 1/2-col use it
 - `/pipeline-review?source=range838` reuses the existing queue page
 
+## 7. Non-goals
+
+- No paid OCR
+- No bbox/crop regen
+- No 8.32–8.37 persist replay
+- No auto-delete of STEP 8.37 test worksheets
+- No auto-merge of the PR
+
 ## 8. Production persist (this run)
 
 - DRY RUN safety: **ok**
