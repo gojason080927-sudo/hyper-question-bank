@@ -246,6 +246,7 @@ A **later** STEP may ingest those problems and/or run paid OCR after an explicit
 | **8.36** | Production instructor stabilization + 쎈 교재 목차 순서 탐색, server pagination, live review queue, fixture hiding, evidence-only OCR/dup repairs. Never `VERIFIED`. Never DELETE. See `docs/STEP8_36_SSEN_OUTLINE_STABILIZE_v1.md`. | Additive outline/list RPCs + SSEN outline mapping + hide exact dups; never VERIFIED | No paid OCR |
 | **8.37** | Instructor Production UI: mobile cards, KaTeX display, duplicate heading cleanup, worksheet mobile A4, home worksheets link. Never mutate stems/OCR/embeddings. See `docs/STEP8_37_INSTRUCTOR_UI_v1.md`. | UI only; no migration; never VERIFIED | No paid OCR |
 | **8.38** | Restore leaked `[n~m]` shared prompts onto existing 쎈 listed records; strip donor leak; never split into new problems; never DELETE / VERIFIED / TEACHER_EDIT. See `docs/STEP8_38_RANGE_STEM_RESTORE_v1.md`. | New `AUTO_CLEAN` versions + `current_version` switch for AUTO_SAFE only; listed stays 1,242 | No paid OCR |
+| **8.39** | Free full QA of 192 pages / 1,242 listed SSEN items; merge suspects; AUTO_SAFE packaging/next-number only; leftover → review or paid-OCR plan. See `docs/STEP8_39_SSEN_FULL_QA_v1.md`. | New `AUTO_CLEAN` versions for AUTO_SAFE only; listed stays 1,242 | Report-then-stop; 0 new paid calls |
 | *(unnumbered until frozen)* | Remaining 8 figures after ingest | Figure RPC only | Report-then-stop |
 | *(unnumbered until frozen)* | Multimodal twin / print-edit | No | No |
 

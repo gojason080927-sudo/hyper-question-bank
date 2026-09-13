@@ -77,6 +77,7 @@
     "src/lib/ingestion/step834Cli.ts",
     "src/lib/ingestion/bookPipelineRun.ts",
     "src/lib/ingestion/figurePersistence.ts",
-    "src/lib/ingestion/step838Cli.ts"
+    "src/lib/ingestion/step838Cli.ts",
+    "src/lib/ingestion/step839Cli.ts"
   ]
 }
