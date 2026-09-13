@@ -23,6 +23,8 @@ export function QuestionVersionsPage() {
   const [tex, setTex] = useState('')
   const [answer, setAnswer] = useState('')
   const [reviews, setReviews] = useState<Array<{ status: string; note: string | null }>>([])
+  const [error, setError] = useState<string | null>(null)
+  const [info, setInfo] = useState<string | null>(null)
 
   useEffect(() => {
     const client = getSupabase()
@@ -70,7 +72,9 @@ export function QuestionVersionsPage() {
   return (
     <main className="page wide">
       <p className="kicker">버전 이력</p>
-      <h1>과거 버전은 읽기 전용입니다</h1>
+      <h1>버전 이력 — 복원은 새 버전을 만듭니다</h1>
+      {error ? <p className="banner error">{error}</p> : null}
+      {info ? <p className="banner success">{info}</p> : null}
       <div className="split">
         <ul className="version-list">
           {versions.map((row) => (
@@ -95,6 +99,30 @@ export function QuestionVersionsPage() {
           <p className="stem">{detail}</p>
           {tex ? <p><KatexText tex={tex} /></p> : null}
           <p><strong>정답</strong> {answer || '—'}</p>
+          {selected && selected !== currentId ? (
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                const client = getSupabase()
+                if (!client || !selected) return
+                void client
+                  .rpc('hqb_restore_problem_version', {
+                    p_version_id: selected,
+                    p_change_reason: '이력 화면에서 복원',
+                  })
+                  .then(({ error: restoreError }) => {
+                    if (restoreError) {
+                      setError(restoreError.message)
+                      return
+                    }
+                    setInfo('선택한 내용을 새 TEACHER_EDIT 버전으로 복원했습니다. 이전 행은 그대로입니다.')
+                  })
+              }}
+            >
+              이 버전으로 복원 (새 버전)
+            </button>
+          ) : null}
           <h2>이 버전의 검수 이력</h2>
           {reviews.length === 0 ? <p className="muted">이 버전 전용 검수 기록이 없습니다.</p> : (
             <ul>

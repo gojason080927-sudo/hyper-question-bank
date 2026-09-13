@@ -102,7 +102,7 @@ export function QuestionDetailPage() {
           <h1>문제 상세</h1>
         </div>
         <div className="actions">
-          <Link className="btn" to={`/questions/${problemId}/edit`}>수정</Link>
+          <Link className="btn" to={`/questions/${problemId}/edit`}>편집</Link>
           <Link className="btn" to={`/questions/${problemId}/review`}>검수</Link>
           <Link className="btn" to={`/questions/${problemId}/versions`}>버전 이력</Link>
         </div>

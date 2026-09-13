@@ -1067,6 +1067,7 @@ export type Database = {
           archived_at: string | null
           created_at: string
           current_version_id: string | null
+          editor_revision: number
           id: string
           lifecycle_status: string
           public_code: string
@@ -1078,6 +1079,7 @@ export type Database = {
           archived_at?: string | null
           created_at?: string
           current_version_id?: string | null
+          editor_revision?: number
           id?: string
           lifecycle_status?: string
           public_code: string
@@ -1089,6 +1091,7 @@ export type Database = {
           archived_at?: string | null
           created_at?: string
           current_version_id?: string | null
+          editor_revision?: number
           id?: string
           lifecycle_status?: string
           public_code?: string
@@ -1716,26 +1719,38 @@ export type Database = {
       worksheet_items: {
         Row: {
           created_at: string
+          force_page_break: boolean
           id: string
+          item_style: Json
           order_no: number
+          points: number | null
           problem_id: string
           problem_version_id: string
+          spacing_mm: number | null
           worksheet_id: string
         }
         Insert: {
           created_at?: string
+          force_page_break?: boolean
           id?: string
+          item_style?: Json
           order_no: number
+          points?: number | null
           problem_id: string
           problem_version_id: string
+          spacing_mm?: number | null
           worksheet_id: string
         }
         Update: {
           created_at?: string
+          force_page_break?: boolean
           id?: string
+          item_style?: Json
           order_no?: number
+          points?: number | null
           problem_id?: string
           problem_version_id?: string
+          spacing_mm?: number | null
           worksheet_id?: string
         }
         Relationships: [
@@ -1766,21 +1781,30 @@ export type Database = {
         Row: {
           archived_at: string | null
           created_at: string
+          created_by: string | null
+          exam_kind: string
           id: string
+          layout: Json
           purpose: string | null
           title: string
         }
         Insert: {
           archived_at?: string | null
           created_at?: string
+          created_by?: string | null
+          exam_kind?: string
           id?: string
+          layout?: Json
           purpose?: string | null
           title: string
         }
         Update: {
           archived_at?: string | null
           created_at?: string
+          created_by?: string | null
+          exam_kind?: string
           id?: string
+          layout?: Json
           purpose?: string | null
           title?: string
         }
@@ -1865,6 +1889,34 @@ export type Database = {
         Returns: undefined
       }
       hqb_require_reviewer: { Args: never; Returns: string }
+      hqb_restore_problem_version: {
+        Args: { p_change_reason?: string; p_version_id: string }
+        Returns: Json
+      }
+      hqb_save_editor_document: {
+        Args: { p_version_id: string; payload: Json }
+        Returns: Json
+      }
+      hqb_search_similar_problems: { Args: { payload: Json }; Returns: Json }
+      hqb_fork_problem_version: {
+        Args: { p_change_reason?: string; p_content_overrides?: Json; p_version_id: string }
+        Returns: Json
+      }
+      hqb_upsert_editor_autosave: { Args: { payload: Json }; Returns: Json }
+      hqb_archive_problem: { Args: { p_problem_id: string }; Returns: Json }
+      hqb_restore_archived_problem: { Args: { p_problem_id: string }; Returns: Json }
+      hqb_duplicate_problem: { Args: { p_problem_id: string }; Returns: Json }
+      hqb_register_editor_asset: { Args: { payload: Json }; Returns: Json }
+      hqb_create_worksheet: { Args: { payload: Json }; Returns: Json }
+      hqb_update_worksheet: {
+        Args: { p_worksheet_id: string; payload: Json }
+        Returns: Json
+      }
+      hqb_replace_worksheet_items: {
+        Args: { p_worksheet_id: string; payload: Json }
+        Returns: Json
+      }
+      hqb_archive_worksheet: { Args: { p_worksheet_id: string }; Returns: Json }
       hqb_save_recognition_result: { Args: { payload: Json }; Returns: Json }
       hqb_require_staff_writer: { Args: never; Returns: string }
       hqb_submit_for_review: {

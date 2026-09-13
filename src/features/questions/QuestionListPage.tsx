@@ -31,6 +31,9 @@ export function QuestionListPage() {
   const [conceptId, setConceptId] = useState('')
   const [typeId, setTypeId] = useState('')
   const [nodeId, setNodeId] = useState('')
+  const [selected, setSelected] = useState<string[]>([])
+  const [showTrash, setShowTrash] = useState(false)
+  const [info, setInfo] = useState<string | null>(null)
 
   useEffect(() => {
     const client = getSupabase()
@@ -39,7 +42,8 @@ export function QuestionListPage() {
       setLoading(true)
       const { data: problems, error: problemError } = await client
         .from('problems')
-        .select('id,public_code,review_status,updated_at,current_version_id')
+        .select('id,public_code,review_status,updated_at,current_version_id,lifecycle_status')
+        .in('lifecycle_status', showTrash ? ['ARCHIVED'] : ['DRAFT', 'ACTIVE'])
         .order('updated_at', { ascending: false })
       if (problemError || !problems) {
         setError('문제 목록을 불러오지 못했습니다.')
@@ -118,7 +122,7 @@ export function QuestionListPage() {
       setError(null)
       setLoading(false)
     })()
-  }, [catalogs])
+  }, [catalogs, showTrash])
 
   const filtered = rows.filter((row) => {
     const q = query.trim().toLowerCase()
@@ -139,6 +143,9 @@ export function QuestionListPage() {
         </div>
         <Link className="btn primary" to="/questions/new">
           신규 등록
+        </Link>
+        <Link className="btn" to="/worksheets">
+          문제지
         </Link>
       </div>
       <form className="filters" onSubmit={(event) => event.preventDefault()}>
@@ -180,7 +187,54 @@ export function QuestionListPage() {
             </option>
           ))}
         </select>
+        <label>
+          <input type="checkbox" checked={showTrash} onChange={(event) => setShowTrash(event.target.checked)} />
+          휴지통
+        </label>
       </form>
+      {info ? <p className="banner success">{info}</p> : null}
+      {selected.length ? (
+        <div className="actions">
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              const client = getSupabase()
+              if (!client) return
+              void Promise.all(
+                selected.map((id) =>
+                  showTrash
+                    ? client.rpc('hqb_restore_archived_problem', { p_problem_id: id })
+                    : client.rpc('hqb_archive_problem', { p_problem_id: id }),
+                ),
+              ).then(() => {
+                setSelected([])
+                setInfo(showTrash ? '보관 해제했습니다.' : '보관(휴지통)으로 옮겼습니다. 원본은 삭제하지 않습니다.')
+                setShowTrash(showTrash)
+              })
+            }}
+          >
+            {showTrash ? '복원' : '보관'}
+          </button>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              const client = getSupabase()
+              if (!client) return
+              void Promise.all(selected.map((id) => client.rpc('hqb_duplicate_problem', { p_problem_id: id }))).then(() => {
+                setSelected([])
+                setInfo('복제 초안을 만들었습니다.')
+              })
+            }}
+          >
+            복제
+          </button>
+          <Link className="btn" to={`/worksheets`}>
+            문제지에 추가하려면 문제지 화면에서 검색하세요
+          </Link>
+        </div>
+      ) : null}
       {loading ? <p className="muted">목록을 불러오는 중입니다.</p> : null}
       {error ? <p className="banner error">{error}</p> : null}
       {!loading && filtered.length === 0 ? (
@@ -189,6 +243,14 @@ export function QuestionListPage() {
         <table className="data-table">
           <thead>
             <tr>
+              <th>
+                <input
+                  type="checkbox"
+                  aria-label="전체 선택"
+                  checked={filtered.length > 0 && filtered.every((row) => selected.includes(row.id))}
+                  onChange={(event) => setSelected(event.target.checked ? filtered.map((row) => row.id) : [])}
+                />
+              </th>
               <th>코드</th>
               <th>본문</th>
               <th>교육과정</th>
@@ -197,12 +259,25 @@ export function QuestionListPage() {
               <th>난이도</th>
               <th>검수</th>
               <th>버전</th>
-              <th>수정</th>
+              <th>수정시각</th>
+              <th>편집</th>
             </tr>
           </thead>
           <tbody>
             {filtered.map((row) => (
               <tr key={row.id}>
+                <td>
+                  <input
+                    type="checkbox"
+                    aria-label={`${row.public_code} 선택`}
+                    checked={selected.includes(row.id)}
+                    onChange={(event) =>
+                      setSelected((current) =>
+                        event.target.checked ? [...current, row.id] : current.filter((id) => id !== row.id),
+                      )
+                    }
+                  />
+                </td>
                 <td>
                   <Link to={`/questions/${row.id}`}>{row.public_code}</Link>
                 </td>
@@ -218,6 +293,9 @@ export function QuestionListPage() {
                 </td>
                 <td>{row.version_no ? `v${row.version_no}` : '—'}</td>
                 <td>{new Date(row.updated_at).toLocaleString('ko-KR')}</td>
+                <td>
+                  <Link to={`/questions/${row.id}/edit`}>편집</Link>
+                </td>
               </tr>
             ))}
           </tbody>

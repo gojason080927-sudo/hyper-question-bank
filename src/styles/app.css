@@ -516,3 +516,171 @@ fieldset {
     grid-template-columns: 1fr;
   }
 }
+
+.page.editor-page {
+  max-width: none;
+  padding: 16px 16px 64px;
+}
+
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.editor-center.card button,
+.meta-pane.card button,
+.original-pane.card button,
+.editor-toolbar .btn,
+.a4-stage + ol .btn {
+  width: auto;
+  cursor: pointer;
+  margin-top: 0;
+  color: inherit;
+  background: #fff;
+}
+
+.editor-center.card p,
+.meta-pane.card p,
+.original-pane.card p {
+  min-height: 0;
+}
+
+.tiptap-surface {
+  min-height: 360px;
+  padding: 12px;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.tiptap-surface .ProseMirror {
+  outline: none;
+  min-height: 320px;
+}
+
+.tiptap-surface table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tiptap-surface th,
+.tiptap-surface td {
+  border: 1px solid #c5d0de;
+  padding: 6px;
+}
+
+.math-inline,
+.math-block {
+  cursor: pointer;
+  background: #f4f8ff;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.math-inline.is-selected,
+.math-block.is-selected {
+  outline: 2px solid #1d4f8c;
+}
+
+.editor-workspace {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.5fr) minmax(260px, 0.9fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.editor-mobile-tabs {
+  display: none;
+  margin-bottom: 8px;
+}
+
+.find-replace {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.diff-pre {
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+
+.a4-stage {
+  display: grid;
+  gap: 16px;
+}
+
+.a4-page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 14mm;
+  background: #fff;
+  box-shadow: 0 0 0 1px #dbe3ee;
+  margin: 0 auto;
+  font-size: var(--a4-font, 11pt);
+}
+
+.a4-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #122033;
+  margin-bottom: 8mm;
+  padding-bottom: 4mm;
+  font-size: 11pt;
+}
+
+.a4-columns {
+  display: grid;
+  gap: 8mm;
+}
+
+.a4-page.cols-2 .a4-columns {
+  grid-template-columns: 1fr 1fr;
+}
+
+.a4-item {
+  break-inside: avoid;
+}
+
+@media (max-width: 1100px) {
+  .editor-mobile-tabs {
+    display: flex;
+    gap: 8px;
+  }
+  .editor-workspace {
+    grid-template-columns: 1fr;
+  }
+  .editor-workspace .pane-original,
+  .editor-workspace .pane-meta,
+  .editor-workspace .pane-edit {
+    display: none;
+  }
+  .editor-workspace.tab-original .pane-original,
+  .editor-workspace.tab-edit .pane-edit,
+  .editor-workspace.tab-meta .pane-meta {
+    display: block;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@media print {
+  .app-shell .topbar,
+  .no-print,
+  .editor-toolbar,
+  .find-replace,
+  .editor-mobile-tabs,
+  .page-head .actions {
+    display: none !important;
+  }
+  .a4-page {
+    box-shadow: none;
+    page-break-after: always;
+  }
+}
