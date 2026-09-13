@@ -450,6 +450,9 @@ export function WorksheetBuilderPage() {
           </li>
         ))}
       </ol>
+      {pages.length === 0 ? (
+        <p className="muted no-print">문항을 추가하면 A4 미리보기가 나타납니다.</p>
+      ) : (
       <div className={`a4-viewport ${fullView ? 'is-full' : ''}`} ref={viewportRef}>
         <div className="a4-zoom-bar no-print">
           <button type="button" className="btn ghost" aria-label="화면에 맞춤" onClick={() => setZoomMode('fit')}>맞춤</button>
@@ -508,6 +511,7 @@ export function WorksheetBuilderPage() {
           </div>
         </div>
       </div>
+      )}
     </main>
   )
 }
