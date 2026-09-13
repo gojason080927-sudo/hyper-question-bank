@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
-import { nodePath, useCatalogs } from '../../lib/workflow/useCatalogs'
-import { chunkIds } from '../../lib/editor/openVersion'
+import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
+import { dash, ITEM_FORMAT_KO } from '../../lib/outline/instructorLabels'
 
-type Row = {
+export type ListedProblem = {
   id: string
   public_code: string
   review_status: string
@@ -13,127 +13,106 @@ type Row = {
   current_version_id: string | null
   version_no: number | null
   problem_text: string
-  concept: string
-  type: string
-  curriculum: string
-  conceptId: string
-  typeId: string
-  nodeId: string
-  overall: string
+  item_format: string | null
+  page_number: number | null
+  original_problem_number: string | null
+  source_document_id: string | null
+  source_title: string | null
+  section_title: string | null
+  major_title: string | null
+  concept_name: string | null
+  type_name: string | null
+  curriculum_name: string | null
+  overall_difficulty: number | null
+  difficulty_source: string | null
+  bounding_box: { x?: number; y?: number; width?: number; height?: number } | null
 }
 
+type ListResult = { total: number; page: number; page_size: number; sort?: string; items: ListedProblem[] }
+
 export function QuestionListPage() {
-  const { data: catalogs } = useCatalogs()
-  const [rows, setRows] = useState<Row[]>([])
+  const [params, setParams] = useSearchParams()
+  const [rows, setRows] = useState<ListedProblem[]>([])
+  const [total, setTotal] = useState(0)
+  const [sortLabel, setSortLabel] = useState('교재 순서')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [query, setQuery] = useState('')
-  const [status, setStatus] = useState('')
-  const [conceptId, setConceptId] = useState('')
-  const [typeId, setTypeId] = useState('')
-  const [nodeId, setNodeId] = useState('')
+  const [books, setBooks] = useState<Array<{ id: string; title: string }>>([])
   const [selected, setSelected] = useState<string[]>([])
-  const [showTrash, setShowTrash] = useState(false)
   const [info, setInfo] = useState<string | null>(null)
   const [tick, setTick] = useState(0)
+
+  const query = params.get('q') ?? ''
+  const status = params.get('review') ?? ''
+  const sourceId = params.get('source') ?? ''
+  const page = Math.max(1, Number(params.get('page') || '1') || 1)
+  const pageSize = [20, 50, 100].includes(Number(params.get('size'))) ? Number(params.get('size')) : 50
+  const showTrash = params.get('trash') === '1'
+  const format = params.get('format') ?? ''
+
+  function patchParams(next: Record<string, string | number | null>) {
+    setParams((current) => {
+      const copy = new URLSearchParams(current)
+      for (const [key, value] of Object.entries(next)) {
+        if (value == null || value === '') copy.delete(key)
+        else copy.set(key, String(value))
+      }
+      return copy
+    }, { replace: true })
+  }
+
+  useEffect(() => {
+    const client = getSupabase()
+    if (!client) return
+    void (async () => {
+      const { data } = await client
+        .from('source_documents')
+        .select('id,title,is_fixture')
+        .is('archived_at', null)
+        .order('title')
+      setBooks(
+        ((data ?? []) as Array<{ id: string; title: string; is_fixture?: boolean }>)
+          .filter((row) => !row.is_fixture)
+          .map((row) => ({ id: row.id, title: row.title })),
+      )
+    })()
+  }, [])
 
   useEffect(() => {
     const client = getSupabase()
     if (!client) return
     void (async () => {
       setLoading(true)
-      const { data: problems, error: problemError } = await client
-        .from('problems')
-        .select('id,public_code,review_status,updated_at,current_version_id,lifecycle_status')
-        .in('lifecycle_status', showTrash ? ['ARCHIVED'] : ['DRAFT', 'ACTIVE'])
-        .order('updated_at', { ascending: false })
-      if (problemError || !problems) {
+      const { data, error: listError } = await client.rpc('hqb_list_problems', {
+        payload: {
+          page,
+          page_size: pageSize,
+          query,
+          review_status: status || null,
+          source_document_id: sourceId || null,
+          trash: showTrash,
+          listed_only: !showTrash,
+          item_format: format || null,
+          sort: sourceId ? 'book' : 'updated',
+          show_fixtures: false,
+        },
+      } as never)
+      if (listError || !data) {
         setError('문제 목록을 불러오지 못했습니다.')
         setLoading(false)
         return
       }
-      const versionIds = problems.map((row) => row.current_version_id).filter(Boolean) as string[]
-      const versionRows: Array<{ id: string; version_no: number; problem_text: string }> = []
-      for (const chunk of chunkIds(versionIds)) {
-        const { data } = await client.from('problem_versions').select('id,version_no,problem_text').in('id', chunk)
-        versionRows.push(...((data ?? []) as typeof versionRows))
-      }
-      const { data: concepts } = versionIds.length
-        ? await client
-            .from('problem_concepts')
-            .select('problem_version_id,concept_id,is_primary,concepts(name)')
-            .in('problem_version_id', versionIds)
-        : { data: [] }
-      const { data: types } = versionIds.length
-        ? await client
-            .from('problem_type_assignments')
-            .select('problem_version_id,hyper_problem_type_id,hyper_problem_types(name)')
-            .in('problem_version_id', versionIds)
-        : { data: [] }
-      const { data: curriculum } = versionIds.length
-        ? await client
-            .from('problem_curriculum')
-            .select('problem_version_id,curriculum_node_id')
-            .in('problem_version_id', versionIds)
-        : { data: [] }
-      const { data: difficulty } = versionIds.length
-        ? await client
-            .from('problem_difficulty')
-            .select('problem_version_id,overall_difficulty,difficulty_source')
-            .in('problem_version_id', versionIds)
-            .eq('difficulty_source', 'HUMAN')
-        : { data: [] }
-
-      const versionMap = new Map(versionRows.map((row) => [row.id, row]))
-      const next: Row[] = problems.map((problem) => {
-        const version = problem.current_version_id ? versionMap.get(problem.current_version_id) : undefined
-        const concept = (concepts ?? []).find(
-          (row) => row.problem_version_id === problem.current_version_id && row.is_primary,
-        )
-        const type = (types ?? []).find((row) => row.problem_version_id === problem.current_version_id)
-        const curr = (curriculum ?? []).find((row) => row.problem_version_id === problem.current_version_id)
-        const diff = (difficulty ?? []).find((row) => row.problem_version_id === problem.current_version_id)
-        const conceptName =
-          concept && typeof concept.concepts === 'object' && concept.concepts && 'name' in concept.concepts
-            ? String(concept.concepts.name)
-            : ''
-        const typeName =
-          type && typeof type.hyper_problem_types === 'object' && type.hyper_problem_types && 'name' in type.hyper_problem_types
-            ? String(type.hyper_problem_types.name)
-            : ''
-        return {
-          id: problem.id,
-          public_code: problem.public_code,
-          review_status: problem.review_status,
-          updated_at: problem.updated_at,
-          current_version_id: problem.current_version_id,
-          version_no: version?.version_no ?? null,
-          problem_text: version?.problem_text ?? '',
-          concept: conceptName,
-          type: typeName,
-          curriculum: curr && catalogs ? nodePath(catalogs.nodes, curr.curriculum_node_id) : '',
-          conceptId: concept?.concept_id ?? '',
-          typeId:
-            type && 'hyper_problem_type_id' in type ? String(type.hyper_problem_type_id ?? '') : '',
-          nodeId: curr?.curriculum_node_id ?? '',
-          overall: diff?.overall_difficulty != null ? Number(diff.overall_difficulty).toFixed(2) : '—',
-        }
-      })
-      setRows(next)
+      const result = data as ListResult
+      setRows((result.items ?? []) as ListedProblem[])
+      setTotal(result.total ?? 0)
+      setSortLabel(result.sort === 'book' ? '교재 페이지·문제번호 순' : '최근 수정 순')
       setError(null)
       setLoading(false)
     })()
-  }, [catalogs, showTrash, tick])
+  }, [format, page, pageSize, query, showTrash, sourceId, status, tick])
 
-  const filtered = rows.filter((row) => {
-    const q = query.trim().toLowerCase()
-    if (q && !row.public_code.toLowerCase().includes(q) && !row.problem_text.toLowerCase().includes(q)) return false
-    if (status && row.review_status !== status) return false
-    if (conceptId && row.conceptId !== conceptId) return false
-    if (typeId && row.typeId !== typeId) return false
-    if (nodeId && row.nodeId !== nodeId) return false
-    return true
-  })
+  const pageCount = Math.max(1, Math.ceil(total / pageSize))
+  const filtered = rows
 
   return (
     <main className="page wide">
@@ -141,22 +120,36 @@ export function QuestionListPage() {
         <div>
           <p className="kicker">문제 데이터베이스</p>
           <h1>문제 목록</h1>
+          <p className="muted">
+            전체 {total.toLocaleString('ko-KR')}문항 · 이 페이지 {filtered.length}개 · 정렬 {sortLabel}
+          </p>
         </div>
         <Link className="btn primary" to="/questions/new">
           신규 등록
+        </Link>
+        <Link className="btn" to={`/sources/${SSEN_SOURCE_DOCUMENT_ID}/browse`}>
+          쎈수학 목차
         </Link>
         <Link className="btn" to="/worksheets">
           문제지
         </Link>
       </div>
-      <form className="filters" onSubmit={(event) => event.preventDefault()}>
+      <form className="filters filters-wide" onSubmit={(event) => event.preventDefault()}>
         <input
-          placeholder="코드 또는 본문 검색"
+          placeholder="코드, 문제번호 또는 본문 검색"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => patchParams({ q: event.target.value, page: 1 })}
           aria-label="문제 검색"
         />
-        <select value={status} onChange={(event) => setStatus(event.target.value)} aria-label="검수 상태">
+        <select value={sourceId} onChange={(event) => patchParams({ source: event.target.value, page: 1 })} aria-label="교재">
+          <option value="">모든 교재</option>
+          {books.map((book) => (
+            <option key={book.id} value={book.id}>
+              {book.title}
+            </option>
+          ))}
+        </select>
+        <select value={status} onChange={(event) => patchParams({ review: event.target.value, page: 1 })} aria-label="검수 상태">
           <option value="">모든 검수 상태</option>
           {Object.entries(REVIEW_LABELS).map(([value, label]) => (
             <option key={value} value={value}>
@@ -164,32 +157,25 @@ export function QuestionListPage() {
             </option>
           ))}
         </select>
-        <select value={conceptId} onChange={(event) => setConceptId(event.target.value)} aria-label="개념">
-          <option value="">모든 개념</option>
-          {(catalogs?.concepts ?? []).map((item) => (
-            <option key={item.id} value={item.id}>
-              {item.name}
+        <select value={format} onChange={(event) => patchParams({ format: event.target.value, page: 1 })} aria-label="문항 형식">
+          <option value="">객관식/단답/서술</option>
+          {Object.entries(ITEM_FORMAT_KO).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
             </option>
           ))}
         </select>
-        <select value={typeId} onChange={(event) => setTypeId(event.target.value)} aria-label="HYPER 유형">
-          <option value="">모든 유형</option>
-          {(catalogs?.types ?? []).map((item) => (
-            <option key={item.id} value={item.id}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-        <select value={nodeId} onChange={(event) => setNodeId(event.target.value)} aria-label="교육과정">
-          <option value="">모든 교육과정</option>
-          {(catalogs?.nodes ?? []).map((item) => (
-            <option key={item.id} value={item.id}>
-              {nodePath(catalogs?.nodes ?? [], item.id)}
-            </option>
-          ))}
+        <select value={String(pageSize)} onChange={(event) => patchParams({ size: event.target.value, page: 1 })} aria-label="페이지 크기">
+          <option value="20">20개</option>
+          <option value="50">50개</option>
+          <option value="100">100개</option>
         </select>
         <label>
-          <input type="checkbox" checked={showTrash} onChange={(event) => setShowTrash(event.target.checked)} />
+          <input
+            type="checkbox"
+            checked={showTrash}
+            onChange={(event) => patchParams({ trash: event.target.checked ? '1' : null, page: 1 })}
+          />
           휴지통
         </label>
       </form>
@@ -217,23 +203,8 @@ export function QuestionListPage() {
           >
             {showTrash ? '복원' : '보관'}
           </button>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => {
-              const client = getSupabase()
-              if (!client) return
-              void Promise.all(selected.map((id) => client.rpc('hqb_duplicate_problem', { p_problem_id: id }))).then(() => {
-                setSelected([])
-                setInfo('복제 초안을 만들었습니다.')
-                setTick((n) => n + 1)
-              })
-            }}
-          >
-            복제
-          </button>
-          <Link className="btn" to={`/worksheets`}>
-            문제지에 추가하려면 문제지 화면에서 검색하세요
+          <Link className="btn" to="/worksheets">
+            선택한 문제는 문제지 화면에서 추가하세요
           </Link>
         </div>
       ) : null}
@@ -254,14 +225,17 @@ export function QuestionListPage() {
                 />
               </th>
               <th>코드</th>
+              <th>교재</th>
+              <th>페이지</th>
+              <th>번호</th>
+              <th>대단원</th>
+              <th>소단원</th>
               <th>본문</th>
               <th>교육과정</th>
               <th>개념</th>
               <th>유형</th>
               <th>난이도</th>
               <th>검수</th>
-              <th>버전</th>
-              <th>수정시각</th>
               <th>편집</th>
             </tr>
           </thead>
@@ -283,18 +257,25 @@ export function QuestionListPage() {
                 <td>
                   <Link to={`/questions/${row.id}`}>{row.public_code}</Link>
                 </td>
-                <td>{row.problem_text.slice(0, 72) || '—'}</td>
-                <td>{row.curriculum || '—'}</td>
-                <td>{row.concept || '—'}</td>
-                <td>{row.type || '—'}</td>
-                <td>{row.overall}</td>
+                <td>{dash(row.source_title)}</td>
+                <td>{dash(row.page_number)}</td>
+                <td>{dash(row.original_problem_number)}</td>
+                <td>{dash(row.major_title)}</td>
+                <td>{dash(row.section_title)}</td>
+                <td>{(row.problem_text ?? '').slice(0, 56) || '—'}</td>
+                <td>{dash(row.curriculum_name)}</td>
+                <td>{dash(row.concept_name)}</td>
+                <td>{dash(row.type_name)}</td>
+                <td>
+                  {row.overall_difficulty != null
+                    ? `${Number(row.overall_difficulty).toFixed(1)}${row.difficulty_source === 'MODEL' ? ' (자동)' : ''}`
+                    : '—'}
+                </td>
                 <td>
                   <span className={`status-pill ${row.review_status.toLowerCase()}`}>
                     {REVIEW_LABELS[row.review_status] ?? row.review_status}
                   </span>
                 </td>
-                <td>{row.version_no ? `v${row.version_no}` : '—'}</td>
-                <td>{new Date(row.updated_at).toLocaleString('ko-KR')}</td>
                 <td>
                   <Link to={`/questions/${row.id}/edit`}>편집</Link>
                 </td>
@@ -303,6 +284,22 @@ export function QuestionListPage() {
           </tbody>
         </table>
       )}
+      <div className="pagination">
+        <button type="button" className="btn ghost" disabled={page <= 1} onClick={() => patchParams({ page: page - 1 })}>
+          이전
+        </button>
+        <span>
+          {page} / {pageCount}
+        </span>
+        <button
+          type="button"
+          className="btn ghost"
+          disabled={page >= pageCount}
+          onClick={() => patchParams({ page: page + 1 })}
+        >
+          다음
+        </button>
+      </div>
     </main>
   )
 }

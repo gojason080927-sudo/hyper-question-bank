@@ -161,7 +161,60 @@ body {
 }
 
 .page.wide {
-  max-width: 1120px;
+  max-width: 1280px;
+}
+
+.filters-wide {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.pagination {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 16px 0 32px;
+}
+
+.outline-browse {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.2fr) minmax(260px, 0.9fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.outline-tree ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding-left: 12px;
+}
+
+.tree-link {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 6px 4px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.tree-link.is-active {
+  background: #eef4ff;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.tree-link.nested {
+  font-size: 13px;
+  color: #35598a;
+}
+
+@media (max-width: 1100px) {
+  .outline-browse {
+    grid-template-columns: 1fr;
+  }
 }
 
 .page.narrow {

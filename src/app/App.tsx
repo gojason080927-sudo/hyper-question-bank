@@ -13,6 +13,7 @@ import { QuestionVersionsPage } from '../features/questions/QuestionVersionsPage
 import { SourceListPage } from '../features/sources/SourceListPage'
 import { SourceNewPage } from '../features/sources/SourceNewPage'
 import { SourceDetailPage } from '../features/sources/SourceDetailPage'
+import { SourceBrowsePage } from '../features/sources/SourceBrowsePage'
 import { PipelineReviewPage } from '../features/review/PipelineReviewPage'
 import { WorksheetListPage } from '../features/worksheets/WorksheetListPage'
 import { WorksheetBuilderPage } from '../features/worksheets/WorksheetBuilderPage'
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: 'sources', element: <SourceListPage /> },
       { path: 'sources/new', element: <SourceNewPage /> },
       { path: 'sources/:documentId', element: <SourceDetailPage /> },
+      { path: 'sources/:documentId/browse', element: <SourceBrowsePage /> },
       { path: 'pipeline-review', element: <PipelineReviewPage /> },
       { path: 'worksheets', element: <WorksheetListPage /> },
       { path: 'worksheets/:worksheetId', element: <WorksheetBuilderPage /> },

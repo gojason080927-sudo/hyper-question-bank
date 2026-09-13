@@ -8,6 +8,7 @@ import { beginSubmit, releaseSubmit } from '../../lib/workflow/submitLock'
 import { PdfPageViewer } from './PdfPageViewer'
 import { RecognitionPanel } from './RecognitionPanel'
 import type { SourceBundle, SourceRegion } from './types'
+import { extractionStatusLabel, ocrStatusLabel, pipelineStatusLabel } from '../../lib/outline/instructorLabels'
 
 export function SourceDetailPage() {
   const { documentId } = useParams()
@@ -25,6 +26,20 @@ export function SourceDetailPage() {
   const [scale, setScale] = useState(1.15)
   const [pageInput, setPageInput] = useState(searchParams.get('page') ?? '1')
   const [saving, setSaving] = useState(false)
+  const [stats, setStats] = useState<{
+    page_count?: number
+    ocr_pages?: number
+    linked_problems?: number
+    listed_problems?: number
+    auto_classified?: number
+    needs_review?: number
+    updated_at?: string
+    pipeline_status?: string
+    ocr_complete?: boolean
+    extraction_complete?: boolean
+    ocr_status?: string
+    extraction_status?: string
+  } | null>(null)
 
   const pageNumber = Math.max(1, Number(searchParams.get('page') || pageInput) || 1)
 
@@ -39,6 +54,8 @@ export function SourceDetailPage() {
       return
     }
     setBundle(data as SourceBundle)
+    const runtime = await client.rpc('hqb_source_runtime_stats', { p_document_id: documentId })
+    if (!runtime.error && runtime.data) setStats(runtime.data as typeof stats)
   }
 
   useEffect(() => {
@@ -181,7 +198,8 @@ export function SourceDetailPage() {
           <h1>{doc.title}</h1>
         </div>
         <div className="actions">
-          <Link className="btn ghost" to="/sources">자료 목록</Link>
+          <Link className="btn ghost" to="/sources">교재 목록</Link>
+          <Link className="btn primary" to={`/sources/${documentId}/browse`}>목차로 문제 찾기</Link>
           <Link className="btn ghost" to="/questions/new">수동 등록</Link>
         </div>
       </div>
@@ -193,8 +211,22 @@ export function SourceDetailPage() {
 
       <section className="card">
         <p><strong>파일</strong> {doc.original_filename}</p>
-        <p><strong>라이선스</strong> {doc.license_status} · <strong>유형</strong> {doc.pdf_type} · <strong>OCR</strong> {doc.ocr_status} (미실행)</p>
-        <p><strong>페이지</strong> {doc.page_count} · <strong>추출</strong> {doc.extraction_status} · <strong>상태</strong> {doc.document_status}</p>
+        <p>
+          <strong>라이선스</strong> {doc.license_status} · <strong>PDF 유형</strong> {doc.pdf_type}
+        </p>
+        <p>
+          <strong>OCR</strong> {ocrStatusLabel(stats?.ocr_status ?? doc.ocr_status, Boolean(stats?.ocr_complete))} ·{' '}
+          <strong>추출</strong> {extractionStatusLabel(stats?.extraction_status ?? doc.extraction_status, Boolean(stats?.extraction_complete))} ·{' '}
+          <strong>자동 등록 작업</strong> {pipelineStatusLabel(stats?.pipeline_status ?? doc.document_status)}
+        </p>
+        <p>
+          <strong>총 페이지</strong> {stats?.page_count ?? doc.page_count ?? '—'} · <strong>OCR 처리 페이지</strong> {stats?.ocr_pages ?? '—'} ·{' '}
+          <strong>감지 문제</strong> {stats?.linked_problems ?? '—'} · <strong>활성 문제</strong> {stats?.listed_problems ?? '—'}
+        </p>
+        <p>
+          <strong>자동분류</strong> {stats?.auto_classified ?? '—'} · <strong>확인 필요</strong> {stats?.needs_review ?? '—'} ·{' '}
+          <strong>마지막 처리</strong> {stats?.updated_at ? new Date(stats.updated_at).toLocaleString('ko-KR') : '—'}
+        </p>
         <p className="muted">SHA-256 {doc.file_hash} · {doc.file_size ? `${Math.round(doc.file_size / 1024)} KB` : ''}</p>
       </section>
 

@@ -1074,6 +1074,8 @@ export type Database = {
           review_status: string
           updated_at: string
           use_status: string
+          display_state: string
+          superseded_by: string | null
         }
         Insert: {
           archived_at?: string | null
@@ -1086,6 +1088,8 @@ export type Database = {
           review_status?: string
           updated_at?: string
           use_status?: string
+          display_state?: string
+          superseded_by?: string | null
         }
         Update: {
           archived_at?: string | null
@@ -1098,6 +1102,8 @@ export type Database = {
           review_status?: string
           updated_at?: string
           use_status?: string
+          display_state?: string
+          superseded_by?: string | null
         }
         Relationships: [
           {
@@ -1348,6 +1354,8 @@ export type Database = {
           uploaded_at: string | null
           uploaded_by: string | null
           usage_scope: string | null
+          is_fixture: boolean
+          visibility: string
         }
         Insert: {
           archived_at?: string | null
@@ -1377,6 +1385,8 @@ export type Database = {
           uploaded_at?: string | null
           uploaded_by?: string | null
           usage_scope?: string | null
+          is_fixture?: boolean
+          visibility?: string
         }
         Update: {
           archived_at?: string | null
@@ -1406,6 +1416,8 @@ export type Database = {
           uploaded_at?: string | null
           uploaded_by?: string | null
           usage_scope?: string | null
+          is_fixture?: boolean
+          visibility?: string
         }
         Relationships: []
       }
@@ -1932,6 +1944,23 @@ export type Database = {
         Args: { p_region_id: string; payload: Json }
         Returns: Json
       }
+      hqb_list_problems: { Args: { payload: Json }; Returns: Json }
+      hqb_list_review_queue: { Args: { payload: Json }; Returns: Json }
+      hqb_list_source_outline: { Args: { p_document_id: string }; Returns: Json }
+      hqb_source_runtime_stats: { Args: { p_document_id: string }; Returns: Json }
+      hqb_upsert_source_outline_node: { Args: { payload: Json }; Returns: Json }
+      hqb_assign_problem_outline: { Args: { payload: Json }; Returns: Json }
+      hqb_set_source_fixture: { Args: { p_document_id: string; p_is_fixture: boolean }; Returns: Json }
+      hqb_set_problem_display_state: {
+        Args: { p_problem_id: string; p_display_state: string; p_superseded_by?: string | null }
+        Returns: Json
+      }
+      hqb_sync_source_pipeline_status: { Args: { p_document_id: string; payload: Json }; Returns: Json }
+      hqb_apply_auto_clean_text: {
+        Args: { p_problem_id: string; p_cleaned_text: string; p_change_reason?: string }
+        Returns: Json
+      }
+      hqb_link_duplicate: { Args: { payload: Json }; Returns: Json }
       hqb_validate_bbox: { Args: { p_bbox: Json }; Returns: Json }
       hqb_verify_problem_version: {
         Args: { p_note?: string; p_version_id: string }
