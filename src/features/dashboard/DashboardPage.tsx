@@ -23,7 +23,9 @@ export function DashboardPage() {
               ? '/questions'
               : area.id === 'sources' || area.id === 'extraction'
                 ? '/sources'
-                : null
+                : area.id === 'worksheets'
+                  ? '/worksheets'
+                  : null
           return (
             <article key={area.id} className="card">
               <p className="code">{area.code}</p>

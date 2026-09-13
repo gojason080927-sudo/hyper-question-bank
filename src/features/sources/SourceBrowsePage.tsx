@@ -5,6 +5,10 @@ import { SIGNED_URL_TTL_SEC, SOURCE_BUCKET } from '../../lib/pdf/constants'
 import { PdfPageViewer } from './PdfPageViewer'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { dash, ITEM_FORMAT_KO } from '../../lib/outline/instructorLabels'
+import { formatOutlinePath, formatOutlineTitle } from '../../lib/outline/formatOutlineTitle'
+import { toProblemListViewModels } from '../../lib/questions/problemCardModel'
+import { MixedKatexText } from '../../lib/math/MixedKatexText'
+import { ProblemCardList } from '../questions/ProblemCardList'
 import type { ListedProblem } from '../questions/QuestionListPage'
 import type { SourceRegion } from './types'
 
@@ -35,6 +39,9 @@ export function SourceBrowsePage() {
   const [selected, setSelected] = useState<ListedProblem | null>(null)
   const [pdfData, setPdfData] = useState<ArrayBuffer | null>(null)
   const [fullPage, setFullPage] = useState(false)
+  const [tocOpen, setTocOpen] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false)
 
   const outlineId = params.get('unit') ?? ''
   const review = params.get('review') ?? ''
@@ -123,6 +130,7 @@ export function SourceBrowsePage() {
   const typesOf = (sectionId: string) => nodes.filter((row) => row.parent_id === sectionId && row.node_level === 'TYPE_SEGMENT')
   const pageCount = Math.max(1, Math.ceil(total / pageSize))
   const selectedIndex = rows.findIndex((row) => row.id === selected?.id)
+  const cards = useMemo(() => toProblemListViewModels(rows), [rows])
   const regions: SourceRegion[] =
     !fullPage && selected?.bounding_box
       ? [
@@ -146,7 +154,7 @@ export function SourceBrowsePage() {
         ]
       : []
 
-  const activeNode = nodes.find((row) => row.id === outlineId)
+  const unitPath = formatOutlinePath(nodes, outlineId || null)
   const bookNode = nodes.find((row) => row.node_level === 'BOOK')
 
   const neighbor = useMemo(() => {
@@ -156,6 +164,153 @@ export function SourceBrowsePage() {
     }
   }, [rows, selectedIndex])
 
+  const activeFilters = [
+    query ? `검색 ${query}` : null,
+    numberQ ? `번호 ${numberQ}` : null,
+    pageFrom || pageTo ? `페이지 ${pageFrom || '…'}–${pageTo || '…'}` : null,
+    review ? REVIEW_LABELS[review] ?? review : null,
+    format ? ITEM_FORMAT_KO[format] ?? format : null,
+    pageSize !== 50 ? `${pageSize}개씩` : null,
+  ].filter(Boolean) as string[]
+
+  function chooseUnit(id: string | null) {
+    patch({ unit: id, page: 1 })
+    setTocOpen(false)
+  }
+
+  function chooseProblem(id: string) {
+    const row = rows.find((item) => item.id === id)
+    if (!row) return
+    setSelected(row)
+    setMobilePreviewOpen(true)
+  }
+
+  const tree = (
+    <nav className={`card outline-tree ${tocOpen ? 'is-open' : ''}`} aria-label="대단원 목차">
+      <button type="button" className={`tree-link ${!outlineId ? 'is-active' : ''}`} onClick={() => chooseUnit(null)}>
+        전체 {bookNode?.listed_count ?? total}
+      </button>
+      {majors.map((major) => {
+        const majorLabel = formatOutlineTitle(major.code, major.title_normalized, major.node_level)
+        const majorOpen =
+          outlineId === major.id ||
+          sectionsOf(major.id).some((row) => row.id === outlineId || typesOf(row.id).some((type) => type.id === outlineId))
+        return (
+          <details key={major.id} open={majorOpen}>
+            <summary>
+              <button
+                type="button"
+                className={`tree-link ${outlineId === major.id ? 'is-active' : ''}`}
+                aria-label={`${majorLabel} ${major.listed_count}문항`}
+                onClick={() => chooseUnit(major.id)}
+              >
+                {majorLabel}
+                <span className="muted"> {major.listed_count}</span>
+              </button>
+            </summary>
+            <ul>
+              {sectionsOf(major.id).map((section) => {
+                const sectionLabel = formatOutlineTitle(section.code, section.title_normalized, section.node_level)
+                return (
+                  <li key={section.id}>
+                    <button
+                      type="button"
+                      className={`tree-link ${outlineId === section.id ? 'is-active' : ''}`}
+                      aria-label={`${sectionLabel} ${section.listed_count}문항`}
+                      onClick={() => chooseUnit(section.id)}
+                    >
+                      {sectionLabel}
+                      <span className="muted"> {section.listed_count}</span>
+                    </button>
+                    {typesOf(section.id).length ? (
+                      <ul>
+                        {typesOf(section.id).map((type) => {
+                          const typeLabel = formatOutlineTitle(type.code, type.title_normalized, type.node_level)
+                          return (
+                            <li key={type.id}>
+                              <button
+                                type="button"
+                                className={`tree-link nested ${outlineId === type.id ? 'is-active' : ''}`}
+                                aria-label={`${typeLabel} ${type.listed_count}문항`}
+                                onClick={() => chooseUnit(type.id)}
+                              >
+                                {typeLabel}
+                                <span className="muted"> {type.listed_count}</span>
+                              </button>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    ) : null}
+                  </li>
+                )
+              })}
+            </ul>
+          </details>
+        )
+      })}
+    </nav>
+  )
+
+  const preview = selected ? (
+    <>
+      <p className="kicker">
+        p.{selected.page_number} · {selected.original_problem_number} · {selected.public_code}
+      </p>
+      <h2>
+        {formatOutlineTitle(null, selected.major_title, 'MAJOR_UNIT')} / {formatOutlineTitle(null, selected.section_title, 'SECTION')}
+      </h2>
+      {selected.review_status === 'NEEDS_REVIEW' ? <p className="banner warn">확인 필요</p> : null}
+      <p>
+        난이도 {selected.overall_difficulty != null ? Number(selected.overall_difficulty).toFixed(1) : '—'} ·{' '}
+        {ITEM_FORMAT_KO[selected.item_format ?? ''] ?? '형식 미정'}
+      </p>
+      <label>
+        <input type="checkbox" checked={fullPage} onChange={(event) => setFullPage(event.target.checked)} />
+        전체 페이지 보기
+      </label>
+      {pdfData && selected.page_number ? (
+        <PdfPageViewer
+          pdfData={pdfData}
+          pageNumber={selected.page_number}
+          scale={0.9}
+          regions={regions}
+          selectedRegionId="crop"
+          drawing={false}
+          onSelectRegion={() => undefined}
+          onDraftBBox={() => undefined}
+        />
+      ) : (
+        <p className="muted">원본 미리보기를 불러오는 중입니다.</p>
+      )}
+      <p className="stem">
+        <MixedKatexText text={selected.problem_text || ''} />
+      </p>
+      <div className="actions">
+        <button type="button" className="btn ghost" disabled={!neighbor.prev} onClick={() => neighbor.prev && setSelected(neighbor.prev)}>
+          이전 문제
+        </button>
+        <button type="button" className="btn ghost" disabled={!neighbor.next} onClick={() => neighbor.next && setSelected(neighbor.next)}>
+          다음 문제
+        </button>
+      </div>
+      <div className="actions">
+        <Link className="btn" to={`/questions/${selected.id}/edit`} aria-label="문제 편집">
+          편집
+        </Link>
+        <Link
+          className="btn primary"
+          to={`/worksheets/new?problemId=${selected.id}&versionId=${selected.current_version_id ?? ''}`}
+          aria-label="문제지에 추가"
+        >
+          문제지 추가
+        </Link>
+      </div>
+    </>
+  ) : (
+    <p className="muted">단원을 선택하면 교재 순서대로 문제가 나타납니다.</p>
+  )
+
   return (
     <main className="page wide">
       <div className="page-head">
@@ -163,8 +318,7 @@ export function SourceBrowsePage() {
           <p className="kicker">교재 탐색</p>
           <h1>{title}</h1>
           <p className="muted">
-            {activeNode ? `${activeNode.title_normalized} · ` : '전체 · '}
-            {total.toLocaleString('ko-KR')}문항 · 교재 페이지 순서
+            {unitPath} · {total.toLocaleString('ko-KR')}문항 · 교재 페이지 순서
           </p>
         </div>
         <div className="actions">
@@ -180,7 +334,45 @@ export function SourceBrowsePage() {
         </div>
       </div>
       {error ? <p className="banner error">{error}</p> : null}
-      <form className="filters filters-wide" onSubmit={(event) => event.preventDefault()}>
+      <div className="browse-mobile-bar mobile-only">
+        <p className="browse-crumb">
+          <strong>{title}</strong>
+          <span className="muted"> {total.toLocaleString('ko-KR')}문항</span>
+        </p>
+        <p className="browse-crumb">{unitPath}</p>
+        <div className="actions">
+          <button type="button" className="btn" aria-expanded={tocOpen} aria-controls="source-outline" onClick={() => setTocOpen((v) => !v)}>
+            목차
+          </button>
+          <button
+            type="button"
+            className="btn"
+            aria-expanded={filtersOpen}
+            aria-controls="source-filters"
+            onClick={() => setFiltersOpen((v) => !v)}
+          >
+            필터{activeFilters.length ? ` (${activeFilters.length})` : ''}
+          </button>
+          {outlineId ? (
+            <button type="button" className="btn ghost" onClick={() => chooseUnit(null)}>
+              전체 목록
+            </button>
+          ) : null}
+        </div>
+        {activeFilters.length ? (
+          <ul className="filter-chips" aria-label="적용된 필터">
+            {activeFilters.map((chip) => (
+              <li key={chip}>{chip}</li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+      {tocOpen ? <button type="button" className="drawer-backdrop mobile-only" aria-label="목차 닫기" onClick={() => setTocOpen(false)} /> : null}
+      <form
+        id="source-filters"
+        className={`filters filters-wide ${filtersOpen ? 'is-open' : ''}`}
+        onSubmit={(event) => event.preventDefault()}
+      >
         <input
           placeholder="문제번호 또는 본문"
           value={query}
@@ -228,54 +420,10 @@ export function SourceBrowsePage() {
         </select>
       </form>
       <div className="outline-browse">
-        <nav className="card outline-tree" aria-label="대단원 목차">
-          <button type="button" className={`tree-link ${!outlineId ? 'is-active' : ''}`} onClick={() => patch({ unit: null, page: 1 })}>
-            전체 {bookNode?.listed_count ?? total}
-          </button>
-          {majors.map((major) => (
-            <details key={major.id} open={outlineId === major.id || sectionsOf(major.id).some((row) => row.id === outlineId || typesOf(row.id).some((type) => type.id === outlineId))}>
-              <summary>
-                <button type="button" className={`tree-link ${outlineId === major.id ? 'is-active' : ''}`} onClick={() => patch({ unit: major.id, page: 1 })}>
-                  {major.code} {major.title_normalized}
-                  <span className="muted"> {major.listed_count}</span>
-                </button>
-              </summary>
-              <ul>
-                {sectionsOf(major.id).map((section) => (
-                  <li key={section.id}>
-                    <button
-                      type="button"
-                      className={`tree-link ${outlineId === section.id ? 'is-active' : ''}`}
-                      onClick={() => patch({ unit: section.id, page: 1 })}
-                    >
-                      {section.code} {section.title_normalized}
-                      <span className="muted"> {section.listed_count}</span>
-                    </button>
-                    {typesOf(section.id).length ? (
-                      <ul>
-                        {typesOf(section.id).map((type) => (
-                          <li key={type.id}>
-                            <button
-                              type="button"
-                              className={`tree-link nested ${outlineId === type.id ? 'is-active' : ''}`}
-                              onClick={() => patch({ unit: type.id, page: 1 })}
-                            >
-                              유형 {type.code} {type.title_normalized}
-                              <span className="muted"> {type.listed_count}</span>
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            </details>
-          ))}
-        </nav>
+        <div id="source-outline">{tree}</div>
         <section>
           {loading ? <p className="muted">문제를 불러오는 중입니다.</p> : null}
-          <table className="data-table">
+          <table className="data-table desktop-only">
             <thead>
               <tr>
                 <th>페이지</th>
@@ -287,29 +435,40 @@ export function SourceBrowsePage() {
               </tr>
             </thead>
             <tbody>
-              {rows.map((row) => (
-                <tr
-                  key={row.id}
-                  className={row.id === selected?.id ? 'is-selected' : undefined}
-                  onClick={() => setSelected(row)}
-                >
-                  <td>{dash(row.page_number)}</td>
-                  <td>{dash(row.original_problem_number)}</td>
-                  <td>{dash(row.type_name)}</td>
-                  <td>
-                    {row.overall_difficulty != null ? Number(row.overall_difficulty).toFixed(1) : '—'}
-                  </td>
-                  <td>
-                    <span className={`status-pill ${row.review_status.toLowerCase()}`}>
-                      {REVIEW_LABELS[row.review_status] ?? row.review_status}
-                    </span>
-                  </td>
-                  <td>{(row.problem_text ?? '').slice(0, 48) || '—'}</td>
-                </tr>
-              ))}
+              {cards.map((card, index) => {
+                const row = rows[index]
+                if (!row) return null
+                return (
+                  <tr
+                    key={card.id}
+                    className={card.id === selected?.id ? 'is-selected' : undefined}
+                    tabIndex={0}
+                    aria-selected={card.id === selected?.id}
+                    onClick={() => chooseProblem(card.id)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault()
+                        chooseProblem(card.id)
+                      }
+                    }}
+                  >
+                    <td>{dash(card.pageNumber)}</td>
+                    <td>{dash(card.originalProblemNumber)}</td>
+                    <td>{card.typeName === '유형 미정' ? '—' : card.typeName}</td>
+                    <td>{card.difficultyLabel === '난이도 미정' ? '—' : card.difficultyLabel}</td>
+                    <td>
+                      <span className={`status-pill ${card.reviewStatus.toLowerCase()}`}>{card.reviewLabel}</span>
+                    </td>
+                    <td className="stem-cell">
+                      {card.stem ? <MixedKatexText text={card.stem} /> : '—'}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
-          <div className="pagination">
+          <ProblemCardList items={cards} selectedId={selected?.id} onSelect={chooseProblem} />
+          <div className="pagination sticky-page">
             <button type="button" className="btn ghost" disabled={page <= 1} onClick={() => patch({ page: page - 1 })}>
               이전
             </button>
@@ -321,62 +480,14 @@ export function SourceBrowsePage() {
             </button>
           </div>
         </section>
-        <aside className="card">
-          {selected ? (
-            <>
-              <p className="kicker">
-                p.{selected.page_number} · {selected.original_problem_number} · {selected.public_code}
-              </p>
-              <h2>
-                {dash(selected.major_title)} / {dash(selected.section_title)}
-              </h2>
-              {selected.review_status === 'NEEDS_REVIEW' ? <p className="banner warn">확인 필요</p> : null}
-              <p>
-                난이도 {selected.overall_difficulty != null ? Number(selected.overall_difficulty).toFixed(1) : '—'} ·{' '}
-                {ITEM_FORMAT_KO[selected.item_format ?? ''] ?? '형식 미정'}
-              </p>
-              <label>
-                <input type="checkbox" checked={fullPage} onChange={(event) => setFullPage(event.target.checked)} />
-                전체 페이지 보기
-              </label>
-              {pdfData && selected.page_number ? (
-                <PdfPageViewer
-                  pdfData={pdfData}
-                  pageNumber={selected.page_number}
-                  scale={0.9}
-                  regions={regions}
-                  selectedRegionId="crop"
-                  drawing={false}
-                  onSelectRegion={() => undefined}
-                  onDraftBBox={() => undefined}
-                />
-              ) : (
-                <p className="muted">원본 미리보기를 불러오는 중입니다.</p>
-              )}
-              <p className="stem">{selected.problem_text || '—'}</p>
-              <div className="actions">
-                <button type="button" className="btn ghost" disabled={!neighbor.prev} onClick={() => neighbor.prev && setSelected(neighbor.prev)}>
-                  이전 문제
-                </button>
-                <button type="button" className="btn ghost" disabled={!neighbor.next} onClick={() => neighbor.next && setSelected(neighbor.next)}>
-                  다음 문제
-                </button>
-              </div>
-              <div className="actions">
-                <Link className="btn" to={`/questions/${selected.id}/edit`}>
-                  편집
-                </Link>
-                <Link
-                  className="btn primary"
-                  to={`/worksheets/new?problemId=${selected.id}&versionId=${selected.current_version_id ?? ''}`}
-                >
-                  문제지 추가
-                </Link>
-              </div>
-            </>
-          ) : (
-            <p className="muted">단원을 선택하면 교재 순서대로 문제가 나타납니다.</p>
-          )}
+        <aside className={`card preview-pane ${mobilePreviewOpen ? 'is-open' : ''}`} aria-label="문제 미리보기">
+          <div className="preview-pane-head mobile-only">
+            <strong>미리보기</strong>
+            <button type="button" className="btn ghost" aria-label="미리보기 닫기" onClick={() => setMobilePreviewOpen(false)}>
+              닫기
+            </button>
+          </div>
+          {preview}
         </aside>
       </div>
     </main>

@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
 import { dash, ITEM_FORMAT_KO } from '../../lib/outline/instructorLabels'
+import { collapseDuplicateHeading } from '../../lib/outline/formatOutlineTitle'
+import { toProblemListViewModels } from '../../lib/questions/problemCardModel'
+import { MixedKatexText } from '../../lib/math/MixedKatexText'
+import { ProblemCardList } from './ProblemCardList'
 
 export type ListedProblem = {
   id: string
@@ -41,6 +45,7 @@ export function QuestionListPage() {
   const [selected, setSelected] = useState<string[]>([])
   const [info, setInfo] = useState<string | null>(null)
   const [tick, setTick] = useState(0)
+  const [filtersOpen, setFiltersOpen] = useState(false)
 
   const query = params.get('q') ?? ''
   const status = params.get('review') ?? ''
@@ -113,6 +118,14 @@ export function QuestionListPage() {
 
   const pageCount = Math.max(1, Math.ceil(total / pageSize))
   const filtered = rows
+  const cards = useMemo(() => toProblemListViewModels(filtered), [filtered])
+  const activeFilters = [
+    query ? `검색 ${query}` : null,
+    sourceId ? books.find((book) => book.id === sourceId)?.title ?? '교재' : null,
+    status ? REVIEW_LABELS[status] ?? status : null,
+    format ? ITEM_FORMAT_KO[format] ?? format : null,
+    showTrash ? '휴지통' : null,
+  ].filter(Boolean) as string[]
 
   return (
     <main className="page wide">
@@ -134,7 +147,27 @@ export function QuestionListPage() {
           문제지
         </Link>
       </div>
-      <form className="filters filters-wide" onSubmit={(event) => event.preventDefault()}>
+      <div className="browse-mobile-bar mobile-only">
+        <div className="actions">
+          <button
+            type="button"
+            className="btn"
+            aria-expanded={filtersOpen}
+            aria-controls="question-filters"
+            onClick={() => setFiltersOpen((value) => !value)}
+          >
+            필터{activeFilters.length ? ` (${activeFilters.length})` : ''}
+          </button>
+        </div>
+        {activeFilters.length ? (
+          <ul className="filter-chips" aria-label="적용된 필터">
+            {activeFilters.map((chip) => (
+              <li key={chip}>{chip}</li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+      <form id="question-filters" className={`filters filters-wide ${filtersOpen ? 'is-open' : ''}`} onSubmit={(event) => event.preventDefault()}>
         <input
           placeholder="코드, 문제번호 또는 본문 검색"
           value={query}
@@ -213,7 +246,7 @@ export function QuestionListPage() {
       {!loading && filtered.length === 0 ? (
         <p className="banner">등록된 문제가 없거나 필터와 맞는 문제가 없습니다.</p>
       ) : (
-        <table className="data-table">
+        <table className="data-table desktop-only">
           <thead>
             <tr>
               <th>
@@ -240,51 +273,61 @@ export function QuestionListPage() {
             </tr>
           </thead>
           <tbody>
-            {filtered.map((row) => (
-              <tr key={row.id}>
-                <td>
-                  <input
-                    type="checkbox"
-                    aria-label={`${row.public_code} 선택`}
-                    checked={selected.includes(row.id)}
-                    onChange={(event) =>
-                      setSelected((current) =>
-                        event.target.checked ? [...current, row.id] : current.filter((id) => id !== row.id),
-                      )
-                    }
-                  />
-                </td>
-                <td>
-                  <Link to={`/questions/${row.id}`}>{row.public_code}</Link>
-                </td>
-                <td>{dash(row.source_title)}</td>
-                <td>{dash(row.page_number)}</td>
-                <td>{dash(row.original_problem_number)}</td>
-                <td>{dash(row.major_title)}</td>
-                <td>{dash(row.section_title)}</td>
-                <td>{(row.problem_text ?? '').slice(0, 56) || '—'}</td>
-                <td>{dash(row.curriculum_name)}</td>
-                <td>{dash(row.concept_name)}</td>
-                <td>{dash(row.type_name)}</td>
-                <td>
-                  {row.overall_difficulty != null
-                    ? `${Number(row.overall_difficulty).toFixed(1)}${row.difficulty_source === 'MODEL' ? ' (자동)' : ''}`
-                    : '—'}
-                </td>
-                <td>
-                  <span className={`status-pill ${row.review_status.toLowerCase()}`}>
-                    {REVIEW_LABELS[row.review_status] ?? row.review_status}
-                  </span>
-                </td>
-                <td>
-                  <Link to={`/questions/${row.id}/edit`}>편집</Link>
-                </td>
-              </tr>
-            ))}
+            {cards.map((card, index) => {
+              const row = filtered[index]
+              if (!row) return null
+              return (
+                <tr key={card.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      aria-label={`${card.publicCode} 선택`}
+                      checked={selected.includes(card.id)}
+                      onChange={(event) =>
+                        setSelected((current) =>
+                          event.target.checked ? [...current, card.id] : current.filter((id) => id !== card.id),
+                        )
+                      }
+                    />
+                  </td>
+                  <td>
+                    <Link to={`/questions/${card.id}`}>{card.publicCode}</Link>
+                  </td>
+                  <td>{card.sourceTitle}</td>
+                  <td>{dash(card.pageNumber)}</td>
+                  <td>{dash(card.originalProblemNumber)}</td>
+                  <td>{collapseDuplicateHeading(row.major_title ?? '') || '—'}</td>
+                  <td>{collapseDuplicateHeading(row.section_title ?? '') || '—'}</td>
+                  <td className="stem-cell">{card.stem ? <MixedKatexText text={card.stem} /> : '—'}</td>
+                  <td>{dash(row.curriculum_name)}</td>
+                  <td>{dash(row.concept_name)}</td>
+                  <td>{card.typeName === '유형 미정' ? dash(row.type_name) : card.typeName}</td>
+                  <td>{card.difficultyLabel === '난이도 미정' ? '—' : card.difficultyLabel}</td>
+                  <td>
+                    <span className={`status-pill ${card.reviewStatus.toLowerCase()}`}>{card.reviewLabel}</span>
+                  </td>
+                  <td>
+                    <Link to={card.editHref} aria-label={`${card.pageLabel} 편집`}>
+                      편집
+                    </Link>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       )}
-      <div className="pagination">
+      {!loading && filtered.length ? (
+        <ProblemCardList
+          items={cards}
+          showCheckbox
+          checkedIds={selected}
+          onToggleCheck={(id, checked) =>
+            setSelected((current) => (checked ? [...current, id] : current.filter((value) => value !== id)))
+          }
+        />
+      ) : null}
+      <div className="pagination sticky-page">
         <button type="button" className="btn ghost" disabled={page <= 1} onClick={() => patchParams({ page: page - 1 })}>
           이전
         </button>

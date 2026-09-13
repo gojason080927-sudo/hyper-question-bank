@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { parseHqBError } from '../../lib/workflow/validation'
@@ -38,6 +38,10 @@ export function WorksheetBuilderPage() {
   const [error, setError] = useState<string | null>(null)
   const [info, setInfo] = useState<string | null>(null)
   const [searched, setSearched] = useState(false)
+  const [zoomMode, setZoomMode] = useState<'fit' | 0.75 | 1 | 1.25>('fit')
+  const [fullView, setFullView] = useState(false)
+  const [fitScale, setFitScale] = useState(1)
+  const viewportRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (worksheetId !== 'new') return
@@ -135,6 +139,23 @@ export function WorksheetBuilderPage() {
       }
     })()
   }, [params, worksheetId])
+
+  useEffect(() => {
+    const node = viewportRef.current
+    if (!node) return
+    const measure = () => {
+      const width = node.clientWidth || window.innerWidth
+      setFitScale(Math.max(0.35, Math.min(1, (width - 16) / (210 * 3.7795275591))))
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [fullView])
+
+  const a4Scale = zoomMode === 'fit' ? fitScale : zoomMode
+  const pageWidthPx = 210 * 3.7795275591
+  const pageHeightPx = 297 * 3.7795275591
 
   const models: WorksheetItemModel[] = items.map((row, index) => ({
     id: row.id,
@@ -242,19 +263,20 @@ export function WorksheetBuilderPage() {
             <input value={title} onChange={(event) => setTitle(event.target.value)} aria-label="문제지 제목" />
           </h1>
         </div>
-        <div className="actions no-print">
+        <div className="actions no-print worksheet-toolbar">
           <Link className="btn ghost" to="/worksheets">목록</Link>
-          <button type="button" className="btn" onClick={() => void persist()}>저장</button>
-          <button type="button" className="btn primary" onClick={() => window.print()}>인쇄 / PDF</button>
+          <button type="button" className="btn" onClick={() => void persist()} aria-label="문제지 저장">저장</button>
+          <button type="button" className="btn primary" onClick={() => window.print()} aria-label="인쇄 또는 PDF">인쇄 / PDF</button>
         </div>
       </div>
       {error ? <p className="banner error no-print">{error}</p> : null}
       {info ? <p className="banner success no-print">{info}</p> : null}
-      <section className="card no-print">
+      <section className="card no-print worksheet-tools">
         <div className="grid-2">
           <label>
             단
             <select
+              aria-label="단 설정"
               value={layout.columns}
               onChange={(event) => setLayout({ ...layout, columns: Number(event.target.value) === 2 ? 2 : 1 })}
             >
@@ -265,6 +287,7 @@ export function WorksheetBuilderPage() {
           <label>
             종류
             <select
+              aria-label="문제지 종류"
               value={layout.examKind}
               onChange={(event) => setLayout({ ...layout, examKind: event.target.value === 'ANSWER_SHEET' ? 'ANSWER_SHEET' : 'EXAM' })}
             >
@@ -296,6 +319,7 @@ export function WorksheetBuilderPage() {
         <div className="filters">
           <input
             placeholder="공개코드 검색 (예: HQB-001339)"
+            aria-label="문제 공개코드 검색"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={(event) => {
@@ -313,7 +337,7 @@ export function WorksheetBuilderPage() {
         <ul>
           {hits.map((row) => (
             <li key={row.id}>
-              {row.public_code} {row.problem_text.slice(0, 48)}
+              {row.public_code} <span className="stem-cell">{row.problem_text ? <MixedKatexText text={row.problem_text} /> : ''}</span>
               <button
                 type="button"
                 className="btn ghost"
@@ -350,7 +374,34 @@ export function WorksheetBuilderPage() {
           <p className="muted">유사 문항: {similar.map((row) => row.problem_id.slice(0, 8)).join(', ')}</p>
         ) : null}
       </section>
-      <div className="a4-stage" style={{ ['--a4-font' as string]: `${layout.fontSizePt}pt` }}>
+      <div className={`a4-viewport ${fullView ? 'is-full' : ''}`} ref={viewportRef}>
+        <div className="a4-zoom-bar no-print">
+          <button type="button" className="btn ghost" aria-label="화면에 맞춤" onClick={() => setZoomMode('fit')}>맞춤</button>
+          <button type="button" className="btn ghost" aria-label="75퍼센트" onClick={() => setZoomMode(0.75)}>75%</button>
+          <button type="button" className="btn ghost" aria-label="100퍼센트" onClick={() => setZoomMode(1)}>100%</button>
+          <button type="button" className="btn ghost" aria-label="125퍼센트" onClick={() => setZoomMode(1.25)}>125%</button>
+          <button
+            type="button"
+            className="btn"
+            aria-label={fullView ? '전체 보기 닫기' : 'A4 전체 보기'}
+            onClick={() => setFullView((value) => !value)}
+          >
+            {fullView ? '닫기' : '전체 보기'}
+          </button>
+        </div>
+        <div
+          className="a4-scale-slot"
+          style={{ height: `${pages.length * (pageHeightPx * a4Scale + 16)}px` }}
+        >
+          <div
+            className="a4-stage"
+            style={{
+              ['--a4-font' as string]: `${layout.fontSizePt}pt`,
+              width: pageWidthPx,
+              transform: `scale(${a4Scale})`,
+              transformOrigin: 'top center',
+            }}
+          >
         {pages.map((page) => (
           <article className={`a4-page cols-${layout.columns}`} key={page.pageNo}>
             <header className="a4-header">
@@ -378,36 +429,78 @@ export function WorksheetBuilderPage() {
             </div>
           </article>
         ))}
+          </div>
+        </div>
       </div>
-      <ol className="no-print">
+      <ol className="no-print worksheet-item-tools">
         {items.map((row, index) => (
-          <li key={row.id}>
-            {index + 1}. {row.problem_text.slice(0, 60)}
-            <button type="button" className="btn ghost" onClick={() => setItems(items.filter((item) => item.id !== row.id))}>제거</button>
-            <button
-              type="button"
-              className="btn ghost"
-              onClick={() => {
-                const next = [...items]
-                if (index === 0) return
-                ;[next[index - 1], next[index]] = [next[index], next[index - 1]]
-                setItems(next)
-              }}
-            >
-              위로
-            </button>
-            <label>
-              강제 쪽넘김
-              <input
-                type="checkbox"
-                checked={row.force_page_break}
-                onChange={(event) => {
+          <li key={row.id} className="worksheet-item-row">
+            <p>
+              {index + 1}. <MixedKatexText text={row.problem_text} />
+            </p>
+            <div className="actions">
+              <button
+                type="button"
+                className="btn ghost"
+                aria-label={`${index + 1}번 제거`}
+                onClick={() => setItems(items.filter((item) => item.id !== row.id))}
+              >
+                제거
+              </button>
+              <button
+                type="button"
+                className="btn ghost"
+                aria-label={`${index + 1}번 위로`}
+                onClick={() => {
                   const next = [...items]
-                  next[index] = { ...row, force_page_break: event.target.checked }
+                  if (index === 0) return
+                  ;[next[index - 1], next[index]] = [next[index], next[index - 1]]
                   setItems(next)
                 }}
-              />
-            </label>
+              >
+                위로
+              </button>
+              <button
+                type="button"
+                className="btn ghost"
+                aria-label={`${index + 1}번 아래로`}
+                onClick={() => {
+                  const next = [...items]
+                  if (index >= next.length - 1) return
+                  ;[next[index + 1], next[index]] = [next[index], next[index + 1]]
+                  setItems(next)
+                }}
+              >
+                아래로
+              </button>
+              <label>
+                점수
+                <input
+                  type="number"
+                  min={0}
+                  aria-label={`${index + 1}번 점수`}
+                  value={row.points ?? 0}
+                  onChange={(event) => {
+                    const next = [...items]
+                    next[index] = { ...row, points: Number(event.target.value) || 0 }
+                    setItems(next)
+                  }}
+                />
+              </label>
+              <label>
+                강제 쪽넘김
+                <input
+                  type="checkbox"
+                  aria-label={`${index + 1}번 강제 쪽넘김`}
+                  checked={row.force_page_break}
+                  onChange={(event) => {
+                    const next = [...items]
+                    next[index] = { ...row, force_page_break: event.target.checked }
+                    setItems(next)
+                  }}
+                />
+              </label>
+            </div>
           </li>
         ))}
       </ol>

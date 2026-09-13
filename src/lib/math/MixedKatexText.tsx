@@ -1,30 +1,37 @@
-import type { ReactNode } from 'react'
-import { extractMathSpans } from '../editor/mathNormalize'
+import { Component, type ReactNode } from 'react'
+import { splitMathForDisplay } from './splitMathForDisplay'
 import { KatexText } from './KatexText'
 
-/** Render Hangul/English stem text with `$...$` / `$$...$$` islands as KaTeX. */
-export function MixedKatexText({ text }: { text: string }) {
-  if (!text.trim()) return null
-  const spans = extractMathSpans(text)
-  if (!spans.length) return <>{text}</>
-  const parts: Array<{ key: string; node: ReactNode }> = []
-  let cursor = 0
-  spans.forEach((span, index) => {
-    if (span.start > cursor) {
-      parts.push({ key: `t${cursor}`, node: text.slice(cursor, span.start) })
+class MathErrorBoundary extends Component<{ text: string; children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+
+  static getDerivedStateFromError(): { failed: boolean } {
+    return { failed: true }
+  }
+
+  render() {
+    if (this.state.failed) {
+      return <span className="math-fallback">{this.props.text}</span>
     }
-    parts.push({
-      key: `m${index}`,
-      node: <KatexText tex={span.latex} />,
-    })
-    cursor = span.end
-  })
-  if (cursor < text.length) parts.push({ key: `t${cursor}`, node: text.slice(cursor) })
+    return this.props.children
+  }
+}
+
+/** Render Hangul/English stem text with `$...$`, `$$...$$`, and unwrapped LaTeX as KaTeX. */
+export function MixedKatexText({ text, className }: { text: string; className?: string }) {
+  if (!text.trim()) return null
+  const parts = splitMathForDisplay(text)
   return (
-    <>
-      {parts.map((part) => (
-        <span key={part.key}>{part.node}</span>
-      ))}
-    </>
+    <MathErrorBoundary text={text}>
+      <span className={['mixed-katex', className].filter(Boolean).join(' ')}>
+        {parts.map((part, index) =>
+          part.kind === 'math' ? (
+            <KatexText key={`m${index}`} tex={part.value} display={part.display} />
+          ) : (
+            <span key={`t${index}`}>{part.value}</span>
+          ),
+        )}
+      </span>
+    </MathErrorBoundary>
   )
 }
