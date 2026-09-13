@@ -394,7 +394,25 @@ export async function runStep838(root = process.cwd()) {
   writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(outcome, null, 2), 'utf8')
   writeFileSync(
     path.join(root, 'public/step8-38-range-audit.json'),
-    JSON.stringify({ step: '8.38', summary: rerun.summary, candidates: rerun.candidates, persisted: true }, null, 2),
+    JSON.stringify(
+      {
+        step: '8.38',
+        persisted: persist,
+        summary: plan.summary,
+        candidates: plan.candidates,
+        applies: plan.applies.map((row) => ({
+          problem_id: row.problem_id,
+          public_code: row.public_code,
+          role: row.role,
+          range: row.range,
+          current_number: row.current_number,
+          from_stem: row.from_stem,
+          to_stem: row.to_stem,
+        })),
+      },
+      null,
+      2,
+    ),
     'utf8',
   )
   console.log(

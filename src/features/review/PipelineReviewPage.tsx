@@ -4,7 +4,7 @@ import { getSupabase } from '../../lib/supabase/client'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
 import { ProblemStemDisplay } from '../questions/ProblemStemDisplay'
-import { RangeStemReviewPanel, type RangeAuditItem } from './RangeStemReviewPanel'
+import { RangeStemReviewPanel, type RangeAuditItem, type RangeApply838 } from './RangeStemReviewPanel'
 
 type QueueItem = {
   problem_id: string
@@ -26,6 +26,7 @@ export function PipelineReviewPage() {
   const [error, setError] = useState<string | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [rangeItems, setRangeItems] = useState<RangeAuditItem[]>([])
+  const [rangeApplies, setRangeApplies] = useState<RangeApply838[]>([])
   const [rangeSelected, setRangeSelected] = useState<string | null>(null)
   const source = params.get('source') ?? ''
   const rangeTab = source === 'range838'
@@ -55,9 +56,10 @@ export function PipelineReviewPage() {
       try {
         const res = await fetch('/step8-38-range-audit.json')
         if (!res.ok) return
-        const payload = (await res.json()) as { candidates?: RangeAuditItem[] }
+        const payload = (await res.json()) as { candidates?: RangeAuditItem[]; applies?: RangeApply838[] }
         const items = payload.candidates ?? []
         setRangeItems(items)
+        setRangeApplies(payload.applies ?? [])
         setRangeSelected(items[0]?.problem_id ?? null)
       } catch {
         setRangeItems([])
@@ -113,7 +115,7 @@ export function PipelineReviewPage() {
         </button>
       </div>
       {rangeTab ? (
-        <RangeStemReviewPanel items={rangeItems} selectedId={rangeSelected} onSelect={setRangeSelected} />
+        <RangeStemReviewPanel items={rangeItems} selectedId={rangeSelected} onSelect={setRangeSelected} applies={rangeApplies} />
       ) : (
         <div className="review-split">
           <table className="data-table">

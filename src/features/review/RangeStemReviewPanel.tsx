@@ -27,14 +27,26 @@ export type RangeAuditItem = {
   }>
 }
 
+export type RangeApply838 = {
+  problem_id: string
+  public_code: string
+  role: 'donor' | 'target'
+  range: string
+  current_number: string
+  from_stem: string
+  to_stem: string
+}
+
 export function RangeStemReviewPanel({
   items,
   selectedId,
   onSelect,
+  applies = [],
 }: {
   items: RangeAuditItem[]
   selectedId: string | null
   onSelect: (id: string) => void
+  applies?: RangeApply838[]
 }) {
   const selected = items.find((row) => row.problem_id === selectedId) ?? items[0] ?? null
   const counts = {
@@ -95,6 +107,18 @@ export function RangeStemReviewPanel({
           <p className="stem">
             <ProblemStemDisplay text={selected.current_stem} />
           </p>
+          {applies.find((row) => row.problem_id === selected.problem_id) ? (
+            <>
+              <p>
+                <strong>변경 후</strong>
+              </p>
+              <p className="stem">
+                <ProblemStemDisplay text={applies.find((row) => row.problem_id === selected.problem_id)?.to_stem || ''} />
+              </p>
+            </>
+          ) : (
+            <p className="muted">AUTO_SAFE가 아니라 자동 변경하지 않았습니다.</p>
+          )}
           <p>
             <strong>앞 문제에 남을 본문</strong>
           </p>
