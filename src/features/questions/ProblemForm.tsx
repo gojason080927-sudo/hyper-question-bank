@@ -269,6 +269,14 @@ export function ProblemForm({
               />
               객관식
             </label>
+            <label>
+              <input
+                type="radio"
+                checked={state.itemFormat === 'CONSTRUCTED_RESPONSE'}
+                onChange={() => patch({ itemFormat: 'CONSTRUCTED_RESPONSE' })}
+              />
+              서술형
+            </label>
           </fieldset>
           {state.itemFormat === 'MULTIPLE_CHOICE' ? (
             <div>

@@ -52,6 +52,14 @@ export const VERIFY_MESSAGES: Record<string, string> = {
   HQB_INVALID_RECOGNITION: '인식 결과가 없습니다.',
   HQB_RECOGNITION_APPLIED: '이 인식 결과는 이미 다른 초안에 적용되었습니다.',
   HQB_FAKE_CONFIDENCE: '엔진이 주지 않은 신뢰도 숫자는 저장하지 않습니다.',
+  HQB_EDIT_CONFLICT: '다른 강사가 먼저 저장했습니다. 다시 불러온 뒤 병합하세요.',
+  HQB_NO_VERIFY: '편집 저장은 VERIFIED를 설정하지 않습니다.',
+  HQB_ARCHIVED: '보관된 문제는 복원한 뒤에 편집할 수 있습니다.',
+  HQB_MISSING_TITLE: '문제지 제목을 입력해 주세요.',
+  HQB_MISSING_WORKSHEET: '문제지를 찾을 수 없습니다.',
+  HQB_MISSING_PROBLEM: '문제를 찾을 수 없습니다.',
+  HQB_ASSET_MIME: 'PNG/JPEG/WebP/GIF만 올릴 수 있습니다.',
+  HQB_ASSET_MISSING: '업로드된 이미지를 찾지 못했습니다.',
 }
 
 export function verifyGateIssues(input: VerifyInput): string[] {

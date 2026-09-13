@@ -1,0 +1,29 @@
+{
+  "step": "8.35",
+  "status": "PERSISTED",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "production_verified_writes": 0,
+  "content_rewrites": 0,
+  "schema": {
+    "attempted": true,
+    "applied": true,
+    "reason": "applied"
+  },
+  "test_problem": {
+    "public_code": "HQB-001339",
+    "problem_id": "bd10b9f5-5506-49ed-a068-e9ed6492d8f1",
+    "saved": true,
+    "save_error": null,
+    "archived": true,
+    "review_status": "UNREVIEWED",
+    "versions": 2
+  },
+  "integrity_after": {
+    "drafts": 1281,
+    "archived": 1,
+    "verified_versions": 31,
+    "fingerprints": 3543,
+    "embeddings": 1244
+  }
+}

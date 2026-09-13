@@ -14,6 +14,8 @@ import { SourceListPage } from '../features/sources/SourceListPage'
 import { SourceNewPage } from '../features/sources/SourceNewPage'
 import { SourceDetailPage } from '../features/sources/SourceDetailPage'
 import { PipelineReviewPage } from '../features/review/PipelineReviewPage'
+import { WorksheetListPage } from '../features/worksheets/WorksheetListPage'
+import { WorksheetBuilderPage } from '../features/worksheets/WorksheetBuilderPage'
 
 const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
@@ -33,6 +35,8 @@ const router = createBrowserRouter([
       { path: 'sources/new', element: <SourceNewPage /> },
       { path: 'sources/:documentId', element: <SourceDetailPage /> },
       { path: 'pipeline-review', element: <PipelineReviewPage /> },
+      { path: 'worksheets', element: <WorksheetListPage /> },
+      { path: 'worksheets/:worksheetId', element: <WorksheetBuilderPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

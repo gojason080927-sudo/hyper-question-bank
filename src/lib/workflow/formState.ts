@@ -12,6 +12,7 @@ export type ChoiceDraft = {
   label: string
   choice_text: string
   math_expression: string
+  is_answer?: boolean
 }
 
 export type ConceptPick = {
@@ -35,7 +36,7 @@ export type ProblemFormState = {
   problemText: string
   normalizedText: string
   normalizedManual: boolean
-  itemFormat: 'SHORT_ANSWER' | 'MULTIPLE_CHOICE'
+  itemFormat: 'SHORT_ANSWER' | 'MULTIPLE_CHOICE' | 'CONSTRUCTED_RESPONSE'
   expressions: ExpressionDraft[]
   choices: ChoiceDraft[]
   answerType: string
@@ -135,6 +136,7 @@ export function buildPayload(state: ProblemFormState) {
           }))
       : []
 
+  const marked = state.choices.find((choice) => choice.is_answer)
   const numeric = state.numericValue.trim()
   return {
     source,
@@ -147,9 +149,9 @@ export function buildPayload(state: ProblemFormState) {
     },
     choices,
     answer: {
-      answer_type: state.answerType,
-      answer_text: state.answerText,
-      normalized_answer: state.answerText,
+      answer_type: marked ? 'CHOICE_LABEL' : state.answerType,
+      answer_text: marked?.label || state.answerText,
+      normalized_answer: marked?.label || state.answerText,
       numeric_value: numeric === '' ? null : numeric,
     },
     explanation: state.explanation.trim()

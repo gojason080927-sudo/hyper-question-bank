@@ -68,7 +68,12 @@ export async function loadFormFromVersion(
   form.instruction = version.data?.instruction ?? ''
   form.problemText = version.data?.problem_text ?? ''
   form.normalizedText = version.data?.normalized_text ?? form.problemText
-  form.itemFormat = version.data?.item_format === 'MULTIPLE_CHOICE' ? 'MULTIPLE_CHOICE' : 'SHORT_ANSWER'
+  form.itemFormat =
+    version.data?.item_format === 'MULTIPLE_CHOICE'
+      ? 'MULTIPLE_CHOICE'
+      : version.data?.item_format === 'CONSTRUCTED_RESPONSE'
+        ? 'CONSTRUCTED_RESPONSE'
+        : 'SHORT_ANSWER'
   form.curriculumNodeId = curriculum.data?.[0]?.curriculum_node_id ?? ''
   form.concepts = (concepts.data ?? []).map((row) => ({ concept_id: row.concept_id, is_primary: row.is_primary }))
   form.typeId = types.data?.[0]?.hyper_problem_type_id ?? ''
