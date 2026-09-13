@@ -15,7 +15,7 @@ const pkg = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'))
 
 check(existsSync(spec), 'missing 8.36 spec')
 check(existsSync(freeze), 'missing 8.25 freeze')
-check(existsSync(migration), 'missing additive 8.36 migration')
+check(existsSync(path.join(root, 'supabase/migrations/20260913040000_hqb_list_problems_cte_fix_v1.sql')), 'missing list RPC fix migration')
 check(existsSync(path.join(root, 'src/lib/outline/ssenToc.ts')), 'missing frozen TOC')
 check(existsSync(path.join(root, 'src/features/sources/SourceBrowsePage.tsx')), 'missing browse page')
 check(existsSync(path.join(root, 'scripts/step-8.36.mjs')), 'missing persist script')

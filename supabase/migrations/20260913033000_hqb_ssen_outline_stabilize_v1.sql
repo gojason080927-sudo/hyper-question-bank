@@ -460,11 +460,8 @@ BEGIN
       AND (q IS NULL OR p.public_code ILIKE '%' || q || '%' OR pv.problem_text ILIKE '%' || q || '%'
         OR ps.original_problem_number ILIKE '%' || q || '%')
   ),
-  counted AS (SELECT count(*) AS n FROM base)
-  SELECT n INTO total_n FROM counted;
-
-  SELECT coalesce(jsonb_agg(to_jsonb(x)), '[]'::jsonb) INTO rows
-  FROM (
+  counted AS (SELECT count(*) AS n FROM base),
+  paged AS (
     SELECT * FROM base
     ORDER BY
       CASE WHEN sort_book THEN COALESCE(page_number, 9999) ELSE 0 END,
@@ -476,7 +473,10 @@ BEGIN
       public_code
     OFFSET offset_n
     LIMIT page_size
-  ) x;
+  )
+  SELECT (SELECT n FROM counted),
+         (SELECT coalesce(jsonb_agg(to_jsonb(x)), '[]'::jsonb) FROM paged x)
+  INTO total_n, rows;
 
   RETURN jsonb_build_object(
     'total', total_n,

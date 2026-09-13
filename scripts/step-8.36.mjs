@@ -11,6 +11,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const QUESTION_BANK_REF = 'owpxsmdcxjmsgadkdsci'
 const STUDENT_CARE_REF = 'pwuswjauzdxewmtgoitf'
 const MIGRATION_FILE = '20260913033000_hqb_ssen_outline_stabilize_v1.sql'
+const FIX_MIGRATION_FILE = '20260913040000_hqb_list_problems_cte_fix_v1.sql'
 const PIPELINE_TEACHER_EMAIL = 'hqb.pipeline.ssen@hyper.local'
 const SSEN = '9ff369b4-5b16-4cb8-bfc3-a6b180c18703'
 const persist = process.argv.includes('--persist')
@@ -90,12 +91,12 @@ function redact(text) {
     .slice(0, 800)
 }
 
-async function applyMigration(token) {
-  const sql = readFileSync(path.join(root, 'supabase/migrations', MIGRATION_FILE), 'utf8')
+async function applyMigration(token, file, name) {
+  const sql = readFileSync(path.join(root, 'supabase/migrations', file), 'utf8')
   const mgmt = await fetch(`https://api.supabase.com/v1/projects/${QUESTION_BANK_REF}/database/migrations`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: 'hqb_ssen_outline_stabilize_v1', query: sql }),
+    body: JSON.stringify({ name, query: sql }),
   })
   if (mgmt.ok) return { applied: true, reason: 'applied' }
   const body = redact(await mgmt.text())
@@ -194,7 +195,9 @@ async function main() {
   if (url && !url.includes(QUESTION_BANK_REF)) throw new Error('wrong supabase project')
 
   if (applyOnly && token) {
-    summary.schema = { attempted: true, ...(await applyMigration(token)) }
+    const first = await applyMigration(token, MIGRATION_FILE, 'hqb_ssen_outline_stabilize_v1')
+    const second = await applyMigration(token, FIX_MIGRATION_FILE, 'hqb_list_problems_cte_fix_v1')
+    summary.schema = { attempted: true, applied: first.applied && second.applied, reason: `${first.reason}; ${second.reason}` }
   } else if (applyOnly) {
     summary.schema = { attempted: false, applied: false, reason: 'missing SUPABASE_ACCESS_TOKEN' }
   }
@@ -277,6 +280,35 @@ async function main() {
     sectionIds[section.code] = res.data.id
     summary.outline.sections += 1
   }
+  const tocText = readFileSync(path.join(root, 'src/lib/outline/ssenToc.ts'), 'utf8')
+  const types = [...tocText.matchAll(/\{ sectionCode: '(\d+)', typeCode: '(\d+)', title: '([^']+)', evidencePage: (\d+) \}/g)].map(
+    (match) => ({ section: match[1], code: match[2], title: match[3], page: Number(match[4]) }),
+  )
+  const typeIds = {}
+  for (const [index, type] of types.entries()) {
+    const parent = sectionIds[type.section]
+    if (!parent) continue
+    const res = await staff.rpc('hqb_upsert_source_outline_node', {
+      payload: {
+        source_document_id: SSEN,
+        parent_id: parent,
+        node_level: 'TYPE_SEGMENT',
+        code: type.code,
+        title_original: `유형 ${type.code} ${type.title}`,
+        title_normalized: `유형 ${type.code} ${type.title}`,
+        sort_order: index + 1,
+        pdf_page_start: type.page,
+        pdf_page_end: type.page,
+        print_page_start: type.page,
+        print_page_end: type.page,
+        evidence: { ...evidence, type_index_page: type.page },
+        confidence: 1,
+      },
+    })
+    if (res.error) throw new Error(res.error.message)
+    typeIds[`${type.section}:${type.code}`] = res.data.id
+    summary.outline.types += 1
+  }
 
   const links = await paged(admin, 'problem_sources', 'problem_id,original_problem_number,bounding_box,source_page_id,is_primary_source', (q) =>
     q.eq('source_document_id', SSEN).eq('is_primary_source', true),
@@ -314,6 +346,16 @@ async function main() {
       payload: { problem_id: link.problem_id, outline_node_id: nodeId, is_primary: true, assigned_by: 'STEP_8_36', confidence: 1 },
     })
     if (!assigned.error) summary.outline.assignments += 1
+    const stem = versionMap[problemMap[link.problem_id]?.current_version_id ?? '']?.problem_text ?? ''
+    const typeMatch = String(stem).match(/유형\s*0?(\d{1,2})/)
+    if (section && typeMatch) {
+      const typeId = typeIds[`${section.code}:${typeMatch[1].padStart(2, '0')}`]
+      if (typeId) {
+        await staff.rpc('hqb_assign_problem_outline', {
+          payload: { problem_id: link.problem_id, outline_node_id: typeId, is_primary: false, assigned_by: 'STEP_8_36', confidence: 0.8 },
+        })
+      }
+    }
   }
 
   const docs = await paged(admin, 'source_documents', 'id,title,original_filename,document_type,document_status', (q) => q.is('archived_at', null))
@@ -340,8 +382,8 @@ async function main() {
   for (const link of links) {
     const problem = problemMap[link.problem_id]
     const version = problem?.current_version_id ? versionMap[problem.current_version_id] : null
-    const page = pageMap[link.source_page_id]
-    const key = `${page}|${link.original_problem_number ?? ''}|${normalizeDup(version?.problem_text ?? '')}`
+    const key = normalizeDup(version?.problem_text ?? '')
+    if (key.length < 24) continue
     if (!groups.has(key)) groups.set(key, [])
     groups.get(key).push({ link, problem, version })
   }
@@ -417,8 +459,14 @@ async function main() {
   const queue = await staff.rpc('hqb_list_review_queue', { payload: { source_document_id: SSEN } })
   summary.review_queue = { ssen: (queue.data?.items ?? []).length, error: queue.error?.message ?? null }
 
-  const sample = problems.filter((row) => row.lifecycle_status === 'DRAFT').slice(0, 2)
-  if (sample.length) {
+  const existingSheet = await admin
+    .from('worksheets')
+    .select('id')
+    .eq('title', 'STEP 8.36 테스트 문제지 (archive)')
+    .limit(1)
+  if (existingSheet.data?.[0]?.id) {
+    summary.worksheet = { id: existingSheet.data[0].id, archived: true, reused: true, stems_rewritten: false }
+  } else if (sample.length) {
     const sheet = await staff.rpc('hqb_create_worksheet', {
       payload: { title: 'STEP 8.36 테스트 문제지 (archive)', exam_kind: 'EXAM', layout: { columns: 1 } },
     })
