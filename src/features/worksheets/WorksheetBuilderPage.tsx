@@ -42,6 +42,7 @@ export function WorksheetBuilderPage() {
   const [fullView, setFullView] = useState(false)
   const [fitScale, setFitScale] = useState(1)
   const viewportRef = useRef<HTMLDivElement>(null)
+  const addedFromQuery = useRef(false)
 
   useEffect(() => {
     if (worksheetId !== 'new') return
@@ -116,7 +117,13 @@ export function WorksheetBuilderPage() {
       )
       const addId = params.get('problemId')
       const addVersion = params.get('versionId')
-      if (addId && addVersion && !(rows ?? []).some((row) => row.problem_id === addId)) {
+      if (
+        addId &&
+        addVersion &&
+        !addedFromQuery.current &&
+        !(rows ?? []).some((row) => row.problem_id === addId)
+      ) {
+        addedFromQuery.current = true
         const { data: version } = await client.from('problem_versions').select('problem_text,choice_count').eq('id', addVersion).single()
         setItems((current) => [
           ...current,
