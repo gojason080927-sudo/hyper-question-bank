@@ -27,6 +27,7 @@ import { conversionDiff, ocrTextToDocument } from '../../lib/editor/ocrAdapter'
 import { collectLatex } from '../../lib/editor/schema'
 import { parseConflictMessage, localAutosaveKey, writeLocalAutosave, clearLocalAutosave } from '../../lib/editor/conflict'
 import { uploadEditorImage } from '../../lib/editor/uploadAsset'
+import { pickOpenEditorVersion } from '../../lib/editor/openVersion'
 import type { PasteWarning } from '../../lib/editor/paste'
 
 type VersionRow = { id: string; version_no: number; origin: string; review_status: string; created_at: string }
@@ -88,12 +89,9 @@ export function QuestionEditPage() {
       .eq('problem_id', problemId)
       .order('version_no')
     setVersions((versionRows ?? []) as VersionRow[])
-    const openDraft = (versionRows ?? []).find(
-      (row) => row.review_status !== 'VERIFIED' && row.review_status !== 'REJECTED',
-    )
-    const current = (versionRows ?? []).find((row) => row.id === problem.current_version_id)
-    let targetId = openDraft?.id ?? current?.id ?? null
-    if (!openDraft && current?.review_status === 'VERIFIED') {
+    const picked = pickOpenEditorVersion(versionRows ?? [], problem.current_version_id)
+    let targetId = picked.version?.id ?? null
+    if (picked.action === 'clone') {
       const { data: cloned, error: cloneError } = await client.rpc('hqb_clone_problem_version', {
         p_problem_id: problemId,
         p_change_reason: 'UI 수정 — 새 초안 버전',
@@ -112,7 +110,13 @@ export function QuestionEditPage() {
       return
     }
     const form = await loadFormFromVersion(client, problemId, targetId)
-    const target = (versionRows ?? []).find((row) => row.id === targetId)
+    const target =
+      (versionRows ?? []).find((row) => row.id === targetId) ??
+      (await client
+        .from('problem_versions')
+        .select('id,review_status,version_no,origin,created_at,content_metadata,problem_text,instruction')
+        .eq('id', targetId)
+        .maybeSingle()).data
     setReviewStatus(target?.review_status ?? 'UNREVIEWED')
     const meta = (target as { content_metadata?: unknown } | undefined)?.content_metadata as
       | { editor_document?: unknown }
@@ -123,8 +127,8 @@ export function QuestionEditPage() {
       setOcrDiff(null)
     } else {
       nextDoc = ocrTextToDocument(form.problemText, form.instruction)
-      const diff = conversionDiff(form.problemText, nextDoc.tiptap_json)
-      setOcrDiff({ ocr: diff.ocr, converted: diff.converted, equal: diff.equal })
+      const diff = conversionDiff(form.problemText, nextDoc.tiptap_json, form.instruction)
+      setOcrDiff(diff.equal ? null : { ocr: diff.ocr, converted: diff.converted, equal: diff.equal })
     }
     setDoc(nextDoc)
     setState(form)
@@ -173,11 +177,12 @@ export function QuestionEditPage() {
     if (!beginSubmit(submitLock.current)) return
     setSubmitting(true)
     setError(null)
-    const plain = documentPlainText(doc.tiptap_json)
-    const latex = collectLatex(doc.tiptap_json)
+    const liveJson = (editorRef.current?.getJSON() as EditorNode | undefined) ?? doc.tiptap_json
+    const plain = documentPlainText(liveJson)
+    const latex = collectLatex(liveJson)
     const editorDocument = withLatexIndex({
       ...doc,
-      tiptap_json: stripTransientImageSrc(doc.tiptap_json),
+      tiptap_json: stripTransientImageSrc(liveJson),
     })
     const nextState: ProblemFormState = {
       ...state,
@@ -374,7 +379,9 @@ export function QuestionEditPage() {
             onChange={(json) => setDoc((current) => ({ ...current, tiptap_json: json }))}
             onSave={() => void handleSave()}
             onPreview={() => setPreview(true)}
-            onAddToWorksheet={() => navigate(`/worksheets/new?problemId=${problemId}&versionId=${versionId}`)}
+            onAddToWorksheet={() =>
+              navigate(`/worksheets/new?problemId=${problemId}&versionId=${versionId}`)
+            }
             onImageFile={(file) => void handleImage(file)}
             onPasteWarnings={setWarnings}
             saving={submitting}

@@ -105,19 +105,27 @@ export function QuestionVersionsPage() {
               className="btn"
               onClick={() => {
                 const client = getSupabase()
-                if (!client || !selected) return
-                void client
-                  .rpc('hqb_restore_problem_version', {
+                if (!client || !selected || !problemId) return
+                void (async () => {
+                  const { error: restoreError } = await client.rpc('hqb_restore_problem_version', {
                     p_version_id: selected,
                     p_change_reason: '이력 화면에서 복원',
                   })
-                  .then(({ error: restoreError }) => {
-                    if (restoreError) {
-                      setError(restoreError.message)
-                      return
-                    }
-                    setInfo('선택한 내용을 새 TEACHER_EDIT 버전으로 복원했습니다. 이전 행은 그대로입니다.')
-                  })
+                  if (restoreError) {
+                    setError(restoreError.message)
+                    return
+                  }
+                  setInfo('선택한 내용을 새 TEACHER_EDIT 버전으로 복원했습니다. 이전 행은 그대로입니다.')
+                  const { data: problem } = await client.from('problems').select('current_version_id').eq('id', problemId).single()
+                  setCurrentId(problem?.current_version_id ?? null)
+                  const { data } = await client
+                    .from('problem_versions')
+                    .select('id,version_no,review_status,origin,problem_text,created_at')
+                    .eq('problem_id', problemId)
+                    .order('version_no')
+                  setVersions(data ?? [])
+                  setSelected(problem?.current_version_id ?? selected)
+                })()
               }}
             >
               이 버전으로 복원 (새 버전)

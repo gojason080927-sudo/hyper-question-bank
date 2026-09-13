@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { nodePath, useCatalogs } from '../../lib/workflow/useCatalogs'
+import { chunkIds } from '../../lib/editor/openVersion'
 
 type Row = {
   id: string
@@ -52,12 +53,11 @@ export function QuestionListPage() {
         return
       }
       const versionIds = problems.map((row) => row.current_version_id).filter(Boolean) as string[]
-      const { data: versions } = versionIds.length
-        ? await client
-            .from('problem_versions')
-            .select('id,version_no,problem_text')
-            .in('id', versionIds)
-        : { data: [] }
+      const versionRows: Array<{ id: string; version_no: number; problem_text: string }> = []
+      for (const chunk of chunkIds(versionIds)) {
+        const { data } = await client.from('problem_versions').select('id,version_no,problem_text').in('id', chunk)
+        versionRows.push(...((data ?? []) as typeof versionRows))
+      }
       const { data: concepts } = versionIds.length
         ? await client
             .from('problem_concepts')
@@ -84,7 +84,7 @@ export function QuestionListPage() {
             .eq('difficulty_source', 'HUMAN')
         : { data: [] }
 
-      const versionMap = new Map((versions ?? []).map((row) => [row.id, row]))
+      const versionMap = new Map(versionRows.map((row) => [row.id, row]))
       const next: Row[] = problems.map((problem) => {
         const version = problem.current_version_id ? versionMap.get(problem.current_version_id) : undefined
         const concept = (concepts ?? []).find(

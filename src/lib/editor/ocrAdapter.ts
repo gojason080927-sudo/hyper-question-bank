@@ -41,11 +41,18 @@ export function ocrTextToDocument(ocrText: string, instruction?: string | null):
   return withLatexIndex(doc)
 }
 
-export function conversionDiff(ocrText: string, converted: EditorNode): ConversionDiff {
+export function conversionDiff(
+  ocrText: string,
+  converted: EditorNode,
+  instruction?: string | null,
+): ConversionDiff {
   const ocr = ocrText.replace(/\s+/g, ' ').trim()
   const next = documentPlainText(converted).replace(/\s+/g, ' ').trim()
+  const instr = (instruction ?? '').replace(/\s+/g, ' ').trim()
+  const stemOnly = instr && next.startsWith(instr) ? next.slice(instr.length).trim() : next
+  const equal = !ocr || ocr === next || ocr === stemOnly || next.includes(ocr)
   return {
-    equal: ocr === next,
+    equal,
     ocr,
     converted: next,
     ocrSha256: textFingerprint(ocr),

@@ -6,6 +6,7 @@ import { extractMathSpans, latexRoundTripEqual, preserveUnsupportedLatex } from 
 import { conversionDiff, ocrTextToDocument } from './ocrAdapter'
 import { inspectClipboard, textToEditorDoc } from './paste'
 import { looksLikeXss, sanitizeHtml, stripDataImages } from './sanitize'
+import { pickOpenEditorVersion, chunkIds } from './openVersion'
 import { collectLatex, containsBase64Image, documentPlainText, stripTransientImageSrc } from './schema'
 
 const longItem = (id: string, extra = ''): WorksheetItemModel => ({
@@ -60,6 +61,7 @@ describe('ocrAdapter', () => {
     expect(doc.blocks.instruction).toBe(true)
     expect(collectLatex(doc.tiptap_json).map((row) => row.latex)).toEqual(['x^2'])
     expect(conversionDiff(ocr, ocrTextToDocument(ocr).tiptap_json).equal).toBe(true)
+    expect(conversionDiff(ocr, doc.tiptap_json, '물음에 답하시오.').equal).toBe(true)
   })
 })
 
@@ -127,5 +129,23 @@ describe('a4Pagination', () => {
     expect(two[0]?.columns[0].length + two[0]?.columns[1].length).toBeGreaterThan(0)
     expect(one.some((page) => page.columns[0].some((row) => row.id === 'b' && row.number === 2))).toBe(true)
     expect(estimateItemHeightMm(longItem('fig'), DEFAULT_A4_LAYOUT)).toBeGreaterThan(28)
+  })
+})
+
+describe('openVersion', () => {
+  const v1 = { id: 'v1', version_no: 1, review_status: 'UNREVIEWED' }
+  const v2 = { id: 'v2', version_no: 2, review_status: 'UNREVIEWED' }
+  const verified = { id: 'v3', version_no: 3, review_status: 'VERIFIED' }
+
+  it('prefers the current TEACHER_EDIT version over an older UNREVIEWED row', () => {
+    expect(pickOpenEditorVersion([v1, v2], 'v2')).toEqual({ action: 'edit', version: v2 })
+  })
+
+  it('clones when current is VERIFIED instead of reopening an old draft', () => {
+    expect(pickOpenEditorVersion([v1, verified], 'v3')).toEqual({ action: 'clone', version: verified })
+  })
+
+  it('chunks list version lookups', () => {
+    expect(chunkIds(['a', 'b', 'c'], 2)).toEqual([['a', 'b'], ['c']])
   })
 })

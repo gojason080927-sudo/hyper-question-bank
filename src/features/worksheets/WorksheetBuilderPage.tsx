@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { parseHqBError } from '../../lib/workflow/validation'
 import {
@@ -9,7 +9,7 @@ import {
   type WorksheetItemModel,
 } from '../../lib/editor/a4Pagination'
 import { examHidesExplanation } from '../../lib/editor/choices'
-import { KatexText } from '../../lib/math/KatexText'
+import { MixedKatexText } from '../../lib/math/MixedKatexText'
 
 type ItemRow = {
   id: string
@@ -27,19 +27,43 @@ type ItemRow = {
 
 export function WorksheetBuilderPage() {
   const { worksheetId } = useParams()
+  const navigate = useNavigate()
   const [params] = useSearchParams()
   const [title, setTitle] = useState('HYPER 문제지')
   const [layout, setLayout] = useState<A4Layout>(DEFAULT_A4_LAYOUT)
   const [items, setItems] = useState<ItemRow[]>([])
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(params.get('code') ?? '')
   const [hits, setHits] = useState<Array<{ id: string; public_code: string; problem_text: string; current_version_id: string | null }>>([])
   const [similar, setSimilar] = useState<Array<{ problem_id: string; score?: number }>>([])
   const [error, setError] = useState<string | null>(null)
   const [info, setInfo] = useState<string | null>(null)
+  const [searched, setSearched] = useState(false)
+
+  useEffect(() => {
+    if (worksheetId !== 'new') return
+    const client = getSupabase()
+    if (!client) return
+    void (async () => {
+      const { data, error: createError } = await client.rpc('hqb_create_worksheet', {
+        payload: { title: 'HYPER 문제지', exam_kind: 'EXAM', layout: { columns: 1 } },
+      })
+      if (createError) {
+        setError(parseHqBError(createError.message))
+        return
+      }
+      const id = (data as { worksheet_id?: string })?.worksheet_id
+      if (!id) {
+        setError('문제지를 만들지 못했습니다.')
+        return
+      }
+      const next = new URLSearchParams(params)
+      navigate(`/worksheets/${id}${next.toString() ? `?${next}` : ''}`, { replace: true })
+    })()
+  }, [navigate, params, worksheetId])
 
   useEffect(() => {
     const client = getSupabase()
-    if (!client || !worksheetId) return
+    if (!client || !worksheetId || worksheetId === 'new') return
     void (async () => {
       const { data: sheet } = await client
         .from('worksheets')
@@ -130,26 +154,41 @@ export function WorksheetBuilderPage() {
   async function searchProblems() {
     const client = getSupabase()
     if (!client) return
-    const { data } = await client
+    const q = query.trim()
+    let request = client
       .from('problems')
       .select('id,public_code,current_version_id')
       .in('lifecycle_status', ['DRAFT', 'ACTIVE'])
+      .order('updated_at', { ascending: false })
       .limit(40)
+    if (q) {
+      request = client
+        .from('problems')
+        .select('id,public_code,current_version_id')
+        .in('lifecycle_status', ['DRAFT', 'ACTIVE'])
+        .ilike('public_code', `%${q}%`)
+        .order('updated_at', { ascending: false })
+        .limit(40)
+    }
+    const { data, error: searchError } = await request
+    if (searchError) {
+      setError(parseHqBError(searchError.message))
+      setSearched(true)
+      return
+    }
     const versionIds = (data ?? []).map((row) => row.current_version_id).filter(Boolean) as string[]
     const { data: versions } = versionIds.length
       ? await client.from('problem_versions').select('id,problem_text').in('id', versionIds)
       : { data: [] }
-    const q = query.trim()
     setHits(
-      (data ?? [])
-        .map((row) => ({
-          id: row.id,
-          public_code: row.public_code,
-          current_version_id: row.current_version_id,
-          problem_text: versions?.find((item) => item.id === row.current_version_id)?.problem_text ?? '',
-        }))
-        .filter((row) => !q || row.public_code.includes(q) || row.problem_text.includes(q)),
+      (data ?? []).map((row) => ({
+        id: row.id,
+        public_code: row.public_code,
+        current_version_id: row.current_version_id,
+        problem_text: versions?.find((item) => item.id === row.current_version_id)?.problem_text ?? '',
+      })),
     )
+    setSearched(true)
     if (items[0]) {
       const similarRes = await client.rpc('hqb_search_similar_problems', {
         payload: { problem_id: items[0].problem_id, k: 5 },
@@ -253,9 +292,22 @@ export function WorksheetBuilderPage() {
           </label>
         </div>
         <div className="filters">
-          <input placeholder="문제 검색" value={query} onChange={(event) => setQuery(event.target.value)} />
+          <input
+            placeholder="공개코드 검색 (예: HQB-001339)"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault()
+                void searchProblems()
+              }
+            }}
+          />
           <button type="button" className="btn" onClick={() => void searchProblems()}>검색 · 유사문항</button>
         </div>
+        {searched && hits.length === 0 ? (
+          <p className="muted">검색 결과가 없습니다. 공개코드(예: HQB-001339)로 검색하세요.</p>
+        ) : null}
         <ul>
           {hits.map((row) => (
             <li key={row.id}>
@@ -306,11 +358,11 @@ export function WorksheetBuilderPage() {
                   {col.map((item) => (
                     <section className="a4-item" key={item.id} style={{ marginBottom: `${item.spacingMm ?? 6}mm` }}>
                       <p>
-                        <strong>{item.number}.</strong> ({item.points ?? 0}점) {item.stem}
+                        <strong>{item.number}.</strong> ({item.points ?? 0}점) <MixedKatexText text={item.stem} />
                       </p>
                       {layout.examKind === 'ANSWER_SHEET' || !examHidesExplanation(layout.examKind) ? (
                         <p className="muted">
-                          정답 {item.answer || '—'} {item.explanation ? <>· <KatexText tex={item.explanation} /></> : null}
+                          정답 {item.answer || '—'} {item.explanation ? <>· <MixedKatexText text={item.explanation} /></> : null}
                         </p>
                       ) : null}
                     </section>
