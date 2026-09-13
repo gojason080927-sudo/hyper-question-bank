@@ -570,6 +570,11 @@ textarea {
   color: #343ea0;
 }
 
+.status-pill.pass_false_positive {
+  background: #e7f7ef;
+  color: #1c6b45;
+}
+
 .qa839-summary {
   margin-bottom: 12px;
 }
@@ -595,10 +600,18 @@ textarea {
   font-size: 12px;
 }
 
-.qa839-compare {
+.qa839-compare,
+.qa840-compare {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 12px;
+}
+
+.qa840-neighbors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .review-split {
@@ -614,7 +627,10 @@ textarea {
   }
 
   .qa839-compare,
-  .review-split.qa839-split {
+  .qa840-compare,
+  .qa840-neighbors,
+  .review-split.qa839-split,
+  .review-split.qa840-split {
     grid-template-columns: 1fr;
   }
 }

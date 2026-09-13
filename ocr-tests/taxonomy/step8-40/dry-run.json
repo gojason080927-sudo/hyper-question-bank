@@ -1,0 +1,248 @@
+{
+  "step": "8.40",
+  "status": "OFFLINE_CENSUS",
+  "summary": {
+    "start_review": 128,
+    "unique_pages": 61,
+    "unique_ids": 128,
+    "p1": 9,
+    "pass_false_positive": 47,
+    "auto_safe": 25,
+    "review_required": 56,
+    "blocked": 0,
+    "paid_ocr_candidate": 0,
+    "human_remaining": 56,
+    "human_reduction_pct": 56.3,
+    "new_versions": 25,
+    "current_version_switches": 25,
+    "queue_cleared": 47,
+    "teacher_edit_protected": 0,
+    "verified_protected": 0,
+    "problems_deleted": 0,
+    "raw_ocr_changed": 0,
+    "public_code_changed": 0,
+    "expected_listed": 1242,
+    "embeddings_changed": 0,
+    "fingerprints_changed": 0,
+    "paid_ocr_calls": 0,
+    "paid_ocr_pages": 0
+  },
+  "p1": [
+    {
+      "number": "0333",
+      "page": 50,
+      "verdict": "REVIEW_REQUIRED",
+      "reason": "동일 스텁 본문. 원본 페이지에는 선택지가 있으나 숫자를 추측해 채우지 않는다"
+    },
+    {
+      "number": "0381",
+      "page": 56,
+      "verdict": "REVIEW_REQUIRED",
+      "reason": "동일 스텁 본문. 원본 페이지에는 선택지가 있으나 숫자를 추측해 채우지 않는다"
+    },
+    {
+      "number": "0284",
+      "page": 47,
+      "verdict": "PASS_FALSE_POSITIVE",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다"
+    },
+    {
+      "number": "0297",
+      "page": 47,
+      "verdict": "PASS_FALSE_POSITIVE",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다"
+    },
+    {
+      "number": "0279",
+      "page": 47,
+      "verdict": "PASS_FALSE_POSITIVE",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다"
+    },
+    {
+      "number": "0282",
+      "page": 47,
+      "verdict": "PASS_FALSE_POSITIVE",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다"
+    },
+    {
+      "number": "0296",
+      "page": 47,
+      "verdict": "PASS_FALSE_POSITIVE",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다"
+    },
+    {
+      "number": "0331",
+      "page": 50,
+      "verdict": "REVIEW_REQUIRED",
+      "reason": "동일 스텁 본문. 원본 페이지에는 선택지가 있으나 숫자를 추측해 채우지 않는다"
+    },
+    {
+      "number": "0283",
+      "page": 47,
+      "verdict": "PASS_FALSE_POSITIVE",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다"
+    }
+  ],
+  "examples_auto_safe": [
+    {
+      "number": "0951",
+      "rules": [
+        "trailing_section_code:08 이차부등식"
+      ],
+      "from": "이차부등식 $$ax^2+2x+a>0$$이 해를 갖도록 하는 실수 $$a$$의 값의 범위는? 08 이차부등식",
+      "to": "이차부등식 $$ax^2+2x+a>0$$이 해를 갖도록 하는 실수 $$a$$의 값의 범위는?"
+    },
+    {
+      "number": "0982",
+      "rules": [
+        "trailing_section_code:08 이차부등식"
+      ],
+      "from": "| 내용 문제 연립부등식 $\\begin{cases} x^2 - 2x - 3 < 0 \\\\ (x - 2)(x - a) < 0 \\end{cases}$ 의 해가 $-1 < x < 2$일 때, 실수 $a$의 최댓값을 구하시오. 08 이차부등식",
+      "to": "| 내용 문제 연립부등식 $\\begin{cases} x^2 - 2x - 3 < 0 \\\\ (x - 2)(x - a) < 0 \\end{cases}$ 의 해가 $-1 < x < 2$일 때, 실수 $a$의 최댓값을 구하시오."
+    },
+    {
+      "number": "1023",
+      "rules": [
+        "trailing_section_code:08 이차부등식"
+      ],
+      "from": "141쪽 유형 16 사람행 연립부등식 $\\begin{cases}x^{2}+ax+b\\leq0\\\\x^{2}+cx+d\\geq0\\end{cases}$ 의 해가 $x=-2$ 또는 $1\\leq x\\leq3$일 때, 실수 $a$, $b$, $c$, $d$에 대하여 $ad-bc$의 값을 구하시오. 08 이차부등식",
+      "to": "141쪽 유형 16 사람행 연립부등식 $\\begin{cases}x^{2}+ax+b\\leq0\\\\x^{2}+cx+d\\geq0\\end{cases}$ 의 해가 $x=-2$ 또는 $1\\leq x\\leq3$일 때, 실수 $a$, $b$, $c$, $d$에 대하여 $ad-bc$의 값을 구하시오."
+    },
+    {
+      "number": "0274",
+      "rules": [
+        "next_number_packaging_trailer"
+      ],
+      "from": "# 0274\n 37쪽 유형 20 + 38쪽 유형 21\n다음 그림과 같이 한 모서리의 길이가 a인 정육면체가 4개, b인 정육면체가 1개 있고, 밑면의 가로의 길이, 세로의 길이, 높이가 각각 a, a, b인 직육면체가 8개, b, b, a인 직육면체가 5개 있다.\n![img-0.jpeg](img-0.jpeg)\n![img-1.jpeg](img-1.jpeg)\n",
+      "to": "# 0274\n 37쪽 유형 20 + 38쪽 유형 21\n다음 그림과 같이 한 모서리의 길이가 a인 정육면체가 4개, b인 정육면체가 1개 있고, 밑면의 가로의 길이, 세로의 길이, 높이가 각각 a, a, b인 직육면체가 8개, b, b, a인 직육면체가 5개 있다.\n![img-0.jpeg](img-0.jpeg)\n![img-1.jpeg](img-1.jpeg)\n"
+    },
+    {
+      "number": "0463",
+      "rules": [
+        "next_number_packaging_trailer"
+      ],
+      "from": "# 0463\n오른쪽 그림과 같이 한 번의 길이\n가 4인 정오각형 ABCDE에서\nAC와 BE가 만나는 점을 P라 할\n때, BP의 길이는?\n![img-0.jpeg](img-0.jpeg)\n① $-2+2\\sqrt{3}$\n② $-2+2\\sqrt{5}$\n③ $-2+3\\sqrt{5}$\n④ $-4+2\\sqrt{5}$\n⑤ $-4+3\\sqrt{5}$\n# 유형 06\n# 이차방",
+      "to": "# 0463\n오른쪽 그림과 같이 한 번의 길이\n가 4인 정오각형 ABCDE에서\nAC와 BE가 만나는 점을 P라 할\n때, BP의 길이는?\n![img-0.jpeg](img-0.jpeg)\n① $-2+2\\sqrt{3}$\n② $-2+2\\sqrt{5}$\n③ $-2+3\\sqrt{5}$\n④ $-4+2\\sqrt{5}$\n⑤ $-4+3\\sqrt{5}$\n# 유형 06\n# 이차방"
+    },
+    {
+      "number": "0480",
+      "rules": [
+        "trailing_section_code:04 이차방정식",
+        "trailing_packaging:개념 04-3"
+      ],
+      "from": "0480 ⑤ \n시술형\nx에 대한 이차식 4x² - (3a - 5)x + a² - 5a + 2가 4(x + k)²으로 인수분해될 때, 실수 a, k에 대하여 a - k의 값을 구하시오. (단, a > 1)\n유형 10\n이차방정식의 근과 계수의 관계를 이용하여 식의 값 구하기 (1)\n개념 04-3\n04 이차방정식",
+      "to": "0480 ⑤ \n시술형\nx에 대한 이차식 4x² - (3a - 5)x + a² - 5a + 2가 4(x + k)²으로 인수분해될 때, 실수 a, k에 대하여 a - k의 값을 구하시오. (단, a > 1)\n유형 10\n이차방정식의 근과 계수의 관계를 이용하여 식의 값 구하기 (1)"
+    },
+    {
+      "number": "0495",
+      "rules": [
+        "trailing_section_code:04 이차방정식",
+        "trailing_packaging:개념 04-3"
+      ],
+      "from": "성당 및 풀이 59쪽\n# 0495 ②\n$x$에 대한 이차방정식 $x^2+(k^2-k-2)x-2k+3=0$의 두 실근의 절댓값이 같고 부호가 서로 다를 때, 실수 $k$의 값을 구하시오.\n# 유형 13\n미정계수의 결정\n; 근의 관계식이 주어진 경우\n개념 04-3\n04 이차방정식",
+      "to": "성당 및 풀이 59쪽\n# 0495 ②\n$x$에 대한 이차방정식 $x^2+(k^2-k-2)x-2k+3=0$의 두 실근의 절댓값이 같고 부호가 서로 다를 때, 실수 $k$의 값을 구하시오.\n# 유형 13\n미정계수의 결정\n; 근의 관계식이 주어진 경우"
+    },
+    {
+      "number": "0601",
+      "rules": [
+        "next_number_packaging_trailer"
+      ],
+      "from": "# 0601\n오른쪽 그림과 같이 $x^2$의 계수가\n1인 이차함수 $y=f(x)$의 그래프가\n$x$축과 두 점 $(\\alpha, 0)$, $(\\beta, 0)$에서\n만나고, 직선 $y=g(x)$와 두 점\n$(\\alpha, 0)$, $(\\gamma, f(\\gamma))$에서 만난다.\n$\\beta-\\alpha=3, \\gamma-\\beta=2$이고\n![img-0",
+      "to": "# 0601\n오른쪽 그림과 같이 $x^2$의 계수가\n1인 이차함수 $y=f(x)$의 그래프가\n$x$축과 두 점 $(\\alpha, 0)$, $(\\beta, 0)$에서\n만나고, 직선 $y=g(x)$와 두 점\n$(\\alpha, 0)$, $(\\gamma, f(\\gamma))$에서 만난다.\n$\\beta-\\alpha=3, \\gamma-\\beta=2$이고\n![img-0"
+    },
+    {
+      "number": "0507",
+      "rules": [
+        "next_number_packaging_trailer"
+      ],
+      "from": "정답 및 풀이 62쪽\n# 0507 ③ \n오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}$를 지름으로 하는 원 위의 한 점 P에서 $\\overline{\\mathrm{AB}}$에 내린 수선의 발을 H라 하자.\n$\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{PH}} = 3$, $\\overline{\\mathr",
+      "to": "정답 및 풀이 62쪽\n# 0507 ③ \n오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}$를 지름으로 하는 원 위의 한 점 P에서 $\\overline{\\mathrm{AB}}$에 내린 수선의 발을 H라 하자.\n$\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{PH}} = 3$, $\\overline{\\mathr"
+    },
+    {
+      "number": "0108",
+      "rules": [
+        "next_number_packaging_trailer"
+      ],
+      "from": "# 0108 » 교육청 기술\n 14쪽 유형 05 + 19쪽 유형 12\n선분 AB를 지름으로 하는 반\n원이 있다. 그림과 같이 호\nAB 위의 점 P에서 선분 AB\n에 내린 수선의 발을 Q라 하\n![img-0.jpeg](img-0.jpeg)\n고, 선분 AQ와 선분 QB를 지름으로 하는 반원을 각각\n그린다. 호 AB, 호 AQ 및 호 QB로 둘러싸인\n모양 도형의",
+      "to": "# 0108 » 교육청 기술\n 14쪽 유형 05 + 19쪽 유형 12\n선분 AB를 지름으로 하는 반\n원이 있다. 그림과 같이 호\nAB 위의 점 P에서 선분 AB\n에 내린 수선의 발을 Q라 하\n![img-0.jpeg](img-0.jpeg)\n고, 선분 AQ와 선분 QB를 지름으로 하는 반원을 각각\n그린다. 호 AB, 호 AQ 및 호 QB로 둘러싸인\n모양 도형의"
+    },
+    {
+      "number": "0590",
+      "rules": [
+        "next_number_packaging_trailer"
+      ],
+      "from": "![img-1.jpeg](img-1.jpeg)\n# 0590 ⑤\n오른쪽 그림과 같이 이차함수\n$$y=f(x)$$의 그래프가 x축과 만나는\n두 점을 각각 A, B라 할 때,\n$$2\\overline{OA}=\\overline{OB}$$이다. 이차방정식\n$$f(x)=0$$의 두 근의 합은 1이고 이\n차방정식 $$f(4x-k)=0$$의 두 근의 합은 $$-1$$일 때",
+      "to": "![img-1.jpeg](img-1.jpeg)\n# 0590 ⑤\n오른쪽 그림과 같이 이차함수\n$$y=f(x)$$의 그래프가 x축과 만나는\n두 점을 각각 A, B라 할 때,\n$$2\\overline{OA}=\\overline{OB}$$이다. 이차방정식\n$$f(x)=0$$의 두 근의 합은 1이고 이\n차방정식 $$f(4x-k)=0$$의 두 근의 합은 $$-1$$일 때"
+    },
+    {
+      "number": "0648",
+      "rules": [
+        "next_number_packaging_trailer"
+      ],
+      "from": "# 0648\n 89쪽 유형 05\n오른쪽 그림과 같이 폭이 7 m\n이고, 높이가 $\\frac{49}{4}$ m인 포물선\n모양의 조형물이 있다. 이 조\n형물이 지면과 만나는 두 지점\n을 각각 A, B라 하고 A 지점\n![img-0.jpeg](img-0.jpeg)\n에 높이가 16 m인 조명이 지면과 수직으로 설치되어 있\n을 때, 이 조명의 불빛에 의하여 생기는 ",
+      "to": "# 0648\n 89쪽 유형 05\n오른쪽 그림과 같이 폭이 7 m\n이고, 높이가 $\\frac{49}{4}$ m인 포물선\n모양의 조형물이 있다. 이 조\n형물이 지면과 만나는 두 지점\n을 각각 A, B라 하고 A 지점\n![img-0.jpeg](img-0.jpeg)\n에 높이가 16 m인 조명이 지면과 수직으로 설치되어 있\n을 때, 이 조명의 불빛에 의하여 생기는 "
+    }
+  ],
+  "examples_pass_fp": [
+    {
+      "number": "0581",
+      "reason": "정상 공통 발문 [0581~0584]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0581~0584] 다음을 만족시키는 상수 $$k$$의 값을 구하시오.\n$$0\\le x\\le 1$$에서 이차함수 $$f(x)=3(x+1)^{2}+k$$의 최솟값은 $$4$$이다."
+    },
+    {
+      "number": "0572",
+      "reason": "정상 공통 발문 [0572~0573]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0572~0573] 다음을 만족시키는 상수 $$a$$, $$b$$의 값을 구하시오.\n이차함수 $$y=x^{2}+ax+b$$는 $$x=1$$에서 최솟값 $$-3$$을 갖는다."
+    },
+    {
+      "number": "1035",
+      "reason": "정상 공통 발문 [1035~1037]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[1035~1037] 두 지점 A, B 사이에는 6개의 버스 노선과 2개의 지하철 노선이 있다. A 지점에서 출발하여 B 지점으로 갔다가 다시 A 지점으로 돌아올 때, 다음을 구하시오.\n갈 때는 버스를, 올 때는 지하철을 이용하는 경우의 수"
+    },
+    {
+      "number": "0284",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다",
+      "stem": "$2+\\sqrt{5}$"
+    },
+    {
+      "number": "0297",
+      "reason": "원본에서 수식 한 줄 하위 항목으로 짧은 본문이 정상이다. 길이 신호는 오탐. 공통 발문이 이 레코드에 없어도 숫자를 추측해 넣지 않는다",
+      "stem": "$\\sqrt{15}i$"
+    },
+    {
+      "number": "0003",
+      "reason": "정상 공통 발문 [0003~0004]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0003~0004] 다항식 $2x^2+3xy-y^2+x-10y+1$을 다음과 같이 정리하시오.\n$x$에 대한 내림차순"
+    },
+    {
+      "number": "0015",
+      "reason": "정상 공통 발문 [0015~0019]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0015~0019] 곱셈 공식을 이용하여 다음 식을 전개하시오.\n$(a+2b-c)^2$"
+    },
+    {
+      "number": "0005",
+      "reason": "정상 공통 발문 [0005~0007]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0005~0007] 다음을 계산하시오.\n$(2x^3+x^2-1)+(-x^3+x-3)$"
+    },
+    {
+      "number": "0008",
+      "reason": "정상 공통 발문 [0008~0010]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0008~0010] 세 다항식 $A=x^3-3x^2+x-1$, $B=2x^3+x^2-5$, $C=-x^2-4x+6$에 대하여 다음을 계산하시오.\n$A+B-C$"
+    },
+    {
+      "number": "0020",
+      "reason": "정상 공통 발문 [0020~0021]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0020~0021] 다음을 계산하시오.\n$(x-3)^3+(x+4)(x^2-4x+16)$"
+    },
+    {
+      "number": "0036",
+      "reason": "정상 공통 발문 [0036~0037]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0036~0037] 다음 두 다항식 $A$, $B$에 대하여 $A$를 $B$로 나누었을 때의 몫을 $Q$, 나머지를 $R$라 할 때, $A=BQ+R$ 꼴로 나타내시오.\n$A=2x^3+x^2-7x+7$, $B=2x-1$"
+    },
+    {
+      "number": "0027",
+      "reason": "정상 공통 발문 [0027~0028]. 8.39 extraSiblingNumbers는 범위 토큰 끝번호를 오탐했다",
+      "stem": "[0027~0028] $a+b+c=2$, $ab+bc+ca=-1$, $abc=-2$일 때, 다음 식의 값을 구하시오.\n$a^2+b^2+c^2$"
+    }
+  ]
+}
