@@ -459,6 +459,7 @@ async function main() {
   const queue = await staff.rpc('hqb_list_review_queue', { payload: { source_document_id: SSEN } })
   summary.review_queue = { ssen: (queue.data?.items ?? []).length, error: queue.error?.message ?? null }
 
+  const sample = problems.filter((row) => row.lifecycle_status === 'DRAFT').slice(0, 2)
   const existingSheet = await admin
     .from('worksheets')
     .select('id')

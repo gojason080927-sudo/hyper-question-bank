@@ -1,0 +1,72 @@
+{
+  "step": "8.36",
+  "status": "PERSISTED",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "student_care_ref_touched": false,
+  "production_verified_writes": 0,
+  "content_rewrites": 0,
+  "schema": {
+    "attempted": true,
+    "applied": true,
+    "reason": "applied; applied"
+  },
+  "before": {
+    "drafts": 1281,
+    "active": 22,
+    "needs_review": 15,
+    "ssen_problems": 1253,
+    "ssen_needs_review": 9,
+    "fingerprints": 3543,
+    "embeddings": 1244,
+    "worksheets": 4
+  },
+  "after": {
+    "drafts": 1281,
+    "active": 22,
+    "needs_review": 15,
+    "ssen_problems": 1253,
+    "ssen_needs_review": 9,
+    "fingerprints": 3543,
+    "embeddings": 1244,
+    "worksheets": 4
+  },
+  "outline": {
+    "majors": 5,
+    "sections": 10,
+    "types": 68,
+    "assignments": 1253
+  },
+  "fixtures_marked": 34,
+  "duplicates_hidden": 11,
+  "ocr_cleaned": 0,
+  "merged_flagged": 63,
+  "merged_split": 0,
+  "bbox_corrected": 0,
+  "pagination": {
+    "total": 1292,
+    "unique": 1292
+  },
+  "review_queue": {
+    "ssen": 9,
+    "error": null
+  },
+  "worksheet": {
+    "id": "0c054709-63dd-4637-b20f-aee9263018e1",
+    "archived": true,
+    "reused": true,
+    "stems_rewritten": false
+  },
+  "unresolved": [
+    {
+      "item": "merged_stem_split",
+      "count": 63,
+      "reason": "독립 bbox 없이 분리하면 원본 영역이 앞뒤 문제를 계속 포함하므로 SUPERSEDED_SPLIT을 만들지 않음. 확인 필요 큐에 범위 발문만 보고."
+    },
+    {
+      "item": "bbox_auto_crop",
+      "count": 0,
+      "reason": "문자 좌표 없이 확실한 침범만 보정. 8.34 보정 이후 추가 근거 없는 일괄 crop 재생성은 하지 않음."
+    }
+  ]
+}
