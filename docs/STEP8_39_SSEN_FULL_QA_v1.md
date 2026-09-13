@@ -36,7 +36,7 @@ Frozen Production counts:
 
 ## 3. Cache
 
-Key = `inspector 8.39.1 | rules r1 | pdf sha | page sha | current_version_id | stem hash`.
+Key = `inspector 8.39.3 | rules r1 | pdf sha | page sha | current_version_id | stem hash`.
 
 Same key → skip recompute. PDF unchanged → reuse page PNGs in `.ocr-temp/step8-39`. Existing Mathpix/Mistral JSON is counted, never re-called.
 
@@ -78,7 +78,24 @@ Official prices used in code (do not invent):
 
 Recommend page-bundled calls after user approval. **This STEP: 0 calls, $0.**
 
-## 9. Non-goals
+## 9. Census (inspector 8.39.3, 2026-09-13T15:31:29Z)
+
+| Metric | Value |
+|---|---|
+| Pages / listed | 192/192 · 1242/1242 |
+| PASS / AUTO_SAFE / REVIEW / PAID_OCR / BLOCKED | 1091 / 23 / 128 / 0 / 11 |
+| P0–P4 | 0 / 9 / 108 / 258 / 40 |
+| Unique listed non-PASS | 151 |
+| GATE fail listed | G1 3 · G2 372 · G3 0 · G4 48 · G5 0 · G6 0 |
+| Persist written / rerun | 23 / 0 |
+| Cache after persist | hits 1253 / misses 0 |
+| Paid OCR calls | 0 ($0). Recommend: no call |
+| 8.38 REVIEW 18 ∩ live NEEDS_REVIEW 9 | empty (`both: []`) |
+| Listed / embeddings / fingerprints after | 1242 / 1244 / 3543 |
+
+Dashboard: `/pipeline-review?source=qa839`. Artifacts: `ocr-tests/taxonomy/step8-39/` and `public/step8-39-full-qa.json`.
+
+## 10. Non-goals
 
 - No problem DELETE
 - No raw OCR mutation

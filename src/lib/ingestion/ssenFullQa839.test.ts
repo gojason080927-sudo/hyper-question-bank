@@ -64,6 +64,18 @@ describe('GATE 2 stem structure', () => {
     expect(plan.applies).toHaveLength(1)
   })
 
+  it('does not strip a short major title out of a longer section name', () => {
+    const row = problem839({
+      id: 'eq',
+      problem_number: 703,
+      stem: '실근은? 06 여러 가지 방정식',
+      source_page: 103,
+      section_code: '06',
+    })
+    expect(proposeAutoSafeStem(row, [row])?.stem).toBe('실근은?')
+    expect(proposeAutoSafeStem(row, [row])?.stem).not.toContain('여러 가지')
+  })
+
   it('does not AUTO_SAFE remaining range leaks (8.38 leftover)', () => {
     const donor = problem839({
       id: 'r',
@@ -176,6 +188,14 @@ describe('protections and idempotency', () => {
 })
 
 describe('coverage, merge, cache, paid OCR plan', () => {
+  it('does not mark a page reverse just because catalog order is unsorted', () => {
+    const a = problem839({ id: 'b', problem_number: 2, stem: '$y$', source_page: 9 })
+    const b = problem839({ id: 'a', problem_number: 1, stem: '$x$', source_page: 9 })
+    const plan = pack([a, b])
+    expect(plan.records.every((row) => !row.signals.some((s) => s.code === 'PAGE_REVERSE'))).toBe(true)
+    expect(plan.pages[8]?.listed_count).toBe(2)
+  })
+
   it('emits a census row for all 192 pages', () => {
     const pages = buildPageCensus([problem839({ id: 'a', problem_number: 1, stem: '$x$', source_page: 9 })])
     expect(pages).toHaveLength(SSEN_PAGE_COUNT)

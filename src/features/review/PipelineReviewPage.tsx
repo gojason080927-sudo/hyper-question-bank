@@ -85,20 +85,6 @@ export function PipelineReviewPage() {
     })()
   }, [])
 
-  useEffect(() => {
-    void (async () => {
-      try {
-        const res = await fetch('/step8-39-full-qa.json')
-        if (!res.ok) return
-        const payload = (await res.json()) as FullQaPayload
-        setQaPayload(payload)
-        setQaSelected(payload.records?.[0]?.problem_id ?? null)
-      } catch {
-        setQaPayload(null)
-      }
-    })()
-  }, [])
-
   const selected = useMemo(() => queue.find((row) => row.problem_id === selectedId) ?? null, [queue, selectedId])
   const ssenCount = queue.filter((row) => row.source_document_id === SSEN_SOURCE_DOCUMENT_ID).length
   const otherCount = queue.length - ssenCount

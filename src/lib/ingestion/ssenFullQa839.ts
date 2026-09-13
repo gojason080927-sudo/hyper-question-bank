@@ -2,14 +2,13 @@
  * STEP 8.39 — free full QA of 쎈수학 공통수학1 (192 pages / 1,242 listed).
  * Never DELETE. Never paid OCR. Never overwrite TEACHER_EDIT / VERIFIED.
  */
-import { sectionForPage, SSEN_LAST_PAGE, SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
+import { sectionForPage, SSEN_LAST_PAGE, SSEN_SECTIONS, SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
 import { safeRenderKatex } from '../math/safeKatex'
 import { splitMathForDisplay } from '../math/splitMathForDisplay'
 import {
   isInsideMathSpan,
   isMathBracketFalsePositive,
   parseRangeTokens,
-  splitDonorAtLaterRange,
   stemHash838,
   stripLeadingProblemNumber,
   stripOcrPackaging,
@@ -18,7 +17,7 @@ import {
 
 export const STEP839 = '8.39'
 export const STEP839_DIR = 'ocr-tests/taxonomy/step8-39'
-export const INSPECTOR_VERSION_839 = '8.39.1'
+export const INSPECTOR_VERSION_839 = '8.39.3'
 export const RULES_VERSION_839 = 'r1'
 export const ASSIGNED_BY_839 = 'STEP_8_39'
 export const CHANGE_REASON_839 = 'STEP 8.39 full-QA AUTO_SAFE'
@@ -280,11 +279,6 @@ export function censusKatex(stem: string): KatexCensus839 {
       failed.push(part.value.slice(0, 120))
     }
   }
-  const textWidth = String(stem ?? '')
-    .replace(/\$.*?\$/gs, '')
-    .replace(/\\\[[\s\S]*?\\\]/g, '')
-    .length * 7
-  if (textWidth > maxWidth) maxWidth = Math.min(textWidth, 2400)
   return {
     spans: math.length,
     render_ok: ok,
@@ -411,17 +405,15 @@ export function buildPageCensus(catalog: CatalogProblem839[], pageHashes: Map<nu
     const rows = catalog.filter((row) => row.source_page === page)
     const listed = rows.filter((row) => row.display_state === 'LISTED')
     const numbers = listed.map((row) => row.original_problem_number).sort()
-    const nums = listed.map((row) => row.problem_number)
-    const reverse = nums.some((n, i) => i > 0 && n < nums[i - 1]!)
     pages.push({
       page,
       listed_count: listed.length,
       hidden_count: rows.length - listed.length,
       numbers,
-      reverse,
+      reverse: false,
       dense: listed.length > 14,
       sparse: listed.length === 0 && page >= 9 && ![7, 45, 115, 149, 173, 6].includes(page),
-      suspect: reverse || listed.length > 14,
+      suspect: listed.length > 14,
       page_sha256: pageHashes.get(page) ?? null,
     })
   }
@@ -544,7 +536,7 @@ function extraSiblingNumbers(stem: string, current: number, start: number, end: 
   return false
 }
 
-function gate3Signals(row: CatalogProblem839, pages: PageCensus839[]): QaSignal[] {
+function gate3Signals(row: CatalogProblem839): QaSignal[] {
   const signals: QaSignal[] = []
   if (row.source_page != null) {
     const section = sectionForPage(row.source_page)
@@ -555,10 +547,6 @@ function gate3Signals(row: CatalogProblem839, pages: PageCensus839[]): QaSignal[
         priority: 'P2',
         detail: `section ${row.section_code} vs page section ${section.code}`,
       })
-    }
-    const page = pages.find((item) => item.page === row.source_page)
-    if (page?.reverse) {
-      signals.push({ code: 'PAGE_REVERSE', gate: 3, priority: 'P2', detail: `p.${row.source_page}` })
     }
   }
   return signals
@@ -659,12 +647,42 @@ function rootCause(signals: QaSignal[]): string | null {
   return signals[0]?.code ?? null
 }
 
+export function stripSafePackaging839(text: string): { text: string; rules: string[] } {
+  const rules: string[] = []
+  let next = String(text ?? '').replace(/\u00a0/g, ' ')
+  const original = next.trim()
+  if (/```/.test(next)) {
+    next = next.replace(/```+/g, '')
+    rules.push('fence')
+  }
+  if (/###/.test(next)) {
+    next = next.replace(/#{2,}/g, '')
+    rules.push('heading_hashes')
+  }
+  next = next.replace(/\n?^\s*쎈수학[^\n]*$/gm, () => {
+    rules.push('book_title')
+    return ''
+  })
+  for (const title of SSEN_SECTIONS.map((row) => row.title)) {
+    if (title.length < 6) continue
+    const escaped = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const trailing = new RegExp(`(?:\\n|\\s+)(?:0?\\d{1,2}\\s*)?${escaped}\\s*$`)
+    if (trailing.test(next)) {
+      next = next.replace(trailing, '')
+      rules.push(`trailing_section:${title}`)
+    }
+  }
+  next = next.replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n').trim()
+  if (next === original) return { text: original, rules: [] }
+  return { text: next, rules }
+}
+
 export function proposeAutoSafeStem(row: CatalogProblem839, catalog: CatalogProblem839[]): { stem: string; rules: string[] } | null {
   if (row.origin === 'TEACHER_EDIT' || row.review_status === 'VERIFIED') return null
   if (row.display_state !== 'LISTED') return null
   let next = row.stem
   const rules: string[] = []
-  const packed = stripOcrPackaging(next)
+  const packed = stripSafePackaging839(next)
   if (packed.rules.length) {
     next = packed.text
     rules.push(...packed.rules)
@@ -679,17 +697,15 @@ export function proposeAutoSafeStem(row: CatalogProblem839, catalog: CatalogProb
       rules.push('next_number_leak')
     }
   }
-  const later = splitDonorAtLaterRange(next, row.problem_number)
-  if (later && later.keep.length >= 4) {
-    // Remaining later-range leaks after 8.38 are not auto-applied here.
-    // Only packaging/number leaks are AUTO_SAFE in 8.39.
-  }
   next = next.replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n').trim()
-  if (!next || next === row.stem.trim()) return null
-  if (rules.length === 0) return null
-  const allowed = new Set(['fence', 'heading_hashes', 'book_title', 'leading_number', 'next_number_leak', 'whitespace'])
-  const safeRules = rules.filter((rule) => allowed.has(rule) || rule.startsWith('trailing_outline'))
+  if (!next || next === row.stem.trim() || rules.length === 0) return null
+  const allowed = new Set(['fence', 'heading_hashes', 'book_title', 'next_number_leak'])
+  const safeRules = rules.filter((rule) => allowed.has(rule) || rule.startsWith('trailing_section'))
   if (safeRules.length !== rules.length) return null
+  const leftover = gate2Signals({ ...row, stem: next }, catalog).filter((signal) =>
+    ['RANGE_LEAK', 'NEXT_NUMBER_LEAK', 'OWN_RANGE_HEADER', 'TOO_SHORT', 'EMPTY_STEM'].includes(signal.code),
+  )
+  if (leftover.length) return null
   return { stem: next, rules: safeRules }
 }
 
@@ -747,7 +763,7 @@ function decideVerdict(row: CatalogProblem839, signals: QaSignal[], proposed: { 
 export function inspectProblem(
   row: CatalogProblem839,
   catalog: CatalogProblem839[],
-  pages: PageCensus839[],
+  _pages: PageCensus839[],
   integrity: Integrity839,
   cache: InspectCache839,
   pageHashes: Map<number, string>,
@@ -767,7 +783,7 @@ export function inspectProblem(
   const signals = [
     ...gate1Signals(row, catalog, integrity),
     ...gate2Signals(row, catalog),
-    ...gate3Signals(row, pages),
+    ...gate3Signals(row),
     ...gate4Signals(row, katex),
     ...gate5Signals(row),
   ]

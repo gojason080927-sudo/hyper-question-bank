@@ -68,3 +68,6 @@ Thumbs.db
 
 # Local recovered crops for STEP 8.31 review UI (copyrighted textbook pixels)
 public/review-crops/
+
+# STEP 8.39 inspect cache (per-item hashes; regenerated locally)
+ocr-tests/taxonomy/step8-39/inspect-cache.json

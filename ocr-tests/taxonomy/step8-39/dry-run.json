@@ -1,0 +1,402 @@
+{
+  "step": "8.39",
+  "status": "PERSIST_REQUESTED",
+  "student_care_accessed": false,
+  "paid_ocr_calls": 0,
+  "paid_ocr_usd": 0,
+  "pdf_sha256": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+  "pages_rendered": 0,
+  "pages_reused": 192,
+  "overlap_838_review_vs_live_needs": {
+    "both": [],
+    "onlyLeft": [
+      "384e16b4-db6b-4d76-974c-d9d26efaecca",
+      "ca4c8736-93f1-413b-bcab-84e1789e7903",
+      "86df1f30-e738-4f21-b752-c97d796c5640",
+      "a90ab479-549c-47f4-8b3d-c9b784f9f3bd",
+      "e5b229b5-c97a-422d-95eb-741b4984a638",
+      "96cf18b0-10c7-48d4-8391-d44f8abe44d6",
+      "0e792bdc-fce6-489e-833c-47796a979b35",
+      "7306b852-286b-4117-bac4-e82bf149d76c",
+      "fede76dc-df46-4eb9-af5a-1bfef77fbd4b",
+      "f74f22a2-dd5f-4266-8f1c-0e15fcafa2f8",
+      "e8a8fbae-e24e-4755-b89e-a0a4122cb35d",
+      "307956f6-db4b-490c-8fae-6ac63e107bf6",
+      "96c9a45e-15ae-49b7-ae1b-2325d76f4052",
+      "ef541457-ccb8-46d1-8b72-98fbf5cdb8c0",
+      "ea240fef-caa3-4d5f-93d9-6cabb5eb5c77",
+      "5525606a-8cb4-4f37-b9d9-245ea9cd690c",
+      "35e3691a-5db9-4b8d-9a58-25012ab40a37",
+      "c60484dc-4036-4759-ab09-e991bb9c2a28"
+    ],
+    "onlyRight": [
+      "3edacc37-8d19-41a8-8387-356e45c61f50",
+      "9e097ac3-f5a4-4255-b49d-4da43f7fb4aa",
+      "baba4283-f091-4ef3-b403-5c6013788fea",
+      "0413c266-4fa4-462a-bf3b-0f6546725cd7",
+      "892087ed-5507-4660-bf20-f922a4210638",
+      "f07b6041-d62f-4058-bd0d-b3dbeef2b7c1",
+      "609087fc-4985-44b2-8853-b307176bb29c",
+      "6fdbe8c7-e5cc-466b-a88b-bbabc2a6d005",
+      "eec6f8a5-9c00-4035-9509-fd00fa006626"
+    ]
+  },
+  "leftover_838": {
+    "review": 18,
+    "blocked": 5,
+    "auto_safe": 40
+  },
+  "paid_ocr_plan": {
+    "unique_problems": 0,
+    "unique_pages": 0,
+    "mathpix_usd_per_image": 0.002,
+    "mathpix_usd_per_pdf_page": 0.005,
+    "mistral_usd_per_page": 0.004,
+    "mathpix_image_estimate_usd": 0,
+    "mathpix_pdf_estimate_usd": 0,
+    "mistral_estimate_usd": 0,
+    "recommended": "호출 불필요",
+    "max_usd": 0,
+    "source": [
+      "https://mathpix.com/pricing/api ($0.002/image, $0.005/PDF page, 12행 초과 이미지는 PDF 단가)",
+      "https://mistral.ai/pricing/api/ OCR 4 $4 / 1000 pages = $0.004/page",
+      "https://docs.mistral.ai/inference/pricing OCR 4 €3.5 / 1000 pages (EUR list)"
+    ]
+  },
+  "mathpix_cache_files": 0,
+  "mistral_cache_files": 0,
+  "worksheets": [
+    {
+      "id": "6b96c426-f29e-4835-bdce-5901c050f3fa",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:07.684431+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "2d48d36d-86cf-43ff-ab26-e373a1c5a88c",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:07.684439+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "eed4ad3b-7963-4697-a36f-3ac3b63b16d6",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:51.357889+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "d322df83-429b-4eec-93ea-ee58c99b3757",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T07:17:15.99017+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "671dffbc-ffff-4438-b072-07fde6ce637b",
+      "title": "TEST STEP 8.37 instructor UI",
+      "created_at": "2026-09-13T07:17:15.99017+00:00",
+      "archived_at": null,
+      "layout": {
+        "header": {
+          "grade": "",
+          "title": "HYPER 문제지",
+          "school": "",
+          "examName": "",
+          "studentNameLabel": "이름"
+        },
+        "columns": 2,
+        "examKind": "EXAM",
+        "fontSizePt": 11,
+        "lineHeight": 1.45,
+        "marginTopMm": 18,
+        "marginLeftMm": 14,
+        "marginRightMm": 14,
+        "marginBottomMm": 16
+      },
+      "item_count": 2,
+      "looks_like_test": true
+    },
+    {
+      "id": "2a09202f-0438-45b6-b055-6aed3752606a",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T13:42:24.372792+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "71842afc-75ba-4fcd-840f-0ce881cc883e",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T13:42:24.370106+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    }
+  ],
+  "before": {
+    "drafts": 1281,
+    "listed": 1242,
+    "ssen_linked": 1253,
+    "ssen_needs_review": 9,
+    "needs_review_ids": [
+      "3edacc37-8d19-41a8-8387-356e45c61f50",
+      "9e097ac3-f5a4-4255-b49d-4da43f7fb4aa",
+      "baba4283-f091-4ef3-b403-5c6013788fea",
+      "0413c266-4fa4-462a-bf3b-0f6546725cd7",
+      "892087ed-5507-4660-bf20-f922a4210638",
+      "f07b6041-d62f-4058-bd0d-b3dbeef2b7c1",
+      "609087fc-4985-44b2-8853-b307176bb29c",
+      "6fdbe8c7-e5cc-466b-a88b-bbabc2a6d005",
+      "eec6f8a5-9c00-4035-9509-fd00fa006626"
+    ],
+    "public_code_dups": 0,
+    "embeddings": 1244,
+    "fingerprints": 3543,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    }
+  },
+  "summary": {
+    "pages_inspected": 192,
+    "listed_inspected": 1242,
+    "hidden_inspected": 11,
+    "unique_candidates": 151,
+    "p0": 0,
+    "p1": 9,
+    "p2": 108,
+    "p3": 258,
+    "p4": 40,
+    "pass": 1091,
+    "auto_safe": 23,
+    "review_required": 128,
+    "paid_ocr_candidate": 0,
+    "blocked": 11,
+    "new_versions": 23,
+    "affected_problems": 23,
+    "teacher_edit_protected": 0,
+    "verified_protected": 0,
+    "problems_deleted": 0,
+    "raw_ocr_changed": 0,
+    "expected_listed": 1242,
+    "embeddings_changed": 0,
+    "fingerprints_changed": 0,
+    "paid_ocr_calls": 0,
+    "paid_ocr_pages": 0,
+    "cache_hits": 1253,
+    "cache_misses": 0,
+    "gate1_fail": 3,
+    "gate2_fail": 372,
+    "gate3_fail": 0,
+    "gate4_fail": 48,
+    "gate5_fail": 0,
+    "gate6_fail": 0
+  },
+  "integrity": {
+    "listed": 1242,
+    "linked": 1253,
+    "hidden": 11,
+    "public_code_dups": 0,
+    "missing_page": 0,
+    "missing_number": 0,
+    "orphan_current_version": 0,
+    "empty_stem": 0,
+    "number_gaps": [
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      126,
+      128,
+      131,
+      133,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      266,
+      310,
+      311,
+      314,
+      316,
+      317,
+      320,
+      324,
+      328,
+      330,
+      346,
+      347,
+      348,
+      349,
+      350
+    ],
+    "page_reverse_ids": []
+  },
+  "safety": {
+    "ok": true,
+    "violations": []
+  },
+  "examples": [
+    {
+      "problem_id": "1f02dc63-5bf0-494c-ae8f-55bd0dc4b308",
+      "public_code": "HQB-000091",
+      "number": "0201",
+      "page": 33,
+      "from": "$99^{100}$을 98로 나누었을 때의 나머지는? 02 나머지 정리와 인수분해",
+      "to": "$99^{100}$을 98로 나누었을 때의 나머지는?",
+      "from_sha256": "38185873505240666b6b5e7a4ba147aaec0d1e42a4bb27fc6e3a8a839ca8c4b0",
+      "to_sha256": "51a9027292c5734ce6c6ffd76a63abd7a0a0836763d0309acd9ae5de69ef24b7"
+    },
+    {
+      "problem_id": "d693ef3e-d9be-40a6-9b70-09f4afb4e328",
+      "public_code": "HQB-000092",
+      "number": "0230",
+      "page": 37,
+      "from": "다항식 $2x^2 + 5xy - 3y^2 + 3x - 5y - 2$를 인수분해하면 $(ax + by - 1)(x + cy + 2)$일 때, 상수 $a, b, c$에 대하여 $a - b + c$의 값을 구하시오. 02 나머지 정리와 인수분해",
+      "to": "다항식 $2x^2 + 5xy - 3y^2 + 3x - 5y - 2$를 인수분해하면 $(ax + by - 1)(x + cy + 2)$일 때, 상수 $a, b, c$에 대하여 $a - b + c$의 값을 구하시오.",
+      "from_sha256": "d000837088a6506cb361bc40c66b7adb6716519a66566481aaa201b5f16433fd",
+      "to_sha256": "6aba8e9a5deeb5d198871d3c10420493c0f3a792db1830585ffb4fbdc4e43455"
+    },
+    {
+      "problem_id": "ea3a5966-e467-4f97-910c-4dac8b605542",
+      "public_code": "HQB-000094",
+      "number": "0259",
+      "page": 41,
+      "from": "30쪽 유형 06 # 서술해 두 다항식 $P(x)$, $Q(x)$에 대하여 $P(x) + Q(x)$를 $x - 1$로 나누었을 때의 나머지가 5이고, $\\{P(x)\\}^3 + \\{Q(x)\\}^3$을 $x - 1$로 나누었을 때의 나머지가 35일 때, 다항식 $P(x)Q(x)$를 $x - 1$로 나누었을 때의 나머지를 구하시오. 02 나머지 정리와 인수분해",
+      "to": "30쪽 유형 06 # 서술해 두 다항식 $P(x)$, $Q(x)$에 대하여 $P(x) + Q(x)$를 $x - 1$로 나누었을 때의 나머지가 5이고, $\\{P(x)\\}^3 + \\{Q(x)\\}^3$을 $x - 1$로 나누었을 때의 나머지가 35일 때, 다항식 $P(x)Q(x)$를 $x - 1$로 나누었을 때의 나머지를 구하시오.",
+      "from_sha256": "74cc94c675100257ed37860444f325638f5e0edd52d15569649b38d056e18697",
+      "to_sha256": "19573c95736b66dd109c743910d225c9addd2a6048b5198cf8bbd0d2647049cd"
+    },
+    {
+      "problem_id": "5124caa5-4dc9-47b6-9d8b-5db9286d51eb",
+      "public_code": "HQB-000095",
+      "number": "0271",
+      "page": 43,
+      "from": "서술형 33쪽 유형 12 + 38쪽 유형 21 201st을 200으로 나누었을 때의 몫이 Q일 때, Q를 200으로 나누었을 때의 나머지를 구하시오. 02 나머지 정리와 인수분해",
+      "to": "서술형 33쪽 유형 12 + 38쪽 유형 21 201st을 200으로 나누었을 때의 몫이 Q일 때, Q를 200으로 나누었을 때의 나머지를 구하시오.",
+      "from_sha256": "c9df4f4cfc49dff95d0ac279a5586ef1f58ac39fc43847a3ff18c4b0fa3d57ef",
+      "to_sha256": "2f3a2270acaa6130d0ff8b82b3e9f5a9fdf660a616382a7a8284870296284049"
+    },
+    {
+      "problem_id": "57beea00-9d8b-4cfd-9fb8-c9aabe03f6a6",
+      "public_code": "HQB-000120",
+      "number": "0598",
+      "page": 87,
+      "from": "② 이차함수 $$y=x^2-2$$의 그래프와 직선 $$y=mx$$의 두 교점의 x좌표의 차가 4일 때, 양수 m의 값은? 05 이차방정식과 이차함수",
+      "to": "② 이차함수 $$y=x^2-2$$의 그래프와 직선 $$y=mx$$의 두 교점의 x좌표의 차가 4일 때, 양수 m의 값은?",
+      "from_sha256": "929c94652e348d6fa547ea68d6c5f3c55beff1f7ceb7f75990fd2e7b97613e95",
+      "to_sha256": "0d61ec1be6612ccd7753079d3e13024e73ebfbaccef690ce6ffb92d857cf9e6b"
+    },
+    {
+      "problem_id": "08ae1659-3e62-439e-840b-ac3d5500250d",
+      "public_code": "HQB-000128",
+      "number": "0703",
+      "page": 103,
+      "from": ": 대표 문제 방정식 $$x^4+5x^3-4x^2+5x+1=0$$의 실근은? 06 여러 가지 방정식",
+      "to": ": 대표 문제 방정식 $$x^4+5x^3-4x^2+5x+1=0$$의 실근은?",
+      "from_sha256": "adbc19fa2a07ec2d06364d29bd805955685549fc6aecbc04aca564faf4eb5313",
+      "to_sha256": "3af4bb9eac0efa4972492dbc258e10ee4e407f3508e4e252d42b39d029199306"
+    },
+    {
+      "problem_id": "591836ac-1fdc-43a9-976a-c83f5b9eb6bb",
+      "public_code": "HQB-000132",
+      "number": "0759",
+      "page": 111,
+      "from": "② 방정식 4x² - 4xy + 2y² + 6y + 9 = 0을 만족시키는 실수 x, y에 대하여 x + y의 값은? 06 여러 가지 방정식",
+      "to": "② 방정식 4x² - 4xy + 2y² + 6y + 9 = 0을 만족시키는 실수 x, y에 대하여 x + y의 값은?",
+      "from_sha256": "6871e27be2ca7e9294d4fb7ee1b8fe50efa14d0fb61c439ff82d6f108cefa5ac",
+      "to_sha256": "33b7216622a3e2598a64b2bccb2a893f4c5d178720518763a89c714b6e68e69b"
+    },
+    {
+      "problem_id": "07ccb15b-8541-4cf1-83a9-fd7227e7b7ba",
+      "public_code": "HQB-000182",
+      "number": "1226",
+      "page": 177,
+      "from": "두 행렬 $A=\\begin{pmatrix}-1 & 2 \\\\ 0 & 4\\end{pmatrix}$, $B=\\begin{pmatrix}5 & -1 \\\\ 2 & -2\\end{pmatrix}$에 대하여 다음 행렬을 구하시오. 10 행렬과 그 연산",
+      "to": "두 행렬 $A=\\begin{pmatrix}-1 & 2 \\\\ 0 & 4\\end{pmatrix}$, $B=\\begin{pmatrix}5 & -1 \\\\ 2 & -2\\end{pmatrix}$에 대하여 다음 행렬을 구하시오.",
+      "from_sha256": "68614c4474dc8227b02b1524b22d48dcf7ac95bbbaac33ff0d4e5951bd982271",
+      "to_sha256": "a4862e8d32d95cc0780393c7414eaffb775b91b8ae9fdfcc2c7ba9adeffce8f9"
+    },
+    {
+      "problem_id": "b3ba3a04-fd6c-423b-a3c6-de076b6e2696",
+      "public_code": "HQB-000832",
+      "number": "0050",
+      "page": 13,
+      "from": "0050 ② \n다항식 $$(1+x+2x^2+\\cdots+100x^{100})^2$$의 전개식에서 $$x^3$$의 계수를 구하시오.\n01 다항식의 연산",
+      "to": "0050 ② \n다항식 $$(1+x+2x^2+\\cdots+100x^{100})^2$$의 전개식에서 $$x^3$$의 계수를 구하시오.",
+      "from_sha256": "79cdff2e1ad21ff2956cd654aa442def7bb35a2f019855617fd0b3ae93ed0a45",
+      "to_sha256": "a231d80ce16f1503734726f1cfe923ce89b47641d116c8d4ecad981ebd0db8ce"
+    },
+    {
+      "problem_id": "a49f1807-fda2-4742-843a-5da003671124",
+      "public_code": "HQB-000870",
+      "number": "0170",
+      "page": 29,
+      "from": "# 0170 ②\n$x$, $y$의 값에 관계없이 $\\frac{ax+by+1}{x+2y-3}$의 값이 항상 일정할 때, 상수 $a$, $b$에 대하여 $a+b$의 값을 구하시오.\n(단, $x+2y-3\\neq0$)\n# 규정 04 항등식에서 계수의 합 구하기\n개념 02-1, 2\n02 나머지 정리와 인수분해",
+      "to": "# 0170 ②\n$x$, $y$의 값에 관계없이 $\\frac{ax+by+1}{x+2y-3}$의 값이 항상 일정할 때, 상수 $a$, $b$에 대하여 $a+b$의 값을 구하시오.\n(단, $x+2y-3\\neq0$)\n# 규정 04 항등식에서 계수의 합 구하기\n개념 02-1, 2",
+      "from_sha256": "7213d0dafe73bae5cb144a99793da4f987c0512565f176f4966f6b3bf87d3a20",
+      "to_sha256": "6078c3712328f6c88e2b717fb5be94e5d2b4d187a0ac1e1b4848a8006e885a68"
+    },
+    {
+      "problem_id": "0f85099c-97d1-4b14-9ba4-69289f04f159",
+      "public_code": "HQB-000902",
+      "number": "0245",
+      "page": 39,
+      "from": "# 0245 | 대표 문제\n삼각형의 세 변의 길이 $a, b, c$에 대하여\n$$a^3-a^2b+ac^2+ab^2-b^2-bc^2=0$$\n이 성립할 때, 이 삼각형은 어떤 삼각형인가?\n① \\(a = b\\) 的 이동변삼각형\n② \\(a = c\\) 的 이동변삼각형\n③ \\(b = c\\) 的 이동변삼각형\n④ 빗변의 길이가 \\(a\\) 的 직각삼각형\n⑤ 빗변의 길이가 \\(b\\) 的 직각삼각형\n02 나머지 정리와 인수분해",
+      "to": "# 0245 | 대표 문제\n삼각형의 세 변의 길이 $a, b, c$에 대하여\n$$a^3-a^2b+ac^2+ab^2-b^2-bc^2=0$$\n이 성립할 때, 이 삼각형은 어떤 삼각형인가?\n① \\(a = b\\) 的 이동변삼각형\n② \\(a = c\\) 的 이동변삼각형\n③ \\(b = c\\) 的 이동변삼각형\n④ 빗변의 길이가 \\(a\\) 的 직각삼각형\n⑤ 빗변의 길이가 \\(b\\) 的 직각삼각형",
+      "from_sha256": "3d89c67d5a9b33a4bd5deebf911b05fe4ca664fde0ab717095fd10c1a2808fb7",
+      "to_sha256": "0f8adc295b8ef18055c03eac38af4829a61adb596b2bf87efc4897def4625805"
+    },
+    {
+      "problem_id": "3edacc37-8d19-41a8-8387-356e45c61f50",
+      "public_code": "HQB-001043",
+      "number": "0650",
+      "page": 95,
+      "from": "# 0650\n정답 및 풀이 83쪽\n 90쪽 유형 07\n이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때,\n$f(4)$의 값은?\n(가) 모든 실수 $x$에 대하여 $f(1-x)=f(1+x)$이다.\n(나) $0 \\le x \\le 3$에서 $f(x)$의 최댓값은 4이고 최솟값은 0\n이다.\n(다) 함수 $y=f(x)$의 그래프는 점 $(1, -1)$을 지나는 직\n선과 항상 만난다.\n① -5\n② -3\n③ -1\n④ 1\n⑤ 3\n05",
+      "to": "# 0650\n정답 및 풀이 83쪽\n 90쪽 유형 07\n이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때,\n$f(4)$의 값은?\n(가) 모든 실수 $x$에 대하여 $f(1-x)=f(1+x)$이다.\n(나) $0 \\le x \\le 3$에서 $f(x)$의 최댓값은 4이고 최솟값은 0\n이다.\n(다) 함수 $y=f(x)$의 그래프는 점 $(1, -1)$을 지나는 직\n선과 항상 만난다.\n① -5\n② -3\n③ -1\n④ 1\n⑤ 3",
+      "from_sha256": "706a6ba80b679e300885de49674f03b0d7fd264f13e4f9bd2cc97f5561c98365",
+      "to_sha256": "6e573e041d17decbb9bd029c7eb555ce8e12adb77af91c60ffa231cf80ba8cd7"
+    }
+  ]
+}
