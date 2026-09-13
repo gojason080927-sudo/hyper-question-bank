@@ -38,7 +38,7 @@ export const EXPRESSION_ROLES = [
 export const REVIEW_LABELS: Record<string, string> = {
   UNREVIEWED: '미검수',
   AUTO_CLASSIFIED: '자동분류',
-  NEEDS_REVIEW: '검수 필요',
+  NEEDS_REVIEW: '확인 필요',
   VERIFIED: '확정',
   REJECTED: '반려',
 }

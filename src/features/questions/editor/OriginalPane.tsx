@@ -18,6 +18,7 @@ type Props = {
 export function OriginalPane({ problemId }: Props) {
   const [pdfData, setPdfData] = useState<ArrayBuffer | null>(null)
   const [scale, setScale] = useState(1.1)
+  const [fullPage, setFullPage] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [source, setSource] = useState<SourceInfo | null>(null)
 
@@ -62,7 +63,7 @@ export function OriginalPane({ problemId }: Props) {
     })()
   }, [problemId])
 
-  const regions: SourceRegion[] = source?.bounding_box
+  const regions: SourceRegion[] = source?.bounding_box && !fullPage
     ? [
         {
           id: 'crop',
@@ -92,6 +93,10 @@ export function OriginalPane({ problemId }: Props) {
         <button type="button" className="btn ghost" onClick={() => setScale((n) => Math.min(2.4, n + 0.15))}>
           +
         </button>
+        <label>
+          <input type="checkbox" checked={fullPage} onChange={(event) => setFullPage(event.target.checked)} />
+          전체 페이지 보기
+        </label>
       </div>
       {error ? <p className="muted">{error}</p> : null}
       {pdfData && source ? (

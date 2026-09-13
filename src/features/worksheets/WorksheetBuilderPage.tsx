@@ -130,6 +130,8 @@ export function WorksheetBuilderPage() {
             explanation: '',
           },
         ])
+      } else if (addId && (rows ?? []).some((row) => row.problem_id === addId)) {
+        setError('이미 문제지에 들어 있는 문제입니다. 문제 원문은 그대로 둡니다.')
       }
     })()
   }, [params, worksheetId])
@@ -317,6 +319,10 @@ export function WorksheetBuilderPage() {
                 className="btn ghost"
                 onClick={() => {
                   if (!row.current_version_id) return
+                  if (items.some((item) => item.problem_id === row.id)) {
+                    setError('이미 문제지에 들어 있는 문제입니다.')
+                    return
+                  }
                   setItems((current) => [
                     ...current,
                     {
