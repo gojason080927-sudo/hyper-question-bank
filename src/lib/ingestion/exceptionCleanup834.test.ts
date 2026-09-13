@@ -5,12 +5,13 @@ import {
   classifyDuplicatePair834,
   cleanupResiduals834,
   correctBboxIntrusion834,
+  correctPageBboxes834,
   neverVerified834,
   shortStemValid834,
   splitAnswerLeak834,
   type DupDecision834,
 } from './exceptionCleanup834'
-import { correctAndJudge833, type Item833, type QaResult833 } from './autoQa833'
+import { bboxOverlapRatio833, correctAndJudge833, type Item833, type QaResult833 } from './autoQa833'
 
 function item(partial: Partial<Item833> & Pick<Item833, 'candidate_id'>): Item833 {
   return {
@@ -68,6 +69,29 @@ describe('STEP 8.34 exception cleanup', () => {
     expect(correction?.overlap_after ?? 1).toBeLessThan(0.25)
     expect(correction?.original_hash).not.toBe(correction?.corrected_hash)
     expect(bboxHash834(second.bbox!)).toHaveLength(64)
+  })
+
+  it('resplits nested same-column bboxes into stacked slices', () => {
+    const a = item({
+      candidate_id: '49|0313',
+      canonical: '0313',
+      page: 49,
+      bbox: { x: 0.508, y: 0.09, width: 0.48, height: 0.05 },
+    })
+    const b = item({
+      candidate_id: '49|0314',
+      canonical: '0314',
+      problem_number: '0314',
+      page: 49,
+      bbox: { x: 0.508, y: 0.09, width: 0.48, height: 0.055 },
+    })
+    const page = correctPageBboxes834([a, b])
+    const top = page.get('49|0313')
+    const bottom = page.get('49|0314')
+    expect(top).toBeTruthy()
+    expect(bottom).toBeTruthy()
+    expect(bottom!.y).toBeGreaterThan(top!.y)
+    expect(bboxOverlapRatio833(top!, bottom!)).toBeLessThan(0.25)
   })
 
   it('keeps uncertain bbox when a shrink would cut a 5-choice block too far', () => {

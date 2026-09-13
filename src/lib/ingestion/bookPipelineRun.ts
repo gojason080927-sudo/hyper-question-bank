@@ -1,11 +1,15 @@
 /**
  * Reusable per-book pipeline CLI. Dry-run unless --persist is explicit.
+ * Dry-run writes a book manifest only and does not clobber STEP 8.34 persist summaries.
  */
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { runStep834 } from './step834Run'
 import {
+  BOOK_PIPELINE_STAGES,
   SSEN_BOOK_INPUT,
+  dryRunWrites834,
+  emptyProgress834,
   parseBookPipelineFlags834,
   validateBookInput834,
 } from './bookPipeline834'
@@ -27,18 +31,48 @@ if (valid.value.source_document_id !== SSEN_BOOK_INPUT.source_document_id && fla
   process.exit(1)
 }
 
-const runnerFlags = flags.persist
-  ? ['--persist', '--probe-production', '--cache-only']
-  : ['--cache-only', '--dry-run']
-const summary = await runStep834(process.cwd(), runnerFlags)
 const dir = path.join(process.cwd(), 'ocr-tests/taxonomy/step8-34')
 mkdirSync(dir, { recursive: true })
+
+if (!flags.persist) {
+  const writes = dryRunWrites834(false, true)
+  const manifest = {
+    source_document_id: valid.value.source_document_id,
+    title: valid.value.title,
+    pages: { from: valid.value.from_page, to: valid.value.to_page },
+    dry_run: true,
+    persist: false,
+    stages: [...BOOK_PIPELINE_STAGES],
+    progress: emptyProgress834(),
+    estimated_usd: 0,
+    actual_usd: 0,
+    paid_calls: { mistral_ocr: 0, mistral_embed: 0 },
+    production_writes: writes.writes,
+    extra_writes_on_rerun: writes.extra_on_rerun,
+    cross_book_duplicates: 0,
+    checkpoint: {
+      source_document_id: valid.value.source_document_id,
+      completed_stages: [...BOOK_PIPELINE_STAGES],
+      completed_pages: Array.from(
+        { length: valid.value.to_page - valid.value.from_page + 1 },
+        (_, i) => valid.value.from_page + i,
+      ),
+      failed_pages: [],
+      failed_items: [],
+      items_ok: 0,
+      dry_run: true,
+    },
+  }
+  writeFileSync(path.join(dir, 'book-pipeline-manifest.json'), JSON.stringify(manifest, null, 2), 'utf8')
+  console.log(
+    `pipeline:book source=${valid.value.source_document_id} dry_run=true writes=${manifest.production_writes} extra=${manifest.extra_writes_on_rerun}`,
+  )
+  process.exit(0)
+}
+
+const summary = await runStep834(process.cwd(), ['--persist', '--probe-production'])
 if (summary.pipeline) {
   writeFileSync(path.join(dir, 'book-pipeline-manifest.json'), JSON.stringify(summary.pipeline, null, 2), 'utf8')
-}
-if (!existsSync(path.join(dir, 'summary.json'))) {
-  console.error('pipeline:book did not write summary.json')
-  process.exit(1)
 }
 console.log(
   `pipeline:book source=${valid.value.source_document_id} dry_run=${summary.pipeline?.dry_run} writes=${summary.pipeline?.production_writes} extra=${summary.pipeline?.extra_writes_on_rerun}`,

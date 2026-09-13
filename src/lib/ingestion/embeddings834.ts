@@ -126,17 +126,19 @@ export async function requestMistralEmbeddings834(input: {
 }): Promise<{ vectors: number[][]; prompt_tokens: number }> {
   if (!input.texts.length) return { vectors: [], prompt_tokens: 0 }
   const fetchImpl = input.fetchImpl ?? globalThis.fetch.bind(globalThis)
-  const response = await fetchImpl(EMBEDDING_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${input.apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: EMBEDDING_MODEL,
-      inputs: input.texts,
-    }),
-  })
+  const post = (body: Record<string, unknown>) =>
+    fetchImpl(EMBEDDING_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${input.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+  let response = await post({ model: EMBEDDING_MODEL, input: input.texts })
+  if (response.status === 422) {
+    response = await post({ model: EMBEDDING_MODEL, inputs: input.texts })
+  }
   if (!response.ok) {
     const body = (await response.text()).slice(0, 200)
     throw new Error(`HQB_EMBEDDING_HTTP: ${response.status} ${body}`)

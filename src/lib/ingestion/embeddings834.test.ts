@@ -62,7 +62,7 @@ describe('STEP 8.34 embeddings lock and search helpers', () => {
       expect(String(url)).toBe('https://api.mistral.ai/v1/embeddings')
       const body = JSON.parse(String(init?.body))
       expect(body.model).toBe('mistral-embed')
-      expect(body.inputs).toEqual(['hello'])
+      expect(body.input).toEqual(['hello'])
       expect(JSON.stringify(init?.headers)).not.toMatch(/sk-|length|prefix/i)
       const embedding = Array.from({ length: 1024 }, () => 0.01)
       return new Response(JSON.stringify({ data: [{ embedding, index: 0 }], usage: { prompt_tokens: 4 } }), {

@@ -157,6 +157,103 @@ export function maxOverlapAgainst834(box: BBox833, selfId: string, pageItems: It
   return max
 }
 
+export function iou834(a: BBox833, b: BBox833): number {
+  const overlap = bboxOverlapRatio833(a, b) * area834(a)
+  const union = area834(a) + area834(b) - overlap
+  return overlap / Math.max(union, 1e-9)
+}
+
+export function sameColumn834(a: BBox833, b: BBox833): boolean {
+  const ix = Math.max(0, Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x))
+  return ix / Math.min(a.width, b.width) >= 0.6
+}
+
+function unionBox834(boxes: BBox833[]): BBox833 {
+  const x1 = Math.min(...boxes.map((b) => b.x))
+  const y1 = Math.min(...boxes.map((b) => b.y))
+  const x2 = Math.max(...boxes.map((b) => b.x + b.width))
+  const y2 = Math.max(...boxes.map((b) => b.y + b.height))
+  return clampBox834({ x: x1, y: y1, width: x2 - x1, height: y2 - y1 })
+}
+
+export function correctPageBboxes834(pageItems: Item833[]): Map<string, BBox833> {
+  const corrected = new Map<string, BBox833>()
+  for (const item of pageItems) {
+    if (item.bbox) corrected.set(item.candidate_id, item.bbox)
+  }
+  const boxed = pageItems.filter((row) => row.bbox)
+  const used = new Set<string>()
+  for (const item of boxed) {
+    if (used.has(item.candidate_id) || !item.bbox) continue
+    const cluster = boxed.filter((other) => {
+      if (!other.bbox) return false
+      return sameColumn834(item.bbox!, other.bbox) && (iou834(item.bbox!, other.bbox) >= 0.45 || bboxOverlapRatio833(item.bbox!, other.bbox) >= 0.7)
+    })
+    if (cluster.length < 2) continue
+    cluster.sort((a, b) => problemOrder834(a) - problemOrder834(b))
+    const union = unionBox834(cluster.map((row) => row.bbox!))
+    const slice = union.height / cluster.length
+    cluster.forEach((row, i) => {
+      used.add(row.candidate_id)
+      const y = union.y + i * slice
+      corrected.set(
+        row.candidate_id,
+        clampBox834({
+          x: union.x,
+          y,
+          width: union.width,
+          height: Math.max(0.02, slice - BBOX_GAP),
+        }),
+      )
+    })
+  }
+  for (const item of boxed) {
+    const current = corrected.get(item.candidate_id)
+    if (!current) continue
+    const synthetic = pageItems.map((row) => ({
+      ...row,
+      bbox: corrected.get(row.candidate_id) ?? row.bbox,
+    }))
+    const pair = correctBboxIntrusion834({ ...item, bbox: current }, synthetic)
+    if (pair?.apply && pair.corrected) corrected.set(item.candidate_id, pair.corrected)
+  }
+  return corrected
+}
+
+export function bboxCorrectionFromPage834(
+  item: Item833,
+  pageItems: Item833[],
+  pageCorrected?: Map<string, BBox833>,
+): BboxCorrection834 | null {
+  const original = item.bbox
+  if (!original) return null
+  const overlapBefore = maxOverlapAgainst834(original, item.candidate_id, pageItems)
+  const next = pageCorrected?.get(item.candidate_id) ?? original
+  const synthetic = pageItems.map((row) => ({
+    ...row,
+    bbox: pageCorrected?.get(row.candidate_id) ?? row.bbox,
+  }))
+  const overlapAfter = maxOverlapAgainst834(next, item.candidate_id, synthetic)
+  const areaRetained = area834(next) / area834(original)
+  const changed = bboxHash834(next) !== bboxHash834(original)
+  const safeAfter = overlapAfter < BBOX_OVERLAP_MAX
+  const apply = safeAfter && changed && areaRetained >= 0.28
+  return {
+    candidate_id: item.candidate_id,
+    page: item.page,
+    original,
+    corrected: apply ? next : safeAfter && !changed ? original : null,
+    original_hash: bboxHash834(original),
+    corrected_hash: apply || (safeAfter && !changed) ? bboxHash834(next) : null,
+    method: changed ? 'PAGE_COLUMN_RESPLIT_OR_SHRINK' : safeAfter ? 'NO_INTRUSION' : 'UNRESOLVED',
+    confidence: !safeAfter ? 'UNCERTAIN' : apply && areaRetained >= 0.5 ? 'HIGH' : apply ? 'MEDIUM' : 'HIGH',
+    overlap_before: Number(overlapBefore.toFixed(4)),
+    overlap_after: Number(overlapAfter.toFixed(4)),
+    area_retained: Number(areaRetained.toFixed(4)),
+    apply,
+  }
+}
+
 export function correctBboxIntrusion834(item: Item833, pageItems: Item833[]): BboxCorrection834 | null {
   const original = item.bbox
   if (!original) return null
@@ -519,6 +616,7 @@ export function cleanupOne834(
   pageItems: Item833[],
   dup: DupDecision834 | null,
   recoveredText?: string | null,
+  pageCorrected?: Map<string, BBox833>,
 ): CleanupResult834 {
   const applied = [...qa.applied_rules]
   let residual = [...qa.residual_reasons]
@@ -529,10 +627,10 @@ export function cleanupOne834(
   }
 
   const bbox = residual.includes('BBOX_INTRUSION') || item.bbox
-    ? correctBboxIntrusion834(item, pageItems)
+    ? bboxCorrectionFromPage834(item, pageItems, pageCorrected ?? correctPageBboxes834(pageItems))
     : null
   if (bbox?.apply) drop('BBOX_INTRUSION', `BBOX_CORRECT:${bbox.method}`)
-  else if (bbox && bbox.overlap_before < BBOX_OVERLAP_MAX) drop('BBOX_INTRUSION', 'BBOX_NO_INTRUSION')
+  else if (bbox && bbox.overlap_after < BBOX_OVERLAP_MAX) drop('BBOX_INTRUSION', 'BBOX_NO_INTRUSION')
 
   const leak = splitAnswerLeak834(item.problem_text || item.stem_preview || '')
   if (leak.leaked && (stemReadable833(leak.stem) || mathReadable833(leak.stem)) && leak.stem.replace(/\s+/g, '').length >= 8) {
@@ -611,6 +709,8 @@ export function cleanupResiduals834(
     list.push(item)
     byPage.set(item.page, list)
   }
+  const pageCorrected = new Map<number, Map<string, BBox833>>()
+  for (const [page, list] of byPage) pageCorrected.set(page, correctPageBboxes834(list))
   return items
     .filter((item) => qaById.get(item.candidate_id)?.verdict === 'HUMAN_REVIEW')
     .map((item) => {
@@ -621,6 +721,7 @@ export function cleanupResiduals834(
         byPage.get(item.page) ?? [item],
         dups.get(item.candidate_id) ?? null,
         recoveredById.get(item.candidate_id),
+        pageCorrected.get(item.page),
       )
     })
 }

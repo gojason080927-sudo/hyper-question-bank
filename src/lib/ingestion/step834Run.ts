@@ -3,7 +3,6 @@
  * Does not re-run 8.32 ingest or 8.33 from scratch. Never VERIFIED. Never DELETE. Never student-care.
  */
 import { createHash } from 'node:crypto'
-import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
@@ -51,8 +50,12 @@ import {
   type BookManifest834,
 } from './bookPipeline834'
 
-export const MIGRATION_VERSION = '20260913010000'
-export const MIGRATION_NAME = 'hqb_pgvector_embeddings_v1'
+export const MIGRATION_VERSION = '20260913011500'
+export const MIGRATION_NAME = 'hqb_pgvector_embedding_cast_v1'
+const MIGRATIONS = [
+  { name: 'hqb_pgvector_embeddings_v1', file: '20260913010000_hqb_pgvector_embeddings_v1.sql' },
+  { name: 'hqb_pgvector_embedding_cast_v1', file: '20260913011500_hqb_pgvector_embedding_cast_v1.sql' },
+]
 export const EMBED_RPC = 'hqb_upsert_problem_embedding'
 export const SEARCH_RPC = 'hqb_search_similar_problems'
 export const INVENTORY_RPC = 'hqb_vector_inventory'
@@ -109,7 +112,16 @@ export type Step834Summary = {
     credentials: 'PRESENT' | 'ABSENT'
     blocker: string | null
   }
-  search_self_test: { ran: boolean; self_excluded: boolean; dup_excluded: boolean; sample: number }
+  search_self_test: {
+    ran: boolean
+    self_excluded: boolean
+    dup_excluded: boolean
+    source_filter_ok: boolean
+    type_filter_ok: boolean
+    other_source_empty: boolean
+    sample: number
+    top_similarity: number | null
+  }
   pipeline: BookManifest834 | null
   production_counts_before: ProductionCounts834
   production_counts_after: ProductionCounts834
@@ -344,22 +356,29 @@ function redact(text: string): string {
 async function applyPgvectorMigration(root: string): Promise<{ attempted: boolean; applied: boolean; reason: string }> {
   const token = process.env.SUPABASE_ACCESS_TOKEN?.trim()
   if (!token) return { attempted: false, applied: false, reason: 'missing SUPABASE_ACCESS_TOKEN' }
-  const sql = readFileSync(path.join(root, 'supabase/migrations/20260913010000_hqb_pgvector_embeddings_v1.sql'), 'utf8')
-  const mgmt = await fetch(`https://api.supabase.com/v1/projects/${QUESTION_BANK_REF}/database/migrations`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: MIGRATION_NAME, query: sql }),
-  })
-  if (mgmt.ok) return { attempted: true, applied: true, reason: 'applied' }
-  const body = redact(await mgmt.text())
-  if (/already|duplicate|exists/i.test(body)) return { attempted: true, applied: true, reason: 'already_applied' }
-  const cli = spawnSync(
-    'npx',
-    ['--yes', 'supabase@latest', 'db', 'push', '--project-ref', QUESTION_BANK_REF, '--yes'],
-    { cwd: root, encoding: 'utf8', env: { ...process.env, SUPABASE_ACCESS_TOKEN: token } },
-  )
-  if (cli.status === 0) return { attempted: true, applied: true, reason: 'cli-db-push' }
-  return { attempted: true, applied: false, reason: `management ${mgmt.status}: ${body}` }
+  const reasons: string[] = []
+  let appliedAny = false
+  for (const migration of MIGRATIONS) {
+    const sql = readFileSync(path.join(root, 'supabase/migrations', migration.file), 'utf8')
+    const mgmt = await fetch(`https://api.supabase.com/v1/projects/${QUESTION_BANK_REF}/database/migrations`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: migration.name, query: sql }),
+    })
+    if (mgmt.ok) {
+      appliedAny = true
+      reasons.push(`${migration.name}:applied`)
+      continue
+    }
+    const body = redact(await mgmt.text())
+    if (/already|duplicate|exists/i.test(body)) {
+      appliedAny = true
+      reasons.push(`${migration.name}:already_applied`)
+      continue
+    }
+    return { attempted: true, applied: false, reason: `${migration.name} management ${mgmt.status}: ${body}` }
+  }
+  return { attempted: true, applied: appliedAny, reason: reasons.join('; ') }
 }
 
 function ssenBookManifest(root: string, persist: boolean): BookManifest834 {
@@ -568,7 +587,16 @@ export async function runStep834(root: string, argv: string[]): Promise<Step834S
     credentials: (process.env.MISTRAL_API_KEY?.trim() ? 'PRESENT' : 'ABSENT') as 'PRESENT' | 'ABSENT',
     blocker: null as string | null,
   }
-  const searchSelfTest = { ran: false, self_excluded: true, dup_excluded: true, sample: 0 }
+  const searchSelfTest = {
+    ran: false,
+    self_excluded: true,
+    dup_excluded: true,
+    source_filter_ok: true,
+    type_filter_ok: true,
+    other_source_empty: true,
+    sample: 0,
+    top_similarity: null as number | null,
+  }
 
   if (persistRequested) {
     if (!url || !service) throw new Error('persist requires VITE_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY')
@@ -841,11 +869,27 @@ export async function runStep834(root: string, argv: string[]): Promise<Step834S
           payload: { problem_id: sample.existing.problem_id, k: 5, source_document_id: STEP834_DOCUMENT },
         })
         if (!searched.error) {
-          const hits = ((searched.data as { results?: Array<{ problem_id: string }> })?.results ?? [])
+          const hits = ((searched.data as { results?: Array<{ problem_id: string; similarity?: number; problem_type?: string; source_document_id?: string }> })?.results ?? [])
           searchSelfTest.ran = true
           searchSelfTest.sample = hits.length
           searchSelfTest.self_excluded = hits.every((row) => row.problem_id !== sample.existing?.problem_id)
-          searchSelfTest.dup_excluded = true
+          searchSelfTest.dup_excluded = searchSelfTest.self_excluded
+          searchSelfTest.source_filter_ok = hits.every((row) => !row.source_document_id || row.source_document_id === STEP834_DOCUMENT)
+          searchSelfTest.top_similarity = hits[0]?.similarity ?? null
+        }
+        const typed = await staff.rpc(SEARCH_RPC, {
+          payload: { problem_id: sample.existing.problem_id, k: 5, problem_type: 'POLY_ADD_SUB' },
+        })
+        if (!typed.error) {
+          const hits = ((typed.data as { results?: Array<{ problem_type?: string }> })?.results ?? [])
+          searchSelfTest.type_filter_ok = hits.every((row) => !row.problem_type || row.problem_type === 'POLY_ADD_SUB')
+        }
+        const other = await staff.rpc(SEARCH_RPC, {
+          payload: { problem_id: sample.existing.problem_id, k: 5, source_document_id: SECOND_DOCUMENT },
+        })
+        if (!other.error) {
+          const hits = ((other.data as { results?: Array<{ problem_id: string }> })?.results ?? [])
+          searchSelfTest.other_source_empty = hits.length === 0
         }
       }
     } else {
@@ -904,6 +948,20 @@ export async function runStep834(root: string, argv: string[]): Promise<Step834S
   }
   if (cacheOnly && persistRequested === false && summary.production_problem_writes !== 0) {
     throw new Error('cache-only wrote Production problems')
+  }
+
+  const persistSummaryPath = path.join(dir, 'summary.json')
+  if (!persistRequested && existsSync(persistSummaryPath)) {
+    const previous = JSON.parse(readFileSync(persistSummaryPath, 'utf8')) as { status?: string }
+    if (previous.status === 'PERSISTED') {
+      writeJson(dir, 'summary.cache-only.json', summary)
+      writeJson(dir, 'tally.cache-only.json', {
+        inspected: summary.inspected_residuals,
+        auto_resolved: summary.auto_resolved,
+        human: summary.human_review_remaining,
+      })
+      return summary
+    }
   }
 
   writeJson(dir, 'summary.json', summary)

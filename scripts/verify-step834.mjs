@@ -45,6 +45,7 @@ check(freeze.includes('8.34'), '8.25 freeze must define 8.34')
 
 const sql = existsSync(migrationPath) ? readFileSync(migrationPath, 'utf8') : ''
 check(sql.includes('CREATE EXTENSION IF NOT EXISTS vector'), 'migration must enable pgvector')
+check(existsSync(path.join(root, 'supabase/migrations/20260913011500_hqb_pgvector_embedding_cast_v1.sql')), 'missing embedding cast follow-up migration')
 check(sql.includes('vector(1024)'), 'migration must lock 1024-d embeddings')
 check(sql.includes('hqb_search_similar_problems'), 'migration must add search RPC')
 check(sql.includes('hqb_is_staff'), 'search/RLS must use staff check')
