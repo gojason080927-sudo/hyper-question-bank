@@ -260,7 +260,10 @@ export function WorksheetBuilderPage() {
         <div>
           <p className="kicker">A4 조립</p>
           <h1>
-            <input value={title} onChange={(event) => setTitle(event.target.value)} aria-label="문제지 제목" />
+            <label>
+              문제지 제목
+              <input value={title} onChange={(event) => setTitle(event.target.value)} aria-label="문제지 제목" />
+            </label>
           </h1>
         </div>
         <div className="actions no-print worksheet-toolbar">
@@ -374,67 +377,10 @@ export function WorksheetBuilderPage() {
           <p className="muted">유사 문항: {similar.map((row) => row.problem_id.slice(0, 8)).join(', ')}</p>
         ) : null}
       </section>
-      <div className={`a4-viewport ${fullView ? 'is-full' : ''}`} ref={viewportRef}>
-        <div className="a4-zoom-bar no-print">
-          <button type="button" className="btn ghost" aria-label="화면에 맞춤" onClick={() => setZoomMode('fit')}>맞춤</button>
-          <button type="button" className="btn ghost" aria-label="75퍼센트" onClick={() => setZoomMode(0.75)}>75%</button>
-          <button type="button" className="btn ghost" aria-label="100퍼센트" onClick={() => setZoomMode(1)}>100%</button>
-          <button type="button" className="btn ghost" aria-label="125퍼센트" onClick={() => setZoomMode(1.25)}>125%</button>
-          <button
-            type="button"
-            className="btn"
-            aria-label={fullView ? '전체 보기 닫기' : 'A4 전체 보기'}
-            onClick={() => setFullView((value) => !value)}
-          >
-            {fullView ? '닫기' : '전체 보기'}
-          </button>
-        </div>
-        <div
-          className="a4-scale-slot"
-          style={{ height: `${pages.length * (pageHeightPx * a4Scale + 16)}px` }}
-        >
-          <div
-            className="a4-stage"
-            style={{
-              ['--a4-font' as string]: `${layout.fontSizePt}pt`,
-              width: pageWidthPx,
-              transform: `scale(${a4Scale})`,
-              transformOrigin: 'top center',
-            }}
-          >
-        {pages.map((page) => (
-          <article className={`a4-page cols-${layout.columns}`} key={page.pageNo}>
-            <header className="a4-header">
-              <div>{layout.header.school} {layout.header.grade}</div>
-              <strong>{layout.header.examName || title}</strong>
-              <div>{layout.header.studentNameLabel}: ________</div>
-            </header>
-            <div className="a4-columns">
-              {page.columns.map((col, colIndex) => (
-                <div className="a4-col" key={colIndex}>
-                  {col.map((item) => (
-                    <section className="a4-item" key={item.id} style={{ marginBottom: `${item.spacingMm ?? 6}mm` }}>
-                      <p>
-                        <strong>{item.number}.</strong> ({item.points ?? 0}점) <MixedKatexText text={item.stem} />
-                      </p>
-                      {layout.examKind === 'ANSWER_SHEET' || !examHidesExplanation(layout.examKind) ? (
-                        <p className="muted">
-                          정답 {item.answer || '—'} {item.explanation ? <>· <MixedKatexText text={item.explanation} /></> : null}
-                        </p>
-                      ) : null}
-                    </section>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </article>
-        ))}
-          </div>
-        </div>
-      </div>
+      <h2 className="no-print">문항 순서·점수</h2>
       <ol className="no-print worksheet-item-tools">
         {items.map((row, index) => (
-          <li key={row.id} className="worksheet-item-row">
+          <li key={`tools-${row.id}`} className="worksheet-item-row">
             <p>
               {index + 1}. <MixedKatexText text={row.problem_text} />
             </p>
@@ -504,6 +450,64 @@ export function WorksheetBuilderPage() {
           </li>
         ))}
       </ol>
+      <div className={`a4-viewport ${fullView ? 'is-full' : ''}`} ref={viewportRef}>
+        <div className="a4-zoom-bar no-print">
+          <button type="button" className="btn ghost" aria-label="화면에 맞춤" onClick={() => setZoomMode('fit')}>맞춤</button>
+          <button type="button" className="btn ghost" aria-label="75퍼센트" onClick={() => setZoomMode(0.75)}>75%</button>
+          <button type="button" className="btn ghost" aria-label="100퍼센트" onClick={() => setZoomMode(1)}>100%</button>
+          <button type="button" className="btn ghost" aria-label="125퍼센트" onClick={() => setZoomMode(1.25)}>125%</button>
+          <button
+            type="button"
+            className="btn"
+            aria-label={fullView ? '전체 보기 닫기' : 'A4 전체 보기'}
+            onClick={() => setFullView((value) => !value)}
+          >
+            {fullView ? '닫기' : '전체 보기'}
+          </button>
+        </div>
+        <div
+          className="a4-scale-slot"
+          style={{ height: `${pages.length * (pageHeightPx * a4Scale + 16)}px` }}
+        >
+          <div
+            className="a4-stage"
+            style={{
+              ['--a4-font' as string]: `${layout.fontSizePt}pt`,
+              width: pageWidthPx,
+              transform: `scale(${a4Scale})`,
+              transformOrigin: 'top center',
+            }}
+          >
+        {pages.map((page) => (
+          <article className={`a4-page cols-${layout.columns}`} key={page.pageNo}>
+            <header className="a4-header">
+              <div>{layout.header.school} {layout.header.grade}</div>
+              <strong>{layout.header.examName || title}</strong>
+              <div>{layout.header.studentNameLabel}: ________</div>
+            </header>
+            <div className="a4-columns">
+              {page.columns.map((col, colIndex) => (
+                <div className="a4-col" key={colIndex}>
+                  {col.map((item) => (
+                    <section className="a4-item" key={item.id} style={{ marginBottom: `${item.spacingMm ?? 6}mm` }}>
+                      <p>
+                        <strong>{item.number}.</strong> ({item.points ?? 0}점) <MixedKatexText text={item.stem} />
+                      </p>
+                      {layout.examKind === 'ANSWER_SHEET' || !examHidesExplanation(layout.examKind) ? (
+                        <p className="muted">
+                          정답 {item.answer || '—'} {item.explanation ? <>· <MixedKatexText text={item.explanation} /></> : null}
+                        </p>
+                      ) : null}
+                    </section>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+          </div>
+        </div>
+      </div>
     </main>
   )
 }
