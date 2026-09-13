@@ -5,6 +5,7 @@ import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
 import { ProblemStemDisplay } from '../questions/ProblemStemDisplay'
 import { RangeStemReviewPanel, type RangeAuditItem, type RangeApply838 } from './RangeStemReviewPanel'
+import { FullQaReviewPanel, type FullQaPayload } from './FullQaReviewPanel'
 
 type QueueItem = {
   problem_id: string
@@ -28,8 +29,11 @@ export function PipelineReviewPage() {
   const [rangeItems, setRangeItems] = useState<RangeAuditItem[]>([])
   const [rangeApplies, setRangeApplies] = useState<RangeApply838[]>([])
   const [rangeSelected, setRangeSelected] = useState<string | null>(null)
+  const [qaPayload, setQaPayload] = useState<FullQaPayload | null>(null)
+  const [qaSelected, setQaSelected] = useState<string | null>(null)
   const source = params.get('source') ?? ''
   const rangeTab = source === 'range838'
+  const qaTab = source === 'qa839'
 
   useEffect(() => {
     const client = getSupabase()
@@ -67,6 +71,20 @@ export function PipelineReviewPage() {
     })()
   }, [])
 
+  useEffect(() => {
+    void (async () => {
+      try {
+        const res = await fetch('/step8-39-full-qa.json')
+        if (!res.ok) return
+        const payload = (await res.json()) as FullQaPayload
+        setQaPayload(payload)
+        setQaSelected(payload.records?.[0]?.problem_id ?? null)
+      } catch {
+        setQaPayload(null)
+      }
+    })()
+  }, [])
+
   const selected = useMemo(() => queue.find((row) => row.problem_id === selectedId) ?? null, [queue, selectedId])
   const ssenCount = queue.filter((row) => row.source_document_id === SSEN_SOURCE_DOCUMENT_ID).length
   const otherCount = queue.length - ssenCount
@@ -77,7 +95,7 @@ export function PipelineReviewPage() {
         <div>
           <p className="kicker">강사 확인</p>
           <h1>확인 필요 큐</h1>
-          <p className="muted">실제 문제의 확인 필요 상태입니다. 자동 확정하지 않습니다. 범위형 합침은 별도 탭에서 근거와 변경 전후를 봅니다.</p>
+          <p className="muted">실제 문제의 확인 필요 상태입니다. 자동 확정하지 않습니다. 범위형 합침과 전체검수 STEP 8.39는 별도 탭입니다.</p>
         </div>
         <Link className="btn ghost" to="/questions?review=NEEDS_REVIEW">
           문제 목록에서 보기
@@ -113,8 +131,17 @@ export function PipelineReviewPage() {
         >
           범위형 합침 {rangeItems.length}
         </button>
+        <button
+          type="button"
+          className={`btn ${qaTab ? 'primary' : 'ghost'}`}
+          onClick={() => setParams({ source: 'qa839' }, { replace: true })}
+        >
+          전체검수 8.39 {qaPayload?.summary?.listed_inspected ?? 1242}
+        </button>
       </div>
-      {rangeTab ? (
+      {qaTab ? (
+        <FullQaReviewPanel payload={qaPayload} selectedId={qaSelected} onSelect={setQaSelected} />
+      ) : rangeTab ? (
         <RangeStemReviewPanel items={rangeItems} selectedId={rangeSelected} onSelect={setRangeSelected} applies={rangeApplies} />
       ) : (
         <div className="review-split">
