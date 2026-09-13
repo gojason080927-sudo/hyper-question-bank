@@ -130,6 +130,7 @@ export function QuestionEditPage() {
     setState(form)
     setBaseline(JSON.stringify({ state: form, json: nextDoc.tiptap_json }))
     setVersionId(targetId)
+    setError(null)
     setLoading(false)
   }, [problemId])
 
