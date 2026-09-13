@@ -1,0 +1,412 @@
+[
+  {
+    "candidate_id": "47|0283",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "EVIDENCE_INSUFFICIENT"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "TYPE_FROM_PAGE_CONTEXT",
+      "UNIT_FROM_PAGE_CONTEXT",
+      "CLEAR_SEGMENT_REVIEW",
+      "CLEAR_CLASSIFICATION_REVIEW"
+    ],
+    "bbox": {
+      "candidate_id": "47|0283",
+      "page": 47,
+      "original": {
+        "x": 0.012,
+        "y": 0.34629453681710215,
+        "width": 0.48,
+        "height": 0.0518812351543943
+      },
+      "corrected": {
+        "x": 0.012,
+        "y": 0.34629453681710215,
+        "width": 0.48,
+        "height": 0.0518812351543943
+      },
+      "original_hash": "18818b94dd385be6c5b9d072789dfe4318818b94dd385be6c5b9d072789dfe43",
+      "corrected_hash": "18818b94dd385be6c5b9d072789dfe4318818b94dd385be6c5b9d072789dfe43",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0385,
+      "overlap_after": 0.0385,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": null,
+    "ocr_recovery_accepted": false,
+    "unit_id": "방정식",
+    "type_id": "COMPLEX_ARITHMETIC",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "95|0650",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "ANSWER_KEY_LEAK"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "TYPE_INFER:STEM_INTENT:quad_fn",
+      "UNIT_STEM_ALLOWED",
+      "CLEAR_SEGMENT_REVIEW",
+      "CLEAR_FIGURE_IN_CROP",
+      "CLEAR_CLASSIFICATION_REVIEW"
+    ],
+    "bbox": {
+      "candidate_id": "95|0650",
+      "page": 95,
+      "original": {
+        "x": 0.508,
+        "y": 0.04285035629453682,
+        "width": 0.48,
+        "height": 0.42836579572446554
+      },
+      "corrected": {
+        "x": 0.508,
+        "y": 0.04285035629453682,
+        "width": 0.48,
+        "height": 0.42836579572446554
+      },
+      "original_hash": "1c4c4b3e8a70643e963c2f002fd5c19b1c4c4b3e8a70643e963c2f002fd5c19b",
+      "corrected_hash": "1c4c4b3e8a70643e963c2f002fd5c19b1c4c4b3e8a70643e963c2f002fd5c19b",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0043,
+      "overlap_after": 0.0043,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": {
+      "original_preserved": true,
+      "leaked": true,
+      "stem": "# 0650",
+      "answer": "• 83쪽",
+      "explanation": "• 83쪽\n• 90쪽 유형 07\n이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때,\n$f(4)$의 값은?\n(가) 모든 실수 $x$에 대하여 $f(1-x)=f(1+x)$이다.\n(나) $0 \\le x \\le 3$에서 $f(x)$의 최댓값은 4이고 최솟값은 0\n이다.\n(다) 함수 $y=f(x)$의 그래프는 점 $(1, -1)$을 지나는 직\n선과 항상 만난다.\n① -5\n② -3\n③ -1\n④ 1\n⑤ 3\n05 이차방정식과 이차함수"
+    },
+    "ocr_recovery_accepted": false,
+    "unit_id": "방정식",
+    "type_id": "QUAD_FN_RELATION",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "114|0774",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "TYPE_UNCLEAR",
+      "UNIT_UNCLEAR"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "CLEAR_SEGMENT_REVIEW",
+      "CLEAR_MATH_UNCERTAIN",
+      "CLEAR_FIGURE_IN_CROP",
+      "SPLIT_ANSWER_EXPLANATION"
+    ],
+    "bbox": {
+      "candidate_id": "114|0774",
+      "page": 114,
+      "original": {
+        "x": 0.502,
+        "y": 0.05704038004750594,
+        "width": 0.492,
+        "height": 0.32338242280285034
+      },
+      "corrected": {
+        "x": 0.502,
+        "y": 0.05704038004750594,
+        "width": 0.492,
+        "height": 0.32338242280285034
+      },
+      "original_hash": "9e2c751aa74fa7763963d26c02ea02d39e2c751aa74fa7763963d26c02ea02d3",
+      "corrected_hash": "9e2c751aa74fa7763963d26c02ea02d39e2c751aa74fa7763963d26c02ea02d3",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0433,
+      "overlap_after": 0.0433,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": {
+      "original_preserved": true,
+      "leaked": true,
+      "stem": "0774\n# 1 서술항\n오른쪽 그림과 같이 서로 평행하거나 수직인 직선에 접하는 네 원 A, B, C, D가 있다. 두 원 A, B의 지름의 길이의 합은 32이고, 두 원 A, D의 넓이의 차는 $96\\pi$일 때, 원 B의 반지름의 길이를 구하시오.\n• 110쪽 유형 16\n![img-1.jpeg](img-1.jpeg)\n# 0775",
+      "answer": null,
+      "explanation": "정답 및 풀이 • 107쪽"
+    },
+    "ocr_recovery_accepted": false,
+    "unit_id": "미정",
+    "type_id": "TYPE_UNCLEAR",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "114|0775",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "TYPE_UNCLEAR",
+      "UNIT_UNCLEAR"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "CLEAR_SEGMENT_REVIEW",
+      "CLEAR_MATH_UNCERTAIN",
+      "CLEAR_FIGURE_IN_CROP"
+    ],
+    "bbox": {
+      "candidate_id": "114|0775",
+      "page": 114,
+      "original": {
+        "x": 0.502,
+        "y": 0.3664228028503563,
+        "width": 0.492,
+        "height": 0.37326365795724464
+      },
+      "corrected": {
+        "x": 0.502,
+        "y": 0.3664228028503563,
+        "width": 0.492,
+        "height": 0.37326365795724464
+      },
+      "original_hash": "7c59a842d7ea1567abb3bd25724fb0c27c59a842d7ea1567abb3bd25724fb0c2",
+      "corrected_hash": "7c59a842d7ea1567abb3bd25724fb0c27c59a842d7ea1567abb3bd25724fb0c2",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0375,
+      "overlap_after": 0.0375,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": null,
+    "ocr_recovery_accepted": false,
+    "unit_id": "미정",
+    "type_id": "TYPE_UNCLEAR",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "125|0857",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "OCR_GARBAGE"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "TYPE_INFER:STEM_INTENT:lin_ineq",
+      "UNIT_STEM_ALLOWED",
+      "CLEAR_SEGMENT_REVIEW",
+      "CLEAR_CLASSIFICATION_REVIEW"
+    ],
+    "bbox": {
+      "candidate_id": "125|0857",
+      "page": 125,
+      "original": {
+        "x": 0.508,
+        "y": 0.31838479809976244,
+        "width": 0.48,
+        "height": 0.1860855106888361
+      },
+      "corrected": {
+        "x": 0.508,
+        "y": 0.31838479809976244,
+        "width": 0.48,
+        "height": 0.1860855106888361
+      },
+      "original_hash": "fc17785fb10ffbc54d18839a14aa5e60fc17785fb10ffbc54d18839a14aa5e60",
+      "corrected_hash": "fc17785fb10ffbc54d18839a14aa5e60fc17785fb10ffbc54d18839a14aa5e60",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0107,
+      "overlap_after": 0.0107,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": null,
+    "ocr_recovery_accepted": false,
+    "unit_id": "부등식",
+    "type_id": "LINEAR_INEQUALITY",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "131|0887",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "BBOX_INTRUSION"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "TYPE_FROM_PAGE_CONTEXT",
+      "UNIT_FROM_PAGE_CONTEXT",
+      "CLEAR_OCR_UNCERTAIN",
+      "CLEAR_CLASSIFICATION_REVIEW"
+    ],
+    "bbox": {
+      "candidate_id": "131|0887",
+      "page": 131,
+      "original": {
+        "x": 0.012,
+        "y": 0.3896437054631829,
+        "width": 0.48,
+        "height": 0.05306888361045131
+      },
+      "corrected": null,
+      "original_hash": "3bc2bbe5ec9358e7d751e3024936fd423bc2bbe5ec9358e7d751e3024936fd42",
+      "corrected_hash": null,
+      "method": "UNRESOLVED",
+      "confidence": "UNCERTAIN",
+      "overlap_before": 0.5253,
+      "overlap_after": 0.5253,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": null,
+    "ocr_recovery_accepted": false,
+    "unit_id": "부등식",
+    "type_id": "QUADRATIC_INEQUALITY",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "135|0934",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "OCR_GARBAGE"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "TYPE_INFER:STEM_INTENT:lin_ineq",
+      "UNIT_STEM_ALLOWED",
+      "CLEAR_SEGMENT_REVIEW",
+      "CLEAR_CLASSIFICATION_REVIEW"
+    ],
+    "bbox": {
+      "candidate_id": "135|0934",
+      "page": 135,
+      "original": {
+        "x": 0.012,
+        "y": 0.7976009501187649,
+        "width": 0.48,
+        "height": 0.0682232779097387
+      },
+      "corrected": {
+        "x": 0.012,
+        "y": 0.7976009501187649,
+        "width": 0.48,
+        "height": 0.0682232779097387
+      },
+      "original_hash": "64466919650fe29501498b8cc0aa473064466919650fe29501498b8cc0aa4730",
+      "corrected_hash": "64466919650fe29501498b8cc0aa473064466919650fe29501498b8cc0aa4730",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0326,
+      "overlap_after": 0.0326,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": null,
+    "ocr_recovery_accepted": false,
+    "unit_id": "부등식",
+    "type_id": "LINEAR_INEQUALITY",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "171|1190",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "BBOX_INTRUSION"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "TYPE_INFER:COUNTING",
+      "CLEAR_CLASSIFICATION_REVIEW"
+    ],
+    "bbox": {
+      "candidate_id": "171|1190",
+      "page": 171,
+      "original": {
+        "x": 0.006,
+        "y": 0.05704038004750594,
+        "width": 0.41477749790092355,
+        "height": 0.5555676959619953
+      },
+      "corrected": null,
+      "original_hash": "c86864edab4e76c16326122c0eebd364c86864edab4e76c16326122c0eebd364",
+      "corrected_hash": null,
+      "method": "UNRESOLVED",
+      "confidence": "UNCERTAIN",
+      "overlap_before": 0.2554,
+      "overlap_after": 0.2554,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": null,
+    "ocr_recovery_accepted": false,
+    "unit_id": "순열과 조합",
+    "type_id": "COUNTING_PERM_COMB",
+    "content_rewrite": false
+  },
+  {
+    "candidate_id": "171|1191",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "BBOX_INTRUSION"
+    ],
+    "applied_rules": [
+      "DROP_POLICY_TAGS",
+      "TYPE_INFER:PRODUCT_OR_EXPAND",
+      "CLEAR_MATH_UNCERTAIN",
+      "CLEAR_CLASSIFICATION_REVIEW"
+    ],
+    "bbox": {
+      "candidate_id": "171|1191",
+      "page": 171,
+      "original": {
+        "x": 0.006,
+        "y": 0.5986080760095012,
+        "width": 0.45172124265323255,
+        "height": 0.24233729216152022
+      },
+      "corrected": null,
+      "original_hash": "28e58efe47a3fc906f46726ee206593528e58efe47a3fc906f46726ee2065935",
+      "corrected_hash": null,
+      "method": "UNRESOLVED",
+      "confidence": "UNCERTAIN",
+      "overlap_before": 0.3197,
+      "overlap_after": 0.3197,
+      "area_retained": 1,
+      "apply": false
+    },
+    "dup": null,
+    "leak_split": null,
+    "ocr_recovery_accepted": false,
+    "unit_id": "순열과 조합",
+    "type_id": "POLY_MULTIPLY",
+    "content_rewrite": false
+  }
+]

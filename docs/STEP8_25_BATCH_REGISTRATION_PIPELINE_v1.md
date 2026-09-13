@@ -241,6 +241,7 @@ A **later** STEP may ingest those problems and/or run paid OCR after an explicit
 | **8.31** | Confidence gate persist **DRAFT** + queue `HUMAN_REVIEW` | Drafts only, never VERIFIED | No by default |
 | **8.32** | Full 192-page 쎈수학 공통수학1 ingest (user-redefined). Persist reviewable identities as DRAFT without requiring `AUTO_APPROVED`. Queue `NEEDS_REVIEW` / `HUMAN_REVIEW`. Never `VERIFIED`. See `docs/STEP8_32_FULL_SSEN_INGEST_v1.md`. | Drafts only, never VERIFIED | Cache-first Mistral via `paidGate`; no new paid signup |
 | **8.33** | Auto QA + common-error correction + NEEDS_REVIEW clear + fingerprint/search prep on the STEP 8.32 SSEN drafts. Never `VERIFIED`. See `docs/STEP8_33_AUTO_QA_SEARCH_PREP_v1.md`. | Drafts only; may clear `NEEDS_REVIEW` → `AUTO_CLASSIFIED`; never VERIFIED | No paid OCR |
+| **8.34** | Residual SSEN exception auto-cleanup (bbox/dup/leak/OCR/unit) + additive pgvector similar search + reusable per-book pipeline. Never `VERIFIED`. See `docs/STEP8_34_EXCEPTIONS_VECTOR_PIPELINE_v1.md`. | Drafts only; may clear remaining `NEEDS_REVIEW` → `AUTO_CLASSIFIED`; embeddings if estimate ≤ $5; never VERIFIED | Existing Mistral embeddings only; cap $5; no new paid signup |
 | *(unnumbered until frozen)* | Remaining 8 figures after ingest | Figure RPC only | Report-then-stop |
 | *(unnumbered until frozen)* | Multimodal twin / print-edit | No | No |
 

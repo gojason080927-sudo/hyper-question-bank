@@ -1,0 +1,12 @@
+{
+  "queried": true,
+  "reason": "read_only",
+  "drafts": 1281,
+  "needs_review": 15,
+  "ssen_needs_review": 9,
+  "fingerprints": 3543,
+  "embeddings": 1244,
+  "duplicate_links": 13,
+  "bbox_corrections": 33,
+  "vector_extension": true
+}

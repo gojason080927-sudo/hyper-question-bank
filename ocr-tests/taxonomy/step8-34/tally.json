@@ -1,0 +1,22 @@
+{
+  "inspected": 9,
+  "auto_resolved": 0,
+  "human": 9,
+  "dup_kinds": {},
+  "reason_before": {
+    "EVIDENCE_INSUFFICIENT": 1,
+    "ANSWER_KEY_LEAK": 2,
+    "TYPE_UNCLEAR": 2,
+    "UNIT_UNCLEAR": 2,
+    "OCR_GARBAGE": 2,
+    "BBOX_INTRUSION": 3
+  },
+  "reason_after": {
+    "EVIDENCE_INSUFFICIENT": 1,
+    "ANSWER_KEY_LEAK": 1,
+    "TYPE_UNCLEAR": 2,
+    "UNIT_UNCLEAR": 2,
+    "OCR_GARBAGE": 2,
+    "BBOX_INTRUSION": 3
+  }
+}

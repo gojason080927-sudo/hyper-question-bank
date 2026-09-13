@@ -1,0 +1,11 @@
+{
+  "provider": "mistral",
+  "model": "mistral-embed",
+  "model_version": "locked-1024",
+  "dimensions": 1024,
+  "embedding_type": "NORMALIZED_TEXT",
+  "endpoint": "https://api.mistral.ai/v1/embeddings",
+  "usd_per_million_tokens": 0.1,
+  "truncation": false,
+  "credentials": "PRESENT"
+}
