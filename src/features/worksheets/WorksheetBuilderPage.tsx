@@ -10,6 +10,7 @@ import {
 } from '../../lib/editor/a4Pagination'
 import { examHidesExplanation } from '../../lib/editor/choices'
 import { MixedKatexText } from '../../lib/math/MixedKatexText'
+import { ProblemStemDisplay } from '../questions/ProblemStemDisplay'
 
 type ItemRow = {
   id: string
@@ -347,7 +348,7 @@ export function WorksheetBuilderPage() {
         <ul>
           {hits.map((row) => (
             <li key={row.id}>
-              {row.public_code} <span className="stem-cell">{row.problem_text ? <MixedKatexText text={row.problem_text} /> : ''}</span>
+              {row.public_code} <span className="stem-cell">{row.problem_text ? <ProblemStemDisplay text={row.problem_text} /> : ''}</span>
               <button
                 type="button"
                 className="btn ghost"
@@ -389,7 +390,7 @@ export function WorksheetBuilderPage() {
         {items.map((row, index) => (
           <li key={`tools-${row.id}`} className="worksheet-item-row">
             <p>
-              {index + 1}. <MixedKatexText text={row.problem_text} />
+              {index + 1}. <ProblemStemDisplay text={row.problem_text} />
             </p>
             <div className="actions">
               <button
@@ -501,7 +502,7 @@ export function WorksheetBuilderPage() {
                   {col.map((item) => (
                     <section className="a4-item" key={item.id} style={{ marginBottom: `${item.spacingMm ?? 6}mm` }}>
                       <p>
-                        <strong>{item.number}.</strong> ({item.points ?? 0}점) <MixedKatexText text={item.stem} />
+                        <strong>{item.number}.</strong> ({item.points ?? 0}점) <ProblemStemDisplay text={item.stem} />
                       </p>
                       {layout.examKind === 'ANSWER_SHEET' || !examHidesExplanation(layout.examKind) ? (
                         <p className="muted">

@@ -1,0 +1,1729 @@
+{
+  "step": "8.38",
+  "status": "PERSISTED",
+  "student_care_accessed": false,
+  "paid_ocr_calls": 0,
+  "paid_ocr_usd": 0,
+  "before": {
+    "drafts": 1281,
+    "listed": 1242,
+    "ssen_linked": 1253,
+    "ssen_needs_review": 9,
+    "public_code_dups": 0,
+    "embeddings": 1244,
+    "fingerprints": 3543,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    }
+  },
+  "gap_vs_63": {
+    "step836_merged_flagged": 63,
+    "all_current_stems_with_range": 63,
+    "listed": 58,
+    "hidden": 5,
+    "later_leaks": 50,
+    "reason": "8.36 counted every SSEN-linked current stem with [n~m], including 5 HIDDEN_DUPLICATE rows. Listed-only is 58. Do not pad to 63."
+  },
+  "summary": {
+    "candidates": 63,
+    "listed_range_hits": 58,
+    "hidden_range_hits": 5,
+    "later_leaks": 50,
+    "auto_safe": 40,
+    "review_required": 18,
+    "blocked": 5,
+    "donor_problems": 31,
+    "target_problems": 113,
+    "new_versions": 144,
+    "current_version_switches": 144,
+    "teacher_edit_protected": 0,
+    "verified_protected": 0,
+    "problems_added": 0,
+    "problems_deleted": 0,
+    "expected_listed": 1242,
+    "embeddings_changed": 0,
+    "fingerprints_changed": 0,
+    "paid_ocr_calls": 0
+  },
+  "safety": {
+    "ok": true,
+    "violations": []
+  },
+  "examples": [
+    {
+      "problem_id": "55264945-d5ca-44e2-b992-3abd7b98a141",
+      "public_code": "HQB-000114",
+      "number": "0563",
+      "page": 83,
+      "role": "donor",
+      "range": "[0564~0566]",
+      "from": "$y=-x^2+6x+1, y=2x+7$ [0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.",
+      "to": "[0561~0563] 다음 이차함수의 그래프와 직선의 위치 관계를 말하시오.\n$y=-x^2+6x+1, y=2x+7$",
+      "from_sha256": "81227505502013ed7869f49a087f8e2698780c78763864c40f943f2d0ebf6792",
+      "to_sha256": "ecd32788e22b3f9458a2ec9586774f3cd50146fb105187e345935d612056126e"
+    },
+    {
+      "problem_id": "217e4774-b9ff-4adf-a247-d383fba07599",
+      "public_code": "HQB-000560",
+      "number": "0564",
+      "page": 83,
+      "role": "target",
+      "range": "[0564~0566]",
+      "from": "서로 다른 두 점에서 만난다.",
+      "to": "[0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.\n서로 다른 두 점에서 만난다.",
+      "from_sha256": "6ba722483317cf90b2c5650466d74f7ba7a870c6b7d2798d2af05a283f0ba2e4",
+      "to_sha256": "bd9a0ee0240b2fbd7ed079b304b504b885010b8802fdcef07fd88baea1181db5"
+    },
+    {
+      "problem_id": "9d5dfca1-97ba-4dfc-8abb-879468352050",
+      "public_code": "HQB-000562",
+      "number": "0565",
+      "page": 83,
+      "role": "target",
+      "range": "[0564~0566]",
+      "from": "한 점에서 만난다.",
+      "to": "[0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.\n한 점에서 만난다.",
+      "from_sha256": "7dcd2966ead20533a69b678fe9421e71a1422ef4d26a553f97214681d9f73cdd",
+      "to_sha256": "de6981f41ed7bbc45c10b6aa0674e247eb2f57c67456ca8cf39e5620b0a7ea47"
+    },
+    {
+      "problem_id": "baaedcfc-95ac-42db-8229-2a7c13980ad5",
+      "public_code": "HQB-000564",
+      "number": "0566",
+      "page": 83,
+      "role": "target",
+      "range": "[0564~0566]",
+      "from": "만나지 않는다.",
+      "to": "[0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.\n만나지 않는다.",
+      "from_sha256": "43d5e49f3f90a9f995feb8124c55595a348c56dc7a33ba3837ac9db97a455356",
+      "to_sha256": "bddef4e2b15bfbf3d81bde9d37d2def888077f4b1521c7d2100146d12e656331"
+    },
+    {
+      "problem_id": "4c9f8a55-af89-40bc-9d74-6c5a9b5c4339",
+      "public_code": "HQB-000134",
+      "number": "0806",
+      "page": 119,
+      "role": "donor",
+      "range": "[0807~0808]",
+      "from": "부등식 $$5x - 3 < 4x - 1 < 7x + 5$$의 해를 구하려고 한다. 다음에 답하시오. 07 일차부등식 [0807~0808] 다음 부등식을 푸시오.",
+      "to": "부등식 $$5x - 3 < 4x - 1 < 7x + 5$$의 해를 구하려고 한다. 다음에 답하시오.",
+      "from_sha256": "63c0f00a121ac21ba21f92daecded41ea8dde6e5a8e37fc2b44f00142a83b522",
+      "to_sha256": "ee9cc16d54f2b046e09a510b1158450ee21b9ab1c2a3e4fee7d2724828b79c78"
+    },
+    {
+      "problem_id": "c5e8e835-c2ee-43af-9b76-5da890da9d8c",
+      "public_code": "HQB-000639",
+      "number": "0807",
+      "page": 119,
+      "role": "target",
+      "range": "[0807~0808]",
+      "from": "$$3x + 1 \\le 2x + 5 < 3$$",
+      "to": "[0807~0808] 다음 부등식을 푸시오.\n$$3x + 1 \\le 2x + 5 < 3$$",
+      "from_sha256": "93c822217aea7db826f58630143ac6622833abac69064a07d7469f5e7fc9a205",
+      "to_sha256": "c5d138d123a61b6a8dc70e10f63efb79089902e8f885416fa5acf171668d68ee"
+    },
+    {
+      "problem_id": "84fe6e6f-c10e-4947-afce-120580a6c80d",
+      "public_code": "HQB-000320",
+      "number": "0808",
+      "page": 119,
+      "role": "target",
+      "range": "[0807~0808]",
+      "from": "$$2x - 1 \\le 3x + 4 \\le x + 8$$",
+      "to": "[0807~0808] 다음 부등식을 푸시오.\n$$2x - 1 \\le 3x + 4 \\le x + 8$$",
+      "from_sha256": "24ddbda96f90edcca34b57192f27f013f6aa8d8c61eb6cfb517a2f44a3d072e6",
+      "to_sha256": "86a6a5c856298a21027679abeac7fbe86ec5ebf39a11c226a01950506857797f"
+    },
+    {
+      "problem_id": "ce225a12-bc5f-4b34-b81a-76f2b9339f19",
+      "public_code": "HQB-000154",
+      "number": "1034",
+      "page": 151,
+      "role": "donor",
+      "range": "[1035~1037]",
+      "from": "3의 배수 또는 7의 배수가 적힌 공이 나오는 경우의 수 [1035~1037] 두 지점 A, B 사이에는 6개의 버스 노선과 2개의 지하철 노선이 있다. A 지점에서 출발하여 B 지점으로 갔다가 다시 A 지점으로 돌아올 때, 다음을 구하시오.",
+      "to": "[1033~1034] 1부터 50까지의 자연수가 각각 하나씩 적힌 50개의 공이 들어 있는 주머니에서 한 개의 공을 꺼낼 때, 다음을 구하시오.\n3의 배수 또는 7의 배수가 적힌 공이 나오는 경우의 수",
+      "from_sha256": "8beadad9641db343a00e363f05051b142889a72311d08409351680313997fc86",
+      "to_sha256": "c1589366aa7a319ab7063a9890fe9ab5a941f417f3476cade41ff36a9b2c869f"
+    },
+    {
+      "problem_id": "a22aa516-ddee-4702-97f0-ff9488485945",
+      "public_code": "HQB-000155",
+      "number": "1035",
+      "page": 151,
+      "role": "target",
+      "range": "[1035~1037]",
+      "from": "갈 때는 버스를, 올 때는 지하철을 이용하는 경우의 수",
+      "to": "[1035~1037] 두 지점 A, B 사이에는 6개의 버스 노선과 2개의 지하철 노선이 있다. A 지점에서 출발하여 B 지점으로 갔다가 다시 A 지점으로 돌아올 때, 다음을 구하시오.\n갈 때는 버스를, 올 때는 지하철을 이용하는 경우의 수",
+      "from_sha256": "1cbc64046f2ff742776f5cea6a4451635288390f57fc241264f0e6ab347199dc",
+      "to_sha256": "50b724d235953a28ea3e31da894d37249a3d1fd54d2ccacc792b397a9fd70186"
+    },
+    {
+      "problem_id": "b0a4f57d-abad-4c26-a4ea-431d92138d8f",
+      "public_code": "HQB-000726",
+      "number": "1036",
+      "page": 151,
+      "role": "target",
+      "range": "[1035~1037]",
+      "from": "갈 때와 올 때 모두 버스를 이용하는 경우의 수",
+      "to": "[1035~1037] 두 지점 A, B 사이에는 6개의 버스 노선과 2개의 지하철 노선이 있다. A 지점에서 출발하여 B 지점으로 갔다가 다시 A 지점으로 돌아올 때, 다음을 구하시오.\n갈 때와 올 때 모두 버스를 이용하는 경우의 수",
+      "from_sha256": "34bae5ea4f10e12b45a4cd0b9803034ef2e02f5e5b0e38f7d95483ce5503cba8",
+      "to_sha256": "f0946373e82d682f69c1b09b8c7e9d616d663ca1f1a1c1ddfdd4e036b1ef17c3"
+    }
+  ],
+  "worksheets": [
+    {
+      "id": "6b96c426-f29e-4835-bdce-5901c050f3fa",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:07.684431+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "2d48d36d-86cf-43ff-ab26-e373a1c5a88c",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:07.684439+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "eed4ad3b-7963-4697-a36f-3ac3b63b16d6",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:51.357889+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "d322df83-429b-4eec-93ea-ee58c99b3757",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T07:17:15.99017+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "671dffbc-ffff-4438-b072-07fde6ce637b",
+      "title": "TEST STEP 8.37 instructor UI",
+      "created_at": "2026-09-13T07:17:15.99017+00:00",
+      "archived_at": null,
+      "layout": {
+        "header": {
+          "grade": "",
+          "title": "HYPER 문제지",
+          "school": "",
+          "examName": "",
+          "studentNameLabel": "이름"
+        },
+        "columns": 2,
+        "examKind": "EXAM",
+        "fontSizePt": 11,
+        "lineHeight": 1.45,
+        "marginTopMm": 18,
+        "marginLeftMm": 14,
+        "marginRightMm": 14,
+        "marginBottomMm": 16
+      },
+      "item_count": 2,
+      "looks_like_test": true
+    }
+  ],
+  "persist": {
+    "attempted": 144,
+    "written": 144,
+    "skipped": 0,
+    "errors": 0,
+    "rows": [
+      {
+        "problem_id": "55264945-d5ca-44e2-b992-3abd7b98a141",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "14f9246f-3ab9-4d0f-9871-50f7d9470013",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "217e4774-b9ff-4adf-a247-d383fba07599",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "5542029f-4cde-4b10-8fe3-3bcc7c98e146",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "9d5dfca1-97ba-4dfc-8abb-879468352050",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "5fea8c8b-1b55-4ad6-adb6-900ec361e011",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "baaedcfc-95ac-42db-8229-2a7c13980ad5",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ef6819c2-5afa-4836-b282-e9c165c30710",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4c9f8a55-af89-40bc-9d74-6c5a9b5c4339",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1ab7ed59-bc6b-464f-bea9-080f9e310d19",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "c5e8e835-c2ee-43af-9b76-5da890da9d8c",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "e5a10d82-774c-414d-8a61-7f5cab934775",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "84fe6e6f-c10e-4947-afce-120580a6c80d",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "68f281b5-6a99-4f0e-9172-90962d262200",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ce225a12-bc5f-4b34-b81a-76f2b9339f19",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2a87d49f-a8fe-4041-915f-0976501a357d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a22aa516-ddee-4702-97f0-ff9488485945",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "43595296-5390-4d63-a68c-ac4ca5c66fa7",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b0a4f57d-abad-4c26-a4ea-431d92138d8f",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "3780a0ab-8ac5-4563-a4b1-1d14aa52b3cb",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "2a579704-77a0-449a-b123-5945ea816bcd",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "88ecb3ff-4520-4204-92e8-6fc8740e246c",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "8a773fe3-2774-4ca7-ba98-17735c19a3d7",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ed9e9d97-2c91-490a-88b6-c5ac8eec05bb",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "df5664f4-fb4d-41cb-99c2-b0eea795d4e3",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "72632950-0e5f-479f-941b-58e14fbf28de",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "0620a52f-cf61-4a3b-b153-0791dcc4631d",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "05dc4dc2-7316-4f83-87da-ac98d007775a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "2ea2db9f-4dbe-43a1-a3b1-f7113c4b9040",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "09d2effd-b94b-4ec3-80bf-8b5d822ece3f",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "3ced3748-7af1-4256-be58-8b4f3f6d332b",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "f0766b80-e0cb-4c46-873e-224392a682dd",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4d8775bc-7f5e-42e9-8775-e2a7c4083fd3",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "b41b15cf-11d6-4c7b-bc68-caac440b205a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "802817ab-97d5-414c-a51b-a1f565839cc4",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "b8b21ca5-0b92-4f4f-ae36-4d3fd2afcc10",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4a7c9931-eeb3-4cd1-ab96-2d1957051047",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "19c1282e-3407-435f-a1c2-90b6be56d93d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4e04e1fc-766a-4d9f-ad91-2d67b0828f0d",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "74a7d827-e6da-4ef9-803c-c4999bfa74ca",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "fcafb327-216c-42b9-82e1-9cab0c92b0a3",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "f186581e-c1ba-4682-b823-52392697ef08",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "1fcf8ae1-9ad5-4626-9d1f-5f718f90d3ba",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6bcab0cd-30d5-4f16-95ed-19b4c659a199",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "fb223fa5-75b4-4277-84b5-5e65ca4aed3a",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2b577024-6126-4f08-9a24-73bf941b1e77",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "3ea7bbd1-0ac8-4f49-99fc-b1ab0f0ca6dd",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "363ec771-db4a-407c-a632-aec0686b39de",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b11015d4-556d-427d-bf4d-c0ed633e125b",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9d942ff5-b6a3-44ac-86d0-ad3087d62bfb",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "55923ff0-c25a-4192-901f-717d19bf5a27",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ecf70cdc-443d-4685-94fb-aa63216ac895",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "96cf18b0-10c7-48d4-8391-d44f8abe44d6",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "665e9254-ddfa-4ee0-96ae-8e384f172f75",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "43d1df23-1721-4ee7-aa85-88d67def5060",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9b2e4c4f-da6d-4895-bce2-2175be5a161f",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "c965720c-fdf2-4828-a1b4-422bd64c4487",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "81836758-d12a-4af9-b72e-158ac74ffe3a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e26b0a88-9978-432b-a894-e14b5734bebf",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "72dad3de-200d-41c5-9fd6-29c21646b2e2",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "48b22bd1-f64e-401a-ae5a-02bbd46306f0",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "3db3ca08-1e87-4315-992b-68a5763f284e",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "84bb8d6a-2f04-47d3-bb38-18b7076472cf",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6cb4d041-5eae-4e79-8f00-0126eac13e05",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "eeae200b-2027-4937-abee-6281c85e3381",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "216dd48e-beb1-4422-9316-1fe4017f815a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "6778a087-47d9-4bec-89cf-7900295cdc08",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ff4fecec-586f-4c46-b1ab-68dfb2b2e9ac",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "f30cb9c5-f815-43cc-9e60-da7fd76d77b4",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2a07e003-6a9b-4426-b9c3-239fd09f72c9",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "0493f336-728d-42ad-816e-277a3858ad2f",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "076e903c-5dd9-4e1c-9f96-e718f14eb416",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a296575a-de6a-4a0a-a8c9-e02331279669",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "038f5725-5ffe-4c02-87ae-b4b76550b1f8",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4171fd4b-9c82-4f3f-b8be-3224457228f0",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6c88f756-ba8a-4120-aa00-15a44c4a4916",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "6ed9f703-7885-476e-8ab4-58a8560011f4",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "21c6d55d-5b63-4f46-8bca-9cb280c06e7d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "94b7979e-a45e-4701-b452-310754462b1b",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "3f9e0199-ddea-46f8-85a0-586242bec217",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "77248ac5-d877-4448-b98e-4ce64303d106",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1d9c93fc-dd99-4bbb-96d1-030b69c4dbf1",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "59ccbe27-5ff2-47a0-a12a-bba49a2af4ef",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "812989c3-b2dd-46b7-a78e-0178d8180002",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "21a53503-eb5c-44c4-bac5-23ca91f160af",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ad62b337-7c91-46ba-9281-3cf70f4dc082",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "cf2f6ac0-0b29-40a4-ac81-24dc43e9e820",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "d4d31113-ff7a-4485-a546-a8e4fa08523d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "c726a377-8b39-4d1c-ad9f-ba711ab1a6f2",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "8cf16d74-c687-40a6-9ab9-4570e158c57e",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "19a308ba-704c-455a-ae1c-b7b93f3e605e",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2a50189c-fe6a-446b-a24f-e679f613b718",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "1acdfca4-8835-4f01-a576-e572da4dd4a1",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9d109cfe-ddeb-4069-a507-68dcb59b9b04",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "d30a84c5-a9de-4426-a091-5df5fb509392",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ec50585b-9f32-47c6-b23b-902c1cf4f0ef",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a71b9e5d-3b2d-4e70-94ad-b53d51625d2e",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "273ffdcc-7132-4f35-a47e-e55279745b03",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "d5c6cfbf-754c-4236-95de-addd2df95d4e",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "d41e70a3-a3a9-46d7-bb69-c05e09a41b2a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "895aaa02-276a-480c-b344-23dea6c3d96d",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9235602a-5d26-4e05-86d8-cc0cb127cca8",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "93e6065f-ae5d-45ed-9c88-fe49fe17d47f",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "019a47b0-82c3-4ea8-a01a-209f43e2a00c",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "f66a9290-3e89-4164-88c0-352ebd687b3e",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1625d272-4e91-4b9f-92de-cbbb1830a4a1",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a05d0011-445e-48a0-ba41-7724fd9cf3a7",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "957f1dc5-d838-4e36-82ca-71aa6b806b2a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "7e3798a3-e026-449a-ad2a-b3f3928332d4",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "fe4fa933-c5e3-45c0-9f41-7edd1a7381d6",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b8299094-c2c8-4c9a-aef2-bc70c64d2c20",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "c73fe7b4-2766-40be-a7fb-714fd551a8b4",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "d1582c21-19bf-411d-9d50-71d78fa18fe1",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "7c736970-c224-4be5-9539-0a6cd40c63cb",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "6d6543f1-f197-41a6-84c2-07165dfce8d3",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "53d42f46-7dae-40dc-b69a-f89a6dcc744d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "eaaa0936-e62b-4c10-9b10-c6c083ccab8a",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "467629d5-ec68-4294-b309-d90b5c16c8ab",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ceabb382-daa9-4872-bf9b-0c4ae4015720",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2da9950d-a99d-4096-a2ab-7bd7e21f07f5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "36ad2b96-e767-49d1-b661-05f03ba8f247",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "86dbf9d6-2111-494f-aad6-c15ac91f3065",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "150ddd7c-a466-4580-b536-53332de503e7",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "cc72e6ea-e8cd-4612-92b6-78c5b148602b",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "60f7a11d-f128-42e3-84e7-feb6a9a6c354",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2fc623df-2780-44d3-bab9-259730d1fd41",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "1c62d3ae-8345-4691-9310-7f40e87be6b6",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "800545f6-4db6-4646-bec6-bbf9e04e911d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "9df27f0e-698e-44c0-88ff-ca28f6bc02d6",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0e5e93ea-33de-4d9b-9326-198fcd8597e5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ce38127b-7947-4424-ba1a-1a6b5c5e4aa0",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "a0f55fe7-db7f-41a6-8142-1bb567a23a74",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "9990f970-fe13-4336-a310-0120ee30ae6e",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "4c38e5d7-74e5-4e52-bef4-39716db23037",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "6813ece7-74ad-42bb-afe8-b47b6f7a09c2",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "a7f8f1e6-72d2-4334-a5fc-ff3f83071dd7",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "bf8c9916-38b3-4a57-831c-d94c945ff8c7",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1b216161-1133-43ec-b9d9-ba78de191546",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "1d837ce5-7070-4a1a-9867-ab0c397c8d94",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "82bcc718-5a16-43d5-afe2-60a91af00f96",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "eef049fa-aba6-41f1-80ee-c59d343d590c",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "67026fd7-6793-4414-9eac-05fb7a0744be",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "613f5d79-85c0-4c3e-8c11-0beb4e4d3821",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "daa5fa6b-b244-4a71-a17e-70766a118c9f",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "f1b5a0b6-ab68-4728-a3f8-97b51b5261e1",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "d10fe0df-e163-440f-af99-eb2ce37f03a3",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "f3f262b1-6e04-48ce-9fe7-bc2823479638",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "335831a7-478a-4f64-9e43-0ad071376aa5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b0aab30f-28a7-4b6c-b94a-ffd1c25866f4",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0be632eb-0107-4fc0-ab35-2cf3a0644caf",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "7bf4d2f4-f076-4e2c-9e52-a8e93b7dfe2d",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9ebb3524-462e-4162-88ac-086616473cdb",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "5b431c70-f7b0-4cc0-945f-abe20cc485a7",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "53fbed6a-ba04-4526-9576-d2f21ea85374",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "38aa0d8c-b0bd-4de4-acc5-ddeb4b619304",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0226dcbc-4d80-4116-9295-e054668adfdf",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ce8386a0-4d5a-4a4f-9b8b-c3abff66b1ae",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "4324d68f-f2aa-4d34-abed-19d091ebf98b",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "3ca0e0d9-26d5-4fa1-b4dd-3b44488e7d11",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "e3b29e48-e796-47eb-8f00-c20c0bbc1490",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "bb19479c-d541-4ae0-9d54-8f5173c66133",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6e1f202a-bcdf-4ec1-8558-2f35f709b528",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4b1b2432-3425-445c-81e4-2ce6401c441b",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "8605127f-c7d2-44b7-b144-d421e0103168",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "caabcb32-0f77-4f46-856b-d9b511d24bbf",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2315bd7b-8e69-4183-9d47-a528072db095",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "14709f9b-7291-4161-84d3-1f3eb82f20d7",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "63e3fb8d-d02c-4988-9914-51dd0fc29e4a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e20ddee6-aea1-4b15-8466-6474c82d7554",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "3e38e2e7-b4c7-4462-b475-61f9ad1fb30c",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e1fef6f8-71b0-405d-a288-9d835f516ba6",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "300e5f0d-3eb8-46ca-96b6-2f1c852c8fcf",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "8b5a122d-d57e-4b2c-97ba-6a2ff6fcb2a1",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "45acb66f-e3cd-4313-827d-e16f4feab3e0",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "38b8ab55-8e1f-4c94-b53a-441b2b3a1745",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "4ad2de31-0575-4895-ad19-c763a33ed730",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "598b49be-0bf6-4256-b914-249297260f3e",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "affd6b2e-68af-49bb-9234-dfb110cf6dfc",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "c535548c-0a48-40c4-afe8-587f0f4ef04b",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "19972b7b-17ed-4e0f-866e-b98078a91f52",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "78ea494d-9692-40f4-82c3-e2f143232b21",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1318e04e-9093-431d-bfdf-973cb514c908",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "9030c7e9-cd30-44f3-b61d-1983ab4a8e47",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "daee35ee-d765-4521-8b13-37085b72b287",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "fe463972-d616-455c-b6da-3909f8335e8f",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "50dd57b1-b473-414b-97d8-7e80b74a36b5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "7b2f0d59-7047-460e-b5bb-ce6d99f9ff79",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1151e837-e0d4-49f1-aa8a-f389d80dbf13",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a98f5f9a-2386-4d1c-91bb-da1670753559",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6892554e-f132-4742-9e96-80c28d193096",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "7174455c-f4c2-42de-ba9f-d13ebabf815e",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ecbbe927-9976-484c-a22e-03d34299b98a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "2a1f2f18-9be4-46fb-9d1d-dd68132eb66d",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "24e1e074-a96c-4c84-b2a8-30f92dbb57ac",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e16b27c6-9f48-44ca-befd-3019db9ba622",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2dd47b3f-6a59-489d-a30f-31a35daeca4c",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "8a8f80ca-7fa6-4f71-a3a4-8be7f062ee19",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "84ff7614-d5b7-428a-957e-ffc1d4b9997f",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b7aff2a0-4874-4c50-baa0-7686d6637764",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "d60e6d37-ea59-4959-a945-92045d4d2908",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "647b5976-f46a-4fe3-ba71-f5cebfb43977",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "801bb363-77c3-4c80-b86a-548eee883c54",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b001cc67-9935-419d-9c97-70e18dc1b3d9",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "307a2895-aa2e-413d-9693-9fb179c78d8f",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a17a0ae4-3107-49aa-864b-2c7a46ead2fb",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0ed64c7c-edea-44ae-b5d8-2979f397f3d1",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4bf45752-0604-469e-9d90-d6e29c487dc7",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "88064e13-2a2e-4e55-9beb-55b3b6249a4e",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "9ea05e84-4bc7-444b-b942-f9a05d7a2bfe",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "3a8834ff-bd2c-43cd-833c-59768b257e39",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e7881820-9a1d-4248-8983-679ca73b2459",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "a3950e70-0f55-4af5-bd8d-02dec112aa0a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "5d49189f-fd34-479a-a92f-af41ae20355b",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "b7fa3bc1-3d64-45eb-b5ba-263a9ee666ec",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "48f91a04-c98f-4bbe-88ec-a86d04b755b8",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "dece0f0a-6c11-4f29-a6c3-ba68b05ee1f8",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "5d7fbdd5-fbe1-458e-946f-5863ac01f28c",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "c5cbf2c6-0ba8-4531-a297-915c95ac13fb",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "fcc9afb7-cdc1-4737-b001-fbb5005428df",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "711139d9-63e9-4223-9274-de44de0a1749",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "1e0ba13c-b260-4188-8cc5-f06de598ac0c",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "8d725da4-d543-4a44-a30f-7defa1f376d7",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e0eae481-1303-4384-8966-6b62596efecd",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "339a9137-98ab-46b7-a264-8ade8b24cb7f",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "1334f5b7-c202-4864-bc0a-1bd6ddfece75",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "89b8d3e1-d152-428a-a5c8-97e51543a0a7",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4cc8660c-475f-496a-a4d5-8051d1d921dd",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "8f1f4fcc-11ed-4933-9d8c-a9eb71b906c9",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "7e2159ce-af5d-409c-9c16-4999dbdebb5b",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "c3c9e85b-c28a-42b7-bdf4-8d7292d1f46a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "9a836406-148a-4581-b1fe-ba90827f0abb",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "13b339e9-c57e-494a-9837-c455cab4ed63",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "feb3e7ac-6b0f-4d28-aaeb-52562edebd8b",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "28f6c18d-bd62-49e3-95e5-6dfe63805049",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "087c3474-78ad-4423-94ab-729b8480acfa",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "18c46e6b-0355-4bbc-9e48-1fef1f2545cd",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "c339cbb4-8f95-4522-82c2-d3743175a9c8",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "4d015e42-45c1-40fd-8c56-a0acf2c869bc",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "5dd5522a-d352-43cb-ab10-4a75d25893e2",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "8a1d48e7-0839-49ff-b7ad-2c1ed032f23b",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ca2b2803-8824-4af6-93cb-dc9f263fd624",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "fdc2281f-2689-4fb1-8fe7-017ae1a789b9",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e49e7230-8c0d-40cd-9b8f-e9f8245da549",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "961d633b-3071-48ae-900d-9c4a4cf0bbd5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "56fd1006-5dc2-4f66-96f8-6da0bbf7a0a1",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "de977de2-8c44-4736-9778-16fc246dcd90",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b42e2a8f-45f9-4776-bdee-58281792b663",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "15e54775-39f2-4792-92ff-d7f9623f6b47",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "30f85a06-c097-495e-b6b9-acdc9b3e497a",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "413434b4-6166-4eb4-a8ca-f083cdcf577a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e785b0dc-eb94-41e9-80e2-748f173194a8",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ecf21ee4-fe59-47b5-8395-692f334cc97d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "85526466-a438-4225-929e-181c0562b9ce",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "3fe362c3-2945-46a7-b64b-66b2fe7918af",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "5498fbb0-9ee3-464a-befa-142ce2c0842f",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "796a2deb-a1a6-4bff-a1e6-91525112eec9",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "545f6ea6-de11-47b4-81cf-628b6cb7c9ce",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9054932e-3367-4b39-be81-f3cc563b1757",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "0601708b-6423-42a6-80ef-63f92b31b79d",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "c8a1c5c5-4230-4243-91ee-d103b5c2d40a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b5d2dbd8-9879-4cbd-8fca-a66033d953fb",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "a67d3ef8-a0f5-4e9f-ae95-f837f83d3f67",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "f29d86cf-ae4d-4fa3-b4e1-65f510753745",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "856ee723-38d2-4a65-9681-ec7c58cb4ec5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "0807489a-31a4-4a8e-9a5e-f9b44e3ab665",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "dabec91a-3840-41b7-b35e-ca35e0af7ede",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "3005c23d-0711-404c-bf1c-bea8894d3c6e",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "20494f92-67a6-40c7-bc9f-286b0e25be37",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "21ff8584-370b-4f03-9896-4ed7d8707c04",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0fccb2df-5d25-42ef-b2af-242fc2b379b4",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "943f7c37-7188-4c21-a383-858d694beace",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9af00cd0-15bc-4f89-9eb4-81d848c2b327",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "cd12a673-f2d9-4785-a965-da28cba22ea6",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0d173459-abab-45d7-84a3-377b54c5558f",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "bce97ccb-7d22-49e9-bc78-5f00fab18b95",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "204f38c4-95c7-4a41-bdb6-52a5095cca6d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "58cee8ec-2aab-42e5-82b1-61ff293610f8",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "bb1f4d3d-ff37-4ab4-a300-2c47b95b9e17",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "cf395a40-9ece-47ae-9899-8e7266e13a84",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1b32e2df-07a7-40b5-93b8-ea8f2758fde7",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ee35f3b7-a962-4a81-9d0b-eaf69f061bfd",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "5d752b37-1762-4185-94eb-d7eeb7c6ea77",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "024c88c7-b189-47e0-a7ab-b8e622be52a2",
+        "role": "donor",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "781790a4-42bf-4679-8ad1-3fad89f717f3",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e531b326-6834-46b1-9aac-6dbd9be4351f",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6f795984-75bc-41f2-a9eb-b255c954f90a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ebf4bf88-bb73-4635-bc5b-fb56ec477148",
+        "role": "target",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "5dba87bb-8a4f-45a6-973b-87ead6f53dd0",
+          "version_no": 2
+        }
+      }
+    ]
+  },
+  "after": {
+    "drafts": 1281,
+    "listed": 1242,
+    "ssen_linked": 1253,
+    "ssen_needs_review": 9,
+    "public_code_dups": 0,
+    "embeddings": 1244,
+    "fingerprints": 3543,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    }
+  },
+  "rerun_applies": 0,
+  "local_rerun_applies": 0,
+  "integrity": {
+    "listed_unchanged": true,
+    "public_code_dups": 0,
+    "embeddings_unchanged": true,
+    "fingerprints_unchanged": true,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    },
+    "needs_review": 9
+  }
+}

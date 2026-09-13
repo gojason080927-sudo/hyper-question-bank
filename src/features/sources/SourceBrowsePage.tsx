@@ -7,8 +7,8 @@ import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { dash, ITEM_FORMAT_KO } from '../../lib/outline/instructorLabels'
 import { formatOutlinePath, formatOutlineTitle } from '../../lib/outline/formatOutlineTitle'
 import { toProblemListViewModels } from '../../lib/questions/problemCardModel'
-import { MixedKatexText } from '../../lib/math/MixedKatexText'
 import { ProblemCardList } from '../questions/ProblemCardList'
+import { ProblemStemDisplay } from '../questions/ProblemStemDisplay'
 import type { ListedProblem } from '../questions/QuestionListPage'
 import type { SourceRegion } from './types'
 
@@ -284,7 +284,7 @@ export function SourceBrowsePage() {
         <p className="muted">원본 미리보기를 불러오는 중입니다.</p>
       )}
       <p className="stem">
-        <MixedKatexText text={selected.problem_text || ''} />
+        <ProblemStemDisplay text={selected.problem_text || ''} />
       </p>
       <div className="actions">
         <button type="button" className="btn ghost" disabled={!neighbor.prev} onClick={() => neighbor.prev && setSelected(neighbor.prev)}>
@@ -460,7 +460,7 @@ export function SourceBrowsePage() {
                       <span className={`status-pill ${card.reviewStatus.toLowerCase()}`}>{card.reviewLabel}</span>
                     </td>
                     <td className="stem-cell">
-                      {card.stem ? <MixedKatexText text={card.stem} /> : '—'}
+                      {card.stem ? <ProblemStemDisplay text={card.stem} /> : '—'}
                     </td>
                   </tr>
                 )

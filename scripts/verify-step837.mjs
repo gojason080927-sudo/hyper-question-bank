@@ -37,7 +37,7 @@ check(freezeText.includes('8.37'), '8.25 freeze must list 8.37')
 const browse = readFileSync(path.join(root, 'src/features/sources/SourceBrowsePage.tsx'), 'utf8')
 check(browse.includes('formatOutlineTitle'), 'browse must use display title formatter')
 check(browse.includes('ProblemCardList'), 'browse must render mobile cards')
-check(browse.includes('MixedKatexText'), 'browse must render KaTeX')
+check(browse.includes('MixedKatexText') || browse.includes('ProblemStemDisplay'), 'browse must render KaTeX')
 check(!browse.includes('{major.code} {major.title_normalized}'), 'browse must not concatenate raw codes')
 
 const dash = readFileSync(path.join(root, 'src/features/dashboard/DashboardPage.tsx'), 'utf8')

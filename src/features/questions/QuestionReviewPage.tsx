@@ -7,7 +7,7 @@ import { parseHqBError, verifyGateIssues, isUsableLicense } from '../../lib/work
 import { defaultHumanDifficulty, extractDifficultyDims } from '../../lib/workflow/difficulty'
 import { isSameVersion } from '../../lib/workflow/reviewTarget'
 import { KatexText } from '../../lib/math/KatexText'
-import { MixedKatexText } from '../../lib/math/MixedKatexText'
+import { ProblemStemDisplay } from './ProblemStemDisplay'
 import { nodePath, useCatalogs } from '../../lib/workflow/useCatalogs'
 import { beginSubmit, releaseSubmit } from '../../lib/workflow/submitLock'
 
@@ -181,7 +181,7 @@ export function QuestionReviewPage() {
         <p><strong>출처</strong> {bundle.sources[0]?.document_title ?? '없음'}</p>
         <p><strong>지시문</strong> {bundle.version.instruction || '—'}</p>
         <p className="stem">
-          <MixedKatexText text={bundle.version.problem_text} />
+          <ProblemStemDisplay text={bundle.version.problem_text} />
         </p>
         {expr ? <p><KatexText tex={expr.latex_expression || expr.original_expression} /></p> : null}
         {bundle.choices.length > 0 ? (

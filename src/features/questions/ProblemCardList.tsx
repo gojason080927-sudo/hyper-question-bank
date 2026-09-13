@@ -1,7 +1,7 @@
 import { useState, type KeyboardEvent, type MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { MixedKatexText } from '../../lib/math/MixedKatexText'
 import type { ProblemListViewModel } from '../../lib/questions/problemCardModel'
+import { ProblemStemDisplay } from './ProblemStemDisplay'
 
 type Props = {
   items: ProblemListViewModel[]
@@ -65,7 +65,7 @@ export function ProblemCardList({ items, selectedId, checkedIds = [], showCheckb
                 <span className={`status-pill ${item.reviewStatus.toLowerCase()}`}>{item.reviewLabel}</span>
               </p>
               <div className={`problem-card-stem ${open ? 'is-open' : ''}`}>
-                {item.stem ? <MixedKatexText text={item.stem} /> : '—'}
+                {item.stem ? <ProblemStemDisplay text={item.stem} /> : '—'}
               </div>
               <div className="problem-card-actions" onClick={stop}>
                 <button
