@@ -354,6 +354,40 @@ textarea {
   color: #8c1d18;
 }
 
+.status-pill.auto_safe {
+  background: #e7f6ed;
+  color: #1c6b45;
+}
+
+.status-pill.review_required {
+  background: #fff6e5;
+  color: #7a4d00;
+}
+
+.status-pill.blocked {
+  background: #fdecea;
+  color: #8c1d18;
+}
+
+.problem-stem-display {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  white-space: pre-wrap;
+}
+
+.shared-prompt {
+  display: block;
+  padding: 6px 8px;
+  background: #f4f7fb;
+  border-left: 3px solid #4c6fff;
+  border-radius: 4px;
+}
+
+.stem-body {
+  display: block;
+}
+
 .review-target {
   font-size: 1.15rem;
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { KatexText } from '../../lib/math/KatexText'
-import { MixedKatexText } from '../../lib/math/MixedKatexText'
+import { ProblemStemDisplay } from './ProblemStemDisplay'
 import { REVIEW_LABELS } from '../../lib/workflow/labels'
 import { isUsableLicense } from '../../lib/workflow/validation'
 import { nodePath, useCatalogs } from '../../lib/workflow/useCatalogs'
@@ -143,7 +143,7 @@ export function QuestionDetailPage() {
         ) : null}
         <p><strong>지시문</strong> {bundle.current_version.instruction || '—'}</p>
         <p className="stem">
-          <MixedKatexText text={bundle.current_version.problem_text} />
+          <ProblemStemDisplay text={bundle.current_version.problem_text} />
         </p>
         {expr ? (
           <p>

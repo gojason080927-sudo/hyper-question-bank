@@ -1,0 +1,249 @@
+{
+  "step": "8.38",
+  "status": "PERSIST_REQUESTED",
+  "student_care_accessed": false,
+  "paid_ocr_calls": 0,
+  "paid_ocr_usd": 0,
+  "before": {
+    "drafts": 1281,
+    "listed": 1242,
+    "ssen_linked": 1253,
+    "ssen_needs_review": 9,
+    "public_code_dups": 0,
+    "embeddings": 1244,
+    "fingerprints": 3543,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    }
+  },
+  "gap_vs_63": {
+    "step836_merged_flagged": 63,
+    "all_current_stems_with_range": 63,
+    "listed": 58,
+    "hidden": 5,
+    "later_leaks": 50,
+    "reason": "8.36 counted every SSEN-linked current stem with [n~m], including 5 HIDDEN_DUPLICATE rows. Listed-only is 58. Do not pad to 63."
+  },
+  "summary": {
+    "candidates": 63,
+    "listed_range_hits": 58,
+    "hidden_range_hits": 5,
+    "later_leaks": 50,
+    "auto_safe": 40,
+    "review_required": 18,
+    "blocked": 5,
+    "donor_problems": 31,
+    "target_problems": 113,
+    "new_versions": 144,
+    "current_version_switches": 144,
+    "teacher_edit_protected": 0,
+    "verified_protected": 0,
+    "problems_added": 0,
+    "problems_deleted": 0,
+    "expected_listed": 1242,
+    "embeddings_changed": 0,
+    "fingerprints_changed": 0,
+    "paid_ocr_calls": 0
+  },
+  "safety": {
+    "ok": true,
+    "violations": []
+  },
+  "examples": [
+    {
+      "problem_id": "55264945-d5ca-44e2-b992-3abd7b98a141",
+      "public_code": "HQB-000114",
+      "number": "0563",
+      "page": 83,
+      "role": "donor",
+      "range": "[0564~0566]",
+      "from": "$y=-x^2+6x+1, y=2x+7$ [0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.",
+      "to": "[0561~0563] 다음 이차함수의 그래프와 직선의 위치 관계를 말하시오.\n$y=-x^2+6x+1, y=2x+7$",
+      "from_sha256": "81227505502013ed7869f49a087f8e2698780c78763864c40f943f2d0ebf6792",
+      "to_sha256": "ecd32788e22b3f9458a2ec9586774f3cd50146fb105187e345935d612056126e"
+    },
+    {
+      "problem_id": "217e4774-b9ff-4adf-a247-d383fba07599",
+      "public_code": "HQB-000560",
+      "number": "0564",
+      "page": 83,
+      "role": "target",
+      "range": "[0564~0566]",
+      "from": "서로 다른 두 점에서 만난다.",
+      "to": "[0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.\n서로 다른 두 점에서 만난다.",
+      "from_sha256": "6ba722483317cf90b2c5650466d74f7ba7a870c6b7d2798d2af05a283f0ba2e4",
+      "to_sha256": "bd9a0ee0240b2fbd7ed079b304b504b885010b8802fdcef07fd88baea1181db5"
+    },
+    {
+      "problem_id": "9d5dfca1-97ba-4dfc-8abb-879468352050",
+      "public_code": "HQB-000562",
+      "number": "0565",
+      "page": 83,
+      "role": "target",
+      "range": "[0564~0566]",
+      "from": "한 점에서 만난다.",
+      "to": "[0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.\n한 점에서 만난다.",
+      "from_sha256": "7dcd2966ead20533a69b678fe9421e71a1422ef4d26a553f97214681d9f73cdd",
+      "to_sha256": "de6981f41ed7bbc45c10b6aa0674e247eb2f57c67456ca8cf39e5620b0a7ea47"
+    },
+    {
+      "problem_id": "baaedcfc-95ac-42db-8229-2a7c13980ad5",
+      "public_code": "HQB-000564",
+      "number": "0566",
+      "page": 83,
+      "role": "target",
+      "range": "[0564~0566]",
+      "from": "만나지 않는다.",
+      "to": "[0564~0566] 이차함수 $y=x^2-3x-4$의 그래프와 직선 $y=x+k$의 위치 관계가 다음과 같을 때, 실수 $k$의 값 또는 $k$의 값의 범위를 구하시오.\n만나지 않는다.",
+      "from_sha256": "43d5e49f3f90a9f995feb8124c55595a348c56dc7a33ba3837ac9db97a455356",
+      "to_sha256": "bddef4e2b15bfbf3d81bde9d37d2def888077f4b1521c7d2100146d12e656331"
+    },
+    {
+      "problem_id": "4c9f8a55-af89-40bc-9d74-6c5a9b5c4339",
+      "public_code": "HQB-000134",
+      "number": "0806",
+      "page": 119,
+      "role": "donor",
+      "range": "[0807~0808]",
+      "from": "부등식 $$5x - 3 < 4x - 1 < 7x + 5$$의 해를 구하려고 한다. 다음에 답하시오. 07 일차부등식 [0807~0808] 다음 부등식을 푸시오.",
+      "to": "부등식 $$5x - 3 < 4x - 1 < 7x + 5$$의 해를 구하려고 한다. 다음에 답하시오.",
+      "from_sha256": "63c0f00a121ac21ba21f92daecded41ea8dde6e5a8e37fc2b44f00142a83b522",
+      "to_sha256": "ee9cc16d54f2b046e09a510b1158450ee21b9ab1c2a3e4fee7d2724828b79c78"
+    },
+    {
+      "problem_id": "c5e8e835-c2ee-43af-9b76-5da890da9d8c",
+      "public_code": "HQB-000639",
+      "number": "0807",
+      "page": 119,
+      "role": "target",
+      "range": "[0807~0808]",
+      "from": "$$3x + 1 \\le 2x + 5 < 3$$",
+      "to": "[0807~0808] 다음 부등식을 푸시오.\n$$3x + 1 \\le 2x + 5 < 3$$",
+      "from_sha256": "93c822217aea7db826f58630143ac6622833abac69064a07d7469f5e7fc9a205",
+      "to_sha256": "c5d138d123a61b6a8dc70e10f63efb79089902e8f885416fa5acf171668d68ee"
+    },
+    {
+      "problem_id": "84fe6e6f-c10e-4947-afce-120580a6c80d",
+      "public_code": "HQB-000320",
+      "number": "0808",
+      "page": 119,
+      "role": "target",
+      "range": "[0807~0808]",
+      "from": "$$2x - 1 \\le 3x + 4 \\le x + 8$$",
+      "to": "[0807~0808] 다음 부등식을 푸시오.\n$$2x - 1 \\le 3x + 4 \\le x + 8$$",
+      "from_sha256": "24ddbda96f90edcca34b57192f27f013f6aa8d8c61eb6cfb517a2f44a3d072e6",
+      "to_sha256": "86a6a5c856298a21027679abeac7fbe86ec5ebf39a11c226a01950506857797f"
+    },
+    {
+      "problem_id": "ce225a12-bc5f-4b34-b81a-76f2b9339f19",
+      "public_code": "HQB-000154",
+      "number": "1034",
+      "page": 151,
+      "role": "donor",
+      "range": "[1035~1037]",
+      "from": "3의 배수 또는 7의 배수가 적힌 공이 나오는 경우의 수 [1035~1037] 두 지점 A, B 사이에는 6개의 버스 노선과 2개의 지하철 노선이 있다. A 지점에서 출발하여 B 지점으로 갔다가 다시 A 지점으로 돌아올 때, 다음을 구하시오.",
+      "to": "[1033~1034] 1부터 50까지의 자연수가 각각 하나씩 적힌 50개의 공이 들어 있는 주머니에서 한 개의 공을 꺼낼 때, 다음을 구하시오.\n3의 배수 또는 7의 배수가 적힌 공이 나오는 경우의 수",
+      "from_sha256": "8beadad9641db343a00e363f05051b142889a72311d08409351680313997fc86",
+      "to_sha256": "c1589366aa7a319ab7063a9890fe9ab5a941f417f3476cade41ff36a9b2c869f"
+    },
+    {
+      "problem_id": "a22aa516-ddee-4702-97f0-ff9488485945",
+      "public_code": "HQB-000155",
+      "number": "1035",
+      "page": 151,
+      "role": "target",
+      "range": "[1035~1037]",
+      "from": "갈 때는 버스를, 올 때는 지하철을 이용하는 경우의 수",
+      "to": "[1035~1037] 두 지점 A, B 사이에는 6개의 버스 노선과 2개의 지하철 노선이 있다. A 지점에서 출발하여 B 지점으로 갔다가 다시 A 지점으로 돌아올 때, 다음을 구하시오.\n갈 때는 버스를, 올 때는 지하철을 이용하는 경우의 수",
+      "from_sha256": "1cbc64046f2ff742776f5cea6a4451635288390f57fc241264f0e6ab347199dc",
+      "to_sha256": "50b724d235953a28ea3e31da894d37249a3d1fd54d2ccacc792b397a9fd70186"
+    },
+    {
+      "problem_id": "b0a4f57d-abad-4c26-a4ea-431d92138d8f",
+      "public_code": "HQB-000726",
+      "number": "1036",
+      "page": 151,
+      "role": "target",
+      "range": "[1035~1037]",
+      "from": "갈 때와 올 때 모두 버스를 이용하는 경우의 수",
+      "to": "[1035~1037] 두 지점 A, B 사이에는 6개의 버스 노선과 2개의 지하철 노선이 있다. A 지점에서 출발하여 B 지점으로 갔다가 다시 A 지점으로 돌아올 때, 다음을 구하시오.\n갈 때와 올 때 모두 버스를 이용하는 경우의 수",
+      "from_sha256": "34bae5ea4f10e12b45a4cd0b9803034ef2e02f5e5b0e38f7d95483ce5503cba8",
+      "to_sha256": "f0946373e82d682f69c1b09b8c7e9d616d663ca1f1a1c1ddfdd4e036b1ef17c3"
+    }
+  ],
+  "worksheets": [
+    {
+      "id": "6b96c426-f29e-4835-bdce-5901c050f3fa",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:07.684431+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "2d48d36d-86cf-43ff-ab26-e373a1c5a88c",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:07.684439+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "eed4ad3b-7963-4697-a36f-3ac3b63b16d6",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T06:46:51.357889+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "d322df83-429b-4eec-93ea-ee58c99b3757",
+      "title": "HYPER 문제지",
+      "created_at": "2026-09-13T07:17:15.99017+00:00",
+      "archived_at": null,
+      "layout": {
+        "columns": 1
+      },
+      "item_count": 0,
+      "looks_like_test": true
+    },
+    {
+      "id": "671dffbc-ffff-4438-b072-07fde6ce637b",
+      "title": "TEST STEP 8.37 instructor UI",
+      "created_at": "2026-09-13T07:17:15.99017+00:00",
+      "archived_at": null,
+      "layout": {
+        "header": {
+          "grade": "",
+          "title": "HYPER 문제지",
+          "school": "",
+          "examName": "",
+          "studentNameLabel": "이름"
+        },
+        "columns": 2,
+        "examKind": "EXAM",
+        "fontSizePt": 11,
+        "lineHeight": 1.45,
+        "marginTopMm": 18,
+        "marginLeftMm": 14,
+        "marginRightMm": 14,
+        "marginBottomMm": 16
+      },
+      "item_count": 2,
+      "looks_like_test": true
+    }
+  ]
+}

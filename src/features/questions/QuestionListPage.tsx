@@ -6,8 +6,8 @@ import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
 import { dash, ITEM_FORMAT_KO } from '../../lib/outline/instructorLabels'
 import { collapseDuplicateHeading } from '../../lib/outline/formatOutlineTitle'
 import { toProblemListViewModels } from '../../lib/questions/problemCardModel'
-import { MixedKatexText } from '../../lib/math/MixedKatexText'
 import { ProblemCardList } from './ProblemCardList'
+import { ProblemStemDisplay } from './ProblemStemDisplay'
 
 export type ListedProblem = {
   id: string
@@ -298,7 +298,7 @@ export function QuestionListPage() {
                   <td>{dash(card.originalProblemNumber)}</td>
                   <td>{collapseDuplicateHeading(row.major_title ?? '') || '—'}</td>
                   <td>{collapseDuplicateHeading(row.section_title ?? '') || '—'}</td>
-                  <td className="stem-cell">{card.stem ? <MixedKatexText text={card.stem} /> : '—'}</td>
+                  <td className="stem-cell">{card.stem ? <ProblemStemDisplay text={card.stem} /> : '—'}</td>
                   <td>{dash(row.curriculum_name)}</td>
                   <td>{dash(row.concept_name)}</td>
                   <td>{card.typeName === '유형 미정' ? dash(row.type_name) : card.typeName}</td>
