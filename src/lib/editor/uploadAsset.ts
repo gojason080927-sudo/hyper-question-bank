@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
-import { ASSET_BUCKET, ASSET_MAX_BYTES, ASSET_MIME } from './schema'
+import { ASSET_BUCKET, ASSET_MAX_BYTES, ASSET_MIME, type EditorDocument, type EditorNode } from './schema'
 
 function extForMime(mime: string): string {
   if (mime === 'image/jpeg') return 'jpg'
@@ -41,4 +41,27 @@ export async function uploadEditorImage(
   if (signed.error || !signed.data?.signedUrl) throw signed.error ?? new Error('signed url')
   const row = registered.data as { asset_id?: string }
   return { storagePath, assetId: row.asset_id ?? '', signedUrl: signed.data.signedUrl }
+}
+
+export async function hydrateEditorImageSrcs(
+  client: SupabaseClient,
+  doc: EditorDocument,
+): Promise<EditorDocument> {
+  const next: EditorDocument = {
+    ...doc,
+    tiptap_json: structuredClone(doc.tiptap_json),
+  }
+  const visit = async (node: EditorNode): Promise<void> => {
+    if ((node.type === 'image' || node.type === 'editorImage') && node.attrs?.storagePath) {
+      const signed = await client.storage.from(ASSET_BUCKET).createSignedUrl(String(node.attrs.storagePath), 3600)
+      if (signed.data?.signedUrl) {
+        node.attrs = { ...node.attrs, src: signed.data.signedUrl }
+      }
+    }
+    if (node.content) {
+      for (const child of node.content) await visit(child)
+    }
+  }
+  await visit(next.tiptap_json)
+  return next
 }

@@ -7,7 +7,7 @@ import { conversionDiff, ocrTextToDocument } from './ocrAdapter'
 import { inspectClipboard, textToEditorDoc } from './paste'
 import { looksLikeXss, sanitizeHtml, stripDataImages } from './sanitize'
 import { pickOpenEditorVersion, chunkIds } from './openVersion'
-import { collectLatex, containsBase64Image, documentPlainText, stripTransientImageSrc } from './schema'
+import { collectLatex, containsBase64Image, copyImageStoragePaths, documentPlainText, stripTransientImageSrc } from './schema'
 
 const longItem = (id: string, extra = ''): WorksheetItemModel => ({
   id,
@@ -95,6 +95,9 @@ describe('images', () => {
     }
     expect(containsBase64Image(dirty)).toBe(true)
     expect(String(stripTransientImageSrc(dirty).content?.[0]?.attrs?.src ?? '')).toBe('')
+    expect(String(stripTransientImageSrc(dirty).content?.[0]?.attrs?.storagePath ?? '')).toBe('p/a.png')
+    const live = { type: 'doc', content: [{ type: 'image', attrs: { src: 'https://x?token=1' } }] }
+    expect(copyImageStoragePaths(dirty, live).content?.[0]?.attrs?.storagePath).toBe('p/a.png')
   })
 })
 

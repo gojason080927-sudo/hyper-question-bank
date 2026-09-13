@@ -111,6 +111,28 @@ export function stripTransientImageSrc(node: EditorNode): EditorNode {
   return next
 }
 
+export function copyImageStoragePaths(from: EditorNode, to: EditorNode): EditorNode {
+  const paths: string[] = []
+  walkNodes(from, (current) => {
+    if ((current.type === 'image' || current.type === 'editorImage') && current.attrs?.storagePath) {
+      paths.push(String(current.attrs.storagePath))
+    }
+  })
+  let index = 0
+  const visit = (node: EditorNode): EditorNode => {
+    const next: EditorNode = { ...node, attrs: node.attrs ? { ...node.attrs } : undefined }
+    if (node.type === 'image' || node.type === 'editorImage') {
+      if (!next.attrs?.storagePath && paths[index]) {
+        next.attrs = { ...next.attrs, storagePath: paths[index] }
+      }
+      index += 1
+    }
+    if (node.content) next.content = node.content.map(visit)
+    return next
+  }
+  return visit(to)
+}
+
 export function containsBase64Image(node: EditorNode): boolean {
   let found = false
   walkNodes(node, (current) => {

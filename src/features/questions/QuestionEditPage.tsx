@@ -13,11 +13,13 @@ import { loadFormFromVersion } from './loadForm'
 import { WysiwygEditor } from './editor/WysiwygEditor'
 import { OriginalPane } from './editor/OriginalPane'
 import { MetadataPane } from './editor/MetadataPane'
+import { uploadEditorImage, hydrateEditorImageSrcs } from '../../lib/editor/uploadAsset'
 import {
   documentPlainText,
   emptyEditorDocument,
   isEditorDocument,
   stripTransientImageSrc,
+  copyImageStoragePaths,
   withLatexIndex,
   type ChoiceLayout,
   type EditorDocument,
@@ -26,7 +28,6 @@ import {
 import { conversionDiff, ocrTextToDocument } from '../../lib/editor/ocrAdapter'
 import { collectLatex } from '../../lib/editor/schema'
 import { parseConflictMessage, localAutosaveKey, writeLocalAutosave, clearLocalAutosave } from '../../lib/editor/conflict'
-import { uploadEditorImage } from '../../lib/editor/uploadAsset'
 import { pickOpenEditorVersion } from '../../lib/editor/openVersion'
 import type { PasteWarning } from '../../lib/editor/paste'
 
@@ -123,7 +124,7 @@ export function QuestionEditPage() {
       | undefined
     let nextDoc = emptyEditorDocument()
     if (isEditorDocument(meta?.editor_document)) {
-      nextDoc = meta.editor_document
+      nextDoc = await hydrateEditorImageSrcs(client, meta.editor_document)
       setOcrDiff(null)
     } else {
       nextDoc = ocrTextToDocument(form.problemText, form.instruction)
@@ -178,11 +179,12 @@ export function QuestionEditPage() {
     setSubmitting(true)
     setError(null)
     const liveJson = (editorRef.current?.getJSON() as EditorNode | undefined) ?? doc.tiptap_json
-    const plain = documentPlainText(liveJson)
-    const latex = collectLatex(liveJson)
+    const mergedJson = copyImageStoragePaths(doc.tiptap_json, liveJson)
+    const plain = documentPlainText(mergedJson)
+    const latex = collectLatex(mergedJson)
     const editorDocument = withLatexIndex({
       ...doc,
-      tiptap_json: stripTransientImageSrc(liveJson),
+      tiptap_json: stripTransientImageSrc(mergedJson),
     })
     const nextState: ProblemFormState = {
       ...state,
@@ -236,9 +238,13 @@ export function QuestionEditPage() {
     if (!client || !problemId || !versionId) return
     try {
       const uploaded = await uploadEditorImage(client, problemId, versionId, file)
-      editorRef.current?.chain().focus().setImage({
-        src: uploaded.signedUrl,
-        alt: file.name,
+      editorRef.current?.chain().focus().insertContent({
+        type: 'image',
+        attrs: {
+          src: uploaded.signedUrl,
+          alt: file.name,
+          storagePath: uploaded.storagePath,
+        },
       }).run()
       const json = editorRef.current?.getJSON() as EditorNode | undefined
       if (json) {
