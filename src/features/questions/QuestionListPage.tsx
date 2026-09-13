@@ -34,6 +34,7 @@ export function QuestionListPage() {
   const [selected, setSelected] = useState<string[]>([])
   const [showTrash, setShowTrash] = useState(false)
   const [info, setInfo] = useState<string | null>(null)
+  const [tick, setTick] = useState(0)
 
   useEffect(() => {
     const client = getSupabase()
@@ -122,7 +123,7 @@ export function QuestionListPage() {
       setError(null)
       setLoading(false)
     })()
-  }, [catalogs, showTrash])
+  }, [catalogs, showTrash, tick])
 
   const filtered = rows.filter((row) => {
     const q = query.trim().toLowerCase()
@@ -210,7 +211,7 @@ export function QuestionListPage() {
               ).then(() => {
                 setSelected([])
                 setInfo(showTrash ? '보관 해제했습니다.' : '보관(휴지통)으로 옮겼습니다. 원본은 삭제하지 않습니다.')
-                setShowTrash(showTrash)
+                setTick((n) => n + 1)
               })
             }}
           >
@@ -225,6 +226,7 @@ export function QuestionListPage() {
               void Promise.all(selected.map((id) => client.rpc('hqb_duplicate_problem', { p_problem_id: id }))).then(() => {
                 setSelected([])
                 setInfo('복제 초안을 만들었습니다.')
+                setTick((n) => n + 1)
               })
             }}
           >

@@ -133,7 +133,7 @@ export function WorksheetBuilderPage() {
     const { data } = await client
       .from('problems')
       .select('id,public_code,current_version_id')
-      .eq('lifecycle_status', 'DRAFT')
+      .in('lifecycle_status', ['DRAFT', 'ACTIVE'])
       .limit(40)
     const versionIds = (data ?? []).map((row) => row.current_version_id).filter(Boolean) as string[]
     const { data: versions } = versionIds.length

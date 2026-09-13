@@ -93,7 +93,9 @@ export function WysiwygEditor({
 
   useEffect(() => {
     if (!editor) return
-    editor.commands.setContent(content)
+    const incoming = JSON.stringify(content)
+    const current = JSON.stringify(editor.getJSON())
+    if (incoming !== current) editor.commands.setContent(content)
     // contentKey remounts conversion from OCR/version restore
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contentKey, editor])

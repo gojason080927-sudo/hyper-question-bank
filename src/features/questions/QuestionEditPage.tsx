@@ -51,6 +51,7 @@ export function QuestionEditPage() {
   const [editorRevision, setEditorRevision] = useState(0)
   const [reviewStatus, setReviewStatus] = useState('UNREVIEWED')
   const [mobileTab, setMobileTab] = useState<'original' | 'edit' | 'meta'>('edit')
+  const [info, setInfo] = useState<string | null>(null)
   const [preview, setPreview] = useState(false)
   const [find, setFind] = useState('')
   const [replace, setReplace] = useState('')
@@ -76,7 +77,7 @@ export function QuestionEditPage() {
       return
     }
     if ((problem as { lifecycle_status?: string }).lifecycle_status === 'ARCHIVED') {
-      setError('보관된 문제는 복원한 뒤에 편집할 수 있습니다.')
+      setError('HQB_ARCHIVED')
       setLoading(false)
       return
     }
@@ -220,6 +221,7 @@ export function QuestionEditPage() {
     setBaseline(JSON.stringify({ state: nextState, json: editorDocument.tiptap_json }))
     setState(nextState)
     setDoc(editorDocument)
+    setInfo(`저장했습니다. 새 버전 ${saved.version_id ? '' : ''}(잠금 #${saved.editor_revision ?? editorRevision + 1}). VERIFIED는 변경되지 않았습니다.`)
     await load()
   }
 
@@ -262,6 +264,33 @@ export function QuestionEditPage() {
   if (loading || catalogLoading) return <main className="page"><p className="muted">편집할 버전을 준비하는 중입니다.</p></main>
   if (catalogError || !catalogs) {
     return <main className="page"><p className="banner error">{catalogError ?? '분류 정보를 불러오지 못했습니다.'}</p></main>
+  }
+  if (error === 'HQB_ARCHIVED') {
+    return (
+      <main className="page">
+        <p className="banner warn">보관된 문제는 복원한 뒤에 편집할 수 있습니다. 원본은 삭제되지 않습니다.</p>
+        <button
+          type="button"
+          className="btn primary"
+          onClick={() => {
+            const client = getSupabase()
+            if (!client || !problemId) return
+            void client.rpc('hqb_restore_archived_problem', { p_problem_id: problemId }).then(({ error: restoreError }) => {
+              if (restoreError) {
+                setError(parseHqBError(restoreError.message))
+                return
+              }
+              setError(null)
+              setLoading(true)
+              void load()
+            })
+          }}
+        >
+          보관 해제하고 편집
+        </button>
+        <p><Link to="/questions">목록</Link></p>
+      </main>
+    )
   }
 
   if (legacy) {
@@ -316,6 +345,7 @@ export function QuestionEditPage() {
       {warnings.map((row) => (
         <p className="banner warn" key={row.code}>{row.message}</p>
       ))}
+      {info ? <p className="banner success">{info}</p> : null}
       {error ? <p className="banner error">{error}</p> : null}
       <div className={`editor-workspace tab-${mobileTab}`}>
         <div className="pane-original">
