@@ -297,6 +297,8 @@ textarea {
   text-align: left;
   font-size: 13px;
   vertical-align: top;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .muted,
@@ -729,11 +731,410 @@ fieldset {
   .editor-toolbar,
   .find-replace,
   .editor-mobile-tabs,
-  .page-head .actions {
+  .page-head .actions,
+  .a4-zoom-bar,
+  .nav-toggle {
     display: none !important;
+  }
+  .a4-viewport,
+  .a4-scale-slot,
+  .a4-stage {
+    transform: none !important;
+    height: auto !important;
+    width: auto !important;
+    position: static !important;
+    overflow: visible !important;
   }
   .a4-page {
     box-shadow: none;
     page-break-after: always;
   }
 }
+
+html,
+body {
+  overflow-x: hidden;
+  word-break: keep-all;
+}
+
+.mixed-katex,
+.math-block,
+.stem-cell,
+.problem-card-stem,
+.problem-card-unit,
+.problem-card-book {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  max-width: 100%;
+}
+
+.math-block {
+  display: block;
+  overflow-x: auto;
+}
+
+.math-fallback {
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.92em;
+  background: #f4f6f9;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.desktop-only {
+  display: table;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.nav-toggle {
+  min-height: 44px;
+  min-width: 44px;
+  border: 1px solid #c5d0de;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.browse-mobile-bar,
+.filter-chips,
+.preview-pane-head,
+.drawer-backdrop {
+  display: none;
+}
+
+.filter-chips {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-chips li {
+  background: #eef4ff;
+  color: #1d4f8c;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.problem-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.problem-card {
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.problem-card.is-selected {
+  border-color: #1d4f8c;
+  background: #eef4ff;
+  box-shadow: inset 4px 0 0 #1d4f8c;
+}
+
+.problem-card-book,
+.problem-card-unit,
+.problem-card-meta {
+  margin: 0;
+}
+
+.problem-card-book {
+  font-weight: 800;
+  color: #1d4f8c;
+}
+
+.problem-card-unit {
+  color: #122033;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.problem-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #5b6b80;
+  font-size: 13px;
+  align-items: center;
+}
+
+.problem-card-stem {
+  max-height: 6.5em;
+  overflow: hidden;
+  line-height: 1.55;
+}
+
+.problem-card-stem.is-open {
+  max-height: none;
+}
+
+.problem-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.problem-card-actions .btn,
+.problem-card-actions .card-link {
+  min-height: 44px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.problem-card-actions .btn.primary {
+  grid-column: 1 / -1;
+}
+
+.problem-card-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.stem-cell {
+  max-width: 28rem;
+  max-height: 4.8em;
+  overflow: hidden;
+}
+
+.worksheet-toolbar,
+.a4-zoom-bar {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  background: #f4f6f9;
+  padding: 8px 0;
+}
+
+.a4-viewport {
+  overflow: auto;
+  width: 100%;
+  padding-bottom: 12px;
+}
+
+.a4-viewport.is-full {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: #e8eef6;
+  padding: 12px;
+}
+
+.a4-scale-slot {
+  position: relative;
+}
+
+.a4-stage {
+  margin: 0 auto;
+}
+
+.worksheet-item-tools {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.worksheet-item-row {
+  list-style: none;
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.worksheet-item-row .actions .btn,
+.worksheet-tools .btn {
+  min-height: 44px;
+}
+
+.worksheet-item-row input[type='number'] {
+  width: 72px;
+  min-height: 44px;
+}
+
+@media (max-width: 1100px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only,
+  .browse-mobile-bar,
+  .filter-chips,
+  .preview-pane-head {
+    display: block;
+  }
+
+  .filter-chips {
+    display: flex;
+  }
+
+  .page,
+  .page.wide,
+  .page.editor-page {
+    padding: 16px 12px 88px;
+    max-width: 100%;
+  }
+
+  .page-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav.is-open {
+    display: flex;
+  }
+
+  .nav a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+  }
+
+  .session {
+    margin-left: 0;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .filters-wide {
+    display: none;
+    grid-template-columns: 1fr;
+  }
+
+  .filters-wide.is-open {
+    display: grid;
+  }
+
+  .outline-tree {
+    display: none;
+    position: fixed;
+    z-index: 30;
+    left: 12px;
+    right: 12px;
+    top: 72px;
+    max-height: 70vh;
+    overflow: auto;
+  }
+
+  .outline-tree.is-open {
+    display: block;
+  }
+
+  .tree-link {
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .drawer-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    border: 0;
+    background: rgba(18, 32, 51, 0.35);
+    z-index: 25;
+  }
+
+  .preview-pane {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 88vh;
+    overflow: auto;
+    z-index: 28;
+    border-radius: 16px 16px 0 0;
+    margin: 0;
+  }
+
+  .preview-pane.is-open {
+    display: block;
+  }
+
+  .preview-pane-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .pagination.sticky-page {
+    position: sticky;
+    bottom: 0;
+    z-index: 6;
+    background: #f4f6f9;
+    justify-content: space-between;
+    padding: 12px 4px calc(12px + env(safe-area-inset-bottom));
+    margin: 16px 0 0;
+  }
+
+  .pagination .btn,
+  .browse-mobile-bar .btn {
+    min-height: 44px;
+  }
+
+  .browse-crumb {
+    margin: 0 0 6px;
+    line-height: 1.4;
+  }
+
+  .problem-card-list.mobile-only {
+    display: grid;
+  }
+
+  .nav-toggle.mobile-only {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .data-table th,
+  .data-table td {
+    word-break: keep-all;
+  }
+}
+
+@media (min-width: 1101px) {
+  .mobile-only,
+  .problem-card-list.mobile-only,
+  .browse-mobile-bar,
+  .preview-pane-head,
+  .drawer-backdrop,
+  .nav-toggle {
+    display: none !important;
+  }
+}
+

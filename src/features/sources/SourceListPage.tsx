@@ -68,7 +68,8 @@ export function SourceListPage() {
       {visible.length === 0 ? (
         <p className="muted">표시할 교재가 없습니다.</p>
       ) : (
-        <table className="data-table">
+        <>
+        <table className="data-table desktop-only">
           <thead>
             <tr>
               <th>교재명</th>
@@ -102,6 +103,34 @@ export function SourceListPage() {
             })}
           </tbody>
         </table>
+        <ul className="problem-card-list mobile-only">
+          {visible.map((row) => {
+            const href = row.id === SSEN_SOURCE_DOCUMENT_ID || row.document_type === 'WORKBOOK' || row.document_type === 'TEXTBOOK'
+              ? `/sources/${row.id}/browse`
+              : `/sources/${row.id}`
+            const linkedGuess = row.id === SSEN_SOURCE_DOCUMENT_ID
+            return (
+              <li key={row.id}>
+                <article className="problem-card source-card">
+                  <p className="problem-card-book">{row.title}</p>
+                  <p className="problem-card-unit">{row.original_filename}</p>
+                  <p className="problem-card-meta">
+                    <span>{row.page_count ?? '—'}쪽</span>
+                    <span>{ocrStatusLabel(row.ocr_status, linkedGuess)}</span>
+                    <span>{extractionStatusLabel(row.extraction_status, linkedGuess)}</span>
+                    <span>{DOCUMENT_STATUS_KO[row.document_status] ?? row.document_status}</span>
+                  </p>
+                  <div className="problem-card-actions">
+                    <Link className="btn primary" to={href} aria-label={`${row.title} 열기`}>
+                      열기
+                    </Link>
+                  </div>
+                </article>
+              </li>
+            )
+          })}
+        </ul>
+        </>
       )}
     </main>
   )

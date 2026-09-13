@@ -22,6 +22,7 @@
     "verify:step834": "node scripts/verify-step834.mjs",
     "verify:step835": "node scripts/verify-step835.mjs",
     "verify:step836": "node scripts/verify-step836.mjs",
+    "verify:step837": "node scripts/verify-step837.mjs",
     "pipeline:8.24": "node scripts/step-8.24.mjs --run --cache-only",
     "pipeline:8.25": "node scripts/step-8.25.mjs --run --cache-only",
     "pipeline:8.26": "node scripts/step-8.26.mjs --run --cache-only",

@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { NavLink, Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/AuthProvider'
 
 export function AppShell() {
   const { loading, session, profile, configured, signOut } = useAuth()
   const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   if (!configured) {
     return (
@@ -48,7 +50,17 @@ export function AppShell() {
         <NavLink to="/" className="brand">
           HYPER QUESTION BANK
         </NavLink>
-        <nav className="nav" aria-label="주요 메뉴">
+        <button
+          type="button"
+          className="nav-toggle mobile-only"
+          aria-expanded={menuOpen}
+          aria-controls="app-nav"
+          aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
+          onClick={() => setMenuOpen((value) => !value)}
+        >
+          메뉴
+        </button>
+        <nav id="app-nav" className={`nav ${menuOpen ? 'is-open' : ''}`} aria-label="주요 메뉴" onClick={() => setMenuOpen(false)}>
           <NavLink to="/questions">문제 목록</NavLink>
           <NavLink to="/questions/new">신규 등록</NavLink>
           <NavLink to="/worksheets">문제지</NavLink>
