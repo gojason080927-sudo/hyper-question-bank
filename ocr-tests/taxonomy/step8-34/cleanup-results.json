@@ -1,114 +1,5 @@
 [
   {
-    "candidate_id": "19|0094",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:POLY_WORD",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0094 오른쪽 그림과 같이 밑면의 가로의 길이가 a-2, 세로의 길이가 a+3인 직육면체의 부피가 a²+5a²-2a-24 일 때, 이 직육면체의 높이를 구하시 오. ![img-1.jpeg](img-1.jpeg) # 0095 다항식의 연산",
-      "answer": null,
-      "explanation": "정답 및 풀이 ● 9쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "POLY_ADD_SUB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "27|0145",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0145 $$x^3 + 9x^2 + 27x + 27$$",
-      "answer": null,
-      "explanation": "정답 및 풀이 ● 15쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "POLY_DIVIDE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "33|0202",
-    "verdict": "HUMAN_REVIEW",
-    "pipeline_status": "HUMAN_REVIEW",
-    "review_status_after": "NEEDS_REVIEW",
-    "residual_reasons": [
-      "OCR_GARBAGE"
-    ],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CHOICES_CONSTRUCTED",
-      "CLEAR_CLASSIFICATION_REVIEW"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "REMAINDER_FACTOR_THEOREM",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "44|0276",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0276 # 4 서술항 • 39쪽 유형 24 삼각형의 세 변의 길이 a, b, c에 대하여 $$a = 2b, a^2b - a^2c - ab^2 + b^2c + ac^2 - bc^2 = 0$$ 이 성립한다. 이 삼각형의 둘레의 길이가 40일 때, 삼각형의 넓이를 구하시오.",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 34쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "POLY_MULTIPLY",
-    "content_rewrite": false
-  },
-  {
     "candidate_id": "47|0283",
     "verdict": "HUMAN_REVIEW",
     "pipeline_status": "HUMAN_REVIEW",
@@ -123,988 +14,35 @@
       "CLEAR_SEGMENT_REVIEW",
       "CLEAR_CLASSIFICATION_REVIEW"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "47|0283",
+      "page": 47,
+      "original": {
+        "x": 0.012,
+        "y": 0.34629453681710215,
+        "width": 0.48,
+        "height": 0.0518812351543943
+      },
+      "corrected": {
+        "x": 0.012,
+        "y": 0.34629453681710215,
+        "width": 0.48,
+        "height": 0.0518812351543943
+      },
+      "original_hash": "18818b94dd385be6c5b9d072789dfe4318818b94dd385be6c5b9d072789dfe43",
+      "corrected_hash": "18818b94dd385be6c5b9d072789dfe4318818b94dd385be6c5b9d072789dfe43",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0385,
+      "overlap_after": 0.0385,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": null,
     "ocr_recovery_accepted": false,
     "unit_id": "방정식",
     "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "47|0285",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_OCR_UNCERTAIN",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SHORT_FORMULA_VALID"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "47|0286",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_OCR_UNCERTAIN",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SHORT_FORMULA_VALID"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0313",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0313",
-      "right_id": "49|0314",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0313",
-      "extra_id": "49|0314",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0314",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0313",
-      "right_id": "49|0314",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0313",
-      "extra_id": "49|0314",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0315",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0315",
-      "right_id": "49|0316",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0315",
-      "extra_id": "49|0316",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0316",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0315",
-      "right_id": "49|0316",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0315",
-      "extra_id": "49|0316",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0318",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:PRODUCT_OR_EXPAND",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0318",
-      "right_id": "49|0317",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0317",
-      "extra_id": "49|0318",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "POLY_MULTIPLY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0317",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:PRODUCT_OR_EXPAND",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0318",
-      "right_id": "49|0317",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0317",
-      "extra_id": "49|0318",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "POLY_MULTIPLY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0319",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0319",
-      "right_id": "49|0320",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0319",
-      "extra_id": "49|0320",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0320",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0319",
-      "right_id": "49|0320",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0319",
-      "extra_id": "49|0320",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0323",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0323",
-      "right_id": "49|0324",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0323",
-      "extra_id": "49|0324",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0324",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0323",
-      "right_id": "49|0324",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0323",
-      "extra_id": "49|0324",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0327",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0327",
-      "right_id": "49|0328",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "49|0327",
-      "extra_id": "49|0328",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH"
-      ],
-      "block_extra": true,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0328",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0327",
-      "right_id": "49|0328",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "49|0327",
-      "extra_id": "49|0328",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH"
-      ],
-      "block_extra": true,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0309",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0309",
-      "right_id": "49|0310",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0309",
-      "extra_id": "49|0310",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0310",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0309",
-      "right_id": "49|0310",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0309",
-      "extra_id": "49|0310",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0329",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0329",
-      "right_id": "49|0330",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0329",
-      "extra_id": "49|0330",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0330",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0329",
-      "right_id": "49|0330",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0329",
-      "extra_id": "49|0330",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0312",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0312",
-      "right_id": "49|0311",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0311",
-      "extra_id": "49|0312",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "49|0311",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "49|0312",
-      "right_id": "49|0311",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "49|0311",
-      "extra_id": "49|0312",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "51|0342",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0342 • ◎· ◎ 서술함 복소수 $z = i(a+2i)^2$이 실수가 되도록 하는 양수 $a$의 값을 $\\alpha$, 그때의 $z$의 값을 $\\beta$라 할 때, $\\alpha - \\beta$의 값을 구하시오. 03 복 소 수",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 38쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "57|0386",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0386 • ⑤ • 0이 아닌 두 실수 $a, b$에 대하여 $\\frac{\\sqrt{a}}{\\sqrt{b}} = -\\sqrt{\\frac{a}{b}}$ 일 때, 다음 중 항상 옳은 것은? 03 복소수",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 44쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "60|0404",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:complex_ops",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0404 » 교육청 기출 • 56쪽 유형 11 복소수 $z=\\frac{-1+\\sqrt{3}i}{2}$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $i=\\sqrt{-1}$) 보기 $\\neg, z^3=1$ $\\sqsubset, z^4+z^5=-1$ $\\sqsubset, z^n+z^{2n}+z^{3n}+z^{4n}+z^{5n}=-1$을 만족시키는 100 이하의 모든 자연수 $n$의 개수는",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 49쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "COMPLEX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "67|0452",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_solve",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0452 •·· ◎ 시술형 이차방정식 $x^2 + 2x - 1 = 0$의 양수인 근을 $a$라 할 때, $a(a^2 + 3a - 4)(a^2 + a - 6)$의 값을 구하시오. 공정 03 절댓값 기호를 포함한 방정식 개념 04-1 04 이차방정식",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 53쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUADRATIC_SOLVE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "69|0466",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_solve",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0466 이차방정식 $2x^3-4x-(k-5)=0$이 허근을 갖고 이차 방정식 $x^2-(k+3)x+k+6=0$이 중근을 가질 때, 실 수 $k$의 값을 구하시오.",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 55쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUADRATIC_SOLVE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "75|0507",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0507 • ③ • 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}$를 지름으로 하는 원 위의 한 점 P에서 $\\overline{\\mathrm{AB}}$에 내린 수선의 발을 H라 하자. $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{PH}} = 3$, $\\overline{\\mathrm{AH}} = \\alpha$, $\\overline{\\mathr",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 62쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUADRATIC_SOLVE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "78|0527",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_solve",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0527 • ⑤ • 이차방정식 $x^2 - 5x + 14 = 0$의 서로 다른 두 허근을 $\\alpha, \\beta$라 할 때, $14\\left(\\frac{\\overline{\\alpha}}{\\alpha} + \\frac{\\overline{\\beta}}{\\beta}\\right)$의 값을 구하시오. (단, $\\overline{\\alpha}, \\overline{\\beta}$는 각각 $\\alpha, \\beta$",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 66쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUADRATIC_SOLVE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "87|0597",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_fn",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0597 • ① • • 이차함수 $$y=ax^2+bx+c$$의 그래프와 직선 $$y=mx+n$$이 오른쪽 그림과 같이 서로 다른 두 점에서 만날 때, 방정식 $$ax^2+(b-m)x+c-n=0$$의 모든 실근의 곱을 구하시오. ![img-0.jpeg](img-0.jpeg) (단, a, b, c, m, n은 상수이다.) 0598 • ② •",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 75쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUAD_FN_RELATION",
     "content_rewrite": false
   },
   {
@@ -1123,93 +61,41 @@
       "CLEAR_FIGURE_IN_CROP",
       "CLEAR_CLASSIFICATION_REVIEW"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "95|0650",
+      "page": 95,
+      "original": {
+        "x": 0.508,
+        "y": 0.04285035629453682,
+        "width": 0.48,
+        "height": 0.42836579572446554
+      },
+      "corrected": {
+        "x": 0.508,
+        "y": 0.04285035629453682,
+        "width": 0.48,
+        "height": 0.42836579572446554
+      },
+      "original_hash": "1c4c4b3e8a70643e963c2f002fd5c19b1c4c4b3e8a70643e963c2f002fd5c19b",
+      "corrected_hash": "1c4c4b3e8a70643e963c2f002fd5c19b1c4c4b3e8a70643e963c2f002fd5c19b",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0043,
+      "overlap_after": 0.0043,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": {
       "original_preserved": true,
       "leaked": true,
       "stem": "# 0650",
-      "answer": "• 83쪽 • 90쪽 유형 07 이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때, $f(4)$의 값은? (가) 모든 실수 $x$에 대하",
-      "explanation": "• 83쪽 • 90쪽 유형 07 이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때, $f(4)$의 값은? (가) 모든 실수 $x$에 대하여 $f(1-x)=f(1+x)$이다. (나) $0 \\le x \\le 3$에서 $f(x)$의 최댓값은 4이고 최솟값은 0 이다. (다) 함수 $y=f(x)$의 그래프는 점 $(1, -1)$을 지나는 직 선과 항상 만난다. 05 이차방정식과 이차함수"
+      "answer": "• 83쪽",
+      "explanation": "• 83쪽\n• 90쪽 유형 07\n이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때,\n$f(4)$의 값은?\n(가) 모든 실수 $x$에 대하여 $f(1-x)=f(1+x)$이다.\n(나) $0 \\le x \\le 3$에서 $f(x)$의 최댓값은 4이고 최솟값은 0\n이다.\n(다) 함수 $y=f(x)$의 그래프는 점 $(1, -1)$을 지나는 직\n선과 항상 만난다.\n① -5\n② -3\n③ -1\n④ 1\n⑤ 3\n05 이차방정식과 이차함수"
     },
     "ocr_recovery_accepted": false,
     "unit_id": "방정식",
     "type_id": "QUAD_FN_RELATION",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "96|0655",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:PRODUCT_OR_EXPAND",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0655 ◇ 시술함 • 92쪽 유형 10 $3x+4y=8$을 만족시키는 양의 실수 $x, y$에 대하여 $(\\sqrt{17+3x}+\\sqrt{11+4y})^2$의 최댓값을 구하시오.",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 86쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "POLY_MULTIPLY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "105|0716",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:PRODUCT_OR_EXPAND",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "0716 • ⑤ • 삼차방정식 $x^3 + 3x^2 - 5x - 1 = 0$의 세 근을 $\\alpha - 4$, $\\beta - 1, \\gamma + 1$이라 할 때, $(\\alpha - 1)(\\beta + 2)(\\gamma + 4)$의 값은?",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 94쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "다항식",
-    "type_id": "POLY_MULTIPLY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "114|0772",
-    "verdict": "HUMAN_REVIEW",
-    "pipeline_status": "HUMAN_REVIEW",
-    "review_status_after": "NEEDS_REVIEW",
-    "residual_reasons": [
-      "TYPE_UNCLEAR",
-      "UNIT_UNCLEAR"
-    ],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "CLEAR_SEGMENT_REVIEW"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "미정",
-    "type_id": "TYPE_UNCLEAR",
     "content_rewrite": false
   },
   {
@@ -1228,12 +114,35 @@
       "CLEAR_FIGURE_IN_CROP",
       "SPLIT_ANSWER_EXPLANATION"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "114|0774",
+      "page": 114,
+      "original": {
+        "x": 0.502,
+        "y": 0.05704038004750594,
+        "width": 0.492,
+        "height": 0.32338242280285034
+      },
+      "corrected": {
+        "x": 0.502,
+        "y": 0.05704038004750594,
+        "width": 0.492,
+        "height": 0.32338242280285034
+      },
+      "original_hash": "9e2c751aa74fa7763963d26c02ea02d39e2c751aa74fa7763963d26c02ea02d3",
+      "corrected_hash": "9e2c751aa74fa7763963d26c02ea02d39e2c751aa74fa7763963d26c02ea02d3",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0433,
+      "overlap_after": 0.0433,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": {
       "original_preserved": true,
       "leaked": true,
-      "stem": "0774 # 1 서술항 오른쪽 그림과 같이 서로 평행하거나 수직인 직선에 접하는 네 원 A, B, C, D가 있다. 두 원 A, B의 지름의 길이의 합은 32이고, 두 원 A, D의 넓이의 차는 $96\\pi$일 때, 원 B의 반지름의 길이를 구하시오. • 110쪽 유형 16 ![img-1.jpeg](img-1.jpeg) # 0775",
+      "stem": "0774\n# 1 서술항\n오른쪽 그림과 같이 서로 평행하거나 수직인 직선에 접하는 네 원 A, B, C, D가 있다. 두 원 A, B의 지름의 길이의 합은 32이고, 두 원 A, D의 넓이의 차는 $96\\pi$일 때, 원 B의 반지름의 길이를 구하시오.\n• 110쪽 유형 16\n![img-1.jpeg](img-1.jpeg)\n# 0775",
       "answer": null,
       "explanation": "정답 및 풀이 • 107쪽"
     },
@@ -1257,220 +166,35 @@
       "CLEAR_MATH_UNCERTAIN",
       "CLEAR_FIGURE_IN_CROP"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "114|0775",
+      "page": 114,
+      "original": {
+        "x": 0.502,
+        "y": 0.3664228028503563,
+        "width": 0.492,
+        "height": 0.37326365795724464
+      },
+      "corrected": {
+        "x": 0.502,
+        "y": 0.3664228028503563,
+        "width": 0.492,
+        "height": 0.37326365795724464
+      },
+      "original_hash": "7c59a842d7ea1567abb3bd25724fb0c27c59a842d7ea1567abb3bd25724fb0c2",
+      "corrected_hash": "7c59a842d7ea1567abb3bd25724fb0c27c59a842d7ea1567abb3bd25724fb0c2",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0375,
+      "overlap_after": 0.0375,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": null,
     "ocr_recovery_accepted": false,
     "unit_id": "미정",
     "type_id": "TYPE_UNCLEAR",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "114|0773",
-    "verdict": "HUMAN_REVIEW",
-    "pipeline_status": "HUMAN_REVIEW",
-    "review_status_after": "NEEDS_REVIEW",
-    "residual_reasons": [
-      "TYPE_UNCLEAR",
-      "UNIT_UNCLEAR"
-    ],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_FIGURE_IN_CROP"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "미정",
-    "type_id": "TYPE_UNCLEAR",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "114|0776",
-    "verdict": "HUMAN_REVIEW",
-    "pipeline_status": "HUMAN_REVIEW",
-    "review_status_after": "NEEDS_REVIEW",
-    "residual_reasons": [
-      "TYPE_UNCLEAR",
-      "UNIT_UNCLEAR"
-    ],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "CLEAR_SEGMENT_REVIEW"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "미정",
-    "type_id": "TYPE_UNCLEAR",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "117|0781",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_OCR_UNCERTAIN",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "117|0781",
-      "right_id": "117|0782",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "117|0781",
-      "extra_id": "117|0782",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "117|0782",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_OCR_UNCERTAIN",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "117|0781",
-      "right_id": "117|0782",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "117|0781",
-      "extra_id": "117|0782",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "117|0784",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_OCR_UNCERTAIN",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "117|0784",
-      "right_id": "117|0783",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "117|0783",
-      "extra_id": "117|0784",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "117|0783",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_FROM_PAGE_CONTEXT",
-      "UNIT_FROM_PAGE_CONTEXT",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_OCR_UNCERTAIN",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "117|0784",
-      "right_id": "117|0783",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "117|0783",
-      "extra_id": "117|0784",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
     "content_rewrite": false
   },
   {
@@ -1488,7 +212,30 @@
       "CLEAR_SEGMENT_REVIEW",
       "CLEAR_CLASSIFICATION_REVIEW"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "125|0857",
+      "page": 125,
+      "original": {
+        "x": 0.508,
+        "y": 0.31838479809976244,
+        "width": 0.48,
+        "height": 0.1860855106888361
+      },
+      "corrected": {
+        "x": 0.508,
+        "y": 0.31838479809976244,
+        "width": 0.48,
+        "height": 0.1860855106888361
+      },
+      "original_hash": "fc17785fb10ffbc54d18839a14aa5e60fc17785fb10ffbc54d18839a14aa5e60",
+      "corrected_hash": "fc17785fb10ffbc54d18839a14aa5e60fc17785fb10ffbc54d18839a14aa5e60",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0107,
+      "overlap_after": 0.0107,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": null,
     "ocr_recovery_accepted": false,
@@ -1497,54 +244,44 @@
     "content_rewrite": false
   },
   {
-    "candidate_id": "129|0882",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:lin_ineq",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "124쪽 유형 10 0882 사유형 • 125쪽 유형 12 부등식 $$||x + 2| + \\sqrt{x^2 - 2x + 1} \\leq 4$$ 의 해가 $$a \\leq x \\leq b$$ 일 때, $$a + b$$ 의 값을 구하시오. 07 일차부등식",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 121쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "129|0880",
+    "candidate_id": "131|0887",
     "verdict": "HUMAN_REVIEW",
     "pipeline_status": "HUMAN_REVIEW",
     "review_status_after": "NEEDS_REVIEW",
     "residual_reasons": [
-      "CHOICES_INCOMPLETE"
+      "BBOX_INTRUSION"
     ],
     "applied_rules": [
       "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:lin_ineq",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
+      "TYPE_FROM_PAGE_CONTEXT",
+      "UNIT_FROM_PAGE_CONTEXT",
+      "CLEAR_OCR_UNCERTAIN",
       "CLEAR_CLASSIFICATION_REVIEW"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "131|0887",
+      "page": 131,
+      "original": {
+        "x": 0.012,
+        "y": 0.3896437054631829,
+        "width": 0.48,
+        "height": 0.05306888361045131
+      },
+      "corrected": null,
+      "original_hash": "3bc2bbe5ec9358e7d751e3024936fd423bc2bbe5ec9358e7d751e3024936fd42",
+      "corrected_hash": null,
+      "method": "UNRESOLVED",
+      "confidence": "UNCERTAIN",
+      "overlap_before": 0.5253,
+      "overlap_after": 0.5253,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": null,
     "ocr_recovery_accepted": false,
     "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
+    "type_id": "QUADRATIC_INEQUALITY",
     "content_rewrite": false
   },
   {
@@ -1562,7 +299,30 @@
       "CLEAR_SEGMENT_REVIEW",
       "CLEAR_CLASSIFICATION_REVIEW"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "135|0934",
+      "page": 135,
+      "original": {
+        "x": 0.012,
+        "y": 0.7976009501187649,
+        "width": 0.48,
+        "height": 0.0682232779097387
+      },
+      "corrected": {
+        "x": 0.012,
+        "y": 0.7976009501187649,
+        "width": 0.48,
+        "height": 0.0682232779097387
+      },
+      "original_hash": "64466919650fe29501498b8cc0aa473064466919650fe29501498b8cc0aa4730",
+      "corrected_hash": "64466919650fe29501498b8cc0aa473064466919650fe29501498b8cc0aa4730",
+      "method": "NO_INTRUSION",
+      "confidence": "HIGH",
+      "overlap_before": 0.0326,
+      "overlap_after": 0.0326,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": null,
     "ocr_recovery_accepted": false,
@@ -1571,751 +331,82 @@
     "content_rewrite": false
   },
   {
-    "candidate_id": "144|1005",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_solve",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1005 • ⑤ • 이차방정식 $x^2 + 2(k - 1)x - k + 3 = 0$의 두 근이 모두 0과 3 사이에 있을 때, 실수 $k$의 값의 범위를 구하시오. 유형 22 사차방정식의 근의 판별 개념 08-6",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 140쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUADRATIC_SOLVE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "148|1029",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_solve",
-      "UNIT_STEM_ALLOWED",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1029 ◇ 서술항 • 143쪽 유형 19 이차방정식 x²+kx-k=0의 두 실근 α, β에 대하여 |α-β|≤2√3일 때, 정수 k의 개수를 구하시오. 유사근의 기술",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 146쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUADRATIC_SOLVE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "153|1054",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "153|1054",
-      "right_id": "153|1055",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "153|1054",
-      "extra_id": "153|1055",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "153|1055",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "153|1054",
-      "right_id": "153|1055",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "153|1054",
-      "extra_id": "153|1055",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "153|1060",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "153|1060",
-      "right_id": "153|1061",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "153|1060",
-      "extra_id": "153|1061",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "153|1061",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:SIMILAR_DISTINCT"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "153|1060",
-      "right_id": "153|1061",
-      "kind": "SIMILAR_DISTINCT",
-      "keeper_id": "153|1060",
-      "extra_id": "153|1061",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SHORT_TEMPLATE_STEM"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "KEPT_DISTINCT"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "154|1080",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:lin_ineq",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "UNIT_FROM_REINFER"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "154|1081",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:lin_ineq",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "UNIT_FROM_REINFER"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "부등식",
-    "type_id": "LINEAR_INEQUALITY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "154|1082",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_fn",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "UNIT_FROM_REINFER"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUAD_FN_RELATION",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "157|1100",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:COUNTING",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_FIGURE_IN_CROP",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1100 •·· 오른쪽 그림의 5개의 영역을 서로 다 른 5가지 색으로 칠하려고 한다. A, B, C, D, E의 영역에 같은 색을 중 복하여 사용해도 좋으나 인접한 영역 은 서로 다른 색으로 칠할 때, 칠하는 ![img-3.jpeg](img-3.jpeg) 경우의 수는? (단, 각 영역에는 한 가지 색만 칠한다.) # 유형 08 # 수형도를 이용하는 경우의 수 개념 09-1 # 1101 대표 문제",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 153쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "158|1104",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:COUNTING",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "158|1104",
-      "right_id": "158|1104",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "158|1104",
-      "extra_id": "158|1104",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "SAME_NUMBER",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SAME_PROBLEM_ID"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "158|1104",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:COUNTING",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "158|1104",
-      "right_id": "158|1104",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "158|1104",
-      "extra_id": "158|1104",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "SAME_NUMBER",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SAME_PROBLEM_ID"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "159|1115",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:counting",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1115 • ⑤ • 1부터 7까지의 자연수를 일렬로 나열할 때, 홀수와 짝수를 번갈아 나열하는 경우의 수는? 09 순열과 조합",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 155쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "162|1134",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:quad_solve",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "UNIT_FROM_REINFER"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "방정식",
-    "type_id": "QUADRATIC_SOLVE",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "165|1157",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:counting",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1157 🟠 • • 오른쪽 그림과 같은 팔각형에서 대각선의 개수를 구하시오. ![img-0.jpeg](img-0.jpeg) # 1158 • ② • 09 순열과 조합",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 160쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "COUNTING_PERM_COMB",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "172|1197",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:PRODUCT_OR_EXPAND",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1197 » 평가원 기출 • 165쪽 유형 23 좌표평면 위에 9개의 점 (i, j) (i=0, 4, 8, j=0, 4, 8)이 있다. 이 9개의 점 중 네 점을 꼭짓점으로 하는 사각형 중에서 내부에 세 점 (1, 1), (3, 1), (1, 3)을 꼭짓점 ![img-1.jpeg](img-1.jpeg) 으로 하는 삼각형을 포함하는 사각형의 개수는? # 1198 시술항",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 170쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "순열과 조합",
-    "type_id": "POLY_MULTIPLY",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "177|1226",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CHOICES_CONSTRUCTED",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1226 두 행렬 $A=\\begin{pmatrix}-1 & 2 \\\\ 0 & 4\\end{pmatrix}$, $B=\\begin{pmatrix}5 & -1 \\\\ 2 & -2\\end{pmatrix}$에 대하여 다음 행렬을 구하시오. 10 행렬과 그 연산",
-      "answer": null,
-      "explanation": "정답 및 풀이 ● 173쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "188|1296",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
-    ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1296 • ◎ • 두 이차 정사각행렬 A, B에 대하여 A-B=E, AB=O 가 성립할 때, 옳은 것만을 보기에서 있는 대로 고른 것은? 보기 ㄱ. A²=A ㄴ. A²+B²=E ㄷ. A²B²=O # 부항 17 케일리 - 해밀턴 정리 개념 10-6",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 185쪽"
-    },
-    "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "189|1300",
+    "candidate_id": "171|1190",
     "verdict": "HUMAN_REVIEW",
     "pipeline_status": "HUMAN_REVIEW",
     "review_status_after": "NEEDS_REVIEW",
     "residual_reasons": [
-      "CHOICES_INCOMPLETE"
+      "BBOX_INTRUSION"
     ],
     "applied_rules": [
       "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
+      "TYPE_INFER:COUNTING",
       "CLEAR_CLASSIFICATION_REVIEW"
     ],
-    "bbox": null,
+    "bbox": {
+      "candidate_id": "171|1190",
+      "page": 171,
+      "original": {
+        "x": 0.006,
+        "y": 0.05704038004750594,
+        "width": 0.41477749790092355,
+        "height": 0.5555676959619953
+      },
+      "corrected": null,
+      "original_hash": "c86864edab4e76c16326122c0eebd364c86864edab4e76c16326122c0eebd364",
+      "corrected_hash": null,
+      "method": "UNRESOLVED",
+      "confidence": "UNCERTAIN",
+      "overlap_before": 0.2554,
+      "overlap_after": 0.2554,
+      "area_retained": 1,
+      "apply": false
+    },
     "dup": null,
     "leak_split": null,
     "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
+    "unit_id": "순열과 조합",
+    "type_id": "COUNTING_PERM_COMB",
     "content_rewrite": false
   },
   {
-    "candidate_id": "189|1301",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
+    "candidate_id": "171|1191",
+    "verdict": "HUMAN_REVIEW",
+    "pipeline_status": "HUMAN_REVIEW",
+    "review_status_after": "NEEDS_REVIEW",
+    "residual_reasons": [
+      "BBOX_INTRUSION"
     ],
-    "bbox": null,
-    "dup": {
-      "left_id": "189|1301",
-      "right_id": "189|1301",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "189|1301",
-      "extra_id": "189|1301",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "SAME_NUMBER",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SAME_PROBLEM_ID"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "189|1301",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
     "applied_rules": [
       "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_FIGURE_IN_CROP",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "189|1301",
-      "right_id": "189|1301",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "189|1301",
-      "extra_id": "189|1301",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "SAME_NUMBER",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SAME_PROBLEM_ID"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "189|1304",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "189|1304",
-      "right_id": "189|1304",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "189|1304",
-      "extra_id": "189|1304",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "SAME_NUMBER",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SAME_PROBLEM_ID"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "189|1304",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "HOLD_DUPLICATE",
-      "DUP:EXACT_DUPLICATE"
-    ],
-    "bbox": null,
-    "dup": {
-      "left_id": "189|1304",
-      "right_id": "189|1304",
-      "kind": "EXACT_DUPLICATE",
-      "keeper_id": "189|1304",
-      "extra_id": "189|1304",
-      "evidence": [
-        "SAME_SOURCE",
-        "SAME_PAGE",
-        "SAME_NUMBER",
-        "EXACT_NORMALIZED_TEXT",
-        "STRUCTURE_MATCH",
-        "SAME_PROBLEM_ID"
-      ],
-      "block_extra": false,
-      "clear_duplicate_flag": true,
-      "status": "LINKED"
-    },
-    "leak_split": null,
-    "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
-    "content_rewrite": false
-  },
-  {
-    "candidate_id": "191|1314",
-    "verdict": "AUTO_CLEAR",
-    "pipeline_status": "AUTO_APPROVED",
-    "review_status_after": "AUTO_CLASSIFIED",
-    "residual_reasons": [],
-    "applied_rules": [
-      "DROP_POLICY_TAGS",
-      "TYPE_INFER:STEM_INTENT:matrix",
-      "CLEAR_SEGMENT_REVIEW",
+      "TYPE_INFER:PRODUCT_OR_EXPAND",
       "CLEAR_MATH_UNCERTAIN",
-      "CLEAR_CLASSIFICATION_REVIEW",
-      "SPLIT_ANSWER_EXPLANATION"
+      "CLEAR_CLASSIFICATION_REVIEW"
     ],
-    "bbox": null,
-    "dup": null,
-    "leak_split": {
-      "original_preserved": true,
-      "leaked": true,
-      "stem": "1314 • 188쪽 유형 16 두 이차 정사각행렬 A, B에 대하여 $$f(A, B) = AB - BA$$ 라 할 때, 옳은 것만을 보기에서 있는 대로 고른 것은? 보기 ㄱ. $f(A, B) = f(B, A)$ ㄴ. 모든 실수 k에 대하여 $f(kA, kB) = kf(A, B)$ ㄷ. $f(A, B) + f(A, C) = f(A, B+C)$ 10 행렬과 그 연산",
-      "answer": null,
-      "explanation": "정답 및 풀이 • 188쪽"
+    "bbox": {
+      "candidate_id": "171|1191",
+      "page": 171,
+      "original": {
+        "x": 0.006,
+        "y": 0.5986080760095012,
+        "width": 0.45172124265323255,
+        "height": 0.24233729216152022
+      },
+      "corrected": null,
+      "original_hash": "28e58efe47a3fc906f46726ee206593528e58efe47a3fc906f46726ee2065935",
+      "corrected_hash": null,
+      "method": "UNRESOLVED",
+      "confidence": "UNCERTAIN",
+      "overlap_before": 0.3197,
+      "overlap_after": 0.3197,
+      "area_retained": 1,
+      "apply": false
     },
+    "dup": null,
+    "leak_split": null,
     "ocr_recovery_accepted": false,
-    "unit_id": "행렬",
-    "type_id": "MATRIX_ARITHMETIC",
+    "unit_id": "순열과 조합",
+    "type_id": "POLY_MULTIPLY",
     "content_rewrite": false
   }
 ]

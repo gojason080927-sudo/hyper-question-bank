@@ -1,27 +1,22 @@
 {
-  "inspected": 73,
-  "auto_resolved": 61,
-  "human": 12,
-  "dup_kinds": {
-    "SIMILAR_DISTINCT": 24,
-    "EXACT_DUPLICATE": 8
-  },
+  "inspected": 9,
+  "auto_resolved": 0,
+  "human": 9,
+  "dup_kinds": {},
   "reason_before": {
-    "ANSWER_KEY_LEAK": 25,
-    "OCR_GARBAGE": 3,
-    "EVIDENCE_INSUFFICIENT": 3,
-    "DUPLICATE_CANDIDATE": 32,
-    "TYPE_UNCLEAR": 5,
-    "UNIT_UNCLEAR": 5,
-    "CHOICES_INCOMPLETE": 2,
-    "UNIT_CONFLICT": 4
+    "EVIDENCE_INSUFFICIENT": 1,
+    "ANSWER_KEY_LEAK": 2,
+    "TYPE_UNCLEAR": 2,
+    "UNIT_UNCLEAR": 2,
+    "OCR_GARBAGE": 2,
+    "BBOX_INTRUSION": 3
   },
   "reason_after": {
-    "OCR_GARBAGE": 3,
     "EVIDENCE_INSUFFICIENT": 1,
     "ANSWER_KEY_LEAK": 1,
-    "TYPE_UNCLEAR": 5,
-    "UNIT_UNCLEAR": 5,
-    "CHOICES_INCOMPLETE": 2
+    "TYPE_UNCLEAR": 2,
+    "UNIT_UNCLEAR": 2,
+    "OCR_GARBAGE": 2,
+    "BBOX_INTRUSION": 3
   }
 }

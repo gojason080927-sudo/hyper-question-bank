@@ -1,0 +1,1511 @@
+{
+  "step": "8.34",
+  "name": "Residual exception auto-cleanup + pgvector similar search + reusable book pipeline",
+  "status": "CACHE_ONLY_PLANNED",
+  "target_ref": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "next_step_started": false,
+  "textbook": {
+    "id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1"
+  },
+  "starting_main_commit_note": "PR #18 merged into main before this STEP",
+  "inspected_residuals": 73,
+  "auto_resolved": 61,
+  "human_review_remaining": 12,
+  "reason_before": {
+    "ANSWER_KEY_LEAK": 25,
+    "OCR_GARBAGE": 3,
+    "EVIDENCE_INSUFFICIENT": 3,
+    "DUPLICATE_CANDIDATE": 32,
+    "TYPE_UNCLEAR": 5,
+    "UNIT_UNCLEAR": 5,
+    "CHOICES_INCOMPLETE": 2,
+    "UNIT_CONFLICT": 4
+  },
+  "reason_after": {
+    "OCR_GARBAGE": 3,
+    "EVIDENCE_INSUFFICIENT": 1,
+    "ANSWER_KEY_LEAK": 1,
+    "TYPE_UNCLEAR": 5,
+    "UNIT_UNCLEAR": 5,
+    "CHOICES_INCOMPLETE": 2
+  },
+  "dup_kinds": {
+    "SIMILAR_DISTINCT": 24,
+    "EXACT_DUPLICATE": 8
+  },
+  "bbox_applied": 0,
+  "bbox_uncertain": 0,
+  "leaks_split": 25,
+  "content_rewrites": 0,
+  "production_verified_writes": 0,
+  "production_figure_writes": 0,
+  "production_problem_writes": 0,
+  "production_blocked_duplicates": 0,
+  "orphans": 0,
+  "wrong_source": 0,
+  "embeddings": {
+    "available": false,
+    "model": "mistral-embed",
+    "dimensions": 1024,
+    "written": 0,
+    "existing": 0,
+    "missing": 0,
+    "estimated_usd": 0,
+    "actual_usd": 0,
+    "paid_calls": 0,
+    "blocked_over_cap": false,
+    "credentials": "PRESENT",
+    "blocker": null
+  },
+  "search_self_test": {
+    "ran": false,
+    "self_excluded": true,
+    "dup_excluded": true,
+    "source_filter_ok": true,
+    "type_filter_ok": true,
+    "other_source_empty": true,
+    "sample": 0,
+    "top_similarity": null
+  },
+  "pipeline": {
+    "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1",
+    "pages": {
+      "from": 1,
+      "to": 192
+    },
+    "dry_run": true,
+    "persist": false,
+    "stages": [
+      "PDF_CHECK",
+      "PAGE_RENDER",
+      "SEGMENT",
+      "OCR",
+      "STRUCTURE",
+      "CLASSIFY",
+      "CROP_FIGURE",
+      "DUP_CHECK",
+      "PERSIST_DRAFT",
+      "AUTO_QA",
+      "FINGERPRINT",
+      "EMBEDDING",
+      "EXCEPTION_QUEUE"
+    ],
+    "progress": {
+      "PDF_CHECK": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "PAGE_RENDER": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "SEGMENT": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "OCR": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "STRUCTURE": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "CLASSIFY": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "CROP_FIGURE": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "DUP_CHECK": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "PERSIST_DRAFT": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "AUTO_QA": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "FINGERPRINT": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "EMBEDDING": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      },
+      "EXCEPTION_QUEUE": {
+        "ok": 1256,
+        "failed": 0,
+        "skipped": 1256
+      }
+    },
+    "estimated_usd": 0,
+    "actual_usd": 0,
+    "paid_calls": {
+      "mistral_ocr": 0,
+      "mistral_embed": 0
+    },
+    "production_writes": 0,
+    "extra_writes_on_rerun": 0,
+    "cross_book_duplicates": 0,
+    "checkpoint": {
+      "source_document_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+      "completed_stages": [
+        "PDF_CHECK",
+        "PAGE_RENDER",
+        "SEGMENT",
+        "OCR",
+        "STRUCTURE",
+        "CLASSIFY",
+        "CROP_FIGURE",
+        "DUP_CHECK",
+        "PERSIST_DRAFT",
+        "AUTO_QA",
+        "FINGERPRINT",
+        "EMBEDDING",
+        "EXCEPTION_QUEUE"
+      ],
+      "completed_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192
+      ],
+      "failed_pages": [],
+      "failed_items": [],
+      "items_ok": 1256,
+      "dry_run": true
+    }
+  },
+  "production_counts_before": {
+    "queried": false,
+    "reason": "cache_only",
+    "drafts": null,
+    "needs_review": null,
+    "ssen_needs_review": null,
+    "fingerprints": null,
+    "embeddings": null,
+    "duplicate_links": null,
+    "bbox_corrections": null,
+    "vector_extension": null
+  },
+  "production_counts_after": {
+    "queried": false,
+    "reason": "cache_only",
+    "drafts": null,
+    "needs_review": null,
+    "ssen_needs_review": null,
+    "fingerprints": null,
+    "embeddings": null,
+    "duplicate_links": null,
+    "bbox_corrections": null,
+    "vector_extension": null
+  },
+  "persist": {
+    "ran": false,
+    "pipeline_run_id": null,
+    "cleared": 0,
+    "skipped_already_clear": 0,
+    "failed": [],
+    "migration": {
+      "attempted": false,
+      "applied": false,
+      "reason": "not_requested"
+    }
+  },
+  "paid_api_calls": {
+    "mathpix": 0,
+    "mistral_ocr": 0,
+    "mistral_embed": 0
+  },
+  "frozen": {
+    "step812ExpectedDrafts": 265,
+    "frozenTypeAuto": 38,
+    "impliedNonTypeAuto": 227,
+    "step823FigureAssets": 3,
+    "step823FigureLinks": 3,
+    "step824BlockedRemaining": 8
+  },
+  "gt_mutated": false,
+  "mistral_credentials": "PRESENT",
+  "items": [
+    {
+      "candidate_id": "19|0094",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:POLY_WORD",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "27|0145",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "33|0202",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "OCR_GARBAGE"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CHOICES_CONSTRUCTED",
+        "CLEAR_CLASSIFICATION_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "44|0276",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "47|0283",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "47|0285",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_OCR_UNCERTAIN",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SHORT_FORMULA_VALID"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "47|0286",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_OCR_UNCERTAIN",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SHORT_FORMULA_VALID"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "49|0313",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0314",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0315",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0316",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0318",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:PRODUCT_OR_EXPAND",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0317",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:PRODUCT_OR_EXPAND",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0319",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0320",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0323",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0324",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0327",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "49|0328",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "49|0309",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0310",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0329",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0330",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0312",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "49|0311",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "51|0342",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "57|0386",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "60|0404",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:complex_ops",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "67|0452",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_solve",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "69|0466",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_solve",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "75|0507",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "78|0527",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_solve",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "87|0597",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_fn",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "95|0650",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "ANSWER_KEY_LEAK"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_fn",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "96|0655",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:PRODUCT_OR_EXPAND",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "105|0716",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:PRODUCT_OR_EXPAND",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "114|0772",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "TYPE_UNCLEAR",
+        "UNIT_UNCLEAR"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "114|0774",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "TYPE_UNCLEAR",
+        "UNIT_UNCLEAR"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_FIGURE_IN_CROP",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "114|0775",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "TYPE_UNCLEAR",
+        "UNIT_UNCLEAR"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_FIGURE_IN_CROP"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "114|0773",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "TYPE_UNCLEAR",
+        "UNIT_UNCLEAR"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_FIGURE_IN_CROP"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "114|0776",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "TYPE_UNCLEAR",
+        "UNIT_UNCLEAR"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "117|0781",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_OCR_UNCERTAIN",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "117|0782",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_OCR_UNCERTAIN",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "117|0784",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_OCR_UNCERTAIN",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "117|0783",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_FROM_PAGE_CONTEXT",
+        "UNIT_FROM_PAGE_CONTEXT",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_OCR_UNCERTAIN",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "125|0857",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "OCR_GARBAGE"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:lin_ineq",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "129|0882",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:lin_ineq",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "129|0880",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "CHOICES_INCOMPLETE"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:lin_ineq",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "135|0934",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "OCR_GARBAGE"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:lin_ineq",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "144|1005",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_solve",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "148|1029",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_solve",
+        "UNIT_STEM_ALLOWED",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "153|1054",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "153|1055",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "153|1060",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "153|1061",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:SIMILAR_DISTINCT"
+      ],
+      "dup_kind": "SIMILAR_DISTINCT"
+    },
+    {
+      "candidate_id": "154|1080",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:lin_ineq",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "UNIT_FROM_REINFER"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "154|1081",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:lin_ineq",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "UNIT_FROM_REINFER"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "154|1082",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_fn",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "UNIT_FROM_REINFER"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "157|1100",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:COUNTING",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_FIGURE_IN_CROP",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "158|1104",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:COUNTING",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "158|1104",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:COUNTING",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "159|1115",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:counting",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "162|1134",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:quad_solve",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "UNIT_FROM_REINFER"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "165|1157",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:counting",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "172|1197",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:PRODUCT_OR_EXPAND",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "177|1226",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CHOICES_CONSTRUCTED",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "188|1296",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "189|1300",
+      "verdict": "HUMAN_REVIEW",
+      "residual_reasons": [
+        "CHOICES_INCOMPLETE"
+      ],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW"
+      ],
+      "dup_kind": null
+    },
+    {
+      "candidate_id": "189|1301",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "189|1301",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_FIGURE_IN_CROP",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "189|1304",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "189|1304",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "HOLD_DUPLICATE",
+        "DUP:EXACT_DUPLICATE"
+      ],
+      "dup_kind": "EXACT_DUPLICATE"
+    },
+    {
+      "candidate_id": "191|1314",
+      "verdict": "AUTO_CLEAR",
+      "residual_reasons": [],
+      "applied_rules": [
+        "DROP_POLICY_TAGS",
+        "TYPE_INFER:STEM_INTENT:matrix",
+        "CLEAR_SEGMENT_REVIEW",
+        "CLEAR_MATH_UNCERTAIN",
+        "CLEAR_CLASSIFICATION_REVIEW",
+        "SPLIT_ANSWER_EXPLANATION"
+      ],
+      "dup_kind": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "ran": true,
+  "pipeline_run_id": "0b9f34dc-acf2-4e8f-a438-880a9d5ce4cb",
+  "cleared": 0,
+  "skipped_already_clear": 0,
+  "failed": [],
+  "migration": {
+    "attempted": true,
+    "applied": true,
+    "reason": "hqb_pgvector_embeddings_v1:applied; hqb_pgvector_embedding_cast_v1:applied"
+  }
+}

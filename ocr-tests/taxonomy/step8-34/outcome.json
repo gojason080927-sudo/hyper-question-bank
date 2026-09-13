@@ -1,0 +1,52 @@
+{
+  "step": "8.34",
+  "starting_main": "618af27",
+  "pr18": "merged",
+  "ssen_needs_review_start": 58,
+  "ssen_needs_review_end": 9,
+  "other_source_needs_review_untouched": 6,
+  "needs_review_total_start": 64,
+  "needs_review_total_end": 15,
+  "auto_resolved_ssen_problems": 49,
+  "human_review_remaining_ssen": 9,
+  "human_queue": [
+    { "candidate_id": "47|0283", "reasons": ["EVIDENCE_INSUFFICIENT"] },
+    { "candidate_id": "95|0650", "reasons": ["ANSWER_KEY_LEAK"] },
+    { "candidate_id": "114|0774", "reasons": ["TYPE_UNCLEAR", "UNIT_UNCLEAR"] },
+    { "candidate_id": "114|0775", "reasons": ["TYPE_UNCLEAR", "UNIT_UNCLEAR"] },
+    { "candidate_id": "125|0857", "reasons": ["OCR_GARBAGE"] },
+    { "candidate_id": "131|0887", "reasons": ["BBOX_INTRUSION"] },
+    { "candidate_id": "135|0934", "reasons": ["OCR_GARBAGE"] },
+    { "candidate_id": "171|1190", "reasons": ["BBOX_INTRUSION"] },
+    { "candidate_id": "171|1191", "reasons": ["BBOX_INTRUSION"] }
+  ],
+  "bbox_corrections": 33,
+  "duplicate_links": 13,
+  "embeddings_stored": 1244,
+  "embedding_model": "mistral-embed",
+  "embedding_dimensions": 1024,
+  "embedding_paid_calls": 77,
+  "embedding_usd_actual": 0.012368,
+  "embedding_usd_cap": 5,
+  "idempotent_second_persist": {
+    "cleared": 0,
+    "embeddings_written": 0,
+    "failed": 0,
+    "production_problem_writes": 0
+  },
+  "search_self_test": {
+    "ran": true,
+    "self_excluded": true,
+    "dup_excluded": true,
+    "source_filter_ok": true,
+    "type_filter_ok": true,
+    "other_source_empty": true,
+    "top_k": 5,
+    "top_similarity": 0.917284549143878
+  },
+  "orphans": 0,
+  "wrong_source": 0,
+  "content_rewrites": 0,
+  "verified_writes": 0,
+  "drafts": 1281
+}

@@ -5,8 +5,8 @@
     "from": 1,
     "to": 192
   },
-  "dry_run": false,
-  "persist": true,
+  "dry_run": true,
+  "persist": false,
   "stages": [
     "PDF_CHECK",
     "PAGE_RENDER",
@@ -24,67 +24,67 @@
   ],
   "progress": {
     "PDF_CHECK": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "PAGE_RENDER": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "SEGMENT": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "OCR": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "STRUCTURE": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "CLASSIFY": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "CROP_FIGURE": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "DUP_CHECK": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "PERSIST_DRAFT": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "AUTO_QA": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "FINGERPRINT": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "EMBEDDING": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     },
     "EXCEPTION_QUEUE": {
-      "ok": 1256,
+      "ok": 0,
       "failed": 0,
       "skipped": 0
     }
@@ -311,7 +311,7 @@
     ],
     "failed_pages": [],
     "failed_items": [],
-    "items_ok": 1256,
-    "dry_run": false
+    "items_ok": 0,
+    "dry_run": true
   }
 }
