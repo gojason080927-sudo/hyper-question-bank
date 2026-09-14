@@ -132,7 +132,7 @@ export function PipelineReviewPage() {
         <div>
           <p className="kicker">강사 확인</p>
           <h1>확인 필요 큐</h1>
-          <p className="muted">실제 문제의 확인 필요 상태입니다. 자동 확정하지 않습니다. 범위형 합침·전체검수 8.39·일괄대조 8.40·최종 마감은 별도 탭입니다.</p>
+          <p className="muted">실제 문제의 분류 대기(NEEDS_REVIEW)입니다. 자동 확정하지 않습니다. 쎈수학 최종 마감의 사람 확인 잔여와는 별개입니다. 범위형 합침·전체검수 8.39·일괄대조 8.40·최종 마감은 별도 탭입니다.</p>
         </div>
         <Link className="btn ghost" to="/questions?review=NEEDS_REVIEW">
           문제 목록에서 보기

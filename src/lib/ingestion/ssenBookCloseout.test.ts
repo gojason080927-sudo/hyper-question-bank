@@ -12,6 +12,7 @@ import {
   planCloseout,
   rebuildStem,
   stripTrailingNextStub,
+  enrichCloseoutFreeze,
   type CatalogRowClose,
 } from './ssenBookCloseout'
 import type { Input839Record } from './ssenReviewMinimize840'
@@ -182,6 +183,29 @@ describe('ssen book closeout', () => {
     const plan = planCloseout([leftover({ problem_id: 'a', current_number: '0094', stem: catalog[0]!.stem })], catalog)
     expect(plan.applies.some((row) => row.problem_id === 'a')).toBe(true)
     expect(plan.applies.some((row) => row.problem_id === 'b')).toBe(false)
+  })
+
+  it('separates live NEEDS_REVIEW from leftover HUMAN_FINAL_CHECK in freeze JSON', () => {
+    expect(
+      enrichCloseoutFreeze(
+        {
+          listed: 1242,
+          ssen_linked: 1253,
+          ssen_needs_review: 9,
+          public_code_dups: 0,
+          embeddings: 1244,
+          fingerprints: 3543,
+          majors: { I: 252 },
+          auto_clean_839: 23,
+          auto_clean_840: 25,
+        },
+        0,
+      ),
+    ).toMatchObject({
+      ssen_needs_review: 9,
+      live_needs_review: 9,
+      closeout_human_exceptions: 0,
+    })
   })
 
   it('protects TEACHER_EDIT', () => {

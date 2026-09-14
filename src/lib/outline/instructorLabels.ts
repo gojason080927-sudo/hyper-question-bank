@@ -55,6 +55,24 @@ export function pipelineStatusLabel(status: string): string {
   return map[status] ?? status
 }
 
+/** Book QA leftover remaining is independent of live NEEDS_REVIEW. */
+export function bookQaReady(bookReady?: boolean | null, humanExceptions?: number | null): boolean {
+  return Boolean(bookReady) && (humanExceptions ?? 0) === 0
+}
+
+export function sourcePipelineLabel(
+  pipelineStatus: string,
+  bookReady?: boolean | null,
+  humanExceptions?: number | null,
+): string {
+  if (bookQaReady(bookReady, humanExceptions)) return pipelineStatusLabel('COMPLETED')
+  return pipelineStatusLabel(pipelineStatus)
+}
+
+export function liveReviewQueueLabel(bookReady?: boolean | null): string {
+  return bookReady ? '분류 대기' : '확인 필요'
+}
+
 export function dash(value: string | number | null | undefined): string {
   if (value == null || value === '') return '—'
   return String(value)

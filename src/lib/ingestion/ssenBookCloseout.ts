@@ -682,6 +682,30 @@ export function dryRunSafetyClose(
   return { ok: violations.length === 0, violations }
 }
 
+export type CloseoutCensusSnap = {
+  listed: number
+  ssen_linked: number
+  ssen_needs_review: number
+  public_code_dups: number
+  embeddings: number
+  fingerprints: number
+  majors: Record<string, number>
+  auto_clean_839: number
+  auto_clean_840: number
+}
+
+/** Live NEEDS_REVIEW is a classification queue, not leftover-56 HUMAN_FINAL_CHECK. */
+export function enrichCloseoutFreeze<T extends { ssen_needs_review: number }>(
+  snap: T,
+  humanExceptions: number,
+): T & { live_needs_review: number; closeout_human_exceptions: number } {
+  return {
+    ...snap,
+    live_needs_review: snap.ssen_needs_review,
+    closeout_human_exceptions: humanExceptions,
+  }
+}
+
 export function bookStatusFromPlan(
   plan: PlanClose,
   extras: { pdf_hash: string; paid_usd: number; listed: number },

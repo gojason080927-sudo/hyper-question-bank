@@ -16,6 +16,7 @@ import {
   CLOSEOUT_DIR,
   COST_CAP_USD,
   dryRunSafetyClose,
+  enrichCloseoutFreeze,
   INSPECTOR_VERSION_CLOSE,
   leftoverFrom840Payload,
   LOCK_MAIN_COMMIT_CLOSE,
@@ -551,9 +552,10 @@ export async function runCloseout(root = process.cwd()) {
   const persistResultFile = path.join(outDir, 'persist-result.json')
 
   const writeDashboard = (sourcePlan: typeof plan, sourceBook: Record<string, unknown>, extras: Record<string, unknown>, snap: typeof before) => {
-    writeFileSync(path.join(root, 'public/ssen-book-closeout.json'), JSON.stringify(publicPayload(sourcePlan, extras, sourceBook), null, 2), 'utf8')
-    writeFileSync(path.join(root, 'public/ssen-book-status.json'), JSON.stringify({ ...sourceBook, freeze: snap, counts: sourcePlan.summary }, null, 2), 'utf8')
-    writeFileSync(path.join(root, 'public/book-status', `${SSEN_SOURCE_DOCUMENT_ID}.json`), JSON.stringify({ ...sourceBook, freeze: snap, counts: sourcePlan.summary }, null, 2), 'utf8')
+    const freeze = enrichCloseoutFreeze(snap, Number(sourcePlan.summary.human_final_check ?? sourceBook.human_exceptions ?? 0))
+    writeFileSync(path.join(root, 'public/ssen-book-closeout.json'), JSON.stringify(publicPayload(sourcePlan, { ...extras, after: freeze }, sourceBook), null, 2), 'utf8')
+    writeFileSync(path.join(root, 'public/ssen-book-status.json'), JSON.stringify({ ...sourceBook, freeze, counts: sourcePlan.summary }, null, 2), 'utf8')
+    writeFileSync(path.join(root, 'public/book-status', `${SSEN_SOURCE_DOCUMENT_ID}.json`), JSON.stringify({ ...sourceBook, freeze, counts: sourcePlan.summary }, null, 2), 'utf8')
   }
 
   if (!persist && existsSync(persistResultFile)) {
