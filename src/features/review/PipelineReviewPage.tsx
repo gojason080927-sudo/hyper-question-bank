@@ -187,7 +187,7 @@ export function PipelineReviewPage() {
           className={`btn ${closeoutTab ? 'primary' : 'ghost'}`}
           onClick={() => setParams({ source: 'closeout' }, { replace: true })}
         >
-          최종 마감 {closeoutPayload?.summary?.human_final_check ?? closeoutPayload?.summary?.start_review ?? 56}
+          최종 마감 {closeoutPayload?.summary?.start_review ?? 56}
         </button>
       </div>
       {closeoutTab ? (
