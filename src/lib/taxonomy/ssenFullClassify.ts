@@ -44,6 +44,8 @@ export type SsenClassifyItem = {
   current_version_id: string | null
   origin: string | null
   bbox_top: number
+  bbox_x: number
+  bbox_h: number
   existing_type_code: string | null
 }
 
@@ -81,13 +83,15 @@ const TITLE_RULES: Array<{ pattern: RegExp; type_id: string }> = [
   { pattern: /완전제곱식|판별식과\s*삼각형/, type_id: 'QUADRATIC_DISCRIMINANT' },
   { pattern: /이차함수의\s*최대|이차함수의\s*그래프와\s*직선/, type_id: 'QUAD_FN_RELATION' },
   { pattern: /연립이차방정식/, type_id: 'SIMULTANEOUS_QUAD' },
-  { pattern: /절댓값.*부등식|연립일차부등식의\s*활용/, type_id: 'LINEAR_INEQUALITY' },
+  { pattern: /연립일차부등식의\s*활용/, type_id: 'LINEAR_INEQUALITY' },
   { pattern: /연립이차부등식|이차부등식의\s*활용|이차부등식이/, type_id: 'QUADRATIC_INEQUALITY' },
   { pattern: /순열의\s*수|경우의\s*수|분할하는|약수의\s*개수|색칠/, type_id: 'COUNTING_PERM_COMB' },
   { pattern: /행렬의|단위행렬/, type_id: 'MATRIX_ARITHMETIC' },
 ]
 
-export function hyperTypeFromSsenTitle(title: string): string | null {
+export function hyperTypeFromSsenTitle(title: string, subunit?: string | null): string | null {
+  if (subunit === '이차부등식' && /절댓값/.test(title) && /부등식/.test(title)) return 'QUADRATIC_INEQUALITY'
+  if (subunit === '일차부등식' && /절댓값/.test(title) && /부등식/.test(title)) return 'LINEAR_INEQUALITY'
   return typeIdFromBookHeading(title) ?? extraAliasMap(title) ?? TITLE_RULES.find((row) => row.pattern.test(title))?.type_id ?? null
 }
 
@@ -135,9 +139,13 @@ function lcsLen(a: string, b: string): number {
 export function titleScore(ocr: string, frozen: string): number {
   const a = hangulOnly(ocr)
   const b = hangulOnly(coreTypeTitle(frozen))
-  if (a.length < 4 || b.length < 4) return 0
+  if (a.length < 6 || b.length < 4) return 0
   if (b.includes(a) || a.includes(b)) return Math.min(a.length, b.length) / Math.max(a.length, b.length)
-  return lcsLen(a, b) / Math.max(a.length, b.length)
+  const shared = lcsLen(a, b)
+  if (shared < 6) return 0
+  if (shared / b.length >= 0.72) return shared / b.length
+  if (shared / a.length >= 0.88) return shared / Math.max(a.length, b.length)
+  return 0
 }
 
 export function matchSsenTypeByTitle(ocr: string, types: SsenTypeNode[]): SsenTypeNode | null {
@@ -147,8 +155,8 @@ export function matchSsenTypeByTitle(ocr: string, types: SsenTypeNode[]): SsenTy
     .sort((a, b) => b.score - a.score)
   const best = scored[0]
   const second = scored[1]
-  if (!best || best.score < 0.58) return null
-  if (second && second.score > 0 && best.score - second.score < 0.08 && best.score < 0.86) return null
+  if (!best || best.score < 0.72) return null
+  if (second && second.score > 0 && best.score - second.score < 0.1 && best.score < 0.92) return null
   return best.row
 }
 
@@ -173,10 +181,17 @@ export type ResolvedHeading = {
   ambiguous: boolean
 }
 
+function typeFitsSection(type_id: string | null | undefined, unit_id: string, subunit_id: string): type_id is string {
+  if (!type_id) return false
+  const profile = profileById(type_id)
+  return Boolean(profile && profile.unit_id === unit_id && profile.subunit_id === subunit_id)
+}
+
 export function resolveHeading(
   hit: SsenHeadingHit,
   sectionTypes: SsenTypeNode[],
   unit_id: string,
+  subunit_id: string,
 ): ResolvedHeading | null {
   if (hit.kind === 'c_stage') return null
   const blob = `${hit.title_ocr} ${hit.badge_ocr}`
@@ -187,17 +202,17 @@ export function resolveHeading(
   }
   const matched = matchSsenTypeByTitle(hit.title_ocr, sectionTypes)
   if (matched) {
-    const type_id = hyperTypeFromSsenTitle(matched.title) ?? hyperTypeFromSsenTitle(hit.title_ocr)
-    if (type_id && profileById(type_id)?.unit_id === unit_id) {
+    const type_id = hyperTypeFromSsenTitle(matched.title, subunit_id) ?? hyperTypeFromSsenTitle(hit.title_ocr, subunit_id)
+    if (typeFitsSection(type_id, unit_id, subunit_id)) {
       return { node: matched, type_id, type_code: matched.code, type_title: matched.title, how: `${hit.kind}_title`, ambiguous: false }
     }
   }
   if (hit.kind === 'concept_pill' && hangulOnly(hit.title_ocr).length >= 4) {
     return { node: null, type_id: '', type_code: null, type_title: hit.title_ocr, how: 'concept_unmapped', ambiguous: true }
   }
-  const fromTitle = hyperTypeFromSsenTitle(hit.title_ocr)
-  if (hit.kind === 'type_pill' && fromTitle && hangulOnly(hit.title_ocr).length >= 6 && profileById(fromTitle)?.unit_id === unit_id) {
-    const node = sectionTypes.find((row) => hyperTypeFromSsenTitle(row.title) === fromTitle) ?? null
+  const fromTitle = hyperTypeFromSsenTitle(hit.title_ocr, subunit_id)
+  if (hit.kind === 'type_pill' && fromTitle && hangulOnly(hit.title_ocr).length >= 6 && typeFitsSection(fromTitle, unit_id, subunit_id)) {
+    const node = sectionTypes.find((row) => hyperTypeFromSsenTitle(row.title, subunit_id) === fromTitle) ?? null
     return {
       node,
       type_id: fromTitle,
@@ -211,8 +226,8 @@ export function resolveHeading(
     const code = markers[0] ?? parseBadgeTypeCode(hit.badge_ocr)
     if (code && allowed.has(code) && markers.length <= 1) {
       const node = allowed.get(code) ?? null
-      const type_id = node ? hyperTypeFromSsenTitle(node.title) : null
-      if (node && type_id && profileById(type_id)?.unit_id === unit_id) {
+      const type_id = node ? hyperTypeFromSsenTitle(node.title, subunit_id) : null
+      if (node && typeFitsSection(type_id, unit_id, subunit_id)) {
         return { node, type_id, type_code: node.code, type_title: node.title, how: 'type_pill_badge', ambiguous: false }
       }
     }
@@ -252,36 +267,62 @@ export function planSsenClassify(
   const headingStream = headings
     .filter((hit) => Boolean(sectionForPage(hit.page)))
     .slice()
-    .sort((a, b) => a.page - b.page || a.y_norm - b.y_norm || a.x_norm - b.x_norm)
+    .sort(
+      (a, b) =>
+        a.page - b.page ||
+        Number(a.x_norm >= 0.48) - Number(b.x_norm >= 0.48) ||
+        a.y_norm - b.y_norm ||
+        a.x_norm - b.x_norm,
+    )
 
-  const inherit = new Map<string, ResolvedHeading>()
-  const cMode = new Map<string, boolean>()
-  const decisions: SsenClassifyDecision[] = []
-  let headingAt = 0
-
-  const applyHeading = (hit: SsenHeadingHit) => {
-    const section = sectionForPage(hit.page)
-    if (!section) return
-    if (hit.kind === 'c_stage') {
-      cMode.set(section.code, true)
-      inherit.delete(section.code)
-      return
-    }
-    if (cMode.get(section.code)) return
-    const resolved = resolveHeading(hit, typesBySection.get(section.code) ?? [], unitFromSection(section))
-    if (!resolved) return
-    if (resolved.ambiguous) inherit.delete(section.code)
-    else inherit.set(section.code, resolved)
+  const headingAtOrBefore = (hit: SsenHeadingHit, item: SsenClassifyItem) => {
+    if (hit.page < item.source_page) return true
+    if (hit.page !== item.source_page) return false
+    const hitCol = hit.x_norm < 0.48 ? 0 : 1
+    const itemCol = item.bbox_x < 0.48 ? 0 : 1
+    if (hitCol !== itemCol) return hitCol < itemCol
+    return hit.y_norm <= item.bbox_top + 0.06
   }
 
-  const headingBefore = (hit: SsenHeadingHit, item: SsenClassifyItem) =>
-    hit.page < item.source_page || (hit.page === item.source_page && hit.y_norm <= item.bbox_top + 0.03)
+  const replayHeadings = (item: SsenClassifyItem) => {
+    const inherit = new Map<string, ResolvedHeading>()
+    const cMode = new Map<string, boolean>()
+    const blocked = new Set<string>()
+    const applyHeading = (hit: SsenHeadingHit) => {
+      const section = sectionForPage(hit.page)
+      if (!section) return
+      if (hit.kind === 'c_stage') {
+        cMode.set(section.code, true)
+        inherit.delete(section.code)
+        blocked.add(section.code)
+        return
+      }
+      if (cMode.get(section.code)) return
+      const resolved = resolveHeading(hit, typesBySection.get(section.code) ?? [], unitFromSection(section), section.title)
+      if (!resolved) return
+      if (resolved.ambiguous) {
+        inherit.delete(section.code)
+        blocked.add(section.code)
+      } else {
+        inherit.set(section.code, resolved)
+        blocked.delete(section.code)
+      }
+    }
+    for (const hit of headingStream) {
+      if (hit.page > item.source_page) break
+      if (headingAtOrBefore(hit, item)) applyHeading(hit)
+    }
+    return { inherit, cMode, blocked }
+  }
+
+  const lastBySection = new Map<string, ResolvedHeading>()
+  const decisions: SsenClassifyDecision[] = []
 
   for (const item of listed) {
-    while (headingAt < headingStream.length && headingBefore(headingStream[headingAt]!, item)) {
-      applyHeading(headingStream[headingAt]!)
-      headingAt += 1
-    }
+    const replayed = replayHeadings(item)
+    const inherit = replayed.inherit
+    const cMode = replayed.cMode
+    const blocked = replayed.blocked
     const section = sectionForPage(item.source_page)
     const reasons: string[] = []
     const evidence: string[] = []
@@ -299,7 +340,8 @@ export function planSsenClassify(
     let type_id: string | null = null
     let how = ''
     const stemCodes = uniqueAllowedMarkers(item.stem, allowed)
-    if (stemCodes.length === 1) {
+    const prev = inherit.get(section.code)
+    if (stemCodes.length === 1 && (cMode.get(section.code) || !prev || prev.type_code === stemCodes[0] || prev.ambiguous)) {
       node = allowed.get(stemCodes[0]!) ?? null
       how = 'stem_type_marker'
     } else if (stemCodes.length > 1) {
@@ -313,17 +355,17 @@ export function planSsenClassify(
       }
     }
     if (!node && !cMode.get(section.code)) {
-      const prev = inherit.get(section.code)
-      if (prev && !prev.ambiguous) {
-        node = prev.node
-        type_id = prev.type_id
-        how = prev.how.startsWith('concept') ? 'inherit_concept_heading' : 'inherit_previous_in_section'
-        evidence.push(prev.how)
+      const inherited = inherit.get(section.code) ?? (blocked.has(section.code) ? undefined : lastBySection.get(section.code))
+      if (inherited && !inherited.ambiguous) {
+        node = inherited.node
+        type_id = inherited.type_id
+        how = inherit.get(section.code) ? inherited.how.startsWith('concept') ? 'inherit_concept_heading' : 'inherit_previous_in_section' : 'inherit_previous_in_section'
+        evidence.push(inherited.how)
       }
     }
     const inherited = inherit.get(section.code)
     if (node) {
-      type_id = type_id ?? hyperTypeFromSsenTitle(node.title)
+      type_id = type_id ?? hyperTypeFromSsenTitle(node.title, subunit_id)
       evidence.push(how, `ssen_type:${node.code}`, node.title)
     } else if (type_id) {
       evidence.push(how, inherited?.type_title ?? '')
@@ -333,7 +375,7 @@ export function planSsenClassify(
 
     if (type_id && !profileById(type_id)) reasons.push('TYPE_PROFILE_MISSING')
     const profile = type_id ? profileById(type_id) : undefined
-    if (profile && profile.unit_id !== unit_id) reasons.push('UNIT_TYPE_INCONSISTENT')
+    if (profile && (profile.unit_id !== unit_id || profile.subunit_id !== subunit_id)) reasons.push('UNIT_TYPE_INCONSISTENT')
     if (!UNIT_CODE[unit_id]) reasons.push('UNIT_CODE_MISSING')
     if (!SUBUNIT_CODE[subunit_id]) reasons.push('SUBUNIT_CODE_MISSING')
     if (item.origin === 'TEACHER_EDIT') reasons.push('TEACHER_EDIT')
@@ -343,14 +385,15 @@ export function planSsenClassify(
     if (leak) reasons.push('ANSWER_KEY_LEAK')
 
     if (node && type_id && !cMode.get(section.code) && !reasons.includes('TYPE_MARKER_AMBIGUOUS')) {
-      inherit.set(section.code, {
+      const resolved = {
         node,
         type_id,
         type_code: node.code,
         type_title: node.title,
         how: how || 'stem_type_marker',
         ambiguous: false,
-      })
+      }
+      lastBySection.set(section.code, resolved)
     }
 
     const auto =

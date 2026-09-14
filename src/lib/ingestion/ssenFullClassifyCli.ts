@@ -5,7 +5,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
-import { bboxTop, SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
+import { bboxH, bboxTop, bboxX, SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
 import { QUESTION_BANK_REF, STUDENT_CARE_REF, SSEN_LISTED_FROZEN } from './ssenFullQa839'
 import { CLASSIFICATION_RPC, CURRICULUM_RPC } from '../taxonomy/classificationPersistence'
 import { profileById } from '../taxonomy/typeProfiles'
@@ -121,6 +121,8 @@ export async function runSsenClassify(root = process.cwd()) {
       current_version_id: problem?.current_version_id ? String(problem.current_version_id) : null,
       origin: version?.origin ? String(version.origin) : null,
       bbox_top: bboxTop(link.bounding_box),
+      bbox_x: bboxX(link.bounding_box),
+      bbox_h: bboxH(link.bounding_box),
       existing_type_code: null,
     }
   })
