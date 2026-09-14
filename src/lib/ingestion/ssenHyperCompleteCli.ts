@@ -437,7 +437,7 @@ export async function runSsenHyperComplete(root = process.cwd(), options?: { per
   if (ensured.error) throw new Error(`curriculum: ${ensured.error.message}`)
   await ensureDictionary(admin, planned.rows)
 
-  let versionByProblem = new Map(listed.map((row) => [row.problem_id, row.current_version_id]))
+  const versionByProblem = new Map(listed.map((row) => [row.problem_id, row.current_version_id]))
   const leakWrites: Array<Record<string, unknown>> = []
   for (const row of planned.rows.filter((item) => item.leak_stripped)) {
     const rpc = await staff.rpc('hqb_apply_auto_clean_text', {

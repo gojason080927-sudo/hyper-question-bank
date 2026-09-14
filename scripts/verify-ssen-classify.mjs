@@ -49,6 +49,7 @@ check(hyperCli.includes('STUDENT_CARE'), 'hyper CLI refuses student-care')
 check(hyperTests.includes('C-stage content'), 'C-stage HYPER type without publisher pill')
 check(existsSync(path.join(root, 'ocr-tests/taxonomy/ssen-classify/hyper-complete-summary.json')) || existsSync(path.join(root, 'ocr-tests/taxonomy/ssen-classify/hyper-complete-dry-run.json')), 'hyper complete dry-run artifact')
 check(tsconfig.includes('ssenHyperCompleteCli.ts'), 'exclude hyper CLI from app tsconfig')
+check(tsconfig.includes('ssenHyperComplete.ts'), 'exclude hyper planner from app tsconfig')
 
 const migrationsDir = path.join(root, 'supabase/migrations')
 if (existsSync(migrationsDir)) {
