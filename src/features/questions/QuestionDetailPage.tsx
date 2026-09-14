@@ -53,6 +53,11 @@ type Bundle = {
   reviews: Array<{ status: string; reviewer: string | null; note: string | null; reviewed_at: string | null }>
 }
 
+function publisherTypeLabel(label: string | null | undefined): string {
+  if (!label || label === 'PDF_REGION') return '없음 (source_type)'
+  return label
+}
+
 export function QuestionDetailPage() {
   const { problemId } = useParams()
   const { data: catalogs } = useCatalogs()
@@ -162,7 +167,7 @@ export function QuestionDetailPage() {
         <h2>분류</h2>
         <p><strong>교육과정</strong> {bundle.curriculum[0] ? nodePath(catalogs?.nodes ?? [], bundle.curriculum[0].node_id) || bundle.curriculum[0].name : '—'}</p>
         <p><strong>개념</strong> {bundle.concepts.map((row) => `${row.name}${row.is_primary ? ' (PRIMARY)' : ''}`).join(', ') || '—'}</p>
-        <p><strong>출판사 유형</strong> {bundle.sources[0]?.source_type_label || '없음 (source_type)'}</p>
+        <p><strong>출판사 유형</strong> {publisherTypeLabel(bundle.sources[0]?.source_type_label)}</p>
         <p><strong>HYPER 유형</strong> {bundle.hyper_types.map((row) => row.name).join(', ') || '—'}</p>
         <p><strong>전략</strong> {bundle.strategies[0]?.name || '—'}</p>
         {bundle.strategies[0]?.steps?.length ? (
