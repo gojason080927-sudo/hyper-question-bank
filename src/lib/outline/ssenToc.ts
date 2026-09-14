@@ -176,3 +176,20 @@ export function bboxTop(box: unknown): number {
   if (typeof row.y0 === 'number') return row.y0
   return 0
 }
+
+export function bboxX(box: unknown): number {
+  if (!box || typeof box !== 'object') return 0
+  const row = box as Record<string, number>
+  if (typeof row.x === 'number') return row.x
+  if (typeof row.left === 'number') return row.left
+  if (typeof row.x0 === 'number') return row.x0
+  return 0
+}
+
+export function bboxH(box: unknown): number {
+  if (!box || typeof box !== 'object') return 0
+  const row = box as Record<string, number>
+  if (typeof row.height === 'number') return row.height
+  if (typeof row.h === 'number') return row.h
+  return 0
+}

@@ -16,6 +16,7 @@ export const BOOK_COMPLETE_STAGES = [
   'KATEX',
   'CHOICE_FIGURE',
   'FULL_QA',
+  'CLASSIFY',
   'DRY_RUN',
   'AUTO_SAFE_APPLY',
   'EXCEPTION_QUEUE',
@@ -227,6 +228,7 @@ export function formatBookCompleteMarkdown(plan: BookCompletePlan): string {
     `- writes ${plan.writes} extra-on-rerun ${plan.extra_writes_on_rerun}`,
     `- lock ${plan.lock_ok ? 'held' : 'missing'}`,
     `- stages ${plan.stages.join(' → ')}`,
+    `- classify included`,
     '',
   ].join('\n')
 }
