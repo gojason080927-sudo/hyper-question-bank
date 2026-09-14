@@ -427,10 +427,14 @@ export async function runSsenHyperComplete(root = process.cwd(), options?: { per
 
   const hashFile = path.join(outDir, 'hyper-complete-input-hash.json')
   const currentHash = createHash('sha256').update(planned.rows.map((row) => row.input_hash).join('')).digest('hex')
-  if (existsSync(hashFile) && JSON.parse(readFileSync(hashFile, 'utf8')).hash === currentHash) {
+  const previousHash = existsSync(hashFile) ? (JSON.parse(readFileSync(hashFile, 'utf8')) as { hash?: string; rows?: Record<string, string> }) : { hash: '', rows: {} }
+  if (previousHash.hash === currentHash) {
     console.log('SSEN HYPER COMPLETE rerun write=0 ai=0 (input hash unchanged)')
-    return { ...dry, persist: { written: 0, skipped: planned.rows.length, rerun: true } }
+    return { ...dry, persist: { written: 0, skipped: planned.rows.length, rerun: true, leak_versions: 0 } }
   }
+  const previousRows =
+    previousHash.rows ??
+    Object.fromEntries(planned.rows.filter((row) => !row.leak_stripped).map((row) => [row.problem_id, row.input_hash]))
 
   const staff = await staffClient(url, service)
   const ensured = await staff.rpc(CURRICULUM_RPC)
@@ -457,6 +461,11 @@ export async function runSsenHyperComplete(root = process.cwd(), options?: { per
   for (const row of auto) {
     if (stopped) {
       persistRows.push({ problem_id: row.problem_id, skipped: true, reason: `atomic stop: ${stopped}` })
+      continue
+    }
+    const leakTouched = leakWrites.some((item) => item.problem_id === row.problem_id && (item.result as { skipped?: boolean } | undefined)?.skipped === false)
+    if (!leakTouched && previousRows[row.problem_id] === row.input_hash) {
+      persistRows.push({ problem_id: row.problem_id, skipped: true, reason: 'input_hash_unchanged' })
       continue
     }
     const versionId = versionByProblem.get(row.problem_id)
@@ -520,7 +529,21 @@ export async function runSsenHyperComplete(root = process.cwd(), options?: { per
   writeFileSync(path.join(outDir, 'hyper-complete-persist.json'), JSON.stringify({ ...outcome, rows: persistRows, leakWrites }, null, 2), 'utf8')
   writeFileSync(path.join(outDir, 'search-features.json'), JSON.stringify(planned.rows.map((row) => row.search), null, 2), 'utf8')
   writeFileSync(path.join(outDir, 'hyper-complete-summary.json'), JSON.stringify({ ...outcome, specials: dry.specials }, null, 2), 'utf8')
-  if (!stopped) writeFileSync(hashFile, JSON.stringify({ hash: currentHash, version: HYPER_COMPLETE_VERSION }, null, 2), 'utf8')
+  if (!stopped) {
+    writeFileSync(
+      hashFile,
+      JSON.stringify(
+        {
+          hash: currentHash,
+          version: HYPER_COMPLETE_VERSION,
+          rows: Object.fromEntries(planned.rows.map((row) => [row.problem_id, row.input_hash])),
+        },
+        null,
+        2,
+      ),
+      'utf8',
+    )
+  }
   writeDashboard(root, planned.rows, planned.summary, { live_needs_review: liveNeeds, persisted: !stopped, persist: outcome.persist, ai: dry.ai })
   console.log(`SSEN HYPER COMPLETE written=${outcome.persist.written} leak=${leakWrites.length} cleared=${cleared} stop=${stopped ?? 'none'} needs=${liveNeeds}`)
   if (stopped) throw new Error(stopped)

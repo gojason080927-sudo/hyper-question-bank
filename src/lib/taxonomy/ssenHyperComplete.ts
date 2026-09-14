@@ -115,9 +115,11 @@ export function inputHash(parts: unknown): string {
 export function stripAnswerKeyLeak(stem: string): { cleaned: string; changed: boolean } {
   const original = stem.trim()
   let text = original
-  text = text.replace(/\n*정답\s*및\s*풀이[\s\S]*$/g, '')
+  text = text.replace(/(?:^|\n)[^\S\n]*정답\s*및\s*풀이\s*\d+\s*쪽[^\n]*/g, '')
+  text = text.replace(/\n*정답\s*및\s*풀이\s*$/g, '')
   text = text.replace(/정답\s*:[^\n]*/g, '')
   text = text.replace(/(^|\n)풀이\s*:[^\n]*/g, '$1')
+  text = text.replace(/(?:\n답\s*[:：]?\s*\S[^\n]*)+$/g, '')
   text = text.replace(/\n{3,}/g, '\n\n').trim()
   return { cleaned: text, changed: text !== original }
 }

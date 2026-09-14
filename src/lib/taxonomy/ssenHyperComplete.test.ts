@@ -40,6 +40,15 @@ describe('ssen hyper complete', () => {
     expect(out.cleaned).not.toContain('답 4')
   })
 
+  it('keeps the problem body after a 정답 및 풀이 page footer', () => {
+    const stem = '정답 및 풀이 140쪽\n1005\n이차방정식 $x^2+1=0$의 근의 개수를 구하시오.'
+    const out = stripAnswerKeyLeak(stem)
+    expect(out.changed).toBe(true)
+    expect(out.cleaned).toContain('이차방정식')
+    expect(out.cleaned).toContain('근의 개수')
+    expect(out.cleaned).not.toMatch(/정답 및 풀이/)
+  })
+
   it('ignores a leaked 유형 16 that is not in section 06', () => {
     const section = sectionForPage(114)!
     expect(section.code).toBe('06')
