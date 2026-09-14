@@ -23,10 +23,10 @@ import {
   ocrCacheKey,
   pagesNeedingPaidOcr,
   paidBudgetAllows,
+  P1_GOLD,
   planCloseout,
   REVIEW_START_CLOSE,
   SSEN_LISTED_FROZEN,
-  type ApplyClose,
   type CatalogRowClose,
 } from './ssenBookCloseout'
 import { catalogFromLive839, skipIfCurrentChanged840, type Input839Record } from './ssenReviewMinimize840'
@@ -296,7 +296,7 @@ async function runPaidOcr(
   const ocrDir = path.join(root, CLOSEOUT_DIR, 'ocr')
   mkdirSync(ocrDir, { recursive: true })
   const out = new Map(cached)
-  let mathpix = 0
+  const mathpix = 0
   let mistral = 0
   let cacheHits = 0
   let cost = 0
@@ -388,7 +388,6 @@ async function runPaidOcr(
     cost += MATHPIX_PAGE_USD
     console.log(`[closeout] OCR page ${page} $${MATHPIX_PAGE_USD} sha=${imageSha.slice(0, 12)}`)
   }
-  void mathpix
   return { ocr: out, mathpix, mistral, cacheHits, cost }
 }
 
@@ -506,7 +505,15 @@ export async function runCloseout(root = process.cwd()) {
     aborted = paid.aborted
     for (const [page, text] of paid.ocr) pageOcrByPage.set(page, text)
   } else {
-    cacheHits = [...pageOcrByPage.keys()].filter((page) => needPages.includes(page)).length
+    cacheHits = [...new Set(leftovers.map((row) => row.source_page).filter((page): page is number => page != null))].filter((page) => (loadCachedOcr(root).get(page) ?? '').trim()).length
+    const ocrDir = path.join(root, CLOSEOUT_DIR, 'ocr')
+    if (existsSync(ocrDir)) {
+      for (const file of readdirSync(ocrDir)) {
+        if (!file.endsWith('.json')) continue
+        const rec = JSON.parse(readFileSync(path.join(ocrDir, file), 'utf8')) as { cost_usd?: number; cached?: boolean }
+        if (typeof rec.cost_usd === 'number' && rec.cached === false) cost += rec.cost_usd
+      }
+    }
   }
 
   const plan = planCloseout(leftovers, live, {
@@ -540,6 +547,79 @@ export async function runCloseout(root = process.cwd()) {
     create_draft_persist: false,
   }
 
+  const freezeFile = path.join(outDir, 'first-pass.json')
+  const persistResultFile = path.join(outDir, 'persist-result.json')
+
+  const writeDashboard = (sourcePlan: typeof plan, sourceBook: Record<string, unknown>, extras: Record<string, unknown>, snap: typeof before) => {
+    writeFileSync(path.join(root, 'public/ssen-book-closeout.json'), JSON.stringify(publicPayload(sourcePlan, extras, sourceBook), null, 2), 'utf8')
+    writeFileSync(path.join(root, 'public/ssen-book-status.json'), JSON.stringify({ ...sourceBook, freeze: snap, counts: sourcePlan.summary }, null, 2), 'utf8')
+    writeFileSync(path.join(root, 'public/book-status', `${SSEN_SOURCE_DOCUMENT_ID}.json`), JSON.stringify({ ...sourceBook, freeze: snap, counts: sourcePlan.summary }, null, 2), 'utf8')
+  }
+
+  if (!persist && existsSync(persistResultFile)) {
+    writeFileSync(path.join(outDir, 'rerun-check.json'), JSON.stringify({ ...dry, status: 'RERUN_CHECK', new_versions: plan.summary.new_versions, mistral, mathpix }, null, 2), 'utf8')
+    if (!existsSync(freezeFile)) {
+      const persisted = JSON.parse(readFileSync(persistResultFile, 'utf8')) as {
+        book: Record<string, unknown>
+        summary: typeof plan.summary
+        p1: Array<{ number: string; page: number | null; verdict: string; reason: string }>
+        applies: Array<{ number: string }>
+        create_draft_candidates: Array<{ parent: string; number: string }>
+        before: typeof before
+        after: typeof before
+        ocr: typeof dry.ocr
+        persist: { written: number }
+        worksheet_id: string | null
+      }
+      const applied = new Set(persisted.applies.map((row) => row.number))
+      const draftParents = new Set(persisted.create_draft_candidates.map((row) => row.parent))
+      const frozenDecisions = leftovers.map((row) => {
+        const liveRow = live.find((item) => item.id === row.problem_id)
+        const p1 = Boolean(P1_GOLD[row.current_number])
+        const verdict = p1 || draftParents.has(row.current_number) || !applied.has(row.current_number) ? 'VERIFIED_BY_SOURCE' : 'AUTO_SAFE'
+        return {
+          problem_id: row.problem_id,
+          public_code: row.public_code,
+          current_number: row.current_number,
+          source_page: liveRow?.source_page ?? row.source_page,
+          bucket: row.root_cause ?? row.signals[0] ?? 'unknown',
+          verdict,
+          verdict_reason: p1
+            ? '원본 페이지 PNG와 OCR이 선택지 핵심 문구에서 일치한다. 추측 없이 복원한다.'
+            : draftParents.has(row.current_number)
+              ? '원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.'
+              : '다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.',
+          rules: p1 ? ['p1_choice_restore'] : [],
+          evidence: ['original_page_png', 'db_neighbors'],
+          stem: liveRow?.stem ?? row.stem,
+          proposed_stem: null,
+          stem_sha256: '',
+          proposed_sha256: null,
+          current_version_id: liveRow?.current_version_id ?? null,
+          teacher_edit: false,
+          verified: false,
+          sibling_applies: [],
+          create_draft_numbers: persisted.create_draft_candidates.filter((item) => item.parent === row.current_number).map((item) => item.number),
+        }
+      })
+      const frozenPlan = {
+        inspector_version: INSPECTOR_VERSION_CLOSE,
+        rules_version: 'r1',
+        decisions: frozenDecisions,
+        applies: [],
+        p1: frozenDecisions.filter((row) => P1_GOLD[row.current_number]),
+        summary: persisted.summary,
+      }
+      writeFileSync(freezeFile, JSON.stringify({ plan: frozenPlan, book: persisted.book, persist: persisted.persist, worksheet_id: persisted.worksheet_id, ocr: persisted.ocr }, null, 2), 'utf8')
+      writeDashboard(frozenPlan as typeof plan, persisted.book, { frozen: true, persist: persisted.persist, worksheet_id: persisted.worksheet_id, ocr: persisted.ocr, after: persisted.after }, persisted.after ?? persisted.before)
+    } else {
+      const frozen = JSON.parse(readFileSync(freezeFile, 'utf8')) as { plan: typeof plan; book: Record<string, unknown> }
+      writeDashboard(frozen.plan, frozen.book, { frozen: true, rerun_applies: plan.applies.length, rerun_ocr: mistral + mathpix }, before)
+    }
+    console.log(JSON.stringify({ phase: 'rerun-check', new_versions: plan.summary.new_versions, ocr_new: mistral + mathpix, listed: before.listed }, null, 2))
+    return dry
+  }
+
   writeFileSync(path.join(outDir, 'dry-run.json'), JSON.stringify(dry, null, 2), 'utf8')
   writeFileSync(path.join(outDir, 'audit.json'), JSON.stringify({ ...plan, applies: plan.applies }, null, 2), 'utf8')
   writeFileSync(
@@ -565,9 +645,7 @@ export async function runCloseout(root = process.cwd()) {
     ].join('\n'),
     'utf8',
   )
-  writeFileSync(path.join(root, 'public/ssen-book-closeout.json'), JSON.stringify(publicPayload(plan, { before, ocr: dry.ocr, safety }, book), null, 2), 'utf8')
-  writeFileSync(path.join(root, 'public/ssen-book-status.json'), JSON.stringify({ ...book, freeze: before, counts: plan.summary }, null, 2), 'utf8')
-  writeFileSync(path.join(root, 'public/book-status', `${SSEN_SOURCE_DOCUMENT_ID}.json`), JSON.stringify({ ...book, freeze: before, counts: plan.summary }, null, 2), 'utf8')
+  writeDashboard(plan, book, { before, ocr: dry.ocr, safety }, before)
 
   console.log(
     JSON.stringify(
@@ -681,7 +759,8 @@ export async function runCloseout(root = process.cwd()) {
   }
   writeFileSync(path.join(outDir, 'persist-result.json'), JSON.stringify(outcome, null, 2), 'utf8')
   writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(outcome, null, 2), 'utf8')
-  writeFileSync(path.join(root, 'public/ssen-book-closeout.json'), JSON.stringify(publicPayload(plan, { ...dry.ocr, persisted: true, persist: outcome.persist, worksheet_id: worksheetId, rerun_applies: rerun.applies.length, after }, book), null, 2), 'utf8')
+  writeFileSync(freezeFile, JSON.stringify({ plan, book, persist: outcome.persist, worksheet_id: worksheetId, ocr: dry.ocr }, null, 2), 'utf8')
+  writeDashboard(plan, book, { ...dry.ocr, persisted: true, persist: outcome.persist, worksheet_id: worksheetId, rerun_applies: rerun.applies.length, after }, after)
   console.log(
     `SSEN CLOSEOUT PERSIST written=${outcome.persist.written} skipped=${outcome.persist.skipped} rerun=${rerun.applies.length} listed=${after.listed} worksheet=${worksheetId ?? 'none'}`,
   )

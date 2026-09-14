@@ -33,6 +33,8 @@ export function WorksheetListPage() {
 
   useEffect(() => {
     void reload()
+    // reload reads showArchived; keep initial+toggle refresh only
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showArchived])
 
   const visible = useMemo(() => {

@@ -54,6 +54,7 @@ describe('ssen book closeout', () => {
     expect(isStubMcq('대표 문제 다음 중 옳은 것은?')).toBe(true)
     expect(ocrAgreesWithGold('0은 복소수가 아니다 허수부분은 6 실수부분은 0이다', P1_GOLD['0331']!)).toBe(true)
     expect(ocrAgreesWithGold('다음 중 옳은 것은', P1_GOLD['0331']!)).toBe(false)
+    expect(ocrAgreesWithGold('다음 중 옳은 것은 $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$', P1_GOLD['0381']!)).toBe(true)
   })
 
   it('strips trailing next-number difficulty stubs when next listed exists', () => {
@@ -160,6 +161,27 @@ describe('ssen book closeout', () => {
     })
     expect(rows).toHaveLength(1)
     expect(rows[0]?.problem_id).toBe('a')
+  })
+
+  it('ignores page-number references when splitting siblings', () => {
+    const catalog = [
+      row({ id: 'a', problem_number: 774, stem: '본문\n107쪽 유형 11\n0775 다음' }),
+      row({ id: 'b', problem_number: 107, stem: '다른 단원 본문' }),
+      row({ id: 'c', problem_number: 775, stem: '0775 다음' }),
+    ]
+    const rebuilt = rebuildStem(catalog[0]!.stem, 774, catalog)
+    expect(rebuilt?.text).not.toContain('0775')
+    expect(planCloseout([leftover({ problem_id: 'a', current_number: '0774', stem: catalog[0]!.stem })], catalog).applies.every((row) => row.problem_id !== 'b')).toBe(true)
+  })
+
+  it('does not overwrite a sibling that already has its own stem', () => {
+    const catalog = [
+      row({ id: 'a', problem_number: 94, stem: '0094 직육면체\n0095 다항식의 연산' }),
+      row({ id: 'b', problem_number: 95, stem: '⑤ 정육면체에 구멍을 뚫은 입체도형의 부피는?' }),
+    ]
+    const plan = planCloseout([leftover({ problem_id: 'a', current_number: '0094', stem: catalog[0]!.stem })], catalog)
+    expect(plan.applies.some((row) => row.problem_id === 'a')).toBe(true)
+    expect(plan.applies.some((row) => row.problem_id === 'b')).toBe(false)
   })
 
   it('protects TEACHER_EDIT', () => {

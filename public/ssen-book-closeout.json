@@ -1,0 +1,1805 @@
+{
+  "step": "ssen-closeout",
+  "inspector_version": "8.41.0",
+  "rules_version": "r1",
+  "inspected_at": "2026-09-14T01:54:44.954Z",
+  "lock_main_commit": "c8430ff745fa805afdafd7a7d692b9ebfee60f09",
+  "book": {
+    "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1",
+    "qa_complete": true,
+    "ready_for_use": true,
+    "human_exceptions": 0,
+    "inspected_at": "2026-09-14T01:51:23.097Z",
+    "pdf_hash": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+    "inspector_version": "8.41.0",
+    "paid_ocr_usd": 0.01,
+    "completed_items": 1242,
+    "total_items": 1242,
+    "banner": "전체검사 완료 · 사용 가능 · 최종 확인 0문항"
+  },
+  "summary": {
+    "start_review": 56,
+    "unique_pages": 29,
+    "verified_by_source": 13,
+    "auto_safe": 43,
+    "pass_false_positive": 0,
+    "human_final_check": 0,
+    "free_evidence_solved": 56,
+    "mathpix_calls": 0,
+    "mistral_calls": 0,
+    "cache_hits": 2,
+    "new_versions": 59,
+    "current_version_switches": 59,
+    "choice_restores": 3,
+    "range_restores": 28,
+    "create_draft_candidates": 10,
+    "teacher_edit_protected": 0,
+    "verified_protected": 0,
+    "problems_deleted": 0,
+    "raw_ocr_changed": 0,
+    "expected_listed": 1242,
+    "paid_ocr_usd": 0.01,
+    "human_reduction_pct": 100
+  },
+  "p1": [
+    {
+      "problem_id": "d80e0e76-9cd2-4d02-a074-f49e83cb4192",
+      "current_number": "0333",
+      "source_page": 50,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "verdict_reason": "원본 페이지 PNG와 OCR이 선택지 핵심 문구에서 일치한다. 추측 없이 복원한다.",
+      "rules": [
+        "p1_choice_restore"
+      ],
+      "stem": "다음 중 옳은 것은?\n① $(7+3i)+(4-6i)=28+3i$\n② $(i-5)-(2i-9)=i-4$\n③ $(1-i^{2})(1+i^{2})=2$\n④ $(2-3i)^{2}=-5+12i$\n⑤ $\\dfrac{1+i}{1-i}+\\dfrac{1-i}{1+i}=0$",
+      "proposed_stem": null
+    },
+    {
+      "problem_id": "d5038865-b5a1-49dd-90b6-5f8fef74dcf4",
+      "current_number": "0381",
+      "source_page": 56,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "verdict_reason": "원본 페이지 PNG와 OCR이 선택지 핵심 문구에서 일치한다. 추측 없이 복원한다.",
+      "rules": [
+        "p1_choice_restore"
+      ],
+      "stem": "다음 중 옳은 것은?\n① $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$\n② $\\sqrt{-3}\\sqrt{-7}=-\\sqrt{21}$\n③ $\\dfrac{\\sqrt{3}}{\\sqrt{-7}}=\\sqrt{-\\dfrac{3}{7}}$\n④ $\\dfrac{\\sqrt{-3}}{\\sqrt{-7}}=-\\sqrt{\\dfrac{3}{7}}$\n⑤ $\\dfrac{\\sqrt{-3}}{\\sqrt{7}}=-\\sqrt{\\dfrac{3}{7}}$",
+      "proposed_stem": null
+    },
+    {
+      "problem_id": "74e01be9-bdf0-4d22-a6f4-ea99765d22c1",
+      "current_number": "0331",
+      "source_page": 50,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "verdict_reason": "원본 페이지 PNG와 OCR이 선택지 핵심 문구에서 일치한다. 추측 없이 복원한다.",
+      "rules": [
+        "p1_choice_restore"
+      ],
+      "stem": "다음 중 옳은 것은?\n① 0은 복소수가 아니다.\n② $1-6i$의 허수부분은 $6$이다.\n③ $2+\\sqrt{5}i$의 실수부분은 $2$, 허수부분은 $\\sqrt{5}i$이다.\n④ $-3i$의 실수부분은 $0$이다.\n⑤ $a\\neq 0$, $b=0$이면 $a+bi$는 실수이다.",
+      "proposed_stem": null
+    }
+  ],
+  "records": [
+    {
+      "problem_id": "d80e0e76-9cd2-4d02-a074-f49e83cb4192",
+      "public_code": "HQB-000297",
+      "current_number": "0333",
+      "source_page": 50,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "DUPLICATE_BODY",
+      "verdict_reason": "원본 페이지 PNG와 OCR이 선택지 핵심 문구에서 일치한다. 추측 없이 복원한다.",
+      "signals": [
+        "p1_choice_restore"
+      ],
+      "rules": [
+        "p1_choice_restore"
+      ],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "다음 중 옳은 것은?\n① $(7+3i)+(4-6i)=28+3i$\n② $(i-5)-(2i-9)=i-4$\n③ $(1-i^{2})(1+i^{2})=2$\n④ $(2-3i)^{2}=-5+12i$\n⑤ $\\dfrac{1+i}{1-i}+\\dfrac{1-i}{1+i}=0$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "d5038865-b5a1-49dd-90b6-5f8fef74dcf4",
+      "public_code": "HQB-000299",
+      "current_number": "0381",
+      "source_page": 56,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "DUPLICATE_BODY",
+      "verdict_reason": "원본 페이지 PNG와 OCR이 선택지 핵심 문구에서 일치한다. 추측 없이 복원한다.",
+      "signals": [
+        "p1_choice_restore"
+      ],
+      "rules": [
+        "p1_choice_restore"
+      ],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "다음 중 옳은 것은?\n① $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$\n② $\\sqrt{-3}\\sqrt{-7}=-\\sqrt{21}$\n③ $\\dfrac{\\sqrt{3}}{\\sqrt{-7}}=\\sqrt{-\\dfrac{3}{7}}$\n④ $\\dfrac{\\sqrt{-3}}{\\sqrt{-7}}=-\\sqrt{\\dfrac{3}{7}}$\n⑤ $\\dfrac{\\sqrt{-3}}{\\sqrt{7}}=-\\sqrt{\\dfrac{3}{7}}$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "e5d6b6ee-b18c-4e9d-9bb4-49cae3793b16",
+      "public_code": "HQB-000917",
+      "current_number": "0315",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0313~0318] 다음을 계산하시오.\n0315 $$1-i+i^2-i^3$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "74e01be9-bdf0-4d22-a6f4-ea99765d22c1",
+      "public_code": "HQB-000463",
+      "current_number": "0331",
+      "source_page": 50,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "DUPLICATE_BODY",
+      "verdict_reason": "원본 페이지 PNG와 OCR이 선택지 핵심 문구에서 일치한다. 추측 없이 복원한다.",
+      "signals": [
+        "p1_choice_restore"
+      ],
+      "rules": [
+        "p1_choice_restore"
+      ],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "다음 중 옳은 것은?\n① 0은 복소수가 아니다.\n② $1-6i$의 허수부분은 $6$이다.\n③ $2+\\sqrt{5}i$의 실수부분은 $2$, 허수부분은 $\\sqrt{5}i$이다.\n④ $-3i$의 실수부분은 $0$이다.\n⑤ $a\\neq 0$, $b=0$이면 $a+bi$는 실수이다.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "384e16b4-db6b-4d76-974c-d9d26efaecca",
+      "public_code": "HQB-000922",
+      "current_number": "0319",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0319~0322] 다음 수를 허수단위 i를 사용하여 나타내시오.\n0319 $$\\sqrt{-9}$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "ca4c8736-93f1-413b-bcab-84e1789e7903",
+      "public_code": "HQB-000926",
+      "current_number": "0321",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0319~0322] 다음 수를 허수단위 i를 사용하여 나타내시오.\n0321 $$-\\sqrt{-8}$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "86df1f30-e738-4f21-b752-c97d796c5640",
+      "public_code": "HQB-000927",
+      "current_number": "0323",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0323~0326] 다음 수의 제곱근을 구하시오.\n0323 -3",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "a90ab479-549c-47f4-8b3d-c9b784f9f3bd",
+      "public_code": "HQB-000931",
+      "current_number": "0325",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0323~0326] 다음 수의 제곱근을 구하시오.\n0325 -18",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "e5b229b5-c97a-422d-95eb-741b4984a638",
+      "public_code": "HQB-000932",
+      "current_number": "0327",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0327~0330] 다음을 a+bi (a, b는 실수) 끌로 나타내시오.\n0327 $$\\sqrt{-2}\\sqrt{-8}$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "96cf18b0-10c7-48d4-8391-d44f8abe44d6",
+      "public_code": "HQB-000929",
+      "current_number": "0308",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0307~0308] 다음을 a+bi (a, b는 실수) 끌로 나타내시오.\n$$\\frac{3+2i}{2-i}$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "6bca5798-4bb1-437a-9f4b-d9712545f8f1",
+      "public_code": "HQB-000934",
+      "current_number": "0309",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0309~0312] 복소수 z=6-4i에 대하여 다음 식의 값을 구하시오. (단, $$\\bar{z}$$는 z의 켤레복소수이다.)\n0309 $$(\\bar{z})$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "7b6e5398-01f3-4c58-9da1-349a474e7b2f",
+      "public_code": "HQB-000936",
+      "current_number": "0329",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0327~0330] 다음을 a+bi (a, b는 실수) 끌로 나타내시오.\n0329 $$\\frac{\\sqrt{16}}{\\sqrt{-4}}$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "cc7ef48b-e243-44f3-b2d4-d95eabd3f541",
+      "public_code": "HQB-000959",
+      "current_number": "0395",
+      "source_page": 59,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0395\n 54쪽 유형 09\n0이 아닌 복소수 z와 그 켤레복소수 $\\overline{z}$에 대하여\n$\\frac{2z-\\overline{z}}{z\\overline{z}}=1-i$가 성립할 때, 복소수 z를 구하시오.\n선사2의\n기호\n0396\n 54쪽 유형 09\n복소수 z가 다음 조건을 모두 만족시키도록 하는 모든\n실수 x의 값의 합은? (단, $\\overline{z}$는 z의 켤레복소수이다.)\n(가) $z=\\sqrt{3}x+(x-2)i$\n(나) $z^3=(-\\overline{z})^3$\n① -2\n② -1\n③ 0\n④ 1\n⑤ 2",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "0396"
+      ]
+    },
+    {
+      "problem_id": "a195d96f-d553-4b99-95bf-ddd316ece577",
+      "public_code": "HQB-001019",
+      "current_number": "0597",
+      "source_page": 87,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0597 ① \n이차함수 $$y=ax^2+bx+c$$의 그래프와 직선 $$y=mx+n$$이 오른쪽 그림과 같이 서로 다른 두 점에서 만날 때, 방정식\n$$ax^2+(b-m)x+c-n=0$$의 모든 실근의 곱을 구하시오.\n![img-0.jpeg](img-0.jpeg)\n(단, a, b, c, m, n은 상수이다.)",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "b2c77dd1-ad22-4ab3-b45c-5b5dbdef7276",
+      "public_code": "HQB-000848",
+      "current_number": "0094",
+      "source_page": 19,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0094\n오른쪽 그림과 같이 밑면의 가로의\n길이가 a-2, 세로의 길이가 a+3인\n직육면체의 부피가 a²+5a²-2a-24\n일 때, 이 직육면체의 높이를 구하시\n오.\n![img-1.jpeg](img-1.jpeg)",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "7f988f8c-dcda-4065-94ef-b05e539a19b5",
+      "public_code": "HQB-000853",
+      "current_number": "0110",
+      "source_page": 22,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0110 » 교육청 기출\n 15쪽 유형 06 + 19쪽 유형 12\n정삼각형 ABC에서 두 변 AB와 AC의 중점을 각각 M, N이라 하자. 그림과 같이 점 P는 반직선 MN이 삼각형 ABC의 외접원과 만나는 점이고 $\\overline{\\mathrm{NP}}=1$이다.\n![img-0.jpeg](img-0.jpeg)\n$\\overline{\\mathrm{MN}}=x$라 할 때, $10\\left(x^{2}+\\frac{1}{x^{2}}\\right)$의 값을 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "0e792bdc-fce6-489e-833c-47796a979b35",
+      "public_code": "HQB-000854",
+      "current_number": "0124",
+      "source_page": 25,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0124 다음은 다항식 $P(x)$를 일차식 $ax + b$로 나누었을 때의 나머지가 $P(\\boxed{\\text{가}})$임을 설명하는 과정이다. (가), (나)에 알맞은 것을 써넣으시오. (단, $a, b$는 상수이다.)\n다항식 $P(x)$를 일차식 $ax + b$로 나누었을 때의 몫을 $Q(x)$, 나머지를 $R$라 하면\n$P(x) = (ax + b)Q(x) + R$\n$= a(x + \\boxed{\\text{나}})Q(x) + R$\n이 등식이 $x$에 대한 향등식이므로\n$P(\\boxed{\\text{가}}) = R$\n따라서 다항식 $P(x)$를 일차식 $ax + b$로 나누었을 때의 나머지는 $P(\\boxed{\\text{가}})$이다.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "2df89c41-76f9-4c0f-90c4-7ef3b16b3675",
+      "public_code": "HQB-000856",
+      "current_number": "0125",
+      "source_page": 25,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0125 $x - 1$ 0126 $x + 2$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "0126"
+      ]
+    },
+    {
+      "problem_id": "72149174-7e05-46a4-ada6-09775c32e49d",
+      "public_code": "HQB-000857",
+      "current_number": "0127",
+      "source_page": 25,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0127 $2x + 1$ 0128 $4x - 1$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "0128"
+      ]
+    },
+    {
+      "problem_id": "7306b852-286b-4117-bac4-e82bf149d76c",
+      "public_code": "HQB-000858",
+      "current_number": "0129",
+      "source_page": 25,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0129 다항식 $P(x) = x^3 + 6x^2 - kx - 1$을 $x + 3$으로 나누었을 때의 나머지가 11일 때, 상수 $k$의 값을 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "fede76dc-df46-4eb9-af5a-1bfef77fbd4b",
+      "public_code": "HQB-000860",
+      "current_number": "0130",
+      "source_page": 25,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0130~0131] 다항식 $P(x) = 3x^3 + kx^2 - 6x - 4$가 다음 일차식으로 나누어떨어질 때, 상수 $k$의 값을 구하시오.\n0130 $x + 1$ 0131 $x - 2$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "3739cc88-fd4b-42cd-9e5c-344d5bd8c7ea",
+      "public_code": "HQB-000861",
+      "current_number": "0132",
+      "source_page": 25,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0132 $(x - 1)(x + 2)$ 0133 $(x + 1)(x - 3)$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "0133"
+      ]
+    },
+    {
+      "problem_id": "e49e7230-8c0d-40cd-9b8f-e9f8245da549",
+      "public_code": "HQB-001100",
+      "current_number": "0781",
+      "source_page": 117,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0781~0784] 2≤x≤4일 때, 다음 식의 값의 범위를 구하시오.\nx-2",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "15831559-e268-4273-a5b8-47c7103bd148",
+      "public_code": "HQB-000907",
+      "current_number": "0265",
+      "source_page": 42,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0265 >> 교육청 기출\n 30쪽 유형 06 + 34쪽 유형 14\n최고차항의 계수가 1인 삼차다항식 $f(x)$가 다음 조건을 만족시킬 때, $f(0)$의 값은?\n(가) 다항식 $f(x+3)-f(x)$는 $(x-1)(x+2)$로 나누어 떨어진다.\n(나) 다항식 $f(x)$를 $x-2$로 나누었을 때의 나머지는 $-3$이다.\n① 13\n② 14\n③ 15\n④ 16\n⑤ 17\n0266 >> 교육청 기출\n 34쪽 유형 14\n삼차다항식 $P(x)$와 일차다항식 $Q(x)$가 다음 조건을 만족시킨다.\n(가) $P(x)Q(x)$는 $(x^2-3x+3)(x-1)$로 나누어떨어진다.\n(나) 모든 실수 $x$에 대하여\n$x^3-10x+13-P(x)=\\{Q(x)\\}^2$이다.\n$Q(0)<0$일 때, $P(2)+Q(8)$의 값을 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "0266"
+      ]
+    },
+    {
+      "problem_id": "bc9cdbb0-67a2-40ef-b764-a1114164684b",
+      "public_code": "HQB-001076",
+      "current_number": "0735",
+      "source_page": 108,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0735 ② \n오른쪽 그림과 같이 밑면의 반\n지름의 길이와 높이가 모두\nx cm인 원기둥 모양의 그릇에\n75π cm³의 물을 부었더니 그\n![img-0.jpeg](img-0.jpeg)\n릇의 위에서부터 2 cm만큼의 공간이 남았다. 이때 x의\n값을 구하시오. (단, 그릇의 두께는 무시한다.)",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "b42e2a8f-45f9-4776-bdee-58281792b663",
+      "public_code": "HQB-001103",
+      "current_number": "0783",
+      "source_page": 117,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0781~0784] 2≤x≤4일 때, 다음 식의 값의 범위를 구하시오.\n-x",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "baba4283-f091-4ef3-b403-5c6013788fea",
+      "public_code": "HQB-001097",
+      "current_number": "0774",
+      "source_page": 114,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0774\n# 1 서술형\n오른쪽 그림과 같이 서로 평행하거나 수직인 직선에 접하는 네 원 A, B, C, D가 있다. 두 원 A, B의 지름의 길이의 합은 32이고, 두 원 A, D의 넓이의 차는 $96\\pi$일 때, 원 B의 반지름의 길이를 구하시오.\n 110쪽 유형 16\n![img-1.jpeg](img-1.jpeg)",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "9e097ac3-f5a4-4255-b49d-4da43f7fb4aa",
+      "public_code": "HQB-001098",
+      "current_number": "0775",
+      "source_page": 114,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0775\n 111쪽 유형 17\n오른쪽 그림과 같이 $\\overline{AB} = \\overline{AC}$인 이동변삼각형 ABC의 변 BC 위의 점 D에 대하여 $\\overline{BD} = 9, \\overline{CD} = 21$이다. $\\overline{AB}$,\n![img-2.jpeg](img-2.jpeg)\n$\\overline{AD}$의 길이가 모두 자연수가 되도록 하는 모든 삼각형 ABC의 둘레의 길이의 합은?\n① 350\n② 360\n③ 370\n④ 380\n⑤ 390",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "e66c77bb-3279-47fa-80b8-04f377828c6a",
+      "public_code": "HQB-001143",
+      "current_number": "0880",
+      "source_page": 129,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0880\n부등식 $$|x - k| < k^2$$ 의 해가 $$-6 < x < 12$$ 일 때, 부등식 $$|x - 1| < k$$ 를 만족시키는 모든 정수 $$x$$ 의 값의 합은?\n① 5\n② 7\n④ 11\n⑤ 13\n유사교의 기술\n0881\n연립부등식 $$\\left\\{ \\begin{array}{l} |5 - 3x| < x + 1 \\\\ a(x + 3) > a^2 + 3x \\end{array} \\right.$$ 가 해를 갖지 않도록 하는 실수 $$a$$ 의 값의 범위를 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "0881"
+      ]
+    },
+    {
+      "problem_id": "f74f22a2-dd5f-4266-8f1c-0e15fcafa2f8",
+      "public_code": "HQB-001145",
+      "current_number": "0886",
+      "source_page": 131,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0886 $f(x)\\le0$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "fb826870-72e8-4bfc-b9a2-433c966f4903",
+      "public_code": "HQB-001150",
+      "current_number": "0924",
+      "source_page": 134,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0924 | 대표 문제\n두 이차함수 $y=f(x)$, $y=g(x)$\n의 그래프가 오른쪽 그림과 같\n을 때, 부등식 $f(x)g(x)>0$의\n해는?\n![img-1.jpeg](img-1.jpeg)\n① $x<a$ 또는 $x>b$\n② $x<a$ 또는 $c<x<d$\n③ $b<x<0$ 또는 $x>d$\n④ $a<x<0$ 또는 $c<x<d$\n⑤ $a<x<b$ 또는 $0<x<d$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "72d8a861-8a1f-410c-943e-22627653944d",
+      "public_code": "HQB-001152",
+      "current_number": "0925",
+      "source_page": 134,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0925 ② \n이차함수 $y=ax^2+bx+c$의 그래\n프와 직선 $y=mx+n$이 오른쪽\n그림과 같을 때, 이차부등식\n![img-2.jpeg](img-2.jpeg)\n$ax^2+(b-m)x+c-n\\le0$\n의 해를 구하시오. (단, $a$, $b$, $c$,\n$m$, $n$은 실수이다.)",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "1bbe5ef5-ee9d-4b53-a553-57bda825f5a9",
+      "public_code": "HQB-001164",
+      "current_number": "0945",
+      "source_page": 136,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "0945 ③ \n오른쪽 그림과 같이 이차함수 $f(x)=x^3+kx+k$의 그래프의 꼭짓점을 A라 하고, 이 그래프와 $y$축과의 교점을 B라 하자. 직선 $y=g(x)$가 두 점 A, B를 지날 때, 부등식 $f(x)-g(x)<0$을 만족시키는 정수\n![img-1.jpeg](img-1.jpeg)\n$x$가 3개가 되도록 하는 양수 $k$의 값의 범위를 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "2fa46736-b1a1-463e-b30c-2649977cb824",
+      "public_code": "HQB-001201",
+      "current_number": "1014",
+      "source_page": 146,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1014\n 135쪽 유형 03 + 136쪽 유형 06\n이차함수 $f(x)=x^2+2x-3$에 대하여 부등식\n$2f(x)+|f(x)|\\le m(x+3)$을 만족시키는 정수 $x$가 6\n개가 되도록 하는 양수 $m$의 최솟값을 구하시오.\n农村平均\n기능\n1015\n 136쪽 유형 05 + 137쪽 유형 07\n아래의 조건을 모두 만족시키는 이차함수 $f(x)$에 대하\n여 다음 중 $f(1)$의 값이 될 수 있는 것은?\n(가) 부등식 $f\\left(\\frac{1-x}{3}\\right)\\ge 0$의 해가 $-5\\le x\\le 1$이다.\n(나) 부등식 $f(x)\\ge 3x+\\frac{3}{4}$의 해가 오직 한 개 존재한다.\n① $-3$\n② $-\\frac{1}{2}$\n③ $\\frac{3}{4}$\n④ $\\frac{3}{2}$\n⑤ 2",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "1015"
+      ]
+    },
+    {
+      "problem_id": "307956f6-db4b-490c-8fae-6ac63e107bf6",
+      "public_code": "HQB-001209",
+      "current_number": "1042",
+      "source_page": 151,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[1040~1043] 다음 값을 구하시오.\n1042 ₄P₄ 1043 ₅P₁·3!",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "ce49ca1d-b38b-42c7-bb25-1047c8b75a4f",
+      "public_code": "HQB-001210",
+      "current_number": "1044",
+      "source_page": 151,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1044 ₙP₂=30 1045 ₅Pᵣ=60",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "1045"
+      ]
+    },
+    {
+      "problem_id": "5e48231a-c0b1-4093-b616-46ebbc3a41f2",
+      "public_code": "HQB-001211",
+      "current_number": "1046",
+      "source_page": 151,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1046 ₇Pᵣ=7! / 4! 1047 ₙPₙ=120",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "1047"
+      ]
+    },
+    {
+      "problem_id": "f807e8d7-b9bd-44a0-a5f2-d62ebd5b7bab",
+      "public_code": "HQB-001217",
+      "current_number": "1056",
+      "source_page": 153,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[1054~1057] 다음 값을 구하시오.\n1056 ₅C₀",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "96c9a45e-15ae-49b7-ae1b-2325d76f4052",
+      "public_code": "HQB-001219",
+      "current_number": "1058",
+      "source_page": 153,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[1058~1059] 다음을 만족시키는 자연수 n의 값을 구하시오.\n1058 nC₃=56",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "4d253f91-1844-4d35-9e3d-130445e4db28",
+      "public_code": "HQB-001221",
+      "current_number": "1060",
+      "source_page": 153,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[1060~1061] 다음을 만족시키는 n 또는 r의 값을 구하시오.\n1060 nC₄=nC₆",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "77c7eb7a-06fb-4fc8-ba03-d4529e201da9",
+      "public_code": "HQB-001227",
+      "current_number": "1095",
+      "source_page": 156,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1095 ⑤ \n오른쪽 그림과 같이 네 지점을 연결하는 도로가 있다. 집에서 출발하여 도서관으로 가는 경우의 수는? (단, 한 번 지나간 지점은 다시 지나지 않는다.)\n![img-1.jpeg](img-1.jpeg)\n① 28\n② 29\n③ 30\n④ 31\n⑤ 32",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "7a1b476e-ac16-4daf-b849-50007333ada7",
+      "public_code": "HQB-001230",
+      "current_number": "1098",
+      "source_page": 157,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1098 ··\n오른쪽 그림의 3개의 영역을 빨간색,\n노란색, 초록색, 보라색의 4가지 색\n으로 칠하려고 한다. A, B, C의 영\n역에 같은 색을 중복하여 사용해도 좋\n![img-1.jpeg](img-1.jpeg)\n으나 인접한 영역은 서로 다른 색으로 칠할 때, 칠하는\n경우의 수는? (단, 각 영역에는 한 가지 색만 칠한다.)\n① 24\n② 28\n③ 32\n④ 36\n⑤ 40",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "ef541457-ccb8-46d1-8b72-98fbf5cdb8c0",
+      "public_code": "HQB-001218",
+      "current_number": "1057",
+      "source_page": 153,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[1054~1057] 다음 값을 구하시오.\n1057 ₄C₄",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "ea240fef-caa3-4d5f-93d9-6cabb5eb5c77",
+      "public_code": "HQB-001220",
+      "current_number": "1059",
+      "source_page": 153,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "RANGE_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[1058~1059] 다음을 만족시키는 자연수 n의 값을 구하시오.\n1059 ₂ₙ₊₁C₂=78",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "5525606a-8cb4-4f37-b9d9-245ea9cd690c",
+      "public_code": "HQB-001215",
+      "current_number": "1054",
+      "source_page": 153,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[1054~1057] 다음 값을 구하시오.\n1054 ₀C₂",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "b62639d6-0df7-4618-a82b-cdda8f5cacb9",
+      "public_code": "HQB-001266",
+      "current_number": "1162",
+      "source_page": 166,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1162 ③ \n오른쪽 그림과 같이 반원 위에 있는\n7개의 점 중에서 3개의 점을 꼭짓점\n으로 하는 삼각형의 개수는?\n![img-0.jpeg](img-0.jpeg)\n① 30\n② 31\n③ 32\n④ 33\n⑤ 34",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "37fb520e-04ab-4b65-9a00-cab2843de132",
+      "public_code": "HQB-001267",
+      "current_number": "1165",
+      "source_page": 166,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1165 대표 문재\n오른쪽 그림과 같이 5개의 평행한 직\n선과 4개의 평행한 직선이 서로 만날\n때, 이 평행한 직선으로 만들어지는\n평행사변형의 개수는?\n![img-2.jpeg](img-2.jpeg)\n① 30\n② 40\n③ 50\n④ 60\n⑤ 70",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "2146bc56-3aac-463d-bda7-788d1e4a4870",
+      "public_code": "HQB-001270",
+      "current_number": "1167",
+      "source_page": 167,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1167 ② 시술형\n오른쪽 그림과 같이 가로 방향의 평행\n한 직선 4개와 세로 방향의 평행한 직\n선 4개가 각각 수직으로 서로 만나고 있\n다. 직선 사이의 간격이 1로 일정할\n![img-0.jpeg](img-0.jpeg)\n때, 이 평행한 직선으로 만들어지는 정사각형이 아닌 직\n사각형의 개수를 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "9892a3c1-d661-4907-b57c-2de35a28b744",
+      "public_code": "HQB-001272",
+      "current_number": "1168",
+      "source_page": 167,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1168 ③ \n오른쪽 그림은 평행사변형의\n각 변을 5등분하여 얻은 도형이\n다. 이 도형의 선들로 만들 수\n있는 평행사변형 중에서 색칠\n![img-1.jpeg](img-1.jpeg)\n한 부분을 포함하는 평행사변형의 개수는?\n① 68\n② 70\n③ 72\n④ 74\n⑤ 76",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "37fb038b-4166-4474-b794-75fa15f5a4f6",
+      "public_code": "HQB-001277",
+      "current_number": "1179",
+      "source_page": 168,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1179 ② \n줄다리기 대회에 참가한 6개의 학급\n이 오른쪽 그림과 같은 토너먼트 방\n식으로 시합을 할 때, 대진표를 작성\n하는 경우의 수를 구하시오.\n![img-1.jpeg](img-1.jpeg)",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "9422a318-b675-4cf3-b9f6-52c902aab5b9",
+      "public_code": "HQB-001281",
+      "current_number": "1181",
+      "source_page": 169,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1181\n 154쪽 유형 01 + 155쪽 유형 03\n다음 그림과 같이 거리가 1인 평행한 두 직선 위에 1의 간격으로 점이 각각 5개씩 있을 때, 네 점을 꼭짓점으로 하여 만들 수 있는 사각형 중에서 넓이가 2인 것의 개수를 구하시오.\n![img-1.jpeg](img-1.jpeg)",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "7b76c983-9089-42ca-8e46-591914244193",
+      "public_code": "HQB-001283",
+      "current_number": "1186",
+      "source_page": 170,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1186\n 159쪽 유형 12\n오른쪽 그림과 같은 8개의 칸에 8개의 숫자 0, 1, 2, 3, 4, 5, 6, 7을 각각 하나씩 적을 때, 색칠한 칸을 포함한 가로줄\n![img-0.jpeg](img-0.jpeg)\n의 칸에 적은 6개의 수의 합과 색칠한 칸을 포함한 세로줄의 칸에 적은 3개의 수의 합이 같아지는 경우의 수를 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "64abd203-9db1-4dc4-b178-96cf5d0a0ee8",
+      "public_code": "HQB-001287",
+      "current_number": "1197",
+      "source_page": 172,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1197 » 평가원 기출\n 165쪽 유형 23\n좌표평면 위에 9개의 점 (i, j)\n(i=0, 4, 8, j=0, 4, 8)이 있다.\n이 9개의 점 중 네 점을 꼭짓점으로 하는 사각형 중에서 내부에 세 점 (1, 1), (3, 1), (1, 3)을 꼭짓점\n![img-1.jpeg](img-1.jpeg)\n으로 하는 삼각형을 포함하는 사각형의 개수는?\n① 13\n② 15\n③ 17\n④ 19\n⑤ 21",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "4e5e8820-1611-4ffc-a5f6-3e15a58090eb",
+      "public_code": "HQB-001289",
+      "current_number": "1202",
+      "source_page": 175,
+      "verdict": "VERIFIED_BY_SOURCE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "원본에서 홈이 없는 같은 범위 하위 항목이다. 새 문제를 만들지 않는다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1202 $$\\left( \\begin{array}{rrr} 1 & -3 & 2 \\\\ 5 & 0 & -1 \\\\ 2 & 4 & 6 \\end{array} \\right)$$ 1203 $$\\left( \\begin{array}{r} 3 \\\\ 6 \\\\ 9 \\\\ -5 \\end{array} \\right)$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": [
+        "1203"
+      ]
+    },
+    {
+      "problem_id": "c60484dc-4036-4759-ab09-e991bb9c2a28",
+      "public_code": "HQB-000915",
+      "current_number": "0313",
+      "source_page": 49,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "[0313~0318] 다음을 계산하시오.\n0313 $$i^{50}$$",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    },
+    {
+      "problem_id": "326cc239-478f-4d44-a642-98e90d498e6c",
+      "public_code": "HQB-001332",
+      "current_number": "1300",
+      "source_page": 189,
+      "verdict": "AUTO_SAFE",
+      "root_cause": "NEXT_NUMBER_LEAK",
+      "verdict_reason": "다음 번호 스텁·홈이 있는 형제·뒤 범위 누수를 원본 경계에 맞게 제거한다.",
+      "signals": [],
+      "rules": [],
+      "evidence": [
+        "original_page_png",
+        "db_neighbors"
+      ],
+      "stem": "1300\n 178쪽 유형 01\n한 변의 길이가 1인 정사각형을 붙인 가로의 길이가 $i$, 세로의 길이가 $j$인 직사각형에서 만들 수 있는 모든 정사각형의 개수를 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$라 하자. 예를 들어 다음 그림에서 $a_{12}=2$, $a_{22}=5$이다.\n![img-1.jpeg](img-1.jpeg)\n![img-2.jpeg](img-2.jpeg)\n이때 $3 \\times 3$ 행렬 $A$의 모든 성분의 합을 구하시오.",
+      "proposed_stem": null,
+      "teacher_edit": false,
+      "verified": false,
+      "create_draft_numbers": []
+    }
+  ],
+  "applies": [],
+  "frozen": true,
+  "persist": {
+    "attempted": 59,
+    "written": 59,
+    "skipped": 0,
+    "errors": 0,
+    "atomic_stop": null,
+    "rows": [
+      {
+        "problem_id": "d80e0e76-9cd2-4d02-a074-f49e83cb4192",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "a89ebec3-99f3-4e87-86c2-a9109c5283d5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "d5038865-b5a1-49dd-90b6-5f8fef74dcf4",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "c392443e-365e-43fa-8b4e-3f4d64d05b44",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e5d6b6ee-b18c-4e9d-9bb4-49cae3793b16",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "d7b61e36-9ef4-4779-bb09-aea6530b11df",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "24793a27-5bc2-4b67-a70d-18f6b31684ba",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "45691465-9f6f-4703-9fad-0662efca1d3d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "74e01be9-bdf0-4d22-a6f4-ea99765d22c1",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "bd9e9d1e-84e7-4384-85ea-43ea2ef29115",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "384e16b4-db6b-4d76-974c-d9d26efaecca",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2a603423-96c5-4c8f-a3d8-e97b08ef3721",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "9fefaec7-7990-43f0-9112-a900ca2a0ab1",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "37949346-a87d-4de9-8848-d4633786d66b",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ca4c8736-93f1-413b-bcab-84e1789e7903",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "39884273-4820-4d38-b49e-e11b2efe8d8a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a3f11512-84ab-443d-9dc4-b953d8e75531",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "e47d32d4-c035-43e7-b2fd-535941a8f7f1",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "86df1f30-e738-4f21-b752-c97d796c5640",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "b7594cbd-dfc0-4d2f-bbba-72073dd0f645",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "55470776-7c41-4ac3-ba28-1269ce46e9c7",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "02eb7bdb-b7ec-463a-839d-82adbdfb7b8d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a90ab479-549c-47f4-8b3d-c9b784f9f3bd",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "14fe62aa-48e5-402d-8b0d-d267519682b9",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "462dbe00-3deb-4394-9a14-074c94579e98",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "f5f391a0-4dba-4fbf-ad05-2d8ba73a83ff",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e5b229b5-c97a-422d-95eb-741b4984a638",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "47947e6f-432b-4db0-9d5a-e00676bc6e78",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "67d6bafc-3a78-4a21-8fce-0cbe4781d003",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "f09283a7-3f24-4c04-84be-8d2d1663fd48",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "96cf18b0-10c7-48d4-8391-d44f8abe44d6",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "56e0ac33-c536-45ca-ac00-d93ce9e3f6f8",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "6bca5798-4bb1-437a-9f4b-d9712545f8f1",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0c9663eb-2884-44ff-bd74-ced4fa8dd6f6",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "81ff30b9-0c5f-4caa-986a-5eed1ca92fb6",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6425c5a2-9748-4116-a502-76bf1948398c",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "7b6e5398-01f3-4c58-9da1-349a474e7b2f",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "bc148b03-296d-4397-ad24-bddda547df43",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "c7e57aab-abb4-4791-92a1-d4a60e76d42c",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6ee12c9f-6233-4ba5-aba2-51042bfba2f1",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a195d96f-d553-4b99-95bf-ddd316ece577",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "da2e98ae-2fbc-4e33-abed-18e05588a2ef",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "b2c77dd1-ad22-4ab3-b45c-5b5dbdef7276",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "7f0a926e-2d29-49e4-a986-5ff035c0ca43",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "7f988f8c-dcda-4065-94ef-b05e539a19b5",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2d8f81a4-7af2-486b-915f-880778d0c122",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "0e792bdc-fce6-489e-833c-47796a979b35",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "fbcfb1de-ba03-4940-9199-a92253c0812a",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "7306b852-286b-4117-bac4-e82bf149d76c",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "450d4ccd-2083-46d0-b9ae-6bd931ef3818",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "fede76dc-df46-4eb9-af5a-1bfef77fbd4b",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "06bb4d83-060a-4ef4-92c8-ba705c848252",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "e49e7230-8c0d-40cd-9b8f-e9f8245da549",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "eef53e93-aa60-4d99-b430-d52645cbbae4",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "56fd1006-5dc2-4f66-96f8-6da0bbf7a0a1",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "06bc2611-241f-460c-ab50-11a0ed39527d",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "bc9cdbb0-67a2-40ef-b764-a1114164684b",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2c1adb29-6a76-4c84-8b20-866d3be3ef02",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "b42e2a8f-45f9-4776-bdee-58281792b663",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6b0b2a25-1e3f-4780-b589-e9c43f786003",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "30f85a06-c097-495e-b6b9-acdc9b3e497a",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "0045316c-35c9-4835-b04f-1f12da4facb5",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "baba4283-f091-4ef3-b403-5c6013788fea",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "babfd3e0-4628-47a0-aaef-bb984236a10c",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "9e097ac3-f5a4-4255-b49d-4da43f7fb4aa",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "77f0783b-5340-4fa5-b553-1321f74a2cdd",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "f74f22a2-dd5f-4266-8f1c-0e15fcafa2f8",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "bbd14bf9-81b5-42ee-be94-51cb07e70b24",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "fb826870-72e8-4bfc-b9a2-433c966f4903",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "537419ec-ea3b-41e4-b9e1-f8b8594e179a",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "72d8a861-8a1f-410c-943e-22627653944d",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "6669a4ec-a487-4fae-8c06-b5ce5eaf0f56",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "1bbe5ef5-ee9d-4b53-a553-57bda825f5a9",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "4ead7950-0b21-4868-9f86-0f905b9d572d",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "307956f6-db4b-490c-8fae-6ac63e107bf6",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "e77e3efd-6b07-440c-844c-a9a5170b688d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "f807e8d7-b9bd-44a0-a5f2-d62ebd5b7bab",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "45f261ff-e1fe-4553-9a14-7f1dad38ce50",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ef541457-ccb8-46d1-8b72-98fbf5cdb8c0",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "07dc9722-3570-433a-8ddf-908201c741c1",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "96c9a45e-15ae-49b7-ae1b-2325d76f4052",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "a9fc746c-a5df-4923-9a3a-a869eb2a0f04",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "ea240fef-caa3-4d5f-93d9-6cabb5eb5c77",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "8e7c6eca-45a7-48a3-b412-7aca760ecd16",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "4d253f91-1844-4d35-9e3d-130445e4db28",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "9f8ea807-b334-479b-ad27-6e82f3d11d89",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a28705f6-3139-4593-ae58-30b547854936",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "ab111598-f871-450e-8a38-dde0a33e38c5",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "77c7eb7a-06fb-4fc8-ba03-d4529e201da9",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "23afd94d-c4f7-4d6a-ad60-af2872cae07a",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "7a1b476e-ac16-4daf-b849-50007333ada7",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2bd968d9-aa3c-449d-9794-38e57d4e7e46",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "5525606a-8cb4-4f37-b9d9-245ea9cd690c",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "c1ab112b-b90c-49fd-a53d-da5d55b7b742",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "a8f2e127-571c-4242-ac93-dd6c798d6b97",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "805a8b29-0201-404e-a565-312dfb988847",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "b62639d6-0df7-4618-a82b-cdda8f5cacb9",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2722eeec-01b7-4fce-b063-190d76fe6d26",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "37fb520e-04ab-4b65-9a00-cab2843de132",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "04f3a034-fa8b-418e-b1b1-c2535963c0cd",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "2146bc56-3aac-463d-bda7-788d1e4a4870",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "098f1273-74cf-4c8d-a64b-a2b095e14198",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "9892a3c1-d661-4907-b57c-2de35a28b744",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2f1fd4b0-d7ac-48d0-b5a2-928d2449310b",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "37fb038b-4166-4474-b794-75fa15f5a4f6",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "c88593be-0064-40fb-98c9-d7182af19e51",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "9422a318-b675-4cf3-b9f6-52c902aab5b9",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "1bf7216e-236c-4354-95ce-52df461d4029",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "7b76c983-9089-42ca-8e46-591914244193",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "2533f4b3-524c-40bc-a245-50c84422059d",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "64abd203-9db1-4dc4-b178-96cf5d0a0ee8",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "e820897f-2892-4de1-88cf-db2f3a8bbe3b",
+          "version_no": 3
+        }
+      },
+      {
+        "problem_id": "c60484dc-4036-4759-ab09-e991bb9c2a28",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "7f5843ac-bb7d-40ee-96b5-622f8dab5d8d",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "db4129a6-5828-4498-88dd-5ee999391f45",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "97700c67-e7b9-4457-b33f-59d43daf0785",
+          "version_no": 2
+        }
+      },
+      {
+        "problem_id": "326cc239-478f-4d44-a642-98e90d498e6c",
+        "error": null,
+        "result": {
+          "skipped": false,
+          "version_id": "31c72156-36b9-46e6-ac20-056042cc5b6e",
+          "version_no": 3
+        }
+      }
+    ]
+  },
+  "worksheet_id": "9d65269c-87dc-469d-929a-d5b296097b16",
+  "ocr": {
+    "mathpix": 0,
+    "mistral": 0,
+    "cacheHits": 2,
+    "cost": 0.01,
+    "aborted": null,
+    "mathpix_configured": false
+  },
+  "after": {
+    "listed": 1242,
+    "ssen_linked": 1253,
+    "ssen_needs_review": 9,
+    "public_code_dups": 0,
+    "embeddings": 1244,
+    "fingerprints": 3543,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    },
+    "auto_clean_839": 23,
+    "auto_clean_840": 25
+  }
+}

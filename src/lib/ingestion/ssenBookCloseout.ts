@@ -52,7 +52,7 @@ export const P1_GOLD: Record<
     stem: `다음 중 옳은 것은?
 ① 0은 복소수가 아니다.
 ② $1-6i$의 허수부분은 $6$이다.
-③ $2+\\sqrt{5}i$의 실수부분은 $2$, 허수부분은 $\\sqrt{5}$이다.
+③ $2+\\sqrt{5}i$의 실수부분은 $2$, 허수부분은 $\\sqrt{5}i$이다.
 ④ $-3i$의 실수부분은 $0$이다.
 ⑤ $a\\neq 0$, $b=0$이면 $a+bi$는 실수이다.`,
   },
@@ -70,12 +70,12 @@ export const P1_GOLD: Record<
   '0381': {
     page: 56,
     choice_count: 5,
-    evidence: ['다음 중 옳은 것은', '-21', '옳은 것은'],
+    evidence: ['다음 중 옳은 것은', '\\sqrt{-3}', '\\sqrt{21}'],
     stem: `다음 중 옳은 것은?
 ① $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$
 ② $\\sqrt{-3}\\sqrt{-7}=-\\sqrt{21}$
 ③ $\\dfrac{\\sqrt{3}}{\\sqrt{-7}}=\\sqrt{-\\dfrac{3}{7}}$
-④ $\\dfrac{\\sqrt{-3}}{\\sqrt{-7}}=\\sqrt{\\dfrac{3}{7}}$
+④ $\\dfrac{\\sqrt{-3}}{\\sqrt{-7}}=-\\sqrt{\\dfrac{3}{7}}$
 ⑤ $\\dfrac{\\sqrt{-3}}{\\sqrt{7}}=-\\sqrt{\\dfrac{3}{7}}$`,
   },
 }
@@ -198,19 +198,32 @@ export function stripTrailingNextStub(
   return { text, rules }
 }
 
-function numberAnchors(stem: string): Array<{ n: number; index: number }> {
+function numberAnchors(stem: string, current: number): Array<{ n: number; index: number }> {
   const found: Array<{ n: number; index: number }> = []
-  const re = /(?:^|[\n\s#])(\d{3,4})(?!\d)/g
+  const re = /(?:^|[\n\s#])(\d{4})(?!\d)/g
   let match: RegExpExecArray | null
   const mathSpans: Array<[number, number]> = []
   const mathRe = /\$\$[\s\S]+?\$\$|\$[^$]+\$/g
   let math: RegExpExecArray | null
   while ((math = mathRe.exec(stem))) mathSpans.push([math.index, math.index + math[0].length])
+  const rangeNums = new Set(
+    parseRangeTokens(stem).flatMap((token) => {
+      const out: number[] = []
+      for (let n = token.start; n <= token.end && n - token.start <= 20; n += 1) out.push(n)
+      return out
+    }),
+  )
   while ((match = re.exec(stem))) {
     const idx = match.index + match[0].length - match[1]!.length
     if (mathSpans.some(([a, b]) => idx >= a && idx < b)) continue
+    const after = stem.slice(idx + match[1]!.length)
+    if (/^\s*쪽/.test(after)) continue
+    if (/유형\s*$/.test(stem.slice(Math.max(0, idx - 8), idx))) continue
     const n = Number(match[1])
-    if (n >= 1 && n <= 2000) found.push({ n, index: idx })
+    if (n < 1 || n > 2000) continue
+    const nearby = Math.abs(n - current) <= 20 || rangeNums.has(n)
+    if (!nearby) continue
+    found.push({ n, index: idx })
   }
   return found
 }
@@ -226,13 +239,13 @@ export function ownItemSlice(stem: string, current: number, catalog: CatalogRowC
   const ownRange = tokens.find((token) => token.start <= current && current <= token.end && token.end - token.start <= 20)
   const later = tokens.find((token) => token.start > current && (!ownRange || token.index > ownRange.index))
   const laterRange = later && later.start > current ? stem.slice(later.index).trim() : null
-  const bodyEnd = later && later.start > current ? later.index : stem.length
+  const bodyEnd = later && later.start > current && later.start - current <= 40 ? later.index : stem.length
   const body = stem.slice(0, bodyEnd)
-  const anchors = numberAnchors(body)
+  const anchors = numberAnchors(body, current)
   const header = ownRange
     ? (() => {
         const after = body.slice(ownRange.index + ownRange.length)
-        const stop = numberAnchors(after)[0]
+        const stop = numberAnchors(after, current)[0]
         const prompt = (stop ? after.slice(0, stop.index) : after).trim()
         return `${ownRange.raw}${prompt ? ` ${prompt}` : ''}`.trim()
       })()
@@ -242,7 +255,7 @@ export function ownItemSlice(stem: string, current: number, catalog: CatalogRowC
           const tok = parseRangeTokens(cover.stem).find((token) => token.start <= current && current <= token.end)
           if (!tok) return ''
           const after = cover.stem.slice(tok.index + tok.length)
-          const stop = numberAnchors(after)[0]
+          const stop = numberAnchors(after, current)[0]
           const prompt = (stop ? after.slice(0, stop.index) : after).split('\n')[0]?.trim() ?? ''
           return `${tok.raw}${prompt ? ` ${prompt}` : ''}`.trim()
         })()
@@ -280,6 +293,9 @@ export function ownItemSlice(stem: string, current: number, catalog: CatalogRowC
   } else if (currentAnchor) {
     const nextHomed = anchors.find((row) => row.index > currentAnchor.index && hasHome(catalog, row.n))
     own = body.slice(currentAnchor.index, nextHomed ? nextHomed.index : body.length).trim()
+  } else if (droppedHomed.length) {
+    const firstDropped = anchors.find((row) => droppedHomed.includes(row.n))
+    if (firstDropped) own = body.slice(0, firstDropped.index).trim()
   }
 
   return { header, own, droppedHomed: [...new Set(droppedHomed)], keptUnhomed: [...new Set(keptUnhomed)], laterRange }
@@ -301,6 +317,15 @@ export function rebuildStem(stem: string, current: number, catalog: CatalogRowCl
   return { text, rules }
 }
 
+export function stemsShareGluedItems(parentStem: string, siblingStem: string, parentN: number, siblingN: number): boolean {
+  const parent = normalizeStem840(parentStem)
+  const sibling = normalizeStem840(siblingStem)
+  if (parent === sibling) return true
+  const pa = String(parentN).padStart(4, '0')
+  const pb = String(siblingN).padStart(4, '0')
+  return parent.includes(pb) && sibling.includes(pa)
+}
+
 export function siblingRebuilds(
   current: CatalogRowClose,
   catalog: CatalogRowClose[],
@@ -310,9 +335,11 @@ export function siblingRebuilds(
   const slice = ownItemSlice(current.stem, current.problem_number, catalog)
   const out: ApplyClose[] = []
   for (const n of slice.droppedHomed) {
+    if (Math.abs(n - current.problem_number) > 20) continue
     const home = homesOf(catalog, n)[0]
     if (!home || home.id === current.id) continue
     if (home.teacher_edit || home.verified) continue
+    if (!stemsShareGluedItems(current.stem, home.stem, current.problem_number, n)) continue
     const rebuiltHome = rebuildStem(home.stem.includes(String(n).padStart(4, '0')) ? home.stem : current.stem, n, catalog)
     if (!rebuiltHome) continue
     if (normalizeStem840(rebuiltHome.text) === normalizeStem840(home.stem)) continue

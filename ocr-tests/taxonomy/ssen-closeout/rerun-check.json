@@ -1,0 +1,182 @@
+{
+  "step": "ssen-closeout",
+  "status": "RERUN_CHECK",
+  "lock_main_commit": "c8430ff745fa805afdafd7a7d692b9ebfee60f09",
+  "inspector_version": "8.41.0",
+  "pdf_sha256": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+  "unique_pages": [
+    50,
+    56,
+    49,
+    59,
+    87,
+    19,
+    22,
+    25,
+    117,
+    42,
+    108,
+    114,
+    129,
+    131,
+    134,
+    136,
+    146,
+    151,
+    153,
+    156,
+    157,
+    166,
+    167,
+    168,
+    169,
+    170,
+    172,
+    175,
+    189
+  ],
+  "need_ocr_pages": [],
+  "ocr": {
+    "mathpix": 0,
+    "mistral": 0,
+    "cacheHits": 2,
+    "cost": 0.01,
+    "aborted": null,
+    "mathpix_configured": false
+  },
+  "before": {
+    "listed": 1242,
+    "ssen_linked": 1253,
+    "ssen_needs_review": 9,
+    "public_code_dups": 0,
+    "embeddings": 1244,
+    "fingerprints": 3543,
+    "majors": {
+      "I": 252,
+      "II": 462,
+      "III": 253,
+      "IV": 160,
+      "V": 115
+    },
+    "auto_clean_839": 23,
+    "auto_clean_840": 25
+  },
+  "summary": {
+    "start_review": 56,
+    "unique_pages": 29,
+    "verified_by_source": 12,
+    "auto_safe": 0,
+    "pass_false_positive": 41,
+    "human_final_check": 3,
+    "free_evidence_solved": 53,
+    "mathpix_calls": 0,
+    "mistral_calls": 0,
+    "cache_hits": 2,
+    "new_versions": 0,
+    "current_version_switches": 0,
+    "choice_restores": 0,
+    "range_restores": 0,
+    "create_draft_candidates": 12,
+    "teacher_edit_protected": 0,
+    "verified_protected": 0,
+    "problems_deleted": 0,
+    "raw_ocr_changed": 0,
+    "expected_listed": 1242,
+    "paid_ocr_usd": 0.01,
+    "human_reduction_pct": 94.6
+  },
+  "safety": {
+    "ok": true,
+    "violations": []
+  },
+  "book": {
+    "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+    "title": "쎈수학 공통수학1",
+    "qa_complete": true,
+    "ready_for_use": false,
+    "human_exceptions": 3,
+    "inspected_at": "2026-09-14T01:54:44.951Z",
+    "pdf_hash": "ae75168a93d320d65181b293b75d6460f538ee47fcedfae663bf3a96cb5ea292",
+    "inspector_version": "8.41.0",
+    "paid_ocr_usd": 0.01,
+    "completed_items": 1242,
+    "total_items": 1242,
+    "banner": "전체검사 완료 · P1 잔여 3 · 최종 확인 3문항"
+  },
+  "p1": [
+    {
+      "number": "0333",
+      "page": 50,
+      "verdict": "HUMAN_FINAL_CHECK",
+      "reason": "자동 경계가 원본과 한 번에 증명되지 않는다. 수정 후보를 억지로 만들지 않는다."
+    },
+    {
+      "number": "0381",
+      "page": 56,
+      "verdict": "HUMAN_FINAL_CHECK",
+      "reason": "자동 경계가 원본과 한 번에 증명되지 않는다. 수정 후보를 억지로 만들지 않는다."
+    },
+    {
+      "number": "0331",
+      "page": 50,
+      "verdict": "HUMAN_FINAL_CHECK",
+      "reason": "자동 경계가 원본과 한 번에 증명되지 않는다. 수정 후보를 억지로 만들지 않는다."
+    }
+  ],
+  "create_draft_candidates": [
+    {
+      "parent": "0395",
+      "number": "0396"
+    },
+    {
+      "parent": "0125",
+      "number": "0126"
+    },
+    {
+      "parent": "0127",
+      "number": "0128"
+    },
+    {
+      "parent": "0130",
+      "number": "0131"
+    },
+    {
+      "parent": "0132",
+      "number": "0133"
+    },
+    {
+      "parent": "0265",
+      "number": "0266"
+    },
+    {
+      "parent": "0880",
+      "number": "0881"
+    },
+    {
+      "parent": "1014",
+      "number": "1015"
+    },
+    {
+      "parent": "1042",
+      "number": "1043"
+    },
+    {
+      "parent": "1044",
+      "number": "1045"
+    },
+    {
+      "parent": "1046",
+      "number": "1047"
+    },
+    {
+      "parent": "1202",
+      "number": "1203"
+    }
+  ],
+  "applies": [],
+  "student_care_accessed": false,
+  "create_draft_persist": false,
+  "new_versions": 0,
+  "mistral": 0,
+  "mathpix": 0
+}
