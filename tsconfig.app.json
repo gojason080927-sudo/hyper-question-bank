@@ -82,6 +82,7 @@
     "src/lib/ingestion/step840Cli.ts",
     "src/lib/ingestion/ssenBookCloseoutCli.ts",
     "src/lib/ingestion/ssenFullClassifyCli.ts",
+    "src/lib/ingestion/ssenHyperCompleteCli.ts",
     "src/lib/ingestion/bookCompleteCli.ts"
   ]
 }

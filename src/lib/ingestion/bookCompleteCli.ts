@@ -16,7 +16,6 @@ import {
   sourceLockPath,
   type OutlineAdapter,
 } from './bookCompletePipeline'
-import { runCloseout } from './ssenBookCloseoutCli'
 
 function sha256Bytes(buf: Buffer | string): string {
   return createHash('sha256').update(buf).digest('hex')
@@ -59,7 +58,7 @@ function releaseLock(lockFile: string) {
 export async function runIngestBook(root = process.cwd()) {
   const flags = parseIngestBookFlags(process.argv.slice(2))
   if (!flags.sourceId) {
-    console.error('usage: npm run ingest:book -- --source-id=<id> --mode=complete [--apply] [--cost-cap=1] [--resume]')
+    console.error('usage: npm run ingest:book -- --source-id=<id> --mode=complete [--apply] [--cost-cap=5] [--resume]')
     process.exit(1)
   }
   const lock = acquireLock(root, flags.sourceId === 'ssen' ? SSEN_SOURCE_DOCUMENT_ID : flags.sourceId)
@@ -99,7 +98,8 @@ export async function runIngestBook(root = process.cwd()) {
     console.log(`ingest:book source=${plan.sourceId} dry_run=${plan.dry_run} ocr=${plan.ocr_new_calls} writes=${plan.writes} identical=${plan.identical_pdf}`)
 
     if (isSsen && flags.mode === 'complete') {
-      await runCloseout(root)
+      const hyper = await import('./ssenHyperCompleteCli')
+      await hyper.runSsenHyperComplete(root, { persist: flags.apply })
     }
   } finally {
     releaseLock(lock.path)

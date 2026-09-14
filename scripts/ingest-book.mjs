@@ -1,5 +1,6 @@
 /**
- * Next-book single command. Default dry-run. --apply writes. --mode=complete runs hash→QA→status.
+ * Next-book single command. Default dry-run. --apply writes.
+ * --mode=complete runs hash→QA→CLASSIFY→status.
  */
 import { spawnSync } from 'node:child_process'
 import path from 'node:path'

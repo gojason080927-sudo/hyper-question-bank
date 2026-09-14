@@ -28,6 +28,17 @@ type ClassifyStatus = {
   auto?: number
   human?: number
   listed?: number
+  hyper_type?: number
+  low_confidence?: number
+  concept?: number
+  difficulty?: number
+  strategy?: number
+  key_points?: number
+  mistakes?: number
+  search_features?: number
+  confirmations?: Record<string, number>
+  ai?: { usd?: number; calls?: number; skipped?: string | null }
+  inspected_at?: string
 }
 
 async function fetchJson<T>(url: string): Promise<T | null> {
@@ -303,10 +314,24 @@ export function SourceDetailPage() {
             <strong>OCR 비용</strong> ${Number(bookStatus.paid_ocr_usd ?? 0).toFixed(4)}
           </p>
           {classifyStatus ? (
-            <p>
-              <strong>유형 분류</strong> {classifyStatus.auto ?? 0}/{classifyStatus.listed ?? bookStatus.total_items ?? '—'} ·{' '}
-              <strong>유형 잔여</strong> {classifyStatus.human ?? 0}
-            </p>
+            <div>
+              <p>
+                <strong>HYPER 유형</strong> {classifyStatus.hyper_type ?? classifyStatus.auto ?? 0}/{classifyStatus.listed ?? bookStatus.total_items ?? '—'} ·{' '}
+                <strong>유형 확인 필요</strong> {classifyStatus.low_confidence ?? classifyStatus.human ?? 0}
+              </p>
+              <p>
+                <strong>개념</strong> {classifyStatus.concept ?? '—'} · <strong>난이도</strong> {classifyStatus.difficulty ?? '—'} ·{' '}
+                <strong>전략</strong> {classifyStatus.strategy ?? '—'} · <strong>핵심 포인트·대표 실수</strong>{' '}
+                {classifyStatus.key_points ?? '—'}/{classifyStatus.mistakes ?? '—'} · <strong>검색 준비</strong> {classifyStatus.search_features ?? '—'}
+              </p>
+              <p className="muted">
+                SOURCE {classifyStatus.confirmations?.SOURCE_CONFIRMED ?? 0} · CLUSTER {classifyStatus.confirmations?.CLUSTER_CONFIRMED ?? 0} · AI{' '}
+                {classifyStatus.confirmations?.AI_CONFIRMED ?? 0} · LOW {classifyStatus.confirmations?.LOW_CONFIDENCE_REVIEW ?? 0}
+                {' · '}AI ${Number(classifyStatus.ai?.usd ?? 0).toFixed(4)}
+                {classifyStatus.inspected_at ? ` · ${new Date(classifyStatus.inspected_at).toLocaleString('ko-KR')}` : ''}
+              </p>
+              <p className="muted">출판사 source_type 없음과 HYPER 유형 미분류는 다릅니다.</p>
+            </div>
           ) : null}
           <div className="actions">
             <Link className="btn primary" to="/worksheets">문제지 만들기</Link>
