@@ -2,23 +2,24 @@
   "status": "PERSISTED",
   "assigned_by": "SSEN_FULL_CLASSIFY",
   "listed": 1242,
-  "auto": 792,
-  "human": 450,
+  "auto": 793,
+  "human": 449,
   "type_mapped": 797,
   "outline_type": 759,
-  "written": 792,
-  "cleared_needs_review": 4,
+  "written": 793,
+  "created_new": 1,
+  "cleared_needs_review": 0,
   "live_needs_review_after": 5,
   "human_reasons": {
     "TYPE_MARKER_MISSING": 418,
     "TYPE_MARKER_AMBIGUOUS": 27,
-    "UNIT_TYPE_INCONSISTENT": 1,
     "ANSWER_KEY_LEAK": 6
   },
   "remaining_needs_review": ["0650", "0774", "0775", "1190", "1191"],
   "notes": [
     "C-stage 실력 굳히기 stays HUMAN unless a unique 유형 marker is already in the stem.",
     "0650 stays HUMAN while 정답 및 풀이 leak remains.",
-    "UNREVIEWED is not bulk-flipped; only 4 NEEDS_REVIEW rows with AUTO type+unit were moved to AUTO_CLASSIFIED."
+    "0258 유형 05 다항식의 나눗셈과 항등식 is IDENTITY_PROPERTY under 나머지 정리와 인수분해.",
+    "UNREVIEWED is not bulk-flipped. The extra AUTO row is 0258; existing AUTO upserts are idempotent."
   ]
 }

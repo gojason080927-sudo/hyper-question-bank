@@ -1,21 +1,21 @@
 {
   "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
   "title": "쎈수학 공통수학1",
-  "inspected_at": "2026-09-14T04:44:26.279Z",
+  "inspected_at": "2026-09-14T05:08:56.118Z",
   "assigned_by": "SSEN_FULL_CLASSIFY",
   "listed": 1242,
-  "auto": 792,
-  "human": 450,
+  "auto": 793,
+  "human": 449,
   "type_mapped": 797,
-  "banner": "유형 AUTO 792/1242 · 잔여 450",
+  "banner": "유형 AUTO 793/1242 · 잔여 449",
   "live_needs_review": 5,
   "persisted": true,
   "persist": {
-    "attempted": 792,
-    "written": 792,
+    "attempted": 793,
+    "written": 793,
     "skipped": 0,
     "errors": 0,
     "atomic_stop": null,
-    "cleared_needs_review": 4
+    "cleared_needs_review": 0
   }
 }

@@ -4,11 +4,11 @@
   "headings": 286,
   "summary": {
     "listed": 1242,
-    "auto": 792,
-    "human": 450,
+    "auto": 793,
+    "human": 449,
     "type_mapped": 797,
     "outline_type": 759,
-    "clear_needs_review": 4,
+    "clear_needs_review": 0,
     "teacher_edit": 0,
     "verified_blocked": 0,
     "answer_key_leak": 6,
@@ -17,33 +17,9 @@
   "human_reasons": {
     "TYPE_MARKER_MISSING": 418,
     "TYPE_MARKER_AMBIGUOUS": 27,
-    "UNIT_TYPE_INCONSISTENT": 1,
     "ANSWER_KEY_LEAK": 6
   },
   "needs_review": [
-    {
-      "problem_id": "eec6f8a5-9c00-4035-9509-fd00fa006626",
-      "public_code": "HQB-001336",
-      "original_problem_number": "0283",
-      "source_page": 47,
-      "section_code": "03",
-      "unit_id": "방정식",
-      "subunit_id": "복소수",
-      "type_id": "COMPLEX_EQUALITY",
-      "type_title": "유형 05 복소수가 서로 같을 조건",
-      "type_code": "05",
-      "outline_type_node_id": "d8ca638b-41c4-4641-9297-e3ca058b7208",
-      "verdict": "AUTO",
-      "reasons": [],
-      "evidence": [
-        "toc_section:03",
-        "concept_pill_title",
-        "inherit_concept_heading",
-        "ssen_type:05",
-        "유형 05 복소수가 서로 같을 조건"
-      ],
-      "clear_needs_review": true
-    },
     {
       "problem_id": "3edacc37-8d19-41a8-8387-356e45c61f50",
       "public_code": "HQB-001043",
@@ -107,75 +83,6 @@
         "toc_section:06"
       ],
       "clear_needs_review": false
-    },
-    {
-      "problem_id": "0413c266-4fa4-462a-bf3b-0f6546725cd7",
-      "public_code": "HQB-001134",
-      "original_problem_number": "0857",
-      "source_page": 125,
-      "section_code": "07",
-      "unit_id": "부등식",
-      "subunit_id": "일차부등식",
-      "type_id": "LINEAR_INEQUALITY",
-      "type_title": "유형 03 연립일차부등식의 풀이",
-      "type_code": "03",
-      "outline_type_node_id": "678149d8-63de-41fc-8692-b6b8dc6b9fd7",
-      "verdict": "AUTO",
-      "reasons": [],
-      "evidence": [
-        "toc_section:07",
-        "type_pill_title",
-        "inherit_previous_in_section",
-        "ssen_type:03",
-        "유형 03 연립일차부등식의 풀이"
-      ],
-      "clear_needs_review": true
-    },
-    {
-      "problem_id": "f07b6041-d62f-4058-bd0d-b3dbeef2b7c1",
-      "public_code": "HQB-001146",
-      "original_problem_number": "0887",
-      "source_page": 131,
-      "section_code": "08",
-      "unit_id": "부등식",
-      "subunit_id": "이차부등식",
-      "type_id": "QUADRATIC_INEQUALITY",
-      "type_title": "유형 02 이차부등식의 풀이",
-      "type_code": "02",
-      "outline_type_node_id": "b660c3af-a8dc-416b-b85a-8b2d6a584b54",
-      "verdict": "AUTO",
-      "reasons": [],
-      "evidence": [
-        "toc_section:08",
-        "concept_pill_title",
-        "inherit_concept_heading",
-        "ssen_type:02",
-        "유형 02 이차부등식의 풀이"
-      ],
-      "clear_needs_review": true
-    },
-    {
-      "problem_id": "892087ed-5507-4660-bf20-f922a4210638",
-      "public_code": "HQB-001159",
-      "original_problem_number": "0934",
-      "source_page": 135,
-      "section_code": "08",
-      "unit_id": "부등식",
-      "subunit_id": "이차부등식",
-      "type_id": "QUADRATIC_INEQUALITY",
-      "type_title": "유형 01 그래프를 이용한 부등식의 풀이",
-      "type_code": "01",
-      "outline_type_node_id": "83bafb97-0642-40ad-bbfa-d5789bc3d340",
-      "verdict": "AUTO",
-      "reasons": [],
-      "evidence": [
-        "toc_section:08",
-        "type_pill_hyper_title",
-        "inherit_previous_in_section",
-        "ssen_type:01",
-        "유형 01 그래프를 이용한 부등식의 풀이"
-      ],
-      "clear_needs_review": true
     },
     {
       "problem_id": "6fdbe8c7-e5cc-466b-a88b-bbabc2a6d005",
@@ -5359,14 +5266,12 @@
       "section_code": "02",
       "unit_id": "다항식",
       "subunit_id": "나머지 정리와 인수분해",
-      "type_id": "POLY_DIVIDE",
+      "type_id": "IDENTITY_PROPERTY",
       "type_title": "유형 05 다항식의 나눗셈과 항등식",
       "type_code": "05",
       "outline_type_node_id": "171ead03-a024-4d4c-94cf-236412672517",
-      "verdict": "HUMAN",
-      "reasons": [
-        "UNIT_TYPE_INCONSISTENT"
-      ],
+      "verdict": "AUTO",
+      "reasons": [],
       "evidence": [
         "toc_section:02",
         "stem_type_marker",
@@ -5900,7 +5805,7 @@
         "ssen_type:05",
         "유형 05 복소수가 서로 같을 조건"
       ],
-      "clear_needs_review": true
+      "clear_needs_review": false
     },
     {
       "problem_id": "2ea2db9f-4dbe-43a1-a3b1-f7113c4b9040",
@@ -17912,7 +17817,7 @@
         "ssen_type:03",
         "유형 03 연립일차부등식의 풀이"
       ],
-      "clear_needs_review": true
+      "clear_needs_review": false
     },
     {
       "problem_id": "0beeccf5-1106-449a-8565-0dd2a540a8f0",
@@ -18551,7 +18456,7 @@
         "ssen_type:02",
         "유형 02 이차부등식의 풀이"
       ],
-      "clear_needs_review": true
+      "clear_needs_review": false
     },
     {
       "problem_id": "f249e301-881c-49ea-9911-bc7c2bea4faf",
@@ -19632,7 +19537,7 @@
         "ssen_type:01",
         "유형 01 그래프를 이용한 부등식의 풀이"
       ],
-      "clear_needs_review": true
+      "clear_needs_review": false
     },
     {
       "problem_id": "5449fb0c-d00a-45c2-98a4-b934ec476899",
