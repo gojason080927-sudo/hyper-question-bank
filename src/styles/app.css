@@ -575,6 +575,49 @@ textarea {
   color: #1c6b45;
 }
 
+.status-pill.verified_by_source {
+  background: #e7f7ef;
+  color: #1c6b45;
+}
+
+.status-pill.human_final_check {
+  background: #fff4e5;
+  color: #8a4b08;
+}
+
+.status-pill.archive_candidate {
+  background: #f4f6f9;
+  color: #445;
+  margin-left: 8px;
+}
+
+.book-qa-status .actions,
+.closeout-exception-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.closeout-exception-links {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.closeout-exception-links li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.worksheet-filters {
+  margin: 8px 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .qa839-summary {
   margin-bottom: 12px;
 }

@@ -7,6 +7,7 @@ import { ProblemStemDisplay } from '../questions/ProblemStemDisplay'
 import { RangeStemReviewPanel, type RangeAuditItem, type RangeApply838 } from './RangeStemReviewPanel'
 import { FullQaReviewPanel, type FullQaPayload } from './FullQaReviewPanel'
 import { ReviewMinimize840Panel, type Review840Payload } from './ReviewMinimize840Panel'
+import { CloseoutReviewPanel, type CloseoutPayload } from './CloseoutReviewPanel'
 
 type QueueItem = {
   problem_id: string
@@ -34,10 +35,13 @@ export function PipelineReviewPage() {
   const [qaSelected, setQaSelected] = useState<string | null>(null)
   const [qa840Payload, setQa840Payload] = useState<Review840Payload | null>(null)
   const [qa840Selected, setQa840Selected] = useState<string | null>(null)
+  const [closeoutPayload, setCloseoutPayload] = useState<CloseoutPayload | null>(null)
+  const [closeoutSelected, setCloseoutSelected] = useState<string | null>(null)
   const source = params.get('source') ?? ''
   const rangeTab = source === 'range838'
   const qaTab = source === 'qa839'
   const qa840Tab = source === 'qa840'
+  const closeoutTab = source === 'closeout'
 
   useEffect(() => {
     const client = getSupabase()
@@ -103,6 +107,21 @@ export function PipelineReviewPage() {
     })()
   }, [])
 
+  useEffect(() => {
+    void (async () => {
+      try {
+        const res = await fetch('/ssen-book-closeout.json')
+        if (!res.ok) return
+        const payload = (await res.json()) as CloseoutPayload
+        setCloseoutPayload(payload)
+        const human = payload.records?.find((row) => row.verdict === 'HUMAN_FINAL_CHECK')
+        setCloseoutSelected(human?.problem_id ?? payload.records?.[0]?.problem_id ?? null)
+      } catch {
+        setCloseoutPayload(null)
+      }
+    })()
+  }, [])
+
   const selected = useMemo(() => queue.find((row) => row.problem_id === selectedId) ?? null, [queue, selectedId])
   const ssenCount = queue.filter((row) => row.source_document_id === SSEN_SOURCE_DOCUMENT_ID).length
   const otherCount = queue.length - ssenCount
@@ -113,7 +132,7 @@ export function PipelineReviewPage() {
         <div>
           <p className="kicker">강사 확인</p>
           <h1>확인 필요 큐</h1>
-          <p className="muted">실제 문제의 확인 필요 상태입니다. 자동 확정하지 않습니다. 범위형 합침·전체검수 8.39·일괄대조 8.40은 별도 탭입니다.</p>
+          <p className="muted">실제 문제의 확인 필요 상태입니다. 자동 확정하지 않습니다. 범위형 합침·전체검수 8.39·일괄대조 8.40·최종 마감은 별도 탭입니다.</p>
         </div>
         <Link className="btn ghost" to="/questions?review=NEEDS_REVIEW">
           문제 목록에서 보기
@@ -163,8 +182,17 @@ export function PipelineReviewPage() {
         >
           일괄대조 8.40 {qa840Payload?.summary?.start_review ?? 128}
         </button>
+        <button
+          type="button"
+          className={`btn ${closeoutTab ? 'primary' : 'ghost'}`}
+          onClick={() => setParams({ source: 'closeout' }, { replace: true })}
+        >
+          최종 마감 {closeoutPayload?.summary?.human_final_check ?? closeoutPayload?.summary?.start_review ?? 56}
+        </button>
       </div>
-      {qa840Tab ? (
+      {closeoutTab ? (
+        <CloseoutReviewPanel payload={closeoutPayload} selectedId={closeoutSelected} onSelect={setCloseoutSelected} />
+      ) : qa840Tab ? (
         <ReviewMinimize840Panel payload={qa840Payload} selectedId={qa840Selected} onSelect={setQa840Selected} />
       ) : qaTab ? (
         <FullQaReviewPanel payload={qaPayload} selectedId={qaSelected} onSelect={setQaSelected} />

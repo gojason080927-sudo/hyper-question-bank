@@ -59,3 +59,9 @@ export function dash(value: string | number | null | undefined): string {
   if (value == null || value === '') return '—'
   return String(value)
 }
+
+export function bookReadyLabel(ready: boolean, humanExceptions: number): string {
+  if (ready && humanExceptions === 0) return '사용 가능'
+  if (ready) return `사용 가능 · 최종 확인 ${humanExceptions}문항`
+  return `P1 잔여 · 최종 확인 ${humanExceptions}문항`
+}
