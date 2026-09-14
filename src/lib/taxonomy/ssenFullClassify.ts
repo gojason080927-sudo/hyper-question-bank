@@ -92,6 +92,7 @@ const TITLE_RULES: Array<{ pattern: RegExp; type_id: string }> = [
 export function hyperTypeFromSsenTitle(title: string, subunit?: string | null): string | null {
   if (subunit === '이차부등식' && /절댓값/.test(title) && /부등식/.test(title)) return 'QUADRATIC_INEQUALITY'
   if (subunit === '일차부등식' && /절댓값/.test(title) && /부등식/.test(title)) return 'LINEAR_INEQUALITY'
+  if (subunit === '나머지 정리와 인수분해' && /나눗셈/.test(title) && /항등식/.test(title)) return 'IDENTITY_PROPERTY'
   return typeIdFromBookHeading(title) ?? extraAliasMap(title) ?? TITLE_RULES.find((row) => row.pattern.test(title))?.type_id ?? null
 }
 

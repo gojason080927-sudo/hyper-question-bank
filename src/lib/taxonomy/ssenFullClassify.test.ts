@@ -36,15 +36,16 @@ const types: SsenTypeNode[] = SSEN_TYPES.map((row) => ({
 }))
 
 describe('ssen full classify', () => {
-  it('maps every frozen SSEN type title onto an existing hyper type in the matching unit', () => {
+  it('maps every frozen SSEN type title onto an existing hyper type in the matching unit and subunit', () => {
     for (const row of SSEN_TYPES) {
       const title = `유형 ${row.typeCode} ${row.title}`
-      const typeId = hyperTypeFromSsenTitle(title)
+      const section = SSEN_SECTIONS.find((sec) => sec.code === row.sectionCode)!
+      const typeId = hyperTypeFromSsenTitle(title, section.title)
       expect(typeId, title).toBeTruthy()
       const profile = profileById(typeId!)
       expect(profile, typeId).toBeTruthy()
-      const section = SSEN_SECTIONS.find((sec) => sec.code === row.sectionCode)!
       expect(profile!.unit_id).toBe(unitFromSection(section))
+      expect(profile!.subunit_id).toBe(section.title)
       expect(UNIT_CODE[profile!.unit_id]).toBeTruthy()
     }
   })
@@ -239,6 +240,25 @@ describe('ssen full classify', () => {
     )
     expect(planned.decisions[0]?.type_code).toBe('01')
     expect(planned.decisions[0]?.type_id).toBe('POLY_ADD_SUB')
+  })
+
+  it('maps 나머지정리 유형 05 나눗셈과 항등식 onto IDENTITY_PROPERTY, not POLY_DIVIDE', () => {
+    const planned = planSsenClassify(
+      [
+        item({
+          problem_id: 'p258',
+          original_problem_number: '0258',
+          source_page: 41,
+          stem: '유형 05 삼차식 P(x)에 대하여 P(x)는 x^2-2x+3으로 나누어떨어진다',
+        }),
+      ],
+      types,
+      new Map(),
+    )
+    expect(planned.decisions[0]?.type_code).toBe('05')
+    expect(planned.decisions[0]?.type_id).toBe('IDENTITY_PROPERTY')
+    expect(planned.decisions[0]?.verdict).toBe('AUTO')
+    expect(planned.decisions[0]?.reasons).not.toContain('UNIT_TYPE_INCONSISTENT')
   })
 
   it('does not map a short 다항식의 곱셈 concept onto 나눗셈 type 10', () => {
