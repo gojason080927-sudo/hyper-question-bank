@@ -40,6 +40,21 @@ describe('ssen hyper complete', () => {
     expect(out.cleaned).not.toContain('답 4')
   })
 
+  it('does not collapse a stem to a problem number', () => {
+    const stem = [
+      '# 0650',
+      '정답 및 풀이 83쪽',
+      '90쪽 유형 07',
+      '이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때, $f(4)$의 값은?',
+      '(가) 모든 실수 $x$에 대하여 $f(1-x)=f(1+x)$이다.',
+    ].join('\n')
+    const out = stripAnswerKeyLeak(stem)
+    expect(out.cleaned).toContain('이차함수')
+    expect(out.cleaned).toContain('f(4)')
+    expect(out.cleaned).not.toMatch(/정답 및 풀이/)
+    expect(out.cleaned.length).toBeGreaterThan(80)
+  })
+
   it('keeps the problem body after a 정답 및 풀이 page footer', () => {
     const stem = '정답 및 풀이 140쪽\n1005\n이차방정식 $x^2+1=0$의 근의 개수를 구하시오.'
     const out = stripAnswerKeyLeak(stem)

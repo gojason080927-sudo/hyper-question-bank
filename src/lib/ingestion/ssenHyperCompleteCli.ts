@@ -251,6 +251,17 @@ export async function runSsenHyperComplete(root = process.cwd(), options?: { per
       existing_type_code: null,
     }
   })
+  for (const item of items) {
+    if (item.stem.trim().length >= 40) continue
+    const { data, error } = await admin
+      .from('problem_versions')
+      .select('problem_text,version_no')
+      .eq('problem_id', item.problem_id)
+      .order('version_no', { ascending: false })
+    if (error) throw new Error(error.message)
+    const donor = ((data ?? []) as Array<{ problem_text: string }>).find((row) => String(row.problem_text ?? '').trim().length >= 40)
+    if (donor) item.stem = String(donor.problem_text)
+  }
   const listed = items.filter((row) => row.display_state === 'LISTED')
   if (listed.length !== SSEN_LISTED_FROZEN) throw new Error(`listed ${listed.length} != ${SSEN_LISTED_FROZEN}`)
 
