@@ -52,6 +52,12 @@ export function SourceDetailPage() {
     total_items?: number
     counts?: { auto_safe?: number; verified_by_source?: number; human_final_check?: number }
   } | null>(null)
+  const [classifyStatus, setClassifyStatus] = useState<{
+    banner?: string
+    auto?: number
+    human?: number
+    listed?: number
+  } | null>(null)
 
   const pageNumber = Math.max(1, Number(searchParams.get('page') || pageInput) || 1)
 
@@ -81,6 +87,17 @@ export function SourceDetailPage() {
       }
     } catch {
       setBookStatus(null)
+    }
+    if (documentId === SSEN_SOURCE_DOCUMENT_ID) {
+      try {
+        const classify = await fetch('/ssen-classify-status.json')
+        if (classify.ok) setClassifyStatus((await classify.json()) as typeof classifyStatus)
+        else setClassifyStatus(null)
+      } catch {
+        setClassifyStatus(null)
+      }
+    } else {
+      setClassifyStatus(null)
     }
   }
 
@@ -284,6 +301,12 @@ export function SourceDetailPage() {
             {bookStatus.inspected_at ? new Date(bookStatus.inspected_at).toLocaleString('ko-KR') : '—'} ·{' '}
             <strong>OCR 비용</strong> ${Number(bookStatus.paid_ocr_usd ?? 0).toFixed(4)}
           </p>
+          {classifyStatus ? (
+            <p>
+              <strong>유형 분류</strong> {classifyStatus.auto ?? 0}/{classifyStatus.listed ?? bookStatus.total_items ?? '—'} ·{' '}
+              <strong>유형 잔여</strong> {classifyStatus.human ?? 0}
+            </p>
+          ) : null}
           <div className="actions">
             <Link className="btn primary" to="/worksheets">문제지 만들기</Link>
             {humanRemaining > 0 ? (
