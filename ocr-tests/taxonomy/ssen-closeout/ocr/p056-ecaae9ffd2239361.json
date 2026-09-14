@@ -1,0 +1,513 @@
+{
+  "page": 56,
+  "provider": "mistral",
+  "markdown": "0375 • • ④\n\n자연수 $m$에 대하여 복소수 $z_m = \\frac{i^m}{2} + \\frac{(-i)^m}{2}$일 때, 옳은 것만을 보기에서 있는 대로 고른 것은?\n\n(단, $\\overline{z_m}$는 $z_m$의 켤레복소수이다.)\n\n보기\n\nㄱ. $z_m=1$을 만족시키는 자연수 $m$이 존재한다.\n\nㄴ. $z_{100}=z_{102}$\n\nㄷ. 임의의 자연수 $m$에 대하여 $z_m=\\overline{z_m}$이다.\n\n① ㄱ\n\n② ㄱ, ㄴ\n\n③ ㄱ, ㄷ\n\n④ ㄴ, ㄷ\n\n⑤ ㄱ, ㄴ, ㄷ\n\n규정 11 복소수의 거듭제곱\n\n신호\n입력\n\n개념 03-4\n\n0376 대표 문제\n\n$(1+i)^{100}-(1-i)^{100}$을 간단히 하면?\n\n① -2\n\n② -2i\n\n③ 0\n\n④ 2\n\n⑤ 2i\n\n0377 ④ • •\n\n$\\left(\\frac{1-i}{1+i}\\right)^{30}+\\left(\\frac{1+i}{1-i}\\right)^{30}$을 간단히 하면?\n\n① -2\n\n② -i\n\n③ 0\n\n④ i\n\n⑤ 2\n\n0378 • ⑤ •\n\n$z=\\frac{1+i}{\\sqrt{2}}$일 때, $z^2-z^3+z^4-z^5+\\cdots+z^{10}$의 값을 구하시오.\n\n0379 • ⑤ • ⑤ • 시음말\n\n자연수 $n$에 대하여 $f(n)=\\left(\\frac{1+i}{1-i}\\right)^{2n}-\\left(\\frac{1-i}{1+i}\\right)^{4n}$일 때, $f(1)+f(2)+f(3)+\\cdots+f(200)$의 값을 구하시오.\n\n0380 • • ④\n\n두 복소수 $z=\\frac{1-i}{\\sqrt{2}i}$, $w=\\frac{1+\\sqrt{3}i}{2}$에 대하여 $z''=w''$을 만족시키는 가장 작은 자연수 $n$의 값은?\n\n① 8\n\n② 12\n\n③ 16\n\n④ 20\n\n⑤ 24.\n\n규정 12 음수의 제곱근의 계산\n\n개념 03-5\n\n0381 대표 문제\n\n다음 중 옳은 것은?\n\n① $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$\n\n② $\\sqrt{-3}\\sqrt{-7}=-\\sqrt{21}$\n\n③ $\\frac{\\sqrt{3}}{\\sqrt{-7}}=\\sqrt{-\\frac{3}{7}}$\n\n④ $\\frac{\\sqrt{-3}}{\\sqrt{-7}}=-\\sqrt{\\frac{3}{7}}$\n\n⑤ $\\frac{\\sqrt{-3}}{\\sqrt{7}}=-\\sqrt{\\frac{3}{7}}$\n\n56\n\nⅡ. 방정식",
+  "image_sha256": "ecaae9ffd2239361dd29147db4e8d6ea61407b8e0b786395f71d6e1424bc094b",
+  "cost_usd": 0.005,
+  "cached": false,
+  "raw": {
+    "sample_id": "ssen-closeout-p56",
+    "provider": "mistral-ocr",
+    "provider_version": "mistral-ocr-latest",
+    "processing_mode": "SCAN_OCR",
+    "http_status": 200,
+    "seconds": 2.139,
+    "raw_response": {
+      "pages": [
+        {
+          "index": 0,
+          "markdown": "0375 • • ④\n\n자연수 $m$에 대하여 복소수 $z_m = \\frac{i^m}{2} + \\frac{(-i)^m}{2}$일 때, 옳은 것만을 보기에서 있는 대로 고른 것은?\n\n(단, $\\overline{z_m}$는 $z_m$의 켤레복소수이다.)\n\n보기\n\nㄱ. $z_m=1$을 만족시키는 자연수 $m$이 존재한다.\n\nㄴ. $z_{100}=z_{102}$\n\nㄷ. 임의의 자연수 $m$에 대하여 $z_m=\\overline{z_m}$이다.\n\n① ㄱ\n\n② ㄱ, ㄴ\n\n③ ㄱ, ㄷ\n\n④ ㄴ, ㄷ\n\n⑤ ㄱ, ㄴ, ㄷ\n\n규정 11 복소수의 거듭제곱\n\n신호\n입력\n\n개념 03-4\n\n0376 대표 문제\n\n$(1+i)^{100}-(1-i)^{100}$을 간단히 하면?\n\n① -2\n\n② -2i\n\n③ 0\n\n④ 2\n\n⑤ 2i\n\n0377 ④ • •\n\n$\\left(\\frac{1-i}{1+i}\\right)^{30}+\\left(\\frac{1+i}{1-i}\\right)^{30}$을 간단히 하면?\n\n① -2\n\n② -i\n\n③ 0\n\n④ i\n\n⑤ 2\n\n0378 • ⑤ •\n\n$z=\\frac{1+i}{\\sqrt{2}}$일 때, $z^2-z^3+z^4-z^5+\\cdots+z^{10}$의 값을 구하시오.\n\n0379 • ⑤ • ⑤ • 시음말\n\n자연수 $n$에 대하여 $f(n)=\\left(\\frac{1+i}{1-i}\\right)^{2n}-\\left(\\frac{1-i}{1+i}\\right)^{4n}$일 때, $f(1)+f(2)+f(3)+\\cdots+f(200)$의 값을 구하시오.\n\n0380 • • ④\n\n두 복소수 $z=\\frac{1-i}{\\sqrt{2}i}$, $w=\\frac{1+\\sqrt{3}i}{2}$에 대하여 $z''=w''$을 만족시키는 가장 작은 자연수 $n$의 값은?\n\n① 8\n\n② 12\n\n③ 16\n\n④ 20\n\n⑤ 24.\n\n규정 12 음수의 제곱근의 계산\n\n개념 03-5\n\n0381 대표 문제\n\n다음 중 옳은 것은?\n\n① $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$\n\n② $\\sqrt{-3}\\sqrt{-7}=-\\sqrt{21}$\n\n③ $\\frac{\\sqrt{3}}{\\sqrt{-7}}=\\sqrt{-\\frac{3}{7}}$\n\n④ $\\frac{\\sqrt{-3}}{\\sqrt{-7}}=-\\sqrt{\\frac{3}{7}}$\n\n⑤ $\\frac{\\sqrt{-3}}{\\sqrt{7}}=-\\sqrt{\\frac{3}{7}}$\n\n56\n\nⅡ. 방정식",
+          "images": [],
+          "tables": [],
+          "hyperlinks": [],
+          "header": null,
+          "footer": null,
+          "dimensions": {
+            "dpi": 200,
+            "height": 1263,
+            "width": 893
+          },
+          "confidence_scores": null,
+          "blocks": [
+            {
+              "top_left_x": 96,
+              "top_left_y": 86,
+              "bottom_right_x": 178,
+              "bottom_right_y": 105,
+              "content": "0375 • • ④",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 94,
+              "top_left_y": 114,
+              "bottom_right_x": 454,
+              "bottom_right_y": 178,
+              "content": "자연수 $m$에 대하여 복소수 $z_m = \\frac{i^m}{2} + \\frac{(-i)^m}{2}$일 때, 옳은 것만을 보기에서 있는 대로 고른 것은?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 235,
+              "top_left_y": 185,
+              "bottom_right_x": 452,
+              "bottom_right_y": 206,
+              "content": "(단, $\\overline{z_m}$는 $z_m$의 켤레복소수이다.)",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 123,
+              "top_left_y": 211,
+              "bottom_right_x": 150,
+              "bottom_right_y": 225,
+              "content": "보기",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 110,
+              "top_left_y": 230,
+              "bottom_right_x": 395,
+              "bottom_right_y": 249,
+              "content": "ㄱ. $z_m=1$을 만족시키는 자연수 $m$이 존재한다.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 110,
+              "top_left_y": 258,
+              "bottom_right_x": 190,
+              "bottom_right_y": 274,
+              "content": "ㄴ. $z_{100}=z_{102}$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 110,
+              "top_left_y": 281,
+              "bottom_right_x": 376,
+              "bottom_right_y": 301,
+              "content": "ㄷ. 임의의 자연수 $m$에 대하여 $z_m=\\overline{z_m}$이다.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 94,
+              "top_left_y": 329,
+              "bottom_right_x": 136,
+              "bottom_right_y": 350,
+              "content": "① ㄱ",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 213,
+              "top_left_y": 331,
+              "bottom_right_x": 277,
+              "bottom_right_y": 350,
+              "content": "② ㄱ, ㄴ",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 331,
+              "top_left_y": 331,
+              "bottom_right_x": 395,
+              "bottom_right_y": 351,
+              "content": "③ ㄱ, ㄷ",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 94,
+              "top_left_y": 357,
+              "bottom_right_x": 160,
+              "bottom_right_y": 377,
+              "content": "④ ㄴ, ㄷ",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 213,
+              "top_left_y": 358,
+              "bottom_right_x": 302,
+              "bottom_right_y": 378,
+              "content": "⑤ ㄱ, ㄴ, ㄷ",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 96,
+              "top_left_y": 564,
+              "bottom_right_x": 265,
+              "bottom_right_y": 585,
+              "content": "규정 11 복소수의 거듭제곱",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 364,
+              "top_left_y": 550,
+              "bottom_right_x": 389,
+              "bottom_right_y": 582,
+              "content": "신호\n입력",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 395,
+              "top_left_y": 569,
+              "bottom_right_x": 442,
+              "bottom_right_y": 584,
+              "content": "개념 03-4",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 98,
+              "top_left_y": 611,
+              "bottom_right_x": 189,
+              "bottom_right_y": 628,
+              "content": "0376 대표 문제",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 94,
+              "top_left_y": 637,
+              "bottom_right_x": 329,
+              "bottom_right_y": 660,
+              "content": "$(1+i)^{100}-(1-i)^{100}$을 간단히 하면?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 92,
+              "top_left_y": 675,
+              "bottom_right_x": 143,
+              "bottom_right_y": 695,
+              "content": "① -2",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 211,
+              "top_left_y": 676,
+              "bottom_right_x": 265,
+              "bottom_right_y": 695,
+              "content": "② -2i",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 329,
+              "top_left_y": 678,
+              "bottom_right_x": 362,
+              "bottom_right_y": 695,
+              "content": "③ 0",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 92,
+              "top_left_y": 703,
+              "bottom_right_x": 127,
+              "bottom_right_y": 722,
+              "content": "④ 2",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 211,
+              "top_left_y": 703,
+              "bottom_right_x": 249,
+              "bottom_right_y": 722,
+              "content": "⑤ 2i",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 91,
+              "top_left_y": 904,
+              "bottom_right_x": 173,
+              "bottom_right_y": 923,
+              "content": "0377 ④ • •",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 90,
+              "top_left_y": 929,
+              "bottom_right_x": 337,
+              "bottom_right_y": 966,
+              "content": "$\\left(\\frac{1-i}{1+i}\\right)^{30}+\\left(\\frac{1+i}{1-i}\\right)^{30}$을 간단히 하면?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 90,
+              "top_left_y": 982,
+              "bottom_right_x": 141,
+              "bottom_right_y": 1003,
+              "content": "① -2",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 209,
+              "top_left_y": 984,
+              "bottom_right_x": 257,
+              "bottom_right_y": 1003,
+              "content": "② -i",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 328,
+              "top_left_y": 984,
+              "bottom_right_x": 361,
+              "bottom_right_y": 1003,
+              "content": "③ 0",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 90,
+              "top_left_y": 1010,
+              "bottom_right_x": 123,
+              "bottom_right_y": 1029,
+              "content": "④ i",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 209,
+              "top_left_y": 1010,
+              "bottom_right_x": 243,
+              "bottom_right_y": 1029,
+              "content": "⑤ 2",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 491,
+              "top_left_y": 88,
+              "bottom_right_x": 572,
+              "bottom_right_y": 107,
+              "content": "0378 • ⑤ •",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 490,
+              "top_left_y": 116,
+              "bottom_right_x": 849,
+              "bottom_right_y": 181,
+              "content": "$z=\\frac{1+i}{\\sqrt{2}}$일 때, $z^2-z^3+z^4-z^5+\\cdots+z^{10}$의 값을 구하시오.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 490,
+              "top_left_y": 320,
+              "bottom_right_x": 626,
+              "bottom_right_y": 339,
+              "content": "0379 • ⑤ • ⑤ • 시음말",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 488,
+              "top_left_y": 345,
+              "bottom_right_x": 844,
+              "bottom_right_y": 411,
+              "content": "자연수 $n$에 대하여 $f(n)=\\left(\\frac{1+i}{1-i}\\right)^{2n}-\\left(\\frac{1-i}{1+i}\\right)^{4n}$일 때, $f(1)+f(2)+f(3)+\\cdots+f(200)$의 값을 구하시오.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 488,
+              "top_left_y": 545,
+              "bottom_right_x": 570,
+              "bottom_right_y": 564,
+              "content": "0380 • • ④",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 487,
+              "top_left_y": 573,
+              "bottom_right_x": 848,
+              "bottom_right_y": 642,
+              "content": "두 복소수 $z=\\frac{1-i}{\\sqrt{2}i}$, $w=\\frac{1+\\sqrt{3}i}{2}$에 대하여 $z''=w''$을 만족시키는 가장 작은 자연수 $n$의 값은?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 488,
+              "top_left_y": 657,
+              "bottom_right_x": 523,
+              "bottom_right_y": 676,
+              "content": "① 8",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 608,
+              "top_left_y": 659,
+              "bottom_right_x": 648,
+              "bottom_right_y": 676,
+              "content": "② 12",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 726,
+              "top_left_y": 659,
+              "bottom_right_x": 767,
+              "bottom_right_y": 678,
+              "content": "③ 16",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 488,
+              "top_left_y": 685,
+              "bottom_right_x": 529,
+              "bottom_right_y": 703,
+              "content": "④ 20",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 608,
+              "top_left_y": 685,
+              "bottom_right_x": 653,
+              "bottom_right_y": 704,
+              "content": "⑤ 24.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 490,
+              "top_left_y": 850,
+              "bottom_right_x": 677,
+              "bottom_right_y": 870,
+              "content": "규정 12 음수의 제곱근의 계산",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 792,
+              "top_left_y": 853,
+              "bottom_right_x": 838,
+              "bottom_right_y": 869,
+              "content": "개념 03-5",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 493,
+              "top_left_y": 895,
+              "bottom_right_x": 583,
+              "bottom_right_y": 913,
+              "content": "0381 대표 문제",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 487,
+              "top_left_y": 924,
+              "bottom_right_x": 613,
+              "bottom_right_y": 944,
+              "content": "다음 중 옳은 것은?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 487,
+              "top_left_y": 960,
+              "bottom_right_x": 622,
+              "bottom_right_y": 981,
+              "content": "① $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 665,
+              "top_left_y": 960,
+              "bottom_right_x": 814,
+              "bottom_right_y": 981,
+              "content": "② $\\sqrt{-3}\\sqrt{-7}=-\\sqrt{21}$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 487,
+              "top_left_y": 987,
+              "bottom_right_x": 617,
+              "bottom_right_y": 1028,
+              "content": "③ $\\frac{\\sqrt{3}}{\\sqrt{-7}}=\\sqrt{-\\frac{3}{7}}$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 665,
+              "top_left_y": 987,
+              "bottom_right_x": 795,
+              "bottom_right_y": 1029,
+              "content": "④ $\\frac{\\sqrt{-3}}{\\sqrt{-7}}=-\\sqrt{\\frac{3}{7}}$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 487,
+              "top_left_y": 1035,
+              "bottom_right_x": 617,
+              "bottom_right_y": 1076,
+              "content": "⑤ $\\frac{\\sqrt{-3}}{\\sqrt{7}}=-\\sqrt{\\frac{3}{7}}$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 91,
+              "top_left_y": 1200,
+              "bottom_right_x": 113,
+              "bottom_right_y": 1216,
+              "content": "56",
+              "confidence_scores": null,
+              "type": "footer"
+            },
+            {
+              "top_left_x": 122,
+              "top_left_y": 1201,
+              "bottom_right_x": 170,
+              "bottom_right_y": 1216,
+              "content": "Ⅱ. 방정식",
+              "confidence_scores": null,
+              "type": "footer"
+            }
+          ]
+        }
+      ],
+      "model": "mistral-ocr-latest",
+      "document_annotation": null,
+      "usage_info": {
+        "pages_processed": 1,
+        "doc_size_bytes": 199075
+      }
+    },
+    "raw_text": "0375 • • ④\n\n자연수 $m$에 대하여 복소수 $z_m = \\frac{i^m}{2} + \\frac{(-i)^m}{2}$일 때, 옳은 것만을 보기에서 있는 대로 고른 것은?\n\n(단, $\\overline{z_m}$는 $z_m$의 켤레복소수이다.)\n\n보기\n\nㄱ. $z_m=1$을 만족시키는 자연수 $m$이 존재한다.\n\nㄴ. $z_{100}=z_{102}$\n\nㄷ. 임의의 자연수 $m$에 대하여 $z_m=\\overline{z_m}$이다.\n\n① ㄱ\n\n② ㄱ, ㄴ\n\n③ ㄱ, ㄷ\n\n④ ㄴ, ㄷ\n\n⑤ ㄱ, ㄴ, ㄷ\n\n규정 11 복소수의 거듭제곱\n\n신호\n입력\n\n개념 03-4\n\n0376 대표 문제\n\n$(1+i)^{100}-(1-i)^{100}$을 간단히 하면?\n\n① -2\n\n② -2i\n\n③ 0\n\n④ 2\n\n⑤ 2i\n\n0377 ④ • •\n\n$\\left(\\frac{1-i}{1+i}\\right)^{30}+\\left(\\frac{1+i}{1-i}\\right)^{30}$을 간단히 하면?\n\n① -2\n\n② -i\n\n③ 0\n\n④ i\n\n⑤ 2\n\n0378 • ⑤ •\n\n$z=\\frac{1+i}{\\sqrt{2}}$일 때, $z^2-z^3+z^4-z^5+\\cdots+z^{10}$의 값을 구하시오.\n\n0379 • ⑤ • ⑤ • 시음말\n\n자연수 $n$에 대하여 $f(n)=\\left(\\frac{1+i}{1-i}\\right)^{2n}-\\left(\\frac{1-i}{1+i}\\right)^{4n}$일 때, $f(1)+f(2)+f(3)+\\cdots+f(200)$의 값을 구하시오.\n\n0380 • • ④\n\n두 복소수 $z=\\frac{1-i}{\\sqrt{2}i}$, $w=\\frac{1+\\sqrt{3}i}{2}$에 대하여 $z''=w''$을 만족시키는 가장 작은 자연수 $n$의 값은?\n\n① 8\n\n② 12\n\n③ 16\n\n④ 20\n\n⑤ 24.\n\n규정 12 음수의 제곱근의 계산\n\n개념 03-5\n\n0381 대표 문제\n\n다음 중 옳은 것은?\n\n① $\\sqrt{-3}\\sqrt{7}=-\\sqrt{21}$\n\n② $\\sqrt{-3}\\sqrt{-7}=-\\sqrt{21}$\n\n③ $\\frac{\\sqrt{3}}{\\sqrt{-7}}=\\sqrt{-\\frac{3}{7}}$\n\n④ $\\frac{\\sqrt{-3}}{\\sqrt{-7}}=-\\sqrt{\\frac{3}{7}}$\n\n⑤ $\\frac{\\sqrt{-3}}{\\sqrt{7}}=-\\sqrt{\\frac{3}{7}}$\n\n56\n\nⅡ. 방정식",
+    "raw_latex": "m",
+    "raw_mathml": null,
+    "warnings": [],
+    "error": null
+  },
+  "recorded_at": "2026-09-14T01:49:16.336Z",
+  "unit_price": {
+    "mathpix_image": 0.002,
+    "mathpix_page_or_dense": 0.005,
+    "mistral_conservative_dense": 0.005
+  }
+}

@@ -1,0 +1,586 @@
+{
+  "page": 50,
+  "provider": "mistral",
+  "markdown": "![img-0.jpeg](img-0.jpeg)\n\n# 유형\n\n# 뽀개기\n\n# 유형 01\n\n# 복소수의 뜻과 분류\n\n개념 03-1\n\n# 0331\n\n# 대표 문제\n\n다음 중 옳은 것은?\n\n① 0은 복소수가 아니다.\n② $1-6i$의 허수부분은 6이다.\n③ $2+\\sqrt{5}i$의 실수부분은 2, 허수부분은 $\\sqrt{5}i$이다.\n④ $-3i$의 실수부분은 0이다.\n⑤ $a \\neq 0, b=0$이면 $a+bi$는 실수이다.\n\n# 0332\n\n# ①\n\n다음 복소수 중 허수의 개수를 구하시오.\n\n$\\sqrt{5}-i,$\n\n$11i,$\n\n$-6,$\n\n$\\sqrt{3}i,$\n\n$1-\\pi,$\n\n$9i-2,$\n\n$1-\\sqrt{7},$\n\n$2\\pi$\n\n# 유형 02\n\n# 복소수의 사칙연산\n\n개념 03-4\n\n# 0333\n\n# 대표 문제\n\n다음 중 옳은 것은?\n\n① $(7+3i)+(4-6i)=28+3i$\n② $(i-5)-(2i-9)=i-4$\n③ $(1-i^2)(1+i^2)=2$\n④ $(2-3i)^2=-5+12i$\n⑤ $\\frac{1+i}{1-i}+\\frac{1-i}{1+i}=0$\n\n# 0334\n\n# ②\n\n$(2-i)(3+2i)+\\frac{1+\\sqrt{2}i}{\\sqrt{2}-i}$를 $a+bi$ ($a, b$는 실수) 꼴로 나타내시오.\n\n# 0335\n\n# ③\n\n두 복소수 $z_1=(1-i)^2, z_2=\\frac{3-\\sqrt{3}i}{3+\\sqrt{3}i}$에 대하여 $z_1z_2$의 실수부분을 $a$, 허수부분을 $b$라 할 때, $a^2-b^3$의 값은?\n\n① $-2$\n\n② $-1$\n\n③ 0\n\n④ 1\n\n⑤ 2\n\n# 0336\n\n# ⑤\n\n# ① 서술함\n\n임의의 두 복소수 $a, b$에 대하여 연산 $\\mathbb{O}$을\n\n$a\\mathbb{O}b=a+b-ab$\n\n라 할 때, $(5+3i)\\mathbb{O}(1-2i)$의 실수부분을 구하시오.\n\n# 유형 03\n\n# 복소수가 주어질 때의 식의 값 구하기\n\n개념 03-4\n\n# 0337\n\n# 대표 문제\n\n$x=\\frac{1-\\sqrt{3}i}{2}$일 때, $3x^2-3x-2$의 값은?\n\n① $-5$\n\n② $-5+3\\sqrt{3}i$\n\n③ $-2-3\\sqrt{3}i$\n\n④ $2+3\\sqrt{3}i$\n\n⑤ 5\n\n50\n\nⅡ. 방정식",
+  "image_sha256": "dd5bb213e94d5c573b95a1f20cf4ebc39d9547b1f0b4e481656775b48b521b7c",
+  "cost_usd": 0.005,
+  "cached": false,
+  "raw": {
+    "sample_id": "ssen-closeout-p50",
+    "provider": "mistral-ocr",
+    "provider_version": "mistral-ocr-latest",
+    "processing_mode": "SCAN_OCR",
+    "http_status": 200,
+    "seconds": 2.729,
+    "raw_response": {
+      "pages": [
+        {
+          "index": 0,
+          "markdown": "![img-0.jpeg](img-0.jpeg)\n\n# 유형\n\n# 뽀개기\n\n# 유형 01\n\n# 복소수의 뜻과 분류\n\n개념 03-1\n\n# 0331\n\n# 대표 문제\n\n다음 중 옳은 것은?\n\n① 0은 복소수가 아니다.\n② $1-6i$의 허수부분은 6이다.\n③ $2+\\sqrt{5}i$의 실수부분은 2, 허수부분은 $\\sqrt{5}i$이다.\n④ $-3i$의 실수부분은 0이다.\n⑤ $a \\neq 0, b=0$이면 $a+bi$는 실수이다.\n\n# 0332\n\n# ①\n\n다음 복소수 중 허수의 개수를 구하시오.\n\n$\\sqrt{5}-i,$\n\n$11i,$\n\n$-6,$\n\n$\\sqrt{3}i,$\n\n$1-\\pi,$\n\n$9i-2,$\n\n$1-\\sqrt{7},$\n\n$2\\pi$\n\n# 유형 02\n\n# 복소수의 사칙연산\n\n개념 03-4\n\n# 0333\n\n# 대표 문제\n\n다음 중 옳은 것은?\n\n① $(7+3i)+(4-6i)=28+3i$\n② $(i-5)-(2i-9)=i-4$\n③ $(1-i^2)(1+i^2)=2$\n④ $(2-3i)^2=-5+12i$\n⑤ $\\frac{1+i}{1-i}+\\frac{1-i}{1+i}=0$\n\n# 0334\n\n# ②\n\n$(2-i)(3+2i)+\\frac{1+\\sqrt{2}i}{\\sqrt{2}-i}$를 $a+bi$ ($a, b$는 실수) 꼴로 나타내시오.\n\n# 0335\n\n# ③\n\n두 복소수 $z_1=(1-i)^2, z_2=\\frac{3-\\sqrt{3}i}{3+\\sqrt{3}i}$에 대하여 $z_1z_2$의 실수부분을 $a$, 허수부분을 $b$라 할 때, $a^2-b^3$의 값은?\n\n① $-2$\n\n② $-1$\n\n③ 0\n\n④ 1\n\n⑤ 2\n\n# 0336\n\n# ⑤\n\n# ① 서술함\n\n임의의 두 복소수 $a, b$에 대하여 연산 $\\mathbb{O}$을\n\n$a\\mathbb{O}b=a+b-ab$\n\n라 할 때, $(5+3i)\\mathbb{O}(1-2i)$의 실수부분을 구하시오.\n\n# 유형 03\n\n# 복소수가 주어질 때의 식의 값 구하기\n\n개념 03-4\n\n# 0337\n\n# 대표 문제\n\n$x=\\frac{1-\\sqrt{3}i}{2}$일 때, $3x^2-3x-2$의 값은?\n\n① $-5$\n\n② $-5+3\\sqrt{3}i$\n\n③ $-2-3\\sqrt{3}i$\n\n④ $2+3\\sqrt{3}i$\n\n⑤ 5\n\n50\n\nⅡ. 방정식",
+          "images": [
+            {
+              "id": "img-0.jpeg",
+              "top_left_x": 85,
+              "top_left_y": 43,
+              "bottom_right_x": 202,
+              "bottom_right_y": 161,
+              "image_annotation": null
+            }
+          ],
+          "tables": [],
+          "hyperlinks": [],
+          "header": null,
+          "footer": null,
+          "dimensions": {
+            "dpi": 200,
+            "height": 1263,
+            "width": 893
+          },
+          "confidence_scores": null,
+          "blocks": [
+            {
+              "top_left_x": 85,
+              "top_left_y": 43,
+              "bottom_right_x": 202,
+              "bottom_right_y": 161,
+              "content": "![img-0.jpeg](img-0.jpeg)",
+              "confidence_scores": null,
+              "type": "image",
+              "image_id": "img-0.jpeg"
+            },
+            {
+              "top_left_x": 202,
+              "top_left_y": 87,
+              "bottom_right_x": 282,
+              "bottom_right_y": 139,
+              "content": "# 유형",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 286,
+              "top_left_y": 116,
+              "bottom_right_x": 392,
+              "bottom_right_y": 158,
+              "content": "# 뽀개기",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 101,
+              "top_left_y": 185,
+              "bottom_right_x": 142,
+              "bottom_right_y": 202,
+              "content": "# 유형 01",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 156,
+              "top_left_y": 185,
+              "bottom_right_x": 273,
+              "bottom_right_y": 205,
+              "content": "# 복소수의 뜻과 분류",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 400,
+              "top_left_y": 188,
+              "bottom_right_x": 444,
+              "bottom_right_y": 204,
+              "content": "개념 03-1",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 104,
+              "top_left_y": 231,
+              "bottom_right_x": 142,
+              "bottom_right_y": 249,
+              "content": "# 0331",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 150,
+              "top_left_y": 233,
+              "bottom_right_x": 192,
+              "bottom_right_y": 248,
+              "content": "# 대표 문제",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 98,
+              "top_left_y": 260,
+              "bottom_right_x": 223,
+              "bottom_right_y": 281,
+              "content": "다음 중 옳은 것은?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 96,
+              "top_left_y": 296,
+              "bottom_right_x": 412,
+              "bottom_right_y": 426,
+              "content": "① 0은 복소수가 아니다.\n② $1-6i$의 허수부분은 6이다.\n③ $2+\\sqrt{5}i$의 실수부분은 2, 허수부분은 $\\sqrt{5}i$이다.\n④ $-3i$의 실수부분은 0이다.\n⑤ $a \\neq 0, b=0$이면 $a+bi$는 실수이다.",
+              "confidence_scores": null,
+              "type": "list"
+            },
+            {
+              "top_left_x": 96,
+              "top_left_y": 560,
+              "bottom_right_x": 135,
+              "bottom_right_y": 579,
+              "content": "# 0332",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 143,
+              "top_left_y": 563,
+              "bottom_right_x": 176,
+              "bottom_right_y": 578,
+              "content": "# ①",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 95,
+              "top_left_y": 587,
+              "bottom_right_x": 353,
+              "bottom_right_y": 608,
+              "content": "다음 복소수 중 허수의 개수를 구하시오.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 149,
+              "top_left_y": 632,
+              "bottom_right_x": 194,
+              "bottom_right_y": 652,
+              "content": "$\\sqrt{5}-i,$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 229,
+              "top_left_y": 633,
+              "bottom_right_x": 256,
+              "bottom_right_y": 652,
+              "content": "$11i,$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 308,
+              "top_left_y": 633,
+              "bottom_right_x": 337,
+              "bottom_right_y": 652,
+              "content": "$-6,$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 373,
+              "top_left_y": 633,
+              "bottom_right_x": 402,
+              "bottom_right_y": 652,
+              "content": "$\\sqrt{3}i,$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 150,
+              "top_left_y": 660,
+              "bottom_right_x": 189,
+              "bottom_right_y": 678,
+              "content": "$1-\\pi,$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 229,
+              "top_left_y": 660,
+              "bottom_right_x": 270,
+              "bottom_right_y": 678,
+              "content": "$9i-2,$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 299,
+              "top_left_y": 660,
+              "bottom_right_x": 346,
+              "bottom_right_y": 678,
+              "content": "$1-\\sqrt{7},$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 373,
+              "top_left_y": 660,
+              "bottom_right_x": 392,
+              "bottom_right_y": 678,
+              "content": "$2\\pi$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 101,
+              "top_left_y": 833,
+              "bottom_right_x": 139,
+              "bottom_right_y": 851,
+              "content": "# 유형 02",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 154,
+              "top_left_y": 833,
+              "bottom_right_x": 265,
+              "bottom_right_y": 852,
+              "content": "# 복소수의 사칙연산",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 397,
+              "top_left_y": 836,
+              "bottom_right_x": 442,
+              "bottom_right_y": 851,
+              "content": "개념 03-4",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 101,
+              "top_left_y": 879,
+              "bottom_right_x": 139,
+              "bottom_right_y": 896,
+              "content": "# 0333",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 147,
+              "top_left_y": 880,
+              "bottom_right_x": 189,
+              "bottom_right_y": 895,
+              "content": "# 대표 문제",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 94,
+              "top_left_y": 906,
+              "bottom_right_x": 219,
+              "bottom_right_y": 927,
+              "content": "다음 중 옳은 것은?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 93,
+              "top_left_y": 943,
+              "bottom_right_x": 298,
+              "bottom_right_y": 1086,
+              "content": "① $(7+3i)+(4-6i)=28+3i$\n② $(i-5)-(2i-9)=i-4$\n③ $(1-i^2)(1+i^2)=2$\n④ $(2-3i)^2=-5+12i$\n⑤ $\\frac{1+i}{1-i}+\\frac{1-i}{1+i}=0$",
+              "confidence_scores": null,
+              "type": "list"
+            },
+            {
+              "top_left_x": 492,
+              "top_left_y": 178,
+              "bottom_right_x": 532,
+              "bottom_right_y": 197,
+              "content": "# 0334",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 539,
+              "top_left_y": 181,
+              "bottom_right_x": 573,
+              "bottom_right_y": 196,
+              "content": "# ②",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 491,
+              "top_left_y": 206,
+              "bottom_right_x": 851,
+              "bottom_right_y": 277,
+              "content": "$(2-i)(3+2i)+\\frac{1+\\sqrt{2}i}{\\sqrt{2}-i}$를 $a+bi$ ($a, b$는 실수) 꼴로 나타내시오.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 491,
+              "top_left_y": 402,
+              "bottom_right_x": 532,
+              "bottom_right_y": 421,
+              "content": "# 0335",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 539,
+              "top_left_y": 403,
+              "bottom_right_x": 572,
+              "bottom_right_y": 420,
+              "content": "# ③",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 490,
+              "top_left_y": 430,
+              "bottom_right_x": 850,
+              "bottom_right_y": 501,
+              "content": "두 복소수 $z_1=(1-i)^2, z_2=\\frac{3-\\sqrt{3}i}{3+\\sqrt{3}i}$에 대하여 $z_1z_2$의 실수부분을 $a$, 허수부분을 $b$라 할 때, $a^2-b^3$의 값은?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 490,
+              "top_left_y": 515,
+              "bottom_right_x": 542,
+              "bottom_right_y": 535,
+              "content": "① $-2$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 610,
+              "top_left_y": 516,
+              "bottom_right_x": 658,
+              "bottom_right_y": 535,
+              "content": "② $-1$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 729,
+              "top_left_y": 516,
+              "bottom_right_x": 762,
+              "bottom_right_y": 535,
+              "content": "③ 0",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 491,
+              "top_left_y": 542,
+              "bottom_right_x": 525,
+              "bottom_right_y": 561,
+              "content": "④ 1",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 610,
+              "top_left_y": 542,
+              "bottom_right_x": 643,
+              "bottom_right_y": 561,
+              "content": "⑤ 2",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 490,
+              "top_left_y": 688,
+              "bottom_right_x": 529,
+              "bottom_right_y": 707,
+              "content": "# 0336",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 539,
+              "top_left_y": 690,
+              "bottom_right_x": 572,
+              "bottom_right_y": 707,
+              "content": "# ⑤",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 577,
+              "top_left_y": 692,
+              "bottom_right_x": 624,
+              "bottom_right_y": 707,
+              "content": "# ① 서술함",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 490,
+              "top_left_y": 714,
+              "bottom_right_x": 764,
+              "bottom_right_y": 736,
+              "content": "임의의 두 복소수 $a, b$에 대하여 연산 $\\mathbb{O}$을",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 515,
+              "top_left_y": 742,
+              "bottom_right_x": 628,
+              "bottom_right_y": 761,
+              "content": "$a\\mathbb{O}b=a+b-ab$",
+              "confidence_scores": null,
+              "type": "equation"
+            },
+            {
+              "top_left_x": 489,
+              "top_left_y": 769,
+              "bottom_right_x": 830,
+              "bottom_right_y": 791,
+              "content": "라 할 때, $(5+3i)\\mathbb{O}(1-2i)$의 실수부분을 구하시오.",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 493,
+              "top_left_y": 923,
+              "bottom_right_x": 534,
+              "bottom_right_y": 942,
+              "content": "# 유형 03",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 548,
+              "top_left_y": 922,
+              "bottom_right_x": 769,
+              "bottom_right_y": 943,
+              "content": "# 복소수가 주어질 때의 식의 값 구하기",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 794,
+              "top_left_y": 925,
+              "bottom_right_x": 839,
+              "bottom_right_y": 942,
+              "content": "개념 03-4",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 495,
+              "top_left_y": 967,
+              "bottom_right_x": 534,
+              "bottom_right_y": 986,
+              "content": "# 0337",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 542,
+              "top_left_y": 970,
+              "bottom_right_x": 585,
+              "bottom_right_y": 985,
+              "content": "# 대표 문제",
+              "confidence_scores": null,
+              "type": "title"
+            },
+            {
+              "top_left_x": 488,
+              "top_left_y": 996,
+              "bottom_right_x": 747,
+              "bottom_right_y": 1033,
+              "content": "$x=\\frac{1-\\sqrt{3}i}{2}$일 때, $3x^2-3x-2$의 값은?",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 488,
+              "top_left_y": 1049,
+              "bottom_right_x": 538,
+              "bottom_right_y": 1070,
+              "content": "① $-5$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 607,
+              "top_left_y": 1051,
+              "bottom_right_x": 702,
+              "bottom_right_y": 1070,
+              "content": "② $-5+3\\sqrt{3}i$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 726,
+              "top_left_y": 1051,
+              "bottom_right_x": 821,
+              "bottom_right_y": 1070,
+              "content": "③ $-2-3\\sqrt{3}i$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 488,
+              "top_left_y": 1076,
+              "bottom_right_x": 569,
+              "bottom_right_y": 1096,
+              "content": "④ $2+3\\sqrt{3}i$",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 607,
+              "top_left_y": 1077,
+              "bottom_right_x": 640,
+              "bottom_right_y": 1096,
+              "content": "⑤ 5",
+              "confidence_scores": null,
+              "type": "text"
+            },
+            {
+              "top_left_x": 94,
+              "top_left_y": 1210,
+              "bottom_right_x": 114,
+              "bottom_right_y": 1226,
+              "content": "50",
+              "confidence_scores": null,
+              "type": "footer"
+            },
+            {
+              "top_left_x": 124,
+              "top_left_y": 1211,
+              "bottom_right_x": 172,
+              "bottom_right_y": 1226,
+              "content": "Ⅱ. 방정식",
+              "confidence_scores": null,
+              "type": "footer"
+            }
+          ]
+        }
+      ],
+      "model": "mistral-ocr-latest",
+      "document_annotation": null,
+      "usage_info": {
+        "pages_processed": 1,
+        "doc_size_bytes": 229135
+      }
+    },
+    "raw_text": "![img-0.jpeg](img-0.jpeg)\n\n# 유형\n\n# 뽀개기\n\n# 유형 01\n\n# 복소수의 뜻과 분류\n\n개념 03-1\n\n# 0331\n\n# 대표 문제\n\n다음 중 옳은 것은?\n\n① 0은 복소수가 아니다.\n② $1-6i$의 허수부분은 6이다.\n③ $2+\\sqrt{5}i$의 실수부분은 2, 허수부분은 $\\sqrt{5}i$이다.\n④ $-3i$의 실수부분은 0이다.\n⑤ $a \\neq 0, b=0$이면 $a+bi$는 실수이다.\n\n# 0332\n\n# ①\n\n다음 복소수 중 허수의 개수를 구하시오.\n\n$\\sqrt{5}-i,$\n\n$11i,$\n\n$-6,$\n\n$\\sqrt{3}i,$\n\n$1-\\pi,$\n\n$9i-2,$\n\n$1-\\sqrt{7},$\n\n$2\\pi$\n\n# 유형 02\n\n# 복소수의 사칙연산\n\n개념 03-4\n\n# 0333\n\n# 대표 문제\n\n다음 중 옳은 것은?\n\n① $(7+3i)+(4-6i)=28+3i$\n② $(i-5)-(2i-9)=i-4$\n③ $(1-i^2)(1+i^2)=2$\n④ $(2-3i)^2=-5+12i$\n⑤ $\\frac{1+i}{1-i}+\\frac{1-i}{1+i}=0$\n\n# 0334\n\n# ②\n\n$(2-i)(3+2i)+\\frac{1+\\sqrt{2}i}{\\sqrt{2}-i}$를 $a+bi$ ($a, b$는 실수) 꼴로 나타내시오.\n\n# 0335\n\n# ③\n\n두 복소수 $z_1=(1-i)^2, z_2=\\frac{3-\\sqrt{3}i}{3+\\sqrt{3}i}$에 대하여 $z_1z_2$의 실수부분을 $a$, 허수부분을 $b$라 할 때, $a^2-b^3$의 값은?\n\n① $-2$\n\n② $-1$\n\n③ 0\n\n④ 1\n\n⑤ 2\n\n# 0336\n\n# ⑤\n\n# ① 서술함\n\n임의의 두 복소수 $a, b$에 대하여 연산 $\\mathbb{O}$을\n\n$a\\mathbb{O}b=a+b-ab$\n\n라 할 때, $(5+3i)\\mathbb{O}(1-2i)$의 실수부분을 구하시오.\n\n# 유형 03\n\n# 복소수가 주어질 때의 식의 값 구하기\n\n개념 03-4\n\n# 0337\n\n# 대표 문제\n\n$x=\\frac{1-\\sqrt{3}i}{2}$일 때, $3x^2-3x-2$의 값은?\n\n① $-5$\n\n② $-5+3\\sqrt{3}i$\n\n③ $-2-3\\sqrt{3}i$\n\n④ $2+3\\sqrt{3}i$\n\n⑤ 5\n\n50\n\nⅡ. 방정식",
+    "raw_latex": "1-6i",
+    "raw_mathml": null,
+    "warnings": [],
+    "error": null
+  },
+  "recorded_at": "2026-09-14T01:49:14.188Z",
+  "unit_price": {
+    "mathpix_image": 0.002,
+    "mathpix_page_or_dense": 0.005,
+    "mistral_conservative_dense": 0.005
+  }
+}

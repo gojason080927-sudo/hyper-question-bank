@@ -79,6 +79,8 @@
     "src/lib/ingestion/figurePersistence.ts",
     "src/lib/ingestion/step838Cli.ts",
     "src/lib/ingestion/step839Cli.ts",
-    "src/lib/ingestion/step840Cli.ts"
+    "src/lib/ingestion/step840Cli.ts",
+    "src/lib/ingestion/ssenBookCloseoutCli.ts",
+    "src/lib/ingestion/bookCompleteCli.ts"
   ]
 }

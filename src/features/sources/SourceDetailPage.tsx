@@ -8,7 +8,8 @@ import { beginSubmit, releaseSubmit } from '../../lib/workflow/submitLock'
 import { PdfPageViewer } from './PdfPageViewer'
 import { RecognitionPanel } from './RecognitionPanel'
 import type { SourceBundle, SourceRegion } from './types'
-import { extractionStatusLabel, ocrStatusLabel, pipelineStatusLabel } from '../../lib/outline/instructorLabels'
+import { bookReadyLabel, extractionStatusLabel, liveReviewQueueLabel, ocrStatusLabel, sourcePipelineLabel } from '../../lib/outline/instructorLabels'
+import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
 
 export function SourceDetailPage() {
   const { documentId } = useParams()
@@ -40,6 +41,17 @@ export function SourceDetailPage() {
     ocr_status?: string
     extraction_status?: string
   } | null>(null)
+  const [bookStatus, setBookStatus] = useState<{
+    qa_complete?: boolean
+    ready_for_use?: boolean
+    human_exceptions?: number
+    banner?: string
+    inspected_at?: string
+    paid_ocr_usd?: number
+    completed_items?: number
+    total_items?: number
+    counts?: { auto_safe?: number; verified_by_source?: number; human_final_check?: number }
+  } | null>(null)
 
   const pageNumber = Math.max(1, Number(searchParams.get('page') || pageInput) || 1)
 
@@ -56,6 +68,20 @@ export function SourceDetailPage() {
     setBundle(data as SourceBundle)
     const runtime = await client.rpc('hqb_source_runtime_stats', { p_document_id: documentId })
     if (!runtime.error && runtime.data) setStats(runtime.data as typeof stats)
+    try {
+      const res = await fetch(`/book-status/${documentId}.json`)
+      if (res.ok) {
+        setBookStatus((await res.json()) as typeof bookStatus)
+      } else if (documentId === SSEN_SOURCE_DOCUMENT_ID) {
+        const fallback = await fetch('/ssen-book-status.json')
+        if (fallback.ok) setBookStatus((await fallback.json()) as typeof bookStatus)
+        else setBookStatus(null)
+      } else {
+        setBookStatus(null)
+      }
+    } catch {
+      setBookStatus(null)
+    }
   }
 
   useEffect(() => {
@@ -189,6 +215,9 @@ export function SourceDetailPage() {
   if (error && !bundle) return <main className="page"><p className="banner error">{error}</p></main>
   if (!bundle) return <main className="page"><p className="muted">자료를 불러오는 중입니다.</p></main>
   const doc = bundle.document
+  const humanRemaining = bookStatus?.human_exceptions ?? bookStatus?.counts?.human_final_check ?? 0
+  const bookReady = bookStatus ? Boolean(bookStatus.ready_for_use) : null
+  const liveReviewCount = stats?.needs_review ?? 0
 
   return (
     <main className="page wide">
@@ -217,18 +246,56 @@ export function SourceDetailPage() {
         <p>
           <strong>OCR</strong> {ocrStatusLabel(stats?.ocr_status ?? doc.ocr_status, Boolean(stats?.ocr_complete))} ·{' '}
           <strong>추출</strong> {extractionStatusLabel(stats?.extraction_status ?? doc.extraction_status, Boolean(stats?.extraction_complete))} ·{' '}
-          <strong>자동 등록 작업</strong> {pipelineStatusLabel(stats?.pipeline_status ?? doc.document_status)}
+          <strong>자동 등록 작업</strong>{' '}
+          {sourcePipelineLabel(stats?.pipeline_status ?? doc.document_status, bookReady, humanRemaining)}
         </p>
         <p>
           <strong>총 페이지</strong> {stats?.page_count ?? doc.page_count ?? '—'} · <strong>OCR 처리 페이지</strong> {stats?.ocr_pages ?? '—'} ·{' '}
           <strong>감지 문제</strong> {stats?.linked_problems ?? '—'} · <strong>활성 문제</strong> {stats?.listed_problems ?? '—'}
         </p>
         <p>
-          <strong>자동분류</strong> {stats?.auto_classified ?? '—'} · <strong>확인 필요</strong> {stats?.needs_review ?? '—'} ·{' '}
+          <strong>자동분류</strong> {stats?.auto_classified ?? '—'} ·{' '}
+          <strong>{liveReviewQueueLabel(bookReady)}</strong> {stats?.needs_review ?? '—'} ·{' '}
           <strong>마지막 처리</strong> {stats?.updated_at ? new Date(stats.updated_at).toLocaleString('ko-KR') : '—'}
         </p>
+        {bookReady && liveReviewCount > 0 ? (
+          <p className="muted">분류 대기는 교재 검사의 사람 확인 잔여와 별개입니다.</p>
+        ) : null}
         <p className="muted">SHA-256 {doc.file_hash} · {doc.file_size ? `${Math.round(doc.file_size / 1024)} KB` : ''}</p>
       </section>
+
+      {bookStatus ? (
+        <section className="card book-qa-status">
+          <p className="kicker">교재 검사</p>
+          <h2>{bookStatus.banner ?? bookReadyLabel(Boolean(bookStatus.ready_for_use), bookStatus.human_exceptions ?? 0)}</h2>
+          <p>
+            <strong>전체 문항</strong> {bookStatus.total_items ?? stats?.listed_problems ?? '—'} ·{' '}
+            <strong>검사 완료율</strong>{' '}
+            {bookStatus.qa_complete
+              ? '100%'
+              : `${Math.round((((bookStatus.total_items ?? 0) - (bookStatus.human_exceptions ?? 0)) / Math.max(1, bookStatus.total_items ?? 1)) * 100)}%`}
+            {' · '}
+            <strong>사용 가능</strong> {bookStatus.ready_for_use ? '예' : 'P1 잔여'}
+          </p>
+          <p>
+            <strong>자동 복원</strong> {(bookStatus.counts?.auto_safe ?? 0) + (bookStatus.counts?.verified_by_source ?? 0)} ·{' '}
+            <strong>사람 확인 잔여</strong> {bookStatus.human_exceptions ?? bookStatus.counts?.human_final_check ?? 0} ·{' '}
+            <strong>마지막 검사</strong>{' '}
+            {bookStatus.inspected_at ? new Date(bookStatus.inspected_at).toLocaleString('ko-KR') : '—'} ·{' '}
+            <strong>OCR 비용</strong> ${Number(bookStatus.paid_ocr_usd ?? 0).toFixed(4)}
+          </p>
+          <div className="actions">
+            <Link className="btn primary" to="/worksheets">문제지 만들기</Link>
+            {humanRemaining > 0 ? (
+              <Link className="btn ghost" to="/pipeline-review?source=closeout">예외 검수</Link>
+            ) : liveReviewCount > 0 && documentId ? (
+              <Link className="btn ghost" to={`/pipeline-review?source=${documentId}`}>분류 대기</Link>
+            ) : (
+              <Link className="btn ghost" to="/pipeline-review?source=closeout">최종 마감</Link>
+            )}
+          </div>
+        </section>
+      ) : null}
 
       <section className="source-workspace">
         <div className="card">
