@@ -84,7 +84,7 @@
     },
     "hyper_overall": "1.00",
     "source_stage": "A",
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -609,7 +609,7 @@
       "VALUE"
     ],
     "reasoning_ids": [
-      "DIRECT_RECALL"
+      "TRANSFORMATION"
     ],
     "strategy_id": "POLY_MULTIPLY:strategy",
     "key_point_ids": [
@@ -621,19 +621,19 @@
     ],
     "hyper_dims": {
       "concept_difficulty": 1,
-      "calculation_complexity": 3,
+      "calculation_complexity": 4,
       "reasoning_depth": 1,
       "condition_complexity": 1,
-      "representation_complexity": 3,
-      "trap_level": 3
+      "representation_complexity": 1,
+      "trap_level": 1
     },
-    "hyper_overall": "2.00",
+    "hyper_overall": "1.50",
     "source_stage": "A",
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
-    "item_kind": "CALC",
+    "item_kind": "REASON",
     "confirmation": "CLUSTER_CONFIRMED"
   },
   {
@@ -5793,9 +5793,11 @@
     "source_type": null,
     "condition_ids": [],
     "target_ids": [
-      "VALUE"
+      "EQUATION_SOLUTION",
+      "FACTORIZATION"
     ],
     "reasoning_ids": [
+      "TRANSFORMATION",
       "DIRECT_RECALL"
     ],
     "strategy_id": "POLY_FACTORING:strategy",
@@ -5807,15 +5809,15 @@
     ],
     "hyper_dims": {
       "concept_difficulty": 1,
-      "calculation_complexity": 3,
+      "calculation_complexity": 2,
       "reasoning_depth": 1,
       "condition_complexity": 1,
-      "representation_complexity": 3,
+      "representation_complexity": 1,
       "trap_level": 1
     },
-    "hyper_overall": "1.67",
+    "hyper_overall": "1.17",
     "source_stage": "A",
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -11697,7 +11699,7 @@
     "source_type": null,
     "condition_ids": [],
     "target_ids": [
-      "VALUE"
+      "EQUATION_SOLUTION"
     ],
     "reasoning_ids": [
       "DIRECT_RECALL"
@@ -11711,19 +11713,19 @@
     ],
     "hyper_dims": {
       "concept_difficulty": 1,
-      "calculation_complexity": 1,
-      "reasoning_depth": 1,
+      "calculation_complexity": 5,
+      "reasoning_depth": 2,
       "condition_complexity": 1,
-      "representation_complexity": 1,
+      "representation_complexity": 4,
       "trap_level": 1
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "2.33",
     "source_stage": "A",
     "item_format": "unknown",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
-    "item_kind": "CALC",
+    "item_kind": "REASON",
     "confirmation": "SOURCE_CONFIRMED"
   },
   {
@@ -12283,15 +12285,15 @@
     ],
     "hyper_dims": {
       "concept_difficulty": 1,
-      "calculation_complexity": 1,
+      "calculation_complexity": 2,
       "reasoning_depth": 1,
       "condition_complexity": 1,
       "representation_complexity": 1,
       "trap_level": 1
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "1.17",
     "source_stage": "A",
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -12599,7 +12601,7 @@
     },
     "hyper_overall": "1.00",
     "source_stage": "A",
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -20800,38 +20802,40 @@
     "major": "방정식",
     "minor": "이차방정식",
     "concept_ids": [
-      "QUADRATIC_SOLVE:concept:0",
-      "QUADRATIC_SOLVE:concept:1"
+      "QUADRATIC_VIETAS:concept:0",
+      "QUADRATIC_VIETAS:concept:1",
+      "QUADRATIC_VIETAS:concept:2"
     ],
-    "primary_type": "QUADRATIC_SOLVE",
-    "secondary_type": null,
+    "primary_type": "QUADRATIC_VIETAS",
+    "secondary_type": "QUADRATIC_SOLVE",
     "source_type": null,
     "condition_ids": [],
     "target_ids": [
       "VALUE"
     ],
     "reasoning_ids": [
+      "MODELING",
       "DIRECT_RECALL"
     ],
-    "strategy_id": "QUADRATIC_SOLVE:strategy",
+    "strategy_id": "QUADRATIC_VIETAS:strategy",
     "key_point_ids": [
-      "QUADRATIC_SOLVE:ktp:0"
+      "QUADRATIC_VIETAS:ktp:0"
     ],
     "mistake_ids": [
-      "QUADRATIC_SOLVE.DOUBLE"
+      "QUADRATIC_VIETAS.SIGN"
     ],
     "hyper_dims": {
       "concept_difficulty": 1,
-      "calculation_complexity": 1,
+      "calculation_complexity": 5,
       "reasoning_depth": 1,
       "condition_complexity": 1,
-      "representation_complexity": 1,
+      "representation_complexity": 5,
       "trap_level": 1
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "2.33",
     "source_stage": "B",
-    "item_format": "unknown",
-    "has_figure": false,
+    "item_format": "mcq",
+    "has_figure": true,
     "has_table": false,
     "has_graph": false,
     "item_kind": "CALC",
@@ -21436,37 +21440,39 @@
     "major": "방정식",
     "minor": "이차방정식",
     "concept_ids": [
-      "QUADRATIC_SOLVE:concept:0",
-      "QUADRATIC_SOLVE:concept:1"
+      "QUADRATIC_DISCRIMINANT:concept:0"
     ],
-    "primary_type": "QUADRATIC_SOLVE",
+    "primary_type": "QUADRATIC_DISCRIMINANT",
     "secondary_type": null,
     "source_type": null,
-    "condition_ids": [],
+    "condition_ids": [
+      "INEQUALITY",
+      "DISTINCT_ROOTS"
+    ],
     "target_ids": [
       "VALUE"
     ],
     "reasoning_ids": [
-      "DIRECT_RECALL"
+      "MULTI_STEP"
     ],
-    "strategy_id": "QUADRATIC_SOLVE:strategy",
+    "strategy_id": "QUADRATIC_DISCRIMINANT:strategy",
     "key_point_ids": [
-      "QUADRATIC_SOLVE:ktp:0"
+      "QUADRATIC_DISCRIMINANT:ktp:0"
     ],
     "mistake_ids": [
-      "QUADRATIC_SOLVE.DOUBLE"
+      "QUADRATIC_DISCRIMINANT.D"
     ],
     "hyper_dims": {
-      "concept_difficulty": 1,
-      "calculation_complexity": 1,
+      "concept_difficulty": 2,
+      "calculation_complexity": 4,
       "reasoning_depth": 1,
-      "condition_complexity": 1,
-      "representation_complexity": 1,
-      "trap_level": 1
+      "condition_complexity": 3,
+      "representation_complexity": 2,
+      "trap_level": 4
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "2.67",
     "source_stage": "B",
-    "item_format": "unknown",
+    "item_format": "mcq",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -22504,9 +22510,10 @@
     "source_type": null,
     "condition_ids": [],
     "target_ids": [
-      "VALUE"
+      "MAXIMUM"
     ],
     "reasoning_ids": [
+      "MODELING",
       "DIRECT_RECALL"
     ],
     "strategy_id": "QUAD_FN_RELATION:strategy",
@@ -22521,15 +22528,15 @@
       "calculation_complexity": 1,
       "reasoning_depth": 1,
       "condition_complexity": 1,
-      "representation_complexity": 1,
+      "representation_complexity": 4,
       "trap_level": 1
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "1.50",
     "source_stage": "A",
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
-    "has_graph": false,
+    "has_graph": true,
     "item_kind": "CALC",
     "confirmation": "CLUSTER_CONFIRMED"
   },
@@ -26870,12 +26877,15 @@
     "primary_type": "QUAD_FN_RELATION",
     "secondary_type": null,
     "source_type": null,
-    "condition_ids": [],
+    "condition_ids": [
+      "INEQUALITY"
+    ],
     "target_ids": [
-      "VALUE"
+      "MAXIMUM"
     ],
     "reasoning_ids": [
-      "DIRECT_RECALL"
+      "MULTI_STEP",
+      "MODELING"
     ],
     "strategy_id": "QUAD_FN_RELATION:strategy",
     "key_point_ids": [
@@ -26885,19 +26895,19 @@
       "QUAD_FN_RELATION.AXIS"
     ],
     "hyper_dims": {
-      "concept_difficulty": 1,
-      "calculation_complexity": 1,
-      "reasoning_depth": 1,
-      "condition_complexity": 1,
-      "representation_complexity": 1,
-      "trap_level": 1
+      "concept_difficulty": 3,
+      "calculation_complexity": 5,
+      "reasoning_depth": 3,
+      "condition_complexity": 3,
+      "representation_complexity": 5,
+      "trap_level": 3
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "3.67",
     "source_stage": null,
-    "item_format": "unknown",
+    "item_format": "mcq",
     "has_figure": false,
     "has_table": false,
-    "has_graph": false,
+    "has_graph": true,
     "item_kind": "CALC",
     "confirmation": "CLUSTER_CONFIRMED"
   },
@@ -32483,7 +32493,9 @@
     "primary_type": "LINEAR_INEQUALITY",
     "secondary_type": null,
     "source_type": null,
-    "condition_ids": [],
+    "condition_ids": [
+      "INEQUALITY"
+    ],
     "target_ids": [
       "VALUE"
     ],
@@ -32507,7 +32519,7 @@
     },
     "hyper_overall": "1.00",
     "source_stage": "A",
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -37186,9 +37198,12 @@
     "primary_type": "LINEAR_INEQUALITY",
     "secondary_type": null,
     "source_type": null,
-    "condition_ids": [],
+    "condition_ids": [
+      "INEQUALITY"
+    ],
     "target_ids": [
-      "VALUE"
+      "EQUATION_SOLUTION",
+      "SOLUTION_SET"
     ],
     "reasoning_ids": [
       "DIRECT_RECALL"
@@ -37201,16 +37216,16 @@
       "LINEAR_INEQUALITY.FLIP"
     ],
     "hyper_dims": {
-      "concept_difficulty": 1,
-      "calculation_complexity": 1,
-      "reasoning_depth": 1,
+      "concept_difficulty": 3,
+      "calculation_complexity": 4,
+      "reasoning_depth": 2,
       "condition_complexity": 1,
-      "representation_complexity": 1,
-      "trap_level": 1
+      "representation_complexity": 2,
+      "trap_level": 3
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "2.50",
     "source_stage": null,
-    "item_format": "unknown",
+    "item_format": "descriptive",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -37378,10 +37393,12 @@
       "INEQUALITY"
     ],
     "target_ids": [
-      "VALUE"
+      "EQUATION_SOLUTION",
+      "MAXIMUM",
+      "SOLUTION_SET"
     ],
     "reasoning_ids": [
-      "DIRECT_RECALL"
+      "MODELING"
     ],
     "strategy_id": "QUADRATIC_INEQUALITY:strategy",
     "key_point_ids": [
@@ -37391,19 +37408,19 @@
       "QUADRATIC_INEQUALITY.EQ"
     ],
     "hyper_dims": {
-      "concept_difficulty": 1,
-      "calculation_complexity": 1,
+      "concept_difficulty": 2,
+      "calculation_complexity": 4,
       "reasoning_depth": 1,
       "condition_complexity": 1,
-      "representation_complexity": 1,
+      "representation_complexity": 5,
       "trap_level": 1
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "2.33",
     "source_stage": "A",
-    "item_format": "unknown",
-    "has_figure": false,
+    "item_format": "descriptive",
+    "has_figure": true,
     "has_table": false,
-    "has_graph": false,
+    "has_graph": true,
     "item_kind": "CALC",
     "confirmation": "SOURCE_CONFIRMED"
   },
@@ -39271,13 +39288,13 @@
     ],
     "hyper_dims": {
       "concept_difficulty": 2,
-      "calculation_complexity": 5,
+      "calculation_complexity": 4,
       "reasoning_depth": 1,
       "condition_complexity": 1,
       "representation_complexity": 5,
       "trap_level": 1
     },
-    "hyper_overall": "2.50",
+    "hyper_overall": "2.33",
     "source_stage": "B",
     "item_format": "mcq",
     "has_figure": true,
@@ -39512,13 +39529,13 @@
     ],
     "hyper_dims": {
       "concept_difficulty": 3,
-      "calculation_complexity": 5,
+      "calculation_complexity": 4,
       "reasoning_depth": 1,
       "condition_complexity": 1,
       "representation_complexity": 5,
       "trap_level": 1
     },
-    "hyper_overall": "2.67",
+    "hyper_overall": "2.50",
     "source_stage": "B",
     "item_format": "mcq",
     "has_figure": true,
@@ -40045,13 +40062,13 @@
     ],
     "hyper_dims": {
       "concept_difficulty": 2,
-      "calculation_complexity": 5,
+      "calculation_complexity": 4,
       "reasoning_depth": 1,
       "condition_complexity": 1,
       "representation_complexity": 5,
       "trap_level": 1
     },
-    "hyper_overall": "2.50",
+    "hyper_overall": "2.33",
     "source_stage": "B",
     "item_format": "mcq",
     "has_figure": true,
@@ -43027,6 +43044,7 @@
       "VALUE"
     ],
     "reasoning_ids": [
+      "MULTI_STEP",
       "DIRECT_RECALL"
     ],
     "strategy_id": "QUADRATIC_INEQUALITY:strategy",
@@ -43037,16 +43055,16 @@
       "QUADRATIC_INEQUALITY.EQ"
     ],
     "hyper_dims": {
-      "concept_difficulty": 1,
+      "concept_difficulty": 3,
       "calculation_complexity": 1,
       "reasoning_depth": 1,
       "condition_complexity": 1,
       "representation_complexity": 1,
       "trap_level": 1
     },
-    "hyper_overall": "1.00",
+    "hyper_overall": "1.33",
     "source_stage": "B",
-    "item_format": "unknown",
+    "item_format": "mcq",
     "has_figure": false,
     "has_table": false,
     "has_graph": false,
@@ -49725,6 +49743,7 @@
       "VALUE"
     ],
     "reasoning_ids": [
+      "MODELING",
       "DIRECT_RECALL"
     ],
     "strategy_id": "COUNTING_PERM_COMB:strategy",
@@ -49739,13 +49758,13 @@
       "calculation_complexity": 2,
       "reasoning_depth": 1,
       "condition_complexity": 1,
-      "representation_complexity": 3,
+      "representation_complexity": 5,
       "trap_level": 1
     },
-    "hyper_overall": "1.50",
+    "hyper_overall": "1.83",
     "source_stage": null,
-    "item_format": "unknown",
-    "has_figure": false,
+    "item_format": "descriptive",
+    "has_figure": true,
     "has_table": false,
     "has_graph": false,
     "item_kind": "CALC",

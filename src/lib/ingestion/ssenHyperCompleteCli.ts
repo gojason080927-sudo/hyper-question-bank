@@ -252,7 +252,7 @@ export async function runSsenHyperComplete(root = process.cwd(), options?: { per
     }
   })
   for (const item of items) {
-    if (item.stem.trim().length >= 40) continue
+    if (!/^#?\s*\d{4}\s*$/.test(item.stem.trim()) && item.stem.trim().length >= 20) continue
     const { data, error } = await admin
       .from('problem_versions')
       .select('problem_text,version_no')
@@ -441,6 +441,12 @@ export async function runSsenHyperComplete(root = process.cwd(), options?: { per
   const previousHash = existsSync(hashFile) ? (JSON.parse(readFileSync(hashFile, 'utf8')) as { hash?: string; rows?: Record<string, string> }) : { hash: '', rows: {} }
   if (previousHash.hash === currentHash) {
     console.log('SSEN HYPER COMPLETE rerun write=0 ai=0 (input hash unchanged)')
+    writeDashboard(root, planned.rows, planned.summary, {
+      live_needs_review: listed.filter((row) => row.review_status === 'NEEDS_REVIEW').length,
+      persisted: true,
+      persist: { written: 0, skipped: planned.rows.length, rerun: true, leak_versions: 0, delete: 0 },
+      ai: dry.ai,
+    })
     return { ...dry, persist: { written: 0, skipped: planned.rows.length, rerun: true, leak_versions: 0 } }
   }
   const previousRows =

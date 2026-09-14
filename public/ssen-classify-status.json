@@ -1,7 +1,7 @@
 {
   "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
   "title": "쎈수학 공통수학1",
-  "inspected_at": "2026-09-14T06:37:17.940Z",
+  "inspected_at": "2026-09-14T07:48:54.574Z",
   "assigned_by": "SSEN_HYPER_COMPLETE",
   "classifier_version": "ssen-hyper-v1",
   "listed": 1242,
@@ -20,8 +20,15 @@
     "CLUSTER_CONFIRMED": 449,
     "SOURCE_CONFIRMED": 793
   },
-  "live_needs_review": 5,
-  "persisted": false,
+  "live_needs_review": 0,
+  "persisted": true,
+  "persist": {
+    "written": 0,
+    "skipped": 1242,
+    "rerun": true,
+    "leak_versions": 0,
+    "delete": 0
+  },
   "ai": {
     "model": "mistral-small-latest",
     "calls": 0,

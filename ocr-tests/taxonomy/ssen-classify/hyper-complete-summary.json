@@ -1,5 +1,5 @@
 {
-  "status": "DRY_RUN",
+  "status": "DRY_RUN_BEFORE_PERSIST",
   "classifier_version": "ssen-hyper-v1",
   "listed": 1242,
   "summary": {
@@ -18,7 +18,7 @@
     "key_points": 1242,
     "mistakes": 1242,
     "search_features": 1242,
-    "leak_stripped": 6,
+    "leak_stripped": 0,
     "persist_type": 1242,
     "type_marker_missing": 418,
     "type_marker_missing_typed": 418,
@@ -33,7 +33,7 @@
   },
   "cached_auto": 793,
   "new_targets": 449,
-  "leak_stripped": 6,
+  "leak_stripped": 0,
   "embedding_clusters": 412,
   "ai": {
     "model": "mistral-small-latest",
@@ -61,14 +61,14 @@
     "1005": {
       "type_id": "QUADRATIC_INEQUALITY",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
     "1157": {
       "type_id": "COUNTING_PERM_COMB",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
@@ -87,23 +87,23 @@
       "reasons": []
     },
     "0507": {
-      "type_id": "QUADRATIC_SOLVE",
+      "type_id": "QUADRATIC_VIETAS",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
     "0527": {
-      "type_id": "QUADRATIC_SOLVE",
+      "type_id": "QUADRATIC_DISCRIMINANT",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
     "0650": {
       "type_id": "QUAD_FN_RELATION",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
@@ -124,7 +124,7 @@
     "0882": {
       "type_id": "LINEAR_INEQUALITY",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     }

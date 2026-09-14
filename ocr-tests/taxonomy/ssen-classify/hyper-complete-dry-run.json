@@ -1,5 +1,5 @@
 {
-  "status": "DRY_RUN",
+  "status": "DRY_RUN_BEFORE_PERSIST",
   "classifier_version": "ssen-hyper-v1",
   "listed": 1242,
   "summary": {
@@ -18,7 +18,7 @@
     "key_points": 1242,
     "mistakes": 1242,
     "search_features": 1242,
-    "leak_stripped": 6,
+    "leak_stripped": 0,
     "persist_type": 1242,
     "type_marker_missing": 418,
     "type_marker_missing_typed": 418,
@@ -33,7 +33,7 @@
   },
   "cached_auto": 793,
   "new_targets": 449,
-  "leak_stripped": 6,
+  "leak_stripped": 0,
   "embedding_clusters": 412,
   "ai": {
     "model": "mistral-small-latest",
@@ -61,14 +61,14 @@
     "1005": {
       "type_id": "QUADRATIC_INEQUALITY",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
     "1157": {
       "type_id": "COUNTING_PERM_COMB",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
@@ -87,23 +87,23 @@
       "reasons": []
     },
     "0507": {
-      "type_id": "QUADRATIC_SOLVE",
+      "type_id": "QUADRATIC_VIETAS",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
     "0527": {
-      "type_id": "QUADRATIC_SOLVE",
+      "type_id": "QUADRATIC_DISCRIMINANT",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
     "0650": {
       "type_id": "QUAD_FN_RELATION",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     },
@@ -124,7 +124,7 @@
     "0882": {
       "type_id": "LINEAR_INEQUALITY",
       "confirmation": "CLUSTER_CONFIRMED",
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_type": null,
       "reasons": []
     }
@@ -395,7 +395,7 @@
       "cached": false,
       "leak_stripped": false,
       "source_stage": "A",
-      "hyper_overall": "2.00",
+      "hyper_overall": "1.50",
       "strategy_id": "POLY_MULTIPLY:strategy",
       "concept_ids": [
         "POLY_MULTIPLY:concept:0",
@@ -2574,7 +2574,7 @@
       "cached": false,
       "leak_stripped": false,
       "source_stage": "A",
-      "hyper_overall": "1.67",
+      "hyper_overall": "1.17",
       "strategy_id": "POLY_FACTORING:strategy",
       "concept_ids": [
         "POLY_FACTORING:concept:0",
@@ -5050,7 +5050,7 @@
       "cached": true,
       "leak_stripped": false,
       "source_stage": "A",
-      "hyper_overall": "1.00",
+      "hyper_overall": "2.33",
       "strategy_id": "COMPLEX_EQUALITY:strategy",
       "concept_ids": [
         "COMPLEX_EQUALITY:concept:0",
@@ -5297,7 +5297,7 @@
       "cached": false,
       "leak_stripped": false,
       "source_stage": "A",
-      "hyper_overall": "1.00",
+      "hyper_overall": "1.17",
       "strategy_id": "COMPLEX_ARITHMETIC:strategy",
       "concept_ids": [
         "COMPLEX_ARITHMETIC:concept:0",
@@ -8924,18 +8924,19 @@
       "problem_id": "6f765e13-ca9c-4276-a436-f128b30483cc",
       "public_code": "HQB-000994",
       "original_problem_number": "0507",
-      "type_id": "QUADRATIC_SOLVE",
-      "secondary_type_id": null,
+      "type_id": "QUADRATIC_VIETAS",
+      "secondary_type_id": "QUADRATIC_SOLVE",
       "source_type": null,
       "confirmation": "CLUSTER_CONFIRMED",
       "cached": false,
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_stage": "B",
-      "hyper_overall": "1.00",
-      "strategy_id": "QUADRATIC_SOLVE:strategy",
+      "hyper_overall": "2.33",
+      "strategy_id": "QUADRATIC_VIETAS:strategy",
       "concept_ids": [
-        "QUADRATIC_SOLVE:concept:0",
-        "QUADRATIC_SOLVE:concept:1"
+        "QUADRATIC_VIETAS:concept:0",
+        "QUADRATIC_VIETAS:concept:1",
+        "QUADRATIC_VIETAS:concept:2"
       ],
       "persist_type": true
     },
@@ -9190,18 +9191,17 @@
       "problem_id": "7161843d-965b-48a0-8c68-53709a16c61e",
       "public_code": "HQB-001002",
       "original_problem_number": "0527",
-      "type_id": "QUADRATIC_SOLVE",
+      "type_id": "QUADRATIC_DISCRIMINANT",
       "secondary_type_id": null,
       "source_type": null,
       "confirmation": "CLUSTER_CONFIRMED",
       "cached": false,
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_stage": "B",
-      "hyper_overall": "1.00",
-      "strategy_id": "QUADRATIC_SOLVE:strategy",
+      "hyper_overall": "2.67",
+      "strategy_id": "QUADRATIC_DISCRIMINANT:strategy",
       "concept_ids": [
-        "QUADRATIC_SOLVE:concept:0",
-        "QUADRATIC_SOLVE:concept:1"
+        "QUADRATIC_DISCRIMINANT:concept:0"
       ],
       "persist_type": true
     },
@@ -9641,7 +9641,7 @@
       "cached": false,
       "leak_stripped": false,
       "source_stage": "A",
-      "hyper_overall": "1.00",
+      "hyper_overall": "1.50",
       "strategy_id": "QUAD_FN_RELATION:strategy",
       "concept_ids": [
         "QUAD_FN_RELATION:concept:0",
@@ -11519,9 +11519,9 @@
       "source_type": null,
       "confirmation": "CLUSTER_CONFIRMED",
       "cached": false,
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_stage": null,
-      "hyper_overall": "1.00",
+      "hyper_overall": "3.67",
       "strategy_id": "QUAD_FN_RELATION:strategy",
       "concept_ids": [
         "QUAD_FN_RELATION:concept:0",
@@ -15829,9 +15829,9 @@
       "source_type": null,
       "confirmation": "CLUSTER_CONFIRMED",
       "cached": false,
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_stage": null,
-      "hyper_overall": "1.00",
+      "hyper_overall": "2.50",
       "strategy_id": "LINEAR_INEQUALITY:strategy",
       "concept_ids": [
         "LINEAR_INEQUALITY:concept:0",
@@ -15908,7 +15908,7 @@
       "cached": true,
       "leak_stripped": false,
       "source_stage": "A",
-      "hyper_overall": "1.00",
+      "hyper_overall": "2.33",
       "strategy_id": "QUADRATIC_INEQUALITY:strategy",
       "concept_ids": [
         "QUADRATIC_INEQUALITY:concept:0",
@@ -16708,7 +16708,7 @@
       "cached": true,
       "leak_stripped": false,
       "source_stage": "B",
-      "hyper_overall": "2.50",
+      "hyper_overall": "2.33",
       "strategy_id": "QUADRATIC_INEQUALITY:strategy",
       "concept_ids": [
         "QUADRATIC_INEQUALITY:concept:0",
@@ -16808,7 +16808,7 @@
       "cached": true,
       "leak_stripped": false,
       "source_stage": "B",
-      "hyper_overall": "2.67",
+      "hyper_overall": "2.50",
       "strategy_id": "QUADRATIC_INEQUALITY:strategy",
       "concept_ids": [
         "QUADRATIC_INEQUALITY:concept:0",
@@ -17028,7 +17028,7 @@
       "cached": true,
       "leak_stripped": false,
       "source_stage": "B",
-      "hyper_overall": "2.50",
+      "hyper_overall": "2.33",
       "strategy_id": "QUADRATIC_INEQUALITY:strategy",
       "concept_ids": [
         "QUADRATIC_INEQUALITY:concept:0",
@@ -18286,9 +18286,9 @@
       "source_type": null,
       "confirmation": "CLUSTER_CONFIRMED",
       "cached": false,
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_stage": "B",
-      "hyper_overall": "1.00",
+      "hyper_overall": "1.33",
       "strategy_id": "QUADRATIC_INEQUALITY:strategy",
       "concept_ids": [
         "QUADRATIC_INEQUALITY:concept:0",
@@ -21166,9 +21166,9 @@
       "source_type": null,
       "confirmation": "CLUSTER_CONFIRMED",
       "cached": false,
-      "leak_stripped": true,
+      "leak_stripped": false,
       "source_stage": null,
-      "hyper_overall": "1.50",
+      "hyper_overall": "1.83",
       "strategy_id": "COUNTING_PERM_COMB:strategy",
       "concept_ids": [
         "COUNTING_PERM_COMB:concept:0",
