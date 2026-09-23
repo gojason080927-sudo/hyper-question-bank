@@ -4,9 +4,11 @@ import { SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
 import { GANYEOM2_SPEC } from './bookIngestSpec'
 import {
   assertBookSegmentSource,
+  bookEffectivePageKind,
   bookPagePreamble,
   disambiguatePageNumbers,
   isBookProblemStart,
+  looksLikeAnswerKeyPage,
   refuseBookPersist,
   runBookSegment,
   splitBookProblems,
@@ -20,6 +22,24 @@ describe('generic book segment', () => {
     expect(() => assertBookSegmentSource(GANYEOM2_SPEC, SSEN_SOURCE_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
     expect(() => assertBookSegmentSource(GANYEOM2_SPEC, MATH2_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
     expect(() => refuseBookPersist(['--persist-auto-safe'])).toThrow(/NO_PERSIST/)
+  })
+
+  it('does not treat 하십시오 drill pages as answer keys', () => {
+    const markdown = [
+      '정답 및 풀이 42쪽',
+      '[0311~0314] 다음 점을 평행이동한 점의 좌표를 구하십시오.',
+      '0311 (-1, 0)',
+      '0312 (3, 2)',
+      '0313 (2, -2)',
+      '0314 (-3, -5)',
+      '[0315~0318] 다음 점이 옮겨지는 점의 좌표를 구하십시오.',
+      '0315 (3, 1)',
+      '0316 (-1, 5)',
+      '0317 (6, -2)',
+      '0318 (10, 7)',
+    ].join('\n')
+    expect(looksLikeAnswerKeyPage(markdown)).toBe(false)
+    expect(bookEffectivePageKind('ANSWER', markdown)).toBe('PROBLEM')
   })
 
   it('treats 하십시오 endings as finished stems', () => {
