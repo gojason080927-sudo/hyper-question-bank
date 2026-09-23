@@ -1,0 +1,148 @@
+{
+  "phase": "pre-apply",
+  "project": "owpxsmdcxjmsgadkdsci",
+  "student_care_accessed": false,
+  "rpc_empty": "HQB_INVALID_PROBLEM: problem_id가 필요합니다.",
+  "rpc_missing_dims": "HQB_INVALID_DIFFICULTY: 6개 차원과 overall이 모두 필요합니다.",
+  "rpc_range": "HQB_INVALID_DIFFICULTY: difficulty는 1–5만 허용합니다.",
+  "book_counts": {
+    "math2": 1152,
+    "ganyeom2": 529,
+    "rpm2": 1033,
+    "gojaeng2": 558,
+    "ildeung2": 410,
+    "lightssen2": 1109,
+    "typelevel2": 1079,
+    "mother2": 640,
+    "wanja2": 962,
+    "ssen1": 1253
+  },
+  "type_assignments": 5296,
+  "curriculum": 10422,
+  "samples": [
+    {
+      "book": "math2",
+      "number": "0070",
+      "problem_id": "83c988c1-dbd6-48f6-818c-2ee941a3f19c",
+      "version_id": "689df1b5-6b43-400e-ac31-50134bb469ce",
+      "review_status": "UNREVIEWED",
+      "text_len": 379,
+      "text_sha12": "MDA3MCDCuyDqtZDs",
+      "type_ids": [
+        "c1698148-a746-4add-8376-143e9e3fc075"
+      ],
+      "meta_unit": null,
+      "meta_type": null,
+      "meta_keypoints": null,
+      "meta_difficulty": null,
+      "dims": [
+        {
+          "concept_difficulty": 3,
+          "calculation_complexity": 3,
+          "reasoning_depth": 3,
+          "condition_complexity": 3,
+          "representation_complexity": 3,
+          "trap_level": 3,
+          "overall_difficulty": 3,
+          "difficulty_source": "MODEL"
+        }
+      ]
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0001",
+      "problem_id": "13108f2b-2739-4c2b-bb6d-62e2ca1072a6",
+      "version_id": "07f2bba8-545c-40a6-a67e-61aca3a0abc8",
+      "review_status": "UNREVIEWED",
+      "text_len": 76,
+      "text_sha12": "Meu2gO2EsCAxMDDq",
+      "type_ids": [
+        "6d256a72-660d-44c4-9219-130696f78e8b"
+      ],
+      "meta_unit": null,
+      "meta_type": null,
+      "meta_keypoints": null,
+      "meta_difficulty": null,
+      "dims": []
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0001",
+      "problem_id": "bf35f308-3980-498a-a424-3b155fe1d17a",
+      "version_id": "dbe5fb4e-8aba-40c3-9961-ae55888c35c5",
+      "review_status": "UNREVIEWED",
+      "text_len": 60,
+      "text_sha12": "MDAxIOuyiO2YuArr",
+      "type_ids": [
+        "c1698148-a746-4add-8376-143e9e3fc075"
+      ],
+      "meta_unit": null,
+      "meta_type": null,
+      "meta_keypoints": null,
+      "meta_difficulty": null,
+      "dims": []
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0001",
+      "problem_id": "c9b27e41-dea6-419b-b40e-e836800b3cb4",
+      "version_id": "67078c48-04f6-45d7-b743-5ccddc14b49a",
+      "review_status": "UNREVIEWED",
+      "text_len": 788,
+      "text_sha12": "MQrrj4TtmJXsnZgg",
+      "type_ids": [],
+      "meta_unit": null,
+      "meta_type": null,
+      "meta_keypoints": null,
+      "meta_difficulty": null,
+      "dims": []
+    },
+    {
+      "book": "mother2",
+      "number": "0001",
+      "problem_id": "c833d0e3-15c9-40de-a597-28258397ee41",
+      "version_id": "ee54e439-372a-405d-a86f-0f6eb6522a25",
+      "review_status": "UNREVIEWED",
+      "text_len": 52,
+      "text_sha12": "WzAwMX4wMDNdIOyI",
+      "type_ids": [],
+      "meta_unit": null,
+      "meta_type": null,
+      "meta_keypoints": null,
+      "meta_difficulty": null,
+      "dims": []
+    },
+    {
+      "book": "mother2",
+      "number": "0001",
+      "problem_id": "60f6898c-c67c-456a-a4b5-8f78eadd27f8",
+      "version_id": "f79aff42-e5d0-430e-89f4-bcc6350b2e4c",
+      "review_status": "UNREVIEWED",
+      "text_len": 71,
+      "text_sha12": "WzAwMS0wMDRdIOuL",
+      "type_ids": [
+        "c0b6dac8-6e2d-474e-8cdb-08ec3a858f88"
+      ],
+      "meta_unit": null,
+      "meta_type": null,
+      "meta_keypoints": null,
+      "meta_difficulty": null,
+      "dims": []
+    },
+    {
+      "book": "mother2",
+      "number": "0001",
+      "problem_id": "49e956b1-1bc8-4158-84b2-5e8b1f957620",
+      "version_id": "58b62e38-571e-486f-923e-e1d983d4e015",
+      "review_status": "UNREVIEWED",
+      "text_len": 57,
+      "text_sha12": "WzAwMS0wMDVdIOuL",
+      "type_ids": [],
+      "meta_unit": null,
+      "meta_type": null,
+      "meta_keypoints": null,
+      "meta_difficulty": null,
+      "dims": []
+    }
+  ]
+}

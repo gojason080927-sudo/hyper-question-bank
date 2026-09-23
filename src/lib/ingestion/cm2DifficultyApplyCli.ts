@@ -188,6 +188,12 @@ export async function runCm2DifficultyApplyCli(root = process.cwd(), argv = proc
       const rpc = await staff.rpc(DIFFICULTY_DIMS_RPC, { payload })
       if (rpc.error) {
         failed += 1
+        if (failed <= 3 || written === 0) {
+          console.error(`CM2_DIFF_RPC_FAIL book=${target.slug} problem=${problem.id}: ${rpc.error.message}`)
+        }
+        if (written === 0 && failed >= 3) {
+          throw new Error(`CM2_DIFF_RPC_ABORT: first writes failed (${rpc.error.message})`)
+        }
         continue
       }
       written += 1
