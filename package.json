@@ -48,6 +48,7 @@
     "pipeline:ssen-headings": "python3 scripts/extract-ssen-type-headings.py",
     "pipeline:book": "node scripts/pipeline-book.mjs",
     "ingest:book": "node scripts/ingest-book.mjs",
+    "ocr:math2": "node scripts/math2-ocr.mjs",
     "test:db:core-v1": "node scripts/core-v1-acceptance.mjs",
     "test:db:workflow-v1": "node scripts/workflow-v1-acceptance.mjs",
     "test:db:review-v1": "node scripts/review-target-v1-acceptance.mjs",
