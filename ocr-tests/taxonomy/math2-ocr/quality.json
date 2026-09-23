@@ -1,0 +1,51 @@
+{
+  "document_id": "7c40102b-b4dc-4ff1-a512-6a2912c27b4e",
+  "mode": "batch",
+  "batch_job_id": "0faafde8-04fc-4ce9-9a97-8c760ff9f0cb",
+  "pages": 200,
+  "success": 200,
+  "failed": 0,
+  "failed_pages": [],
+  "cache_hit": [1, 2],
+  "cache_miss": 198,
+  "paid_ocr_pages": 200,
+  "api": {
+    "realtime_probe_pages": [1, 2],
+    "batch_requests": 25,
+    "batch_succeeded": 25,
+    "http_429": 0,
+    "http_402": 0,
+    "ocr_pages_per_minute_limit": 125
+  },
+  "cost_usd": {
+    "probe_realtime": 0.008,
+    "batch": 0.396,
+    "total": 0.404,
+    "cap": 1.0,
+    "under_cap": true,
+    "official_realtime_per_page": 0.004,
+    "official_batch_per_page": 0.002
+  },
+  "production": {
+    "page_text_persisted": true,
+    "ocr_status": "SUCCEEDED",
+    "problem_sources": 0,
+    "new_document_created": false,
+    "ssen_page_count": 192,
+    "ssen_problem_sources": 1253,
+    "student_care_accessed": false
+  },
+  "quality": {
+    "korean_pages": 197,
+    "latexish_pages": 156,
+    "choice_pages": 165,
+    "image_pages": 114,
+    "pages_with_3plus_four_digit": 166,
+    "html_table_pages": 0,
+    "array_env_used_for_aligned_math": true,
+    "thin_expected_pages": [21, 41, 200],
+    "유형_heading_pages": 109,
+    "부설_misread_pages": [75, 91, 107, 123]
+  },
+  "next_ok": true
+}

@@ -71,3 +71,6 @@ public/review-crops/
 
 # STEP 8.39 inspect cache (per-item hashes; regenerated locally)
 ocr-tests/taxonomy/step8-39/inspect-cache.json
+
+# Full-book OCR markdown (copyrighted textbook text; keep local / cache only)
+ocr-tests/taxonomy/math2-ocr/pages/
