@@ -49,6 +49,7 @@ describe('book complete pipeline', () => {
     expect(plan.ocr_new_calls).toBe(0)
     expect(plan.writes).toBe(0)
     expect(plan.extra_writes_on_rerun).toBe(0)
+    expect(plan.stages).toContain('CLASSIFY')
     expect(plan.stages).toEqual([...BOOK_COMPLETE_STAGES])
     expect(formatBookCompleteMarkdown(plan)).toContain('identical PDF true')
   })

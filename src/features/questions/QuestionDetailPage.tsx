@@ -53,6 +53,11 @@ type Bundle = {
   reviews: Array<{ status: string; reviewer: string | null; note: string | null; reviewed_at: string | null }>
 }
 
+function publisherTypeLabel(label: string | null | undefined): string {
+  if (!label || label === 'PDF_REGION') return '없음 (source_type)'
+  return label
+}
+
 export function QuestionDetailPage() {
   const { problemId } = useParams()
   const { data: catalogs } = useCatalogs()
@@ -93,6 +98,7 @@ export function QuestionDetailPage() {
   if (error) return <main className="page"><p className="banner error">{error}</p></main>
   if (!bundle) return <main className="page"><p className="muted">문제를 불러오는 중입니다.</p></main>
   const human = bundle.difficulty.find((row) => row.difficulty_source === 'HUMAN')
+  const model = bundle.difficulty.find((row) => row.difficulty_source === 'MODEL')
   const expr = bundle.expressions[0]
 
   return (
@@ -161,6 +167,7 @@ export function QuestionDetailPage() {
         <h2>분류</h2>
         <p><strong>교육과정</strong> {bundle.curriculum[0] ? nodePath(catalogs?.nodes ?? [], bundle.curriculum[0].node_id) || bundle.curriculum[0].name : '—'}</p>
         <p><strong>개념</strong> {bundle.concepts.map((row) => `${row.name}${row.is_primary ? ' (PRIMARY)' : ''}`).join(', ') || '—'}</p>
+        <p><strong>출판사 유형</strong> {publisherTypeLabel(bundle.sources[0]?.source_type_label)}</p>
         <p><strong>HYPER 유형</strong> {bundle.hyper_types.map((row) => row.name).join(', ') || '—'}</p>
         <p><strong>전략</strong> {bundle.strategies[0]?.name || '—'}</p>
         {bundle.strategies[0]?.steps?.length ? (
@@ -176,15 +183,22 @@ export function QuestionDetailPage() {
       </section>
       <section className="card">
         <h2>난이도</h2>
-        {human ? (
+        {model ? (
           <p>
-            개념 {human.concept_difficulty} · 계산 {human.calculation_complexity} · 추론 {human.reasoning_depth} · 조건{' '}
-            {human.condition_complexity} · 표현 {human.representation_complexity} · 함정 {human.trap_level} → overall{' '}
-            {Number(human.overall_difficulty).toFixed(2)} ({human.difficulty_source})
+            <strong>HYPER</strong> 개념 {model.concept_difficulty} · 계산 {model.calculation_complexity} · 추론 {model.reasoning_depth} · 조건{' '}
+            {model.condition_complexity} · 표현 {model.representation_complexity} · 함정 {model.trap_level} → overall{' '}
+            {Number(model.overall_difficulty).toFixed(2)}
           </p>
         ) : (
-          <p>HUMAN 난이도가 없습니다.</p>
+          <p>HYPER 난이도가 없습니다.</p>
         )}
+        {human ? (
+          <p>
+            <strong>HUMAN</strong> 개념 {human.concept_difficulty} · 계산 {human.calculation_complexity} · 추론 {human.reasoning_depth} · 조건{' '}
+            {human.condition_complexity} · 표현 {human.representation_complexity} · 함정 {human.trap_level} → overall{' '}
+            {Number(human.overall_difficulty).toFixed(2)}
+          </p>
+        ) : null}
       </section>
       <section className="card">
         <h2>검수 이력</h2>

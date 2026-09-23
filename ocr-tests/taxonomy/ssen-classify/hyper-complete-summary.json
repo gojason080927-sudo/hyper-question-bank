@@ -1,0 +1,132 @@
+{
+  "status": "DRY_RUN_BEFORE_PERSIST",
+  "classifier_version": "ssen-hyper-v1",
+  "listed": 1242,
+  "summary": {
+    "listed": 1242,
+    "cached_auto": 793,
+    "new_targets": 449,
+    "hyper_type": 1242,
+    "hyper_type_remaining": 0,
+    "low_confidence": 0,
+    "source_confirmed": 793,
+    "cluster_confirmed": 449,
+    "ai_confirmed": 0,
+    "concept": 1242,
+    "difficulty": 1242,
+    "strategy": 1242,
+    "key_points": 1242,
+    "mistakes": 1242,
+    "search_features": 1242,
+    "leak_stripped": 0,
+    "persist_type": 1242,
+    "type_marker_missing": 418,
+    "type_marker_missing_typed": 418,
+    "type_marker_ambiguous": 27,
+    "type_marker_ambiguous_typed": 27,
+    "answer_key_leak": 6,
+    "answer_key_leak_typed": 6
+  },
+  "confirmations": {
+    "CLUSTER_CONFIRMED": 449,
+    "SOURCE_CONFIRMED": 793
+  },
+  "cached_auto": 793,
+  "new_targets": 449,
+  "leak_stripped": 0,
+  "embedding_clusters": 412,
+  "ai": {
+    "model": "mistral-small-latest",
+    "calls": 0,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "usd": 0,
+    "skipped": null,
+    "types": 0
+  },
+  "neighbor_sample": {
+    "checked": 30,
+    "matched": 30
+  },
+  "embeddings": 1244,
+  "fingerprints": 3543,
+  "integrity": {
+    "listed": 1242,
+    "embeddings_ok": true,
+    "fingerprints_ok": true,
+    "delete": 0,
+    "raw_ocr_writes": 0
+  },
+  "specials": {
+    "1005": {
+      "type_id": "QUADRATIC_INEQUALITY",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "1157": {
+      "type_id": "COUNTING_PERM_COMB",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "1190": {
+      "type_id": "COUNTING_PERM_COMB",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "1191": {
+      "type_id": "COUNTING_PERM_COMB",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "0507": {
+      "type_id": "QUADRATIC_VIETAS",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "0527": {
+      "type_id": "QUADRATIC_DISCRIMINANT",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "0650": {
+      "type_id": "QUAD_FN_RELATION",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "0774": {
+      "type_id": "CUBIC_QUARTIC_EQ",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "0775": {
+      "type_id": "CUBIC_QUARTIC_EQ",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    },
+    "0882": {
+      "type_id": "LINEAR_INEQUALITY",
+      "confirmation": "CLUSTER_CONFIRMED",
+      "leak_stripped": false,
+      "source_type": null,
+      "reasons": []
+    }
+  }
+}

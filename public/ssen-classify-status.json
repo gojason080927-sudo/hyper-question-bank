@@ -1,0 +1,41 @@
+{
+  "source_id": "9ff369b4-5b16-4cb8-bfc3-a6b180c18703",
+  "title": "쎈수학 공통수학1",
+  "inspected_at": "2026-09-14T07:48:54.574Z",
+  "assigned_by": "SSEN_HYPER_COMPLETE",
+  "classifier_version": "ssen-hyper-v1",
+  "listed": 1242,
+  "auto": 1242,
+  "human": 0,
+  "low_confidence": 0,
+  "banner": "HYPER 유형 1242/1242 · 확인 필요 0",
+  "hyper_type": 1242,
+  "concept": 1242,
+  "difficulty": 1242,
+  "strategy": 1242,
+  "key_points": 1242,
+  "mistakes": 1242,
+  "search_features": 1242,
+  "confirmations": {
+    "CLUSTER_CONFIRMED": 449,
+    "SOURCE_CONFIRMED": 793
+  },
+  "live_needs_review": 0,
+  "persisted": true,
+  "persist": {
+    "written": 0,
+    "skipped": 1242,
+    "rerun": true,
+    "leak_versions": 0,
+    "delete": 0
+  },
+  "ai": {
+    "model": "mistral-small-latest",
+    "calls": 0,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "usd": 0,
+    "skipped": null,
+    "types": 0
+  }
+}

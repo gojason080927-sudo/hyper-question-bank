@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { getSupabase } from '../../lib/supabase/client'
 import { SIGNED_URL_TTL_SEC, SOURCE_BUCKET } from '../../lib/pdf/constants'
@@ -10,6 +10,58 @@ import { RecognitionPanel } from './RecognitionPanel'
 import type { SourceBundle, SourceRegion } from './types'
 import { bookReadyLabel, extractionStatusLabel, liveReviewQueueLabel, ocrStatusLabel, sourcePipelineLabel } from '../../lib/outline/instructorLabels'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
+
+type BookQaStatus = {
+  qa_complete?: boolean
+  ready_for_use?: boolean
+  human_exceptions?: number
+  banner?: string
+  inspected_at?: string
+  paid_ocr_usd?: number
+  completed_items?: number
+  total_items?: number
+  counts?: { auto_safe?: number; verified_by_source?: number; human_final_check?: number }
+}
+
+type ClassifyStatus = {
+  banner?: string
+  auto?: number
+  human?: number
+  listed?: number
+  hyper_type?: number
+  low_confidence?: number
+  concept?: number
+  difficulty?: number
+  strategy?: number
+  key_points?: number
+  mistakes?: number
+  search_features?: number
+  confirmations?: Record<string, number>
+  ai?: { usd?: number; calls?: number; skipped?: string | null }
+  inspected_at?: string
+}
+
+async function fetchJson<T>(url: string): Promise<T | null> {
+  try {
+    const res = await fetch(url)
+    if (!res.ok) return null
+    return (await res.json()) as T
+  } catch {
+    return null
+  }
+}
+
+async function loadBookQaStatus(documentId: string): Promise<BookQaStatus | null> {
+  const primary = await fetchJson<BookQaStatus>(`/book-status/${documentId}.json`)
+  if (primary) return primary
+  if (documentId === SSEN_SOURCE_DOCUMENT_ID) return fetchJson<BookQaStatus>('/ssen-book-status.json')
+  return null
+}
+
+async function loadClassifyStatus(documentId: string): Promise<ClassifyStatus | null> {
+  if (documentId !== SSEN_SOURCE_DOCUMENT_ID) return null
+  return fetchJson<ClassifyStatus>('/ssen-classify-status.json')
+}
 
 export function SourceDetailPage() {
   const { documentId } = useParams()
@@ -41,21 +93,12 @@ export function SourceDetailPage() {
     ocr_status?: string
     extraction_status?: string
   } | null>(null)
-  const [bookStatus, setBookStatus] = useState<{
-    qa_complete?: boolean
-    ready_for_use?: boolean
-    human_exceptions?: number
-    banner?: string
-    inspected_at?: string
-    paid_ocr_usd?: number
-    completed_items?: number
-    total_items?: number
-    counts?: { auto_safe?: number; verified_by_source?: number; human_final_check?: number }
-  } | null>(null)
+  const [bookStatus, setBookStatus] = useState<BookQaStatus | null>(null)
+  const [classifyStatus, setClassifyStatus] = useState<ClassifyStatus | null>(null)
 
   const pageNumber = Math.max(1, Number(searchParams.get('page') || pageInput) || 1)
 
-  async function reload() {
+  const reload = useCallback(async () => {
     const client = getSupabase()
     if (!client || !documentId) return
     const { data, error: fetchError } = await client.rpc('hqb_fetch_source_document', {
@@ -68,21 +111,9 @@ export function SourceDetailPage() {
     setBundle(data as SourceBundle)
     const runtime = await client.rpc('hqb_source_runtime_stats', { p_document_id: documentId })
     if (!runtime.error && runtime.data) setStats(runtime.data as typeof stats)
-    try {
-      const res = await fetch(`/book-status/${documentId}.json`)
-      if (res.ok) {
-        setBookStatus((await res.json()) as typeof bookStatus)
-      } else if (documentId === SSEN_SOURCE_DOCUMENT_ID) {
-        const fallback = await fetch('/ssen-book-status.json')
-        if (fallback.ok) setBookStatus((await fallback.json()) as typeof bookStatus)
-        else setBookStatus(null)
-      } else {
-        setBookStatus(null)
-      }
-    } catch {
-      setBookStatus(null)
-    }
-  }
+    setBookStatus(await loadBookQaStatus(documentId))
+    setClassifyStatus(await loadClassifyStatus(documentId))
+  }, [documentId])
 
   useEffect(() => {
     const client = getSupabase()
@@ -112,9 +143,7 @@ export function SourceDetailPage() {
       }
       setPdfData(await response.arrayBuffer())
     })()
-    // reload is defined in the component; initial load only
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [documentId])
+  }, [documentId, reload])
 
   const page = bundle?.pages.find((row) => row.page_number === pageNumber)
   const pageRegions = useMemo(
@@ -284,6 +313,26 @@ export function SourceDetailPage() {
             {bookStatus.inspected_at ? new Date(bookStatus.inspected_at).toLocaleString('ko-KR') : '—'} ·{' '}
             <strong>OCR 비용</strong> ${Number(bookStatus.paid_ocr_usd ?? 0).toFixed(4)}
           </p>
+          {classifyStatus ? (
+            <div>
+              <p>
+                <strong>HYPER 유형</strong> {classifyStatus.hyper_type ?? classifyStatus.auto ?? 0}/{classifyStatus.listed ?? bookStatus.total_items ?? '—'} ·{' '}
+                <strong>유형 확인 필요</strong> {classifyStatus.low_confidence ?? classifyStatus.human ?? 0}
+              </p>
+              <p>
+                <strong>개념</strong> {classifyStatus.concept ?? '—'} · <strong>난이도</strong> {classifyStatus.difficulty ?? '—'} ·{' '}
+                <strong>전략</strong> {classifyStatus.strategy ?? '—'} · <strong>핵심 포인트·대표 실수</strong>{' '}
+                {classifyStatus.key_points ?? '—'}/{classifyStatus.mistakes ?? '—'} · <strong>검색 준비</strong> {classifyStatus.search_features ?? '—'}
+              </p>
+              <p className="muted">
+                SOURCE {classifyStatus.confirmations?.SOURCE_CONFIRMED ?? 0} · CLUSTER {classifyStatus.confirmations?.CLUSTER_CONFIRMED ?? 0} · AI{' '}
+                {classifyStatus.confirmations?.AI_CONFIRMED ?? 0} · LOW {classifyStatus.confirmations?.LOW_CONFIDENCE_REVIEW ?? 0}
+                {' · '}AI ${Number(classifyStatus.ai?.usd ?? 0).toFixed(4)}
+                {classifyStatus.inspected_at ? ` · ${new Date(classifyStatus.inspected_at).toLocaleString('ko-KR')}` : ''}
+              </p>
+              <p className="muted">출판사 source_type 없음과 HYPER 유형 미분류는 다릅니다.</p>
+            </div>
+          ) : null}
           <div className="actions">
             <Link className="btn primary" to="/worksheets">문제지 만들기</Link>
             {humanRemaining > 0 ? (
