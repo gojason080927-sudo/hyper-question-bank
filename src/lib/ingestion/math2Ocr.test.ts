@@ -8,6 +8,7 @@ import {
   assertPageRange,
   batchesOf,
   cacheKey,
+  estimateMath2BatchUsd,
   estimateMath2OcrUsd,
   nextSegmentationApproach,
   paidCapAllows,
@@ -38,6 +39,7 @@ describe('math2 OCR planner', () => {
     expect(plan.underCap).toBe(true)
     expect(plan.persistProblems).toBe(false)
     expect(estimateMath2OcrUsd(200)).toBe(0.8)
+    expect(estimateMath2BatchUsd(200)).toBe(0.4)
     expect(paidCapAllows(0, 200).ok).toBe(true)
     expect(paidCapAllows(0.8, 51).ok).toBe(false)
     expect(paidCapAllows(MATH2_OCR_COST_CAP_USD, 1).ok).toBe(false)

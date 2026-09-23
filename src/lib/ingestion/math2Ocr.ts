@@ -19,6 +19,7 @@ export const MATH2_OCR_PROVIDER = MISTRAL_PROVIDER
 export const MATH2_OCR_MODEL = MISTRAL_MODEL
 export const MATH2_OCR_PROFILE = 'ocr-latest+blocks+tables'
 export const MATH2_OCR_USD_PER_PAGE = 0.004
+export const MATH2_OCR_BATCH_USD_PER_PAGE = 0.002
 export const MATH2_OCR_COST_CAP_USD = 1.0
 export const MATH2_OCR_BATCH_SIZE = 8
 export const MATH2_OCR_GAP_MS = 2500
@@ -81,8 +82,12 @@ export function assertPageRange(pages: number[]): void {
   }
 }
 
-export function estimateMath2OcrUsd(newCalls: number): number {
-  return Number((Math.max(0, newCalls) * MATH2_OCR_USD_PER_PAGE).toFixed(4))
+export function estimateMath2OcrUsd(newCalls: number, unit = MATH2_OCR_USD_PER_PAGE): number {
+  return Number((Math.max(0, newCalls) * unit).toFixed(4))
+}
+
+export function estimateMath2BatchUsd(newCalls: number): number {
+  return estimateMath2OcrUsd(newCalls, MATH2_OCR_BATCH_USD_PER_PAGE)
 }
 
 export function paidCapAllows(spentUsd: number, nextCalls: number): { ok: boolean; nextUsd: number; totalUsd: number } {

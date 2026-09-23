@@ -16,6 +16,7 @@ import {
   MATH2_CACHE_DIR,
   MATH2_DOCUMENT_ID,
   MATH2_OCR_BATCH_SIZE,
+  MATH2_OCR_BATCH_USD_PER_PAGE,
   MATH2_OCR_GAP_MS,
   MATH2_OCR_RETRY_429_MS,
   MATH2_OCR_COST_CAP_USD,
@@ -31,6 +32,7 @@ import {
   assertPageRange,
   batchesOf,
   cacheFileName,
+  estimateMath2BatchUsd,
   estimateMath2OcrUsd,
   formatMath2QaMarkdown,
   fromApiPageIndex,
@@ -254,6 +256,210 @@ function writeReports(
   return summary
 }
 
+async function mistralAuthHeaders(): Promise<Record<string, string>> {
+  const creds = readMistralCredentials()
+  if (!creds) throw new Error('MISTRAL_ABSENT')
+  return { Authorization: `Bearer ${creds.apiKey}` }
+}
+
+async function uploadMistralFile(bytes: Buffer, fileName: string, purpose: 'ocr' | 'batch'): Promise<string> {
+  const form = new FormData()
+  form.set('purpose', purpose)
+  form.set('file', new Blob([new Uint8Array(bytes)], { type: purpose === 'batch' ? 'application/jsonl' : 'application/pdf' }), fileName)
+  const response = await fetch('https://api.mistral.ai/v1/files', {
+    method: 'POST',
+    headers: await mistralAuthHeaders(),
+    body: form,
+  })
+  const body = (await response.json()) as { id?: string; message?: string }
+  if (!response.ok || !body.id) throw new Error(body.message ?? `MISTRAL_FILE_HTTP_${response.status}`)
+  return body.id
+}
+
+async function mistralFileUrl(fileId: string): Promise<string> {
+  const response = await fetch(`https://api.mistral.ai/v1/files/${fileId}/url`, {
+    headers: await mistralAuthHeaders(),
+  })
+  const body = (await response.json()) as { url?: string; message?: string }
+  if (!response.ok || !body.url) throw new Error(body.message ?? `MISTRAL_FILE_URL_${response.status}`)
+  return body.url
+}
+
+function ingestBatchPages(root: string, pdfHash: string, raw: MistralOcrLike, fallbackPages: number[]): CachedPage[] {
+  const out: CachedPage[] = []
+  const returned = new Set<number>()
+  for (const rawPage of raw.pages ?? []) {
+    const bookPage = fromApiPageIndex(rawPage.index ?? 0)
+    if (bookPage < 1 || bookPage > MATH2_PAGE_COUNT) continue
+    const markdown = rawPage.markdown ?? ''
+    const record: CachedPage = {
+      page: bookPage,
+      markdown,
+      raw: { ...raw, pages: [rawPage] },
+      model: raw.model ?? MATH2_OCR_MODEL,
+    }
+    writeCachedPage(root, pdfHash, record)
+    out.push(record)
+    returned.add(bookPage)
+  }
+  for (const page of fallbackPages) {
+    if (returned.has(page)) continue
+    const markdown = pageMarkdownFromRaw(raw, page - 1)
+    if (!markdown) continue
+    const record: CachedPage = { page, markdown, raw, model: raw.model ?? MATH2_OCR_MODEL }
+    writeCachedPage(root, pdfHash, record)
+    out.push(record)
+  }
+  return out
+}
+
+async function runMath2OcrBatch(input: {
+  root: string
+  pdfPath: string
+  pdfHash: string
+  missPages: number[]
+  persistPageText: boolean
+  plan: ReturnType<typeof planMath2Ocr>
+  cached: Map<number, CachedPage>
+}): Promise<ReturnType<typeof writeReports>> {
+  const conservativeUsd = estimateMath2OcrUsd(input.missPages.length)
+  const batchUsd = estimateMath2BatchUsd(input.missPages.length)
+  console.log(JSON.stringify({
+    phase: 'batch-pre-call',
+    pages: input.missPages.length,
+    batch_usd: batchUsd,
+    conservative_usd: conservativeUsd,
+    cap: MATH2_OCR_COST_CAP_USD,
+  }))
+  if (conservativeUsd > MATH2_OCR_COST_CAP_USD + 1e-9) {
+    throw new Error(`MATH2_OCR_CAP: conservative $${conservativeUsd} exceeds $${MATH2_OCR_COST_CAP_USD}`)
+  }
+  const pdfId = await uploadMistralFile(readFileSync(input.pdfPath), 'ssen-common-math-2.pdf', 'ocr')
+  const documentUrl = await mistralFileUrl(pdfId)
+  const groups = batchesOf(input.missPages, MATH2_OCR_BATCH_SIZE)
+  const lines = groups.map((pages, index) =>
+    JSON.stringify({
+      custom_id: `math2-${String(index).padStart(3, '0')}-p${String(pages[0]).padStart(3, '0')}-${String(pages.at(-1)).padStart(3, '0')}`,
+      body: {
+        model: MATH2_OCR_MODEL,
+        document: { type: 'document_url', document_url: documentUrl },
+        pages: toApiPages(pages),
+        include_image_base64: false,
+        include_blocks: true,
+        table_format: 'html',
+      },
+    }),
+  )
+  const jsonl = Buffer.from(`${lines.join('\n')}\n`)
+  const jsonlPath = path.join(cacheDir(input.root), 'batch-input.jsonl')
+  mkdirSync(cacheDir(input.root), { recursive: true })
+  writeFileSync(jsonlPath, jsonl)
+  const inputFileId = await uploadMistralFile(jsonl, 'math2-ocr.jsonl', 'batch')
+  const created = await fetch('https://api.mistral.ai/v1/batch/jobs', {
+    method: 'POST',
+    headers: { ...(await mistralAuthHeaders()), 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      endpoint: '/v1/ocr',
+      model: MATH2_OCR_MODEL,
+      input_files: [inputFileId],
+      timeout_hours: 6,
+      metadata: { source_id: MATH2_DOCUMENT_ID, persist_problems: 'false' },
+    }),
+  })
+  const job = (await created.json()) as { id?: string; status?: string; message?: string }
+  if (!created.ok || !job.id) throw new Error(job.message ?? `BATCH_CREATE_${created.status}`)
+  writeFileSync(path.join(cacheDir(input.root), 'batch-job.json'), JSON.stringify(job, null, 2))
+  console.log(JSON.stringify({ phase: 'batch-queued', id: job.id, requests: groups.length, status: job.status }))
+
+  let current = job
+  for (let i = 0; i < 240; i += 1) {
+    await sleep(30000)
+    const poll = await fetch(`https://api.mistral.ai/v1/batch/jobs/${job.id}`, { headers: await mistralAuthHeaders() })
+    current = (await poll.json()) as typeof job & {
+      status?: string
+      output_file?: string
+      succeeded_requests?: number
+      failed_requests?: number
+      completed_requests?: number
+      total_requests?: number
+    }
+    console.log(JSON.stringify({
+      phase: 'batch-poll',
+      status: current.status,
+      succeeded: current.succeeded_requests,
+      failed: current.failed_requests,
+      completed: current.completed_requests,
+      total: current.total_requests,
+    }))
+    if (current.status === 'SUCCESS' || current.status === 'FAILED' || current.status === 'TIMEOUT_EXCEEDED' || current.status === 'CANCELLED') break
+  }
+  if (current.status !== 'SUCCESS') throw new Error(`BATCH_STATUS_${current.status ?? 'unknown'}`)
+
+  const outputId = (current as { output_file?: string }).output_file
+  if (!outputId) throw new Error('BATCH_NO_OUTPUT')
+  const outRes = await fetch(`https://api.mistral.ai/v1/files/${outputId}/content`, { headers: await mistralAuthHeaders() })
+  if (!outRes.ok) throw new Error(`BATCH_OUTPUT_${outRes.status}`)
+  const outText = await outRes.text()
+  writeFileSync(path.join(cacheDir(input.root), 'batch-output.jsonl'), outText)
+
+  const ingested: CachedPage[] = []
+  for (const line of outText.split('\n').filter(Boolean)) {
+    const row = JSON.parse(line) as { custom_id?: string; response?: { body?: MistralOcrLike }; body?: MistralOcrLike; error?: unknown }
+    const raw = stripImageBase64(row.response?.body ?? row.body ?? {})
+    const match = /p(\d{3})-(\d{3})/.exec(row.custom_id ?? '')
+    const fallback = match
+      ? Array.from({ length: Number(match[2]) - Number(match[1]) + 1 }, (_, i) => Number(match[1]) + i)
+      : []
+    ingested.push(...ingestBatchPages(input.root, input.pdfHash, raw, fallback))
+  }
+
+  const qaRows: Math2PageQa[] = []
+  const markdownByPage = new Map<number, string>()
+  const calledPages: number[] = []
+  for (const page of input.plan.cachedPages) {
+    const hit = input.cached.get(page)!
+    qaRows.push(analyzeMath2Page({ page, markdown: hit.markdown, raw: hit.raw, cached: true }))
+    markdownByPage.set(page, hit.markdown)
+  }
+  for (const rec of ingested) {
+    qaRows.push(analyzeMath2Page({ page: rec.page, markdown: rec.markdown, raw: rec.raw, cached: false }))
+    markdownByPage.set(rec.page, rec.markdown)
+    calledPages.push(rec.page)
+  }
+  qaRows.sort((a, b) => a.page - b.page)
+  const unique = new Map(qaRows.map((row) => [row.page, row]))
+  const finalRows = [...unique.values()].sort((a, b) => a.page - b.page)
+  const billedPages = new Set(calledPages).size
+  const spentUsd = estimateMath2BatchUsd(billedPages)
+
+  if (input.persistPageText) {
+    await writePageTextToSource(
+      finalRows.filter((row) => row.ok).map((row) => ({ page: row.page, markdown: markdownByPage.get(row.page) ?? '' })),
+    )
+  }
+  const summary = writeReports(input.root, {
+    plan: input.plan,
+    qaRows: finalRows,
+    markdownByPage,
+    spentUsd,
+    modelUsed: `${MATH2_OCR_MODEL}+batch`,
+    calledPages: [...new Set(calledPages)].sort((a, b) => a - b),
+    persistPageText: input.persistPageText,
+  })
+  console.log(JSON.stringify({
+    phase: 'done',
+    mode: 'batch',
+    success: summary.qa.success,
+    failed: summary.qa.failed,
+    cached: summary.qa.cached,
+    called: billedPages,
+    spent_usd: spentUsd,
+    unit: MATH2_OCR_BATCH_USD_PER_PAGE,
+    persist_problems: false,
+  }))
+  return summary
+}
+
 export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slice(2)) {
   const gate = parsePaidGate(argv)
   const persistPageText = argv.includes('--persist-page-text')
@@ -281,9 +487,11 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
         cached: plan.cachedPages.length,
         miss: plan.missPages.length,
         estimated_usd: plan.estimatedUsd,
+        batch_usd: estimateMath2BatchUsd(plan.missPages.length),
         cap: plan.capUsd,
         under_cap: plan.underCap,
         persist_problems: false,
+        prefer_batch: argv.includes('--prefer-batch'),
         dry_run: !gate.allowPaidApi || !gate.confirmCost,
         credentials: hasMistralCredentials() ? 'PRESENT' : 'ABSENT',
       },
@@ -312,6 +520,18 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
   if (!plan.underCap) throw new Error(`MATH2_OCR_CAP: estimated $${plan.estimatedUsd} exceeds $${plan.capUsd}`)
   assertPaidMistralAllowed(gate)
   if (plan.missPages.length) assertPageRange(plan.missPages)
+  if (argv.includes('--prefer-batch')) {
+    if (!pdfPath) throw new Error('MATH2_OCR_PDF_MISSING')
+    return runMath2OcrBatch({
+      root,
+      pdfPath,
+      pdfHash,
+      missPages: plan.missPages,
+      persistPageText,
+      plan,
+      cached,
+    })
+  }
 
   let documentUrl: string | null = null
   try {
