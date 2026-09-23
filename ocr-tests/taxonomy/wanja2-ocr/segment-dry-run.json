@@ -1,0 +1,109 @@
+{
+  "sourceId": "cf7a9be6-a6cd-42e5-b17c-448a30bd760c",
+  "title": "공통수학 2 완자 기출PICK",
+  "persist_problems": false,
+  "pages": 228,
+  "candidates": 1074,
+  "auto_safe": 962,
+  "needs_review": 110,
+  "blocked": 2,
+  "duplicate_suspects": 0,
+  "missing_suspects": 0,
+  "reverse_or_jump": 0,
+  "cross_page": 1,
+  "duplicate_numbers": [],
+  "missing_numbers": [],
+  "reason_counts": {
+    "FALSE_OR_OUT_OF_RANGE_NUMBER": 1,
+    "THIN_STEM": 2,
+    "INCOMPLETE_AT_PAGE_BREAK": 6,
+    "PAGE_TAIL": 6,
+    "STEM_MAY_BE_CUT": 37,
+    "CHOICES_INCOMPLETE": 79,
+    "NUMBER_FLOW": 3,
+    "RUNNING_FOOTER": 12,
+    "CROSS_PAGE_STITCH": 1
+  },
+  "samples": [
+    {
+      "page": 6,
+      "problem_number": "0001",
+      "verdict": "AUTO_SAFE",
+      "reasons": [],
+      "stem_preview": "0001 학명 기출 좌표평면 위의 점 A(a, 3)에 대하여 $\\overline{OA}=4$일 때, $a^2$의 값은? (단, O는 원점이다.) ① 6 ② 7 ③ 8 ④ 9 ⑤ 10 $\\overline{OA}=4$이므로 $\\sqrt{a^2+3^2}=4$ 양변을 체급하면 $a^2+9=16$ ∴ $a^2=7$",
+      "choice_count": 5,
+      "latex_count": 5,
+      "image_count": 0,
+      "section": null,
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 9,
+      "problem_number": "0018",
+      "verdict": "NEEDS_REVIEW",
+      "reasons": [
+        "CHOICES_INCOMPLETE",
+        "STEM_MAY_BE_CUT"
+      ],
+      "stem_preview": "0018 두 점 O(0, 0), A(5, 6)과 임의의 점 P에 대하여 $\\overline{OP} + \\overline{AP}$의 최솟값은? - ① $2\\sqrt{15}$ $\\sqrt{2} \\sqrt{61}$ $\\sqrt{3} \\sqrt{62}$ - ④ $3\\sqrt{7}$ $\\sqrt{5} 8$ $\\overline{OP",
+      "choice_count": 2,
+      "latex_count": 9,
+      "image_count": 0,
+      "section": null,
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 1,
+      "problem_number": "1070",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "FALSE_OR_OUT_OF_RANGE_NUMBER",
+        "THIN_STEM",
+        "INCOMPLETE_AT_PAGE_BREAK",
+        "PAGE_TAIL",
+        "STEM_MAY_BE_CUT"
+      ],
+      "stem_preview": "1070재",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": null,
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 154,
+      "problem_number": "0709",
+      "verdict": "NEEDS_REVIEW",
+      "reasons": [
+        "CROSS_PAGE_STITCH",
+        "STEM_MAY_BE_CUT"
+      ],
+      "stem_preview": "0709 학원 기출 다음은 $a, b, c$ 가 정수일 때, $f(x) = ax^2 + bx + c$ 에 대하여 $f(0)$, $f(1)$ 이 홀수이면 방정식 $f(x) = 0$ 은 정수인 근을 갖지 않음을 증명한 것이다. 증명 방정식 $f(x) = 0$ 이 정수인 근 $a$ 를 가진다고 가정하면 $f(a) = 0$ 이다",
+      "choice_count": 0,
+      "latex_count": 12,
+      "image_count": 0,
+      "section": "29-9",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": 155,
+      "cross_page": true,
+      "segment_status": "AUTO_OK"
+    }
+  ],
+  "stitches": [
+    {
+      "page": 154,
+      "problem_number": "0709",
+      "from": 155
+    }
+  ],
+  "issues": []
+}
