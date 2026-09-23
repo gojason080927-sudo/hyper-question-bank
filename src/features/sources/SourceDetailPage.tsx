@@ -10,6 +10,7 @@ import { RecognitionPanel } from './RecognitionPanel'
 import type { SourceBundle, SourceRegion } from './types'
 import { bookReadyLabel, extractionStatusLabel, liveReviewQueueLabel, ocrStatusLabel, sourcePipelineLabel } from '../../lib/outline/instructorLabels'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../../lib/outline/ssenToc'
+import { emptyPageTextHint } from './sourceDetailHints'
 
 type BookQaStatus = {
   qa_complete?: boolean
@@ -482,7 +483,7 @@ export function SourceDetailPage() {
               <p>{page.extracted_text}</p>
             </div>
           ) : (
-            <p className="hint">이 페이지에는 의미 있는 텍스트 층이 거의 없습니다. [OCR 테스트]는 선택한 영역 한 곳만 실행합니다. 192페이지 전체는 돌리지 않습니다.</p>
+            <p className="hint">{emptyPageTextHint(doc.page_count)}</p>
           )}
         </aside>
       </section>
