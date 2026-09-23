@@ -108,7 +108,18 @@ export const MOTHER2_SPEC: BookIngestSpec = {
   pdfPaths: ['/tmp/mother2-original.pdf', '.ocr-temp/mother2-original.pdf'],
 }
 
-export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC, TYPELEVEL2_SPEC, MOTHER2_SPEC]
+export const WANJA2_SPEC: BookIngestSpec = {
+  slug: 'wanja2',
+  sourceId: 'cf7a9be6-a6cd-42e5-b17c-448a30bd760c',
+  title: '공통수학 2 완자 기출PICK',
+  pageCount: 228,
+  pdfHash: '70f5aea0f7634e1009b4ddda8b04c6ef15e741a95147a214671c96bb9b54f03d',
+  cacheDir: '.ocr-temp/wanja2-ocr',
+  reportDir: 'ocr-tests/taxonomy/wanja2-ocr',
+  pdfPaths: ['/tmp/wanja2-original.pdf', '.ocr-temp/wanja2-original.pdf'],
+}
+
+export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC, TYPELEVEL2_SPEC, MOTHER2_SPEC, WANJA2_SPEC]
 
 export function specFromBookArg(argv: string[], fallback = GANYEOM2_SPEC): BookIngestSpec {
   const flag = argv.find((arg) => arg.startsWith('--book='))
