@@ -1,0 +1,33 @@
+{
+  "phase": "persist-auto-safe",
+  "persist_problems": true,
+  "sourceId": "9eee97e2-4252-4348-a842-4d60eb8590f0",
+  "engine": "hqb_upsert_problem_draft_from_identity",
+  "before": 0,
+  "after": 558,
+  "auto_safe": 558,
+  "created": 558,
+  "existing": 0,
+  "failed": 0,
+  "review_held": 79,
+  "rerun": {
+    "before": 558,
+    "after": 558,
+    "created": 0,
+    "existing": 558,
+    "failed": 0
+  },
+  "failed_rows": [],
+  "samples": [
+    { "page": 3, "problem_number": "0041" },
+    { "page": 8, "problem_number": "0001" },
+    { "page": 8, "problem_number": "0002" },
+    { "page": 8, "problem_number": "0004" }
+  ],
+  "classification_sample": {
+    "tables": ["problem_curriculum", "problem_type_assignments", "problem_difficulty"],
+    "stored": false,
+    "classification_status": "DRAFT",
+    "item_format_stored": true
+  }
+}

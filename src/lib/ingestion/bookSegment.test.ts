@@ -85,6 +85,20 @@ describe('generic book segment', () => {
       label: 'numbered',
     })
     expect(isBookProblemStart('292')).toBeNull()
+    expect(isBookProblemStart('001 번호')).toEqual({ number: '0001', label: 'numbered' })
+    expect(isBookProblemStart('003 번호, 서술형')).toEqual({ number: '0003', label: 'numbered' })
+    expect(isBookProblemStart('006')).toBeNull()
+    expect(isBookProblemStart('006', '두 점 A(1, 2), B(4, 6) 사이의 거리를 구하시오.')).toEqual({
+      number: '0006',
+      label: 'numbered',
+    })
+    expect(
+      splitBookProblems(
+        ['# 006', '두 점 A(1, 2), B(4, 6) 사이의 거리를 구하시오.', '① 3', '② 4', '③ 5', '④ 6', '⑤ 7', '# 007', '다음 값을 고르시오.', '① 1', '② 2', '③ 3', '④ 4', '⑤ 5'].join(
+          '\n',
+        ),
+      ).map((row) => row.number),
+    ).toEqual(['0006', '0007'])
     const spans = splitBookProblems(
       ['예제 1 점 A(1, 2)와 B(4, 6) 사이의 거리를 구하시오.', '유제 1 점 C(0, 0)와 D(3, 4) 사이의 거리를 구하시오.'].join('\n'),
     )
