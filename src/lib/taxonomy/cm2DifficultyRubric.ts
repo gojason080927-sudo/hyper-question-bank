@@ -166,18 +166,21 @@ function reasoningScore(stem: string): number {
   if (GUIDED.test(stem)) return 0.2
   let score = 0.12
   if (/일\s*때/.test(stem) && /값|개수|좌표|상수/.test(stem)) score += 0.16
-  if (/만족시키/.test(stem)) score += 0.26
-  if (/보기.?\s*에서|ㄱ\s*\.|옳은\s*것만을\s*있는\s*대로/.test(stem) && /항상|서로소|조건|명제/.test(stem)) score += 0.32
+  if (/만족시/.test(stem)) score += 0.26
+  if (/보기.?\s*에서|ㄱ\s*\.|옳은\s*것만을\s*있는\s*대로/.test(stem) && /항상|서로소|조건|명제|만족시/.test(stem)) score += 0.32
   else if (/보기.?\s*에서|ㄱ\s*\.|옳은\s*것만을\s*있는\s*대로/.test(stem)) score += 0.1
   if (/최댓값|최솟값/.test(stem) && /거리|접선|원|집합|√|sqrt|선분|길이|넓이/.test(stem)) score += 0.2
   if (/증명하(?:시\s*오|십시오)/.test(stem)) score += 0.22
   if (/한\s*[변번]으로\s*하는\s*정사각형/.test(stem) && /각각|네\s*점|세\s*점|A_1|넓이의\s*비/.test(stem)) score += 0.42
   else if (/한\s*[변번]으로\s*하는\s*정사각형/.test(stem)) score += 0.12
   if (hasGaNa(stem) && /만족|부등식|[<>≤≥]/.test(stem)) score += 0.28
+  if (hasGaNa(stem) && /\(\s*다\s*\)/.test(stem)) score += 0.12
   if (/(?:[⊂⊃]|\\subset)\s*X\s*(?:[⊂⊃]|\\subset)/.test(stem) && /만족/.test(stem)) score += 0.2
-  if (/자취의\s*방정식|같은\s*거리에\s*있는/.test(stem)) score += 0.16
+  if (/자취의\s*방정식|같은\s*거리에\s*있는|나타내는\s*도형/.test(stem)) score += 0.16
   if (/접선이\s*이루는\s*각|이등분하는\s*직선/.test(stem)) score += 0.2
   if (/접선/.test(stem) && /원/.test(stem) && /최솟값|만나/.test(stem) && /자연수|정수/.test(stem)) score += 0.16
+  if (!hasGaNa(stem) && /움직이/.test(stem) && /최솟값|최댓값|둘레/.test(stem)) score += 0.18
+  if (!hasGaNa(stem) && /\\angle|각\s*[A-Z]{2,3}/.test(stem) && /만족시/.test(stem)) score += 0.16
   if (/되도록\s*하는\s*(?:정수|자연수|양수|실수).{0,12}개수/.test(stem)) score += 0.12
   return clamp01(score)
 }
@@ -193,6 +196,7 @@ function conditionScore(stem: string): number {
   if (/보기.?\s*에서\s*(?:항상\s*)?옳은\s*것만을\s*있는\s*대로/.test(stem)) score += 0.28
   if (/(?:[⊂⊃]|\\subset)\s*X\s*(?:[⊂⊃]|\\subset)|X\s*(?:∪|∩|-|\\cup|\\cap)/.test(stem) && /만족/.test(stem)) score += 0.32
   if (hasGaNa(stem) && /만족|조건|부등식/.test(stem)) score += 0.3
+  if (hasGaNa(stem) && /\(\s*다\s*\)/.test(stem)) score += 0.12
   if (/넓이의\s*비/.test(stem) && /각각/.test(stem)) score += 0.28
   return clamp01(score)
 }

@@ -41,6 +41,12 @@ const S = {
     '167★★★ 2016년 9월학명 나령 25번(고2) 두 집합 $A = \\{1, 2, 3, 4, 5\\}, B = \\{1, 2\\}$에 대하여 $B \\subset X \\subset A$를 만족시키는 모든 집합 $X$의 개수를 구하시오. (3점)',
   lightGuidedProof:
     '0051 다음은 직사각형 ABCD와 임의의 점 P에 대하여 $\\overline{AP}^2 + \\overline{CP}^2 = \\overline{BP}^2 + \\overline{DP}^2$ 이 성립함을 설명한 것이다. 오른쪽 그림과 같이 직선 BC 를 x축, 직선 AB를 y축으로 하는 좌표평면을 잡으면 점 (가) 가 원점이다. 이때 직사각형 ABCD의 두 꼭짓점 A, C의 좌표를 각각 (0, b), (a, 0)이라 하면 꼭짓점 D의 좌표는 (나) 이므로',
+  gojaengMovingPerimeter:
+    '254 그림과 같이 직선 $y=x$ 위에 두 점 A, B가 $\\overline{AB}=2\\sqrt{2}$를 만족시키며 움직이고 있다. 두 점 C(1, -1), D(7, 1)에 대하여 사각형 ACDB의 둘레의 길이의 최솟값은?',
+  gojaengFunctionGaNaDa:
+    '525 집합 $X=\\{1, 2, 3, 4, 5, 6, 7, 8\\}$에 대하여 함수 $f:X\\to X$가 다음 조건을 만족시킨다. (가) 함수 $f$의 치역의 원소의 개수는 7이다. (나) $f(1)+f(2)+f(3)+f(4)+f(5)+f(6)+f(7)+f(8)=40$ (다) 함수 $f$의 최댓값은 8이다. $f(1)+f(8)$의 값을 구하시오.',
+  gojaengApollonius:
+    '159 두 양수 m, n과 좌표평면 위의 두 점 A(-4, 0), B(4, 0)에 대하여 $\\overline{PA}:\\overline{PB}=m:n$을 만족시키는 점 P가 나타내는 도형 C에 대한 설명으로 <보기>에서 옳은 것만을 있는 대로 고른 것은? <보기> ㄱ. 도형 C는 원이다.',
 }
 
 function oldLevel(stem: string): number {
@@ -98,7 +104,8 @@ describe('cm2 absolute difficulty candidate', () => {
     expect(examUnion.overall_level).toBe(1)
     expect(wanja.overall_level).toBe(1)
     expect(examView.overall_level).toBeGreaterThanOrEqual(3)
-    expect(hardIneq.overall_level).toBeGreaterThanOrEqual(3)
+    expect(hardIneq.overall_level).toBeGreaterThanOrEqual(4)
+    expect(hardIneq.overall_level).toBeLessThan(5)
     expect(hardIneq.overall_level).toBeGreaterThan(setDrill.overall_level)
 
     const nested = estimateCm2Difficulty({ stem: S.motherNestedX, type_id: 'SET_COUNT' })
@@ -131,5 +138,26 @@ describe('cm2 absolute difficulty candidate', () => {
     expect(hard.dim_levels.condition_complexity).toBeGreaterThan(drill.dim_levels.condition_complexity)
     expect(new Set(Object.values(hard.dim_levels)).size).toBeGreaterThan(1)
     expect(drill.dim_levels.representation_complexity).toBe(1)
+  })
+
+  it('puts stacked high-end items on D4/D5 without collapsing D1-D3', () => {
+    const drill = estimateCm2Difficulty({ stem: S.lightDistanceDrill, type_id: 'DISTANCE_TWO_POINTS' })
+    const ssen = estimateCm2Difficulty({ stem: S.math2IntegerT, type_id: 'DISTANCE_TWO_POINTS' })
+    const nested = estimateCm2Difficulty({ stem: S.motherNestedX, type_id: 'SET_COUNT' })
+    const chain = estimateCm2Difficulty({ stem: S.motherChainSquares, type_id: 'DISTANCE_TWO_POINTS' })
+    const ineq = estimateCm2Difficulty({ stem: S.gojaengSetIneq, type_id: 'SET_OPS' })
+    const moving = estimateCm2Difficulty({ stem: S.gojaengMovingPerimeter, type_id: 'REFLECTION' })
+    const stacked = estimateCm2Difficulty({ stem: S.gojaengFunctionGaNaDa, type_id: 'FUNCTION_BASIC' })
+    const apollonius = estimateCm2Difficulty({ stem: S.gojaengApollonius, type_id: 'DISTANCE_TWO_POINTS' })
+    expect(drill.overall_level).toBe(1)
+    expect(ssen.overall_level).toBe(2)
+    expect(nested.overall_level).toBe(3)
+    expect(chain.overall_level).toBe(4)
+    expect(ineq.overall_level).toBe(4)
+    expect(moving.overall_level).toBeGreaterThanOrEqual(4)
+    expect(apollonius.overall_level).toBeGreaterThanOrEqual(4)
+    expect(stacked.overall_level).toBe(5)
+    expect(stacked.overall_score).toBeGreaterThan(chain.overall_score)
+    expect(chain.overall_score).toBeGreaterThan(nested.overall_score)
   })
 })
