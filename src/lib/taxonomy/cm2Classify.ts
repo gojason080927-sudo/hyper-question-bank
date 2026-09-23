@@ -209,6 +209,10 @@ export function classifyCm2Problem(input: {
     reasons.push('UNIT_TYPE_INCONSISTENT')
     type_confidence = Math.min(type_confidence, 0.5)
   }
+  if (profile && subunit_id !== '미정' && profile.subunit_id !== subunit_id) {
+    reasons.push('SUBUNIT_TYPE_INCONSISTENT')
+    type_confidence = Math.min(type_confidence, 0.5)
+  }
 
   const rubric = estimateRubricDifficulty({
     stem,

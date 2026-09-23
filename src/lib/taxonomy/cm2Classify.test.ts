@@ -44,6 +44,16 @@ describe('cm2 classify reuse', () => {
     })
     expect(conflict.overall).toBe('REVIEW')
     expect(conflict.reasons).toContain('UNIT_CONFLICT')
+
+    const subunitMismatch = classifyCm2Problem({
+      problem_id: '11111111-1111-1111-1111-111111111111',
+      page: 8,
+      problem_number: '0017',
+      stem: '다음 중 옳은 것을 고르시오. ① 1 ② 2 ③ 3 ④ 4 ⑤ 5',
+      section: { unit: '도형의 방정식', subunit: '평면좌표', heading: '유형 01 원의 방정식', type_id: 'CIRCLE_EQUATION' },
+    })
+    expect(subunitMismatch.overall).toBe('REVIEW')
+    expect(subunitMismatch.reasons).toContain('SUBUNIT_TYPE_INCONSISTENT')
   })
 
   it('builds page structure and a document-agnostic AUTO payload', () => {
