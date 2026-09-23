@@ -1,0 +1,315 @@
+{
+  "phase": "cm2-difficulty-apply-verify",
+  "student_care_accessed": false,
+  "apply": {
+    "total": 7472,
+    "written": 7472,
+    "failed": 0,
+    "overall": {
+      "1": 4308,
+      "2": 2347,
+      "3": 515,
+      "4": 208,
+      "5": 94
+    },
+    "sanity": {
+      "ok": true,
+      "reasons": []
+    }
+  },
+  "invariance": {
+    "book_counts": {
+      "math2": 1152,
+      "ganyeom2": 529,
+      "rpm2": 1033,
+      "gojaeng2": 558,
+      "ildeung2": 410,
+      "lightssen2": 1109,
+      "typelevel2": 1079,
+      "mother2": 640,
+      "wanja2": 962,
+      "ssen1": 1253
+    },
+    "book_counts_match_pre": true,
+    "type_assignments": 5296,
+    "type_assignments_unchanged": true,
+    "curriculum": 10422,
+    "curriculum_unchanged": true,
+    "classification_meta": 5193,
+    "difficulty_rows": 8808,
+    "ssen1": 1253
+  },
+  "sample_invariance": [
+    {
+      "book": "math2",
+      "number": "0070",
+      "text_unchanged": true,
+      "types_unchanged": true,
+      "version_unchanged": true,
+      "has_model_dims": true,
+      "dims_split": true,
+      "dims": {
+        "concept_difficulty": 3,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 2.5,
+        "difficulty_source": "MODEL"
+      },
+      "meta_difficulty": 4,
+      "meta_type_present": true,
+      "keypoints_is_array": true
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0001",
+      "text_unchanged": true,
+      "types_unchanged": true,
+      "version_unchanged": true,
+      "has_model_dims": true,
+      "dims_split": true,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1.17,
+        "difficulty_source": "MODEL"
+      },
+      "meta_difficulty": 1,
+      "meta_type_present": true,
+      "keypoints_is_array": true
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0001",
+      "text_unchanged": true,
+      "types_unchanged": true,
+      "version_unchanged": true,
+      "has_model_dims": true,
+      "dims_split": true,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1.5,
+        "difficulty_source": "MODEL"
+      },
+      "meta_difficulty": 2,
+      "meta_type_present": true,
+      "keypoints_is_array": true
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0001",
+      "text_unchanged": true,
+      "types_unchanged": true,
+      "version_unchanged": true,
+      "has_model_dims": true,
+      "dims_split": true,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 3,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1.5,
+        "difficulty_source": "MODEL"
+      },
+      "meta_difficulty": null,
+      "meta_type_present": false,
+      "keypoints_is_array": false
+    },
+    {
+      "book": "mother2",
+      "number": "0001",
+      "text_unchanged": true,
+      "types_unchanged": true,
+      "version_unchanged": true,
+      "has_model_dims": true,
+      "dims_split": true,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1,
+        "difficulty_source": "MODEL"
+      },
+      "meta_difficulty": null,
+      "meta_type_present": false,
+      "keypoints_is_array": false
+    },
+    {
+      "book": "mother2",
+      "number": "0001",
+      "text_unchanged": true,
+      "types_unchanged": true,
+      "version_unchanged": true,
+      "has_model_dims": true,
+      "dims_split": true,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1.17,
+        "difficulty_source": "MODEL"
+      },
+      "meta_difficulty": 1,
+      "meta_type_present": true,
+      "keypoints_is_array": true
+    },
+    {
+      "book": "mother2",
+      "number": "0001",
+      "text_unchanged": true,
+      "types_unchanged": true,
+      "version_unchanged": true,
+      "has_model_dims": true,
+      "dims_split": true,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1,
+        "difficulty_source": "MODEL"
+      },
+      "meta_difficulty": null,
+      "meta_type_present": false,
+      "keypoints_is_array": false
+    }
+  ],
+  "representative_readback": [
+    {
+      "book": "math2",
+      "number": "0003",
+      "engine_level": 1,
+      "dims_match_engine": true,
+      "stored_dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1
+      },
+      "meta_level": null,
+      "meta_level_matches": null,
+      "unique_dim_values": 1
+    },
+    {
+      "book": "math2",
+      "number": "0016",
+      "engine_level": 2,
+      "dims_match_engine": true,
+      "stored_dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1.5
+      },
+      "meta_level": 2,
+      "meta_level_matches": true,
+      "unique_dim_values": 2
+    },
+    {
+      "book": "math2",
+      "number": "0020",
+      "engine_level": 3,
+      "dims_match_engine": true,
+      "stored_dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 3,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 1.5
+      },
+      "meta_level": 3,
+      "meta_level_matches": true,
+      "unique_dim_values": 3
+    },
+    {
+      "book": "math2",
+      "number": "0070",
+      "engine_level": 4,
+      "dims_match_engine": true,
+      "stored_dims": {
+        "concept_difficulty": 3,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 2.5
+      },
+      "meta_level": 4,
+      "meta_level_matches": true,
+      "unique_dim_values": 4
+    },
+    {
+      "book": "math2",
+      "number": "0203",
+      "engine_level": 5,
+      "dims_match_engine": true,
+      "stored_dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1,
+        "overall_difficulty": 2.67
+      },
+      "meta_level": null,
+      "meta_level_matches": null,
+      "unique_dim_values": 5
+    }
+  ],
+  "stored_dims": {
+    "versions": 7472,
+    "with_model_dims": 7472,
+    "missing_dims": 0,
+    "split_or_true_d1": 7472,
+    "cloned_non_d1": 0,
+    "true_d1_all_ones": 1315
+  },
+  "stored_meta_levels": {
+    "1": 2263,
+    "2": 1191,
+    "3": 290,
+    "4": 132,
+    "5": 52,
+    "null": 3544
+  },
+  "ssen1_sample_dims": {
+    "concept_difficulty": 1,
+    "calculation_complexity": 2,
+    "reasoning_depth": 1,
+    "condition_complexity": 1,
+    "representation_complexity": 1,
+    "trap_level": 1,
+    "overall_difficulty": 1.17
+  }
+}

@@ -3,11 +3,14 @@ import { CM2_ASSIGNED_BY, CM2_UNIT_CODE } from './cm2Catalog'
 import {
   classifyCm2Problem,
   cm2ClassificationPayload,
+  cm2DifficultyRpcPayload,
   cm2TypeFromStem,
+  cm2TypeRpcPayload,
   cm2UnitFromStem,
   structureFromPageTexts,
   typeIdFromCm2Title,
 } from './cm2Classify'
+import { CM2_DIFFICULTY_ENGINE } from './cm2DifficultyRubric'
 
 describe('cm2 classify reuse', () => {
   it('maps headings and stems to the existing catalog', () => {
@@ -81,5 +84,14 @@ describe('cm2 classify reuse', () => {
     expect(payload.classification_status).toBe('AUTO')
     expect(payload.unit_code).toBe(CM2_UNIT_CODE['도형의 방정식'])
     expect(payload.type_code).toBe('DISTANCE_TWO_POINTS')
+    expect(payload.difficulty_engine).toBe(CM2_DIFFICULTY_ENGINE)
+    expect(payload.concept_difficulty).toBe(decision.dim_levels.concept_difficulty)
+    expect(payload.calculation_complexity).toBe(decision.dim_levels.calculation_complexity)
+    expect(payload.reasoning_depth).toBe(decision.dim_levels.reasoning_depth)
+    expect(cm2TypeRpcPayload(payload).persist_difficulty).toBe(false)
+    const dims = cm2DifficultyRpcPayload({ decision, versionId: '33333333-3333-3333-3333-333333333333' })
+    expect(dims?.overall_difficulty).toBe(decision.difficulty_level)
+    expect(dims?.concept_difficulty).toBe(decision.dim_levels.concept_difficulty)
+    expect(decision.difficulty_engine).toBe(CM2_DIFFICULTY_ENGINE)
   })
 })
