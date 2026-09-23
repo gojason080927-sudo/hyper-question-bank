@@ -3,6 +3,7 @@ import { MATH2_DOCUMENT_ID, MATH2_OCR_COST_CAP_USD } from './math2Ocr'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
 import {
   GANYEOM2_SPEC,
+  GOJAENG2_SPEC,
   RPM2_SPEC,
   analyzeBookPage,
   assertBookIngestSource,
@@ -64,6 +65,19 @@ describe('generic book ingest spec', () => {
     const plan = planBookOcr(RPM2_SPEC, { cachedPages: [] })
     expect(plan.pageCount).toBe(168)
     expect(plan.batchUsd).toBe(0.336)
+    expect(plan.underCap).toBe(true)
+    expect(plan.persistProblems).toBe(false)
+  })
+
+  it('registers GOJAENG2 on the same generic planner', () => {
+    expect(specFromBookArg(['--book=gojaeng2']).sourceId).toBe(GOJAENG2_SPEC.sourceId)
+    expect(() => specFromBookArg(['--book=unknown'])).toThrow(/UNKNOWN_BOOK/)
+    expect(() => assertBookIngestSource(GOJAENG2_SPEC, SSEN_SOURCE_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(GOJAENG2_SPEC, MATH2_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(GOJAENG2_SPEC, RPM2_SPEC.sourceId)).toThrow(/SOURCE_LOCK/)
+    const plan = planBookOcr(GOJAENG2_SPEC, { cachedPages: [] })
+    expect(plan.pageCount).toBe(199)
+    expect(plan.batchUsd).toBe(0.398)
     expect(plan.underCap).toBe(true)
     expect(plan.persistProblems).toBe(false)
   })

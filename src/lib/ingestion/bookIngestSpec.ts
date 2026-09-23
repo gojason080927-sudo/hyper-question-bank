@@ -53,7 +53,18 @@ export const RPM2_SPEC: BookIngestSpec = {
   pdfPaths: ['/tmp/rpm2-original.pdf', '.ocr-temp/rpm2-original.pdf'],
 }
 
-export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC]
+export const GOJAENG2_SPEC: BookIngestSpec = {
+  slug: 'gojaeng2',
+  sourceId: '9eee97e2-4252-4348-a842-4d60eb8590f0',
+  title: '고쟁이 공통수학 2',
+  pageCount: 199,
+  pdfHash: '0dc512cca1689c23ebc03a8b7a52d8514bac413acbe0327c5703aba46fa68232',
+  cacheDir: '.ocr-temp/gojaeng2-ocr',
+  reportDir: 'ocr-tests/taxonomy/gojaeng2-ocr',
+  pdfPaths: ['/tmp/gojaeng2-original.pdf', '.ocr-temp/gojaeng2-original.pdf'],
+}
+
+export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC]
 
 export function specFromBookArg(argv: string[], fallback = GANYEOM2_SPEC): BookIngestSpec {
   const flag = argv.find((arg) => arg.startsWith('--book='))
