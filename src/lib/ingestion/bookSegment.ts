@@ -3,9 +3,8 @@
  * Uniqueness is page-local: identity is document|page|number.
  * Does not open SSEN / 쎈2 locks.
  */
-import type { MistralOcrLike } from '../ocr/normalizeMistral'
 import { extractMistralLatex } from '../ocr/normalizeMistral'
-import { blockedNonProblemKind, classifyBookPageV2, countAnchorsFromText } from '../recognition/bookClassify'
+import { classifyBookPageV2, countAnchorsFromText } from '../recognition/bookClassify'
 import { inspectNumberFlowV2 } from '../recognition/bookPipeline'
 import { structureFromRegionText } from './fullBookIngest832'
 import {
@@ -172,10 +171,6 @@ export function disambiguatePageNumbers(spans: BookSpan[]): BookSpan[] {
 function circledChoiceCount(text: string): number {
   const body = text.replace(/^\s*#?\s*(?:\d{4}|예제|유제|확인|연습|문제)[^\n]{0,24}/, '')
   return new Set(body.match(/[①-⑤]/g) ?? []).size
-}
-
-function hasRunningFooter(stem: string): boolean {
-  return /\n\s*\d{1,3}\s+[가-힣]{2,10}\s*$/.test(stem.trim())
 }
 
 function stemLooksFinished(stem: string, choiceCount: number): boolean {

@@ -87,6 +87,9 @@
     "src/lib/ingestion/bookCompleteCli.ts",
     "src/lib/ingestion/math2OcrCli.ts",
     "src/lib/ingestion/math2SegmentCli.ts",
-    "src/lib/ingestion/math2PersistCli.ts"
+    "src/lib/ingestion/math2PersistCli.ts",
+    "src/lib/ingestion/bookOcrCli.ts",
+    "src/lib/ingestion/bookSegmentCli.ts",
+    "src/lib/ingestion/bookPersistCli.ts"
   ]
 }
