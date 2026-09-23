@@ -212,7 +212,7 @@ function reprintStemOf(item: string): string {
   const withoutHeading = /^#{1,3}\s*\d{3,4}\b/.test(item)
     ? item.replace(/^#{1,3}\s*\d{3,4}[^\n]*/, '').trim()
     : item.replace(/^\d{4}\s+/, '').trim()
-  const cut = withoutHeading.split(/[①-⑤]|이므로|따라서|양변을|정답\s*:/)[0] ?? withoutHeading
+  const cut = withoutHeading.split(/[①-⑤]|이므로|따라서|양변을|정답\s*:|\[\d{4}~|\n#\s/)[0] ?? withoutHeading
   return compact(cut).slice(0, 180)
 }
 

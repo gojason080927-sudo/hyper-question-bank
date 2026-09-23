@@ -189,6 +189,7 @@ describe('cm2 answer recover', () => {
     expect(rows[0]?.answer_text).toBe('4')
     expect(rows[1]?.answer_text).toBe('6')
     expect(rows[0]?.reprint_stem).toContain('A(2)')
+    expect(rows[1]?.reprint_stem).not.toContain('0005')
   })
 
   it('does not AUTO-match a unique number when reprint stem disagrees', () => {
