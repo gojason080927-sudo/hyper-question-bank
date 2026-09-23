@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { MATH2_DOCUMENT_ID } from './math2Ocr'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
-import { GANYEOM2_SPEC } from './bookIngestSpec'
+import { GANYEOM2_SPEC, MOTHER2_SPEC } from './bookIngestSpec'
 import {
   assertBookSegmentSource,
   bookEffectivePageKind,
@@ -9,6 +9,7 @@ import {
   disambiguatePageNumbers,
   isBookProblemStart,
   looksLikeAnswerKeyPage,
+  looksLikeExamYearHeading,
   refuseBookPersist,
   runBookSegment,
   splitBookProblems,
@@ -105,6 +106,81 @@ describe('generic book segment', () => {
     expect(spans.map((row) => row.label)).toEqual(['예제', '유제'])
     expect(disambiguatePageNumbers(spans).map((row) => row.number)).toEqual(['0001', '1001'])
     expect(bookPagePreamble('핵심 개념\n예제 2 다음')).toBe('')
+  })
+
+  it('does not treat exam-year headings as 4-digit problem numbers', () => {
+    expect(looksLikeExamYearHeading('2018년 9월학평 가형 2번(고2)')).toBe(true)
+    expect(looksLikeExamYearHeading('2025 마더텅 전국연합 학력평가 기출문제집')).toBe(true)
+    expect(looksLikeExamYearHeading('2004학년도 수능 인문계 12번(고3)')).toBe(true)
+    expect(looksLikeExamYearHeading('2025 마더링 전국연합 학력평가 기출문제집')).toBe(true)
+    expect(isBookProblemStart('2018년 9월학평 가형 2번(고2)')).toBeNull()
+    expect(isBookProblemStart('2025 마더텅 전국연합 학력평가 기출문제집')).toBeNull()
+    expect(isBookProblemStart('2004학년도 수능 인문계 12번(고3)')).toBeNull()
+    expect(isBookProblemStart('2025 마더링 전국연합 학력평가 기출문제집')).toBeNull()
+    expect(isBookProblemStart('2025 다음 두 점 사이의 거리를 구하시오.')).toEqual({ number: '2025', label: 'four' })
+    expect(isBookProblemStart('026 ★★★')).toEqual({ number: '0026', label: 'numbered' })
+    expect(isBookProblemStart('001 A(2), B(5)')).toEqual({ number: '0001', label: 'numbered' })
+    expect(isBookProblemStart('090 ★★★', '2018년 9월학평\n두 집합 A의 원소의 개수는?')).toEqual({
+      number: '0090',
+      label: 'numbered',
+    })
+    expect(
+      splitBookProblems(
+        [
+          '# 090 ★★★',
+          '2018년 9월학평 가형 2번(고2)',
+          '두 집합 A, B에 대하여 n(A ∩ B)의 값은?',
+          '① 1',
+          '② 2',
+          '③ 3',
+          '④ 4',
+          '⑤ 5',
+          '# 091 ★★★',
+          '2018년 3월학평 가형 2번(고2)',
+          '두 집합 A ∩ B의 모든 원소의 합은?',
+          '① 5',
+          '② 6',
+          '③ 7',
+          '④ 8',
+          '⑤ 9',
+        ].join('\n'),
+      ).map((row) => row.number),
+    ).toEqual(['0090', '0091'])
+  })
+
+  it('splits zero-padded 3-digit mock-exam items without year false starts', () => {
+    const pages = Array.from({ length: MOTHER2_SPEC.pageCount }, (_, i) => {
+      const page = i + 1
+      if (page === 6) {
+        return {
+          page,
+          markdown: [
+            '유형 01 두 점 사이의 거리',
+            '026 ★★★',
+            '2021년 9월 3일 3분(고1)',
+            '좌표평면 위의 두 점 P(1, 2), Q(-2, 1) 사이의 거리는? (2점)',
+            '① 1',
+            '② 2',
+            '③ 3',
+            '④ 4',
+            '⑤ 5',
+            '027 ★★★',
+            '2017년 3월 22일 나형 22분(고2)',
+            '두 점 A(3, 1), B(6, -1) 사이의 거리를 구하시오.',
+            '① 1',
+            '② 2',
+            '③ 3',
+            '④ 4',
+            '⑤ 5',
+          ].join('\n'),
+        }
+      }
+      return { page, markdown: page === 1 ? '표지' : `본문 ${page}` }
+    })
+    const report = runBookSegment(MOTHER2_SPEC, pages)
+    expect(report.rows.map((row) => row.problem_number)).toEqual(['0026', '0027'])
+    expect(report.auto_safe).toBe(2)
+    expect(report.blocked).toBe(0)
   })
 
   it('promotes numbered-stem pages to PROBLEM so they are not blocked as UNKNOWN', () => {
