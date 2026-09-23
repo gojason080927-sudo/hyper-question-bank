@@ -1,0 +1,24 @@
+{
+  "sourceId": "16bcc252-1afd-461b-ab1e-882bac8e26ab",
+  "ocr_pages": 150,
+  "ocr_usd": 0.3,
+  "candidates": 485,
+  "auto_safe": 410,
+  "needs_review": 70,
+  "blocked": 5,
+  "persisted": 410,
+  "persist_failed": 0,
+  "identity_dups": 0,
+  "classified_auto": 249,
+  "classify_review": 161,
+  "difficulty": 235,
+  "difficulty_missing": 14,
+  "key_points": 249,
+  "other_books_unchanged": {
+    "ssen": 1253,
+    "math2": 1152,
+    "ganyeom2": 529,
+    "rpm2": 1033,
+    "gojaeng2": 558
+  }
+}

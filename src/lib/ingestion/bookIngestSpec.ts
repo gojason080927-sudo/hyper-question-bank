@@ -64,7 +64,18 @@ export const GOJAENG2_SPEC: BookIngestSpec = {
   pdfPaths: ['/tmp/gojaeng2-original.pdf', '.ocr-temp/gojaeng2-original.pdf'],
 }
 
-export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC]
+export const ILDEUNG2_SPEC: BookIngestSpec = {
+  slug: 'ildeung2',
+  sourceId: '16bcc252-1afd-461b-ab1e-882bac8e26ab',
+  title: '공통수학 2 일등급 만들기',
+  pageCount: 150,
+  pdfHash: '5884e260078a23bcef51df32260159dbefdf994a068dad86a4a6c45524f1361d',
+  cacheDir: '.ocr-temp/ildeung2-ocr',
+  reportDir: 'ocr-tests/taxonomy/ildeung2-ocr',
+  pdfPaths: ['/tmp/ildeung2-original.pdf', '.ocr-temp/ildeung2-original.pdf'],
+}
+
+export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC]
 
 export function specFromBookArg(argv: string[], fallback = GANYEOM2_SPEC): BookIngestSpec {
   const flag = argv.find((arg) => arg.startsWith('--book='))
