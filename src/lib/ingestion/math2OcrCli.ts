@@ -367,7 +367,9 @@ async function runMath2OcrBatch(input: {
     }),
   })
   const job = (await created.json()) as { id?: string; status?: string; message?: string }
-  if (!created.ok || !job.id) throw new Error(job.message ?? `BATCH_CREATE_${created.status}`)
+  if (!created.ok || !job.id) {
+    throw new Error(`BATCH_CREATE_${created.status} ${job.message ?? JSON.stringify(job)}`)
+  }
   writeFileSync(path.join(cacheDir(input.root), 'batch-job.json'), JSON.stringify(job, null, 2))
   console.log(JSON.stringify({ phase: 'batch-queued', id: job.id, requests: groups.length, status: job.status }))
 

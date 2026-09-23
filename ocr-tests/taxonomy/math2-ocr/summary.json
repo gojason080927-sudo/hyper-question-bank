@@ -1,0 +1,50 @@
+{
+  "sourceId": "7c40102b-b4dc-4ff1-a512-6a2912c27b4e",
+  "title": "쎈 공통수학 2",
+  "provider": "mistral-ocr",
+  "model": "mistral-ocr-latest",
+  "pageCount": 200,
+  "persist_problems": false,
+  "persist_page_text": false,
+  "student_care_accessed": false,
+  "called_pages": [],
+  "spent_usd": 0,
+  "cap_usd": 1,
+  "status": "BLOCKED_PROVIDER_QUOTA",
+  "realtime": {
+    "endpoint": "POST /v1/ocr",
+    "http": 429,
+    "code": "1300",
+    "limit_req_minute": 0,
+    "remaining_req_minute": 0
+  },
+  "batch": {
+    "endpoint": "POST /v1/batch/jobs",
+    "http": 402,
+    "note": "Payment Required after files uploaded. No OCR pages billed."
+  },
+  "qa": {
+    "pages": 0,
+    "success": 0,
+    "failed": 200,
+    "cached": 0,
+    "called": 0,
+    "substantial_text": 0,
+    "missing_pages": "1-200",
+    "duplicate_pages": []
+  },
+  "next": {
+    "reuse": [
+      "classifyBookPageV2",
+      "countAnchorsFromText / extractWorkbookProblemAnchor",
+      "layoutSegment.segmentPageFromLayout",
+      "generic outline adapter after TOC exists"
+    ],
+    "do_not_reuse": [
+      "ingest:book --mode=complete",
+      "ssenToc / SSEN_LAST_PAGE=192",
+      "step832 SSEN persist"
+    ],
+    "recommended": "Need a Mistral pay-as-you-go key with OCR RPM > 0 (or Batch 200 OK). Then rerun npm run ocr:math2 -- --allow-paid-api --i-understand-this-costs-money --persist-page-text --prefer-batch. Do not register problems until QA passes."
+  }
+}
