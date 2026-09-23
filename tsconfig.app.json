@@ -85,6 +85,7 @@
     "src/lib/ingestion/ssenHyperCompleteCli.ts",
     "src/lib/taxonomy/ssenHyperComplete.ts",
     "src/lib/ingestion/bookCompleteCli.ts",
-    "src/lib/ingestion/math2OcrCli.ts"
+    "src/lib/ingestion/math2OcrCli.ts",
+    "src/lib/ingestion/math2SegmentCli.ts"
   ]
 }
