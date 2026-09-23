@@ -97,7 +97,18 @@ export const TYPELEVEL2_SPEC: BookIngestSpec = {
   pdfPaths: ['/tmp/typelevel2-original.pdf', '.ocr-temp/typelevel2-original.pdf'],
 }
 
-export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC, TYPELEVEL2_SPEC]
+export const MOTHER2_SPEC: BookIngestSpec = {
+  slug: 'mother2',
+  sourceId: '4c495394-025e-4689-b62a-1a493d43114c',
+  title: '공통수학2 마더텅 모의고사 기출문제집',
+  pageCount: 157,
+  pdfHash: 'd700bcc36c178c0cfd132cae7485554b097cd7ae65cedb1ea50ba011e8be9325',
+  cacheDir: '.ocr-temp/mother2-ocr',
+  reportDir: 'ocr-tests/taxonomy/mother2-ocr',
+  pdfPaths: ['/tmp/mother2-original.pdf', '.ocr-temp/mother2-original.pdf'],
+}
+
+export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC, TYPELEVEL2_SPEC, MOTHER2_SPEC]
 
 export function specFromBookArg(argv: string[], fallback = GANYEOM2_SPEC): BookIngestSpec {
   const flag = argv.find((arg) => arg.startsWith('--book='))

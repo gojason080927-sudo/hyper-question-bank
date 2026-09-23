@@ -6,6 +6,7 @@ import {
   GOJAENG2_SPEC,
   ILDEUNG2_SPEC,
   LIGHTSSEN2_SPEC,
+  MOTHER2_SPEC,
   RPM2_SPEC,
   TYPELEVEL2_SPEC,
   analyzeBookPage,
@@ -120,6 +121,19 @@ describe('generic book ingest spec', () => {
     const plan = planBookOcr(TYPELEVEL2_SPEC, { cachedPages: [] })
     expect(plan.pageCount).toBe(196)
     expect(plan.batchUsd).toBe(0.392)
+    expect(plan.underCap).toBe(true)
+    expect(plan.persistProblems).toBe(false)
+  })
+
+  it('registers MOTHER2 on the same generic planner', () => {
+    expect(specFromBookArg(['--book=mother2']).sourceId).toBe(MOTHER2_SPEC.sourceId)
+    expect(() => specFromBookArg(['--book=unknown'])).toThrow(/UNKNOWN_BOOK/)
+    expect(() => assertBookIngestSource(MOTHER2_SPEC, SSEN_SOURCE_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(MOTHER2_SPEC, MATH2_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(MOTHER2_SPEC, TYPELEVEL2_SPEC.sourceId)).toThrow(/SOURCE_LOCK/)
+    const plan = planBookOcr(MOTHER2_SPEC, { cachedPages: [] })
+    expect(plan.pageCount).toBe(157)
+    expect(plan.batchUsd).toBe(0.314)
     expect(plan.underCap).toBe(true)
     expect(plan.persistProblems).toBe(false)
   })

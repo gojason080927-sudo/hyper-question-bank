@@ -32,6 +32,13 @@ export const BOOK_SEGMENT_ENGINE = 'hqb-book-segment-dry-run'
 const LABELED_START = /^(예제|유제|연습(?:문제)?|문제)\s*0*(\d{1,3})\b/
 const GENERIC_SHARED = /^\[(\d{1,4})\s*[~～〜\-]\s*(\d{1,4})\]\s*(.+)$/
 const NUMBERED_START = /^(\d{1,3})\b/
+const PADDED_THREE = /^(\d{3})\b/
+const STAR_MARKS = /^[★☆✦✧*＊]+/
+const EXAM_YEAR_HEADING =
+  /^(19|20)\d{2}(?:\s*(?:년|학년도|학평|수능|시행|모평|평가원|교육청|전국|마더|기출|학력)|-[0-9])/
+const YEAR_RANGE_MIN = 1900
+const YEAR_RANGE_MAX = 2035
+const ASKED_STEM = /구하(?:시|십)|고르(?:시|십)|다음|것은|값을|보이(?:시|십)|나타내(?:시|십)|증명하|답하|서술하/
 const NUMBER_BADGE =
   /^(\d{1,3})\s+(?:번호|서술형|선출식|비동식|고득점|선행)(?:\s*[,，|/]\s*(?:번호|서술형|선출식|비동식|고득점|선행|[\d.점]+))*\s*$/
 
@@ -70,12 +77,28 @@ export function looksLikeFollowingStem(text: string): boolean {
   return /\$[^$]+\$/.test(compact) && (compact.match(/[가-힣]/g) ?? []).length >= 8
 }
 
+export function looksLikeExamYearHeading(line: string): boolean {
+  const text = normalizeMath2Line(line)
+  if (EXAM_YEAR_HEADING.test(text)) return true
+  return /^(19|20)\d{2}\s+[가-힣].{0,32}(?:전국|학력평가|기출문제|문제집)/.test(text)
+}
+
+function looksLikePaddedItemRest(rest: string, printed: number): boolean {
+  if (STAR_MARKS.test(rest) || looksLikeExamYearHeading(rest)) return true
+  if (/\$/.test(rest) || /[①-⑤]/.test(rest) || /\([-\d]/.test(rest) || /\{/.test(rest)) return true
+  return looksLikeProblemStemRest(rest, printed)
+}
+
 function followingStemText(lines: string[], from: number): string {
   const bits: string[] = []
   for (let i = from; i < lines.length && bits.join(' ').length < 240; i += 1) {
     const raw = lines[i] ?? ''
     const text = normalizeMath2Line(raw)
     if (!text) continue
+    if (looksLikeExamYearHeading(raw)) {
+      bits.push(text)
+      continue
+    }
     if (/^\d{1,3}$/.test(text) || NUMBER_BADGE.test(text) || LABELED_START.test(text) || isMath2ProblemStart(raw)) break
     if (isBookSplitStop(raw) && !/^\d{1,3}$/.test(text)) break
     bits.push(text)
@@ -84,14 +107,32 @@ function followingStemText(lines: string[], from: number): string {
 }
 
 export function isBookProblemStart(line: string, following = ''): { number: string; label: string } | null {
+  if (looksLikeExamYearHeading(line)) return null
   const four = isMath2ProblemStart(line)
-  if (four) return { number: four, label: 'four' }
+  if (four) {
+    const year = Number(four)
+    if (year >= YEAR_RANGE_MIN && year <= YEAR_RANGE_MAX) {
+      const rest = normalizeMath2Line(line).replace(/^\d{4}\s*/, '')
+      if (!ASKED_STEM.test(rest) && !looksLikeFollowingStem(following)) return null
+    }
+    return { number: four, label: 'four' }
+  }
   const text = normalizeMath2Line(line)
   if (!text) return null
   const labeled = LABELED_START.exec(text)
   if (labeled) return { number: padMath2Number(Number(labeled[2])), label: labeled[1]!.replace(/문제$/, '') }
   const badge = NUMBER_BADGE.exec(text)
   if (badge) return { number: padMath2Number(Number(badge[1])), label: 'numbered' }
+  const padded = PADDED_THREE.exec(text)
+  if (padded) {
+    const printed = Number(padded[1])
+    const rest = text.slice(padded[0].length).trim()
+    if (!rest) return looksLikeFollowingStem(following) ? { number: padMath2Number(printed), label: 'numbered' } : null
+    if (looksLikePaddedItemRest(rest, printed) || looksLikeFollowingStem(following)) {
+      return { number: padMath2Number(printed), label: 'numbered' }
+    }
+    return null
+  }
   const numbered = NUMBERED_START.exec(text)
   if (!numbered) return null
   const printed = Number(numbered[1])
@@ -114,11 +155,13 @@ export function isBookSplitStop(line: string): boolean {
 
 export function looksLikeAnswerKeyPage(markdown: string): boolean {
   if (/빠른\s*정답|정답\s*찾기/.test(markdown)) return true
-  const asked = (markdown.match(/구하(?:시\s*오|십시오)|고르(?:시\s*오|십시오)/g) ?? []).length
+  const asked = (markdown.match(/구하(?:시\s*오|십시오)|고르(?:시\s*오|십시오)|값은\?|것은\?|좌표는\?|거리는\?|개수는\?/g) ?? []).length
   if (asked >= 2) return false
   const spans = splitBookProblems(markdown)
+  const multipleChoice = spans.filter((span) => (span.text.match(/[①-⑤]/g) ?? []).length >= 4).length
+  if (multipleChoice >= 2) return false
   if (spans.length < 8) return false
-  const stems = spans.filter((span) => /구하(?:시|십)|고르(?:시|십)|값은\?|것은\?/.test(span.text)).length
+  const stems = spans.filter((span) => /구하(?:시|십)|고르(?:시|십)|값은\?|것은\?|좌표는\?|거리는\?|개수는\?/.test(span.text)).length
   const short = spans.filter((span) => span.text.replace(/\s+/g, '').length < 40).length
   return stems <= 1 && short >= 6
 }
@@ -228,9 +271,11 @@ export function bookEffectivePageKind(pageKind: string, markdown: string): strin
   if (asked >= 2) return 'PROBLEM'
   const problemLike = splitBookProblems(markdown).filter((span) => {
     const compact = span.text.replace(/\s+/g, '')
-    return compact.length >= 24 && /구하(?:시|십)|고르(?:시|십)|값은\?|것은\?|써넣|답하/.test(span.text)
+    return compact.length >= 24 && /구하(?:시|십)|고르(?:시|십)|값은\?|것은\?|좌표는\?|거리는\?|개수는\?|기울기는\?|절편은\?|써넣|답하/.test(span.text)
   })
   if (problemLike.length >= 2) return 'PROBLEM'
+  const multipleChoice = splitBookProblems(markdown).filter((span) => (span.text.match(/[①-⑤]/g) ?? []).length >= 4).length
+  if (multipleChoice >= 2) return 'PROBLEM'
   if (pageKind !== 'ANSWER') return pageKind
   if (problemLike.length >= 3) return 'PROBLEM'
   return math2EffectivePageKind(pageKind, markdown)
