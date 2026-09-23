@@ -1,5 +1,6 @@
+import type { DifficultyDims } from '../workflow/difficulty'
 import { STEP811_THRESHOLDS } from './classificationPersistence'
-import { estimateRubricDifficulty } from './difficultyRubric'
+import { CM2_DIFFICULTY_ENGINE, estimateCm2Difficulty } from './cm2DifficultyRubric'
 import {
   CM2_ASSIGNED_BY,
   CM2_ARTIFACT,
@@ -29,6 +30,9 @@ export type Cm2Decision = {
   type_confidence: number
   difficulty_level: 1 | 2 | 3 | 4 | 5 | null
   difficulty_confidence: number
+  difficulty_engine: typeof CM2_DIFFICULTY_ENGINE
+  dim_levels: Record<keyof DifficultyDims, 1 | 2 | 3 | 4 | 5>
+  type_used_for_difficulty: boolean
   key_test_points: string[]
   solution_strategies: string[]
   source_heading: string | null
@@ -214,14 +218,6 @@ export function classifyCm2Problem(input: {
     type_confidence = Math.min(type_confidence, 0.5)
   }
 
-  const rubric = estimateRubricDifficulty({
-    stem,
-    choice_count: input.choice_count ?? 0,
-    math_count: (stem.match(/\$/g) ?? []).length / 2,
-    figure_hint: /그림|좌표|그래프/.test(stem),
-    graph_hint: /그래프/.test(stem),
-  })
-
   const unitAuto = unit_confidence >= STEP811_THRESHOLDS.unit && !reasons.includes('UNIT_CONFLICT') && Boolean(CM2_UNIT_CODE[unit_id])
   const typeAuto =
     type_confidence >= STEP811_THRESHOLDS.type && type_id !== 'TYPE_UNCLEAR' && Boolean(profile) && !reasons.includes('TYPE_UNCLEAR')
@@ -230,6 +226,10 @@ export function classifyCm2Problem(input: {
   if (!unitAuto) reasons.push('UNIT_NOT_AUTO')
   if (!typeAuto) reasons.push('TYPE_NOT_AUTO')
   if (!keyAuto) reasons.push('KEY_POINT_NOT_AUTO')
+
+  const typeUsed = typeAuto && type_id !== 'TYPE_UNCLEAR'
+  const rubric = estimateCm2Difficulty({ stem, type_id: typeUsed ? type_id : null })
+  const difficulty_confidence = stem.replace(/\s+/g, '').length < 12 ? 0.28 : typeUsed ? 0.82 : 0.74
 
   return {
     problem_id: input.problem_id,
@@ -240,8 +240,11 @@ export function classifyCm2Problem(input: {
     type_id,
     unit_confidence: Number(unit_confidence.toFixed(3)),
     type_confidence: Number(type_confidence.toFixed(3)),
-    difficulty_level: rubric.difficulty_level,
-    difficulty_confidence: Number(rubric.difficulty_confidence.toFixed(3)),
+    difficulty_level: rubric.overall_level,
+    difficulty_confidence: Number(difficulty_confidence.toFixed(3)),
+    difficulty_engine: CM2_DIFFICULTY_ENGINE,
+    dim_levels: rubric.dim_levels,
+    type_used_for_difficulty: typeUsed,
     key_test_points: profile?.key_test_points ?? [],
     solution_strategies: profile?.solution_strategies ?? [],
     source_heading: input.section?.heading ?? null,
@@ -273,6 +276,15 @@ export function cm2ClassificationPayload(input: {
     subtype_code: '',
     persist_difficulty: persistDifficulty,
     difficulty_level: persistDifficulty ? input.decision.difficulty_level : null,
+    concept_difficulty: persistDifficulty ? input.decision.dim_levels.concept_difficulty : null,
+    calculation_complexity: persistDifficulty ? input.decision.dim_levels.calculation_complexity : null,
+    reasoning_depth: persistDifficulty ? input.decision.dim_levels.reasoning_depth : null,
+    condition_complexity: persistDifficulty ? input.decision.dim_levels.condition_complexity : null,
+    representation_complexity: persistDifficulty ? input.decision.dim_levels.representation_complexity : null,
+    trap_level: persistDifficulty ? input.decision.dim_levels.trap_level : null,
+    overall_difficulty: persistDifficulty ? input.decision.difficulty_level : null,
+    difficulty_engine: input.decision.difficulty_engine,
+    type_used_for_difficulty: input.decision.type_used_for_difficulty,
     key_test_points: input.decision.key_test_points,
     solution_strategies: input.decision.solution_strategies,
     unit_confidence: input.decision.unit_confidence,
@@ -282,5 +294,33 @@ export function cm2ClassificationPayload(input: {
     heading_distance: null,
     assigned_by: CM2_ASSIGNED_BY,
     artifact_step: CM2_ARTIFACT,
+  }
+}
+
+export function cm2TypeRpcPayload(payload: Record<string, unknown>): Record<string, unknown> {
+  return { ...payload, persist_difficulty: false, difficulty_level: null }
+}
+
+export function cm2DifficultyRpcPayload(input: {
+  decision: Cm2Decision
+  versionId: string
+}): Record<string, unknown> | null {
+  if (input.decision.difficulty_level == null || input.decision.difficulty_confidence < STEP811_THRESHOLDS.difficulty) {
+    return null
+  }
+  return {
+    problem_id: input.decision.problem_id,
+    expected_version_id: input.versionId,
+    concept_difficulty: input.decision.dim_levels.concept_difficulty,
+    calculation_complexity: input.decision.dim_levels.calculation_complexity,
+    reasoning_depth: input.decision.dim_levels.reasoning_depth,
+    condition_complexity: input.decision.dim_levels.condition_complexity,
+    representation_complexity: input.decision.dim_levels.representation_complexity,
+    trap_level: input.decision.dim_levels.trap_level,
+    overall_difficulty: input.decision.difficulty_level,
+    difficulty_confidence: input.decision.difficulty_confidence,
+    assigned_by: CM2_ASSIGNED_BY,
+    artifact_step: CM2_ARTIFACT,
+    engine: input.decision.difficulty_engine,
   }
 }

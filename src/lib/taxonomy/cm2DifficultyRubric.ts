@@ -139,10 +139,13 @@ function familiesOf(stem: string): string[] {
   return FAMILIES.filter((row) => row.re.test(stem)).map((row) => row.id)
 }
 
+const CROSS_FAMILIES = ['extrema', 'count_int', 'ineq', 'area', 'construction'] as const
+
 function extras(typeId: string | null | undefined, found: string[]): string[] {
   const home = new Set(TYPE_HOME[typeId ?? ''] ?? [])
-  const extraIds = ['extrema', 'count_int', 'ineq', 'area', 'construction']
-  if (!home.size) return found.filter((id) => extraIds.includes(id) || found.length > 1)
+  if (!typeId || typeId === 'TYPE_UNCLEAR' || !home.size) {
+    return found.filter((id) => (CROSS_FAMILIES as readonly string[]).includes(id))
+  }
   return found.filter((id) => !home.has(id))
 }
 

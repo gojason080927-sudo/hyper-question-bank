@@ -7,9 +7,16 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
-import { CLASSIFICATION_RPC, TYPE_DICTIONARY_RPC } from '../taxonomy/classificationPersistence'
+import { CLASSIFICATION_RPC, DIFFICULTY_DIMS_RPC, TYPE_DICTIONARY_RPC } from '../taxonomy/classificationPersistence'
 import { CM2_CURRICULUM_SEED, CM2_TYPE_PROFILES, cm2DictionaryPayload } from '../taxonomy/cm2Catalog'
-import { classifyCm2Problem, cm2ClassificationPayload, structureFromPageTexts, type Cm2Decision } from '../taxonomy/cm2Classify'
+import {
+  classifyCm2Problem,
+  cm2ClassificationPayload,
+  cm2DifficultyRpcPayload,
+  cm2TypeRpcPayload,
+  structureFromPageTexts,
+  type Cm2Decision,
+} from '../taxonomy/cm2Classify'
 import { GANYEOM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC, MOTHER2_SPEC, RPM2_SPEC, TYPELEVEL2_SPEC, WANJA2_SPEC } from './bookIngestSpec'
 import { MATH2_DOCUMENT_ID, MATH2_TITLE } from './math2Ocr'
 import { QUESTION_BANK_REF, STUDENT_CARE_REF } from './math2Persist'
@@ -249,13 +256,23 @@ export async function runBookClassifyCli(root = process.cwd(), argv = process.ar
       bookAuto += 1
       if (bookSamples.length < 3) bookSamples.push(decision)
       if (!apply || !staff) continue
+      const payload = cm2ClassificationPayload({ decision, versionId, sourceDocumentId: target.sourceId })
       const rpc = await staff.rpc(CLASSIFICATION_RPC, {
-        payload: cm2ClassificationPayload({ decision, versionId, sourceDocumentId: target.sourceId }),
+        payload: cm2TypeRpcPayload(payload),
       })
       if (rpc.error) {
         bookFail += 1
         failed += 1
         continue
+      }
+      const dims = cm2DifficultyRpcPayload({ decision, versionId })
+      if (dims) {
+        const dimRpc = await staff.rpc(DIFFICULTY_DIMS_RPC, { payload: dims })
+        if (dimRpc.error) {
+          bookFail += 1
+          failed += 1
+          continue
+        }
       }
       bookWrite += 1
       written += 1

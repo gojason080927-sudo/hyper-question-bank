@@ -6,6 +6,7 @@ export const STEP812_DIR = 'ocr-tests/taxonomy/step8-12'
 export const STEP811_DIR = 'ocr-tests/taxonomy/step8-11'
 export const STEP812_EXPECTED_DRAFTS = 265
 export const CLASSIFICATION_RPC = 'hqb_upsert_problem_classification'
+export const DIFFICULTY_DIMS_RPC = 'hqb_upsert_problem_difficulty_dims'
 export const TYPE_DICTIONARY_RPC = 'hqb_upsert_hyper_type_dictionary_entry'
 export const CURRICULUM_RPC = 'hqb_ensure_cm1_curriculum'
 export const DELETE_TEST_RPC = 'hqb_delete_test_classification'

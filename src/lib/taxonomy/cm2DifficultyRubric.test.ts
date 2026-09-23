@@ -160,4 +160,12 @@ describe('cm2 absolute difficulty candidate', () => {
     expect(stacked.overall_score).toBeGreaterThan(chain.overall_score)
     expect(chain.overall_score).toBeGreaterThan(nested.overall_score)
   })
+
+  it('does not treat missing type as extra home-family load', () => {
+    const typed = estimateCm2Difficulty({ stem: S.gojaengApollonius, type_id: 'DISTANCE_TWO_POINTS' })
+    const untyped = estimateCm2Difficulty({ stem: S.gojaengApollonius, type_id: null })
+    expect(untyped.dims.concept_difficulty).toBeLessThanOrEqual(typed.dims.concept_difficulty)
+    expect(untyped.extra_families.every((id) => ['extrema', 'count_int', 'ineq', 'area', 'construction'].includes(id))).toBe(true)
+    expect(untyped.overall_level).toBeLessThanOrEqual(typed.overall_level)
+  })
 })
