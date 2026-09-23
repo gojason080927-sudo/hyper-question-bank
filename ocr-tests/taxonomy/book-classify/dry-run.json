@@ -1,0 +1,199 @@
+{
+  "phase": "classify-dry-run",
+  "persist": false,
+  "student_care_accessed": false,
+  "problem_text_mutated": false,
+  "ssen_skipped": true,
+  "written": 0,
+  "review": 1496,
+  "skipped_existing": 0,
+  "failed": 0,
+  "books": [
+    {
+      "slug": "math2",
+      "sourceId": "7c40102b-b4dc-4ff1-a512-6a2912c27b4e",
+      "sources": 1152,
+      "auto": 572,
+      "review": 580,
+      "skipped_existing": 0,
+      "written": 0,
+      "failed": 0
+    },
+    {
+      "slug": "ganyeom2",
+      "sourceId": "a11b1a72-9c90-47ec-8685-0be157daa350",
+      "sources": 529,
+      "auto": 176,
+      "review": 353,
+      "skipped_existing": 0,
+      "written": 0,
+      "failed": 0
+    },
+    {
+      "slug": "rpm2",
+      "sourceId": "c0d5d885-f721-4bbf-8879-b4b779e1cad2",
+      "sources": 1033,
+      "auto": 582,
+      "review": 451,
+      "skipped_existing": 0,
+      "written": 0,
+      "failed": 0
+    },
+    {
+      "slug": "gojaeng2",
+      "sourceId": "9eee97e2-4252-4348-a842-4d60eb8590f0",
+      "sources": 558,
+      "auto": 446,
+      "review": 112,
+      "skipped_existing": 0,
+      "written": 0,
+      "failed": 0
+    }
+  ],
+  "samples": [
+    {
+      "book": "math2",
+      "page": 67,
+      "number": "0394",
+      "unit": "도형의 방정식",
+      "subunit": "도형의 이동",
+      "type": "REFLECTION",
+      "difficulty": 1,
+      "key_test_points": [
+        "축 또는 원점에 대한 대칭이동을 할 수 있는가"
+      ]
+    },
+    {
+      "book": "math2",
+      "page": 67,
+      "number": "0395",
+      "unit": "도형의 방정식",
+      "subunit": "도형의 이동",
+      "type": "REFLECTION",
+      "difficulty": 1,
+      "key_test_points": [
+        "축 또는 원점에 대한 대칭이동을 할 수 있는가"
+      ]
+    },
+    {
+      "book": "math2",
+      "page": 67,
+      "number": "0396",
+      "unit": "도형의 방정식",
+      "subunit": "도형의 이동",
+      "type": "REFLECTION",
+      "difficulty": 1,
+      "key_test_points": [
+        "축 또는 원점에 대한 대칭이동을 할 수 있는가"
+      ]
+    },
+    {
+      "book": "ganyeom2",
+      "page": 38,
+      "number": "0069",
+      "unit": "도형의 방정식",
+      "subunit": "직선의 방정식",
+      "type": "LINE_EQUATION",
+      "difficulty": 1,
+      "key_test_points": [
+        "주어진 조건으로 직선의 방정식을 구할 수 있는가"
+      ]
+    },
+    {
+      "book": "ganyeom2",
+      "page": 43,
+      "number": "0081",
+      "unit": "도형의 방정식",
+      "subunit": "직선의 방정식",
+      "type": "LINE_EQUATION",
+      "difficulty": 1,
+      "key_test_points": [
+        "주어진 조건으로 직선의 방정식을 구할 수 있는가"
+      ]
+    },
+    {
+      "book": "ganyeom2",
+      "page": 45,
+      "number": "0092",
+      "unit": "도형의 방정식",
+      "subunit": "직선의 방정식",
+      "type": "LINE_EQUATION",
+      "difficulty": 1,
+      "key_test_points": [
+        "주어진 조건으로 직선의 방정식을 구할 수 있는가"
+      ]
+    },
+    {
+      "book": "rpm2",
+      "page": 7,
+      "number": "0017",
+      "unit": "도형의 방정식",
+      "subunit": "평면좌표",
+      "type": "CIRCLE_EQUATION",
+      "difficulty": 1,
+      "key_test_points": [
+        "원의 중심과 반지름을 읽어 원의 방정식을 구할 수 있는가"
+      ]
+    },
+    {
+      "book": "rpm2",
+      "page": 9,
+      "number": "0027",
+      "unit": "도형의 방정식",
+      "subunit": "평면좌표",
+      "type": "DISTANCE_TWO_POINTS",
+      "difficulty": 1,
+      "key_test_points": [
+        "두 점 사이의 거리 공식을 적용할 수 있는가"
+      ]
+    },
+    {
+      "book": "rpm2",
+      "page": 12,
+      "number": "0047",
+      "unit": "도형의 방정식",
+      "subunit": "평면좌표",
+      "type": "SEGMENT_DIVISION",
+      "difficulty": 2,
+      "key_test_points": [
+        "선분을 주어진 비로 내분·외분하는 점의 좌표를 구할 수 있는가"
+      ]
+    },
+    {
+      "book": "gojaeng2",
+      "page": 14,
+      "number": "0032",
+      "unit": "도형의 방정식",
+      "subunit": "평면좌표",
+      "type": "SEGMENT_DIVISION",
+      "difficulty": 2,
+      "key_test_points": [
+        "선분을 주어진 비로 내분·외분하는 점의 좌표를 구할 수 있는가"
+      ]
+    },
+    {
+      "book": "gojaeng2",
+      "page": 25,
+      "number": "0066",
+      "unit": "도형의 방정식",
+      "subunit": "평면좌표",
+      "type": "POINT_LINE_DISTANCE",
+      "difficulty": 1,
+      "key_test_points": [
+        "점과 직선 사이의 거리 공식을 적용할 수 있는가"
+      ]
+    },
+    {
+      "book": "gojaeng2",
+      "page": 27,
+      "number": "0076",
+      "unit": "도형의 방정식",
+      "subunit": "직선의 방정식",
+      "type": "LINE_EQUATION",
+      "difficulty": 3,
+      "key_test_points": [
+        "주어진 조건으로 직선의 방정식을 구할 수 있는가"
+      ]
+    }
+  ]
+}
