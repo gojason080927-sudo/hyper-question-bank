@@ -32,6 +32,8 @@ export const BOOK_SEGMENT_ENGINE = 'hqb-book-segment-dry-run'
 const LABELED_START = /^(예제|유제|연습(?:문제)?|문제)\s*0*(\d{1,3})\b/
 const GENERIC_SHARED = /^\[(\d{1,4})\s*[~～〜\-]\s*(\d{1,4})\]\s*(.+)$/
 const NUMBERED_START = /^(\d{1,3})\b/
+const NUMBER_BADGE =
+  /^(\d{1,3})\s+(?:번호|서술형|선출식|비동식|고득점|선행)(?:\s*[,，|/]\s*(?:번호|서술형|선출식|비동식|고득점|선행|[\d.점]+))*\s*$/
 
 export type BookSpan = Math2MarkdownSpan & { label: string }
 
@@ -54,17 +56,49 @@ export function looksLikeProblemStemRest(rest: string, printed = 100): boolean {
   return (text.match(/[가-힣]/g) ?? []).length >= 16
 }
 
-export function isBookProblemStart(line: string): { number: string; label: string } | null {
+export function looksLikeFollowingStem(text: string): boolean {
+  const compact = text.replace(/!\[[^\]]*]\([^)]*\)/g, ' ').trim()
+  if (!compact) return false
+  if (
+    /구하(?:시|십)|고르(?:시|십)|말하(?:시|십)|써넣|다음|것은|값을|고르면|보이(?:시|십)|나타내(?:시|십)|증명하|답하|서술하/.test(
+      compact,
+    )
+  ) {
+    return true
+  }
+  if (/[①-⑤]/.test(compact)) return true
+  return /\$[^$]+\$/.test(compact) && (compact.match(/[가-힣]/g) ?? []).length >= 8
+}
+
+function followingStemText(lines: string[], from: number): string {
+  const bits: string[] = []
+  for (let i = from; i < lines.length && bits.join(' ').length < 240; i += 1) {
+    const raw = lines[i] ?? ''
+    const text = normalizeMath2Line(raw)
+    if (!text) continue
+    if (/^\d{1,3}$/.test(text) || NUMBER_BADGE.test(text) || LABELED_START.test(text) || isMath2ProblemStart(raw)) break
+    if (isBookSplitStop(raw) && !/^\d{1,3}$/.test(text)) break
+    bits.push(text)
+  }
+  return bits.join(' ')
+}
+
+export function isBookProblemStart(line: string, following = ''): { number: string; label: string } | null {
   const four = isMath2ProblemStart(line)
   if (four) return { number: four, label: 'four' }
   const text = normalizeMath2Line(line)
   if (!text) return null
   const labeled = LABELED_START.exec(text)
   if (labeled) return { number: padMath2Number(Number(labeled[2])), label: labeled[1]!.replace(/문제$/, '') }
+  const badge = NUMBER_BADGE.exec(text)
+  if (badge) return { number: padMath2Number(Number(badge[1])), label: 'numbered' }
   const numbered = NUMBERED_START.exec(text)
   if (!numbered) return null
   const printed = Number(numbered[1])
   const rest = text.slice(numbered[0].length).trim()
+  if (!rest) {
+    return looksLikeFollowingStem(following) ? { number: padMath2Number(printed), label: 'numbered' } : null
+  }
   if (!looksLikeProblemStemRest(rest, printed)) return null
   return { number: padMath2Number(printed), label: 'numbered' }
 }
@@ -103,7 +137,9 @@ export function extractGenericSharedPrompts(markdown: string) {
 export function splitBookProblems(markdown: string): BookSpan[] {
   const spans: BookSpan[] = []
   let current: BookSpan | null = null
-  for (const rawLine of markdown.split('\n')) {
+  const lines = markdown.split('\n')
+  for (let i = 0; i < lines.length; i += 1) {
+    const rawLine = lines[i]!
     const pair = splitSameLineProblemPair(rawLine)
     if (pair) {
       if (current) spans.push(current)
@@ -111,13 +147,13 @@ export function splitBookProblems(markdown: string): BookSpan[] {
       current = { ...pair[1], label: 'four' }
       continue
     }
-    const start = isBookProblemStart(rawLine)
+    const start = isBookProblemStart(rawLine, followingStemText(lines, i + 1))
     if (start) {
       if (current) spans.push(current)
       current = { number: start.number, label: start.label, text: normalizeMath2Line(rawLine) }
       continue
     }
-    if (current && isBookSplitStop(rawLine) && !isBookProblemStart(rawLine)) {
+    if (current && isBookSplitStop(rawLine) && !start) {
       spans.push(current)
       current = null
       continue
@@ -129,19 +165,23 @@ export function splitBookProblems(markdown: string): BookSpan[] {
 }
 
 export function bookPagePreamble(markdown: string): string {
-  const lines: string[] = []
-  for (const rawLine of markdown.split('\n')) {
-    if (isBookProblemStart(rawLine)) break
+  const kept: string[] = []
+  const lines = markdown.split('\n')
+  for (let i = 0; i < lines.length; i += 1) {
+    const rawLine = lines[i]!
+    if (isBookProblemStart(rawLine, followingStemText(lines, i + 1))) break
     const text = normalizeMath2Line(rawLine)
     if (!text || /^정답\s*및\s*풀이/.test(text) || isBookSplitStop(rawLine)) continue
-    lines.push(rawLine.trim())
+    kept.push(rawLine.trim())
   }
-  return lines.join('\n').trim()
+  return kept.join('\n').trim()
 }
 
 export function bookNextPageStartsNewSection(markdown: string): boolean {
-  for (const rawLine of markdown.split('\n')) {
-    if (isBookProblemStart(rawLine)) return false
+  const lines = markdown.split('\n')
+  for (let i = 0; i < lines.length; i += 1) {
+    const rawLine = lines[i]!
+    if (isBookProblemStart(rawLine, followingStemText(lines, i + 1))) return false
     const text = normalizeMath2Line(rawLine)
     if (/^(?:유형|핵심\s*개념|개념\s*Plus|중단원|소단원|실력\s*굳히기|기본\s*다잡기)/.test(text)) return true
   }
