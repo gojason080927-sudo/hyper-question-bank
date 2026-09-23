@@ -42,6 +42,27 @@ export const GANYEOM2_SPEC: BookIngestSpec = {
   pdfPaths: ['/tmp/ganyeom2-original.pdf', '.ocr-temp/ganyeom2-original.pdf'],
 }
 
+export const RPM2_SPEC: BookIngestSpec = {
+  slug: 'rpm2',
+  sourceId: 'c0d5d885-f721-4bbf-8879-b4b779e1cad2',
+  title: 'RPM 공통수학2',
+  pageCount: 168,
+  pdfHash: 'de37b0fb39e30248be92373794581034ce884407d06982a16da8c774faa41063',
+  cacheDir: '.ocr-temp/rpm2-ocr',
+  reportDir: 'ocr-tests/taxonomy/rpm2-ocr',
+  pdfPaths: ['/tmp/rpm2-original.pdf', '.ocr-temp/rpm2-original.pdf'],
+}
+
+export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC]
+
+export function specFromBookArg(argv: string[], fallback = GANYEOM2_SPEC): BookIngestSpec {
+  const flag = argv.find((arg) => arg.startsWith('--book='))
+  const slug = flag?.slice('--book='.length) ?? fallback.slug
+  const spec = BOOK_SPECS.find((row) => row.slug === slug)
+  if (!spec) throw new Error(`BOOK_UNKNOWN_BOOK: ${slug}`)
+  return spec
+}
+
 export const BOOK_INGEST_FORBIDDEN_IDS = [SSEN_SOURCE_DOCUMENT_ID, MATH2_DOCUMENT_ID] as const
 
 export type BookOcrPlan = {
