@@ -30,7 +30,19 @@ export function runMath2SegmentCli(root = process.cwd(), argv = process.argv.sli
   const report = runMath2Segment(pages)
   const dest = path.join(root, MATH2_REPORT_DIR)
   mkdirSync(dest, { recursive: true })
-  writeFileSync(path.join(dest, 'segment-dry-run.json'), JSON.stringify(report, null, 2), 'utf8')
+  const { rows: _rows, ...summary } = report
+  writeFileSync(
+    path.join(dest, 'segment-dry-run.json'),
+    JSON.stringify(
+      {
+        ...summary,
+        samples: summary.samples.map(({ stem: _stem, ...sample }) => sample),
+      },
+      null,
+      2,
+    ),
+    'utf8',
+  )
   writeFileSync(path.join(dest, 'segment-dry-run.md'), formatMath2SegmentMarkdown(report), 'utf8')
   console.log(
     JSON.stringify(

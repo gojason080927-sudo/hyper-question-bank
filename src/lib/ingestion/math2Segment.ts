@@ -47,6 +47,7 @@ export type Math2ProblemCandidate = {
   verdict: Math2Verdict
   reasons: string[]
   stem_preview: string
+  stem: string
   choice_count: number
   latex_count: number
   image_count: number
@@ -76,6 +77,7 @@ export type Math2SegmentReport = {
   samples: Math2ProblemCandidate[]
   stitches: Array<{ page: number; problem_number: string; from: number }>
   issues: string[]
+  rows: Math2ProblemCandidate[]
 }
 
 export function assertMath2SegmentSource(sourceId: string): void {
@@ -467,6 +469,7 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
       verdict: decided.verdict,
       reasons: decided.reasons,
       stem_preview: row.text.replace(/\s+/g, ' ').trim().slice(0, 180),
+      stem: row.text,
       choice_count: row.choice_count,
       latex_count: row.latex_count,
       image_count: row.image_count,
@@ -519,6 +522,7 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
     missing_numbers: missing.slice(0, 40),
     reason_counts,
     samples: pickMath2Samples(candidates),
+    rows: candidates,
     stitches: candidates
       .filter((row) => row.stitched_from_page != null)
       .map((row) => ({ page: row.page, problem_number: row.problem_number, from: row.stitched_from_page as number })),
