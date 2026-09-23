@@ -3,14 +3,14 @@
 - document_id: 7c40102b-b4dc-4ff1-a512-6a2912c27b4e
 - pages: 200
 - candidates: 1323
-- AUTO_SAFE / NEEDS_REVIEW / BLOCKED: 1138 / 170 / 15
-- duplicate / missing-gap / reverse+jump / cross-page: 0 / 7 / 0 / 0
+- AUTO_SAFE / NEEDS_REVIEW / BLOCKED: 1152 / 171 / 0
+- duplicate / missing-gap / reverse+jump / cross-page: 0 / 0 / 0 / 0
 - stitches: none
 - persist problems: false
-- issues: short_gaps:7
+- issues: none
 - duplicate numbers: none
-- missing (first 40 short gaps): 838, 839, 840, 841, 842, 843, 844
-- reasons: STEM_MAY_BE_CUT=136, RUNNING_FOOTER=26, INCOMPLETE_AT_PAGE_BREAK=13, PAGE_TAIL=13, CHOICES_INCOMPLETE=21, NON_PROBLEM_PAGE:ANSWER=15
+- missing (first 40 short gaps): none
+- reasons: STEM_MAY_BE_CUT=136, RUNNING_FOOTER=26, INCOMPLETE_AT_PAGE_BREAK=13, PAGE_TAIL=13, CHOICES_INCOMPLETE=21
 
 ## samples
 - p10 #0020 AUTO_SAFE choices=0 latex=0 img=1 section=유형 01 stitch=no

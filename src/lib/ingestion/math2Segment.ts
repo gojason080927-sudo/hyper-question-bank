@@ -256,6 +256,15 @@ function stemLooksFinished(stem: string, choiceCount: number): boolean {
   return /값은\?$|합은\?$|개수는\?$|넓이는\?$|좌표$|길이는\?$/.test(compact)
 }
 
+export function math2EffectivePageKind(pageKind: string, markdown: string): string {
+  if (pageKind !== 'ANSWER') return pageKind
+  const problemLike = splitMarkdownProblems(markdown).filter((span) => {
+    const compact = span.text.replace(/\s+/g, '')
+    return compact.length >= 40 && /구하시\s*오|고르시\s*오|값은\?|것은\?/.test(span.text)
+  })
+  return problemLike.length >= 3 ? 'PROBLEM' : pageKind
+}
+
 export function nextPageStartsNewSection(markdown: string): boolean {
   for (const rawLine of markdown.split('\n')) {
     if (isMath2ProblemStart(rawLine)) return false
@@ -356,7 +365,7 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
     const page = ordered[i]!
     const nextPage = ordered[i + 1]
     const anchors = countAnchorsFromText(page.markdown)
-    const kind = classifyBookPageV2({
+    const classified = classifyBookPageV2({
       page_number: page.page,
       total_pages: MATH2_PAGE_COUNT,
       ink_ratio: null,
@@ -367,6 +376,7 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
       block_count: page.raw?.pages?.[0]?.blocks?.length ?? 0,
       image_count: page.raw?.pages?.[0]?.images?.length ?? 0,
     })
+    const kind = { ...classified, page_kind: math2EffectivePageKind(classified.page_kind, page.markdown) }
     const section = extractMath2SectionLabel(page.markdown) ?? lastSection
     if (extractMath2SectionLabel(page.markdown)) lastSection = extractMath2SectionLabel(page.markdown)
 

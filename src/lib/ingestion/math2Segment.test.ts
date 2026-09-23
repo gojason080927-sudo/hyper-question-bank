@@ -7,6 +7,7 @@ import {
   extractMath2SectionLabel,
   extractSharedPrompts,
   isPlausibleMath2ProblemNumber,
+  math2EffectivePageKind,
   nextPageStartsNewSection,
   pagePreamble,
   refusePersist,
@@ -131,6 +132,23 @@ describe('math2 segment dry-run', () => {
     const spans = splitMarkdownProblems('0740 보기\nㄱ. 참이다.\n# 07-2 조건과 진리집합\n0741 다음')
     expect(spans.map((row) => row.number)).toEqual(['0740', '0741'])
     expect(spans[0]?.text).not.toContain('07-2')
+  })
+
+  it('keeps real answer keys blocked and recovers header-only ANSWER pages', () => {
+    const keyPage = ['정답', '0838 ①', '0839 ②', '0840 ③', '0841 ④'].join('\n')
+    expect(math2EffectivePageKind('ANSWER', keyPage)).toBe('ANSWER')
+    const problemPage = [
+      '4주',
+      '정답',
+      '0838 대표 문제',
+      '실수 x에 대하여 두 조건 p, q가 있을 때 p가 q이기 위한 필요조건이 되도록 하는 자연수 k의 개수를 구하시오.',
+      '0839',
+      '두 조건 p, q에 대하여 p가 q이기 위한 충분조건이 되도록 하는 모든 실수 a의 값의 합을 구하시오.',
+      '0840',
+      '필요충분조건일 때 실수 a, b에 대하여 a+b의 값을 구하시오. 단, a, b는 상수이다.',
+    ].join('\n')
+    expect(math2EffectivePageKind('ANSWER', problemPage)).toBe('PROBLEM')
+    expect(math2EffectivePageKind('PROBLEM', '0270 원의 넓이를 구하시오.')).toBe('PROBLEM')
   })
 
   it('does not treat a 유형 heading preamble as a stitch body', () => {
