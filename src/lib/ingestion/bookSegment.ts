@@ -46,10 +46,12 @@ export function refuseBookPersist(argv: string[]): void {
   }
 }
 
-export function looksLikeProblemStemRest(rest: string): boolean {
+export function looksLikeProblemStemRest(rest: string, printed = 100): boolean {
   const text = rest.replace(/!\[[^\]]*]\([^)]*\)/g, ' ').trim()
   if (!text) return false
-  if (/구하시|고르시|말하시|써넣|다음|것은|값을|고르면|보이시|나타내시|증명하|답하/.test(text)) return true
+  const asked = /구하(?:시|십)|고르(?:시|십)|말하(?:시|십)|써넣|다음|것은|값을|고르면|보이(?:시|십)|나타내(?:시|십)|증명하|답하/.test(text)
+  if (printed < 100) return asked
+  if (asked) return true
   return (text.match(/[가-힣]/g) ?? []).length >= 16
 }
 
@@ -62,9 +64,10 @@ export function isBookProblemStart(line: string): { number: string; label: strin
   if (labeled) return { number: padMath2Number(Number(labeled[2])), label: labeled[1]!.replace(/문제$/, '') }
   const numbered = NUMBERED_START.exec(text)
   if (!numbered) return null
+  const printed = Number(numbered[1])
   const rest = text.slice(numbered[0].length).trim()
-  if (!looksLikeProblemStemRest(rest)) return null
-  return { number: padMath2Number(Number(numbered[1])), label: 'numbered' }
+  if (!looksLikeProblemStemRest(rest, printed)) return null
+  return { number: padMath2Number(printed), label: 'numbered' }
 }
 
 export function isBookSplitStop(line: string): boolean {
@@ -178,7 +181,7 @@ function hasRunningFooter(stem: string): boolean {
 function stemLooksFinished(stem: string, choiceCount: number): boolean {
   if (choiceCount >= 4) return true
   const compact = stem.replace(/\s+/g, ' ').trim()
-  if (/구하시\s*오|고르시\s*오|쓰시\s*오|나타내시\s*오|말하시오|설명하시오|보이시오/.test(compact)) return true
+  if (/구하(?:시\s*오|십시오)|고르(?:시\s*오|십시오)|쓰(?:시\s*오|십시오)|나타내(?:시\s*오|십시오)|말하(?:시\s*오|십시오)|설명하(?:시\s*오|십시오)|보이(?:시\s*오|십시오)/.test(compact)) return true
   return /값은\?$|합은\?$|개수는\?$|넓이는\?$|좌표$|길이는\?$/.test(compact)
 }
 
@@ -186,9 +189,9 @@ export function bookEffectivePageKind(pageKind: string, markdown: string): strin
   if (looksLikeAnswerKeyPage(markdown)) return 'ANSWER'
   const problemLike = splitBookProblems(markdown).filter((span) => {
     const compact = span.text.replace(/\s+/g, '')
-    return compact.length >= 24 && /구하시|고르시|값은\?|것은\?|써넣/.test(span.text)
+    return compact.length >= 24 && /구하(?:시|십)|고르(?:시|십)|값은\?|것은\?|써넣|답하/.test(span.text)
   })
-  if (problemLike.length >= 2 && pageKind !== 'ANSWER') return 'PROBLEM'
+  if (problemLike.length >= 2) return 'PROBLEM'
   if (pageKind !== 'ANSWER') return pageKind
   if (problemLike.length >= 3) return 'PROBLEM'
   return math2EffectivePageKind(pageKind, markdown)

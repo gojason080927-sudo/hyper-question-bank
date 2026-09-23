@@ -22,6 +22,35 @@ describe('generic book segment', () => {
     expect(() => refuseBookPersist(['--persist-auto-safe'])).toThrow(/NO_PERSIST/)
   })
 
+  it('treats 하십시오 endings as finished stems', () => {
+    const pages = Array.from({ length: GANYEOM2_SPEC.pageCount }, (_, i) => {
+      const page = i + 1
+      if (page === 11) {
+        return {
+          page,
+          markdown: [
+            '1 두 점 A(a, 3), B(1, 2-a) 사이의 거리가 2√3일 때, 양수 a의 값을 구하십시오.',
+            '① 1',
+            '② 2',
+            '③ 3',
+            '④ 4',
+            '⑤ 5',
+            '2 세 점 A(4, -5), B(10, 1), C(a, 4)에 대하여 AB=2BC일 때, a의 값을 모두 구하십시오.',
+            '① 1',
+            '② 2',
+            '③ 3',
+            '④ 4',
+            '⑤ 5',
+          ].join('\n'),
+        }
+      }
+      return { page, markdown: page === 1 ? '표지' : `본문 ${page}` }
+    })
+    const report = runBookSegment(GANYEOM2_SPEC, pages)
+    expect(report.auto_safe).toBe(2)
+    expect(report.rows.map((row) => row.problem_number)).toEqual(['0001', '0002'])
+  })
+
   it('splits 예제/유제 and keeps same printed number unique per page', () => {
     expect(isBookProblemStart('예제 1 다음 함수의 그래프를 그리시오.')).toEqual({ number: '0001', label: '예제' })
     expect(isBookProblemStart('유제 1 다음 값을 구하시오.')).toEqual({ number: '0001', label: '유제' })
@@ -30,6 +59,11 @@ describe('generic book segment', () => {
       label: 'numbered',
     })
     expect(isBookProblemStart('1 평면좌표')).toBeNull()
+    expect(isBookProblemStart('3 표준형과 일반형으로 표현된 두 직선의 위치 관계')).toBeNull()
+    expect(isBookProblemStart('1 두 점 A(a, 3), B(1, 2-a) 사이의 거리가 2√3일 때, 양수 a의 값을 구하십시오.')).toEqual({
+      number: '0001',
+      label: 'numbered',
+    })
     expect(isBookProblemStart('292')).toBeNull()
     const spans = splitBookProblems(
       ['예제 1 점 A(1, 2)와 B(4, 6) 사이의 거리를 구하시오.', '유제 1 점 C(0, 0)와 D(3, 4) 사이의 거리를 구하시오.'].join('\n'),
@@ -76,7 +110,7 @@ describe('generic book segment', () => {
       if (page === 20 || page === 40) {
         return {
           page,
-          markdown: `예제 1 두 점 A(1, 2), B(4, 6) 사이의 거리를 구하시오.\n① 3\n② 4\n③ 5\n④ 6\n⑤ 7`,
+          markdown: `예제 1 두 점 A(1, 2), B(4, 6) 사이의 거리를 구하십시오.\n① 3\n② 4\n③ 5\n④ 6\n⑤ 7`,
         }
       }
       return { page, markdown: page === 1 ? '표지' : `본문 ${page}` }

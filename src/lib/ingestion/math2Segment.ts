@@ -254,7 +254,7 @@ function hasRunningFooter(stem: string): boolean {
 function stemLooksFinished(stem: string, choiceCount: number): boolean {
   if (choiceCount >= 4) return true
   const compact = stem.replace(/\s+/g, ' ').trim()
-  if (/구하시\s*오|고르시\s*오|쓰시\s*오|나타내시\s*오|말하시오|설명하시오|보이시오/.test(compact)) return true
+  if (/구하(?:시\s*오|십시오)|고르(?:시\s*오|십시오)|쓰(?:시\s*오|십시오)|나타내(?:시\s*오|십시오)|말하(?:시\s*오|십시오)|설명하(?:시\s*오|십시오)|보이(?:시\s*오|십시오)/.test(compact)) return true
   return /값은\?$|합은\?$|개수는\?$|넓이는\?$|좌표$|길이는\?$/.test(compact)
 }
 
