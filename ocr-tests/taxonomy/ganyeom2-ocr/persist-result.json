@@ -1,0 +1,15 @@
+{
+  "phase": "persist-auto-safe",
+  "persist_problems": true,
+  "sourceId": "a11b1a72-9c90-47ec-8685-0be157daa350",
+  "engine": "hqb_upsert_problem_draft_from_identity",
+  "before": 529,
+  "after": 529,
+  "auto_safe": 529,
+  "created": 0,
+  "existing": 529,
+  "failed": 0,
+  "review_held": 87,
+  "failed_rows": [],
+  "samples": []
+}
