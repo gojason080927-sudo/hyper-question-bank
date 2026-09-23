@@ -5,16 +5,13 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import type { MistralOcrLike } from '../ocr/normalizeMistral'
 import { cacheFileName } from './math2Ocr'
-import { GANYEOM2_SPEC, type BookIngestSpec } from './bookIngestSpec'
+import { specFromBookArg, type BookIngestSpec } from './bookIngestSpec'
 import { formatBookSegmentMarkdown, refuseBookPersist, runBookSegment, type Math2PageInput } from './bookSegment'
 
 type CachedPage = { page: number; markdown: string; raw?: MistralOcrLike }
 
 function specFromArgv(argv: string[]): BookIngestSpec {
-  const flag = argv.find((arg) => arg.startsWith('--book='))
-  const slug = flag?.slice('--book='.length) ?? GANYEOM2_SPEC.slug
-  if (slug !== GANYEOM2_SPEC.slug) throw new Error(`BOOK_SEGMENT_UNKNOWN_BOOK: ${slug}`)
-  return GANYEOM2_SPEC
+  return specFromBookArg(argv)
 }
 
 function loadPages(root: string, spec: BookIngestSpec): Math2PageInput[] {

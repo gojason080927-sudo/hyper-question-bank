@@ -29,12 +29,12 @@ import {
 } from './math2Ocr'
 import {
   BOOK_INGEST_FORBIDDEN_IDS,
-  GANYEOM2_SPEC,
   analyzeBookPage,
   assertBookIngestSource,
   assertBookPageRange,
   formatBookOcrMarkdown,
   planBookOcr,
+  specFromBookArg,
   summarizeBookQa,
   type BookIngestSpec,
 } from './bookIngestSpec'
@@ -55,10 +55,7 @@ function sleep(ms: number) {
 }
 
 function specFromArgv(argv: string[]): BookIngestSpec {
-  const flag = argv.find((arg) => arg.startsWith('--book='))
-  const slug = flag?.slice('--book='.length) ?? GANYEOM2_SPEC.slug
-  if (slug !== GANYEOM2_SPEC.slug) throw new Error(`BOOK_OCR_UNKNOWN_BOOK: ${slug}`)
-  return GANYEOM2_SPEC
+  return specFromBookArg(argv)
 }
 
 function loadCachedPages(root: string, spec: BookIngestSpec, pdfHash: string): Map<number, CachedPage> {

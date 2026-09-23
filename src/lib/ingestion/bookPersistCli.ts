@@ -8,7 +8,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { UPSERT_RPC } from '../recognition/draftUpsert'
 import type { MistralOcrLike } from '../ocr/normalizeMistral'
 import { cacheFileName } from './math2Ocr'
-import { BOOK_INGEST_FORBIDDEN_IDS, GANYEOM2_SPEC, type BookIngestSpec } from './bookIngestSpec'
+import { BOOK_INGEST_FORBIDDEN_IDS, specFromBookArg, type BookIngestSpec } from './bookIngestSpec'
 import {
   QUESTION_BANK_REF,
   STUDENT_CARE_REF,
@@ -22,10 +22,7 @@ import { refuseBookPersist, runBookSegment, type Math2PageInput } from './bookSe
 type CachedPage = { page: number; markdown: string; raw?: MistralOcrLike }
 
 function specFromArgv(argv: string[]): BookIngestSpec {
-  const flag = argv.find((arg) => arg.startsWith('--book='))
-  const slug = flag?.slice('--book='.length) ?? GANYEOM2_SPEC.slug
-  if (slug !== GANYEOM2_SPEC.slug) throw new Error(`BOOK_PERSIST_UNKNOWN_BOOK: ${slug}`)
-  return GANYEOM2_SPEC
+  return specFromBookArg(argv)
 }
 
 function loadPages(root: string, spec: BookIngestSpec): Math2PageInput[] {

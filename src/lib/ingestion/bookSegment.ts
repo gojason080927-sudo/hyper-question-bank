@@ -80,9 +80,11 @@ export function isBookSplitStop(line: string): boolean {
 
 export function looksLikeAnswerKeyPage(markdown: string): boolean {
   if (/빠른\s*정답|정답\s*찾기/.test(markdown)) return true
+  const asked = (markdown.match(/구하(?:시\s*오|십시오)|고르(?:시\s*오|십시오)/g) ?? []).length
+  if (asked >= 2) return false
   const spans = splitBookProblems(markdown)
   if (spans.length < 8) return false
-  const stems = spans.filter((span) => /구하시|고르시|값은\?|것은\?/.test(span.text)).length
+  const stems = spans.filter((span) => /구하(?:시|십)|고르(?:시|십)|값은\?|것은\?/.test(span.text)).length
   const short = spans.filter((span) => span.text.replace(/\s+/g, '').length < 40).length
   return stems <= 1 && short >= 6
 }
@@ -182,6 +184,8 @@ function stemLooksFinished(stem: string, choiceCount: number): boolean {
 
 export function bookEffectivePageKind(pageKind: string, markdown: string): string {
   if (looksLikeAnswerKeyPage(markdown)) return 'ANSWER'
+  const asked = (markdown.match(/구하(?:시\s*오|십시오)|고르(?:시\s*오|십시오)/g) ?? []).length
+  if (asked >= 2) return 'PROBLEM'
   const problemLike = splitBookProblems(markdown).filter((span) => {
     const compact = span.text.replace(/\s+/g, '')
     return compact.length >= 24 && /구하(?:시|십)|고르(?:시|십)|값은\?|것은\?|써넣|답하/.test(span.text)

@@ -75,3 +75,4 @@ ocr-tests/taxonomy/step8-39/inspect-cache.json
 # Full-book OCR markdown (copyrighted textbook text; keep local / cache only)
 ocr-tests/taxonomy/math2-ocr/pages/
 ocr-tests/taxonomy/ganyeom2-ocr/pages/
+ocr-tests/taxonomy/rpm2-ocr/pages/
