@@ -9,6 +9,7 @@ import {
   MOTHER2_SPEC,
   RPM2_SPEC,
   TYPELEVEL2_SPEC,
+  WANJA2_SPEC,
   analyzeBookPage,
   assertBookIngestSource,
   assertBookPageRange,
@@ -134,6 +135,19 @@ describe('generic book ingest spec', () => {
     const plan = planBookOcr(MOTHER2_SPEC, { cachedPages: [] })
     expect(plan.pageCount).toBe(157)
     expect(plan.batchUsd).toBe(0.314)
+    expect(plan.underCap).toBe(true)
+    expect(plan.persistProblems).toBe(false)
+  })
+
+  it('registers WANJA2 on the same generic planner', () => {
+    expect(specFromBookArg(['--book=wanja2']).sourceId).toBe(WANJA2_SPEC.sourceId)
+    expect(() => specFromBookArg(['--book=unknown'])).toThrow(/UNKNOWN_BOOK/)
+    expect(() => assertBookIngestSource(WANJA2_SPEC, SSEN_SOURCE_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(WANJA2_SPEC, MATH2_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(WANJA2_SPEC, MOTHER2_SPEC.sourceId)).toThrow(/SOURCE_LOCK/)
+    const plan = planBookOcr(WANJA2_SPEC, { cachedPages: [] })
+    expect(plan.pageCount).toBe(228)
+    expect(plan.batchUsd).toBe(0.456)
     expect(plan.underCap).toBe(true)
     expect(plan.persistProblems).toBe(false)
   })
