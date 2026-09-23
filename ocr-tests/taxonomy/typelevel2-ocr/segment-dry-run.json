@@ -1,0 +1,83 @@
+{
+  "sourceId": "cc6c347d-db2d-4363-b97e-68026951804c",
+  "title": "공통수학 2 유형만렙",
+  "persist_problems": false,
+  "pages": 196,
+  "candidates": 1267,
+  "auto_safe": 1079,
+  "needs_review": 182,
+  "blocked": 6,
+  "duplicate_suspects": 4,
+  "missing_suspects": 0,
+  "reverse_or_jump": 0,
+  "cross_page": 0,
+  "duplicate_numbers": [
+    "1089",
+    "1248"
+  ],
+  "missing_numbers": [],
+  "reason_counts": {
+    "CHOICES_INCOMPLETE": 68,
+    "STEM_MAY_BE_CUT": 103,
+    "RUNNING_FOOTER": 17,
+    "INCOMPLETE_AT_PAGE_BREAK": 5,
+    "PAGE_TAIL": 5,
+    "NUMBER_FLOW": 5,
+    "THIN_STEM": 3,
+    "DUPLICATE_NUMBER": 4
+  },
+  "samples": [
+    {
+      "page": 9,
+      "problem_number": "0001",
+      "verdict": "AUTO_SAFE",
+      "reasons": [],
+      "stem_preview": "[0001~0004] 수직선 위의 다음 두 점 사이의 거리를 구하시오. 0001 A(2), B(6) 4",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": "01-1",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 12,
+      "problem_number": "0034",
+      "verdict": "NEEDS_REVIEW",
+      "reasons": [
+        "CHOICES_INCOMPLETE"
+      ],
+      "stem_preview": "0034 ③ 세 점 A(-1, 1), B(1, -1), C(a, b)를 꼭짓점으로 하는 삼각형 ABC가 정삼각형일 때, ab의 값을 구하시오. 3 AB=BC에서 AB' = BC'이므로 (1+1)² + (-1-1)² = (a-1)² + (b+1)² ∴ a²+b²-2a+2b-6=0 …… ③ BC=CA에서 BC' = CA'이므",
+      "choice_count": 2,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": "유형 04",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 113,
+      "problem_number": "0742",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "THIN_STEM",
+        "STEM_MAY_BE_CUT"
+      ],
+      "stem_preview": "0742",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": "유형 17",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    }
+  ],
+  "stitches": [],
+  "issues": []
+}
