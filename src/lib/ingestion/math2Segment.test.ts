@@ -3,9 +3,15 @@ import { SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
 import { MATH2_DOCUMENT_ID } from './math2Ocr'
 import {
   assertMath2SegmentSource,
+  attachSharedPrompts,
   extractMath2SectionLabel,
+  extractSharedPrompts,
   isPlausibleMath2ProblemNumber,
+  nextPageStartsNewSection,
+  pagePreamble,
   refusePersist,
+  repairMath2NumberSequence,
+  splitMarkdownProblems,
   verdictForCandidate,
 } from './math2Segment'
 
@@ -70,5 +76,54 @@ describe('math2 segment dry-run', () => {
         stitched: false,
       }).verdict,
     ).toBe('BLOCKED')
+  })
+
+  it('splits markdown until the next 4-digit or 유형 heading and keeps the rest of #0020', () => {
+    const spans = splitMarkdownProblems(
+      [
+        '0020 • • ④ • 시술점',
+        '오른쪽 그림과 같이 원점',
+        '![img-12.jpeg](img-12.jpeg)',
+        '으로 움직인다. 최솟값을 구하시오.',
+        '유형 02 같은 거리에 있는 점',
+        '0021 대표 문제',
+        '두 점 A(1, -2)',
+      ].join('\n'),
+    )
+    expect(spans.map((row) => row.number)).toEqual(['0020', '0021'])
+    expect(spans[0]?.text).toContain('최솟값을 구하시오')
+    expect(spans[0]?.text).not.toContain('유형 02')
+  })
+
+  it('attaches [0001~0003] shared prompts only to that range', () => {
+    const markdown = '[0001~0003] 다음 두 점 사이의 거리를 구하시오.\n0001 A(1), B(6)\n0002 A(-3), B(5)\n0016 대표 문제'
+    const attached = attachSharedPrompts(splitMarkdownProblems(markdown), extractSharedPrompts(markdown))
+    expect(attached[0]?.text).toContain('다음 두 점 사이의 거리를 구하시오')
+    expect(attached[0]?.text).toContain('A(1), B(6)')
+    expect(attached.find((row) => row.number === '0016')?.text).not.toContain('0001~0003')
+  })
+
+  it('reads **0439 and repairs 0025/0024/0027 → 0026', () => {
+    expect(splitMarkdownProblems('# **0439 대표 문제**\n원 $x^2$')[0]?.number).toBe('0439')
+    expect(
+      repairMath2NumberSequence([
+        { number: '0025', text: 'a' },
+        { number: '0024', text: 'b' },
+        { number: '0027', text: 'c' },
+      ]).map((row) => row.number),
+    ).toEqual(['0025', '0026', '0027'])
+    expect(
+      repairMath2NumberSequence([
+        { number: '0696', text: 'a' },
+        { number: '0695', text: 'b' },
+        { number: '0696', text: 'c' },
+      ]).map((row) => row.number),
+    ).toEqual(['0694', '0695', '0696'])
+  })
+
+  it('does not treat a 유형 heading preamble as a stitch body', () => {
+    expect(pagePreamble('유형 08\n개념 05-4\n0556 대표 문제\n두 집합')).toBe('')
+    expect(nextPageStartsNewSection('정답 및 풀이 • 4쪽\n# 유형 06\n# 0036 대표 문제')).toBe(true)
+    expect(splitMarkdownProblems('곁합사\n마음 갤러리\n173 > 41쪽으로 이어집니다.')).toEqual([])
   })
 })

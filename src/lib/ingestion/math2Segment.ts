@@ -1,22 +1,13 @@
 /**
  * 쎈 공통수학 2 problem split dry-run.
- * Reuses classifyBookPageV2 + layoutSegment + 4-digit anchors.
- * Does not call OCR, persist problems, or use SSEN 192/step832 persist.
+ * Markdown spans to the next 4-digit / 유형 heading; layoutSegment is not rewritten.
+ * No OCR, no Production persist, no SSEN 192 path.
  */
 import type { MistralOcrLike } from '../ocr/normalizeMistral'
 import { extractMistralLatex } from '../ocr/normalizeMistral'
-import type { LayoutPageInput } from '../recognition/layoutSegment'
-import { layoutInputFromProviderLayout, segmentPageFromLayout } from '../recognition/layoutSegment'
 import { blockedNonProblemKind, classifyBookPageV2, countAnchorsFromText } from '../recognition/bookClassify'
 import { inspectNumberFlowV2 } from '../recognition/bookPipeline'
-import {
-  candidateIdFor,
-  extractOverlappingText,
-  looksIncompleteStem,
-  stitchCrossPageProblems,
-  structureFromRegionText,
-  syntheticLayoutFromMarkdown,
-} from './fullBookIngest832'
+import { structureFromRegionText } from './fullBookIngest832'
 import {
   FORBIDDEN_SOURCE_IDS,
   MATH2_DOCUMENT_ID,
@@ -28,14 +19,26 @@ import {
 export const MATH2_SEGMENT_ENGINE = 'hqb-math2-segment-dry-run'
 export type Math2Verdict = 'AUTO_SAFE' | 'NEEDS_REVIEW' | 'BLOCKED'
 
-const TYPE_HEADING = /^(?:유형|부설)\s*0*(\d{1,2})\b/
+const TYPE_HEADING = /^(?:유형|부설|문헌|영향|부위|용량)\s*0*(\d{1,2})\b/
 const RATIO_FALSE_NUMBER = /^(\d{4})\s*[:：]\s*\d/
+const SHARED_PROMPT = /^\[(\d{4})\s*[~～〜\-]\s*(\d{4})\]\s*(.+)$/
 const WORKBOOK_NUMBER_MAX = 1999
 
 export type Math2PageInput = {
   page: number
   markdown: string
   raw?: MistralOcrLike | null
+}
+
+export type Math2MarkdownSpan = {
+  number: string
+  text: string
+}
+
+export type Math2SharedPrompt = {
+  from: number
+  to: number
+  prompt: string
 }
 
 export type Math2ProblemCandidate = {
@@ -71,6 +74,7 @@ export type Math2SegmentReport = {
   missing_numbers: number[]
   reason_counts: Record<string, number>
   samples: Math2ProblemCandidate[]
+  stitches: Array<{ page: number; problem_number: string; from: number }>
   issues: string[]
 }
 
@@ -87,9 +91,17 @@ export function refusePersist(argv: string[]): void {
   }
 }
 
+export function normalizeMath2Line(line: string): string {
+  return line.replace(/^#+\s*/, '').replace(/\*\*/g, '').replace(/__/g, '').replace(/\s+/g, ' ').trim()
+}
+
+export function padMath2Number(n: number): string {
+  return String(n).padStart(4, '0')
+}
+
 export function extractMath2SectionLabel(text: string): string | null {
   for (const rawLine of text.split(/\n+/)) {
-    const line = rawLine.replace(/^#+\s*/, '').replace(/\s+/g, ' ').trim()
+    const line = normalizeMath2Line(rawLine)
     if (!line || line.length > 48) continue
     const type = TYPE_HEADING.exec(line)
     if (type) return `유형 ${type[1]!.padStart(2, '0')}`
@@ -102,49 +114,104 @@ export function extractMath2SectionLabel(text: string): string | null {
 export function isPlausibleMath2ProblemNumber(number: string, context: string, page: number): boolean {
   const n = Number(number)
   if (!Number.isInteger(n) || n < 1 || n > WORKBOOK_NUMBER_MAX) return false
-  const head = context.replace(/!\[[^\]]*]\([^)]*\)/g, ' ').replace(/^#+\s*/, '').trim()
+  const head = normalizeMath2Line(context.replace(/!\[[^\]]*]\([^)]*\)/g, ' '))
   if (RATIO_FALSE_NUMBER.test(head) && n >= 1000) return false
   if (page <= 5 && n >= 1000) return false
   return true
 }
 
-export function layoutForMath2Page(markdown: string, raw?: MistralOcrLike | null): LayoutPageInput {
-  const page = raw?.pages?.[0]
-  const width = page?.dimensions?.width || 719
-  const height = page?.dimensions?.height || 1017
-  const images = (page?.images ?? []).flatMap((image, index) => {
-    if (image.top_left_x == null || image.top_left_y == null || image.bottom_right_x == null || image.bottom_right_y == null) {
-      return []
-    }
-    return [
-      {
-        id: image.id ?? `img-${index}`,
-        bbox: {
-          x: image.top_left_x / width,
-          y: image.top_left_y / height,
-          width: (image.bottom_right_x - image.top_left_x) / width,
-          height: (image.bottom_right_y - image.top_left_y) / height,
-          unit: 'normalized' as const,
-          origin: 'top-left' as const,
-        },
-      },
-    ]
-  })
-  if (page?.blocks && page.blocks.length > 0) {
-    try {
-      return layoutInputFromProviderLayout(
-        {
-          dimensions: { width, height },
-          blocks: page.blocks,
-          images: page.images ?? [],
-        },
-        { width, height },
-      )
-    } catch {
-      /* markdown fallback */
-    }
+export function isMath2ProblemStart(line: string): string | null {
+  const text = normalizeMath2Line(line)
+  if (!text || TYPE_HEADING.test(text) || SHARED_PROMPT.test(text)) return null
+  if (RATIO_FALSE_NUMBER.test(text)) return null
+  const match = /^(\d{4})\b/.exec(text)
+  return match?.[1] ?? null
+}
+
+export function isMath2SplitStop(line: string): boolean {
+  const text = normalizeMath2Line(line)
+  if (!text) return false
+  if (TYPE_HEADING.test(text)) return true
+  if (/^개념\s*\d/.test(text)) return true
+  if (/^정답\s*및\s*풀이/.test(text)) return true
+  if (SHARED_PROMPT.test(text)) return true
+  if (/^\d{1,3}\s+[IVX]+\b/.test(text)) return true
+  if (/^(?:평면좌표|직선의 방정식|원의 방정식|도형의 이동|집합의 뜻과 표현|집합의 연산)$/.test(text)) return true
+  if (/^\d{1,3}$/.test(text)) return true
+  return false
+}
+
+export function extractSharedPrompts(markdown: string): Math2SharedPrompt[] {
+  const found: Math2SharedPrompt[] = []
+  for (const rawLine of markdown.split(/\n+/)) {
+    const line = normalizeMath2Line(rawLine)
+    const match = SHARED_PROMPT.exec(line)
+    if (!match) continue
+    found.push({ from: Number(match[1]), to: Number(match[2]), prompt: match[0] })
   }
-  return syntheticLayoutFromMarkdown(markdown, width, height, images)
+  return found
+}
+
+export function splitMarkdownProblems(markdown: string): Math2MarkdownSpan[] {
+  const spans: Math2MarkdownSpan[] = []
+  let current: Math2MarkdownSpan | null = null
+  for (const rawLine of markdown.split('\n')) {
+    const number = isMath2ProblemStart(rawLine)
+    if (number) {
+      if (current) spans.push(current)
+      current = { number, text: normalizeMath2Line(rawLine) }
+      continue
+    }
+    if (current && isMath2SplitStop(rawLine)) {
+      spans.push(current)
+      current = null
+      continue
+    }
+    if (current && rawLine.trim()) current.text += `\n${rawLine.trim()}`
+  }
+  if (current) spans.push(current)
+  return spans
+}
+
+export function attachSharedPrompts(spans: Math2MarkdownSpan[], prompts: Math2SharedPrompt[]): Math2MarkdownSpan[] {
+  return spans.map((span) => {
+    const n = Number(span.number)
+    const hit = prompts.find((row) => n >= row.from && n <= row.to)
+    if (!hit || span.text.includes(hit.prompt.slice(0, 16))) return span
+    return { ...span, text: `${hit.prompt}\n${span.text}` }
+  })
+}
+
+export function repairMath2NumberSequence(spans: Math2MarkdownSpan[]): Math2MarkdownSpan[] {
+  const used = new Set(spans.map((row) => row.number))
+  const out = spans.map((row) => ({ ...row }))
+  for (let i = 0; i < out.length; i += 1) {
+    const prev = i > 0 ? Number(out[i - 1]!.number) : null
+    const cur = Number(out[i]!.number)
+    const next = i + 1 < out.length ? Number(out[i + 1]!.number) : null
+    let nextNumber: number | null = null
+    if (prev != null && next != null && next === prev + 2 && cur !== prev + 1) nextNumber = prev + 1
+    else if (next != null && next === cur - 1 && Number(out[i + 2]?.number) === cur) nextNumber = next - 1
+    if (nextNumber == null || nextNumber < 1 || nextNumber > WORKBOOK_NUMBER_MAX) continue
+    const labeled = padMath2Number(nextNumber)
+    if (used.has(labeled) && labeled !== out[i]!.number) continue
+    used.delete(out[i]!.number)
+    used.add(labeled)
+    out[i] = { ...out[i]!, number: labeled }
+  }
+  return out
+}
+
+export function pagePreamble(markdown: string): string {
+  const lines: string[] = []
+  for (const rawLine of markdown.split('\n')) {
+    if (isMath2ProblemStart(rawLine)) break
+    const text = normalizeMath2Line(rawLine)
+    if (!text || /^정답\s*및\s*풀이/.test(text) || TYPE_HEADING.test(text) || /^개념\s*\d/.test(text)) continue
+    if (isMath2SplitStop(rawLine)) continue
+    lines.push(rawLine.trim())
+  }
+  return lines.join('\n').trim()
 }
 
 function stripDifficultyBadge(text: string): string {
@@ -163,7 +230,17 @@ function hasRunningFooter(stem: string): boolean {
 function stemLooksFinished(stem: string, choiceCount: number): boolean {
   if (choiceCount >= 4) return true
   const compact = stem.replace(/\s+/g, ' ').trim()
-  return /구하시오\.?$|고르시오\.?$|쓰시오\.?$|값은\?$|합은\?$|개수는\?$|넓이는\?$|좌표$|길이는\?$/.test(compact)
+  if (/구하시\s*오|고르시\s*오|쓰시\s*오|나타내시\s*오|말하시오|설명하시오|보이시오/.test(compact)) return true
+  return /값은\?$|합은\?$|개수는\?$|넓이는\?$|좌표$|길이는\?$/.test(compact)
+}
+
+export function nextPageStartsNewSection(markdown: string): boolean {
+  for (const rawLine of markdown.split('\n')) {
+    if (isMath2ProblemStart(rawLine)) return false
+    const text = normalizeMath2Line(rawLine)
+    if (TYPE_HEADING.test(text) || /^실력\s*굳히기|^기본\s*다잡기|^유형\s*뽀개기/.test(text)) return true
+  }
+  return false
 }
 
 export function verdictForCandidate(input: {
@@ -190,7 +267,9 @@ export function verdictForCandidate(input: {
   if (hasRunningFooter(input.stem)) reasons.push('RUNNING_FOOTER')
   if (input.incomplete) reasons.push('INCOMPLETE_AT_PAGE_BREAK')
   if (input.stitched) reasons.push('CROSS_PAGE_STITCH')
-  if (input.page_tail && input.choice_count < 4) reasons.push('PAGE_TAIL')
+  if (input.page_tail && input.choice_count < 4 && !stemLooksFinished(input.stem, input.choice_count)) {
+    reasons.push('PAGE_TAIL')
+  }
   if (input.choice_count > 0 && input.choice_count < 4) reasons.push('CHOICES_INCOMPLETE')
   if (!stemLooksFinished(input.stem, input.choice_count)) reasons.push('STEM_MAY_BE_CUT')
 
@@ -207,24 +286,22 @@ export function verdictForCandidate(input: {
 }
 
 export function pickMath2Samples(rows: Math2ProblemCandidate[]): Math2ProblemCandidate[] {
-  const groups: Array<(row: Math2ProblemCandidate) => boolean> = [
-    (row) => row.page <= 20 && row.verdict === 'AUTO_SAFE',
-    (row) => row.page >= 70 && row.page <= 110 && row.choice_count >= 4,
-    (row) => row.page >= 150 && row.latex_count > 0,
-    (row) => row.image_count > 0,
-    (row) => row.cross_page,
-    (row) => row.verdict === 'NEEDS_REVIEW',
-    (row) => row.verdict === 'BLOCKED',
-    (row) => Boolean(row.section),
-  ]
+  const wanted = ['0020', '0001', '0422', '0972', '0024', '0026', '0439', '0458']
   const picked: Math2ProblemCandidate[] = []
   const used = new Set<string>()
   const key = (row: Math2ProblemCandidate) => `${row.page}:${row.problem_number}`
-  for (const match of groups) {
-    const hit = rows.find((row) => match(row) && !used.has(key(row)))
+  for (const number of wanted) {
+    const hit = rows.find((row) => row.problem_number === number && !used.has(key(row)))
     if (hit) {
       used.add(key(hit))
       picked.push(hit)
+    }
+  }
+  for (const row of rows) {
+    if (row.cross_page && !used.has(key(row))) {
+      used.add(key(row))
+      picked.push(row)
+      break
     }
   }
   return picked
@@ -236,25 +313,26 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
     throw new Error(`MATH2_SEGMENT_PAGE_COUNT: expected ${MATH2_PAGE_COUNT}, got ${pages.length}`)
   }
 
+  const ordered = [...pages].sort((a, b) => a.page - b.page)
   let lastSection: string | null = null
-  const rawCandidates: Array<{
+  const raw: Array<{
     page: number
     problem_number: string
     page_kind: string
     plausible: boolean
-    segment_status: string
     stem: string
     choice_count: number
     latex_count: number
     image_count: number
     section: string | null
-    bbox: ReturnType<typeof layoutForMath2Page>['blocks'][number]['bbox']
-    incomplete: boolean
     page_tail: boolean
     text: string
+    stitched_from_page: number | null
   }> = []
 
-  for (const page of [...pages].sort((a, b) => a.page - b.page)) {
+  for (let i = 0; i < ordered.length; i += 1) {
+    const page = ordered[i]!
+    const nextPage = ordered[i + 1]
     const anchors = countAnchorsFromText(page.markdown)
     const kind = classifyBookPageV2({
       page_number: page.page,
@@ -270,67 +348,73 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
     const section = extractMath2SectionLabel(page.markdown) ?? lastSection
     if (extractMath2SectionLabel(page.markdown)) lastSection = extractMath2SectionLabel(page.markdown)
 
-    let layout = layoutForMath2Page(page.markdown, page.raw)
-    let segmented
-    try {
-      segmented = segmentPageFromLayout(layout)
-    } catch {
-      try {
-        layout = syntheticLayoutFromMarkdown(page.markdown, layout.pageWidth || 719, layout.pageHeight || 1017, [])
-        segmented = segmentPageFromLayout(layout)
-      } catch {
-        continue
+    const prompts = extractSharedPrompts(page.markdown)
+    let spans = attachSharedPrompts(repairMath2NumberSequence(splitMarkdownProblems(page.markdown)), prompts)
+    const preamble = nextPage ? pagePreamble(nextPage.markdown) : ''
+    const nextHasProblems = nextPage ? splitMarkdownProblems(nextPage.markdown).length > 0 : false
+    const preambleIsAd = /갤러리|이어집니다|^MEMO\b/.test(preamble)
+    if (
+      spans.length &&
+      preamble.length >= 20 &&
+      nextPage &&
+      nextHasProblems &&
+      !preambleIsAd &&
+      !nextPageStartsNewSection(nextPage.markdown)
+    ) {
+      const last = spans[spans.length - 1]!
+      const lastChoices = circledChoiceCount(last.text)
+      const nextFirst = Number(splitMarkdownProblems(nextPage.markdown)[0]?.number ?? 0)
+      const lastN = Number(last.number)
+      const looksContinuation = !stemLooksFinished(last.text, lastChoices) && !isMath2ProblemStart(preamble.split('\n')[0] ?? '')
+      const flowOk = !nextFirst || nextFirst === lastN + 1
+      if (looksContinuation && flowOk) {
+        last.text = `${last.text}\n${preamble}`
+        raw.push({
+          page: page.page,
+          problem_number: last.number,
+          page_kind: kind.page_kind,
+          plausible: isPlausibleMath2ProblemNumber(last.number, last.text, page.page),
+          stem: last.text,
+          choice_count: Math.max(structureFromRegionText(last.text).choice_count, circledChoiceCount(last.text)),
+          latex_count: extractMistralLatex(last.text).length,
+          image_count: (last.text.match(/!\[[^\]]*\]/g) ?? []).length,
+          section,
+          page_tail: true,
+          text: last.text,
+          stitched_from_page: nextPage.page,
+        })
+        spans = spans.slice(0, -1)
       }
     }
-    const fourDigitRegions = segmented.regions.filter((region) => region.kind === 'four_digit' && region.detected_problem_number)
-    const tailY = fourDigitRegions.reduce((max, region) => Math.max(max, region.bbox.y), -1)
-    for (const region of fourDigitRegions) {
-      const bbox = region.bbox
-      const text = stripDifficultyBadge(extractOverlappingText(layout.blocks, bbox) || region.preview || '')
+
+    for (let s = 0; s < spans.length; s += 1) {
+      const span = spans[s]!
+      const text = stripDifficultyBadge(span.text)
       const structured = structureFromRegionText(text)
       const choiceCount = Math.max(structured.choice_count, circledChoiceCount(text))
-      rawCandidates.push({
+      raw.push({
         page: page.page,
-        problem_number: region.detected_problem_number,
+        problem_number: span.number,
         page_kind: kind.page_kind,
-        plausible: isPlausibleMath2ProblemNumber(region.detected_problem_number, text || region.preview, page.page),
-        segment_status: region.status,
+        plausible: isPlausibleMath2ProblemNumber(span.number, text, page.page),
         stem: structured.stem,
         choice_count: choiceCount,
         latex_count: extractMistralLatex(text).length,
-        image_count: region.assigned_images.length,
+        image_count: (text.match(/!\[[^\]]*\]/g) ?? []).length,
         section,
-        bbox,
-        incomplete: looksIncompleteStem(text, choiceCount, bbox),
-        page_tail: region.bbox.y === tailY,
+        page_tail: s === spans.length - 1,
         text,
+        stitched_from_page: null,
       })
     }
   }
 
-  const stitched = stitchCrossPageProblems(
-    rawCandidates.map((row) => ({
-      candidate_id: candidateIdFor(row.page, row.problem_number, row.problem_number),
-      page: row.page,
-      problem_number: row.problem_number,
-      canonical: row.problem_number,
-      bbox: row.bbox,
-      text: row.text,
-      choice_count: row.choice_count,
-      incomplete: row.incomplete,
-    })),
-  )
-  const stitchedById = new Map(stitched.map((row) => [row.candidate_id, row]))
-  const kept = rawCandidates.filter((row) => stitchedById.has(candidateIdFor(row.page, row.problem_number, row.problem_number)))
-
-  const flow = inspectNumberFlowV2(kept.filter((row) => row.plausible).map((row) => ({ page: row.page, problem_number: row.problem_number })))
+  const flow = inspectNumberFlowV2(raw.filter((row) => row.plausible).map((row) => ({ page: row.page, problem_number: row.problem_number })))
   const flowByKey = new Map(flow.rows.map((row) => [`${row.page}:${row.problem_number}`, row]))
   const counts = new Map<string, number>()
-  for (const row of kept) counts.set(row.problem_number, (counts.get(row.problem_number) ?? 0) + 1)
+  for (const row of raw) counts.set(row.problem_number, (counts.get(row.problem_number) ?? 0) + 1)
 
-  const candidates: Math2ProblemCandidate[] = kept.map((row) => {
-    const id = candidateIdFor(row.page, row.problem_number, row.problem_number)
-    const stitch = stitchedById.get(id)
+  const candidates: Math2ProblemCandidate[] = raw.map((row) => {
     const flowRow = flowByKey.get(`${row.page}:${row.problem_number}`)
     const unique = (counts.get(row.problem_number) ?? 0) <= 1
     const decided = verdictForCandidate({
@@ -338,28 +422,27 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
       plausible: row.plausible,
       unique,
       flow_ok: !flowRow || flowRow.status === 'NORMAL' || flowRow.status === 'EXPECTED_BOOK_STRUCTURE',
-      segment_status: row.segment_status,
-      stem: stitch?.text ?? row.stem,
-      choice_count: stitch?.choice_count ?? row.choice_count,
-      incomplete: Boolean(stitch?.incomplete ?? row.incomplete),
-      stitched: Boolean(stitch?.stitched_from_page),
-      page_tail: row.page_tail && !stitch?.stitched_from_page,
+      segment_status: 'AUTO_OK',
+      stem: row.text,
+      choice_count: row.choice_count,
+      incomplete: Boolean(row.stitched_from_page) ? false : row.page_tail && !stemLooksFinished(row.text, row.choice_count),
+      stitched: Boolean(row.stitched_from_page),
+      page_tail: row.page_tail && !row.stitched_from_page,
     })
-    const preview = (stitch?.text ?? row.stem).replace(/\s+/g, ' ').trim().slice(0, 160)
     return {
       page: row.page,
       problem_number: row.problem_number,
       verdict: decided.verdict,
       reasons: decided.reasons,
-      stem_preview: preview,
-      choice_count: stitch?.choice_count ?? row.choice_count,
+      stem_preview: row.text.replace(/\s+/g, ' ').trim().slice(0, 180),
+      choice_count: row.choice_count,
       latex_count: row.latex_count,
       image_count: row.image_count,
       section: row.section,
       page_kind: row.page_kind,
-      stitched_from_page: stitch?.stitched_from_page ?? null,
-      cross_page: Boolean(stitch?.stitched_from_page),
-      segment_status: row.segment_status,
+      stitched_from_page: row.stitched_from_page,
+      cross_page: Boolean(row.stitched_from_page),
+      segment_status: 'AUTO_OK',
     }
   })
 
@@ -386,7 +469,6 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
   for (const row of candidates) {
     for (const reason of row.reasons) reason_counts[reason] = (reason_counts[reason] ?? 0) + 1
   }
-  const duplicate_numbers = [...new Set(candidates.filter((row) => row.reasons.includes('DUPLICATE_NUMBER')).map((row) => row.problem_number))]
 
   return {
     sourceId: MATH2_DOCUMENT_ID,
@@ -401,10 +483,13 @@ export function runMath2Segment(pages: Math2PageInput[], sourceId = MATH2_DOCUME
     missing_suspects: missing.length,
     reverse_or_jump: flow.reverse + flow.suspicious_jump,
     cross_page: candidates.filter((row) => row.cross_page).length,
-    duplicate_numbers,
+    duplicate_numbers: [...new Set(candidates.filter((row) => row.reasons.includes('DUPLICATE_NUMBER')).map((row) => row.problem_number))],
     missing_numbers: missing.slice(0, 40),
     reason_counts,
     samples: pickMath2Samples(candidates),
+    stitches: candidates
+      .filter((row) => row.stitched_from_page != null)
+      .map((row) => ({ page: row.page, problem_number: row.problem_number, from: row.stitched_from_page as number })),
     issues,
   }
 }
@@ -422,11 +507,14 @@ export function formatMath2SegmentMarkdown(report: Math2SegmentReport): string {
     `- candidates: ${report.candidates}`,
     `- AUTO_SAFE / NEEDS_REVIEW / BLOCKED: ${report.auto_safe} / ${report.needs_review} / ${report.blocked}`,
     `- duplicate / missing-gap / reverse+jump / cross-page: ${report.duplicate_suspects} / ${report.missing_suspects} / ${report.reverse_or_jump} / ${report.cross_page}`,
+    `- stitches: ${report.stitches.map((row) => `p${row.page}#${row.problem_number}←${row.from}`).join(', ') || 'none'}`,
     `- persist problems: false`,
     `- issues: ${report.issues.join('; ') || 'none'}`,
     `- duplicate numbers: ${report.duplicate_numbers.join(', ') || 'none'}`,
     `- missing (first 40 short gaps): ${report.missing_numbers.join(', ') || 'none'}`,
-    `- reasons: ${Object.entries(report.reason_counts).map(([k, v]) => `${k}=${v}`).join(', ') || 'none'}`,
+    `- reasons: ${Object.entries(report.reason_counts)
+      .map(([k, v]) => `${k}=${v}`)
+      .join(', ') || 'none'}`,
     ``,
     `## samples`,
     ...sampleLines,
