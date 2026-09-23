@@ -25,6 +25,30 @@ const GANYEOM_PAIRS = `빠른 정답 찾기
 202 -6 203 $\\frac{33}{2}$
 `
 
+const GANYEOM_P292 = `
+빠른 정답 찾기
+1 $\\sqrt{5}$ 2 7, 13
+3 2 4 $\\frac{2\\sqrt{10}}{3}$
+5 3 6 (1, 4)
+7 1 8 1 9 5
+10 32 11 9 12 8
+13 풀이 3쪽 14 풀이 4쪽
+`
+
+const GANYEOM_TOC = `
+### 빠른 정답 찾기
+본책 뒤에 제시된 '빠른 정답 찾기'를 이용하면 정답을 빠르게 확인하고 채점할 수 있습니다.
+`
+
+const TYPELEVEL_DRILL = `
+• 정답과 해설 2쪽
+[0001~0004] 수직선 위의 다음 두 점 사이의 거리를 구하시오.
+0001 A(2), B(6) 4
+0004 A(-2), B(-8) 6
+[0005~0008] 좌표평면 위의 다음 두 점 사이의 거리를 구하시오.
+0005 A(-1, 1), B(3, 4) 5
+`
+
 const WANJA_P7 = `
 정답과 해설 2쪽 ▶▶
 # 0007
@@ -59,6 +83,30 @@ describe('cm2 answer recover', () => {
     expect(by['0200']).toBe('50')
     expect(by['0201']).toBe('14')
     expect(rows.every((row) => row.explanation === null)).toBe(true)
+  })
+
+  it('does not parse 빠른 정답 TOC pages and keeps pair values out of problem numbers', () => {
+    expect(parseQuickKeyPage(GANYEOM_TOC, 5, 304)).toEqual([])
+    const rows = parseQuickKeyPage(GANYEOM_P292, 292, 304)
+    const by = Object.fromEntries(rows.map((row) => [row.number, row.answer_text]))
+    expect(by['0001']).toContain('sqrt')
+    expect(by['0002']).toBe('7, 13')
+    expect(by['0005']).toBe('3')
+    expect(by['0006']).toContain('1, 4')
+    expect(by['0007']).toBe('1')
+    expect(by['0013']).toContain('풀이')
+  })
+
+  it('reviews pointer answers instead of AUTO-saving 풀이 n쪽', () => {
+    const extracts = parseQuickKeyPage(GANYEOM_P292, 292, 304).filter((row) => row.number === '0013')
+    const matches = matchExtracts(
+      extracts,
+      [{ problem_id: 'p13', version_id: 'v13', number: '0013', problem_text: '13 다음 명제의 참 거짓을 판별하시오.' }],
+      'doc',
+    )
+    expect(matches[0]?.verdict).toBe('REVIEW')
+    expect(matches[0]?.reasons).toContain('POINTER_ANSWER')
+    expect(matches[0]?.payload).toBeNull()
   })
 
   it('splits 완자 reprint pages and keeps marked choices', () => {
@@ -104,9 +152,42 @@ describe('cm2 answer recover', () => {
     expect(matches[0]?.verdict).toBe('AUTO')
     expect(matches[0]?.payload?.answer).toMatchObject({ answer_text: '④' })
     expect((matches[0]?.payload?.explanation as { explanation_type: string }).explanation_type).toBe('ORIGINAL')
-    expect(matches[1]?.verdict).toBe('REVIEW')
+    expect(matches[1]?.verdict).toBe('AUTO')
+    expect(matches[1]?.problem_id).toBe('p8b')
     expect(matches[1]?.reasons).toContain('DUPLICATE_NUMBER')
-    expect(matches[1]?.payload).toBeNull()
+  })
+
+  it('keeps ambiguous duplicate stems in REVIEW', () => {
+    const extracts = parseReprintExplainPage(WANJA_P7, 7, false).slice(0, 1)
+    const matches = matchExtracts(
+      extracts,
+      [
+        {
+          problem_id: 'a',
+          version_id: 'va',
+          number: '0007',
+          problem_text: '두 점 A(t, -4), B(-2, -t)에 대하여 선분 AB의 길이가 최소가 되도록 하는 t의 값은?',
+        },
+        {
+          problem_id: 'b',
+          version_id: 'vb',
+          number: '0007',
+          problem_text: '두 점 A(t, -4), B(-2, -t)에 대하여 선분 AB의 길이가 최소가 되도록 하는 t의 값은? 다른 보기',
+        },
+      ],
+      'doc',
+    )
+    expect(matches[0]?.verdict).toBe('REVIEW')
+    expect(matches[0]?.reasons).toContain('AMBIGUOUS_DUPLICATE')
+    expect(matches[0]?.payload).toBeNull()
+  })
+
+  it('splits typelevel drill lines and ignores [0001~0004] range headers', () => {
+    const rows = parseReprintExplainPage(TYPELEVEL_DRILL, 9, false)
+    expect(rows.map((row) => row.number)).toEqual(['0001', '0004', '0005'])
+    expect(rows[0]?.answer_text).toBe('4')
+    expect(rows[1]?.answer_text).toBe('6')
+    expect(rows[0]?.reprint_stem).toContain('A(2)')
   })
 
   it('does not AUTO-match a unique number when reprint stem disagrees', () => {

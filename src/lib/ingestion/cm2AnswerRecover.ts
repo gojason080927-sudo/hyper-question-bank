@@ -88,35 +88,62 @@ function compact(text: string): string {
   return text.replace(/\s+/g, ' ').trim()
 }
 
-function looksLikeQuickKeyPage(text: string, page: number, pageCount: number): boolean {
-  if (ASK.test(text) && (text.match(ASK) ?? []).length >= 2) return false
-  if (QUICK_HEAD.test(text)) return true
-  return page >= pageCount - 14 && !ASK.test(text) && compact(text).length >= 80
+export function answerQuality(answer: string | null): 'POINTER_ANSWER' | 'TRUNCATED_ANSWER' | null {
+  if (!answer) return null
+  if (/풀이\s*\d+\s*쪽/.test(answer)) return 'POINTER_ANSWER'
+  if (/\\[a-zA-Z]*\{?$/.test(answer)) return 'TRUNCATED_ANSWER'
+  if (answer.length <= 1 && /[.\-–,，{}]/.test(answer)) return 'TRUNCATED_ANSWER'
+  return null
 }
 
-export function parseQuickKeyPage(text: string, page: number, pageCount: number): Cm2AnswerExtract[] {
-  if (!looksLikeQuickKeyPage(text, page, pageCount)) return []
-  let body = text
-    .replace(/\$\$/g, ' ')
+function latexRegions(text: string): Array<[number, number]> {
+  const regions: Array<[number, number]> = []
+  const re = /\\frac\{[^}]*\}\{[^}]*\}|\\sqrt\{[^}]*\}|\\[a-zA-Z]+\{[^}]*\}/g
+  let hit: RegExpExecArray | null
+  while ((hit = re.exec(text))) regions.push([hit.index, hit.index + hit[0].length])
+  return regions
+}
+
+function insideRegion(index: number, regions: Array<[number, number]>): boolean {
+  return regions.some(([start, end]) => index >= start && index < end)
+}
+
+function looksLikeQuickKeyPage(text: string, page: number, pageCount: number, previousQuick: boolean): boolean {
+  if (page < pageCount - 20) return false
+  if (ASK.test(text) && (text.match(ASK) ?? []).length >= 2) return false
+  if (QUICK_HEAD.test(text)) return true
+  return previousQuick && !ASK.test(text) && compact(text).length >= 80
+}
+
+export function parseQuickKeyPage(
+  text: string,
+  page: number,
+  pageCount: number,
+  previousQuick = false,
+): Cm2AnswerExtract[] {
+  if (!looksLikeQuickKeyPage(text, page, pageCount, previousQuick)) return []
+  const body = text
+    .replace(/\$+/g, ' ')
     .replace(/\\quad/g, ' ')
     .replace(/\\text\{([^}]*)\}/g, ' $1 ')
     .replace(/빠른\s*정답(?:\s*찾기)?/g, ' ')
     .replace(/•?\s*본책[^\n]*/g, ' ')
-    .replace(/^#{1,3}\s+[^\n]+/gm, ' ')
+    .replace(/^#{1,3}\s+(?!\$)[^\n]+/gm, ' ')
     .replace(/^[IVX]+\.\s*[^\n]+/gm, ' ')
     .replace(new RegExp(`(?:^|\\n)\\s*${page}\\s*$`), ' ')
+  const masked = latexRegions(body)
   const tokens: Array<{ n: number; index: number }> = []
   const re = /(?<![0-9])(\d{1,3})(?![0-9])/g
   let hit: RegExpExecArray | null
   while ((hit = re.exec(body))) {
     const n = Number(hit[1])
-    if (n < 1 || n > 800 || n === page) continue
+    if (n < 1 || n > 800 || n === page || insideRegion(hit.index, masked)) continue
     tokens.push({ n, index: hit.index })
   }
   const starts: Array<{ n: number; index: number }> = []
   let expect = 0
   for (const token of tokens) {
-    const sequential = expect > 0 && token.n >= expect && token.n <= expect + 3
+    const sequential = expect > 0 && token.n >= expect && token.n <= expect + 2
     if (starts.length === 0 || sequential) {
       starts.push(token)
       expect = token.n + 1
@@ -129,7 +156,7 @@ export function parseQuickKeyPage(text: string, page: number, pageCount: number)
     const raw = body.slice(cur.index + String(cur.n).length, next?.index ?? body.length)
     const answer = raw.replace(/\$+/g, ' ').replace(/\s+/g, ' ').trim()
     if (!answer || answer.length > 280) continue
-    if (/^(?:평면좌표|원의\s*방정식|도형의\s*이동|집합|명제|함수)/.test(answer)) continue
+    if (/^(?:평면좌표|원의\s*방정식|도형의\s*이동|직선의\s*방정식|집합|명제|함수)/.test(answer)) continue
     out.push({
       page,
       number: padAnswerNumber(cur.n),
@@ -146,8 +173,12 @@ export function parseQuickKeyPage(text: string, page: number, pageCount: number)
 function isReprintExplainPage(text: string, previousExplain: boolean): boolean {
   const trimmed = text.trim()
   if (/^(?:•\s*)?정답과\s*해설/.test(trimmed)) return true
-  if (previousExplain && /^#{1,3}\s*\d{3,4}\b/.test(trimmed)) return true
-  return false
+  if (!previousExplain) return false
+  if (/^#{1,3}\s*\d{3,4}\b/.test(trimmed)) return true
+  if (/^#{1,3}\s+\S+/.test(trimmed) && /(?:^|\n)#{1,3}\s*\d{4}\b/.test(text) && /(?:이므로|따라서|양변을)/.test(text)) {
+    return true
+  }
+  return /^\d{4}\b/.test(trimmed) && /(?:이므로|따라서|양변을)/.test(text)
 }
 
 function extractMarkedChoice(text: string): string | null {
@@ -165,38 +196,56 @@ function extractShortAnswer(text: string): string | null {
   return value.slice(0, 80)
 }
 
+function extractDrillAnswer(text: string): string | null {
+  const first = (text.split('\n').find((line) => /\d{4}/.test(line)) ?? '').replace(/^#{0,3}\s*/, '').trim()
+  if (!first || /^#{0,3}\s*\d{4}\s*$/.test(first) || /[①-⑤]/.test(first)) return null
+  const tail =
+    /^\d{4}\s+\S.+\s+(\([^)]{1,40}\)|-?\d+(?:\s*\/\s*\d+)?|[a-z]\s*=\s*[^,\n]{1,48}|[√][^\s,]{0,20})\s*$/i.exec(first)
+  return tail?.[1]?.replace(/\s+/g, ' ').trim().slice(0, 80) ?? null
+}
+
 function reprintStemOf(item: string): string {
-  const withoutHeading = item.replace(/^#{0,3}\s*\d{3,4}[^\n]*/, '').trim()
+  const withoutHeading = /^#{1,3}\s*\d{3,4}\b/.test(item)
+    ? item.replace(/^#{1,3}\s*\d{3,4}[^\n]*/, '').trim()
+    : item.replace(/^\d{4}\s+/, '').trim()
   const cut = withoutHeading.split(/[①-⑤]|이므로|따라서|양변을|정답\s*:/)[0] ?? withoutHeading
   return compact(cut).slice(0, 180)
 }
 
+function reprintHeadingHits(text: string): Array<{ number: string; index: number }> {
+  const re = /(?:^|\n)\s*(?:#{1,3}\s*)?0*(\d{4})\b/g
+  const hits: Array<{ number: string; index: number }> = []
+  let cur: RegExpExecArray | null
+  while ((cur = re.exec(text))) {
+    const number = cur[1]!
+    const numStart = (cur.index ?? 0) + cur[0].length - number.length
+    const before = text.slice(Math.max(0, numStart - 1), numStart)
+    const after = text.slice(numStart + number.length, numStart + number.length + 1)
+    if (before === '[' || before === '~' || after === '~' || after === ']') continue
+    hits.push({ number: padAnswerNumber(number), index: cur.index ?? 0 })
+  }
+  return hits
+}
+
 export function parseReprintExplainPage(text: string, page: number, previousExplain: boolean): Cm2AnswerExtract[] {
   if (!isReprintExplainPage(text, previousExplain)) return []
-  const chunks: Array<{ number: string; body: string }> = []
-  const re = /(?:^|\n)\s*#{0,3}\s*0*(\d{4})\b/g
-  const hits = [...text.matchAll(re)]
-  for (let i = 0; i < hits.length; i += 1) {
-    const cur = hits[i]!
-    const next = hits[i + 1]
-    const start = cur.index ?? 0
-    const end = next?.index ?? text.length
-    chunks.push({ number: padAnswerNumber(cur[1]!), body: text.slice(start, end).trim() })
-  }
-  return chunks
-    .map((chunk) => {
-      const choice = extractMarkedChoice(chunk.body)
-      const short = choice ? null : extractShortAnswer(chunk.body)
+  const hits = reprintHeadingHits(text)
+  return hits
+    .map((cur, i) => {
+      const end = hits[i + 1]?.index ?? text.length
+      const body = text.slice(cur.index, end).trim()
+      const choice = extractMarkedChoice(body)
+      const short = choice ? null : (extractShortAnswer(body) ?? extractDrillAnswer(body))
       const answer = choice ?? short
-      const explanation = compact(chunk.body).slice(0, 4000)
+      const explanation = compact(body).slice(0, 4000)
       return {
         page,
-        number: chunk.number,
+        number: cur.number,
         answer_text: answer,
         answer_type: classifyAnswerType(answer),
         explanation: explanation.length >= 40 ? explanation : null,
-        reprint_stem: reprintStemOf(chunk.body),
-        source_preview: compact(chunk.body).slice(0, 160),
+        reprint_stem: reprintStemOf(body),
+        source_preview: compact(body).slice(0, 160),
       } satisfies Cm2AnswerExtract
     })
     .filter((row) => row.answer_text || row.explanation)
@@ -209,10 +258,13 @@ export function parseAnswerPages(
 ): Cm2AnswerExtract[] {
   const out: Cm2AnswerExtract[] = []
   let previousExplain = false
+  let previousQuick = false
   for (const page of [...pages].sort((a, b) => a.page - b.page)) {
     if (profile === 'quick_key') {
-      out.push(...parseQuickKeyPage(page.text, page.page, pageCount))
+      const rows = parseQuickKeyPage(page.text, page.page, pageCount, previousQuick)
+      previousQuick = rows.length > 0 || (previousQuick && looksLikeQuickKeyPage(page.text, page.page, pageCount, true))
       previousExplain = false
+      out.push(...rows)
       continue
     }
     const rows = parseReprintExplainPage(page.text, page.page, previousExplain)
@@ -266,17 +318,26 @@ export function matchExtracts(
       .map((row) => ({ row, overlap: stemOverlap(extract.reprint_stem, row.problem_text) }))
       .sort((a, b) => b.overlap - a.overlap)
     const best = scored[0]!
+    const second = scored[1]
+    const uniqueStemWinner = Boolean(extract.reprint_stem) && best.overlap >= 0.6 && (second ? best.overlap - second.overlap >= 0.3 : true)
     if (extract.reprint_stem && best.overlap < 0.6) reasons.push('STEM_MISMATCH')
     if (!extract.reprint_stem && hits.length === 1) reasons.push('NUMBER_ONLY_UNIQUE')
+    if (hits.length > 1 && extract.reprint_stem && !uniqueStemWinner) reasons.push('AMBIGUOUS_DUPLICATE')
     if (!extract.answer_text) reasons.push('ANSWER_MISSING')
+    const quality = answerQuality(extract.answer_text)
+    if (quality) reasons.push(quality)
+    const uniqueNumber = hits.length === 1
     const auto =
-      hits.length === 1 &&
       !reasons.includes('STEM_MISMATCH') &&
       !reasons.includes('EMPTY_EXTRACT') &&
+      !reasons.includes('POINTER_ANSWER') &&
+      !reasons.includes('TRUNCATED_ANSWER') &&
+      !reasons.includes('AMBIGUOUS_DUPLICATE') &&
       Boolean(extract.answer_text || extract.explanation) &&
-      (extract.reprint_stem ? best.overlap >= 0.6 : true)
+      (uniqueNumber || uniqueStemWinner) &&
+      (extract.reprint_stem ? best.overlap >= 0.6 : uniqueNumber)
     const verdict: Cm2AnswerMatch['verdict'] = auto ? 'AUTO' : 'REVIEW'
-    if (!auto && !reasons.includes('DUPLICATE_NUMBER') && !reasons.includes('STEM_MISMATCH')) reasons.push('NEEDS_REVIEW')
+    if (!auto && reasons.length === (hits.length > 1 ? 1 : 0)) reasons.push('NEEDS_REVIEW')
     return {
       extract,
       verdict,

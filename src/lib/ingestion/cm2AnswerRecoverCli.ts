@@ -54,26 +54,36 @@ async function paged<T>(
   return rows
 }
 
+function reasonCounts(matches: Cm2AnswerMatch[]) {
+  const counts: Record<string, number> = {}
+  for (const row of matches) {
+    for (const reason of row.reasons) counts[reason] = (counts[reason] ?? 0) + 1
+  }
+  return counts
+}
+
+function sampleAuto(matches: Cm2AnswerMatch[]) {
+  const auto = matches.filter((row) => row.verdict === 'AUTO')
+  const preferred = auto.filter((row) => row.extract.answer_text && (row.overlap >= 0.6 || !row.extract.reprint_stem))
+  const picked = [...preferred.filter((row) => row.extract.explanation), ...preferred, ...auto].slice(0, 8)
+  const unique = [...new Map(picked.map((row) => [row.extract.number, row])).values()].slice(0, 3)
+  return unique.map((row) => ({
+    number: row.extract.number,
+    page: row.extract.page,
+    overlap: row.overlap,
+    answer: row.extract.answer_text,
+    stem: row.stem_preview,
+    reprint: row.extract.reprint_stem,
+    explanation: row.extract.explanation?.slice(0, 180) ?? null,
+    same_problem: !row.extract.reprint_stem || row.overlap >= 0.6,
+  }))
+}
+
 function riskSamples(matches: Cm2AnswerMatch[]) {
   const review = matches.filter((row) => row.verdict === 'REVIEW').slice(0, 4)
   const unmatched = matches.filter((row) => row.verdict === 'UNMATCHED').slice(0, 3)
-  const auto = matches.filter((row) => row.verdict === 'AUTO')
-  const samples = [1, 2, 4, 5]
-    .map((level) => auto.find((row) => row.extract.page % 10 === level) ?? auto[level])
-    .filter((row): row is Cm2AnswerMatch => Boolean(row))
-    .slice(0, 3)
-  const picked = samples.length ? samples : auto.slice(0, 3)
   return {
-    auto: picked.map((row) => ({
-      number: row.extract.number,
-      page: row.extract.page,
-      overlap: row.overlap,
-      answer: row.extract.answer_text,
-      stem: row.stem_preview,
-      reprint: row.extract.reprint_stem,
-      explanation: row.extract.explanation?.slice(0, 180) ?? null,
-      same_problem: !row.extract.reprint_stem || row.overlap >= 0.6,
-    })),
+    auto: sampleAuto(matches),
     review: review.map((row) => ({
       number: row.extract.number,
       page: row.extract.page,
@@ -156,6 +166,7 @@ export async function runCm2AnswerRecoverCli(root = process.cwd(), argv = proces
       source_id: target.spec.sourceId,
       registered: registered.length,
       pages: pages.length,
+      reason_counts: reasonCounts(matches),
       samples: riskSamples(matches),
     })
   }
