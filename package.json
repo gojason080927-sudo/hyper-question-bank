@@ -56,6 +56,7 @@
     "persist:book": "node scripts/book-persist.mjs",
     "classify:book": "node scripts/book-classify.mjs",
     "classify:cm2-difficulty": "node scripts/cm2-difficulty-apply.mjs",
+    "recover:cm2-answers": "node scripts/cm2-answer-recover.mjs",
     "test:db:core-v1": "node scripts/core-v1-acceptance.mjs",
     "test:db:workflow-v1": "node scripts/workflow-v1-acceptance.mjs",
     "test:db:review-v1": "node scripts/review-target-v1-acceptance.mjs",
