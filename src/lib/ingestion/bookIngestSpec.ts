@@ -86,7 +86,18 @@ export const LIGHTSSEN2_SPEC: BookIngestSpec = {
   pdfPaths: ['/tmp/lightssen2-original.pdf', '.ocr-temp/lightssen2-original.pdf'],
 }
 
-export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC]
+export const TYPELEVEL2_SPEC: BookIngestSpec = {
+  slug: 'typelevel2',
+  sourceId: 'cc6c347d-db2d-4363-b97e-68026951804c',
+  title: '공통수학 2 유형만렙',
+  pageCount: 196,
+  pdfHash: 'e9e06cd6056de75335ecd1a42b8ecd585281732ce130d7b418ebe3965aced44f',
+  cacheDir: '.ocr-temp/typelevel2-ocr',
+  reportDir: 'ocr-tests/taxonomy/typelevel2-ocr',
+  pdfPaths: ['/tmp/typelevel2-original.pdf', '.ocr-temp/typelevel2-original.pdf'],
+}
+
+export const BOOK_SPECS: BookIngestSpec[] = [GANYEOM2_SPEC, RPM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC, TYPELEVEL2_SPEC]
 
 export function specFromBookArg(argv: string[], fallback = GANYEOM2_SPEC): BookIngestSpec {
   const flag = argv.find((arg) => arg.startsWith('--book='))
