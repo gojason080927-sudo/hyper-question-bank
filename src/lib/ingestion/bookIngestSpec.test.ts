@@ -4,6 +4,7 @@ import { SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
 import {
   GANYEOM2_SPEC,
   GOJAENG2_SPEC,
+  ILDEUNG2_SPEC,
   RPM2_SPEC,
   analyzeBookPage,
   assertBookIngestSource,
@@ -78,6 +79,19 @@ describe('generic book ingest spec', () => {
     const plan = planBookOcr(GOJAENG2_SPEC, { cachedPages: [] })
     expect(plan.pageCount).toBe(199)
     expect(plan.batchUsd).toBe(0.398)
+    expect(plan.underCap).toBe(true)
+    expect(plan.persistProblems).toBe(false)
+  })
+
+  it('registers ILDEUNG2 on the same generic planner', () => {
+    expect(specFromBookArg(['--book=ildeung2']).sourceId).toBe(ILDEUNG2_SPEC.sourceId)
+    expect(() => specFromBookArg(['--book=unknown'])).toThrow(/UNKNOWN_BOOK/)
+    expect(() => assertBookIngestSource(ILDEUNG2_SPEC, SSEN_SOURCE_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(ILDEUNG2_SPEC, MATH2_DOCUMENT_ID)).toThrow(/FORBIDDEN/)
+    expect(() => assertBookIngestSource(ILDEUNG2_SPEC, GOJAENG2_SPEC.sourceId)).toThrow(/SOURCE_LOCK/)
+    const plan = planBookOcr(ILDEUNG2_SPEC, { cachedPages: [] })
+    expect(plan.pageCount).toBe(150)
+    expect(plan.batchUsd).toBe(0.3)
     expect(plan.underCap).toBe(true)
     expect(plan.persistProblems).toBe(false)
   })
