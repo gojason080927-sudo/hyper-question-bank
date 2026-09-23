@@ -1,0 +1,318 @@
+{
+  "phase": "cm2-answer-recover-dry-run",
+  "persist": false,
+  "engine": "cm2-answer-recover-v1",
+  "student_care_accessed": false,
+  "problem_text_mutated": false,
+  "types_mutated": false,
+  "difficulty_mutated": false,
+  "books": [
+    {
+      "book": "ganyeom2",
+      "profile": "quick_key",
+      "extracted": 681,
+      "answers": 681,
+      "explanations": 0,
+      "auto": 521,
+      "review": 1,
+      "unmatched": 159,
+      "written": 0,
+      "student_care_accessed": false,
+      "title": "개념원리 공통수학2",
+      "source_id": "a11b1a72-9c90-47ec-8685-0be157daa350",
+      "registered": 529,
+      "pages": 304,
+      "reason_counts": {
+        "NUMBER_ONLY_UNIQUE": 521,
+        "NO_REGISTERED_NUMBER": 159,
+        "DUPLICATE_NUMBER": 1,
+        "NEEDS_REVIEW": 1
+      },
+      "samples": {
+        "auto": [
+          {
+            "number": "0001",
+            "page": 292,
+            "overlap": 0,
+            "answer": "\\sqrt{5}",
+            "stem": "1 두 점 A(a, 3), B(1, 2-a) 사이의 거리가 2√3일 때, 양수 a의 값을 구하십시오.",
+            "reprint": null,
+            "explanation": null,
+            "same_problem": true
+          },
+          {
+            "number": "0002",
+            "page": 292,
+            "overlap": 0,
+            "answer": "7, 13",
+            "stem": "2 세 점 A(4, -5), B(10, 1), C(a, 4)에 대하여 AB=2BC일 때, a의 값을 모두 구하십시오.",
+            "reprint": null,
+            "explanation": null,
+            "same_problem": true
+          },
+          {
+            "number": "0003",
+            "page": 292,
+            "overlap": 0,
+            "answer": "2",
+            "stem": "3 두 점 A(-1, a), B(a, 5)에 대하여 선분 AB의 길이가 최소가 되도록 하는 a의 값을 구하십시오.",
+            "reprint": null,
+            "explanation": null,
+            "same_problem": true
+          }
+        ],
+        "review": [
+          {
+            "number": "0060",
+            "page": 292,
+            "reasons": [
+              "DUPLICATE_NUMBER",
+              "NEEDS_REVIEW"
+            ],
+            "overlap": 0,
+            "answer": "6",
+            "stem": "60 좌표평면 위의 세 점 A(1, 0), B(4, 0), C(1, a)와 임의의 점 P에 대하여 $\\overline{AP}^2 + \\overline{BP}^2 + \\overline{CP}^2$의 최솟값이 30일 때, 양수 a의 값을 구하십시오.",
+            "reprint": null
+          }
+        ],
+        "unmatched": [
+          {
+            "number": "0005",
+            "page": 292,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "5 3"
+          },
+          {
+            "number": "0006",
+            "page": 292,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "6 (1, 4)"
+          },
+          {
+            "number": "0007",
+            "page": 292,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "7 (1) \\angle A = 90^\\circ 인 직각삼각형 (2) 정삼각형"
+          }
+        ]
+      }
+    },
+    {
+      "book": "wanja2",
+      "profile": "reprint_explain",
+      "extracted": 762,
+      "answers": 245,
+      "explanations": 762,
+      "auto": 695,
+      "review": 0,
+      "unmatched": 67,
+      "written": 0,
+      "student_care_accessed": false,
+      "title": "공통수학 2 완자 기출PICK",
+      "source_id": "cf7a9be6-a6cd-42e5-b17c-448a30bd760c",
+      "registered": 962,
+      "pages": 228,
+      "reason_counts": {
+        "DUPLICATE_NUMBER": 7,
+        "ANSWER_MISSING": 456,
+        "NO_REGISTERED_NUMBER": 67
+      },
+      "samples": {
+        "auto": [
+          {
+            "number": "0007",
+            "page": 7,
+            "overlap": 1,
+            "answer": "④",
+            "stem": "0007 두 점 A(t, -4), B(-2, -t)에 대하여 선분 AB의 길이가 최소가 되도록 하는 t의 값은? ① -2 ② -1 ③ 0 √④ 1 ⑤ 2 AB = √(-2-t)² + (-t+4)² = √22 - 4t + 20 = √2(t-1)² + 1",
+            "reprint": "두 점 A(t, -4), B(-2, -t)에 대하여 선분 AB의 길이가 최소가 되도록 하는 t의 값은?",
+            "explanation": "# 0007 두 점 A(t, -4), B(-2, -t)에 대하여 선분 AB의 길이가 최소가 되도록 하는 t의 값은? ① -2 ② -1 ③ 0 √④ 1 ⑤ 2 AB = √(-2-t)² + (-t+4)² = √22 - 4t + 20 = √2(t-1)² + 18 따라서 선분 AB의 길이는 t=1일 때 최소이다.",
+            "same_problem": true
+          },
+          {
+            "number": "0009",
+            "page": 7,
+            "overlap": 1,
+            "answer": "⑤",
+            "stem": "0009 평행사변형 ABCD에서 세 꼭짓점이 A(3, 4), B(1, 5), C(4, k)이고, 둘레의 길이가 8√5일 때, k의 값은? (단, 점 C는 제4사분면 위에 있다.) ① -5 ② -4 ③ -3 ④ -2 √⑤ -1 평행사변형 ABCD에서 두",
+            "reprint": "평행사변형 ABCD에서 세 꼭짓점이 A(3, 4), B(1, 5), C(4, k)이고, 둘레의 길이가 8√5일 때, k의 값은? (단, 점 C는 제4사분면 위에 있다.)",
+            "explanation": "# 0009 평행사변형 ABCD에서 세 꼭짓점이 A(3, 4), B(1, 5), C(4, k)이고, 둘레의 길이가 8√5일 때, k의 값은? (단, 점 C는 제4사분면 위에 있다.) ① -5 ② -4 ③ -3 ④ -2 √⑤ -1 평행사변형 ABCD에서 두 쌍의 대변의 길이가 각각 같으므로 AB = CD, AD = BC 이",
+            "same_problem": true
+          },
+          {
+            "number": "0010",
+            "page": 7,
+            "overlap": 1,
+            "answer": "②",
+            "stem": "0010 두 점 A(3, 4), B(5, 2)에서 같은 거리에 있는 점 P(a, b)에 대하여 OP = 5일 때, ab의 값은? (단, O는 원점) ① 10 √② 12 ③ 14 ④ 16 ⑤ 18 AP = BP에서 AP' = BP'이므로 (a-3)² +",
+            "reprint": "두 점 A(3, 4), B(5, 2)에서 같은 거리에 있는 점 P(a, b)에 대하여 OP = 5일 때, ab의 값은? (단, O는 원점)",
+            "explanation": "# 0010 두 점 A(3, 4), B(5, 2)에서 같은 거리에 있는 점 P(a, b)에 대하여 OP = 5일 때, ab의 값은? (단, O는 원점) ① 10 √② 12 ③ 14 ④ 16 ⑤ 18 AP = BP에서 AP' = BP'이므로 (a-3)² + (b-4)² = (a-5)² + (b-2)² a² + b² - 6a",
+            "same_problem": true
+          }
+        ],
+        "review": [],
+        "unmatched": [
+          {
+            "number": "0018",
+            "page": 9,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "### 0018 두 점 O(0, 0), A(5, 6)과 임의의 점 P에 대하여 $\\overline{OP} + \\overline{AP}$의 최솟값은? - ① $2\\sqrt{15}$ $\\sqrt{2} \\sqrt{61}$ $\\sqrt{3} \\sqrt{62}$ - ④ $3\\sqrt{7}$ $\\"
+          },
+          {
+            "number": "0019",
+            "page": 9,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "### 0019 두 점 A(-4, -3), B(2, 5)와 y축 위의 점 P에 대하여 $\\overline{AP}^2 + \\overline{BP}^2$의 최솟값은? - ① 48 $\\textcircled{2} 50$ $\\sqrt{3} 52$ - ④ 54 $\\textcircled{5} 56$"
+          },
+          {
+            "number": "0022",
+            "page": 9,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "### 0022 실수 a, b에 대하여 $$\\sqrt{(a+4)^2 + (b+3)^2} + \\sqrt{(a-2)^2 + (b-1)^2}$$ 의 최솟값은? - ① $4\\sqrt{3}$ $\\textcircled{2} 7$ $\\textcircled{3} 5\\sqrt{2}$ - ④ $\\sqrt"
+          }
+        ]
+      }
+    },
+    {
+      "book": "typelevel2",
+      "profile": "reprint_explain",
+      "extracted": 499,
+      "answers": 238,
+      "explanations": 468,
+      "auto": 413,
+      "review": 9,
+      "unmatched": 77,
+      "written": 0,
+      "student_care_accessed": false,
+      "title": "공통수학 2 유형만렙",
+      "source_id": "cc6c347d-db2d-4363-b97e-68026951804c",
+      "registered": 1079,
+      "pages": 196,
+      "reason_counts": {
+        "DUPLICATE_NUMBER": 2,
+        "ANSWER_MISSING": 205,
+        "NO_REGISTERED_NUMBER": 77,
+        "STEM_MISMATCH": 9
+      },
+      "samples": {
+        "auto": [
+          {
+            "number": "0004",
+            "page": 9,
+            "overlap": 1,
+            "answer": "6",
+            "stem": "[0001~0004] 수직선 위의 다음 두 점 사이의 거리를 구하시오. 0004 A(-2), B(-8) 6",
+            "reprint": "A(-2), B(-8) 6",
+            "explanation": "0004 A(-2), B(-8) 6 [0005~0008] 좌표평면 위의 다음 두 점 사이의 거리를 구하시오.",
+            "same_problem": true
+          },
+          {
+            "number": "0008",
+            "page": 9,
+            "overlap": 1,
+            "answer": "2/5",
+            "stem": "[0005~0008] 좌표평면 위의 다음 두 점 사이의 거리를 구하시오. 0008 A(0, 0), B(2, 4) 2/5",
+            "reprint": "A(0, 0), B(2, 4) 2/5",
+            "explanation": "0008 A(0, 0), B(2, 4) 2/5 # **01-2 선분의 내분점** [0009~0011] 수직선 위의 두 점 A(-7), B(8)에 대하여 다음 점의 좌표를 구하시오.",
+            "same_problem": true
+          },
+          {
+            "number": "0011",
+            "page": 9,
+            "overlap": 1,
+            "answer": "1/2",
+            "stem": "[0009~0011] 수직선 위의 두 점 A(-7), B(8)에 대하여 다음 점의 좌표를 구하시오. 0011 선분 AB의 중점 1/2",
+            "reprint": "선분 AB의 중점 1/2",
+            "explanation": "0011 선분 AB의 중점 1/2 [0012~0013] 다음 물음에 답하시오.",
+            "same_problem": true
+          }
+        ],
+        "review": [
+          {
+            "number": "0109",
+            "page": 23,
+            "reasons": [
+              "STEM_MISMATCH",
+              "ANSWER_MISSING"
+            ],
+            "overlap": 0,
+            "answer": null,
+            "stem": "[0106-0109] 다음 일차방정식이 나타내는 도형을 좌표평면 위에 나타내시오. 0109 $2y+5=0$ ![img-6.jpeg](img-6.jpeg)",
+            "reprint": "$2y+5=0$ ![img-6.jpeg](img-6.jpeg)"
+          },
+          {
+            "number": "0367",
+            "page": 61,
+            "reasons": [
+              "STEM_MISMATCH"
+            ],
+            "overlap": 0,
+            "answer": "(3, 1)",
+            "stem": "[0367-0370] 다음 점을 $x$축의 방향으로 1만큼, $y$축의 방향으로 $-3$만큼 평행이동한 점의 좌표를 구하십시오. 0367 (0, 0) (1, -3)",
+            "reprint": "(0, 0) (1, -3) 0368 (2, 4) (3, 1)"
+          },
+          {
+            "number": "0369",
+            "page": 61,
+            "reasons": [
+              "STEM_MISMATCH"
+            ],
+            "overlap": 0,
+            "answer": "(8, -4)",
+            "stem": "[0367-0370] 다음 점을 $x$축의 방향으로 1만큼, $y$축의 방향으로 $-3$만큼 평행이동한 점의 좌표를 구하십시오. 0369 (-5, 3) (-4, 0)",
+            "reprint": "(-5, 3) (-4, 0) 0370 (7, -1) (8, -4)"
+          },
+          {
+            "number": "0371",
+            "page": 61,
+            "reasons": [
+              "STEM_MISMATCH"
+            ],
+            "overlap": 0,
+            "answer": "(1, 2)",
+            "stem": "[0371-0374] 평행이동 $(x, y) \\rightarrow (x-3, y+2)$에 의하여 다음 점이 옮겨지는 점의 좌표를 구하십시오. 0371 (1, 3) (-2, 5)",
+            "reprint": "(1, 3) (-2, 5) 0372 (4, 0) (1, 2)"
+          }
+        ],
+        "unmatched": [
+          {
+            "number": "0034",
+            "page": 12,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "## 0034 ③ 세 점 A(-1, 1), B(1, -1), C(a, b)를 꼭짓점으로 하는 삼각형 ABC가 정삼각형일 때, ab의 값을 구하시오. 3 AB=BC에서 AB' = BC'이므로 (1+1)² + (-1-1)² = (a-1)² + (b+1)² ∴ a²+b²-2a+2b-6=0 …"
+          },
+          {
+            "number": "0088",
+            "page": 20,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "# 0088 유형 13 점 P가 직선 y = 3x + 8 위를 움직일 때, 점 A(6, 0)에 대하여 선분 AP의 중점이 나타내는 도형의 방정식을 구하시오. y = 3x - 5 P(a, b)라 하면 b = 3a + 8 …… ③ AP의 중점의 좌표를 (x, y)라 하면 x = (6 + a"
+          },
+          {
+            "number": "0093",
+            "page": 21,
+            "reasons": [
+              "NO_REGISTERED_NUMBER"
+            ],
+            "preview": "0093 곡선 y=x^2-2x와 직선 y=3x+k(k>0)이 두 점 P, Q에서 만난다. 선분 PQ를 1:2로 내분하는 점의 x좌표가 1일 때, 상수 k의 값을 구하시오. (단, 점 P의 x좌표는 점 Q 의 x좌표보다 작다.) 14 ![img-2.jpeg](img-2.jpeg) 두 점 "
+          }
+        ]
+      }
+    }
+  ]
+}
