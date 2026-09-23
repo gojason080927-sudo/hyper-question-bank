@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+  answerQuality,
   classifyAnswerType,
   matchExtracts,
   parseQuickKeyPage,
@@ -194,5 +195,19 @@ describe('cm2 answer recover', () => {
     const overlap = stemOverlap('좌표평면 위의 두 점 A(2, 4)', '집합 A의 원소의 개수를 구하시오')
     expect(overlap).toBeLessThan(0.6)
     expect(classifyAnswerType('④')).toBe('CHOICE_LABEL')
+  })
+
+  it('treats short reprint stems as the same problem and does not flag \\pi as truncated', () => {
+    expect(stemOverlap('다음 중 원의 방정식인 것은?', '0214 다음 중 원의 방정식인 것은? ① x²+y²=1')).toBe(1)
+    expect(stemOverlap('A(2), B(6) 4', '[0001~0004] 수직선 위의 다음 두 점 사이의 거리를 구하시오. 0001 A(2), B(6) 4')).toBe(1)
+    expect(answerQuality('10\\pi')).toBeNull()
+    expect(answerQuality('\\frac{85}{8}\\pi')).toBeNull()
+    expect(answerQuality('\\sqrt{')).toBe('TRUNCATED_ANSWER')
+    const rows = parseReprintExplainPage(
+      `정답과 해설\n# 0085\n세 점 A, B, C의 x좌표의 합을 구하시오. 18 (가) 삼각형 ABC의 넓이는 $$6\\sqrt{3}$$이다.\n`,
+      21,
+      false,
+    )
+    expect(rows[0]?.answer_text).toBe('18')
   })
 })

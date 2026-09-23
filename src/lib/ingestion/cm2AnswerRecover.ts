@@ -59,17 +59,18 @@ export function normalizeForOverlap(text: string): string {
 export function stemOverlap(reprint: string | null, problemText: string): number {
   const a = normalizeForOverlap(reprint ?? '')
   const b = normalizeForOverlap(problemText)
-  if (a.length < 12 || b.length < 12) return 0
+  if (a.length < 5 || b.length < 5) return 0
+  if (b.includes(a) || (a.length >= 10 && a.includes(b.slice(0, Math.min(24, b.length))))) return 1
   const needle = a.slice(0, 28)
-  if (b.includes(needle)) return 1
+  if (needle.length >= 10 && b.includes(needle)) return 1
   const short = a.slice(0, 18)
-  if (short.length >= 12 && b.includes(short)) return 0.8
+  if (short.length >= 8 && b.includes(short)) return 0.8
   let hit = 0
   const window = Math.min(24, a.length)
-  for (let i = 0; i <= window - 10; i += 1) {
-    if (b.includes(a.slice(i, i + 10))) hit += 1
+  for (let i = 0; i <= window - 8; i += 1) {
+    if (b.includes(a.slice(i, i + 8))) hit += 1
   }
-  return Number((hit / Math.max(1, window - 9)).toFixed(3))
+  return Number((hit / Math.max(1, window - 7)).toFixed(3))
 }
 
 export function classifyAnswerType(answer: string | null): Cm2AnswerExtract['answer_type'] {
@@ -91,7 +92,7 @@ function compact(text: string): string {
 export function answerQuality(answer: string | null): 'POINTER_ANSWER' | 'TRUNCATED_ANSWER' | null {
   if (!answer) return null
   if (/풀이\s*\d+\s*쪽/.test(answer)) return 'POINTER_ANSWER'
-  if (/\\[a-zA-Z]*\{?$/.test(answer)) return 'TRUNCATED_ANSWER'
+  if (/\\$|\\[a-zA-Z]+\{$/.test(answer)) return 'TRUNCATED_ANSWER'
   if (answer.length <= 1 && /[.\-–,，{}]/.test(answer)) return 'TRUNCATED_ANSWER'
   return null
 }
@@ -188,8 +189,11 @@ function extractMarkedChoice(text: string): string | null {
 }
 
 function extractShortAnswer(text: string): string | null {
-  const line = text.split('\n').slice(0, 6).join(' ')
-  const asked = /구하(?:시\s*오|십시오)[^\n]{0,48}?(\$[^$]+\$|[①-⑤]|-?\d[^,\n]{0,24}|[√\d][^\n]{0,20})/.exec(line)
+  const line = text.split('\n').slice(0, 2).join(' ')
+  const asked =
+    /구하(?:시\s*오|십시오)[. ]{0,6}(\$[^$\n]{1,40}\$|[①-⑤]|[a-z]\s*=\s*[^,\n]{1,40}|-?\d+(?:\s*\/\s*\d+)?(?:√\d+)?|√[^\s,]{0,16})/.exec(
+      line,
+    )
   if (!asked) return null
   const value = asked[1]!.replace(/\s+/g, ' ').trim()
   if (/[①-⑤]/.test(value) && !CHOICE_MARK.test(line)) return null
