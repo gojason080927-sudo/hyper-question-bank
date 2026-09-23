@@ -1,0 +1,27 @@
+{
+  "phase": "persist-auto-safe",
+  "persist_problems": true,
+  "sourceId": "7c40102b-b4dc-4ff1-a512-6a2912c27b4e",
+  "engine": "hqb_upsert_problem_draft_from_identity",
+  "before": 0,
+  "after": 1152,
+  "auto_safe": 1152,
+  "created": 1152,
+  "existing": 0,
+  "failed": 0,
+  "review_held": 171,
+  "rerun": {
+    "before": 1152,
+    "after": 1152,
+    "created": 0,
+    "existing": 1152,
+    "failed": 0
+  },
+  "failed_rows": [],
+  "samples": [
+    { "page": 9, "problem_number": "0001" },
+    { "page": 10, "problem_number": "0020" },
+    { "page": 70, "problem_number": "0422" },
+    { "page": 150, "problem_number": "0972" }
+  ]
+}
