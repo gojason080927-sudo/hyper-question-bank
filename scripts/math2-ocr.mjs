@@ -12,7 +12,7 @@ const argv = process.argv.slice(2)
 
 if (argv.includes('--help')) {
   console.log('usage: npm run ocr:math2 -- --cache-only')
-  console.log('       npm run ocr:math2 -- --allow-paid-api --i-understand-this-costs-money --persist-page-text')
+  console.log('       npm run ocr:math2 -- --allow-paid-api --i-understand-this-costs-money --persist-page-text --prefer-batch')
   process.exit(0)
 }
 
