@@ -10,7 +10,7 @@ import { SSEN_SOURCE_DOCUMENT_ID } from '../outline/ssenToc'
 import { CLASSIFICATION_RPC, TYPE_DICTIONARY_RPC } from '../taxonomy/classificationPersistence'
 import { CM2_CURRICULUM_SEED, CM2_TYPE_PROFILES, cm2DictionaryPayload } from '../taxonomy/cm2Catalog'
 import { classifyCm2Problem, cm2ClassificationPayload, structureFromPageTexts, type Cm2Decision } from '../taxonomy/cm2Classify'
-import { GANYEOM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, RPM2_SPEC } from './bookIngestSpec'
+import { GANYEOM2_SPEC, GOJAENG2_SPEC, ILDEUNG2_SPEC, LIGHTSSEN2_SPEC, RPM2_SPEC } from './bookIngestSpec'
 import { MATH2_DOCUMENT_ID, MATH2_TITLE } from './math2Ocr'
 import { QUESTION_BANK_REF, STUDENT_CARE_REF } from './math2Persist'
 
@@ -20,6 +20,7 @@ export const CLASSIFY_TARGETS = [
   { slug: RPM2_SPEC.slug, sourceId: RPM2_SPEC.sourceId, title: RPM2_SPEC.title },
   { slug: GOJAENG2_SPEC.slug, sourceId: GOJAENG2_SPEC.sourceId, title: GOJAENG2_SPEC.title },
   { slug: ILDEUNG2_SPEC.slug, sourceId: ILDEUNG2_SPEC.sourceId, title: ILDEUNG2_SPEC.title },
+  { slug: LIGHTSSEN2_SPEC.slug, sourceId: LIGHTSSEN2_SPEC.sourceId, title: LIGHTSSEN2_SPEC.title },
 ] as const
 
 const REPORT_DIR = 'ocr-tests/taxonomy/book-classify'

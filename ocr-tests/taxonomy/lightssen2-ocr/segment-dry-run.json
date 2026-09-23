@@ -1,0 +1,110 @@
+{
+  "sourceId": "52a169f0-0e38-491d-9c5a-437c48e5cd89",
+  "title": "공통수학 2 라이트 쎈",
+  "persist_problems": false,
+  "pages": 192,
+  "candidates": 1407,
+  "auto_safe": 1109,
+  "needs_review": 170,
+  "blocked": 128,
+  "duplicate_suspects": 28,
+  "missing_suspects": 0,
+  "reverse_or_jump": 0,
+  "cross_page": 2,
+  "duplicate_numbers": [
+    "0049",
+    "0459",
+    "0605",
+    "0712",
+    "0716",
+    "0742",
+    "0746",
+    "0882",
+    "0886",
+    "0791",
+    "0907",
+    "0928",
+    "0931",
+    "1101"
+  ],
+  "missing_numbers": [],
+  "reason_counts": {
+    "CROSS_PAGE_STITCH": 2,
+    "STEM_MAY_BE_CUT": 182,
+    "INCOMPLETE_AT_PAGE_BREAK": 8,
+    "PAGE_TAIL": 8,
+    "NUMBER_FLOW": 10,
+    "RUNNING_FOOTER": 19,
+    "CHOICES_INCOMPLETE": 41,
+    "DUPLICATE_NUMBER": 28,
+    "THIN_STEM": 4,
+    "NON_PROBLEM_PAGE:ANSWER": 94,
+    "FALSE_OR_OUT_OF_RANGE_NUMBER": 2
+  },
+  "samples": [
+    {
+      "page": 8,
+      "problem_number": "0002",
+      "verdict": "AUTO_SAFE",
+      "reasons": [],
+      "stem_preview": "[0001~0005] 다음 두 점 사이의 거리를 구하시오. 0002 A(-2), B(5)",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": "01-1",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 4,
+      "problem_number": "0002",
+      "verdict": "NEEDS_REVIEW",
+      "reasons": [
+        "CROSS_PAGE_STITCH",
+        "STEM_MAY_BE_CUT"
+      ],
+      "stem_preview": "2 쉬운 문제부터 차근차근 공부하자. 시간이 없다고 처음부터 어려운 문제를 풀려고 하면 오히려 자신감이 떨어져 공부를 포기하게 될지도 모릅니다. 쉬운 문제부터 차근차근 내 것으로 만든 후 변형 문제들에 접근하다 보면 점점 어려운 문제도 스스로 해결 방법을 찾을 수 있을 거예요. with 라이트썬! 기본 → 유형 → 실전의",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 2,
+      "section": null,
+      "page_kind": "UNKNOWN",
+      "stitched_from_page": 5,
+      "cross_page": true,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 14,
+      "problem_number": "0049",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "DUPLICATE_NUMBER",
+        "STEM_MAY_BE_CUT"
+      ],
+      "stem_preview": "0049 # 좌표를 이용하여 도형의 성질 확인하기",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": "유형 04",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    }
+  ],
+  "stitches": [
+    {
+      "page": 4,
+      "problem_number": "0002",
+      "from": 5
+    },
+    {
+      "page": 180,
+      "problem_number": "1326",
+      "from": 181
+    }
+  ],
+  "issues": []
+}
