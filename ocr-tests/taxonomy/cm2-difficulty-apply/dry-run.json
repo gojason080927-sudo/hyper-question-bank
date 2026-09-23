@@ -1,0 +1,977 @@
+{
+  "phase": "cm2-difficulty-dry-run",
+  "persist": false,
+  "engine": "cm2-absolute-v1",
+  "assigned_by": "BOOK_CLASSIFY_CM2",
+  "student_care_accessed": false,
+  "problem_text_mutated": false,
+  "types_mutated": false,
+  "key_points_mutated": false,
+  "ssen_skipped": true,
+  "total": 7472,
+  "typed": 3928,
+  "untyped": 3544,
+  "written": 0,
+  "failed": 0,
+  "skipped_verified": 0,
+  "overall": {
+    "1": 4308,
+    "2": 2347,
+    "3": 515,
+    "4": 208,
+    "5": 94
+  },
+  "books": {
+    "math2": {
+      "1": 707,
+      "2": 334,
+      "3": 73,
+      "4": 25,
+      "5": 13
+    },
+    "ganyeom2": {
+      "1": 308,
+      "2": 176,
+      "3": 34,
+      "4": 9,
+      "5": 2
+    },
+    "rpm2": {
+      "1": 621,
+      "2": 333,
+      "3": 51,
+      "4": 22,
+      "5": 6
+    },
+    "gojaeng2": {
+      "1": 218,
+      "2": 198,
+      "3": 74,
+      "4": 41,
+      "5": 27
+    },
+    "ildeung2": {
+      "1": 196,
+      "2": 159,
+      "3": 35,
+      "4": 13,
+      "5": 7
+    },
+    "lightssen2": {
+      "1": 751,
+      "2": 307,
+      "3": 40,
+      "4": 11,
+      "5": 0
+    },
+    "typelevel2": {
+      "1": 694,
+      "2": 307,
+      "3": 64,
+      "4": 13,
+      "5": 1
+    },
+    "mother2": {
+      "1": 379,
+      "2": 159,
+      "3": 49,
+      "4": 32,
+      "5": 21
+    },
+    "wanja2": {
+      "1": 434,
+      "2": 374,
+      "3": 95,
+      "4": 42,
+      "5": 17
+    }
+  },
+  "dim_split": {
+    "split": 7472,
+    "cloned": 0
+  },
+  "sanity": {
+    "ok": true,
+    "reasons": []
+  },
+  "samples": [
+    {
+      "book": "math2",
+      "number": "0399",
+      "type": "REFLECTION",
+      "level": 1,
+      "score": 0.2,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 1,
+        "reasoning_depth": 2,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": true,
+      "preview": "[0399~0400] 다음 방정식이 나타내는 도형을 직선 $y = -x$에 대하여 대칭이동한 도형의 방정식을 구하시오. 0399 $y = \\frac{4}{3}x + 2$"
+    },
+    {
+      "book": "ganyeom2",
+      "number": "0021",
+      "type": null,
+      "level": 1,
+      "score": 0.143,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "area"
+      ],
+      "type_used": false,
+      "preview": "21 세 점 A(-2, 1), B(1, 4), C(3, -2)를 꼭짓점으로 하는 삼각형 ABC의 외접원의 넓이를 구하시오."
+    },
+    {
+      "book": "rpm2",
+      "number": "0061",
+      "type": null,
+      "level": 1,
+      "score": 0.149,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "area"
+      ],
+      "type_used": false,
+      "preview": "0061 상중바 세 점 A(5, 4), B(1, 0), C(2, 7)을 꼭짓점으로 하는 삼각형 ABC에서 ∠A의 이동분선이 변 BC와 만나는 점을 D라 할 때, 삼각형 DAB와 삼각형 DAC의 넓이의 비는 $p : q$ 이다. 이때 $p^2 - q^2"
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0004",
+      "type": "DISTANCE_TWO_POINTS",
+      "level": 1,
+      "score": 0.134,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": true,
+      "preview": "004 번호 직선 y=2x-3 위의 점 P(a, b)에서 두 점 A(5, -2), B(2, 3)에 이르는 거리가 같을 때, 실수 a, b에 대하여 a+b의 값은? ① -3 ② -2 ③ -1 ④ 0 ⑤ 1"
+    },
+    {
+      "book": "ildeung2",
+      "number": "0020",
+      "type": "SEGMENT_DIVISION",
+      "level": 1,
+      "score": 0.153,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "distance"
+      ],
+      "type_used": true,
+      "preview": "020 두 점 A(0, 4), B(6, 1)에 대하여 선분 AB를 2 : 1로 내분하는 점과 원점 사이의 거리는? ① √5 ② 2√5 ③ 3√5 ④ 4√5 ⑤ 5√5"
+    },
+    {
+      "book": "lightssen2",
+      "number": "0442",
+      "type": "REFLECTION",
+      "level": 1,
+      "score": 0.143,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "distance"
+      ],
+      "type_used": true,
+      "preview": "0442 점 (5, -2)를 원점에 대하여 대칭이동한 점을 P, 직선 y=x에 대하여 대칭이동한 점을 Q라 할 때, 선분 PQ의 길이를 구하시오."
+    },
+    {
+      "book": "typelevel2",
+      "number": "0440",
+      "type": null,
+      "level": 1,
+      "score": 0.125,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 1,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": false,
+      "preview": "0440 ⑩ 포물선 $y=x^2+3x-2$ 를 $x$ 축에 대하여 대칭이동한 포물선이 점 $(1, a)$ 를 지날 때, $a$ 의 값은? ① -4 ② -3 ☑ ③ -2 ④ -1 ⑤ 0"
+    },
+    {
+      "book": "mother2",
+      "number": "0077",
+      "type": null,
+      "level": 1,
+      "score": 0.163,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "ineq"
+      ],
+      "type_used": false,
+      "preview": "077 16일 그림과 같이 좌표평면 위에 원 $C : (x-a)^2 + (y-a)^2 = 10$ 이 있다. 원 $C$ 의 중심과 직선 $y=2x$ 사이의 거리가 $\\sqrt{5}$ 이고 직선 $y=kx$ 가 원 $C$ 에 접할 때, 상수 $k$ 의 값"
+    },
+    {
+      "book": "wanja2",
+      "number": "0225",
+      "type": null,
+      "level": 1,
+      "score": 0.163,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 1,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "area"
+      ],
+      "type_used": false,
+      "preview": "0225 원 $x^2+y^2+2x-6y=0$의 넓이가 두 직선 $y=ax$, $y=bx+c$에 의하여 4등분 될 때, $a+b+c$의 값은? (단, $a, b, c$는 상수) ✓① $\\frac{2}{3}$ ② 1 ③ $\\frac{4}{3}$ ④ $\\f"
+    },
+    {
+      "book": "math2",
+      "number": "0023",
+      "type": "DISTANCE_TWO_POINTS",
+      "level": 2,
+      "score": 0.308,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 3,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": true,
+      "preview": "0023 두 점 A(0, 5), B(0, 9)로부터 같은 거리에 있는 점 P(a, b)에 대하여 $$\\overline{OP}=10$$일 때, $$a^2-b^2$$의 값은? (단, O는 원점이다.) ① 1 ② 2 ③ 3 ④ 4 ⑤ 5"
+    },
+    {
+      "book": "ganyeom2",
+      "number": "0001",
+      "type": null,
+      "level": 2,
+      "score": 0.231,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": false,
+      "preview": "1 두 점 A(a, 3), B(1, 2-a) 사이의 거리가 2√3일 때, 양수 a의 값을 구하십시오."
+    },
+    {
+      "book": "rpm2",
+      "number": "0034",
+      "type": "DISTANCE_TWO_POINTS",
+      "level": 2,
+      "score": 0.24,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema"
+      ],
+      "type_used": true,
+      "preview": "0034 성종어 두 점 A(4, 2), B(2, 6)과 임의의 점 P에 대하여 $\\overline{PA}^2 + \\overline{PB}^2$ 의 값이 최소일 때, 점 P의 좌표는? - ① (2, 1) - ② (2, 4) - ③ (3, 2) - ④ ("
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0001",
+      "type": "DISTANCE_TWO_POINTS",
+      "level": 2,
+      "score": 0.231,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": true,
+      "preview": "001 번호 두 점 A(2, t), B(1-t, 1) 사이의 거리가 √20일 때, 양수 t의 값을 구하시오."
+    },
+    {
+      "book": "ildeung2",
+      "number": "0200",
+      "type": "REFLECTION",
+      "level": 2,
+      "score": 0.246,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "area"
+      ],
+      "type_used": true,
+      "preview": "200 점 A(-5, 2)를 x축, y축에 대하여 대칭이동한 점을 각각 B, C라 하자. 삼각형 ABC의 무게중심의 좌표가 (a, b) 일 때, a+b의 값은? ① -1 ② -1/3 ③ 0 ④ 1/3 ⑤ 1"
+    },
+    {
+      "book": "lightssen2",
+      "number": "0043",
+      "type": "DISTANCE_TWO_POINTS",
+      "level": 2,
+      "score": 0.243,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 2,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema"
+      ],
+      "type_used": true,
+      "preview": "0043 ☞ 세 점 A(-1, 5), B(a, b), C(3, 2)에 대하여 $$\\sqrt{(a+1)^2 + (b-5)^2} + \\sqrt{(a-3)^2 + (b-2)^2}$$ 의 최솟값은? ① 1 ② 3 ③ 5 ④ 7 ⑤ 9"
+    },
+    {
+      "book": "typelevel2",
+      "number": "0326",
+      "type": null,
+      "level": 2,
+      "score": 0.264,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 2,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema"
+      ],
+      "type_used": false,
+      "preview": "0326 ( ) 원 $(x-1)^2+(y+3)^2=5$ 위의 점과 직선 $2x+y+11=0$ 사이의 거리의 최댓값을 M, 최솟값을 m이라 할 때, Mm의 값은?"
+    },
+    {
+      "book": "mother2",
+      "number": "0074",
+      "type": null,
+      "level": 2,
+      "score": 0.228,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 2,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "area"
+      ],
+      "type_used": false,
+      "preview": "074 다음 그림과 같이 직선 $y=2x+7$ 위에 두 점 A(-4, -1), B(2, 11)이 있다. 직선 $y=2x+7$ 위를 움직이는 점 P에 대하여 삼각형 AOP의 넓이가 삼각형 BOP의 넓이의 2배일 때, 가능한 점 P의 $y$좌표의 합을 구"
+    },
+    {
+      "book": "wanja2",
+      "number": "0348",
+      "type": null,
+      "level": 2,
+      "score": 0.277,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 3,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "ineq"
+      ],
+      "type_used": false,
+      "preview": "0348 평행이동 $(x, y) \\longrightarrow (x-a, y-5)$에 의하여 원 $C_1: x^2+y^2+4x+6y-3=0$이 옮겨지는 원을 $C_2$라 하자. 두 원 $C_1, C_2$의 중심 사이의 거리가 $\\sqrt{41}$일 때,"
+    },
+    {
+      "book": "math2",
+      "number": "0442",
+      "type": "REFLECTION",
+      "level": 3,
+      "score": 0.359,
+      "dims": {
+        "concept_difficulty": 5,
+        "calculation_complexity": 3,
+        "reasoning_depth": 2,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "distance",
+        "circle",
+        "circle_line",
+        "ineq"
+      ],
+      "type_used": true,
+      "preview": "0442 실시동한 원 $x^2+y^2+2x-6y=0$을 $y$축에 대하여 대칭이동한 원이 직선 $y=x+k$와 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위가 $a<k<b$일 때, $ab$의 값을 구하시오."
+    },
+    {
+      "book": "ganyeom2",
+      "number": "0024",
+      "type": null,
+      "level": 3,
+      "score": 0.339,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 3,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema"
+      ],
+      "type_used": false,
+      "preview": "24 x, y가 실수일 때, $\\sqrt{(x-5)^2+(y+2)^2}+\\sqrt{(x+3)^2+(y-4)^2}$의 최솟값을 구하시오."
+    },
+    {
+      "book": "rpm2",
+      "number": "0161",
+      "type": null,
+      "level": 3,
+      "score": 0.334,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 4,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": false,
+      "preview": "0161 상용 점 $P$ 에서 두 직선 $2x+y-2=0$, $x+2y-2=0$ 에 내린 수선 의 발을 각각 $R, S$ 라 할 때, $\\overline{PR}=\\overline{PS}$ 를 만족시키는 점 $P$ 가 나타내는 도형의 방정식을 구하십시오"
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0048",
+      "type": "SEGMENT_DIVISION",
+      "level": 3,
+      "score": 0.397,
+      "dims": {
+        "concept_difficulty": 3,
+        "calculation_complexity": 1,
+        "reasoning_depth": 4,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "distance",
+        "area"
+      ],
+      "type_used": true,
+      "preview": "048 좌표평면에서 두 점 A(0, 4), B(8, 0)과 제1사분면 위의 점 C(a, b)가 AB=BC를 만족시킨다. 두 선분 AC, BC를 각각 1 : 2로 내분하는 점을 P, Q, 삼각형 CPQ의 무게중심을 G라 하자. 선분 CG의 길이가 8/3"
+    },
+    {
+      "book": "ildeung2",
+      "number": "0257",
+      "type": "SET_COUNT",
+      "level": 3,
+      "score": 0.334,
+      "dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 3,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "count_int",
+        "ineq"
+      ],
+      "type_used": true,
+      "preview": "257 집합 $A = \\{x \\mid x$는 30 이하의 6의 양의 배수\\}$의 부분집합 $X$에 대하여 $n(X) = 2$를 만족시키는 집합 $X$의 개수를 구하시오."
+    },
+    {
+      "book": "lightssen2",
+      "number": "0475",
+      "type": "REFLECTION",
+      "level": 3,
+      "score": 0.361,
+      "dims": {
+        "concept_difficulty": 3,
+        "calculation_complexity": 1,
+        "reasoning_depth": 3,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "distance",
+        "extrema"
+      ],
+      "type_used": true,
+      "preview": "0475 (표로 2-4) ![img-2.jpeg](img-2.jpeg) 오른쪽 그림과 같이 두 점 A(3, 1), B(-2, 4)와 x축 위를 움직이는 점 P에 대하여 AP+BP의 최솟값은? ![img-3.jpeg](img-3.jpeg) ① 4√3 ②"
+    },
+    {
+      "book": "typelevel2",
+      "number": "0357",
+      "type": null,
+      "level": 3,
+      "score": 0.355,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 3,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema"
+      ],
+      "type_used": false,
+      "preview": "0357 유형 18 원 $x^2+y^2-4x+8y+2=0$ 위의 점과 직선 $x-y+k=0$ 사이의 거리의 최댓값이 $8\\sqrt{2}$일 때, 양수 $k$의 값은? ① 3 ② 4 ③ 5 ④ 6 ⑤ 7"
+    },
+    {
+      "book": "mother2",
+      "number": "0055",
+      "type": null,
+      "level": 3,
+      "score": 0.419,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 3,
+        "condition_complexity": 4,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "ineq"
+      ],
+      "type_used": false,
+      "preview": "055 20일 좌표평면 위에 세 점 A(0, 4), B(4, 4), C(4, 0)이 있다. 세 선분 OA, AB, BC를 m : n (m > 0, n > 0)으로 내분하는 점을 각각 P, Q, R이라 하고, 세 점 P, Q, R을 지나는 원을 C라 할"
+    },
+    {
+      "book": "wanja2",
+      "number": "0503",
+      "type": null,
+      "level": 3,
+      "score": 0.413,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 1,
+        "reasoning_depth": 4,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "count_int"
+      ],
+      "type_used": false,
+      "preview": "0503 두 집합 $A, B$를 맨 다이어그램으로 나타내면 오른쪽 그림과 같을 때, $A \\subset X \\subset B$를 만족시키는 집합 $X$ 중에서 2를 원소로 갖지 않는 집합의 개수를 구하시오"
+    },
+    {
+      "book": "math2",
+      "number": "0070",
+      "type": "DISTANCE_TWO_POINTS",
+      "level": 4,
+      "score": 0.511,
+      "dims": {
+        "concept_difficulty": 3,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "area",
+        "construction"
+      ],
+      "type_used": true,
+      "preview": "0070 » 교육청 기출 • 10쪽 유형 01 그림과 같이 $x$축 위의 네 점 $A_1, A_2, A_3, A_4$에 대하여 $OA_1, \\overline{A_1A_2}, \\overline{A_2A_3}, \\overline{A_3A_4}$를 각각 한"
+    },
+    {
+      "book": "ganyeom2",
+      "number": "0322",
+      "type": "SET_BASIC",
+      "level": 4,
+      "score": 0.512,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 4,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "set_count"
+      ],
+      "type_used": true,
+      "preview": "322 두 집합 $A = \\{1, 2\\}$, $B = \\{1, 2, 3, \\cdots, n\\}$에 대하여 $A \\subset X \\subset B$를 만족시키는 집합 $X$의 개수가 128일 때, 자연수 $n$의 값을 구하시오."
+    },
+    {
+      "book": "rpm2",
+      "number": "0119",
+      "type": "LINE_EQUATION",
+      "level": 4,
+      "score": 0.434,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 3,
+        "condition_complexity": 4,
+        "representation_complexity": 1,
+        "trap_level": 2
+      },
+      "extras": [
+        "ineq"
+      ],
+      "type_used": true,
+      "preview": "0119 상용어 직선 $ax+by+c=0$ 에 대하여 보기에서 항상 옳은 것만을 있는 대로 고른 것은? (단, $a, b, c$ 는 상수이다.) # 보기 - ㄱ, $ab \\neq 0, c=0$ 이면 원점을 지난다. - ㄴ, $ab > 0$ 이면 제4사"
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0032",
+      "type": "SEGMENT_DIVISION",
+      "level": 4,
+      "score": 0.502,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": true,
+      "preview": "032 서로 다른 5개의 점 $A$, $B$, $C$, $D$, $E$가 한 직선 위에 있고, 다음 조건을 만족시킬 때, $\\frac{\\overline{AE}}{\\overline{CE}}$의 값은? - (가) 점 $B$는 선분 $AC$의 중점이다. -"
+    },
+    {
+      "book": "ildeung2",
+      "number": "0280",
+      "type": "SET_COUNT",
+      "level": 4,
+      "score": 0.429,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 4,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": true,
+      "preview": "280 집합 $A=\\{x \\mid x$는 24의 양의 약수\\}에 대하여 다음 조건을 만족시키는 $A$의 부분집합 $B$의 개수는? (가) $n(B)=4$ (나) $6 \\in B, 8 \\in B, 12 \\not\\in B$ ① 8 ② 10 ③ 12 ④ 1"
+    },
+    {
+      "book": "lightssen2",
+      "number": "0624",
+      "type": "SET_COUNT",
+      "level": 4,
+      "score": 0.434,
+      "dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 4,
+        "condition_complexity": 1,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema",
+        "ineq"
+      ],
+      "type_used": true,
+      "preview": "0624 집합 $A=\\{x|1<x<10, x$는 자연수$\\}$의 부분집합 $B$가 다음 조건을 모두 만족시킬 때, 집합 $B$의 모든 원소의 합의 최댓값은? ① $n(B)=4$ ② 집합 $B$의 원소 중 최솟값이 3이다. ① 24 ② 27 ③ 29 ④"
+    },
+    {
+      "book": "typelevel2",
+      "number": "0604",
+      "type": "SET_COUNT",
+      "level": 4,
+      "score": 0.429,
+      "dims": {
+        "concept_difficulty": 1,
+        "calculation_complexity": 2,
+        "reasoning_depth": 4,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [],
+      "type_used": true,
+      "preview": "0604 | 단행 기출 | 집합 $A = \\{3, 4, 5, 6, 7\\}$에 대하여 다음 조건을 만족시키는 집합 $A$의 모든 부분집합 $X$의 개수는? (가) $n(X) \\geq 2$ (나) 집합 $X$의 모든 원소의 곱은 6의 배수이다. - ① 1"
+    },
+    {
+      "book": "mother2",
+      "number": "0099",
+      "type": null,
+      "level": 4,
+      "score": 0.513,
+      "dims": {
+        "concept_difficulty": 5,
+        "calculation_complexity": 2,
+        "reasoning_depth": 4,
+        "condition_complexity": 2,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema",
+        "ineq",
+        "area"
+      ],
+      "type_used": false,
+      "preview": "099 30일 그림과 같이 세 점 A(0, 4), B(-3, 0), C(4, -3)을 꼭짓점으로 하는 삼각형 ABC가 있다. 선분 AC 위를 움직이는 점 P를 지나고 직선 AB에 평행한 직선이 선분 BC와 만나는 점을 Q, 점 P를 지나고 직선 BC에"
+    },
+    {
+      "book": "wanja2",
+      "number": "0377",
+      "type": null,
+      "level": 4,
+      "score": 0.505,
+      "dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 4,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "ineq",
+        "area"
+      ],
+      "type_used": false,
+      "preview": "0377 # 학원 기출 좌표평면 위에 두 점 $A(2, 4), B(6, 6)$이 있다. 점 $A$를 직선 $y=x$에 대하여 대칭이동한 점을 $A'$이라 하자. 점 $C(0, k)$가 다음 조건을 만족시킬 때, $k$의 값은? (가) $0<k<3$ ("
+    },
+    {
+      "book": "math2",
+      "number": "0203",
+      "type": null,
+      "level": 5,
+      "score": 0.568,
+      "dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "ineq",
+        "area"
+      ],
+      "type_used": false,
+      "preview": "0203 >> 교육형 기출 • 28쪽 유형 05 좌표평면 위에 두 점 A(2, 0), B(0, 6)이 있다. 다음 조건을 만족시키는 두 직선 l, m의 기울기의 합의 최댓 값은? (단, O는 원점이다.) - (가) 직선 l은 점 O를 지난다. - (나"
+    },
+    {
+      "book": "ganyeom2",
+      "number": "0399",
+      "type": null,
+      "level": 5,
+      "score": 0.718,
+      "dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 5,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema",
+        "ineq"
+      ],
+      "type_used": false,
+      "preview": "399 전체집합 $U=\\{x \\mid x$는 10 이하의 자연수\\}$의 두 부분집합 $$A=\\{1, 2, 3, 4, 5\\}, B=\\{3, 4, 5, 6, 7\\}$$ 에 대하여 집합 $U$의 부분집합 $X$가 다음 조건을 만족시킬 때, 집합 $X$의 모"
+    },
+    {
+      "book": "rpm2",
+      "number": "0186",
+      "type": null,
+      "level": 5,
+      "score": 0.666,
+      "dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema",
+        "area"
+      ],
+      "type_used": false,
+      "preview": "0186 좌표평면 위에 두 점 A(2, 0), B(0, 6)이 있다. 다음 조건을 만족시키는 두 직선 $l$, $m$의 기울기의 합의 최댓값은? (단, O는 원점이다.) (가) 직선 $l$은 점 O를 지난다. (나) 두 직선 $l$과 $m$은 선분 A"
+    },
+    {
+      "book": "gojaeng2",
+      "number": "0084",
+      "type": "LINE_EQUATION",
+      "level": 5,
+      "score": 0.689,
+      "dims": {
+        "concept_difficulty": 5,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "distance",
+        "extrema",
+        "area"
+      ],
+      "type_used": true,
+      "preview": "084 고득점 1면 좌표평면 위에 두 점 $A(2, 0)$, $B(0, 6)$ 이 있다. 다음 조건을 만족시키는 두 직선 $l$, $m$ 의 기울기의 합의 최댓값은? (단, O는 원점이다.) (가) 직선 $l$ 은 점 O를 지난다. (나) 두 직선 $"
+    },
+    {
+      "book": "ildeung2",
+      "number": "0279",
+      "type": "SET_COUNT",
+      "level": 5,
+      "score": 0.553,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema"
+      ],
+      "type_used": true,
+      "preview": "279 집합 $A=\\{3, 4, 5, 6, 7, 8, 9\\}$의 공집합이 아닌 부분집합 $X$에 대하여 집합 $X$의 모든 원소의 합을 $S(X)$라 하자. 집합 $X$가 다음 조건을 만족시킬 때, $S(X)$의 최댓값을 구하시오. (가) $3 \\no"
+    },
+    {
+      "book": "typelevel2",
+      "number": "0576",
+      "type": "SET_COUNT",
+      "level": 5,
+      "score": 0.59,
+      "dims": {
+        "concept_difficulty": 2,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 5,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "count_int"
+      ],
+      "type_used": true,
+      "preview": "0576 ③ 사실함 집합 $A = \\{x \\mid x$ 는 24 의 양의 약수에 대하여 다음 조건을 모두 만족시키는 집합 $X$ 의 개수를 구하시오. 63 - (가) $\\{1, 2\\} \\subset X \\subset A$ - (나) $X \\neq A$"
+    },
+    {
+      "book": "mother2",
+      "number": "0100",
+      "type": "POINT_LINE_DISTANCE",
+      "level": 5,
+      "score": 0.572,
+      "dims": {
+        "concept_difficulty": 3,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "distance",
+        "area"
+      ],
+      "type_used": true,
+      "preview": "100 29일 제1사분면 위의 점 A와 제3사분면 위의 점 B에 대하여 두 점 A, B가 다음 조건을 만족시킨다. (가) 두 점 A, B는 직선 $y=x$ 위에 있다. (나) $\\overline{OB}=2\\overline{OA}$ 점 A에서 $y$축에"
+    },
+    {
+      "book": "wanja2",
+      "number": "0553",
+      "type": null,
+      "level": 5,
+      "score": 0.556,
+      "dims": {
+        "concept_difficulty": 4,
+        "calculation_complexity": 2,
+        "reasoning_depth": 5,
+        "condition_complexity": 3,
+        "representation_complexity": 1,
+        "trap_level": 1
+      },
+      "extras": [
+        "extrema",
+        "ineq"
+      ],
+      "type_used": false,
+      "preview": "0553 두 집합 $A=\\{x|1\\leq x\\leq 6\\}$, $B=\\{x|3<x<8\\}$에 대하여 $A\\cap X=X$, $(A-B)\\cup X=X$를 만족시키는 집합 $X$를 $X=\\{x|p\\leq x\\leq q\\}$라 할 때, $q$의 최댓값과 "
+    }
+  ]
+}

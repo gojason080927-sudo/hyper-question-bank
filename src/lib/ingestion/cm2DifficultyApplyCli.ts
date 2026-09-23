@@ -130,7 +130,7 @@ export async function runCm2DifficultyApplyCli(root = process.cwd(), argv = proc
       }
     }
 
-    const bookSamples: Array<Record<string, unknown>> = []
+    const byLevel = new Map<number, Record<string, unknown>>()
     for (const [versionId, stem] of versions) {
       const problem = problemByVersion.get(versionId)
       if (!problem) continue
@@ -149,8 +149,8 @@ export async function runCm2DifficultyApplyCli(root = process.cwd(), argv = proc
       const split = new Set(Object.values(estimate.dim_levels)).size > 1
       if (split || estimate.overall_level === 1) dimSplit.split += 1
       else dimSplit.cloned += 1
-      if (bookSamples.length < 8) {
-        bookSamples.push({
+      if (!byLevel.has(estimate.overall_level)) {
+        byLevel.set(estimate.overall_level, {
           book: target.slug,
           number: numberByProblem.get(problem.id) ?? '?',
           type: used,
@@ -158,6 +158,7 @@ export async function runCm2DifficultyApplyCli(root = process.cwd(), argv = proc
           score: estimate.overall_score,
           dims: estimate.dim_levels,
           extras: estimate.extra_families,
+          type_used: Boolean(used),
           preview: estimate.question_stem.slice(0, 140),
         })
       }
@@ -190,11 +191,6 @@ export async function runCm2DifficultyApplyCli(root = process.cwd(), argv = proc
         continue
       }
       written += 1
-    }
-    const byLevel = new Map<number, Record<string, unknown>>()
-    for (const row of bookSamples) {
-      const level = Number(row.level)
-      if (!byLevel.has(level)) byLevel.set(level, row)
     }
     samples.push(...byLevel.values())
   }
