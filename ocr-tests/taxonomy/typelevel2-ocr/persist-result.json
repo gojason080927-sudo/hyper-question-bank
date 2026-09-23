@@ -1,0 +1,28 @@
+{
+  "sourceId": "cc6c347d-db2d-4363-b97e-68026951804c",
+  "ocr_pages": 196,
+  "ocr_usd": 0.392,
+  "candidates": 1267,
+  "auto_safe": 1079,
+  "needs_review": 182,
+  "blocked": 6,
+  "persisted": 1079,
+  "persist_failed": 0,
+  "identity_dups": 0,
+  "classified_auto": 738,
+  "classify_review": 341,
+  "curriculum": 1476,
+  "types": 738,
+  "difficulty": 694,
+  "difficulty_missing": 44,
+  "key_points": 738,
+  "other_books_unchanged": {
+    "ssen": 1253,
+    "math2": 1152,
+    "ganyeom2": 529,
+    "rpm2": 1033,
+    "gojaeng2": 558,
+    "ildeung2": 410,
+    "lightssen2": 1109
+  }
+}
