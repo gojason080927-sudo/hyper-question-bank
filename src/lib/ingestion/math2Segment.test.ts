@@ -12,6 +12,7 @@ import {
   refusePersist,
   repairMath2NumberSequence,
   splitMarkdownProblems,
+  splitSameLineProblemPair,
   verdictForCandidate,
 } from './math2Segment'
 
@@ -119,6 +120,17 @@ describe('math2 segment dry-run', () => {
         { number: '0696', text: 'c' },
       ]).map((row) => row.number),
     ).toEqual(['0694', '0695', '0696'])
+  })
+
+  it('splits consecutive same-line numbers and stops at 07-2 headings', () => {
+    const pair = splitSameLineProblemPair('**0102** 평행하다. **0103** 수직이다.')
+    expect(pair?.map((row) => row.number)).toEqual(['0102', '0103'])
+    expect(pair?.[0]?.text).toContain('평행하다')
+    expect(pair?.[1]?.text).toContain('수직이다')
+    expect(splitSameLineProblemPair('0093 3x-2y-6=0')).toBeNull()
+    const spans = splitMarkdownProblems('0740 보기\nㄱ. 참이다.\n# 07-2 조건과 진리집합\n0741 다음')
+    expect(spans.map((row) => row.number)).toEqual(['0740', '0741'])
+    expect(spans[0]?.text).not.toContain('07-2')
   })
 
   it('does not treat a 유형 heading preamble as a stitch body', () => {

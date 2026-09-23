@@ -135,6 +135,7 @@ export function isMath2SplitStop(line: string): boolean {
   if (/^개념\s*\d/.test(text)) return true
   if (/^정답\s*및\s*풀이/.test(text)) return true
   if (SHARED_PROMPT.test(text)) return true
+  if (/^\d{2}-\d\b/.test(text)) return true
   if (/^\d{1,3}\s+[IVX]+\b/.test(text)) return true
   if (/^(?:평면좌표|직선의 방정식|원의 방정식|도형의 이동|집합의 뜻과 표현|집합의 연산)$/.test(text)) return true
   if (/^\d{1,3}$/.test(text)) return true
@@ -152,10 +153,31 @@ export function extractSharedPrompts(markdown: string): Math2SharedPrompt[] {
   return found
 }
 
+export function splitSameLineProblemPair(line: string): [Math2MarkdownSpan, Math2MarkdownSpan] | null {
+  const text = normalizeMath2Line(line)
+  const match = /^(\d{4})\s+(.+?)\s+(\d{4})\s+(.+)$/.exec(text)
+  if (!match) return null
+  const left = Number(match[1])
+  const right = Number(match[3])
+  if (!Number.isInteger(left) || !Number.isInteger(right) || right !== left + 1) return null
+  if (left < 1 || right > WORKBOOK_NUMBER_MAX) return null
+  return [
+    { number: match[1]!, text: `${match[1]} ${match[2]}`.trim() },
+    { number: match[3]!, text: `${match[3]} ${match[4]}`.trim() },
+  ]
+}
+
 export function splitMarkdownProblems(markdown: string): Math2MarkdownSpan[] {
   const spans: Math2MarkdownSpan[] = []
   let current: Math2MarkdownSpan | null = null
   for (const rawLine of markdown.split('\n')) {
+    const pair = splitSameLineProblemPair(rawLine)
+    if (pair) {
+      if (current) spans.push(current)
+      spans.push(pair[0])
+      current = pair[1]
+      continue
+    }
     const number = isMath2ProblemStart(rawLine)
     if (number) {
       if (current) spans.push(current)

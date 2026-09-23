@@ -3,41 +3,29 @@
   "title": "쎈 공통수학 2",
   "persist_problems": false,
   "pages": 200,
-  "candidates": 1312,
-  "auto_safe": 1121,
-  "needs_review": 176,
+  "candidates": 1323,
+  "auto_safe": 1138,
+  "needs_review": 170,
   "blocked": 15,
   "duplicate_suspects": 0,
-  "missing_suspects": 18,
-  "reverse_or_jump": 10,
+  "missing_suspects": 7,
+  "reverse_or_jump": 0,
   "cross_page": 0,
   "duplicate_numbers": [],
   "missing_numbers": [
-    103,
-    106,
-    117,
-    495,
-    497,
-    516,
-    518,
-    520,
-    624,
-    626,
     838,
     839,
     840,
     841,
     842,
     843,
-    844,
-    1095
+    844
   ],
   "reason_counts": {
-    "STEM_MAY_BE_CUT": 133,
+    "STEM_MAY_BE_CUT": 136,
     "RUNNING_FOOTER": 26,
     "INCOMPLETE_AT_PAGE_BREAK": 13,
     "PAGE_TAIL": 13,
-    "NUMBER_FLOW": 10,
     "CHOICES_INCOMPLETE": 21,
     "NON_PROBLEM_PAGE:ANSWER": 15
   },
@@ -165,7 +153,6 @@
   ],
   "stitches": [],
   "issues": [
-    "same_page_gaps:10",
-    "short_gaps:18"
+    "short_gaps:7"
   ]
 }
