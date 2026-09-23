@@ -16,6 +16,8 @@ import {
   MATH2_CACHE_DIR,
   MATH2_DOCUMENT_ID,
   MATH2_OCR_BATCH_SIZE,
+  MATH2_OCR_GAP_MS,
+  MATH2_OCR_RETRY_429_MS,
   MATH2_OCR_COST_CAP_USD,
   MATH2_OCR_MODEL,
   MATH2_OCR_PROFILE,
@@ -143,8 +145,16 @@ async function mistralOcrPages(documentUrl: string, bookPages: number[]): Promis
     }),
   })
   const raw = stripImageBase64((await response.json()) as MistralOcrLike)
+  const message = raw.error ?? raw.detail ?? raw.message ?? `HTTP ${response.status}`
+  if (response.status === 429) {
+    const err = new Error(`HTTP_429 ${message}`)
+    err.name = 'RateLimit'
+    throw err
+  }
   if (!response.ok) {
-    throw new Error(raw.error ?? raw.detail ?? raw.message ?? `HTTP ${response.status}`)
+    const err = new Error(message)
+    err.name = response.status >= 500 ? 'ServerError' : 'HttpError'
+    throw err
   }
   return {
     raw,
@@ -339,7 +349,7 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
 
     let lastError: string | null = null
     let done = false
-    for (let attempt = 0; attempt < 4 && !done; attempt += 1) {
+    for (let attempt = 0; attempt < 6 && !done; attempt += 1) {
       try {
         const result = await mistralOcrPages(documentUrl, batch)
         if (result.processed > batch.length + 1e-9 && result.processed > MATH2_PAGE_COUNT) {
@@ -376,16 +386,22 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
           qaRows.push(analyzeMath2Page({ page, markdown, raw: result.raw, cached: false }))
         }
         done = true
-        await sleep(200)
+        await sleep(MATH2_OCR_GAP_MS)
       } catch (error) {
         lastError = error instanceof Error ? error.message : 'ocr_failed'
-        if (batch.length > 1 && attempt === 2) {
-          queue.push(...batch.map((page) => [page]))
+        const name = error instanceof Error ? error.name : ''
+        console.log(JSON.stringify({ phase: 'call-error', pages: batch, attempt, error: lastError, name }))
+        if (name === 'RateLimit') {
+          await sleep(MATH2_OCR_RETRY_429_MS)
+          continue
+        }
+        if (batch.length > 1 && name === 'HttpError' && attempt >= 2) {
+          queue.push(...batchesOf(batch, Math.max(1, Math.floor(batch.length / 2))))
           done = true
           lastError = null
           break
         }
-        await sleep(1500 * 2 ** attempt)
+        await sleep(2000 * 2 ** attempt)
       }
     }
     if (!done && lastError) {
