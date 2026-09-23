@@ -1,0 +1,117 @@
+{
+  "sourceId": "4c495394-025e-4689-b62a-1a493d43114c",
+  "title": "공통수학2 마더텅 모의고사 기출문제집",
+  "persist_problems": false,
+  "pages": 157,
+  "candidates": 740,
+  "auto_safe": 640,
+  "needs_review": 73,
+  "blocked": 27,
+  "duplicate_suspects": 20,
+  "missing_suspects": 0,
+  "reverse_or_jump": 0,
+  "cross_page": 1,
+  "duplicate_numbers": [
+    "0105",
+    "0117",
+    "0124",
+    "0129",
+    "0137",
+    "0158",
+    "0183",
+    "0186",
+    "0192",
+    "0207"
+  ],
+  "missing_numbers": [],
+  "reason_counts": {
+    "CHOICES_INCOMPLETE": 5,
+    "STEM_MAY_BE_CUT": 62,
+    "INCOMPLETE_AT_PAGE_BREAK": 30,
+    "PAGE_TAIL": 30,
+    "FALSE_OR_OUT_OF_RANGE_NUMBER": 2,
+    "NON_PROBLEM_PAGE:ANSWER": 4,
+    "RUNNING_FOOTER": 4,
+    "NUMBER_FLOW": 16,
+    "NON_PROBLEM_PAGE:THEORY": 1,
+    "DUPLICATE_NUMBER": 20,
+    "CROSS_PAGE_STITCH": 1
+  },
+  "samples": [
+    {
+      "page": 5,
+      "problem_number": "0001",
+      "verdict": "AUTO_SAFE",
+      "reasons": [],
+      "stem_preview": "[001~003] 수직선 위의 다음 두 점 사이의 거리를 구하시오. 001 A(2), B(5)",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": null,
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 18,
+      "problem_number": "0075",
+      "verdict": "NEEDS_REVIEW",
+      "reasons": [
+        "CHOICES_INCOMPLETE"
+      ],
+      "stem_preview": "075 ★★☆ 네 점 A(0, 6), B(0, 0), C(6, 0), D(6, 3)에 대하여 네 점 P₁, P₂, P₃, P₄가 다음 조건을 만족시킨다. (가) P₁, P₂, P₃, P₄는 사각형 ABCD 내부의 점이다. (나) P₁, P₂, P₃, P₄는 각각 네 선분 DP₄, AP₁, BP₂, CP₃의 중점이다. (1",
+      "choice_count": 2,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": "유형 06",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 73,
+      "problem_number": "0000",
+      "verdict": "BLOCKED",
+      "reasons": [
+        "FALSE_OR_OUT_OF_RANGE_NUMBER"
+      ],
+      "stem_preview": "0<k≤a+√β이다. 이때 유리수 α, β의 합 a+β의 값을 구하시오. (단, x축, y축은 어떤 사분면에도 포함되지 않는다.) 정답과 해설 112 p.101 113 p.102 114 p.102 115 p.102 I. 도형의 방정식 73 Flexcil - The Smart Study Toolkit & PDF, Annot",
+      "choice_count": 0,
+      "latex_count": 0,
+      "image_count": 0,
+      "section": "유형 08",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": null,
+      "cross_page": false,
+      "segment_status": "AUTO_OK"
+    },
+    {
+      "page": 145,
+      "problem_number": "0225",
+      "verdict": "NEEDS_REVIEW",
+      "reasons": [
+        "CROSS_PAGE_STITCH",
+        "STEM_MAY_BE_CUT"
+      ],
+      "stem_preview": "225 ★★★ 2005학년도 수능예비평가 나형 13번(고2) 자연수 $n$에 대하여 원소가 $2n$개인 집합 $S$에서 2개의 원소를 뽑는 경우의 수 $_{2n}C_2$를 다음과 같은 방법으로 구하였다. $S$를 원소가 $n$개이고 서로소인 두 집합 $A$와 $B$로 나누고, 다음과 같은 경우를 생각한다. (i) $A$와",
+      "choice_count": 0,
+      "latex_count": 7,
+      "image_count": 0,
+      "section": "유형 13",
+      "page_kind": "PROBLEM",
+      "stitched_from_page": 146,
+      "cross_page": true,
+      "segment_status": "AUTO_OK"
+    }
+  ],
+  "stitches": [
+    {
+      "page": 145,
+      "problem_number": "0225",
+      "from": 146
+    }
+  ],
+  "issues": []
+}
