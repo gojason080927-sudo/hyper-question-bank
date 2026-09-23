@@ -10,7 +10,10 @@ import {
   cacheKey,
   estimateMath2BatchUsd,
   estimateMath2OcrUsd,
+  MATH2_OCR_RETRY_429_MS,
   nextSegmentationApproach,
+  paceMsForPages,
+  waitMsFromRetryAfter,
   paidCapAllows,
   pickQaSamples,
   planMath2Ocr,
@@ -51,6 +54,11 @@ describe('math2 OCR planner', () => {
     expect(cacheKey('aaa', 1)).not.toBe(cacheKey('bbb', 1))
     expect(cacheKey('aaa', 1)).not.toBe(cacheKey('aaa', 2))
     expect(toApiPages([1, 200])).toEqual([0, 199])
+    expect(paceMsForPages(8)).toBeGreaterThanOrEqual(4000)
+    expect(paceMsForPages(125)).toBeGreaterThanOrEqual(60_000)
+    expect(waitMsFromRetryAfter('60')).toBeGreaterThanOrEqual(60_000)
+    expect(waitMsFromRetryAfter(null)).toBe(MATH2_OCR_RETRY_429_MS)
+    expect(waitMsFromRetryAfter('not-a-number')).toBe(MATH2_OCR_RETRY_429_MS)
     expect(batchesOf([1, 2, 3, 4], 2)).toEqual([
       [1, 2],
       [3, 4],

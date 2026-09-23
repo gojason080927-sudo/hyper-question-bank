@@ -23,7 +23,26 @@ export const MATH2_OCR_BATCH_USD_PER_PAGE = 0.002
 export const MATH2_OCR_COST_CAP_USD = 1.0
 export const MATH2_OCR_BATCH_SIZE = 8
 export const MATH2_OCR_GAP_MS = 2500
-export const MATH2_OCR_RETRY_429_MS = 45000
+export const MATH2_OCR_RETRY_429_MS = 60000
+export const MATH2_OCR_PAGES_PER_MINUTE = 125
+
+export function paceMsForPages(pages: number, ppm = MATH2_OCR_PAGES_PER_MINUTE): number {
+  if (pages <= 0) return 0
+  return Math.ceil((pages / ppm) * 60_000) + 500
+}
+
+export function waitMsFromRetryAfter(retryAfter: string | null | undefined, fallback = MATH2_OCR_RETRY_429_MS): number {
+  if (retryAfter == null || retryAfter === '') return fallback
+  const seconds = Number(retryAfter)
+  if (Number.isFinite(seconds) && seconds >= 0) {
+    return Math.min(Math.max(Math.ceil(seconds * 1000) + 500, 1_000), 180_000)
+  }
+  const when = Date.parse(retryAfter)
+  if (Number.isFinite(when)) {
+    return Math.min(Math.max(when - Date.now() + 500, 1_000), 180_000)
+  }
+  return fallback
+}
 export const MATH2_REPORT_DIR = 'ocr-tests/taxonomy/math2-ocr'
 export const MATH2_CACHE_DIR = '.ocr-temp/math2-ocr'
 export const FORBIDDEN_SOURCE_IDS = [SSEN_SOURCE_DOCUMENT_ID] as const

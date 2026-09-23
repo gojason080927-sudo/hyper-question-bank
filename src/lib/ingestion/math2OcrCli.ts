@@ -17,8 +17,6 @@ import {
   MATH2_DOCUMENT_ID,
   MATH2_OCR_BATCH_SIZE,
   MATH2_OCR_BATCH_USD_PER_PAGE,
-  MATH2_OCR_GAP_MS,
-  MATH2_OCR_RETRY_429_MS,
   MATH2_OCR_COST_CAP_USD,
   MATH2_OCR_MODEL,
   MATH2_OCR_PROFILE,
@@ -34,6 +32,8 @@ import {
   cacheFileName,
   estimateMath2BatchUsd,
   estimateMath2OcrUsd,
+  paceMsForPages,
+  waitMsFromRetryAfter,
   formatMath2QaMarkdown,
   fromApiPageIndex,
   nextSegmentationApproach,
@@ -86,8 +86,17 @@ function loadCachedPages(root: string, pdfHash: string): Map<number, CachedPage>
 }
 
 function writeCachedPage(root: string, pdfHash: string, page: CachedPage) {
-  mkdirSync(cacheDir(root), { recursive: true })
-  writeFileSync(path.join(cacheDir(root), cacheFileName(pdfHash, page.page)), JSON.stringify(page), 'utf8')
+  const dest = path.join(cacheDir(root), cacheFileName(pdfHash, page.page))
+  mkdirSync(path.dirname(dest), { recursive: true })
+  writeFileSync(dest, JSON.stringify(page), 'utf8')
+}
+
+function rateLimitSnapshot(headers: Headers): Record<string, string> {
+  const out: Record<string, string> = {}
+  for (const [key, value] of headers.entries()) {
+    if (key.startsWith('x-ratelimit-') || key === 'retry-after') out[key] = value
+  }
+  return out
 }
 
 function adminClient() {
@@ -128,7 +137,12 @@ async function uploadPdfToMistral(pdfPath: string): Promise<string> {
   return signedBody.url
 }
 
-async function mistralOcrPages(documentUrl: string, bookPages: number[]): Promise<{ raw: MistralOcrLike; http: number; processed: number }> {
+async function mistralOcrPages(documentUrl: string, bookPages: number[]): Promise<{
+  raw: MistralOcrLike
+  http: number
+  processed: number
+  limits: Record<string, string>
+}> {
   const creds = readMistralCredentials()
   if (!creds) throw new Error('MISTRAL_ABSENT')
   const response = await fetch(MISTRAL_ENDPOINT, {
@@ -146,22 +160,28 @@ async function mistralOcrPages(documentUrl: string, bookPages: number[]): Promis
       table_format: 'html',
     }),
   })
+  const limits = rateLimitSnapshot(response.headers)
   const raw = stripImageBase64((await response.json()) as MistralOcrLike)
   const message = raw.error ?? raw.detail ?? raw.message ?? `HTTP ${response.status}`
   if (response.status === 429) {
-    const err = new Error(`HTTP_429 ${message}`)
+    const err = new Error(`HTTP_429 ${message}`) as Error & { retryMs: number; limits: Record<string, string> }
     err.name = 'RateLimit'
+    err.retryMs = waitMsFromRetryAfter(response.headers.get('retry-after'))
+    err.limits = limits
     throw err
   }
   if (!response.ok) {
-    const err = new Error(message)
+    const err = new Error(message) as Error & { http: number; limits: Record<string, string> }
     err.name = response.status >= 500 ? 'ServerError' : 'HttpError'
+    err.http = response.status
+    err.limits = limits
     throw err
   }
   return {
     raw,
     http: response.status,
     processed: raw.usage_info?.pages_processed ?? (raw.pages?.length ?? 0),
+    limits,
   }
 }
 
@@ -524,36 +544,65 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
   if (plan.missPages.length) assertPageRange(plan.missPages)
   if (argv.includes('--prefer-batch')) {
     if (!pdfPath) throw new Error('MATH2_OCR_PDF_MISSING')
-    return runMath2OcrBatch({
-      root,
-      pdfPath,
-      pdfHash,
-      missPages: plan.missPages,
-      persistPageText,
-      plan,
-      cached,
-    })
+    try {
+      return await runMath2OcrBatch({
+        root,
+        pdfPath,
+        pdfHash,
+        missPages: plan.missPages,
+        persistPageText,
+        plan,
+        cached,
+      })
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error)
+      if (!message.startsWith('BATCH_CREATE_402')) throw error
+      console.log(JSON.stringify({
+        phase: 'batch-fallback-realtime',
+        reason: 'BATCH_CREATE_402',
+        miss: plan.missPages.length,
+        realtime_usd: plan.estimatedUsd,
+      }))
+    }
   }
 
+  return runMath2OcrRealtime({
+    root,
+    pdfPath,
+    pdfHash,
+    persistPageText,
+    plan,
+    cached,
+  })
+}
+
+async function runMath2OcrRealtime(input: {
+  root: string
+  pdfPath: string | null
+  pdfHash: string
+  persistPageText: boolean
+  plan: ReturnType<typeof planMath2Ocr>
+  cached: Map<number, CachedPage>
+}): Promise<ReturnType<typeof writeReports>> {
   let documentUrl: string | null = null
   try {
     documentUrl = await signedPdfUrl()
   } catch (error) {
     console.log(JSON.stringify({ phase: 'signed-url-fallback', error: error instanceof Error ? error.message : 'signed-url' }))
-    if (!pdfPath) throw error
-    documentUrl = await uploadPdfToMistral(pdfPath)
+    if (!input.pdfPath) throw error
+    documentUrl = await uploadPdfToMistral(input.pdfPath)
   }
 
   let spentUsd = 0
   const calledPages: number[] = []
   const qaRows: Math2PageQa[] = []
-  for (const page of plan.cachedPages) {
-    const hit = cached.get(page)!
+  for (const page of input.plan.cachedPages) {
+    const hit = input.cached.get(page)!
     qaRows.push(analyzeMath2Page({ page, markdown: hit.markdown, raw: hit.raw, cached: true }))
   }
 
-  const remaining = [...plan.missPages]
-  const queue: number[][] = remaining.length ? [[remaining[0]!], ...batchesOf(remaining.slice(1), MATH2_OCR_BATCH_SIZE)] : []
+  const queue: number[][] = batchesOf(input.plan.missPages, MATH2_OCR_BATCH_SIZE)
+  let zeroRpmStrikes = 0
 
   for (const batch of queue) {
     const cap = paidCapAllows(spentUsd, batch.length)
@@ -571,9 +620,10 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
 
     let lastError: string | null = null
     let done = false
-    for (let attempt = 0; attempt < 6 && !done; attempt += 1) {
+    for (let attempt = 0; attempt < 4 && !done; attempt += 1) {
       try {
         const result = await mistralOcrPages(documentUrl, batch)
+        console.log(JSON.stringify({ phase: 'ocr-ok', pages: batch, http: result.http, processed: result.processed, limits: result.limits }))
         if (result.processed > batch.length + 1e-9 && result.processed > MATH2_PAGE_COUNT) {
           throw new Error(`MATH2_OCR_OVERBILL: processed ${result.processed}`)
         }
@@ -591,7 +641,7 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
             raw: { ...result.raw, pages: [rawPage] },
             model: result.raw.model ?? MATH2_OCR_MODEL,
           }
-          writeCachedPage(root, pdfHash, record)
+          writeCachedPage(input.root, input.pdfHash, record)
           calledPages.push(bookPage)
           qaRows.push(analyzeMath2Page({ page: bookPage, markdown, raw: record.raw, cached: false }))
         }
@@ -603,18 +653,27 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
             continue
           }
           const record: CachedPage = { page, markdown, raw: result.raw, model: result.raw.model ?? MATH2_OCR_MODEL }
-          writeCachedPage(root, pdfHash, record)
+          writeCachedPage(input.root, input.pdfHash, record)
           calledPages.push(page)
           qaRows.push(analyzeMath2Page({ page, markdown, raw: result.raw, cached: false }))
         }
         done = true
-        await sleep(MATH2_OCR_GAP_MS)
+        zeroRpmStrikes = 0
+        await sleep(paceMsForPages(batch.length))
       } catch (error) {
         lastError = error instanceof Error ? error.message : 'ocr_failed'
         const name = error instanceof Error ? error.name : ''
-        console.log(JSON.stringify({ phase: 'call-error', pages: batch, attempt, error: lastError, name }))
+        const limits = (error as { limits?: Record<string, string> }).limits ?? {}
+        const retryMs = (error as { retryMs?: number }).retryMs
+        console.log(JSON.stringify({ phase: 'call-error', pages: batch, attempt, error: lastError, name, limits }))
         if (name === 'RateLimit') {
-          await sleep(MATH2_OCR_RETRY_429_MS)
+          if (limits['x-ratelimit-limit-req-minute'] === '0' || limits['x-ratelimit-limit-ocr-pages-minute'] === '0') {
+            zeroRpmStrikes += 1
+            if (zeroRpmStrikes >= 2) {
+              throw new Error('MATH2_OCR_RPM_ZERO: rate limit is still 0 after Pay-As-You-Go probe. Stopped to avoid a retry storm.')
+            }
+          }
+          await sleep(retryMs ?? waitMsFromRetryAfter(limits['retry-after']))
           continue
         }
         if (batch.length > 1 && name === 'HttpError' && attempt >= 2) {
@@ -636,9 +695,9 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
   for (const row of qaRows) unique.set(row.page, row)
   const finalRows = [...unique.values()].sort((a, b) => a.page - b.page)
 
-  if (persistPageText) {
+  if (input.persistPageText) {
     const ok = finalRows.filter((row) => row.ok).map((row) => {
-      const file = path.join(cacheDir(root), cacheFileName(pdfHash, row.page))
+      const file = path.join(cacheDir(input.root), cacheFileName(input.pdfHash, row.page))
       const cachedPage = existsSync(file) ? (JSON.parse(readFileSync(file, 'utf8')) as CachedPage) : null
       return { page: row.page, markdown: cachedPage?.markdown ?? row.preview }
     })
@@ -647,17 +706,17 @@ export async function runMath2Ocr(root = process.cwd(), argv = process.argv.slic
 
   const markdownByPage = new Map<number, string>()
   for (const row of finalRows) {
-    const file = path.join(cacheDir(root), cacheFileName(pdfHash, row.page))
+    const file = path.join(cacheDir(input.root), cacheFileName(input.pdfHash, row.page))
     if (existsSync(file)) markdownByPage.set(row.page, (JSON.parse(readFileSync(file, 'utf8')) as CachedPage).markdown)
   }
-  const summary = writeReports(root, {
-    plan,
+  const summary = writeReports(input.root, {
+    plan: input.plan,
     qaRows: finalRows,
     markdownByPage,
     spentUsd,
     modelUsed: MATH2_OCR_MODEL,
     calledPages: [...new Set(calledPages)].sort((a, b) => a - b),
-    persistPageText,
+    persistPageText: input.persistPageText,
   })
   console.log(
     JSON.stringify(
