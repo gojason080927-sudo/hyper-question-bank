@@ -1,0 +1,32 @@
+{
+  "phase": "classify-apply",
+  "engine": "hqb_upsert_problem_classification",
+  "assigned_by": "BOOK_CLASSIFY_CM2",
+  "ssen_skipped": true,
+  "problem_text_mutated": false,
+  "student_care_accessed": false,
+  "written": 1634,
+  "review": 1638,
+  "failed": 0,
+  "rerun": {
+    "written": 0,
+    "skipped_existing": 1634,
+    "review": 1638
+  },
+  "books": [
+    { "slug": "math2", "sources": 1152, "written": 546, "review": 606, "curriculum_rows": 1092, "types": 546, "difficulty": 443, "key_points": 546 },
+    { "slug": "ganyeom2", "sources": 529, "written": 170, "review": 359, "curriculum_rows": 340, "types": 170, "difficulty": 126, "key_points": 170 },
+    { "slug": "rpm2", "sources": 1033, "written": 527, "review": 506, "curriculum_rows": 1054, "types": 527, "difficulty": 474, "key_points": 527 },
+    { "slug": "gojaeng2", "sources": 558, "written": 391, "review": 167, "curriculum_rows": 782, "types": 391, "difficulty": 386, "key_points": 391 }
+  ],
+  "ssen_unchanged": { "sources": 1253, "classified": 1242 },
+  "sample": {
+    "book": "gojaeng2",
+    "number": "0032",
+    "unit": "도형의 방정식",
+    "subunit": "평면좌표",
+    "type": "SEGMENT_DIVISION",
+    "difficulty": 2,
+    "key_test_points": ["선분을 주어진 비로 내분·외분하는 점의 좌표를 구할 수 있는가"]
+  }
+}
